@@ -1,3 +1,30 @@
-PODFILE CHECKSUM: 6b1c3d1b82ca126df1a33d65bec268e714ed510e
+PODS:
+  - Alamofire (4.0.0)
+  - EasyPeasy (1.4)
+  - ReusableKit (1.0.0)
+  - RxCocoa (3.0.0-beta.2):
+    - RxSwift (~> 3.0.0-beta.2)
+  - RxDataSources (1.0.0-beta.3):
+    - RxCocoa (~> 3.0.0-beta.2)
+    - RxSwift (~> 3.0.0-beta.2)
+  - RxSwift (3.0.0-beta.2)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.0)
+  - EasyPeasy
+  - ReusableKit (~> 1.0)
+  - RxCocoa (~> 3.0.0-beta.1)
+  - RxDataSources (= 1.0.0-beta.3)
+  - RxSwift (~> 3.0.0-beta.1)
+
+SPEC CHECKSUMS:
+  Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
+  EasyPeasy: c2e49ceb822edc0a5fffefd66240fff10129047d
+  ReusableKit: 236864f798e5a75111f7cfdccf85a859c7d31125
+  RxCocoa: 1dd105d8a4e18034ccd7bd6d136445363ce67c8e
+  RxDataSources: ddef3c5a718ab960e287aa331a9299b56b0c7ffe
+  RxSwift: 0ea939d7d97cb70657190ffde8dc2a9b455778fc
+
+PODFILE CHECKSUM: fe4dab32cea67039985d8c9f434684a06f2b65d5
 
 COCOAPODS: 1.0.1

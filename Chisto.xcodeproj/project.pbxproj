@@ -9,9 +9,18 @@
 /* Begin PBXBuildFile section */
 		88073ED91DABE1E0000696A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073ED81DABE1E0000696A3 /* AppDelegate.swift */; };
 		88073EDB1DABE1E0000696A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073EDA1DABE1E0000696A3 /* ViewController.swift */; };
-		88073EDE1DABE1E0000696A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88073EDC1DABE1E0000696A3 /* Main.storyboard */; };
 		88073EE01DABE1E0000696A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88073EDF1DABE1E0000696A3 /* Assets.xcassets */; };
 		88073EE31DABE1E0000696A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88073EE11DABE1E0000696A3 /* LaunchScreen.storyboard */; };
+		88073EEF1DAC1A23000696A3 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073EED1DAC1A23000696A3 /* OnBoardingViewController.swift */; };
+		88073EFA1DAC428A000696A3 /* GoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073EF91DAC428A000696A3 /* GoButton.swift */; };
+		88073EFC1DAC4661000696A3 /* CitySelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073EFB1DAC4661000696A3 /* CitySelectTableViewController.swift */; };
+		88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */; };
+		88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 88073F001DAD6E6F000696A3 /* .swiftlint.yml */; };
+		88073F031DAD6FCF000696A3 /* DescriptionListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073F021DAD6FCF000696A3 /* DescriptionListItem.swift */; };
+		8814C0331DAD8123005B4967 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0321DAD8123005B4967 /* Style.swift */; };
+		8814C0391DAE8F7F005B4967 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0381DAE8F7F005B4967 /* LocationManager.swift */; };
+		8814C03C1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C03B1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift */; };
+		8814C03E1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C03D1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift */; };
 		CC63F0EA174EB55F7C1DD247 /* Pods_Chisto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D4403E4AD2DF4A42F5C8FA /* Pods_Chisto.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,10 +29,19 @@
 		88073ED51DABE1E0000696A3 /* Chisto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chisto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88073ED81DABE1E0000696A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88073EDA1DABE1E0000696A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		88073EDD1DABE1E0000696A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		88073EDF1DABE1E0000696A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88073EE21DABE1E0000696A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88073EE41DABE1E0000696A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88073EED1DAC1A23000696A3 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		88073EF91DAC428A000696A3 /* GoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoButton.swift; sourceTree = "<group>"; };
+		88073EFB1DAC4661000696A3 /* CitySelectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySelectTableViewController.swift; sourceTree = "<group>"; };
+		88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySelectViewModel.swift; sourceTree = "<group>"; };
+		88073F001DAD6E6F000696A3 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		88073F021DAD6FCF000696A3 /* DescriptionListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionListItem.swift; sourceTree = "<group>"; };
+		8814C0321DAD8123005B4967 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		8814C0381DAE8F7F005B4967 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = Util/LocationManager.swift; sourceTree = "<group>"; };
+		8814C03B1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CLLocationManager+Rx.swift .swift"; path = "RxUtils/CLLocationManager+Rx.swift .swift"; sourceTree = "<group>"; };
+		8814C03D1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RxCLLocationManagerDelegateProxy.swift; path = RxUtils/RxCLLocationManagerDelegateProxy.swift; sourceTree = "<group>"; };
 		88D4403E4AD2DF4A42F5C8FA /* Pods_Chisto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chisto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA8A37CB3EB7F2EEDB9E26D5 /* Pods-Chisto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chisto.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chisto/Pods-Chisto.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,6 +70,7 @@
 		88073ECC1DABE1E0000696A3 = {
 			isa = PBXGroup;
 			children = (
+				88073F001DAD6E6F000696A3 /* .swiftlint.yml */,
 				88073ED71DABE1E0000696A3 /* Chisto */,
 				88073ED61DABE1E0000696A3 /* Products */,
 				50E1CA40DFC3C09A4A3A20A6 /* Pods */,
@@ -70,14 +89,110 @@
 		88073ED71DABE1E0000696A3 /* Chisto */ = {
 			isa = PBXGroup;
 			children = (
+				8814C03A1DAEBCD7005B4967 /* RxUtils */,
+				8814C0371DAE8F4B005B4967 /* Util */,
+				8814C0311DAD8112005B4967 /* Style */,
+				88073EF11DAC1B3E000696A3 /* Data */,
+				88073EEC1DAC19E1000696A3 /* UI */,
 				88073ED81DABE1E0000696A3 /* AppDelegate.swift */,
 				88073EDA1DABE1E0000696A3 /* ViewController.swift */,
-				88073EDC1DABE1E0000696A3 /* Main.storyboard */,
 				88073EDF1DABE1E0000696A3 /* Assets.xcassets */,
 				88073EE11DABE1E0000696A3 /* LaunchScreen.storyboard */,
 				88073EE41DABE1E0000696A3 /* Info.plist */,
 			);
 			path = Chisto;
+			sourceTree = "<group>";
+		};
+		88073EEC1DAC19E1000696A3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				88073EF71DAC26EA000696A3 /* CitySelect */,
+				88073EF31DAC1CBE000696A3 /* Onboarding */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		88073EF11DAC1B3E000696A3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				88073EF21DAC1B4A000696A3 /* Models */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		88073EF21DAC1B4A000696A3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		88073EF31DAC1CBE000696A3 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				88073EF61DAC26E2000696A3 /* Views */,
+				88073EF41DAC1CCB000696A3 /* ViewControllers */,
+			);
+			name = Onboarding;
+			sourceTree = "<group>";
+		};
+		88073EF41DAC1CCB000696A3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				88073EED1DAC1A23000696A3 /* OnBoardingViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		88073EF61DAC26E2000696A3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				88073EF91DAC428A000696A3 /* GoButton.swift */,
+				88073F021DAD6FCF000696A3 /* DescriptionListItem.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		88073EF71DAC26EA000696A3 /* CitySelect */ = {
+			isa = PBXGroup;
+			children = (
+				88073EF81DAC26FA000696A3 /* ViewControllers */,
+				88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */,
+			);
+			name = CitySelect;
+			sourceTree = "<group>";
+		};
+		88073EF81DAC26FA000696A3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				88073EFB1DAC4661000696A3 /* CitySelectTableViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8814C0311DAD8112005B4967 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				8814C0321DAD8123005B4967 /* Style.swift */,
+			);
+			name = Style;
+			sourceTree = "<group>";
+		};
+		8814C0371DAE8F4B005B4967 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				8814C0381DAE8F7F005B4967 /* LocationManager.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		8814C03A1DAEBCD7005B4967 /* RxUtils */ = {
+			isa = PBXGroup;
+			children = (
+				8814C03B1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift */,
+				8814C03D1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift */,
+			);
+			name = RxUtils;
 			sourceTree = "<group>";
 		};
 		E86E04D5222457AEB97ED2EC /* Frameworks */ = {
@@ -101,6 +216,7 @@
 				88073ED31DABE1E0000696A3 /* Resources */,
 				43A3FC4290CC8023EBE51D76 /* [CP] Embed Pods Frameworks */,
 				50E15D77F4E0AE5A2171C7AB /* [CP] Copy Pods Resources */,
+				88073EFF1DAD6DDE000696A3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -150,9 +266,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */,
 				88073EE31DABE1E0000696A3 /* LaunchScreen.storyboard in Resources */,
 				88073EE01DABE1E0000696A3 /* Assets.xcassets in Resources */,
-				88073EDE1DABE1E0000696A3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +305,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chisto/Pods-Chisto-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		88073EFF1DAD6DDE000696A3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
 		EEC439545D6E37308205820E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -211,22 +340,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88073EEF1DAC1A23000696A3 /* OnBoardingViewController.swift in Sources */,
+				8814C0331DAD8123005B4967 /* Style.swift in Sources */,
+				88073EFC1DAC4661000696A3 /* CitySelectTableViewController.swift in Sources */,
 				88073EDB1DABE1E0000696A3 /* ViewController.swift in Sources */,
+				88073F031DAD6FCF000696A3 /* DescriptionListItem.swift in Sources */,
 				88073ED91DABE1E0000696A3 /* AppDelegate.swift in Sources */,
+				8814C03E1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift in Sources */,
+				88073EFA1DAC428A000696A3 /* GoButton.swift in Sources */,
+				88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */,
+				8814C0391DAE8F7F005B4967 /* LocationManager.swift in Sources */,
+				8814C03C1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		88073EDC1DABE1E0000696A3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				88073EDD1DABE1E0000696A3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		88073EE11DABE1E0000696A3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
