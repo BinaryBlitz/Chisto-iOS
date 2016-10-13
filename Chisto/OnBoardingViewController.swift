@@ -12,13 +12,17 @@ import RxSwift
 
 class OnBoardingViewController: UIViewController {
     
-    let descriptionSteps : [(String, UIImage)] = [
+    let descriptionSteps: [(String, UIImage)] = [
         (title: "Добавьте в список вещи, которые хотите сдать в чистку", icon: #imageLiteral(resourceName: "iconNum1")),
         (title: "Ознакомьтесь с ценой и сроками выполнения вашего заказа", icon: #imageLiteral(resourceName: "iconNum2")),
         (title: "Выберите подходящего вам исполнителя", icon: #imageLiteral(resourceName: "iconNum3")),
         (title: "Оплатите заказ удобным для вас способом", icon: #imageLiteral(resourceName: "iconNum4")),
         (title: "Ожидайте звонка. Оператор согласует время забора и доставки вещей", icon: #imageLiteral(resourceName: "iconNum5"))
     ]
+    
+    let descriptionLabelText = "Все очень просто:"
+    let subTitleViewText = "С Chisto вам больше не нужно тратить время на походы в химчистку."
+    let goButtonText = "Начать"
     
     // Header
     let headerView = UIView()
@@ -44,7 +48,7 @@ class OnBoardingViewController: UIViewController {
     
     func configureDescription() {
         descriptionView.backgroundColor = UIColor.chsWhite
-        descriptionView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        descriptionView.layoutMargins = UIEdgeInsets(top: 25, left: 20, bottom: 40, right: 20)
         
         view.addSubview(descriptionView)
         descriptionView <- [
@@ -54,7 +58,7 @@ class OnBoardingViewController: UIViewController {
             Bottom().to(goButton)
         ]
         
-        descriptionLabel.text = "Все очень просто:"
+        descriptionLabel.text = descriptionLabelText
         descriptionLabel.textAlignment = .center
         descriptionLabel.font = UIFont.preferredFont(forTextStyle: .headline)
         
@@ -99,9 +103,8 @@ class OnBoardingViewController: UIViewController {
             Right()
         ]
         
-        logoImage.image = UIImage(named: "logoWhite")
+        logoImage.image = #imageLiteral(resourceName: "logoWhite")
         logoImage.contentMode = .scaleAspectFit
-        
         
         headerView.addSubview(logoImage)
         
@@ -112,8 +115,8 @@ class OnBoardingViewController: UIViewController {
         
         logoSubTitleView.textColor = UIColor.white
         
-        logoSubTitleView.text = "С Chisto вам больше не нужно тратить время на походы в химчистку."
-        logoSubTitleView.font = UIFont.preferredFont(forTextStyle: .title3)
+        logoSubTitleView.text = subTitleViewText
+        logoSubTitleView.font = UIFont.preferredFont(forTextStyle: .subheadline)
         logoSubTitleView.textAlignment = .center
         logoSubTitleView.numberOfLines = 3
         
@@ -134,7 +137,7 @@ class OnBoardingViewController: UIViewController {
         goButton.backgroundColor = UIColor.chsSkyBlue
         
         goButton.titleLabel?.textColor = UIColor.white
-        goButton.setTitle("Начать", for: .normal)
+        goButton.setTitle(goButtonText, for: .normal)
         goButton.rx.tap.asDriver().drive(onNext: {
             self.navigationController?.pushViewController(CitySelectTableViewController(), animated: true)
             }, onCompleted: nil, onDisposed: nil).addDisposableTo(disposeBag)
@@ -143,7 +146,7 @@ class OnBoardingViewController: UIViewController {
             Bottom().to(view, .bottom),
             Left(),
             Right(),
-            Height(53)
+            Height(50)
         ]
     }
     

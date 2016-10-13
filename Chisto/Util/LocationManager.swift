@@ -18,9 +18,9 @@ class LocationManager {
     private (set) var location: Driver<CLLocationCoordinate2D>!
     
     private let locationManager = CLLocationManager()
-        
+    
     private init() {
-        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.distanceFilter = kCLDistanceFilterNone;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         autorized = locationManager.rx.didChangeAuthorizationStatus
@@ -43,7 +43,9 @@ class LocationManager {
             .do(onCompleted: { [weak self] in
                 self?.locationManager.stopUpdatingLocation()
             })
-        
+    }
+    
+    func locateDevice() {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
 

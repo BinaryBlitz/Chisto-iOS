@@ -28,12 +28,16 @@ protocol CitySelectViewModelType {
     
     // Input
     var locationButtonDidTap: PublishSubject<Void> { get }
-    var itemDidSelect: PublishSubject<NSIndexPath> { get }
     var cancelSearchButtonDidTap: PublishSubject<Void> { get }
+    var itemDidSelect: PublishSubject<IndexPath> { get }
+    var cityNotFoundButtonDidTap: PublishSubject<Void> { get }
+    var searchString: ReplaySubject<String> { get }
     
     // Output
     var navigationBarTitle: Driver<String?> { get }
     var sections: Driver<[CitySelectSectionModel]> { get }
+    var presentCityNotFoundController: Driver<Void> { get }
+    var presentOrderViewController: Driver<Void> { get }
     
 }
 
@@ -50,12 +54,16 @@ class CitySelectViewModel: CitySelectViewModelType {
     // Input
     var locationButtonDidTap = PublishSubject<Void>()
     var cancelSearchButtonDidTap = PublishSubject<Void>()
-    var itemDidSelect = PublishSubject<NSIndexPath>()
+    var itemDidSelect = PublishSubject<IndexPath>()
+    var cityNotFoundButtonDidTap = PublishSubject<Void>()
     var searchString = ReplaySubject<String>.create(bufferSize: 1)
     
     // Output
     var navigationBarTitle: Driver<String?>
     var sections: Driver<[CitySelectSectionModel]>
+    var presentCityNotFoundController: Driver<Void>
+    var presentOrderViewController: Driver<Void>
+
     
     // Data
     var shownCities: Variable<[City]>
@@ -71,9 +79,11 @@ class CitySelectViewModel: CitySelectViewModelType {
         let cities = Variable<[City]>(defaultCities)
         self.shownCities = cities
         
-        //locationButtonDidTap.
-        
         LocationManager.instance.location.asObservable().bindTo(location).addDisposableTo(disposeBag)
+        
+        self.locationButtonDidTap.asDriver(onErrorDriveWith: .empty()).drive(onNext: {
+            LocationManager.instance.locateDevice()
+            }).addDisposableTo(disposeBag)
         
         self.sections = Observable.combineLatest(cities.asObservable(), searchString.asObservable(), location.asObservable(), resultSelector: { cities, searchString, location -> [CitySelectSectionModel] in
             print(location)
@@ -89,6 +99,13 @@ class CitySelectViewModel: CitySelectViewModelType {
         cancelSearchButtonDidTap.asObservable().map { event in
             return ""
         }.bindTo(self.searchString).addDisposableTo(disposeBag)
+        
+        // UNTIL NO DATA
+        
+        self.presentOrderViewController = itemDidSelect.map{_ in Void()}.asDriver(onErrorDriveWith: .empty())
+        
+        self.presentCityNotFoundController = cityNotFoundButtonDidTap.asDriver(onErrorDriveWith: .empty())
+
         
     }
     

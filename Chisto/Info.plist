@@ -6,8 +6,6 @@
 	<string>Location is used to find nearest laundries</string>
 	<key>NSLocationUsageDescription</key>
 	<string>Location is used to find nearest laundries</string>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

@@ -16,14 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
         launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        application.statusBarStyle = UIStatusBarStyle.lightContent
         
-        let navigationController = UINavigationController(rootViewController: OnBoardingViewController())
-        navigationController.navigationBar.isTranslucent = false
-        
-        window = UIWindow()
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+        let window = UIWindow()
+        self.window = window
+        window.rootViewController = RootViewController()
+        window.makeKeyAndVisible()
         return true
     }
 
