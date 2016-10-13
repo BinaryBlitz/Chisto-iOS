@@ -44,6 +44,10 @@ extension UIColor {
     class var chsWhiteTwo: UIColor {
         return UIColor(white: 255.0 / 255.0, alpha: 1.0)
     }
+    
+    class var chsSilver: UIColor {
+        return UIColor(red: 193.0 / 255.0, green: 199.0 / 255.0, blue: 205.0 / 255.0, alpha: 1.0)
+    }
 
 }
 

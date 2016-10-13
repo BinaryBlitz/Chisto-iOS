@@ -15,12 +15,12 @@ class LocationManager {
     
     static let instance = LocationManager()
     private (set) var autorized: Driver<Bool>
-    private (set) var location: Driver<CLLocationCoordinate2D>!
+    private (set) var location: Observable<CLLocationCoordinate2D>
     
     private let locationManager = CLLocationManager()
     
     private init() {
-        locationManager.distanceFilter = kCLDistanceFilterNone;
+        locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         autorized = locationManager.rx.didChangeAuthorizationStatus
@@ -36,18 +36,17 @@ class LocationManager {
         }
         
         location = locationManager.rx.didUpdateLocations
-            .take(1)
-            .asDriver(onErrorJustReturn: [])
             .filter { $0.count > 0 }
             .map { $0.last!.coordinate }
-            .do(onCompleted: { [weak self] in
-                self?.locationManager.stopUpdatingLocation()
-            })
     }
     
-    func locateDevice() {
+    func locateDevice() -> Observable<CLLocationCoordinate2D> {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        return location.take(1)
+            .do(onCompleted: { [weak self] in
+                self?.locationManager.stopUpdatingLocation()
+                })
 
     }
     

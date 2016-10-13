@@ -66,7 +66,6 @@ class CitySelectViewModel: CitySelectViewModelType {
 
     
     // Data
-    var shownCities: Variable<[City]>
     var location = Variable<CLLocationCoordinate2D>(CLLocationCoordinate2D())
     
     init() {
@@ -77,13 +76,12 @@ class CitySelectViewModel: CitySelectViewModelType {
         }
         
         let cities = Variable<[City]>(defaultCities)
-        self.shownCities = cities
         
-        LocationManager.instance.location.asObservable().bindTo(location).addDisposableTo(disposeBag)
+        //LocationManager.instance.locateDevice().bindTo(location).addDisposableTo(disposeBag)
         
-        self.locationButtonDidTap.asDriver(onErrorDriveWith: .empty()).drive(onNext: {
+        self.locationButtonDidTap.asObservable().flatMap({
             LocationManager.instance.locateDevice()
-            }).addDisposableTo(disposeBag)
+        }).bindTo(location).addDisposableTo(disposeBag)
         
         self.sections = Observable.combineLatest(cities.asObservable(), searchString.asObservable(), location.asObservable(), resultSelector: { cities, searchString, location -> [CitySelectSectionModel] in
             print(location)
@@ -100,7 +98,7 @@ class CitySelectViewModel: CitySelectViewModelType {
             return ""
         }.bindTo(self.searchString).addDisposableTo(disposeBag)
         
-        // UNTIL NO DATA
+        // @TODO working with data
         
         self.presentOrderViewController = itemDidSelect.map{_ in Void()}.asDriver(onErrorDriveWith: .empty())
         

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import EasyPeasy
 
 class EmptyOrderView: UIView {
@@ -17,7 +19,7 @@ class EmptyOrderView: UIView {
     let titleLabel = UILabel()
     let addButton = UIButton()
     let contentView = UIView()
-
+    
     init() {
         super.init(frame: CGRect.null)
         self.backgroundColor = UIColor.chsWhite

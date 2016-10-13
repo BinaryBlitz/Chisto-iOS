@@ -9,7 +9,7 @@
 import UIKit
 import EasyPeasy
 
-class DescriptionListItem: UIView {
+class DescriptionListItemView: UIView {
     
     private let counterLabel = UIImageView()
     private let informationLabel = UILabel()
@@ -31,7 +31,7 @@ class DescriptionListItem: UIView {
         
         informationLabel.text = information
         informationLabel.textColor = UIColor.chsSlateGrey
-        informationLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        informationLabel.font = UIFont.preferredFont(forTextStyle: )
         informationLabel.numberOfLines = 2
         
         self.addSubview(informationLabel)

@@ -30,6 +30,9 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
         configureFooter()
         
         viewModel.presentCityNotFoundController.drive(onNext: { [weak self] in
+            let viewController = CityNotFoundViewController()
+            viewController.modalPresentationStyle = .overFullScreen
+            self?.present(viewController, animated: true, completion: nil)
         }).addDisposableTo(disposeBag)
         
         viewModel.presentOrderViewController.drive(onNext: { [weak self] in
@@ -59,7 +62,6 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
         searchController.searchBar.backgroundImage = UIImage()
         
         // Bindings
-        
         searchController.searchBar.rx.cancelButtonClicked.bindTo(viewModel.cancelSearchButtonDidTap).addDisposableTo(disposeBag)
         searchController.searchBar.rx.text.bindTo(viewModel.searchString)
             .addDisposableTo(disposeBag)

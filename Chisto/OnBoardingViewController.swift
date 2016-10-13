@@ -84,7 +84,7 @@ class OnBoardingViewController: UIViewController {
         ]
         
         for (title, icon) in descriptionSteps {
-            let view = DescriptionListItem(countImage: icon, information: title)
+            let view = DescriptionListItemView(countImage: icon, information: title)
             descriptionView.addSubview(view)
             stackView.addArrangedSubview(view)
             

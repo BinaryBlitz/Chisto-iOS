@@ -8,25 +8,31 @@
 
 import UIKit
 import EasyPeasy
+import RxSwift
+import RxCocoa
 
 class CityNotFoundViewController: UIViewController {
-    // CONSTANTS
+    let disposeBag = DisposeBag()
+    let viewModel = CityNotFoundViewModel()
+    // Constants
     let titleText = "Не нашли свой город?"
     let subTitleText = "Оставьте контактные данные, и мы оповестим вас, когда наш сервис станет доступен в вашем городе"
     let cityFieldPlaceholderText = "Город"
     let phonePlaceholderText = "Телефон"
     let continueButtonText = "Продолжить"
     let cancelButtonText = "Нет, спасибо"
-
-    // LABELS
+    
+    let contentView = UIView()
+    
+    // Labels
     let titleLabel = UILabel()
     let subTitleLabel = UILabel()
     
-    // FIELDS
-    let cityField = UITextField()
-    let phoneField = UITextField()
+    // Fields
+    let cityField = BottomBorderedTextField()
+    let phoneField = BottomBorderedTextField()
     
-    //FOOTER
+    // Footer
     let footerView = UIView()
     let continueButton = UIButton()
     let separatorView = UIView()
@@ -34,15 +40,40 @@ class CityNotFoundViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        view.backgroundColor = UIColor(white: 0, alpha: 0.5)
         
-        self.modalPresentationStyle = .overFullScreen
-        // TITLE LABEL
+        contentView.backgroundColor = UIColor.chsWhiteTwo
+        contentView.layer.cornerRadius = 8
+        contentView.clipsToBounds = true
+        
+        view.addSubview(contentView)
+        
+        contentView <- [
+            Left(15),
+            CenterY(),
+            Right(15)
+        ]
+        
+        // UI
+        configureHeader()
+        configureBody()
+        configureFooter()
+        
+        // Rx
+        viewModel.dismissViewController.drive(onNext: { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+        }).addDisposableTo(disposeBag)
+        
+    }
+    
+    func configureHeader() {
         titleLabel.text = titleText
         titleLabel.textColor = UIColor.chsSkyBlue
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.preferredFont(forTextStyle: .title2)
         
-        view.addSubview(titleLabel)
+        contentView.addSubview(titleLabel)
         titleLabel <- [
             Top(33),
             Left(),
@@ -50,40 +81,53 @@ class CityNotFoundViewController: UIViewController {
         ]
         
         subTitleLabel.text = subTitleText
-        subTitleLabel.font = UIFont.preferredFont(forTextStyle: .title3)
+        subTitleLabel.textAlignment = .center
+        subTitleLabel.numberOfLines = 5
+        subTitleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         
-        view.addSubview(subTitleLabel)
+        contentView.addSubview(subTitleLabel)
         subTitleLabel <- [
             Top(30).to(titleLabel),
             Left(30),
-            Right(30)
+            Right(30),
         ]
-        
-        cityField.borderStyle = .line
+
+    }
+    
+    func configureBody() {
+        cityField.borderStyle = .none
         cityField.placeholder = cityFieldPlaceholderText
         cityField.textContentType = .addressCity
         
-        view.addSubview(cityField)
+        contentView.addSubview(cityField)
         cityField <- [
             Left(15),
             Right(15),
+            Height(40),
             Top(30).to(subTitleLabel)
         ]
         
-        phoneField.borderStyle = .line
         phoneField.placeholder = phonePlaceholderText
         phoneField.textContentType = .telephoneNumber
         
-        view.addSubview(phoneField)
+        contentView.addSubview(phoneField)
         phoneField <- [
             Left(15),
             Right(15),
+            Height(40),
             Top(30).to(cityField)
         ]
         
+        // Rx
+        cityField.rx.text.bindTo(viewModel.cityTitle).addDisposableTo(disposeBag)
+        phoneField.rx.text.bindTo(viewModel.phoneTitle).addDisposableTo(disposeBag)
+
+    }
+    
+    func configureFooter() {
         footerView.backgroundColor = UIColor.chsSkyBlue
         
-        view.addSubview(footerView)
+        contentView.addSubview(footerView)
         footerView <- [
             Top(30).to(phoneField),
             Height(50),
@@ -102,7 +146,7 @@ class CityNotFoundViewController: UIViewController {
             Bottom(5).to(footerView, .bottom)
         ]
         
-        continueButton.titleLabel?.text = continueButtonText
+        continueButton.setTitle(continueButtonText, for: .normal)
         continueButton.titleLabel?.textColor = UIColor.white
         
         footerView.addSubview(continueButton)
@@ -113,8 +157,7 @@ class CityNotFoundViewController: UIViewController {
             Right().to(separatorView)
         ]
         
-        cancelButton.titleLabel?.text = cancelButtonText
-        
+        cancelButton.setTitle(cancelButtonText, for: .normal)
         footerView.addSubview(cancelButton)
         cancelButton <- [
             Top(),
@@ -122,11 +165,10 @@ class CityNotFoundViewController: UIViewController {
             Bottom(),
             Left().to(separatorView)
         ]
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        // Rx
+        continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
+        cancelButton.rx.tap.bindTo(viewModel.cancelButtonDidTap).addDisposableTo(disposeBag)
     }
 
 }
