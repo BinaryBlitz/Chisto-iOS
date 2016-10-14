@@ -59,7 +59,7 @@ class CitySelectViewModel: CitySelectViewModelType {
   var searchString = ReplaySubject<String>.create(bufferSize: 1)
   
   // Output
-  var navigationBarTitle = "Города"
+  var navigationBarTitle = "Выбор города"
   var sections: Driver<[CitySelectSectionModel]>
   var presentCityNotFoundController: Driver<Void>
   var presentOrderViewController: Driver<Void>

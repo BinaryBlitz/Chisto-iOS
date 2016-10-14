@@ -18,6 +18,8 @@ protocol OrderViewModelType {
   
   // Output
   var presentCategoriesViewController: Driver<Void> { get }
+  var navigationBarTitle: String { get }
+  var footerButtonTitle: String { get }
 }
 
 
@@ -26,7 +28,12 @@ class OrderViewModel: OrderViewModelType {
   var navigationAddButtonDidTap = PublishSubject<Void>()
   var emptyOrderAddButtonDidTap = PublishSubject<Void>()
   
+  // Output
   var presentCategoriesViewController: Driver<Void>
+  
+  // Constants
+  let navigationBarTitle = "Заказ"
+  let footerButtonTitle = "Ничего не выбрано"
   
   init() {
     self.presentCategoriesViewController = Observable.of(navigationAddButtonDidTap.asObservable(), emptyOrderAddButtonDidTap.asObservable()).merge().asDriver(onErrorJustReturn: ())

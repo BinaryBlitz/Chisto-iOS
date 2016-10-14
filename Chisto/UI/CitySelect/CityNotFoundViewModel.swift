@@ -25,6 +25,14 @@ protocol CityNotFoundViewModelType {
   var dismissViewController: Driver<Void> { get }
   var sendData: Driver<Void> { get }
   
+  var titleText: String { get }
+  var subTitleText: String { get }
+  var cityFieldPlaceholderText: String { get }
+  var phonePlaceholderText: String { get }
+  var continueButtonText: String { get }
+  var cancelButtonText: String { get }
+
+  
 }
 
 class CityNotFoundViewModel: CityNotFoundViewModelType {
@@ -40,6 +48,16 @@ class CityNotFoundViewModel: CityNotFoundViewModelType {
   // Output
   var dismissViewController: Driver<Void>
   var sendData: Driver<Void>
+  
+  // Constants
+  
+  let titleText = "Не нашли свой город?"
+  let subTitleText = "Оставьте контактные данные, и мы оповестим вас, когда наш сервис станет доступен в вашем городе"
+  let cityFieldPlaceholderText = "Город"
+  let phonePlaceholderText = "Телефон"
+  let continueButtonText = "Продолжить"
+  let cancelButtonText = "Нет, спасибо"
+
   
   
   init() {

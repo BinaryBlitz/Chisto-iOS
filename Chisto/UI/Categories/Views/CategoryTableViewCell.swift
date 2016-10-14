@@ -25,6 +25,7 @@ class CategoryTableViewCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    backgroundColor = UIColor.chsWhite
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {

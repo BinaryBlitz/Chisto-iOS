@@ -20,12 +20,14 @@ class CategoriesViewController: UIViewController, UIScrollViewDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    navigationItem.title = viewModel.navigationBarTitle
     
     configureTableView()
   }
   
   func configureTableView() {
     // UI
+    tableView.backgroundColor = UIColor.chsWhite
     tableView.bounces = false
     tableView.alwaysBounceVertical = false
     

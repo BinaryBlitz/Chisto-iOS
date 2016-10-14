@@ -24,7 +24,7 @@ protocol CategoriesViewModelType {
   var itemDidSelect: PublishSubject<IndexPath> { get }
   
   // Output
-  var navigationBarTitle: Driver<String?> { get }
+  var navigationBarTitle: String { get }
   var sections: Driver<[CategoriesSectionModel]> { get }
   var presentItemsSection: Driver<Void> { get }
 }
@@ -48,7 +48,7 @@ class CategoriesViewModel: CategoriesViewModelType {
   var itemDidSelect = PublishSubject<IndexPath>()
   
   // Output
-  var navigationBarTitle: Driver<String?>
+  var navigationBarTitle: String
   var sections: Driver<[CategoriesSectionModel]>
   var presentItemsSection: Driver<Void>
   
@@ -57,7 +57,7 @@ class CategoriesViewModel: CategoriesViewModelType {
   var categories: Variable<[Category]>
   
   init() {
-    self.navigationBarTitle = .just("Выбор вещи")
+    self.navigationBarTitle = "Выбор вещи"
     
     self.categories = Variable<[Category]>(defaultCategories)
     

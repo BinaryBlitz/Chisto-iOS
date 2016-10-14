@@ -11,10 +11,7 @@ import EasyPeasy
 import RxSwift
 import RxCocoa
 
-class OrderViewController: UIViewController {
-  // Constants
-  let footerButtonTitle = "Ничего не выбрано"
-  
+class OrderViewController: UIViewController {  
   let tableView = UITableView()
   let emptyOrderView = EmptyOrderView()
   let footerButton = UIButton()
@@ -28,6 +25,8 @@ class OrderViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    navigationItem.title = viewModel.navigationBarTitle
     
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconUser"), style: .plain, target: nil, action: nil)
@@ -43,7 +42,7 @@ class OrderViewController: UIViewController {
     
     footerButton.backgroundColor = UIColor.chsCoolGrey
     footerButton.isEnabled = false
-    footerButton.setTitle(footerButtonTitle, for: .normal)
+    footerButton.setTitle(viewModel.footerButtonTitle, for: .normal)
     footerButton.titleLabel?.alpha = 0.5
     view.addSubview(footerButton)
     

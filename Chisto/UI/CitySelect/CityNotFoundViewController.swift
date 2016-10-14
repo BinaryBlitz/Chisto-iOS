@@ -15,12 +15,6 @@ class CityNotFoundViewController: UIViewController {
   let disposeBag = DisposeBag()
   let viewModel = CityNotFoundViewModel()
   // Constants
-  let titleText = "Не нашли свой город?"
-  let subTitleText = "Оставьте контактные данные, и мы оповестим вас, когда наш сервис станет доступен в вашем городе"
-  let cityFieldPlaceholderText = "Город"
-  let phonePlaceholderText = "Телефон"
-  let continueButtonText = "Продолжить"
-  let cancelButtonText = "Нет, спасибо"
   let animationDuration = 0.3
   
   let contentView = UIView()
@@ -84,7 +78,7 @@ class CityNotFoundViewController: UIViewController {
   }
   
   func configureHeader() {
-    titleLabel.text = titleText
+    titleLabel.text = viewModel.titleText
     titleLabel.textColor = UIColor.chsSkyBlue
     titleLabel.textAlignment = .center
     titleLabel.font = UIFont.preferredFont(forTextStyle: .title2)
@@ -96,7 +90,7 @@ class CityNotFoundViewController: UIViewController {
       Right()
     ]
     
-    subTitleLabel.text = subTitleText
+    subTitleLabel.text = viewModel.subTitleText
     subTitleLabel.textAlignment = .center
     subTitleLabel.numberOfLines = 5
     subTitleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
@@ -112,7 +106,7 @@ class CityNotFoundViewController: UIViewController {
   
   func configureBody() {
     cityField.borderStyle = .none
-    cityField.placeholder = cityFieldPlaceholderText
+    cityField.placeholder = viewModel.cityFieldPlaceholderText
     cityField.textContentType = .addressCity
     
     contentView.addSubview(cityField)
@@ -123,7 +117,7 @@ class CityNotFoundViewController: UIViewController {
       Top(30).to(subTitleLabel)
     ]
     
-    phoneField.placeholder = phonePlaceholderText
+    phoneField.placeholder = viewModel.phonePlaceholderText
     phoneField.textContentType = .telephoneNumber
     
     contentView.addSubview(phoneField)
@@ -162,7 +156,7 @@ class CityNotFoundViewController: UIViewController {
       Bottom(5).to(footerView, .bottom)
     ]
     
-    continueButton.setTitle(continueButtonText, for: .normal)
+    continueButton.setTitle(viewModel.continueButtonText, for: .normal)
     continueButton.titleLabel?.textColor = UIColor.white
     
     footerView.addSubview(continueButton)
@@ -173,7 +167,7 @@ class CityNotFoundViewController: UIViewController {
       Right().to(separatorView)
     ]
     
-    cancelButton.setTitle(cancelButtonText, for: .normal)
+    cancelButton.setTitle(viewModel.cancelButtonText, for: .normal)
     footerView.addSubview(cancelButton)
     cancelButton <- [
       Top(),
