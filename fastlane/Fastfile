@@ -37,7 +37,7 @@ platform :ios do
     increment_build_number
 
     # match(type: 'appstore') # more information: https://codesigning.guide
-    gym(scheme: 'Chisto') # Build your app - more options available
+    gym(scheme: 'Chisto', use_legacy_build_api: true) # Build your app - more options available
     # pilot
 
     # sh 'your_script.sh'
