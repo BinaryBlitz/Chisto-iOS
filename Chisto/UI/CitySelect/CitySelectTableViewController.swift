@@ -62,6 +62,7 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
     searchController.searchBar.backgroundImage = UIImage()
     searchController.searchBar.setSearchFieldBackgroundImage(#imageLiteral(resourceName: "searchBar"), for: .normal)
     searchController.searchBar.setImage(#imageLiteral(resourceName: "iconSearch"), for: .search, state: .normal)
+    searchController.searchBar.setTextColor(color: UIColor.white)
     
     // Bindings
     searchController.searchBar.rx.cancelButtonClicked.bindTo(viewModel.cancelSearchButtonDidTap).addDisposableTo(disposeBag)

@@ -60,7 +60,7 @@ class OnBoardingViewController: UIViewController {
     
     descriptionLabel.text = descriptionLabelText
     descriptionLabel.textAlignment = .center
-    descriptionLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+    descriptionLabel.font = UIFont.chsDescriptionFont()
     
     descriptionView.addSubview(descriptionLabel)
     

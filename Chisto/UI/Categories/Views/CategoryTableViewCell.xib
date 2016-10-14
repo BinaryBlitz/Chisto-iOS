@@ -22,8 +22,7 @@
                             <constraint firstAttribute="width" constant="29" id="fZl-uK-Big"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0VP-dZ-R1H">
-                        <frame key="frameInset" minX="59" minY="11" width="399" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0VP-dZ-R1H">
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -32,7 +31,7 @@
                         <attributedString key="attributedText">
                             <fragment content="Label">
                                 <attributes>
-                                    <font key="NSFont" metaFont="smallSystem"/>
+                                    <font key="NSFont" metaFont="controlContent" size="11"/>
                                 </attributes>
                             </fragment>
                         </attributedString>
@@ -50,7 +49,7 @@
                     <constraint firstItem="0VP-dZ-R1H" firstAttribute="leading" secondItem="2zG-wg-rb9" secondAttribute="trailing" constant="15" id="ms2-Rw-XpC"/>
                     <constraint firstItem="LTK-1y-iB3" firstAttribute="leading" secondItem="0VP-dZ-R1H" secondAttribute="leading" id="zKD-HW-PLz"/>
                 </constraints>
-                <edgeInsets key="layoutMargins" top="24" left="15" bottom="24" right="24"/>
+                <edgeInsets key="layoutMargins" top="20" left="15" bottom="20" right="24"/>
             </tableViewCellContentView>
             <connections>
                 <outlet property="categoryIconImageView" destination="2zG-wg-rb9" id="7BW-58-iha"/>

@@ -35,6 +35,7 @@
 		8814C0671DB04AFB005B4967 /* RussianEnumEndings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */; };
 		8814C0691DB05792005B4967 /* KeyboardLayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0681DB05792005B4967 /* KeyboardLayoutGuide.swift */; };
 		8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */; };
+		88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */; };
 		CC63F0EA174EB55F7C1DD247 /* Pods_Chisto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D4403E4AD2DF4A42F5C8FA /* Pods_Chisto.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RussianEnumEndings.swift; sourceTree = "<group>"; };
 		8814C0681DB05792005B4967 /* KeyboardLayoutGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutGuide.swift; sourceTree = "<group>"; };
 		8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHideOutside.swift; sourceTree = "<group>"; };
+		88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSearchBarTextColor.swift; sourceTree = "<group>"; };
 		88D4403E4AD2DF4A42F5C8FA /* Pods_Chisto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chisto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA8A37CB3EB7F2EEDB9E26D5 /* Pods-Chisto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chisto.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chisto/Pods-Chisto.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -247,6 +249,7 @@
 				8814C0551DAFA7B5005B4967 /* BottomBorderedTextField.swift */,
 				8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */,
 				8814C0681DB05792005B4967 /* KeyboardLayoutGuide.swift */,
+				88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				8814C04A1DAF12FE005B4967 /* OrderViewController.swift in Sources */,
 				88073EFC1DAC4661000696A3 /* CitySelectTableViewController.swift in Sources */,
 				8814C04F1DAF15DA005B4967 /* RootViewController.swift in Sources */,
+				88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */,
 				8814C0651DB03CBC005B4967 /* Fonts.swift in Sources */,
 				8814C0691DB05792005B4967 /* KeyboardLayoutGuide.swift in Sources */,
 				8814C04D1DAF159E005B4967 /* OrderViewModel.swift in Sources */,
