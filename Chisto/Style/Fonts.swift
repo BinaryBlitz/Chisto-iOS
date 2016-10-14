@@ -11,6 +11,10 @@ import UIKit
 // Sample text styles
 
 extension UIFont {
+  class var descriptionFont: UIFont? {
+    return UIFont(name: ".AppleSystemUIFont", size: 18.0)
+  }
+  
   class func chsDescriptionFont() -> UIFont? {
     return UIFont(name: ".AppleSystemUIFont", size: 18.0)
   }
