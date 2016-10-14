@@ -10,26 +10,26 @@ import RxSwift
 import UIKit
 
 class CategoryTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var categoryIconImageView: UIImageView!
+  
+  @IBOutlet weak var categoryIconImageView: UIImageView!
+  
+  @IBOutlet weak var titleLabel: UILabel!
+  
+  @IBOutlet weak var descriptionLabel: UILabel!
+  
+  func configure(viewModel: CategoryTableViewModelType) {
+    categoryIconImageView.image = viewModel.icon
+    titleLabel.text = viewModel.titleText
+    descriptionLabel.attributedText = viewModel.subTitletext
+  }
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
+  
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
     
-    @IBOutlet weak var titleLabel: UILabel!
-    
-    @IBOutlet weak var descriptionLabel: UILabel!
-    
-    func configure(viewModel: CategoryTableViewModelType) {
-        categoryIconImageView.image = viewModel.icon
-        titleLabel.text = viewModel.titleText
-        descriptionLabel.attributedText = viewModel.subTitletext
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-    
+  }
+  
 }

@@ -12,57 +12,57 @@ import RxCocoa
 import EasyPeasy
 
 class EmptyOrderView: UIView {
-    // CONSTANTS
-    let titleText = "С какой вещью вам требуется помощь?"
-    let buttonText = "Добавить"
+  // CONSTANTS
+  let titleText = "С какой вещью вам требуется помощь?"
+  let buttonText = "Добавить"
+  
+  let titleLabel = UILabel()
+  let addButton = UIButton()
+  let contentView = UIView()
+  
+  var addButtonDidTap: ControlEvent<Void> {
+    return addButton.rx.tap
+  }
+  
+  init() {
+    super.init(frame: CGRect.null)
+    self.backgroundColor = UIColor.chsWhite
     
-    let titleLabel = UILabel()
-    let addButton = UIButton()
-    let contentView = UIView()
+    self.addSubview(contentView)
+    contentView <- [
+      CenterY(),
+      Left(),
+      Right(),
+    ]
     
-    var addButtonDidTap: ControlEvent<Void> {
-        return addButton.rx.tap
-    }
+    titleLabel.text = titleText
+    titleLabel.font = UIFont.preferredFont(forTextStyle: .title2)
+    titleLabel.textColor = UIColor.chsSlateGrey
+    titleLabel.textAlignment = .center
+    titleLabel.numberOfLines = 3
     
-    init() {
-        super.init(frame: CGRect.null)
-        self.backgroundColor = UIColor.chsWhite
-                
-        self.addSubview(contentView)
-        contentView <- [
-            CenterY(),
-            Left(),
-            Right(),
-        ]
-        
-        titleLabel.text = titleText
-        titleLabel.font = UIFont.preferredFont(forTextStyle: .title2)
-        titleLabel.textColor = UIColor.chsSlateGrey
-        titleLabel.textAlignment = .center
-        titleLabel.numberOfLines = 3
-        
-        contentView.addSubview(titleLabel)
-        titleLabel <- [
-            Top().to(contentView, .top),
-            Left(60).to(contentView, .left),
-            Right(60).to(contentView, .right)
-        ]
-        
-        addButton.setBackgroundImage(#imageLiteral(resourceName: "buttonBg"), for: .normal)
-        addButton.setTitle(buttonText, for: .normal)
-        
-        contentView.addSubview(addButton)
-        
-        addButton <- [
-            Top(20).to(titleLabel),
-            CenterX(),
-            Bottom().to(contentView, .bottom)
-        ]
-        
-    }
+    contentView.addSubview(titleLabel)
+    titleLabel <- [
+      Top().to(contentView, .top),
+      Left(60).to(contentView, .left),
+      Right(60).to(contentView, .right)
+    ]
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
+    addButton.setBackgroundImage(#imageLiteral(resourceName: "buttonBg"), for: .normal)
+    addButton.setTitle(buttonText, for: .normal)
+    
+    contentView.addSubview(addButton)
+    
+    addButton <- [
+      Top(20).to(titleLabel),
+      CenterX(),
+      Bottom().to(contentView, .bottom)
+    ]
+    
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
 }

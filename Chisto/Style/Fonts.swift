@@ -11,15 +11,15 @@ import UIKit
 // Sample text styles
 
 extension UIFont {
-    class func chsDescriptionFont() -> UIFont? {
-        return UIFont(name: ".AppleSystemUIFont", size: 18.0)
-    }
-    
-    class func chsLabelFont() -> UIFont? {
-        return UIFont(name: ".AppleSystemUIFont", size: 16.0)
-    }
-    
-    class func chsOnBoardStageFont() -> UIFont? {
-        return UIFont(name: ".AppleSystemUIFont", size: 12.0)
-    }
+  class func chsDescriptionFont() -> UIFont? {
+    return UIFont(name: ".AppleSystemUIFont", size: 18.0)
+  }
+  
+  class func chsLabelFont() -> UIFont? {
+    return UIFont(name: ".AppleSystemUIFont", size: 16.0)
+  }
+  
+  class func chsOnBoardStageFont() -> UIFont? {
+    return UIFont(name: ".AppleSystemUIFont", size: 12.0)
+  }
 }

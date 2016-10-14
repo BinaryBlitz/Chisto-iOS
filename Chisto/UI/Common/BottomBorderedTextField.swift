@@ -10,26 +10,26 @@ import UIKit
 import EasyPeasy
 
 class BottomBorderedTextField: UITextField {
-
-    init() {
-        super.init(frame: CGRect.null)
-        borderStyle = .none
-        
-        let border = UIView()
-        border.backgroundColor = UIColor.chsSilver
-        
-        addSubview(border)
-        
-        border <- [
-            Left(),
-            Right(),
-            Bottom(),
-            Height(1)
-        ]
-    }
+  
+  init() {
+    super.init(frame: CGRect.null)
+    borderStyle = .none
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
+    let border = UIView()
+    border.backgroundColor = UIColor.chsSilver
+    
+    addSubview(border)
+    
+    border <- [
+      Left(),
+      Right(),
+      Bottom(),
+      Height(1)
+    ]
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
 }

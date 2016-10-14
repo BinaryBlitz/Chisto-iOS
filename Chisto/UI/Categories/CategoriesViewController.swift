@@ -12,53 +12,53 @@ import RxDataSources
 import RxSwift
 
 class CategoriesViewController: UIViewController, UIScrollViewDelegate {
+  
+  var dataSource = RxTableViewSectionedReloadDataSource<CategoriesSectionModel>()
+  let viewModel = CategoriesViewModel()
+  let disposeBag = DisposeBag()
+  let tableView = UITableView()
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    var dataSource = RxTableViewSectionedReloadDataSource<CategoriesSectionModel>()
-    let viewModel = CategoriesViewModel()
-    let disposeBag = DisposeBag()
-    let tableView = UITableView()
+    configureTableView()
+  }
+  
+  func configureTableView() {
+    // UI
+    tableView.bounces = false
+    tableView.alwaysBounceVertical = false
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        configureTableView()
+    view.addSubview(tableView)
+    tableView <- [
+      Edges()
+    ]
+    
+    tableView.register(UINib(nibName: "CategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CategoryCell")
+    
+    // Bindings
+    dataSource.configureCell = { _, tableView, indexPath, cellViewModel in
+      let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
+      
+      cell.configure(viewModel: cellViewModel)
+      return cell
     }
     
-    func configureTableView() {
-        // UI
-        tableView.bounces = false
-        tableView.alwaysBounceVertical = false
-        
-        view.addSubview(tableView)
-        tableView <- [
-            Edges()
-        ]
-        
-        tableView.register(UINib(nibName: "CategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CategoryCell")
-        
-        // Bindings
-        dataSource.configureCell = { _, tableView, indexPath, cellViewModel in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
-            
-            cell.configure(viewModel: cellViewModel)
-            return cell
-        }
-        
-        tableView.delegate = nil
-        tableView.rx.setDelegate(self).addDisposableTo(disposeBag)
-        
-        tableView.rx.itemSelected.bindTo(viewModel.itemDidSelect).addDisposableTo(disposeBag)
-        
-        tableView.dataSource = nil
-        viewModel.sections
-            .drive(self.tableView.rx.items(dataSource: self.dataSource))
-            .addDisposableTo(self.disposeBag)
-
-    }
+    tableView.delegate = nil
+    tableView.rx.setDelegate(self).addDisposableTo(disposeBag)
+    
+    tableView.rx.itemSelected.bindTo(viewModel.itemDidSelect).addDisposableTo(disposeBag)
+    
+    tableView.dataSource = nil
+    viewModel.sections
+      .drive(self.tableView.rx.items(dataSource: self.dataSource))
+      .addDisposableTo(self.disposeBag)
+    
+  }
 }
 
 extension CategoriesViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
-    }
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 80
+  }
 }
