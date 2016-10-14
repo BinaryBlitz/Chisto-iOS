@@ -67,7 +67,7 @@ class CitySelectViewModel: CitySelectViewModelType {
     
     // Data
     var cities: Variable<[City]>
-    var location = Variable<CLLocationCoordinate2D>(CLLocationCoordinate2D())
+    var location = Variable<CLLocationCoordinate2D?>(nil)
     
     init() {
         self.navigationBarTitle = .just("Города")
@@ -77,8 +77,6 @@ class CitySelectViewModel: CitySelectViewModelType {
         }
         
         cities = Variable<[City]>(defaultCities)
-        
-        //LocationManager.instance.locateDevice().bindTo(location).addDisposableTo(disposeBag)
         
         self.locationButtonDidTap.asObservable().flatMap({
             LocationManager.instance.locateDevice()

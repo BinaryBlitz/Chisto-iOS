@@ -35,13 +35,11 @@ class CategoriesViewModel: CategoriesViewModelType {
         Category(name: "Головные уборы", icon: #imageLiteral(resourceName: "iconHeats"),
                  subCategories: ["Шапки","Береты", "Кепки", "Шляпы", "Косынки"]),
         Category(name: "Обувь", icon: #imageLiteral(resourceName: "iconShoes"),
-                 subCategories: ["Кроссовки", "Туфли", "Сапоги", "Кеды", "Сандалии", ""]),
+                 subCategories: ["Кроссовки", "Туфли", "Сапоги", "Кеды", "Сандалии", "", "", ""]),
         Category(name: "Верхняя одежда", icon: #imageLiteral(resourceName: "iconOuterwear"),
                  subCategories: ["Дубленки", "Куртки", "Пальто", "Анораки", "Сандалии", ""]),
-        Category(name: "Обувь", icon: #imageLiteral(resourceName: "iconShoes"),
-                 subCategories: ["Кроссовки","Туфли", "Сапоги", "Кеды", "Сандалии", ""]),
-        
-
+        Category(name: "Брюки", icon: #imageLiteral(resourceName: "iconTrousers"),
+                 subCategories: ["Джинсы", "Леггинсы", "Шорты", ""]),
         ]
     
     private let disposeBag = DisposeBag()

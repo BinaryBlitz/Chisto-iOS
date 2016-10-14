@@ -20,8 +20,8 @@ class CategoriesViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureTableView()        
+
+        configureTableView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,7 +60,6 @@ class CategoriesViewController: UIViewController, UIScrollViewDelegate {
             .addDisposableTo(self.disposeBag)
 
     }
-    
 }
 
 extension CategoriesViewController: UITableViewDelegate {
