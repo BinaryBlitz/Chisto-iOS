@@ -107,7 +107,11 @@ class CityNotFoundViewController: UIViewController {
   func configureBody() {
     cityField.borderStyle = .none
     cityField.placeholder = viewModel.cityFieldPlaceholderText
-    cityField.textContentType = .addressCity
+    if #available(iOS 10.0, *) {
+      cityField.textContentType = .addressCity
+    } else {
+      // Fallback on earlier versions
+    }
     
     contentView.addSubview(cityField)
     cityField <- [
@@ -116,9 +120,13 @@ class CityNotFoundViewController: UIViewController {
       Height(40),
       Top(30).to(subTitleLabel)
     ]
-    
+
     phoneField.placeholder = viewModel.phonePlaceholderText
-    phoneField.textContentType = .telephoneNumber
+    if #available(iOS 10.0, *) {
+      phoneField.textContentType = .telephoneNumber
+    } else {
+      // Fallback on earlier versions
+    }
     
     contentView.addSubview(phoneField)
     phoneField <- [
