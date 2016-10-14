@@ -20,6 +20,10 @@ class EmptyOrderView: UIView {
     let addButton = UIButton()
     let contentView = UIView()
     
+    var addButtonDidTap: ControlEvent<Void> {
+        return addButton.rx.tap
+    }
+    
     init() {
         super.init(frame: CGRect.null)
         self.backgroundColor = UIColor.chsWhite

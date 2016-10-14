@@ -12,10 +12,6 @@ import UIKit
 
 // Color palette
 
-struct CommonSizes {
-    static var footerSize = 50.00
-}
-
 extension UIColor {
     class var chsSkyBlue: UIColor {
         return UIColor(red: 72.0 / 255.0, green: 194.0 / 255.0, blue: 248.0 / 255.0, alpha: 1.0)
@@ -49,20 +45,4 @@ extension UIColor {
         return UIColor(red: 193.0 / 255.0, green: 199.0 / 255.0, blue: 205.0 / 255.0, alpha: 1.0)
     }
 
-}
-
-// Sample text styles
-
-extension UIFont {
-    class func chsDescriptionFont() -> UIFont? {
-        return UIFont(name: ".AppleSystemUIFont", size: 18.0)
-    }
-    
-    class func chsLabelFont() -> UIFont? {
-        return UIFont(name: ".AppleSystemUIFont", size: 16.0)
-    }
-    
-    class func chsOnBoardStageFont() -> UIFont? {
-        return UIFont(name: ".AppleSystemUIFont", size: 12.0)
-    }
 }

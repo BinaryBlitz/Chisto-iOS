@@ -66,6 +66,7 @@ class CitySelectViewModel: CitySelectViewModelType {
 
     
     // Data
+    var cities: Variable<[City]>
     var location = Variable<CLLocationCoordinate2D>(CLLocationCoordinate2D())
     
     init() {
@@ -75,7 +76,7 @@ class CitySelectViewModel: CitySelectViewModelType {
             defaultCities.append(City(title: "Город"))
         }
         
-        let cities = Variable<[City]>(defaultCities)
+        cities = Variable<[City]>(defaultCities)
         
         //LocationManager.instance.locateDevice().bindTo(location).addDisposableTo(disposeBag)
         
@@ -87,10 +88,9 @@ class CitySelectViewModel: CitySelectViewModelType {
             print(location)
             if searchString.characters.count > 0 {
                 let filteredCities = cities.filter {$0.title.lowercased().range(of: searchString.lowercased()) != nil}
-                let section = [SectionModel(model: "", items: filteredCities)]
-                return section
+                return [SectionModel(model: "", items: filteredCities)]
             } else {
-                return  [SectionModel(model: "", items: cities)]
+                return [SectionModel(model: "", items: cities)]
             }
         }).asDriver(onErrorJustReturn: [])
         
@@ -98,7 +98,7 @@ class CitySelectViewModel: CitySelectViewModelType {
             return ""
         }.bindTo(self.searchString).addDisposableTo(disposeBag)
         
-        // @TODO working with data
+        // @TODO work with data
         
         self.presentOrderViewController = itemDidSelect.map{_ in Void()}.asDriver(onErrorDriveWith: .empty())
         

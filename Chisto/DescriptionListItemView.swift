@@ -31,7 +31,7 @@ class DescriptionListItemView: UIView {
         
         informationLabel.text = information
         informationLabel.textColor = UIColor.chsSlateGrey
-        informationLabel.font = UIFont.preferredFont(forTextStyle: )
+        informationLabel.font = UIFont.chsOnBoardStageFont()
         informationLabel.numberOfLines = 2
         
         self.addSubview(informationLabel)

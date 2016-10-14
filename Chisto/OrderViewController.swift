@@ -8,6 +8,8 @@
 
 import UIKit
 import EasyPeasy
+import RxSwift
+import RxCocoa
 
 class OrderViewController: UIViewController {
     // Constants
@@ -16,6 +18,13 @@ class OrderViewController: UIViewController {
     let tableView = UITableView()
     let emptyOrderView = EmptyOrderView()
     let footerButton = UIButton()
+    
+    private let viewModel = OrderViewModel()
+    private let disposeBag = DisposeBag()
+    
+    var emptyOrderViewAddButtonDidTap: ControlEvent<Void> {
+        return emptyOrderView.addButtonDidTap
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +53,12 @@ class OrderViewController: UIViewController {
             Height(50)
         ]
         
-        // Do any additional setup after loading the view.
+        // Rx
+        emptyOrderViewAddButtonDidTap.bindTo(viewModel.emptyOrderAddButtonDidTap).addDisposableTo(disposeBag)
+        navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.navigationAddButtonDidTap).addDisposableTo(disposeBag)
+        viewModel.presentCategoriesViewController.drive(onNext: {
+            self.navigationController?.pushViewController(CategoriesViewController(), animated: true)
+            }).addDisposableTo(disposeBag)
     }
 
     override func didReceiveMemoryWarning() {

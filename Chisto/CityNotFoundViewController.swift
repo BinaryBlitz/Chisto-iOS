@@ -21,6 +21,7 @@ class CityNotFoundViewController: UIViewController {
     let phonePlaceholderText = "Телефон"
     let continueButtonText = "Продолжить"
     let cancelButtonText = "Нет, спасибо"
+    let animationDuration = 0.3
     
     let contentView = UIView()
     
@@ -40,14 +41,25 @@ class CityNotFoundViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        hideKeyboardWhenTappedAround()
+        
+        self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        
+        let avaliableView = UIView()
+        view.addSubview(avaliableView)
+        
+        avaliableView <- [
+            Left(),
+            Right(),
+            Top().to(topLayoutGuide),
+            Bottom().to(keyboardLayoutGuide)
+        ]
         
         contentView.backgroundColor = UIColor.chsWhiteTwo
         contentView.layer.cornerRadius = 8
         contentView.clipsToBounds = true
         
-        view.addSubview(contentView)
+        avaliableView.addSubview(contentView)
         
         contentView <- [
             Left(15),
@@ -62,7 +74,11 @@ class CityNotFoundViewController: UIViewController {
         
         // Rx
         viewModel.dismissViewController.drive(onNext: { [weak self] in
-            self?.dismiss(animated: true, completion: nil)
+            UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {
+                self?.view.alpha = 0
+            }, completion: { _ in
+                self?.dismiss(animated: false, completion: nil)
+            })
         }).addDisposableTo(disposeBag)
         
     }
@@ -170,5 +186,12 @@ class CityNotFoundViewController: UIViewController {
         continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
         cancelButton.rx.tap.bindTo(viewModel.cancelButtonDidTap).addDisposableTo(disposeBag)
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        UIView.animate(withDuration: animationDuration) { [weak self] in
+            self?.view.alpha = 0
+            self?.view.alpha = 1
+        }
+    }
+    
 }

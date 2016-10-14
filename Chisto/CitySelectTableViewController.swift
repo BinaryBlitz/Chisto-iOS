@@ -32,11 +32,11 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
         viewModel.presentCityNotFoundController.drive(onNext: { [weak self] in
             let viewController = CityNotFoundViewController()
             viewController.modalPresentationStyle = .overFullScreen
-            self?.present(viewController, animated: true, completion: nil)
+            self?.present(viewController, animated: false, completion: nil)
         }).addDisposableTo(disposeBag)
         
         viewModel.presentOrderViewController.drive(onNext: { [weak self] in
-            self?.navigationController?.setViewControllers([OrderViewController()], animated: true)
+            self?.navigationController?.pushViewController (OrderViewController(), animated: true)
             }).addDisposableTo(disposeBag)
         
         definesPresentationContext = true
@@ -46,9 +46,9 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
         // UI
         navigationController?.navigationBar.backItem?.title = ""
         navigationController?.navigationBar.backItem?.backBarButtonItem?.tintColor = UIColor.white
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconLocation"), style: .plain, target: self, action: nil)
         
         // Bindings
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconLocation"), style: .plain, target: self, action: nil)
         navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.locationButtonDidTap).addDisposableTo(disposeBag)
         
     }
@@ -60,6 +60,7 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
         searchController.searchBar.tintColor = UIColor.white
         searchController.searchBar.backgroundColor = UIColor.chsSkyBlue
         searchController.searchBar.backgroundImage = UIImage()
+        searchController.searchBar.setSearchFieldBackgroundImage(#imageLiteral(resourceName: "searchBar"), for: .normal)
         
         // Bindings
         searchController.searchBar.rx.cancelButtonClicked.bindTo(viewModel.cancelSearchButtonDidTap).addDisposableTo(disposeBag)
@@ -89,8 +90,10 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
         dataSource.configureCell = { _, tableView, indexPath, city in
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             cell.backgroundColor = UIColor.chsWhite
+            cell.textLabel?.textColor = UIColor.chsSlateGrey
             cell.textLabel?.text = city.title
             cell.accessoryType = .disclosureIndicator
+            
             return cell
         }
         
