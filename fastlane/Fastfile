@@ -30,12 +30,19 @@ platform :ios do
   desc 'Submit a new Beta Build to Apple TestFlight'
   desc 'This will also make sure the profile is up to date'
   lane :beta do
-    # match(type: "appstore") # more information: https://codesigning.guide
-    gym # Build your app - more options available
-    pilot
+    # Ensure that there that your git status is not dirty
+    ensure_git_status_clean
 
-    # sh "your_script.sh"
+    # Increment the build number (not the version number)
+    increment_build_number
+
+    # match(type: 'appstore') # more information: https://codesigning.guide
+    gym(scheme: 'Chisto') # Build your app - more options available
+    # pilot
+
+    # sh 'your_script.sh'
     # You can also use other beta testing services here (run `fastlane actions`)
+    crashlytics
   end
 
   desc 'Deploy a new version to the App Store'
