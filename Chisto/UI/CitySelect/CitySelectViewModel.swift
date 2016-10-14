@@ -34,7 +34,7 @@ protocol CitySelectViewModelType {
     var searchString: ReplaySubject<String> { get }
     
     // Output
-    var navigationBarTitle: Driver<String?> { get }
+    var navigationBarTitle: String { get }
     var sections: Driver<[CitySelectSectionModel]> { get }
     var presentCityNotFoundController: Driver<Void> { get }
     var presentOrderViewController: Driver<Void> { get }
@@ -59,7 +59,7 @@ class CitySelectViewModel: CitySelectViewModelType {
     var searchString = ReplaySubject<String>.create(bufferSize: 1)
     
     // Output
-    var navigationBarTitle: Driver<String?>
+    var navigationBarTitle = "Города"
     var sections: Driver<[CitySelectSectionModel]>
     var presentCityNotFoundController: Driver<Void>
     var presentOrderViewController: Driver<Void>
@@ -70,7 +70,6 @@ class CitySelectViewModel: CitySelectViewModelType {
     var location = Variable<CLLocationCoordinate2D?>(nil)
     
     init() {
-        self.navigationBarTitle = .just("Города")
         
         for _ in 0...100 {
             defaultCities.append(City(title: "Город"))

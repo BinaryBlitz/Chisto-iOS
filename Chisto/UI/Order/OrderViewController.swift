@@ -32,6 +32,8 @@ class OrderViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconUser"), style: .plain, target: nil, action: nil)
         
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
         view.addSubview(emptyOrderView)
         emptyOrderView <- [
             Top(),
@@ -56,6 +58,7 @@ class OrderViewController: UIViewController {
         // Rx
         emptyOrderViewAddButtonDidTap.bindTo(viewModel.emptyOrderAddButtonDidTap).addDisposableTo(disposeBag)
         navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.navigationAddButtonDidTap).addDisposableTo(disposeBag)
+        
         viewModel.presentCategoriesViewController.drive(onNext: {
             self.navigationController?.pushViewController(CategoriesViewController(), animated: true)
             }).addDisposableTo(disposeBag)

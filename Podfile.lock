@@ -1,6 +1,9 @@
 PODS:
   - Alamofire (4.0.0)
+  - Crashlytics (3.8.2):
+    - Fabric (~> 1.6.3)
   - EasyPeasy (1.4)
+  - Fabric (1.6.9)
   - ReusableKit (1.0.0)
   - RxCocoa (3.0.0-beta.2):
     - RxSwift (~> 3.0.0-beta.2)
@@ -11,7 +14,9 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
+  - Crashlytics
   - EasyPeasy
+  - Fabric
   - ReusableKit (~> 1.0)
   - RxCocoa (~> 3.0.0-beta.1)
   - RxDataSources (= 1.0.0-beta.3)
@@ -19,12 +24,14 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
+  Crashlytics: 27acca95a01b042a8294291dd6dff27f8f6af6d7
   EasyPeasy: c2e49ceb822edc0a5fffefd66240fff10129047d
+  Fabric: bc5bec42cef4bcf1ee3ce0e218fc518e4b44dfbb
   ReusableKit: 236864f798e5a75111f7cfdccf85a859c7d31125
   RxCocoa: 1dd105d8a4e18034ccd7bd6d136445363ce67c8e
   RxDataSources: ddef3c5a718ab960e287aa331a9299b56b0c7ffe
   RxSwift: 0ea939d7d97cb70657190ffde8dc2a9b455778fc
 
-PODFILE CHECKSUM: 15c2aed11f6772cc0190c50d7284ec00ab0810c7
+PODFILE CHECKSUM: 87313fc5597bc0ad66c4286c72f8f15daa2b6172
 
 COCOAPODS: 1.0.1

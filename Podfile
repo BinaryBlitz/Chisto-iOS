@@ -12,6 +12,8 @@ target 'Chisto' do
   pod 'EasyPeasy'
   pod 'ReusableKit', '~> 1.0'
   pod 'RxDataSources', '= 1.0.0-beta.3'
+  pod 'Fabric'
+  pod 'Crashlytics'
     
   post_install do |installer|
     installer.pods_project.targets.each do |target|

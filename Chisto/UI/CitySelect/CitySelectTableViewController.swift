@@ -36,7 +36,7 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
         }).addDisposableTo(disposeBag)
         
         viewModel.presentOrderViewController.drive(onNext: { [weak self] in
-            self?.navigationController?.pushViewController (OrderViewController(), animated: true)
+            self?.navigationController?.pushViewController(OrderViewController(), animated: true)
             }).addDisposableTo(disposeBag)
         
         definesPresentationContext = true
@@ -47,6 +47,7 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
         navigationController?.navigationBar.backItem?.title = ""
         navigationController?.navigationBar.backItem?.backBarButtonItem?.tintColor = UIColor.white
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconLocation"), style: .plain, target: self, action: nil)
+        navigationItem.title = viewModel.navigationBarTitle
         
         // Bindings
         navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.locationButtonDidTap).addDisposableTo(disposeBag)
