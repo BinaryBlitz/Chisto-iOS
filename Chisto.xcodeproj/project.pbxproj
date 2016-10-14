@@ -308,7 +308,7 @@
 				TargetAttributes = {
 					88073ED41DABE1E0000696A3 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 7HLY3EQ26F;
+						DevelopmentTeam = 4WGG8V34K4;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -556,10 +556,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 7HLY3EQ26F;
+				DEVELOPMENT_TEAM = 4WGG8V34K4;
 				INFOPLIST_FILE = Chisto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = BinaryBlitz.Chisto;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.binaryblitz.Chisto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -571,10 +571,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7HLY3EQ26F;
+				DEVELOPMENT_TEAM = 4WGG8V34K4;
 				INFOPLIST_FILE = Chisto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = BinaryBlitz.Chisto;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.binaryblitz.Chisto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
