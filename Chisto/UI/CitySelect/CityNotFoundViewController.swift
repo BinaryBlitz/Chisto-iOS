@@ -21,8 +21,8 @@ class CityNotFoundViewController: UIViewController {
   
   // Fields
   @IBOutlet weak var cityField: UITextField!
-  
   @IBOutlet weak var phoneField: UITextField!
+
   // Footer
   let footerView = UIView()
   

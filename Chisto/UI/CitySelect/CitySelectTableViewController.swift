@@ -11,8 +11,8 @@ import RxDataSources
 import RxSwift
 
 class CitySelectTableViewController: UIViewController {
-  let searchController = UISearchController(searchResultsController: nil)
   
+  @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var goButton: UIButton!
   @IBOutlet weak var tableView: UITableView!
   
@@ -33,13 +33,25 @@ class CitySelectTableViewController: UIViewController {
       let viewController = storyboard.instantiateViewController(withIdentifier: "CityNotFoundViewController") as! CityNotFoundViewController
       viewController.modalPresentationStyle = .overFullScreen
       self?.present(viewController, animated: false, completion: nil)
-      }).addDisposableTo(disposeBag)
+    }).addDisposableTo(disposeBag)
     
     viewModel.presentOrderViewController.drive(onNext: { [weak self] in
       let storyboard = UIStoryboard(name: "Order", bundle: nil)
       let viewController = storyboard.instantiateInitialViewController()
       self?.present(viewController!, animated: true, completion: nil)
-      }).addDisposableTo(disposeBag)
+    }).addDisposableTo(disposeBag)
+    
+    viewModel.showCancelButtonAnimated.drive(onNext: { [weak self] in
+      self?.searchBar.setShowsCancelButton(true, animated: true)
+    }).addDisposableTo(disposeBag)
+    
+    viewModel.hideCancelButtonAnimated.drive(onNext: { [weak self] in
+      self?.searchBar.setShowsCancelButton(false, animated: true)
+    }).addDisposableTo(disposeBag)
+    
+    viewModel.hideKeyboard.drive(onNext: { [weak self] in
+      self?.view.endEditing(true)
+    }).addDisposableTo(disposeBag)
     
     definesPresentationContext = true
   }
@@ -58,32 +70,32 @@ class CitySelectTableViewController: UIViewController {
   
   func configureSearch() {
     // UI
-    searchController.dimsBackgroundDuringPresentation = false
-    searchController.searchBar.barTintColor = UIColor.chsSkyBlue
-    searchController.searchBar.tintColor = UIColor.white
-    searchController.searchBar.backgroundColor = UIColor.chsSkyBlue
-    searchController.searchBar.backgroundImage = UIImage()
-    searchController.searchBar.setSearchFieldBackgroundImage(#imageLiteral(resourceName: "searchBar"), for: .normal)
-    searchController.searchBar.setImage(#imageLiteral(resourceName: "iconSearch"), for: .search, state: .normal)
-    searchController.searchBar.setTextColor(color: UIColor.white)
-    searchController.searchBar.searchTextPositionAdjustment = UIOffsetMake(10.0, 0.0);
     
+    searchBar.barTintColor = UIColor.chsSkyBlue
+    searchBar.tintColor = UIColor.white
+    searchBar.backgroundColor = UIColor.chsSkyBlue
+    searchBar.backgroundImage = UIImage()
+    searchBar.setSearchFieldBackgroundImage(#imageLiteral(resourceName: "searchBarTextBack"), for: .normal)
+    searchBar.setImage(#imageLiteral(resourceName: "iconSearch"), for: .search, state: .normal)
+    searchBar.setTextColor(color: UIColor.white)
+    searchBar.searchTextPositionAdjustment = UIOffsetMake(5.0, 0.0)
+
     // Bindings
-    searchController.searchBar.rx.cancelButtonClicked.bindTo(viewModel.cancelSearchButtonDidTap).addDisposableTo(disposeBag)
-    searchController.searchBar.rx.text.bindTo(viewModel.searchString)
+    searchBar.rx.cancelButtonClicked.bindTo(viewModel.cancelSearchButtonDidTap).addDisposableTo(disposeBag)
+    searchBar.rx.textDidBeginEditing.bindTo(viewModel.searchBarDidBeginEditing).addDisposableTo(disposeBag)
+    searchBar.rx.textDidEndEditing.bindTo(viewModel.searchBarDidEndEditing).addDisposableTo(disposeBag)
+    searchBar.rx.text.bindTo(viewModel.searchString)
       .addDisposableTo(disposeBag)
     
   }
   
   func configureTableView() {
     // UI
-    self.tableView.tableHeaderView = searchController.searchBar
-    
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     
     let backView = UIView(frame: self.tableView.bounds)
     backView.backgroundColor = UIColor.chsWhite
-    self.tableView.backgroundView = backView
+    tableView.backgroundView = backView
     
     // Bindings
     dataSource.configureCell = { _, tableView, indexPath, city in

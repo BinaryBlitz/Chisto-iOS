@@ -24,7 +24,7 @@ protocol CityNotFoundViewModelType {
   // Output
   var dismissViewController: Driver<Void> { get }
   var sendData: Driver<Void> { get }
-  
+
 }
 
 class CityNotFoundViewModel: CityNotFoundViewModelType {
@@ -48,6 +48,5 @@ class CityNotFoundViewModel: CityNotFoundViewModelType {
     sendData = cancelButtonDidTap.asDriver(onErrorDriveWith: .empty())
     
   }
-  
-  
+
 }

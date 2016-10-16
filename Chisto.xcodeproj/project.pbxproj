@@ -288,6 +288,7 @@
 			children = (
 				885409B71DB2582200219C00 /* CityNotFound.storyboard */,
 				8814C03F1DAED9AC005B4967 /* CityNotFoundViewController.swift */,
+				885409B71DB2582200219C00 /* CityNotFound.storyboard */,
 				8814C0571DAFB0F1005B4967 /* CityNotFoundViewModel.swift */,
 			);
 			name = CityNotFound;
