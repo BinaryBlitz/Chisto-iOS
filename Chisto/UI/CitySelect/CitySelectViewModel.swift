@@ -32,7 +32,6 @@ protocol CitySelectViewModelType {
   var itemDidSelect: PublishSubject<IndexPath> { get }
   var cityNotFoundButtonDidTap: PublishSubject<Void> { get }
   var searchString: ReplaySubject<String> { get }
-  
   var searchBarDidEndEditing: PublishSubject<Void> { get }
   var searchBarDidBeginEditing: PublishSubject<Void> { get }
   
@@ -87,10 +86,6 @@ class CitySelectViewModel: CitySelectViewModelType {
     
     cities = Variable<[City]>(defaultCities)
     
-    self.locationButtonDidTap.asObservable().flatMap({
-      LocationManager.instance.locateDevice()
-    }).bindTo(location).addDisposableTo(disposeBag)
-    
     self.sections = Observable.combineLatest(cities.asObservable(), searchString.asObservable(), location.asObservable(), resultSelector: { cities, searchString, location -> [CitySelectSectionModel] in
       print(location)
       if searchString.characters.count > 0 {
@@ -100,6 +95,11 @@ class CitySelectViewModel: CitySelectViewModelType {
         return [SectionModel(model: "", items: cities)]
       }
     }).asDriver(onErrorJustReturn: [])
+
+    
+    self.locationButtonDidTap.asObservable().flatMap({
+      LocationManager.instance.locateDevice()
+    }).bindTo(location).addDisposableTo(disposeBag)
     
     cancelSearchButtonDidTap.asObservable().map { event in
       return ""
@@ -110,9 +110,7 @@ class CitySelectViewModel: CitySelectViewModelType {
     self.presentOrderViewController = itemDidSelect.map{_ in Void()}.asDriver(onErrorDriveWith: .empty())
     
     self.presentCityNotFoundController = cityNotFoundButtonDidTap.asDriver(onErrorDriveWith: .empty())
-    
     self.hideKeyboard = cancelSearchButtonDidTap.asDriver(onErrorDriveWith: .empty())
-    
     self.showCancelButtonAnimated = searchBarDidBeginEditing.asDriver(onErrorDriveWith: .empty())
     self.hideCancelButtonAnimated = searchBarDidEndEditing.asDriver(onErrorDriveWith: .empty())
     

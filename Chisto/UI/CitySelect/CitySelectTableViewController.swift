@@ -28,8 +28,6 @@ class CitySelectTableViewController: UIViewController {
     configureSearch()
     configureFooter()
     
-    //hideKeyboardWhenTappedAround()
-    
     viewModel.presentCityNotFoundController.drive(onNext: { [weak self] in
       let storyboard = UIStoryboard(name: "CityNotFound", bundle: nil)
       let viewController = storyboard.instantiateViewController(withIdentifier: "CityNotFoundViewController") as! CityNotFoundViewController
@@ -72,7 +70,6 @@ class CitySelectTableViewController: UIViewController {
   
   func configureSearch() {
     // UI
-    //searchController.dimsBackgroundDuringPresentation = false
     
     searchBar.barTintColor = UIColor.chsSkyBlue
     searchBar.tintColor = UIColor.white
