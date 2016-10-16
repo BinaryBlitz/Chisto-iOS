@@ -35,20 +35,27 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <searchBar contentMode="redraw" placeholder="Поиск" translatesAutoresizingMaskIntoConstraints="NO" id="s5D-ou-WjX">
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="IwU-vC-nGa" firstAttribute="top" secondItem="0QF-08-5CB" secondAttribute="bottom" id="UQk-J4-n9s"/>
+                            <constraint firstAttribute="trailing" secondItem="s5D-ou-WjX" secondAttribute="trailing" id="WA4-OS-fhB"/>
+                            <constraint firstItem="IwU-vC-nGa" firstAttribute="top" secondItem="s5D-ou-WjX" secondAttribute="bottom" id="WOw-8e-TPK"/>
                             <constraint firstAttribute="trailing" secondItem="IwU-vC-nGa" secondAttribute="trailing" id="Wfw-hU-Du3"/>
                             <constraint firstItem="uMm-PU-GCn" firstAttribute="top" secondItem="EWY-UK-oam" secondAttribute="bottom" id="X3j-rq-Zyk"/>
                             <constraint firstItem="IwU-vC-nGa" firstAttribute="leading" secondItem="vBk-2F-PJn" secondAttribute="leading" id="cuO-ya-KvJ"/>
                             <constraint firstItem="EWY-UK-oam" firstAttribute="leading" secondItem="vBk-2F-PJn" secondAttribute="leading" id="dZn-Fd-Y61"/>
+                            <constraint firstItem="s5D-ou-WjX" firstAttribute="leading" secondItem="vBk-2F-PJn" secondAttribute="leading" id="dwr-ue-Pma"/>
                             <constraint firstItem="EWY-UK-oam" firstAttribute="top" secondItem="IwU-vC-nGa" secondAttribute="bottom" id="f2R-q2-yii"/>
                             <constraint firstAttribute="trailing" secondItem="EWY-UK-oam" secondAttribute="trailing" id="xcF-H0-LET"/>
+                            <constraint firstItem="s5D-ou-WjX" firstAttribute="top" secondItem="0QF-08-5CB" secondAttribute="bottom" id="yxQ-Xp-P8q"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="goButton" destination="EWY-UK-oam" id="IZG-oW-DNz"/>
+                        <outlet property="searchBar" destination="s5D-ou-WjX" id="egR-dc-fUI"/>
                         <outlet property="tableView" destination="IwU-vC-nGa" id="5J8-oo-zM3"/>
                     </connections>
                 </viewController>
