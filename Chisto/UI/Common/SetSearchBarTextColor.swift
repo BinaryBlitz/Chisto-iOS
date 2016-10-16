@@ -13,17 +13,19 @@ import UIKit
 extension UISearchBar {
   
   func setTextColor(color: UIColor) {
-    for subView in self.subviews {
-      for secondLevelSubview in subView.subviews {
-        if (secondLevelSubview.isKind(of: UITextField.self)) {
-          if let searchBarTextField = secondLevelSubview as? UITextField {
-            searchBarTextField.textColor = color
-            searchBarTextField.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "", attributes: [NSForegroundColorAttributeName: color])
-            
-            break
-          }
-        }
+    for subview in self.subviews {
+      for secondLevelSubview in subview.subviews {
+        guard secondLevelSubview.isKind(of: UITextField.self) else { continue }
+        guard let searchBarTextField = secondLevelSubview as? UITextField else { continue }
+
+        let placeholder = NSAttributedString(string: self.placeholder ?? "", attributes: [NSForegroundColorAttributeName: color])
+
+        searchBarTextField.attributedPlaceholder = placeholder
+        searchBarTextField.textColor = color
+        
+        break
       }
     }
   }
+
 }
