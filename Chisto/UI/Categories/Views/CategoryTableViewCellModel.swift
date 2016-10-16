@@ -33,8 +33,7 @@ class CategoryTableViewCellModel: CategoryTableViewModelType {
   
   init(category: Category) {
     self.titleText = category.name
-    
-    
+
     let subTitleAttrString = NSMutableAttributedString()
     
     for (index, subCategory) in category.subCategories.enumerated() {

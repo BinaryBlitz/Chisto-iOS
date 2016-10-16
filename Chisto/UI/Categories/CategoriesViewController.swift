@@ -27,8 +27,8 @@ class CategoriesViewController: UIViewController {
   
   func configureTableView() {
     // UI
-    
-    tableView.register(UINib(nibName: "CategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CategoryCell")
+    let tableViewNib = UINib(nibName: "CategoryTableViewCell", bundle: nil)
+    tableView.register(tableViewNib, forCellReuseIdentifier: "CategoryCell")
     
     // Bindings
     dataSource.configureCell = { _, tableView, indexPath, cellViewModel in
@@ -41,16 +41,20 @@ class CategoriesViewController: UIViewController {
     tableView.backgroundColor = UIColor.chsWhiteTwo
     
     tableView.delegate = nil
-    tableView.rx.setDelegate(self).addDisposableTo(disposeBag)
+    tableView.rx
+      .setDelegate(self)
+      .addDisposableTo(disposeBag)
     
-    tableView.rx.itemSelected.bindTo(viewModel.itemDidSelect).addDisposableTo(disposeBag)
+    tableView.rx.itemSelected
+      .bindTo(viewModel.itemDidSelect)
+      .addDisposableTo(disposeBag)
     
     tableView.dataSource = nil
     viewModel.sections
       .drive(self.tableView.rx.items(dataSource: self.dataSource))
       .addDisposableTo(self.disposeBag)
-    
   }
+
 }
 
 extension CategoriesViewController: UITableViewDelegate {
