@@ -7,21 +7,19 @@
 //
 
 import UIKit
-import EasyPeasy
 import RxSwift
 import RxCocoa
 
-class OrderViewController: UIViewController {  
-  let tableView = UITableView()
-  let emptyOrderView = EmptyOrderView()
+class OrderViewController: UIViewController {
+
+  @IBOutlet weak var emptyOrderAddButton: UIButton!
+  
+  @IBOutlet weak var goButton: GoButton!
+  
   let footerButton = UIButton()
   
   private let viewModel = OrderViewModel()
   private let disposeBag = DisposeBag()
-  
-  var emptyOrderViewAddButtonDidTap: ControlEvent<Void> {
-    return emptyOrderView.addButtonDidTap
-  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -33,33 +31,14 @@ class OrderViewController: UIViewController {
     
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     
-    view.addSubview(emptyOrderView)
-    emptyOrderView <- [
-      Top(),
-      Left(),
-      Right()
-    ]
-    
-    footerButton.backgroundColor = UIColor.chsCoolGrey
-    footerButton.isEnabled = false
-    footerButton.setTitle(viewModel.footerButtonTitle, for: .normal)
-    footerButton.titleLabel?.alpha = 0.5
-    view.addSubview(footerButton)
-    
-    footerButton <- [
-      Bottom(),
-      Left(),
-      Right(),
-      Top().to(emptyOrderView),
-      Height(50)
-    ]
-    
     // Rx
-    emptyOrderViewAddButtonDidTap.bindTo(viewModel.emptyOrderAddButtonDidTap).addDisposableTo(disposeBag)
+    emptyOrderAddButton.rx.tap.bindTo(viewModel.emptyOrderAddButtonDidTap).addDisposableTo(disposeBag)
     navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.navigationAddButtonDidTap).addDisposableTo(disposeBag)
     
     viewModel.presentCategoriesViewController.drive(onNext: {
-      self.navigationController?.pushViewController(CategoriesViewController(), animated: true)
+      let storyboard = UIStoryboard(name: "Categories", bundle: nil)
+      let viewController = storyboard.instantiateViewController(withIdentifier: "CategoriesViewController")
+      self.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
   }
   

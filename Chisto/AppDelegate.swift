@@ -9,21 +9,28 @@
 import UIKit
 import Fabric
 import Crashlytics
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-  
   var window: UIWindow?
-  
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions
     launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     Fabric.with([Crashlytics.self])
+    UIApplication.shared.statusBarStyle = .lightContent
+    self.window = UIWindow(frame: UIScreen.main.bounds)
+
+    let onBoardingStoryboard = UIStoryboard(name: "Onboarding", bundle: nil)
+    let viewController = onBoardingStoryboard.instantiateInitialViewController()
     
-    let window = UIWindow()
-    self.window = window
-    window.rootViewController = RootViewController()
-    window.makeKeyAndVisible()
+    self.window?.rootViewController = viewController
+    
+    self.window?.makeKeyAndVisible()
+
+    
+    IQKeyboardManager.sharedManager().enable = true
+    
     return true
   }
   

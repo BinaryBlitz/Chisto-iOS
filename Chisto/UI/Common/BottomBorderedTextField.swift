@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import EasyPeasy
 
 class BottomBorderedTextField: UITextField {
   
@@ -16,16 +15,10 @@ class BottomBorderedTextField: UITextField {
     borderStyle = .none
     
     let border = UIView()
-    border.backgroundColor = UIColor.chsSilver
     
     addSubview(border)
     
-    border <- [
-      Left(),
-      Right(),
-      Bottom(),
-      Height(1)
-    ]
+
   }
   
   required init?(coder aDecoder: NSCoder) {

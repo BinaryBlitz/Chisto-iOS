@@ -9,10 +9,10 @@ target 'Chisto' do
   pod 'Alamofire', '~> 4.0'
   pod 'RxSwift', '~> 3.0.0-beta.1'
   pod 'RxCocoa', '~> 3.0.0-beta.1'
-  pod 'EasyPeasy'
-  pod 'ReusableKit', '~> 1.0'
-  pod 'RxDataSources', '= 1.0.0-beta.3'
+  pod 'RxDataSources', '~> 1.0.0-beta.3'
   pod 'Fabric'
+  pod 'IQKeyboardManagerSwift'
+  
   pod 'Crashlytics'
 
   post_install do |installer|

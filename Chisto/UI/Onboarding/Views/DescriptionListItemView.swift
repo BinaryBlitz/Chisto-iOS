@@ -7,44 +7,21 @@
 //
 
 import UIKit
-import EasyPeasy
 
 class DescriptionListItemView: UIView {
   
-  private let counterLabel = UIImageView()
-  private let informationLabel = UILabel()
+  @IBOutlet weak var countImageView: UIImageView!
   
-  init(countImage: UIImage, information: String) {
-    super.init(frame: CGRect.null)
-    counterLabel.image = countImage
-    counterLabel.contentMode = .scaleAspectFit
-    
-    self.addSubview(counterLabel)
-    
-    counterLabel <- [
-      Top(),
-      Bottom(),
-      Left(),
-      Width(29),
-      Height(29)
-    ]
-    
-    informationLabel.text = information
-    informationLabel.textColor = UIColor.chsSlateGrey
-    informationLabel.font = UIFont.chsOnBoardStageFont()
-    informationLabel.numberOfLines = 2
-    
-    self.addSubview(informationLabel)
-    informationLabel <- [
-      Top().to(counterLabel, .top),
-      Right(),
-      Left(20).to(counterLabel)
-    ]
-    
+  @IBOutlet weak var descriptionLabel: UILabel!
+  
+  func configure(countImage: UIImage, information: String) {
+    countImageView.image = countImage
+    descriptionLabel.text = information
+    descriptionLabel.sizeToFit()
   }
   
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+  class func instanceFromNib() -> DescriptionListItemView? {
+    return UINib(nibName: "DescriptionListItem", bundle: nil).instantiate(withOwner: nil, options: nil).first as? DescriptionListItemView
   }
   
 }

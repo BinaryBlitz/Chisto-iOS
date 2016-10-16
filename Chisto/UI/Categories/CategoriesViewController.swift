@@ -7,16 +7,16 @@
 //
 
 import UIKit
-import EasyPeasy
 import RxDataSources
 import RxSwift
 
-class CategoriesViewController: UIViewController, UIScrollViewDelegate {
+class CategoriesViewController: UIViewController {
+  
+  @IBOutlet weak var tableView: UITableView!
   
   var dataSource = RxTableViewSectionedReloadDataSource<CategoriesSectionModel>()
   let viewModel = CategoriesViewModel()
   let disposeBag = DisposeBag()
-  let tableView = UITableView()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,14 +27,6 @@ class CategoriesViewController: UIViewController, UIScrollViewDelegate {
   
   func configureTableView() {
     // UI
-    tableView.backgroundColor = UIColor.chsWhite
-    tableView.bounces = false
-    tableView.alwaysBounceVertical = false
-    
-    view.addSubview(tableView)
-    tableView <- [
-      Edges()
-    ]
     
     tableView.register(UINib(nibName: "CategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CategoryCell")
     
@@ -45,6 +37,8 @@ class CategoriesViewController: UIViewController, UIScrollViewDelegate {
       cell.configure(viewModel: cellViewModel)
       return cell
     }
+    
+    tableView.backgroundColor = UIColor.chsWhiteTwo
     
     tableView.delegate = nil
     tableView.rx.setDelegate(self).addDisposableTo(disposeBag)

@@ -9,16 +9,16 @@
 import UIKit
 import RxDataSources
 import RxSwift
-import EasyPeasy
 
-class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
+class CitySelectTableViewController: UIViewController {
   let searchController = UISearchController(searchResultsController: nil)
+  
+  @IBOutlet weak var goButton: UIButton!
+  @IBOutlet weak var tableView: UITableView!
   
   var dataSource = RxTableViewSectionedReloadDataSource<CitySelectSectionModel>()
   private let viewModel = CitySelectViewModel()
   private let disposeBag = DisposeBag()
-  
-  let tableView = UITableView()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -29,13 +29,16 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
     configureFooter()
     
     viewModel.presentCityNotFoundController.drive(onNext: { [weak self] in
-      let viewController = CityNotFoundViewController()
+      let storyboard = UIStoryboard(name: "CityNotFound", bundle: nil)
+      let viewController = storyboard.instantiateViewController(withIdentifier: "CityNotFoundViewController") as! CityNotFoundViewController
       viewController.modalPresentationStyle = .overFullScreen
       self?.present(viewController, animated: false, completion: nil)
       }).addDisposableTo(disposeBag)
     
     viewModel.presentOrderViewController.drive(onNext: { [weak self] in
-      self?.navigationController?.pushViewController(OrderViewController(), animated: true)
+      let storyboard = UIStoryboard(name: "Order", bundle: nil)
+      let viewController = storyboard.instantiateInitialViewController()
+      self?.present(viewController!, animated: true, completion: nil)
       }).addDisposableTo(disposeBag)
     
     definesPresentationContext = true
@@ -63,6 +66,7 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
     searchController.searchBar.setSearchFieldBackgroundImage(#imageLiteral(resourceName: "searchBar"), for: .normal)
     searchController.searchBar.setImage(#imageLiteral(resourceName: "iconSearch"), for: .search, state: .normal)
     searchController.searchBar.setTextColor(color: UIColor.white)
+    searchController.searchBar.searchTextPositionAdjustment = UIOffsetMake(10.0, 0.0);
     
     // Bindings
     searchController.searchBar.rx.cancelButtonClicked.bindTo(viewModel.cancelSearchButtonDidTap).addDisposableTo(disposeBag)
@@ -73,20 +77,13 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
   
   func configureTableView() {
     // UI
-    tableView.bounces = false
-    tableView.alwaysBounceVertical = false
     self.tableView.tableHeaderView = searchController.searchBar
     
-    view.addSubview(tableView)
-    tableView <- [
-      Top(),
-      Left(),
-      Right(),
-    ]
-    
-    tableView.tableHeaderView = searchController.searchBar
-    
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+    
+    let backView = UIView(frame: self.tableView.bounds)
+    backView.backgroundColor = UIColor.chsWhite
+    self.tableView.backgroundView = backView
     
     // Bindings
     dataSource.configureCell = { _, tableView, indexPath, city in
@@ -112,22 +109,6 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
   }
   
   func configureFooter() {
-    // UI
-    let goButton = UIButton()
-    goButton.backgroundColor = UIColor.chsSkyBlue
-    goButton.titleLabel?.textColor = UIColor.white
-    goButton.setTitle("Не нашли свой город?", for: .normal)
-    
-    view.addSubview(goButton)
-    
-    goButton <- [
-      Left(),
-      Top().to(tableView),
-      Bottom().to(view, .bottom),
-      Right(),
-      Height(50)
-    ]
-    
     // Bindings
     goButton.rx.tap.bindTo(viewModel.cityNotFoundButtonDidTap).addDisposableTo(disposeBag)
   }
