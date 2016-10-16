@@ -77,7 +77,7 @@
 		8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RussianEnumEndings.swift; sourceTree = "<group>"; };
 		8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHideOutside.swift; sourceTree = "<group>"; };
 		885409B51DB23DEB00219C00 /* CitySelect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CitySelect.storyboard; sourceTree = "<group>"; };
-		885409B71DB2582200219C00 /* CityNotFound.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CityNotFound.storyboard; sourceTree = "<group>"; };
+		885409B71DB2582200219C00 /* CityNotFound.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CityNotFound.storyboard; path = ../CitySelect/CityNotFound.storyboard; sourceTree = "<group>"; };
 		885409B91DB25B5100219C00 /* GoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoButton.swift; sourceTree = "<group>"; };
 		885409BF1DB2C76500219C00 /* Order.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Order.storyboard; sourceTree = "<group>"; };
 		885409C21DB2E43300219C00 /* EmptyOrderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyOrderButton.swift; sourceTree = "<group>"; };
@@ -200,7 +200,6 @@
 				88073EFB1DAC4661000696A3 /* CitySelectTableViewController.swift */,
 				88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */,
 				885409B51DB23DEB00219C00 /* CitySelect.storyboard */,
-				885409B71DB2582200219C00 /* CityNotFound.storyboard */,
 			);
 			path = CitySelect;
 			sourceTree = "<group>";
@@ -287,6 +286,7 @@
 		885409C11DB2C76B00219C00 /* CityNotFound */ = {
 			isa = PBXGroup;
 			children = (
+				885409B71DB2582200219C00 /* CityNotFound.storyboard */,
 				8814C03F1DAED9AC005B4967 /* CityNotFoundViewController.swift */,
 				8814C0571DAFB0F1005B4967 /* CityNotFoundViewModel.swift */,
 			);
