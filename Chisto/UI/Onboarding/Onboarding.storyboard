@@ -61,12 +61,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="top" layoutMarginsFollowReadableWidth="YES" axis="vertical" distribution="fillEqually" spacing="10" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8vf-fD-DLA"/>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="018-W6-wbK" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="018-W6-wbK" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
                                 <color key="backgroundColor" red="0.23921568630000001" green="0.70588235290000001" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="VF3-if-2ca"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Начать">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
