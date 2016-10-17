@@ -20,14 +20,12 @@
 		8814C03C1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C03B1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift */; };
 		8814C03E1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C03D1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift */; };
 		8814C0401DAED9AC005B4967 /* CityNotFoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C03F1DAED9AC005B4967 /* CityNotFoundViewController.swift */; };
-		8814C04A1DAF12FE005B4967 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0491DAF12FE005B4967 /* OrderViewController.swift */; };
 		8814C04D1DAF159E005B4967 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C04C1DAF159E005B4967 /* OrderViewModel.swift */; };
 		8814C04F1DAF15DA005B4967 /* ChistoNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C04E1DAF15DA005B4967 /* ChistoNavigationController.swift */; };
 		8814C0561DAFA7B5005B4967 /* BottomBorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0551DAFA7B5005B4967 /* BottomBorderedTextField.swift */; };
 		8814C0581DAFB0F2005B4967 /* CityNotFoundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0571DAFB0F1005B4967 /* CityNotFoundViewModel.swift */; };
 		8814C05A1DAFC96D005B4967 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0591DAFC96D005B4967 /* CategoriesViewController.swift */; };
 		8814C05E1DAFCF28005B4967 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C05C1DAFCF28005B4967 /* CategoryTableViewCell.swift */; };
-		8814C05F1DAFCF28005B4967 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8814C05D1DAFCF28005B4967 /* CategoryTableViewCell.xib */; };
 		8814C0611DAFEE7C005B4967 /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0601DAFEE7C005B4967 /* CategoriesViewModel.swift */; };
 		8814C0631DB03AD7005B4967 /* CategoryTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0621DB03AD7005B4967 /* CategoryTableViewCellModel.swift */; };
 		8814C0651DB03CBC005B4967 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0641DB03CBC005B4967 /* Fonts.swift */; };
@@ -43,6 +41,7 @@
 		88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */; };
 		88B0B5501DB1825500C7D0F7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B54F1DB1825500C7D0F7 /* Onboarding.storyboard */; };
 		88B0B5521DB19C6E00C7D0F7 /* DescriptionListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B5511DB19C6E00C7D0F7 /* DescriptionListItem.xib */; };
+		88DB32ED1DB4C86A00F9E000 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0491DAF12FE005B4967 /* OrderViewController.swift */; };
 		CC63F0EA174EB55F7C1DD247 /* Pods_Chisto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D4403E4AD2DF4A42F5C8FA /* Pods_Chisto.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,7 +69,6 @@
 		8814C0571DAFB0F1005B4967 /* CityNotFoundViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityNotFoundViewModel.swift; path = ../CitySelect/CityNotFoundViewModel.swift; sourceTree = "<group>"; };
 		8814C0591DAFC96D005B4967 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		8814C05C1DAFCF28005B4967 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
-		8814C05D1DAFCF28005B4967 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
 		8814C0601DAFEE7C005B4967 /* CategoriesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		8814C0621DB03AD7005B4967 /* CategoryTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCellModel.swift; sourceTree = "<group>"; };
 		8814C0641DB03CBC005B4967 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -277,7 +275,6 @@
 			isa = PBXGroup;
 			children = (
 				8814C05C1DAFCF28005B4967 /* CategoryTableViewCell.swift */,
-				8814C05D1DAFCF28005B4967 /* CategoryTableViewCell.xib */,
 				8814C0621DB03AD7005B4967 /* CategoryTableViewCellModel.swift */,
 			);
 			path = Views;
@@ -286,7 +283,6 @@
 		885409C11DB2C76B00219C00 /* CityNotFound */ = {
 			isa = PBXGroup;
 			children = (
-				885409B71DB2582200219C00 /* CityNotFound.storyboard */,
 				8814C03F1DAED9AC005B4967 /* CityNotFoundViewController.swift */,
 				885409B71DB2582200219C00 /* CityNotFound.storyboard */,
 				8814C0571DAFB0F1005B4967 /* CityNotFoundViewModel.swift */,
@@ -376,7 +372,6 @@
 				885409B81DB2582200219C00 /* CityNotFound.storyboard in Resources */,
 				88073EE31DABE1E0000696A3 /* LaunchScreen.storyboard in Resources */,
 				88073EE01DABE1E0000696A3 /* Assets.xcassets in Resources */,
-				8814C05F1DAFCF28005B4967 /* CategoryTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,7 +447,6 @@
 				8814C0331DAD8123005B4967 /* Colors.swift in Sources */,
 				8814C0611DAFEE7C005B4967 /* CategoriesViewModel.swift in Sources */,
 				8814C05A1DAFC96D005B4967 /* CategoriesViewController.swift in Sources */,
-				8814C04A1DAF12FE005B4967 /* OrderViewController.swift in Sources */,
 				88073EFC1DAC4661000696A3 /* CitySelectTableViewController.swift in Sources */,
 				8814C04F1DAF15DA005B4967 /* ChistoNavigationController.swift in Sources */,
 				88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */,
@@ -464,6 +458,7 @@
 				88073F031DAD6FCF000696A3 /* DescriptionListItemView.swift in Sources */,
 				8814C0671DB04AFB005B4967 /* RussianEnumEndings.swift in Sources */,
 				8814C0581DAFB0F2005B4967 /* CityNotFoundViewModel.swift in Sources */,
+				88DB32ED1DB4C86A00F9E000 /* OrderViewController.swift in Sources */,
 				88073ED91DABE1E0000696A3 /* AppDelegate.swift in Sources */,
 				8814C03E1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift in Sources */,
 				8814C05E1DAFCF28005B4967 /* CategoryTableViewCell.swift in Sources */,

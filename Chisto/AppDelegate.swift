@@ -19,15 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     Fabric.with([Crashlytics.self])
     UIApplication.shared.statusBarStyle = .lightContent
-    self.window = UIWindow(frame: UIScreen.main.bounds)
-
-    let onBoardingStoryboard = UIStoryboard(name: "Onboarding", bundle: nil)
-    let viewController = onBoardingStoryboard.instantiateInitialViewController()
-    
-    self.window?.rootViewController = viewController
-    
-    self.window?.makeKeyAndVisible()
-
     
     IQKeyboardManager.sharedManager().enable = true
     

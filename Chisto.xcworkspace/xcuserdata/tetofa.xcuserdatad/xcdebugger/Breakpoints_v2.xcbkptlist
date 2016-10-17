@@ -624,13 +624,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chisto/UI/CitySelect/CitySelectTableViewController.swift"
-            timestampString = "498274914.938674"
+            timestampString = "498426008.920993"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "configureFooter()"
-            landmarkType = "7">
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "CitySelectTableViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -695,6 +695,20 @@
             endingLineNumber = "42"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chisto/UI/Common/BottomBorderedTextField.swift"
+            timestampString = "498328153.421287"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
