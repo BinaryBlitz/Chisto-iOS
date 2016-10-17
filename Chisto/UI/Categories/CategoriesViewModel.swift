@@ -17,7 +17,7 @@ struct Category {
   var subCategories: [String] = []
 }
 
-typealias CategoriesSectionModel = SectionModel<String, CategoryTableViewModelType>
+typealias CategoriesSectionModel = SectionModel<String, CategoryTableViewCellModelType>
 
 protocol CategoriesViewModelType {
   // Input
@@ -62,7 +62,7 @@ class CategoriesViewModel: CategoriesViewModelType {
     self.categories = Variable<[Category]>(defaultCategories)
     
     self.sections = categories.asDriver().map { categories in
-      let cellModels = categories.map(CategoryTableViewCellModel.init) as [CategoryTableViewModelType]
+      let cellModels = categories.map(CategoryTableViewCellModel.init) as [CategoryTableViewCellModelType]
       
       let section = CategoriesSectionModel(model: "", items: cellModels)
       return [section]

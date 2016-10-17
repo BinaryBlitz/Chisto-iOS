@@ -11,15 +11,20 @@ import RxSwift
 import RxCocoa
 import UIKit
 
-protocol CategoryTableViewModelType {
+protocol CategoryTableViewCellModelType {
   // Output
   var titleText: String { get }
   var subTitletext: NSAttributedString { get }
   var icon: UIImage? { get }
+  
+  // Input
+  var navigationAddButtonDidTap: PublishSubject<Void> { get }
+  var emptyOrderAddButtonDidTap: PublishSubject<Void> { get }
+
 }
 
 
-class CategoryTableViewCellModel: CategoryTableViewModelType {
+class CategoryTableViewCellModel: CategoryTableViewCellModelType {
   // Constants
   let dayEndings = ["вещь", "вещи", "вещей"]
   var titleText: String
@@ -29,7 +34,6 @@ class CategoryTableViewCellModel: CategoryTableViewModelType {
   // Input
   var navigationAddButtonDidTap = PublishSubject<Void>()
   var emptyOrderAddButtonDidTap = PublishSubject<Void>()
-  
   
   init(category: Category) {
     self.titleText = category.name

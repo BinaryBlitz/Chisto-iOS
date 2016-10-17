@@ -10,7 +10,7 @@ import UIKit
 import RxDataSources
 import RxSwift
 
-class CitySelectTableViewController: UIViewController {
+class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
   
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var goButton: UIButton!
@@ -90,16 +90,14 @@ class CitySelectTableViewController: UIViewController {
   }
   
   func configureTableView() {
-    // UI
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-    
+    // UI    
     let backView = UIView(frame: self.tableView.bounds)
     backView.backgroundColor = UIColor.chsWhite
     tableView.backgroundView = backView
     
     // Bindings
     dataSource.configureCell = { _, tableView, indexPath, city in
-      let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+      let cell = tableView.dequeueReusableCell(withIdentifier: "CitySelectTableViewCell", for: indexPath)
       cell.backgroundColor = UIColor.chsWhite
       cell.textLabel?.textColor = UIColor.chsSlateGrey
       cell.textLabel?.text = city.title
@@ -125,10 +123,4 @@ class CitySelectTableViewController: UIViewController {
     goButton.rx.tap.bindTo(viewModel.cityNotFoundButtonDidTap).addDisposableTo(disposeBag)
   }
   
-}
-
-extension CitySelectTableViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 50
-  }
 }

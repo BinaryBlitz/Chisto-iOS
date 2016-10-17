@@ -26,20 +26,15 @@ class CategoriesViewController: UIViewController {
   }
   
   func configureTableView() {
-    // UI
-    let tableViewNib = UINib(nibName: "CategoryTableViewCell", bundle: nil)
-    tableView.register(tableViewNib, forCellReuseIdentifier: "CategoryCell")
     
     // Bindings
     dataSource.configureCell = { _, tableView, indexPath, cellViewModel in
-      let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
+      let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTableViewCell", for: indexPath) as! CategoryTableViewCell
       
       cell.configure(viewModel: cellViewModel)
       return cell
     }
-    
-    tableView.backgroundColor = UIColor.chsWhiteTwo
-    
+        
     tableView.delegate = nil
     tableView.rx
       .setDelegate(self)
