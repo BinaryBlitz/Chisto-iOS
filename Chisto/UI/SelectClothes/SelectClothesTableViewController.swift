@@ -15,8 +15,6 @@ class SelectClothesTableViewController: UITableViewController {
   var viewModel: SelectClothesViewModel? = nil
   var dataSource = RxTableViewSectionedReloadDataSource<SelectClothesSectionModel>()
   
-  var navigationBarOldColor: UIColor? = nil
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -52,15 +50,8 @@ class SelectClothesTableViewController: UITableViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    navigationBarOldColor = navigationController?.navigationBar.barTintColor
     if let color = viewModel?.navigationBarColor {
       navigationController?.navigationBar.barTintColor = color
     }
   }
-  
-  override func viewWillDisappear(_ animated: Bool) {
-    navigationController?.navigationBar.barTintColor = navigationBarOldColor
-
-  }
-  
 }

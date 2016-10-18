@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class OrderViewController: UIViewController {
+class OrderViewController: UIViewController, DefaultBarColoredViewController {
 
   @IBOutlet weak var emptyOrderAddButton: UIButton!
   

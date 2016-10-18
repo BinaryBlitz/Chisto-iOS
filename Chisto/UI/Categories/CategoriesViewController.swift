@@ -10,7 +10,7 @@ import UIKit
 import RxDataSources
 import RxSwift
 
-class CategoriesViewController: UIViewController {
+class CategoriesViewController: UIViewController, DefaultBarColoredViewController {
   
   @IBOutlet weak var tableView: UITableView!
   

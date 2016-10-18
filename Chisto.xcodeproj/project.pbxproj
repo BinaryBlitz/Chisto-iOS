@@ -157,6 +157,7 @@
 		88073EEC1DAC19E1000696A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8814C04E1DAF15DA005B4967 /* ChistoNavigationController.swift */,
 				88D8ABB91DB56E09009D515B /* SelectClothes */,
 				885409C11DB2C76B00219C00 /* CityNotFound */,
 				8814C0501DAF2A58005B4967 /* Categories */,
@@ -164,7 +165,6 @@
 				8814C0541DAFA5A2005B4967 /* Common */,
 				88073EF31DAC1CBE000696A3 /* Onboarding */,
 				8814C0441DAF0E89005B4967 /* Order */,
-				8814C04E1DAF15DA005B4967 /* ChistoNavigationController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
