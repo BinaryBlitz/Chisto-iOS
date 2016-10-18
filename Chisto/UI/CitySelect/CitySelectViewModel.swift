@@ -107,7 +107,10 @@ class CitySelectViewModel: CitySelectViewModelType {
     
     // @TODO work with data
     
-    self.presentOrderViewController = itemDidSelect.map{_ in Void()}.asDriver(onErrorDriveWith: .empty())
+    self.presentOrderViewController = itemDidSelect.map{indexPath in
+      UserDefaults.standard.set(indexPath.row, forKey: "userCity")
+      return Void()
+    }.asDriver(onErrorDriveWith: .empty())
     
     self.presentCityNotFoundController = cityNotFoundButtonDidTap.asDriver(onErrorDriveWith: .empty())
     self.hideKeyboard = cancelSearchButtonDidTap.asDriver(onErrorDriveWith: .empty())

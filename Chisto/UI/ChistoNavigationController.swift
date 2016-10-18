@@ -16,7 +16,7 @@ class ChistoNavigationController: UINavigationController, UINavigationController
   let defaultBarTintColor = UIColor.chsSkyBlue
   
   override func loadView() {
-    super.loadView()    
+    super.loadView()
     delegate = self
     
     navigationBar.isTranslucent = false
@@ -27,6 +27,7 @@ class ChistoNavigationController: UINavigationController, UINavigationController
     navigationBar.shadowImage = UIImage()
     navigationBar.backgroundColor = UIColor.chsSkyBlue
     navigationBar.barTintColor = UIColor.chsSkyBlue
+    
   }
   
   func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {

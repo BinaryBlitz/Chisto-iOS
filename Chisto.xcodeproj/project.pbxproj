@@ -31,6 +31,8 @@
 		8814C0651DB03CBC005B4967 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0641DB03CBC005B4967 /* Fonts.swift */; };
 		8814C0671DB04AFB005B4967 /* RussianEnumEndings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */; };
 		8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */; };
+		882288141DB6D11C000642E0 /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882288131DB6D11C000642E0 /* Root.storyboard */; };
+		882288161DB6D12C000642E0 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882288151DB6D12C000642E0 /* RootViewController.swift */; };
 		885409B61DB23DEC00219C00 /* CitySelect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409B51DB23DEB00219C00 /* CitySelect.storyboard */; };
 		885409B81DB2582200219C00 /* CityNotFound.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409B71DB2582200219C00 /* CityNotFound.storyboard */; };
 		885409BA1DB25B5100219C00 /* GoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885409B91DB25B5100219C00 /* GoButton.swift */; };
@@ -41,12 +43,12 @@
 		88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */; };
 		88B0B5501DB1825500C7D0F7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B54F1DB1825500C7D0F7 /* Onboarding.storyboard */; };
 		88B0B5521DB19C6E00C7D0F7 /* DescriptionListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B5511DB19C6E00C7D0F7 /* DescriptionListItem.xib */; };
-		88DB32ED1DB4C86A00F9E000 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0491DAF12FE005B4967 /* OrderViewController.swift */; };
 		88D8ABBB1DB56E53009D515B /* SelectClothesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABBA1DB56E53009D515B /* SelectClothesTableViewController.swift */; };
 		88D8ABBD1DB56E89009D515B /* SelectClothesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABBC1DB56E89009D515B /* SelectClothesViewModel.swift */; };
 		88D8ABBF1DB56EB8009D515B /* SelectClothes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D8ABBE1DB56EB8009D515B /* SelectClothes.storyboard */; };
 		88D8ABC21DB587CF009D515B /* SelectClothesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */; };
 		88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */; };
+		88DB32ED1DB4C86A00F9E000 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0491DAF12FE005B4967 /* OrderViewController.swift */; };
 		CC63F0EA174EB55F7C1DD247 /* Pods_Chisto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D4403E4AD2DF4A42F5C8FA /* Pods_Chisto.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +81,8 @@
 		8814C0641DB03CBC005B4967 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RussianEnumEndings.swift; sourceTree = "<group>"; };
 		8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHideOutside.swift; sourceTree = "<group>"; };
+		882288131DB6D11C000642E0 /* Root.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Root.storyboard; sourceTree = "<group>"; };
+		882288151DB6D12C000642E0 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		885409B51DB23DEB00219C00 /* CitySelect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CitySelect.storyboard; sourceTree = "<group>"; };
 		885409B71DB2582200219C00 /* CityNotFound.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CityNotFound.storyboard; path = ../CitySelect/CityNotFound.storyboard; sourceTree = "<group>"; };
 		885409B91DB25B5100219C00 /* GoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoButton.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				8814C04E1DAF15DA005B4967 /* ChistoNavigationController.swift */,
+				882288121DB6D0FA000642E0 /* Root */,
 				88D8ABB91DB56E09009D515B /* SelectClothes */,
 				885409C11DB2C76B00219C00 /* CityNotFound */,
 				8814C0501DAF2A58005B4967 /* Categories */,
@@ -291,6 +296,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		882288121DB6D0FA000642E0 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				882288131DB6D11C000642E0 /* Root.storyboard */,
+				882288151DB6D12C000642E0 /* RootViewController.swift */,
+			);
+			name = Root;
+			sourceTree = "<group>";
+		};
 		885409C11DB2C76B00219C00 /* CityNotFound */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +418,7 @@
 				885409B81DB2582200219C00 /* CityNotFound.storyboard in Resources */,
 				88073EE31DABE1E0000696A3 /* LaunchScreen.storyboard in Resources */,
 				88073EE01DABE1E0000696A3 /* Assets.xcassets in Resources */,
+				882288141DB6D11C000642E0 /* Root.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +510,7 @@
 				8814C0581DAFB0F2005B4967 /* CityNotFoundViewModel.swift in Sources */,
 				88DB32ED1DB4C86A00F9E000 /* OrderViewController.swift in Sources */,
 				88073ED91DABE1E0000696A3 /* AppDelegate.swift in Sources */,
+				882288161DB6D12C000642E0 /* RootViewController.swift in Sources */,
 				8814C03E1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift in Sources */,
 				8814C05E1DAFCF28005B4967 /* CategoryTableViewCell.swift in Sources */,
 				885409BA1DB25B5100219C00 /* GoButton.swift in Sources */,
