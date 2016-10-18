@@ -48,6 +48,14 @@ class CategoriesViewController: UIViewController {
     viewModel.sections
       .drive(self.tableView.rx.items(dataSource: self.dataSource))
       .addDisposableTo(self.disposeBag)
+    
+    viewModel.presentItemsSection.drive(onNext: { [weak self] viewModel in
+      // @TODO use a more elegant way of getting VC from storyboard, e.g. method in a class
+      let storyboard = UIStoryboard(name: "SelectClothes", bundle: nil)
+      let viewController = storyboard.instantiateViewController(withIdentifier: "SelectClothesTableViewController") as! SelectClothesTableViewController
+      viewController.viewModel = viewModel
+      self?.navigationController?.pushViewController(viewController, animated: true)
+    }).addDisposableTo(disposeBag)
   }
 
 }
