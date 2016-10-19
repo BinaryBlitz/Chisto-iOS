@@ -63,4 +63,8 @@ extension UIColor {
     return UIColor(red: 193.0 / 255.0, green: 199.0 / 255.0, blue: 205.0 / 255.0, alpha: 1.0)
   }
   
+  class var chsRosePink: UIColor {
+    return UIColor(red: 243.0 / 255.0, green: 125.0 / 255.0, blue: 165.0 / 255.0, alpha: 1.0)
+  }
+  
 }

@@ -36,9 +36,7 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
     }).addDisposableTo(disposeBag)
     
     viewModel.presentOrderViewController.drive(onNext: { [weak self] in
-      let storyboard = UIStoryboard(name: "Order", bundle: nil)
-      let viewController = storyboard.instantiateInitialViewController()
-      self?.present(viewController!, animated: true, completion: nil)
+      self?.dismiss(animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
     
     viewModel.showCancelButtonAnimated.drive(onNext: { [weak self] in
@@ -70,7 +68,6 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
   
   func configureSearch() {
     // UI
-    
     searchBar.barTintColor = UIColor.chsSkyBlue
     searchBar.tintColor = UIColor.white
     searchBar.backgroundColor = UIColor.chsSkyBlue

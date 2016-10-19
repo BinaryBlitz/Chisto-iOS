@@ -42,7 +42,7 @@ class CityNotFoundViewController: UIViewController {
     contentView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
     UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseOut, animations: {() -> Void in
       self.contentView.transform = CGAffineTransform.identity
-      })
+    })
 
     
     // Rx

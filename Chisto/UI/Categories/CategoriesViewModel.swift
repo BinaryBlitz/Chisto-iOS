@@ -14,7 +14,8 @@ import RxCocoa
 struct Category {
   var name = ""
   var icon: UIImage? = nil
-  var subCategories: [String] = []
+  var subCategories: [String] = [],
+  color: UIColor? = nil
 }
 
 typealias CategoriesSectionModel = SectionModel<String, CategoryTableViewCellModelType>
@@ -26,21 +27,35 @@ protocol CategoriesViewModelType {
   // Output
   var navigationBarTitle: String { get }
   var sections: Driver<[CategoriesSectionModel]> { get }
-  var presentItemsSection: Driver<Void> { get }
+  var presentItemsSection: Driver<SelectClothesViewModel> { get }
 }
 
 class CategoriesViewModel: CategoriesViewModelType {
   
   var defaultCategories = [
-    Category(name: "Головные уборы", icon: #imageLiteral(resourceName: "iconHeats"),
-             subCategories: ["Шапки","Береты", "Кепки", "Шляпы", "Косынки"]),
-    Category(name: "Обувь", icon: #imageLiteral(resourceName: "iconShoes"),
-             subCategories: ["Кроссовки", "Туфли", "Сапоги", "Кеды", "Сандалии", "", "", ""]),
-    Category(name: "Верхняя одежда", icon: #imageLiteral(resourceName: "iconOuterwear"),
-             subCategories: ["Дубленки", "Куртки", "Пальто", "Анораки", "Сандалии", ""]),
-    Category(name: "Брюки", icon: #imageLiteral(resourceName: "iconTrousers"),
-             subCategories: ["Джинсы", "Леггинсы", "Шорты", ""]),
-    ]
+    Category(
+      name: "Головные уборы",
+      icon: #imageLiteral(resourceName: "iconHeats"),
+      subCategories: ["Шапки","Береты", "Кепки", "Шляпы", "Косынки"],
+      color: UIColor.chsRosePink
+    ),
+    Category(
+      name: "Обувь",
+      icon: #imageLiteral(resourceName: "iconShoes"),
+      subCategories: ["Кроссовки", "Туфли", "Сапоги", "Кеды", "Сандалии", "", "", ""],
+      color: nil
+    ),
+    Category(
+      name: "Верхняя одежда", icon: #imageLiteral(resourceName: "iconOuterwear"),
+      subCategories: ["Дубленки", "Куртки", "Пальто", "Анораки", "Сандалии", ""],
+      color: nil
+    ),
+    Category(
+      name: "Брюки",
+      icon: #imageLiteral(resourceName: "iconTrousers"),
+      subCategories: ["Джинсы", "Леггинсы", "Шорты", ""], color: nil
+    )
+  ]
   
   private let disposeBag = DisposeBag()
   
@@ -50,7 +65,7 @@ class CategoriesViewModel: CategoriesViewModelType {
   // Output
   var navigationBarTitle: String
   var sections: Driver<[CategoriesSectionModel]>
-  var presentItemsSection: Driver<Void>
+  var presentItemsSection: Driver<SelectClothesViewModel>
   
   
   // Data
@@ -59,7 +74,8 @@ class CategoriesViewModel: CategoriesViewModelType {
   init() {
     self.navigationBarTitle = "Выбор вещи"
     
-    self.categories = Variable<[Category]>(defaultCategories)
+    let categories = Variable<[Category]>(defaultCategories)
+    self.categories = categories
     
     self.sections = categories.asDriver().map { categories in
       let cellModels = categories.map(CategoryTableViewCellModel.init) as [CategoryTableViewCellModelType]
@@ -68,9 +84,10 @@ class CategoriesViewModel: CategoriesViewModelType {
       return [section]
     }
     
-    self.presentItemsSection = itemDidSelect.map{_ in Void()}.asDriver(onErrorDriveWith: .empty())
-    
+    self.presentItemsSection = itemDidSelect.asObservable().map { indexPath in
+      let category = categories.value[indexPath.row]
+      return SelectClothesViewModel(category: category)
+    }.asDriver(onErrorDriveWith: .empty())
   }
-  
-  
+
 }

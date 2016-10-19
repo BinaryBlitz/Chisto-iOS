@@ -15,11 +15,8 @@ import CoreLocation
 
 struct City {
   let index = 0
+
   var title = ""
-  
-  init(title: String) {
-    self.title = title
-  }
 }
 
 typealias CitySelectSectionModel = SectionModel<String, City>
@@ -47,13 +44,6 @@ protocol CitySelectViewModelType {
 }
 
 class CitySelectViewModel: CitySelectViewModelType {
-  
-  var defaultCities = [
-    City(title: "Москва"),
-    City(title: "Нижний Новгород"),
-    City(title: "Санкт-петербург"),
-    ]
-  
   private let disposeBag = DisposeBag()
   
   // Input
@@ -79,12 +69,8 @@ class CitySelectViewModel: CitySelectViewModelType {
   var location = Variable<CLLocationCoordinate2D?>(nil)
   
   init() {
-    
-    for _ in 0...100 {
-      defaultCities.append(City(title: "Город"))
-    }
-    
-    cities = Variable<[City]>(defaultCities)
+    let defaultCities = ["Москва", "Санкт-Петербург"] + [String](repeating: "Город", count: 25)
+    cities = Variable<[City]>(defaultCities.map { City(title: $0) })
     
     self.sections = Observable.combineLatest(cities.asObservable(), searchString.asObservable(), location.asObservable(), resultSelector: { cities, searchString, location -> [CitySelectSectionModel] in
       print(location)
@@ -97,25 +83,31 @@ class CitySelectViewModel: CitySelectViewModelType {
     }).asDriver(onErrorJustReturn: [])
 
     
-    self.locationButtonDidTap.asObservable().flatMap({
-      LocationManager.instance.locateDevice()
-    }).bindTo(location).addDisposableTo(disposeBag)
+    locationButtonDidTap.asObservable()
+      .flatMap {
+        LocationManager.instance.locateDevice()
+      }
+      .bindTo(location)
+      .addDisposableTo(disposeBag)
     
-    cancelSearchButtonDidTap.asObservable().map { event in
-      return ""
-      }.bindTo(self.searchString).addDisposableTo(disposeBag)
+    cancelSearchButtonDidTap.asObservable()
+      .map { event in
+        return ""
+      }
+      .bindTo(self.searchString)
+      .addDisposableTo(disposeBag)
     
-    // @TODO work with data
+    // TODO: work with data
     
-    self.presentOrderViewController = itemDidSelect.map{_ in Void()}.asDriver(onErrorDriveWith: .empty())
+    presentOrderViewController = itemDidSelect.map{ indexPath in
+      UserDefaults.standard.set(indexPath.row, forKey: "userCity")
+      return Void()
+    }.asDriver(onErrorDriveWith: .empty())
     
     self.presentCityNotFoundController = cityNotFoundButtonDidTap.asDriver(onErrorDriveWith: .empty())
     self.hideKeyboard = cancelSearchButtonDidTap.asDriver(onErrorDriveWith: .empty())
     self.showCancelButtonAnimated = searchBarDidBeginEditing.asDriver(onErrorDriveWith: .empty())
     self.hideCancelButtonAnimated = searchBarDidEndEditing.asDriver(onErrorDriveWith: .empty())
-    
-    
   }
-  
-  
+
 }
