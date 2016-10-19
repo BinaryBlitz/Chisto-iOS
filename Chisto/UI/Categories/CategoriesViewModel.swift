@@ -33,15 +33,29 @@ protocol CategoriesViewModelType {
 class CategoriesViewModel: CategoriesViewModelType {
   
   var defaultCategories = [
-    Category(name: "Головные уборы", icon: #imageLiteral(resourceName: "iconHeats"),
-             subCategories: ["Шапки","Береты", "Кепки", "Шляпы", "Косынки"], color: UIColor.chsRosePink),
-    Category(name: "Обувь", icon: #imageLiteral(resourceName: "iconShoes"),
-             subCategories: ["Кроссовки", "Туфли", "Сапоги", "Кеды", "Сандалии", "", "", ""], color: nil),
-    Category(name: "Верхняя одежда", icon: #imageLiteral(resourceName: "iconOuterwear"),
-             subCategories: ["Дубленки", "Куртки", "Пальто", "Анораки", "Сандалии", ""], color: nil),
-    Category(name: "Брюки", icon: #imageLiteral(resourceName: "iconTrousers"),
-             subCategories: ["Джинсы", "Леггинсы", "Шорты", ""], color: nil),
-    ]
+    Category(
+      name: "Головные уборы",
+      icon: #imageLiteral(resourceName: "iconHeats"),
+      subCategories: ["Шапки","Береты", "Кепки", "Шляпы", "Косынки"],
+      color: UIColor.chsRosePink
+    ),
+    Category(
+      name: "Обувь",
+      icon: #imageLiteral(resourceName: "iconShoes"),
+      subCategories: ["Кроссовки", "Туфли", "Сапоги", "Кеды", "Сандалии", "", "", ""],
+      color: nil
+    ),
+    Category(
+      name: "Верхняя одежда", icon: #imageLiteral(resourceName: "iconOuterwear"),
+      subCategories: ["Дубленки", "Куртки", "Пальто", "Анораки", "Сандалии", ""],
+      color: nil
+    ),
+    Category(
+      name: "Брюки",
+      icon: #imageLiteral(resourceName: "iconTrousers"),
+      subCategories: ["Джинсы", "Леггинсы", "Шорты", ""], color: nil
+    )
+  ]
   
   private let disposeBag = DisposeBag()
   
@@ -74,8 +88,6 @@ class CategoriesViewModel: CategoriesViewModelType {
       let category = categories.value[indexPath.row]
       return SelectClothesViewModel(category: category)
     }.asDriver(onErrorDriveWith: .empty())
-    
   }
-  
-  
+
 }

@@ -27,12 +27,14 @@ class ChistoNavigationController: UINavigationController, UINavigationController
     navigationBar.shadowImage = UIImage()
     navigationBar.backgroundColor = UIColor.chsSkyBlue
     navigationBar.barTintColor = UIColor.chsSkyBlue
-    
   }
   
-  func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+  func navigationController(_ navigationController: UINavigationController,
+                            willShow viewController: UIViewController, animated: Bool) {
+
     if viewController is DefaultBarColoredViewController {
       navigationBar.barTintColor = defaultBarTintColor
     }
   }
+
 }

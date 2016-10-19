@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 
 class RootViewController: ChistoNavigationController {
-  
+
   override func viewDidAppear(_ animated: Bool) {
+    guard UserDefaults.standard.value(forKey: "userCity") == nil else { return }
 
     let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-    if UserDefaults.standard.value(forKey: "userCity") == nil {
-      self.present(storyboard.instantiateInitialViewController()!, animated: true, completion: nil)
-    }
+    present(storyboard.instantiateInitialViewController()!, animated: true)
   }
+
 }

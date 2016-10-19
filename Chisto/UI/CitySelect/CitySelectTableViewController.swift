@@ -68,7 +68,6 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
   
   func configureSearch() {
     // UI
-    
     searchBar.barTintColor = UIColor.chsSkyBlue
     searchBar.tintColor = UIColor.white
     searchBar.backgroundColor = UIColor.chsSkyBlue
