@@ -52,6 +52,11 @@
 		88D8ABC21DB587CF009D515B /* SelectClothesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */; };
 		88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */; };
 		88DB32ED1DB4C86A00F9E000 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0491DAF12FE005B4967 /* OrderViewController.swift */; };
+		88E86DA61DB8E800002A7024 /* ServiceSelect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E86DA11DB8E800002A7024 /* ServiceSelect.storyboard */; };
+		88E86DA71DB8E800002A7024 /* ServiceSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */; };
+		88E86DA81DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA31DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift */; };
+		88E86DA91DB8E800002A7024 /* ServiceSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA41DB8E800002A7024 /* ServiceSelectViewController.swift */; };
+		88E86DAA1DB8E800002A7024 /* ServiceSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA51DB8E800002A7024 /* ServiceSelectViewModel.swift */; };
 		CC63F0EA174EB55F7C1DD247 /* Pods_Chisto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D4403E4AD2DF4A42F5C8FA /* Pods_Chisto.framework */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +110,11 @@
 		88D8ABBE1DB56EB8009D515B /* SelectClothesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectClothesViewController.storyboard; sourceTree = "<group>"; };
 		88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectClothesTableViewCell.swift; path = SelectClothes/Views/SelectClothesTableViewCell.swift; sourceTree = "<group>"; };
 		88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClothesTableViewCellModel.swift; sourceTree = "<group>"; };
+		88E86DA11DB8E800002A7024 /* ServiceSelect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ServiceSelect.storyboard; sourceTree = "<group>"; };
+		88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectTableViewCell.swift; sourceTree = "<group>"; };
+		88E86DA31DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectTableViewCellModel.swift; sourceTree = "<group>"; };
+		88E86DA41DB8E800002A7024 /* ServiceSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectViewController.swift; sourceTree = "<group>"; };
+		88E86DA51DB8E800002A7024 /* ServiceSelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectViewModel.swift; sourceTree = "<group>"; };
 		EA8A37CB3EB7F2EEDB9E26D5 /* Pods-Chisto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chisto.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chisto/Pods-Chisto.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,6 +177,7 @@
 		88073EEC1DAC19E1000696A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				88E86DA01DB8E7D8002A7024 /* ServiceSelect */,
 				8814C04E1DAF15DA005B4967 /* ChistoNavigationController.swift */,
 				882288121DB6D0FA000642E0 /* Root */,
 				88D8ABB91DB56E09009D515B /* SelectClothes */,
@@ -345,6 +356,26 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		88E86DA01DB8E7D8002A7024 /* ServiceSelect */ = {
+			isa = PBXGroup;
+			children = (
+				88E86DAB1DB8E803002A7024 /* Views */,
+				88E86DA11DB8E800002A7024 /* ServiceSelect.storyboard */,
+				88E86DA41DB8E800002A7024 /* ServiceSelectViewController.swift */,
+				88E86DA51DB8E800002A7024 /* ServiceSelectViewModel.swift */,
+			);
+			name = ServiceSelect;
+			sourceTree = "<group>";
+		};
+		88E86DAB1DB8E803002A7024 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */,
+				88E86DA31DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		E86E04D5222457AEB97ED2EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,6 +455,7 @@
 				88B0B5521DB19C6E00C7D0F7 /* DescriptionListItem.xib in Resources */,
 				88B0B5501DB1825500C7D0F7 /* OnBoardingViewController.storyboard in Resources */,
 				885409C01DB2C76500219C00 /* OrderViewController.storyboard in Resources */,
+				88E86DA61DB8E800002A7024 /* ServiceSelect.storyboard in Resources */,
 				88D8ABBF1DB56EB8009D515B /* SelectClothesViewController.storyboard in Resources */,
 				885409B81DB2582200219C00 /* CityNotFound.storyboard in Resources */,
 				88073EE31DABE1E0000696A3 /* LaunchScreen.storyboard in Resources */,
@@ -503,6 +535,7 @@
 				88D8ABBB1DB56E53009D515B /* SelectClothesViewController.swift in Sources */,
 				88073EEF1DAC1A23000696A3 /* OnBoardingViewController.swift in Sources */,
 				8814C0331DAD8123005B4967 /* Colors.swift in Sources */,
+				88E86DAA1DB8E800002A7024 /* ServiceSelectViewModel.swift in Sources */,
 				8814C0611DAFEE7C005B4967 /* CategoriesViewModel.swift in Sources */,
 				88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */,
 				8814C05A1DAFC96D005B4967 /* CategoriesViewController.swift in Sources */,
@@ -516,6 +549,7 @@
 				8814C0401DAED9AC005B4967 /* CityNotFoundViewController.swift in Sources */,
 				8814C0631DB03AD7005B4967 /* CategoryTableViewCellModel.swift in Sources */,
 				88D8ABC21DB587CF009D515B /* SelectClothesTableViewCell.swift in Sources */,
+				88E86DA71DB8E800002A7024 /* ServiceSelectTableViewCell.swift in Sources */,
 				88073F031DAD6FCF000696A3 /* DescriptionListItemView.swift in Sources */,
 				8814C0671DB04AFB005B4967 /* RussianEnumEndings.swift in Sources */,
 				8814C0581DAFB0F2005B4967 /* CityNotFoundViewModel.swift in Sources */,
@@ -523,6 +557,7 @@
 				88073ED91DABE1E0000696A3 /* AppDelegate.swift in Sources */,
 				882288161DB6D12C000642E0 /* RootViewController.swift in Sources */,
 				8814C03E1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift in Sources */,
+				88E86DA91DB8E800002A7024 /* ServiceSelectViewController.swift in Sources */,
 				883760D11DB8D97500C9F506 /* OnBoardingNavigationController.swift in Sources */,
 				8814C05E1DAFCF28005B4967 /* CategoryTableViewCell.swift in Sources */,
 				885409BA1DB25B5100219C00 /* GoButton.swift in Sources */,
@@ -531,6 +566,7 @@
 				885409C31DB2E43300219C00 /* EmptyOrderButton.swift in Sources */,
 				8814C0391DAE8F7F005B4967 /* LocationManager.swift in Sources */,
 				88D8ABBD1DB56E89009D515B /* SelectClothesViewModel.swift in Sources */,
+				88E86DA81DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift in Sources */,
 				8814C03C1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift in Sources */,
 				885409C71DB2EC5D00219C00 /* UIButton+round.swift in Sources */,
 			);

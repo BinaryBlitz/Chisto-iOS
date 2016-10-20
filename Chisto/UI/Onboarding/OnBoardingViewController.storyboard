@@ -16,7 +16,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ArA-Gx-6V4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JIj-C4-xtU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zht-kg-WRE">
