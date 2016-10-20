@@ -98,6 +98,11 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
       self.selectedServicesIds.value.remove(at: index)
     }).addDisposableTo(disposeBag)
     
+<<<<<<< 28e929735ab720ebfc6c619dfbbc6be43a29db2f
+=======
+    
+    
+>>>>>>> Add order table
   }
 
 }

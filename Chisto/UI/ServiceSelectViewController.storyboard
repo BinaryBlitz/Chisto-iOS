@@ -130,8 +130,8 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="headerView" destination="6ix-kG-lqo" id="4rg-SF-FdO"/>
-                        <outlet property="itemTitle" destination="fTr-wh-1t8" id="YAU-QT-11P"/>ServiceSelectViewController.storyboard
-                        <outlet property="readyButton" destination="PHP-Yn-IQM" id="aWq-EM-pem"/> table:Chisto/UI/ServiceSelectViewController.storyboard
+                        <outlet property="itemTitle" destination="fTr-wh-1t8" id="YAU-QT-11P"/>
+                        <outlet property="readyButton" destination="PHP-Yn-IQM" id="aWq-EM-pem"/>
                         <outlet property="tableView" destination="8qi-z0-Amx" id="gts-tI-N05"/>
                     </connections>
                 </viewController>
