@@ -34,16 +34,10 @@ class CityNotFoundViewController: UIViewController {
     super.viewDidLoad()
     hideKeyboardWhenTappedAround()
     
-    self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+    view.backgroundColor = UIColor(white: 0, alpha: 0.5)
     
     contentView.layer.cornerRadius = 8
     contentView.clipsToBounds = true
-    
-    contentView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-    UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseOut, animations: {() -> Void in
-      self.contentView.transform = CGAffineTransform.identity
-    })
-
     
     // Rx
     continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)

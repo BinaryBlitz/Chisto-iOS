@@ -29,8 +29,7 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
     configureFooter()
     
     viewModel.presentCityNotFoundController.drive(onNext: { [weak self] in
-      let storyboard = UIStoryboard(name: "CityNotFound", bundle: nil)
-      let viewController = storyboard.instantiateViewController(withIdentifier: "CityNotFoundViewController") as! CityNotFoundViewController
+      let viewController = CityNotFoundViewController.storyboardInstance()!
       viewController.modalPresentationStyle = .overFullScreen
       self?.present(viewController, animated: false, completion: nil)
     }).addDisposableTo(disposeBag)
@@ -88,18 +87,14 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
   
   func configureTableView() {
     // UI    
-    let backView = UIView(frame: self.tableView.bounds)
+    let backView = UIView(frame: tableView.bounds)
     backView.backgroundColor = UIColor.chsWhite
     tableView.backgroundView = backView
     
     // Bindings
     dataSource.configureCell = { _, tableView, indexPath, city in
       let cell = tableView.dequeueReusableCell(withIdentifier: "CitySelectTableViewCell", for: indexPath)
-      cell.backgroundColor = UIColor.chsWhite
-      cell.textLabel?.textColor = UIColor.chsSlateGrey
-      cell.textLabel?.text = city.title
-      cell.accessoryType = .disclosureIndicator
-      
+      cell.textLabel?.text = city.title      
       return cell
     }
     
@@ -110,8 +105,8 @@ class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
     
     tableView.dataSource = nil
     viewModel.sections
-      .drive(self.tableView.rx.items(dataSource: self.dataSource))
-      .addDisposableTo(self.disposeBag)
+      .drive(tableView.rx.items(dataSource: dataSource))
+      .addDisposableTo(disposeBag)
     
   }
   

@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxDataSources
 
-class SelectClothesTableViewController: UITableViewController {
+class SelectClothesViewController: UITableViewController {
   let disposeBag = DisposeBag()
   var viewModel: SelectClothesViewModel? = nil
   var dataSource = RxTableViewSectionedReloadDataSource<SelectClothesSectionModel>()

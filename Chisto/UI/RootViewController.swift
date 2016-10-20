@@ -14,8 +14,7 @@ class RootViewController: ChistoNavigationController {
   override func viewDidAppear(_ animated: Bool) {
     guard UserDefaults.standard.value(forKey: "userCity") == nil else { return }
 
-    let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-    present(storyboard.instantiateInitialViewController()!, animated: true)
+    present(OnBoardingViewController.storyboardInstance()!, animated: true)
   }
 
 }

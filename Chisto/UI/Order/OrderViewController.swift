@@ -36,8 +36,7 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
     navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.navigationAddButtonDidTap).addDisposableTo(disposeBag)
     
     viewModel.presentCategoriesViewController.drive(onNext: {
-      let storyboard = UIStoryboard(name: "Categories", bundle: nil)
-      let viewController = storyboard.instantiateViewController(withIdentifier: "CategoriesViewController")
+      let viewController = CategoriesViewController.storyboardInstance()!
       self.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
   }

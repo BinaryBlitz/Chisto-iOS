@@ -34,6 +34,7 @@ class ChistoNavigationController: UINavigationController, UINavigationController
 
     if viewController is DefaultBarColoredViewController {
       navigationBar.barTintColor = defaultBarTintColor
+
     }
   }
 

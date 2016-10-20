@@ -31,21 +31,24 @@
 		8814C0651DB03CBC005B4967 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0641DB03CBC005B4967 /* Fonts.swift */; };
 		8814C0671DB04AFB005B4967 /* RussianEnumEndings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */; };
 		8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */; };
-		882288141DB6D11C000642E0 /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882288131DB6D11C000642E0 /* Root.storyboard */; };
+		882288141DB6D11C000642E0 /* RootViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882288131DB6D11C000642E0 /* RootViewController.storyboard */; };
 		882288161DB6D12C000642E0 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882288151DB6D12C000642E0 /* RootViewController.swift */; };
-		885409B61DB23DEC00219C00 /* CitySelect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409B51DB23DEB00219C00 /* CitySelect.storyboard */; };
+		883760D11DB8D97500C9F506 /* OnBoardingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883760D01DB8D97500C9F506 /* OnBoardingNavigationController.swift */; };
+		883760D31DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */; };
+		883760D51DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 883760D41DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard */; };
+		885409B61DB23DEC00219C00 /* CitySelectTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409B51DB23DEB00219C00 /* CitySelectTableViewController.storyboard */; };
 		885409B81DB2582200219C00 /* CityNotFound.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409B71DB2582200219C00 /* CityNotFound.storyboard */; };
 		885409BA1DB25B5100219C00 /* GoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885409B91DB25B5100219C00 /* GoButton.swift */; };
-		885409C01DB2C76500219C00 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409BF1DB2C76500219C00 /* Order.storyboard */; };
+		885409C01DB2C76500219C00 /* OrderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409BF1DB2C76500219C00 /* OrderViewController.storyboard */; };
 		885409C31DB2E43300219C00 /* EmptyOrderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885409C21DB2E43300219C00 /* EmptyOrderButton.swift */; };
-		885409C51DB2E55400219C00 /* Categories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409C41DB2E55400219C00 /* Categories.storyboard */; };
+		885409C51DB2E55400219C00 /* CategoriesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409C41DB2E55400219C00 /* CategoriesViewController.storyboard */; };
 		885409C71DB2EC5D00219C00 /* UIButton+round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885409C61DB2EC5D00219C00 /* UIButton+round.swift */; };
 		88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */; };
-		88B0B5501DB1825500C7D0F7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B54F1DB1825500C7D0F7 /* Onboarding.storyboard */; };
+		88B0B5501DB1825500C7D0F7 /* OnBoardingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */; };
 		88B0B5521DB19C6E00C7D0F7 /* DescriptionListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B5511DB19C6E00C7D0F7 /* DescriptionListItem.xib */; };
-		88D8ABBB1DB56E53009D515B /* SelectClothesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABBA1DB56E53009D515B /* SelectClothesTableViewController.swift */; };
+		88D8ABBB1DB56E53009D515B /* SelectClothesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABBA1DB56E53009D515B /* SelectClothesViewController.swift */; };
 		88D8ABBD1DB56E89009D515B /* SelectClothesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABBC1DB56E89009D515B /* SelectClothesViewModel.swift */; };
-		88D8ABBF1DB56EB8009D515B /* SelectClothes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D8ABBE1DB56EB8009D515B /* SelectClothes.storyboard */; };
+		88D8ABBF1DB56EB8009D515B /* SelectClothesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D8ABBE1DB56EB8009D515B /* SelectClothesViewController.storyboard */; };
 		88D8ABC21DB587CF009D515B /* SelectClothesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */; };
 		88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */; };
 		88DB32ED1DB4C86A00F9E000 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0491DAF12FE005B4967 /* OrderViewController.swift */; };
@@ -81,22 +84,25 @@
 		8814C0641DB03CBC005B4967 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RussianEnumEndings.swift; sourceTree = "<group>"; };
 		8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHideOutside.swift; sourceTree = "<group>"; };
-		882288131DB6D11C000642E0 /* Root.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Root.storyboard; sourceTree = "<group>"; };
+		882288131DB6D11C000642E0 /* RootViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootViewController.storyboard; sourceTree = "<group>"; };
 		882288151DB6D12C000642E0 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		885409B51DB23DEB00219C00 /* CitySelect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CitySelect.storyboard; sourceTree = "<group>"; };
+		883760D01DB8D97500C9F506 /* OnBoardingNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingNavigationController.swift; sourceTree = "<group>"; };
+		883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+StoryboardInstance.swift"; sourceTree = "<group>"; };
+		883760D41DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoardingNavigationController.storyboard; sourceTree = "<group>"; };
+		885409B51DB23DEB00219C00 /* CitySelectTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CitySelectTableViewController.storyboard; sourceTree = "<group>"; };
 		885409B71DB2582200219C00 /* CityNotFound.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CityNotFound.storyboard; path = ../CitySelect/CityNotFound.storyboard; sourceTree = "<group>"; };
 		885409B91DB25B5100219C00 /* GoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoButton.swift; sourceTree = "<group>"; };
-		885409BF1DB2C76500219C00 /* Order.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Order.storyboard; sourceTree = "<group>"; };
+		885409BF1DB2C76500219C00 /* OrderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderViewController.storyboard; sourceTree = "<group>"; };
 		885409C21DB2E43300219C00 /* EmptyOrderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyOrderButton.swift; sourceTree = "<group>"; };
-		885409C41DB2E55400219C00 /* Categories.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
+		885409C41DB2E55400219C00 /* CategoriesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CategoriesViewController.storyboard; sourceTree = "<group>"; };
 		885409C61DB2EC5D00219C00 /* UIButton+round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+round.swift"; sourceTree = "<group>"; };
 		88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSearchBarTextColor.swift; sourceTree = "<group>"; };
-		88B0B54F1DB1825500C7D0F7 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoardingViewController.storyboard; sourceTree = "<group>"; };
 		88B0B5511DB19C6E00C7D0F7 /* DescriptionListItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionListItem.xib; sourceTree = "<group>"; };
 		88D4403E4AD2DF4A42F5C8FA /* Pods_Chisto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chisto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		88D8ABBA1DB56E53009D515B /* SelectClothesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectClothesTableViewController.swift; path = SelectClothes/SelectClothesTableViewController.swift; sourceTree = "<group>"; };
+		88D8ABBA1DB56E53009D515B /* SelectClothesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectClothesViewController.swift; path = SelectClothes/SelectClothesViewController.swift; sourceTree = "<group>"; };
 		88D8ABBC1DB56E89009D515B /* SelectClothesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClothesViewModel.swift; sourceTree = "<group>"; };
-		88D8ABBE1DB56EB8009D515B /* SelectClothes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectClothes.storyboard; sourceTree = "<group>"; };
+		88D8ABBE1DB56EB8009D515B /* SelectClothesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectClothesViewController.storyboard; sourceTree = "<group>"; };
 		88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectClothesTableViewCell.swift; path = SelectClothes/Views/SelectClothesTableViewCell.swift; sourceTree = "<group>"; };
 		88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClothesTableViewCellModel.swift; sourceTree = "<group>"; };
 		EA8A37CB3EB7F2EEDB9E26D5 /* Pods-Chisto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chisto.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chisto/Pods-Chisto.release.xcconfig"; sourceTree = "<group>"; };
@@ -194,7 +200,9 @@
 			children = (
 				88073EF61DAC26E2000696A3 /* Views */,
 				88073EED1DAC1A23000696A3 /* OnBoardingViewController.swift */,
-				88B0B54F1DB1825500C7D0F7 /* Onboarding.storyboard */,
+				88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */,
+				883760D01DB8D97500C9F506 /* OnBoardingNavigationController.swift */,
+				883760D41DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -213,7 +221,7 @@
 			children = (
 				88073EFB1DAC4661000696A3 /* CitySelectTableViewController.swift */,
 				88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */,
-				885409B51DB23DEB00219C00 /* CitySelect.storyboard */,
+				885409B51DB23DEB00219C00 /* CitySelectTableViewController.storyboard */,
 			);
 			path = CitySelect;
 			sourceTree = "<group>";
@@ -251,7 +259,7 @@
 				8814C0461DAF0E99005B4967 /* Views */,
 				8814C0491DAF12FE005B4967 /* OrderViewController.swift */,
 				8814C04C1DAF159E005B4967 /* OrderViewModel.swift */,
-				885409BF1DB2C76500219C00 /* Order.storyboard */,
+				885409BF1DB2C76500219C00 /* OrderViewController.storyboard */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -268,7 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				8814C0591DAFC96D005B4967 /* CategoriesViewController.swift */,
-				885409C41DB2E55400219C00 /* Categories.storyboard */,
+				885409C41DB2E55400219C00 /* CategoriesViewController.storyboard */,
 				8814C0601DAFEE7C005B4967 /* CategoriesViewModel.swift */,
 				8814C05B1DAFCED7005B4967 /* Views */,
 			);
@@ -283,6 +291,7 @@
 				88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */,
 				885409B91DB25B5100219C00 /* GoButton.swift */,
 				885409C61DB2EC5D00219C00 /* UIButton+round.swift */,
+				883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -299,7 +308,7 @@
 		882288121DB6D0FA000642E0 /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				882288131DB6D11C000642E0 /* Root.storyboard */,
+				882288131DB6D11C000642E0 /* RootViewController.storyboard */,
 				882288151DB6D12C000642E0 /* RootViewController.swift */,
 			);
 			name = Root;
@@ -320,9 +329,9 @@
 			isa = PBXGroup;
 			children = (
 				88D8ABC01DB58794009D515B /* Views */,
-				88D8ABBA1DB56E53009D515B /* SelectClothesTableViewController.swift */,
+				88D8ABBA1DB56E53009D515B /* SelectClothesViewController.swift */,
 				88D8ABBC1DB56E89009D515B /* SelectClothesViewModel.swift */,
-				88D8ABBE1DB56EB8009D515B /* SelectClothes.storyboard */,
+				88D8ABBE1DB56EB8009D515B /* SelectClothesViewController.storyboard */,
 			);
 			name = SelectClothes;
 			sourceTree = "<group>";
@@ -408,17 +417,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				885409C51DB2E55400219C00 /* Categories.storyboard in Resources */,
-				885409B61DB23DEC00219C00 /* CitySelect.storyboard in Resources */,
+				885409C51DB2E55400219C00 /* CategoriesViewController.storyboard in Resources */,
+				885409B61DB23DEC00219C00 /* CitySelectTableViewController.storyboard in Resources */,
 				88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */,
+				883760D51DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard in Resources */,
 				88B0B5521DB19C6E00C7D0F7 /* DescriptionListItem.xib in Resources */,
-				88B0B5501DB1825500C7D0F7 /* Onboarding.storyboard in Resources */,
-				885409C01DB2C76500219C00 /* Order.storyboard in Resources */,
-				88D8ABBF1DB56EB8009D515B /* SelectClothes.storyboard in Resources */,
+				88B0B5501DB1825500C7D0F7 /* OnBoardingViewController.storyboard in Resources */,
+				885409C01DB2C76500219C00 /* OrderViewController.storyboard in Resources */,
+				88D8ABBF1DB56EB8009D515B /* SelectClothesViewController.storyboard in Resources */,
 				885409B81DB2582200219C00 /* CityNotFound.storyboard in Resources */,
 				88073EE31DABE1E0000696A3 /* LaunchScreen.storyboard in Resources */,
 				88073EE01DABE1E0000696A3 /* Assets.xcassets in Resources */,
-				882288141DB6D11C000642E0 /* Root.storyboard in Resources */,
+				882288141DB6D11C000642E0 /* RootViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,7 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88D8ABBB1DB56E53009D515B /* SelectClothesTableViewController.swift in Sources */,
+				88D8ABBB1DB56E53009D515B /* SelectClothesViewController.swift in Sources */,
 				88073EEF1DAC1A23000696A3 /* OnBoardingViewController.swift in Sources */,
 				8814C0331DAD8123005B4967 /* Colors.swift in Sources */,
 				8814C0611DAFEE7C005B4967 /* CategoriesViewModel.swift in Sources */,
@@ -501,6 +511,7 @@
 				88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */,
 				8814C0651DB03CBC005B4967 /* Fonts.swift in Sources */,
 				8814C04D1DAF159E005B4967 /* OrderViewModel.swift in Sources */,
+				883760D31DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift in Sources */,
 				8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */,
 				8814C0401DAED9AC005B4967 /* CityNotFoundViewController.swift in Sources */,
 				8814C0631DB03AD7005B4967 /* CategoryTableViewCellModel.swift in Sources */,
@@ -512,6 +523,7 @@
 				88073ED91DABE1E0000696A3 /* AppDelegate.swift in Sources */,
 				882288161DB6D12C000642E0 /* RootViewController.swift in Sources */,
 				8814C03E1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift in Sources */,
+				883760D11DB8D97500C9F506 /* OnBoardingNavigationController.swift in Sources */,
 				8814C05E1DAFCF28005B4967 /* CategoryTableViewCell.swift in Sources */,
 				885409BA1DB25B5100219C00 /* GoButton.swift in Sources */,
 				88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */,

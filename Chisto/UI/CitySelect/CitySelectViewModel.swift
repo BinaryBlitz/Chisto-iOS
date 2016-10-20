@@ -15,7 +15,6 @@ import CoreLocation
 
 struct City {
   let index = 0
-
   var title = ""
 }
 
@@ -72,15 +71,13 @@ class CitySelectViewModel: CitySelectViewModelType {
     let defaultCities = ["Москва", "Санкт-Петербург"] + [String](repeating: "Город", count: 25)
     cities = Variable<[City]>(defaultCities.map { City(title: $0) })
     
-    self.sections = Observable.combineLatest(cities.asObservable(), searchString.asObservable(), location.asObservable(), resultSelector: { cities, searchString, location -> [CitySelectSectionModel] in
-      print(location)
+    self.sections = Observable.combineLatest(cities.asObservable(), searchString.asObservable(), location.asObservable()) { cities, searchString, location -> [CitySelectSectionModel] in
+      var filteredCities = cities
       if searchString.characters.count > 0 {
-        let filteredCities = cities.filter {$0.title.lowercased().range(of: searchString.lowercased()) != nil}
-        return [SectionModel(model: "", items: filteredCities)]
-      } else {
-        return [SectionModel(model: "", items: cities)]
+        filteredCities = cities.filter {$0.title.lowercased().range(of: searchString.lowercased()) != nil}
       }
-    }).asDriver(onErrorJustReturn: [])
+      return [CitySelectSectionModel(model: "", items: filteredCities)]
+    }.asDriver(onErrorJustReturn: [])
 
     
     locationButtonDidTap.asObservable()
@@ -94,12 +91,11 @@ class CitySelectViewModel: CitySelectViewModelType {
       .map { event in
         return ""
       }
-      .bindTo(self.searchString)
+      .bindTo(searchString)
       .addDisposableTo(disposeBag)
     
     // TODO: work with data
-    
-    presentOrderViewController = itemDidSelect.map{ indexPath in
+    self.presentOrderViewController = itemDidSelect.map{ indexPath in
       UserDefaults.standard.set(indexPath.row, forKey: "userCity")
       return Void()
     }.asDriver(onErrorDriveWith: .empty())
