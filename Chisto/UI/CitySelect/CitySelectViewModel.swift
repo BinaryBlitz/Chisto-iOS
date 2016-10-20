@@ -74,7 +74,7 @@ class CitySelectViewModel: CitySelectViewModelType {
     self.sections = Observable.combineLatest(cities.asObservable(), searchString.asObservable(), location.asObservable()) { cities, searchString, location -> [CitySelectSectionModel] in
       var filteredCities = cities
       if searchString.characters.count > 0 {
-        filteredCities = cities.filter {$0.title.lowercased().range(of: searchString.lowercased()) != nil}
+        filteredCities = cities.filter { $0.title.lowercased().range(of: searchString.lowercased()) != nil }
       }
       return [CitySelectSectionModel(model: "", items: filteredCities)]
     }.asDriver(onErrorJustReturn: [])
@@ -95,7 +95,7 @@ class CitySelectViewModel: CitySelectViewModelType {
       .addDisposableTo(disposeBag)
     
     // TODO: work with data
-    self.presentOrderViewController = itemDidSelect.map{ indexPath in
+    self.presentOrderViewController = itemDidSelect.map { indexPath in
       UserDefaults.standard.set(indexPath.row, forKey: "userCity")
       return Void()
     }.asDriver(onErrorDriveWith: .empty())

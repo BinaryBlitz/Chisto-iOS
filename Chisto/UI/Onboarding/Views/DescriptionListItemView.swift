@@ -20,8 +20,4 @@ class DescriptionListItemView: UIView {
     descriptionLabel.sizeToFit()
   }
   
-  class func instanceFromNib() -> DescriptionListItemView? {
-    return UINib(nibName: "DescriptionListItem", bundle: nil).instantiate(withOwner: nil, options: nil).first as? DescriptionListItemView
-  }
-  
 }
