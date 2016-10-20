@@ -10,7 +10,7 @@ import UIKit
 import RxDataSources
 import RxSwift
 
-class CitySelectTableViewController: UIViewController, UIScrollViewDelegate {
+class CitySelectViewController: UIViewController, UIScrollViewDelegate {
   
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var goButton: UIButton!

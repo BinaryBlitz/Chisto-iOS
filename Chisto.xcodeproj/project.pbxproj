@@ -11,7 +11,7 @@
 		88073EE01DABE1E0000696A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88073EDF1DABE1E0000696A3 /* Assets.xcassets */; };
 		88073EE31DABE1E0000696A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88073EE11DABE1E0000696A3 /* LaunchScreen.storyboard */; };
 		88073EEF1DAC1A23000696A3 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073EED1DAC1A23000696A3 /* OnBoardingViewController.swift */; };
-		88073EFC1DAC4661000696A3 /* CitySelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073EFB1DAC4661000696A3 /* CitySelectTableViewController.swift */; };
+		88073EFC1DAC4661000696A3 /* CitySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073EFB1DAC4661000696A3 /* CitySelectViewController.swift */; };
 		88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */; };
 		88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 88073F001DAD6E6F000696A3 /* .swiftlint.yml */; };
 		88073F031DAD6FCF000696A3 /* DescriptionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073F021DAD6FCF000696A3 /* DescriptionListItemView.swift */; };
@@ -36,7 +36,7 @@
 		883760D11DB8D97500C9F506 /* OnBoardingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883760D01DB8D97500C9F506 /* OnBoardingNavigationController.swift */; };
 		883760D31DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */; };
 		883760D51DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 883760D41DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard */; };
-		885409B61DB23DEC00219C00 /* CitySelectTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409B51DB23DEB00219C00 /* CitySelectTableViewController.storyboard */; };
+		885409B61DB23DEC00219C00 /* CitySelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409B51DB23DEB00219C00 /* CitySelectViewController.storyboard */; };
 		885409B81DB2582200219C00 /* CityNotFound.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409B71DB2582200219C00 /* CityNotFound.storyboard */; };
 		885409BA1DB25B5100219C00 /* GoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885409B91DB25B5100219C00 /* GoButton.swift */; };
 		885409C01DB2C76500219C00 /* OrderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409BF1DB2C76500219C00 /* OrderViewController.storyboard */; };
@@ -45,7 +45,7 @@
 		885409C71DB2EC5D00219C00 /* UIButton+round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885409C61DB2EC5D00219C00 /* UIButton+round.swift */; };
 		88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */; };
 		88B0B5501DB1825500C7D0F7 /* OnBoardingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */; };
-		88B0B5521DB19C6E00C7D0F7 /* DescriptionListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B5511DB19C6E00C7D0F7 /* DescriptionListItem.xib */; };
+		88B0B5521DB19C6E00C7D0F7 /* DescriptionListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B5511DB19C6E00C7D0F7 /* DescriptionListItemView.xib */; };
 		88D8ABBB1DB56E53009D515B /* SelectClothesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABBA1DB56E53009D515B /* SelectClothesViewController.swift */; };
 		88D8ABBD1DB56E89009D515B /* SelectClothesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABBC1DB56E89009D515B /* SelectClothesViewModel.swift */; };
 		88D8ABBF1DB56EB8009D515B /* SelectClothesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D8ABBE1DB56EB8009D515B /* SelectClothesViewController.storyboard */; };
@@ -73,7 +73,7 @@
 		88073EE21DABE1E0000696A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88073EE41DABE1E0000696A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88073EED1DAC1A23000696A3 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
-		88073EFB1DAC4661000696A3 /* CitySelectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySelectTableViewController.swift; sourceTree = "<group>"; };
+		88073EFB1DAC4661000696A3 /* CitySelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySelectViewController.swift; sourceTree = "<group>"; };
 		88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySelectViewModel.swift; sourceTree = "<group>"; };
 		88073F001DAD6E6F000696A3 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		88073F021DAD6FCF000696A3 /* DescriptionListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionListItemView.swift; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 		883760D01DB8D97500C9F506 /* OnBoardingNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingNavigationController.swift; sourceTree = "<group>"; };
 		883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+StoryboardInstance.swift"; sourceTree = "<group>"; };
 		883760D41DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoardingNavigationController.storyboard; sourceTree = "<group>"; };
-		885409B51DB23DEB00219C00 /* CitySelectTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CitySelectTableViewController.storyboard; sourceTree = "<group>"; };
+		885409B51DB23DEB00219C00 /* CitySelectViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CitySelectViewController.storyboard; sourceTree = "<group>"; };
 		885409B71DB2582200219C00 /* CityNotFound.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CityNotFound.storyboard; path = ../CitySelect/CityNotFound.storyboard; sourceTree = "<group>"; };
 		885409B91DB25B5100219C00 /* GoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoButton.swift; sourceTree = "<group>"; };
 		885409BF1DB2C76500219C00 /* OrderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderViewController.storyboard; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		885409C61DB2EC5D00219C00 /* UIButton+round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+round.swift"; sourceTree = "<group>"; };
 		88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSearchBarTextColor.swift; sourceTree = "<group>"; };
 		88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoardingViewController.storyboard; sourceTree = "<group>"; };
-		88B0B5511DB19C6E00C7D0F7 /* DescriptionListItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionListItem.xib; sourceTree = "<group>"; };
+		88B0B5511DB19C6E00C7D0F7 /* DescriptionListItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionListItemView.xib; sourceTree = "<group>"; };
 		88D4403E4AD2DF4A42F5C8FA /* Pods_Chisto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chisto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88D8ABBA1DB56E53009D515B /* SelectClothesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectClothesViewController.swift; path = SelectClothes/SelectClothesViewController.swift; sourceTree = "<group>"; };
 		88D8ABBC1DB56E89009D515B /* SelectClothesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClothesViewModel.swift; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				88073F021DAD6FCF000696A3 /* DescriptionListItemView.swift */,
-				88B0B5511DB19C6E00C7D0F7 /* DescriptionListItem.xib */,
+				88B0B5511DB19C6E00C7D0F7 /* DescriptionListItemView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -241,9 +241,9 @@
 		88073EF71DAC26EA000696A3 /* CitySelect */ = {
 			isa = PBXGroup;
 			children = (
-				88073EFB1DAC4661000696A3 /* CitySelectTableViewController.swift */,
+				88073EFB1DAC4661000696A3 /* CitySelectViewController.swift */,
 				88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */,
-				885409B51DB23DEB00219C00 /* CitySelectTableViewController.storyboard */,
+				885409B51DB23DEB00219C00 /* CitySelectViewController.storyboard */,
 			);
 			path = CitySelect;
 			sourceTree = "<group>";
@@ -472,10 +472,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				885409C51DB2E55400219C00 /* CategoriesViewController.storyboard in Resources */,
-				885409B61DB23DEC00219C00 /* CitySelectTableViewController.storyboard in Resources */,
+				885409B61DB23DEC00219C00 /* CitySelectViewController.storyboard in Resources */,
 				88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */,
 				883760D51DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard in Resources */,
-				88B0B5521DB19C6E00C7D0F7 /* DescriptionListItem.xib in Resources */,
+				88B0B5521DB19C6E00C7D0F7 /* DescriptionListItemView.xib in Resources */,
 				88B0B5501DB1825500C7D0F7 /* OnBoardingViewController.storyboard in Resources */,
 				885409C01DB2C76500219C00 /* OrderViewController.storyboard in Resources */,
 				88E86DA61DB8E800002A7024 /* ServiceSelectViewController.storyboard in Resources */,
@@ -564,7 +564,7 @@
 				8814C0611DAFEE7C005B4967 /* CategoriesViewModel.swift in Sources */,
 				88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */,
 				8814C05A1DAFC96D005B4967 /* CategoriesViewController.swift in Sources */,
-				88073EFC1DAC4661000696A3 /* CitySelectTableViewController.swift in Sources */,
+				88073EFC1DAC4661000696A3 /* CitySelectViewController.swift in Sources */,
 				8814C04F1DAF15DA005B4967 /* ChistoNavigationController.swift in Sources */,
 				88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */,
 				8814C0651DB03CBC005B4967 /* Fonts.swift in Sources */,

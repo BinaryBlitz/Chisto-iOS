@@ -28,9 +28,7 @@ class OnBoardingViewController: UIViewController {
     super.viewDidLoad()
     
     goButton.rx.tap.asDriver().drive(onNext: { _ in
-      let storyboard = UIStoryboard(name: "CitySelect", bundle: nil)
-      let viewController = storyboard.instantiateViewController(withIdentifier: "CitySelectViewController") as! CitySelectTableViewController
-      self.navigationController?.pushViewController(viewController, animated: true)
+      self.navigationController?.pushViewController(CitySelectViewController.storyboardInstance()!, animated: true)
     }).addDisposableTo(disposeBag)
     
     for (title, icon) in descriptionSteps {

@@ -23,9 +23,9 @@ protocol CategoryTableViewCellModelType {
 class CategoryTableViewCellModel: CategoryTableViewCellModelType {
   // Constants
   let dayEndings = ["вещь", "вещи", "вещей"]
-  var titleText: String
-  var subTitletext: NSAttributedString
-  var icon: UIImage?
+  let titleText: String
+  let subTitletext: NSAttributedString
+  let icon: UIImage?
   
   init(category: Category) {
     self.titleText = category.name

@@ -25,10 +25,10 @@ protocol OrderTableViewCellModelType {
 
 class OrderTableViewCellModel: OrderTableViewCellModelType {
   // Constants
-  var itemTitleText: String
-  var servicesText: NSAttributedString
-  var icon: UIImage?
-  var amountText: String
+  let itemTitleText: String
+  let servicesText: NSAttributedString
+  let icon: UIImage?
+  let amountText: String
   
   init(item: OrderItem) {
     self.itemTitleText = item.clothesItem.name
