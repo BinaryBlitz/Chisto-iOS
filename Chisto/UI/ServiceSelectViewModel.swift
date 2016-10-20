@@ -98,8 +98,6 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
       self.selectedServicesIds.value.remove(at: index)
     }).addDisposableTo(disposeBag)
     
-    
-    
   }
 
 }

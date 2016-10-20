@@ -78,6 +78,4 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
     readyButton.rx.tap.bindTo(viewModel.readyButtonTapped).addDisposableTo(disposeBag)
 
   }
-  
-
 }
