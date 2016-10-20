@@ -26,7 +26,7 @@ protocol SelectClothesViewModelType {
   // Output
   var navigationBarTitle: String { get }
   var sections: Driver<[SelectClothesSectionModel]> { get }
-  var presentSelectServiceSection: Driver<Void> { get }
+  var presentSelectServiceSection: Driver<ServiceSelectViewModel> { get }
 }
 
 class SelectClothesViewModel: SelectClothesViewModelType {
@@ -49,7 +49,7 @@ class SelectClothesViewModel: SelectClothesViewModelType {
   var navigationBarTitle: String
   var navigationBarColor: UIColor?
   var sections: Driver<[SelectClothesSectionModel]>
-  var presentSelectServiceSection: Driver<Void>
+  var presentSelectServiceSection: Driver<ServiceSelectViewModel>
   
   // Data
   var clothesItems: Variable<[ClothesItem]>
@@ -58,7 +58,9 @@ class SelectClothesViewModel: SelectClothesViewModelType {
     self.navigationBarTitle = category.name
     self.navigationBarColor = category.color
     
-    self.clothesItems = Variable<[ClothesItem]>(defaultClothesItems)
+    let clothesItems = Variable<[ClothesItem]>(defaultClothesItems)
+    
+    self.clothesItems = clothesItems
     
     self.sections = clothesItems.asDriver().map { clothesItems in
       let cellModels = clothesItems.map(SelectClothesTableViewCellModel.init) as [SelectClothesTableViewCellModelType]
@@ -67,7 +69,10 @@ class SelectClothesViewModel: SelectClothesViewModelType {
       return [section]
     }
     
-    self.presentSelectServiceSection = itemDidSelect.map{_ in Void()}.asDriver(onErrorDriveWith: .empty())
+    self.presentSelectServiceSection = itemDidSelect.map{ indexPath in
+      let item = clothesItems.value[indexPath.row]
+      return ServiceSelectViewModel(item: item)
+    }.asDriver(onErrorDriveWith: .empty())
     
   }
   

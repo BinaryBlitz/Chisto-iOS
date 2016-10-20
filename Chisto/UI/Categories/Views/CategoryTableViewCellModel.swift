@@ -17,23 +17,15 @@ protocol CategoryTableViewCellModelType {
   var subTitletext: NSAttributedString { get }
   var icon: UIImage? { get }
   
-  // Input
-  var navigationAddButtonDidTap: PublishSubject<Void> { get }
-  var emptyOrderAddButtonDidTap: PublishSubject<Void> { get }
-
 }
 
 
 class CategoryTableViewCellModel: CategoryTableViewCellModelType {
   // Constants
   let dayEndings = ["вещь", "вещи", "вещей"]
-  var titleText: String
-  var subTitletext: NSAttributedString
-  var icon: UIImage?
-  
-  // Input
-  var navigationAddButtonDidTap = PublishSubject<Void>()
-  var emptyOrderAddButtonDidTap = PublishSubject<Void>()
+  let titleText: String
+  let subTitletext: NSAttributedString
+  let icon: UIImage?
   
   init(category: Category) {
     self.titleText = category.name

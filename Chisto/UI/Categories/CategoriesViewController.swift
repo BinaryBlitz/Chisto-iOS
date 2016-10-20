@@ -19,7 +19,7 @@ class CategoriesViewController: UITableViewController, DefaultBarColoredViewCont
   override func viewDidLoad() {
     super.viewDidLoad()
     navigationItem.title = viewModel.navigationBarTitle
-    
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     configureTableView()
   }
   
