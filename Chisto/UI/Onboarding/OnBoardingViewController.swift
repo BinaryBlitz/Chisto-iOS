@@ -34,7 +34,7 @@ class OnBoardingViewController: UIViewController {
     }).addDisposableTo(disposeBag)
     
     for (title, icon) in descriptionSteps {
-      if let descriptionListItemView = DescriptionListItemView.instanceFromNib() {
+      if let descriptionListItemView = DescriptionListItemView.nibInstance() {
         descriptionListItemView.configure(countImage: icon, information: title)
         stackView.addArrangedSubview(descriptionListItemView)
       }

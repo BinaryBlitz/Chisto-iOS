@@ -15,6 +15,7 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
   @IBOutlet weak var headerView: UIView!
   @IBOutlet weak var itemTitle: UILabel!
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var readyButton: UIButton!
   
   let disposeBag = DisposeBag()
   var viewModel: ServiceSelectViewModel? = nil
@@ -25,10 +26,16 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
     
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     navigationItem.title = viewModel?.navigationItemTitle
+    
     headerView.backgroundColor = viewModel?.color
     itemTitle.text = viewModel?.itemTitle
     
     configureTableView()
+    configureFooter()
+    
+    viewModel?.presentOrderSection.drive(onNext: { [weak self] in
+      self?.navigationController?.setViewControllers([OrderViewController.storyboardInstance()!], animated: true)
+    }).addDisposableTo(disposeBag)
   }
   
   func configureTableView() {
@@ -51,10 +58,25 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
       .bindTo(viewModel.itemDidSelect)
       .addDisposableTo(disposeBag)
     
+    tableView.rx.itemDeselected
+      .bindTo(viewModel.itemDidDeSelect)
+      .addDisposableTo(disposeBag)
+    
     tableView.dataSource = nil
     viewModel.sections
       .drive(self.tableView.rx.items(dataSource: self.dataSource))
       .addDisposableTo(self.disposeBag)
+  }
+  
+  func configureFooter() {
+    guard let viewModel = viewModel else { return }
+    
+    viewModel.selectedServicesIds.asObservable().map { $0.count > 0 }
+      .bindTo(readyButton.rx.enabled)
+      .addDisposableTo(disposeBag)
+    
+    readyButton.rx.tap.bindTo(viewModel.readyButtonTapped).addDisposableTo(disposeBag)
+
   }
   
 

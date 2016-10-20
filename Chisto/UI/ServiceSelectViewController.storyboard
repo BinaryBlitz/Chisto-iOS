@@ -52,6 +52,7 @@
                                 <state key="normal" title="Готово">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <state key="disabled" title="Ничего не выбрано"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
                                         <color key="value" red="0.23921568691730499" green="0.70588237047195435" blue="0.96470588445663452" alpha="1" colorSpace="calibratedRGB"/>
@@ -130,6 +131,7 @@
                     <connections>
                         <outlet property="headerView" destination="6ix-kG-lqo" id="4rg-SF-FdO"/>
                         <outlet property="itemTitle" destination="fTr-wh-1t8" id="YAU-QT-11P"/>
+                        <outlet property="readyButton" destination="PHP-Yn-IQM" id="aWq-EM-pem"/>
                         <outlet property="tableView" destination="8qi-z0-Amx" id="gts-tI-N05"/>
                     </connections>
                 </viewController>

@@ -12,9 +12,15 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 
-struct Service {
+class Service {
+  var id = UUID().uuidString
   var name = ""
   var description = ""
+  
+  init(name: String, description: String) {
+    self.name = name
+    self.description = description
+  }
 }
 
 typealias ServiceSelectSectionModel = SectionModel<String, ServiceSelectTableViewCellModelType>
@@ -22,18 +28,21 @@ typealias ServiceSelectSectionModel = SectionModel<String, ServiceSelectTableVie
 protocol ServiceSelectViewModelType {
   // Input
   var itemDidSelect: PublishSubject<IndexPath> { get }
-  var readyButtonTapped: PublishSubject<IndexPath> { get }
+  var itemDidDeSelect: PublishSubject<IndexPath> { get }
+  var readyButtonTapped: PublishSubject<Void> { get }
   
   // Output
   var itemTitle: String { get }
   var color: UIColor { get }
   var sections: Driver<[ServiceSelectSectionModel]> { get }
+  var selectedServicesIds: Variable<[String]> { get }
 }
 
 class ServiceSelectViewModel: ServiceSelectViewModelType {
   // Input
   var itemDidSelect = PublishSubject<IndexPath>()
-  var readyButtonTapped = PublishSubject<IndexPath>()
+  var itemDidDeSelect = PublishSubject<IndexPath>()
+  var readyButtonTapped = PublishSubject<Void>()
   
   // Output
   var color: UIColor
@@ -42,25 +51,54 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
   var sections: Driver<[ServiceSelectSectionModel]>
   
   // Data
+  var selectedServicesIds: Variable<[String]>
   var services: Variable<[Service]>
+  var presentOrderSection: Driver<Void>
+  
+  let disposeBag = DisposeBag()
   
   init(item: ClothesItem) {
     self.itemTitle = item.name
     self.color = UIColor.chsRosePink
+    
     let defaultServices = [
       Service(name: "Химчистка", description: "Только нежные растворители"),
       Service(name: "Стирка", description: "Стирка при температуре не выше 30"),
       Service(name: "Глажка", description: "Низкая температура 110  С"),
-      Service(name: "Глажка", description: "Ушьем за 2 минуты")
+      Service(name: "Подшить", description: "Ушьем за 2 минуты")
     ]
     
-    self.services = Variable<[Service]>(defaultServices)
+    let services = Variable<[Service]>(defaultServices)
+    self.services = services
+    
+    let selectedServicesIds = Variable<[String]>([])
+    self.selectedServicesIds = selectedServicesIds
     
     self.sections = services.asDriver().map { services in
       let cellModels = services.map(ServiceSelectTableViewCellModel.init) as [ServiceSelectTableViewCellModelType]
       let section = ServiceSelectSectionModel(model: "", items: cellModels)
       return [section]
     }
+    
+    self.presentOrderSection = readyButtonTapped.asObservable().map {
+      let services = services.value.filter { selectedServicesIds.value.index(of: $0.id) != nil }
+      let newOrderItem = OrderItem(clothesItem: item, services: services)
+      DataManager.instance.currentOrderItems.value.append(newOrderItem)
+    }.asDriver(onErrorDriveWith: .empty())
+
+    
+    self.itemDidSelect.asObservable().subscribe(onNext: { indexPath in
+      let service = self.services.value[indexPath.row]
+      self.selectedServicesIds.value.append(service.id)
+    }).addDisposableTo(disposeBag)
+    
+    self.itemDidDeSelect.asObservable().subscribe(onNext: { indexPath in
+      let service = self.services.value[indexPath.row]
+      guard let index = self.selectedServicesIds.value.index(of: service.id) else { return }
+      self.selectedServicesIds.value.remove(at: index)
+    }).addDisposableTo(disposeBag)
+    
+    
     
   }
 

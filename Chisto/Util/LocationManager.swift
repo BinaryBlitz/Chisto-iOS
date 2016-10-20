@@ -26,7 +26,7 @@ class LocationManager {
     autorized = locationManager.rx.didChangeAuthorizationStatus
       .startWith(CLLocationManager.authorizationStatus())
       .asDriver(onErrorJustReturn: CLAuthorizationStatus.notDetermined)
-      .map {$0 == .authorizedAlways || $0 == .authorizedWhenInUse}
+      .map { $0 == .authorizedAlways || $0 == .authorizedWhenInUse }
   
     location = locationManager.rx.didUpdateLocations
       .filter { $0.count > 0 }
