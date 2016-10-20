@@ -37,14 +37,15 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
   
   // Output
   var color: UIColor
+  var navigationItemTitle = "Выбор услуг"
   var itemTitle: String
   var sections: Driver<[ServiceSelectSectionModel]>
   
   // Data
   var services: Variable<[Service]>
   
-  init(item: String) {
-    self.itemTitle = item
+  init(item: ClothesItem) {
+    self.itemTitle = item.name
     self.color = UIColor.chsRosePink
     let defaultServices = [
       Service(name: "Химчистка", description: "Только нежные растворители"),

@@ -12,6 +12,8 @@ import RxSwift
 import RxDataSources
 
 class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
+  @IBOutlet weak var headerView: UIView!
+  @IBOutlet weak var itemTitle: UILabel!
   @IBOutlet weak var tableView: UITableView!
   
   let disposeBag = DisposeBag()
@@ -21,6 +23,12 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    navigationItem.title = viewModel?.navigationItemTitle
+    headerView.backgroundColor = viewModel?.color
+    itemTitle.text = viewModel?.itemTitle
+    
+    configureTableView()
   }
   
   func configureTableView() {

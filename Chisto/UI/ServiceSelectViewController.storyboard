@@ -10,7 +10,7 @@
         <!--Services-->
         <scene sceneID="FUD-Jm-Cy7">
             <objects>
-                <viewController title="Services" id="VFi-pG-msC" customClass="ServiceSelectViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ServiceSelectViewController" title="Services" id="VFi-pG-msC" customClass="ServiceSelectViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="laL-vP-QaZ"/>
                         <viewControllerLayoutGuide type="bottom" id="YdQ-90-zMX"/>
@@ -23,23 +23,23 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTr-wh-1t8">
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ish-YR-KA6">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Что нужно сделать с вещью?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ish-YR-KA6">
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.1738680007" green="0.62361474260000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ish-YR-KA6" secondAttribute="trailing" id="1hm-3I-1v4"/>
                                     <constraint firstItem="ish-YR-KA6" firstAttribute="leading" secondItem="6ix-kG-lqo" secondAttribute="leading" id="5Sn-LW-G4L"/>
                                     <constraint firstItem="ish-YR-KA6" firstAttribute="top" secondItem="fTr-wh-1t8" secondAttribute="bottom" constant="6" id="AnE-6h-8fy"/>
                                     <constraint firstAttribute="trailing" secondItem="fTr-wh-1t8" secondAttribute="trailing" id="aHP-Vm-AtJ"/>
                                     <constraint firstAttribute="bottom" secondItem="ish-YR-KA6" secondAttribute="bottom" constant="26" id="bbp-QZ-bTx"/>
-                                    <constraint firstItem="fTr-wh-1t8" firstAttribute="top" secondItem="6ix-kG-lqo" secondAttribute="top" constant="25" id="kwe-8i-Xcg"/>
+                                    <constraint firstItem="fTr-wh-1t8" firstAttribute="top" secondItem="6ix-kG-lqo" secondAttribute="top" constant="10" id="kwe-8i-Xcg"/>
                                     <constraint firstItem="fTr-wh-1t8" firstAttribute="leading" secondItem="6ix-kG-lqo" secondAttribute="leading" id="l4h-Pj-BfT"/>
                                 </constraints>
                             </view>
@@ -58,27 +58,27 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelection="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="102" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8qi-z0-Amx">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelection="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="102" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8qi-z0-Amx">
+                                <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ServiceSelectTableViewCell" rowHeight="102" id="MOv-NB-eAm" customClass="ServiceSelectTableViewCell" customModule="Chisto" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="102"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ServiceSelectTableViewCell" rowHeight="102" id="MOv-NB-eAm" customClass="ServiceSelectTableViewCell" customModule="Chisto" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MOv-NB-eAm" id="63f-ki-jFe">
-                                            <frame key="frameInset" width="343" height="101"/>
+                                            <frame key="frameInset" width="375" height="101"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFO-t1-lhw">
+                                                <button opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFO-t1-lhw">
                                                     <color key="backgroundColor" red="0.75686275959014893" green="0.78039216995239258" blue="0.80392158031463623" alpha="0.5" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="27" id="2gM-9I-L8K"/>
-                                                        <constraint firstAttribute="height" constant="27" id="c7i-7Z-51q"/>
+                                                        <constraint firstAttribute="width" constant="30" id="2gM-9I-L8K"/>
+                                                        <constraint firstAttribute="height" constant="30" id="c7i-7Z-51q"/>
                                                     </constraints>
                                                     <state key="selected" image="Icon-check"/>
                                                     <state key="highlighted" image="Icon-check"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="40"/>
+                                                            <real key="value" value="15"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
@@ -112,22 +112,24 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="6ix-kG-lqo" firstAttribute="top" secondItem="laL-vP-QaZ" secondAttribute="bottom" id="7tr-jO-OC1"/>
                             <constraint firstAttribute="trailing" secondItem="PHP-Yn-IQM" secondAttribute="trailing" id="EQP-Pk-vCv"/>
                             <constraint firstAttribute="trailing" secondItem="6ix-kG-lqo" secondAttribute="trailing" id="Ebj-5T-YkU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8qi-z0-Amx" secondAttribute="trailing" id="VhQ-1c-Sov"/>
+                            <constraint firstItem="8qi-z0-Amx" firstAttribute="leading" secondItem="572-NE-276" secondAttribute="leading" id="Fag-pA-jMh"/>
                             <constraint firstItem="PHP-Yn-IQM" firstAttribute="leading" secondItem="572-NE-276" secondAttribute="leading" id="cH6-Uo-qOJ"/>
                             <constraint firstItem="6ix-kG-lqo" firstAttribute="leading" secondItem="572-NE-276" secondAttribute="leading" id="e3O-IZ-WqI"/>
                             <constraint firstItem="PHP-Yn-IQM" firstAttribute="top" secondItem="8qi-z0-Amx" secondAttribute="bottom" id="fXF-vX-KRN"/>
-                            <constraint firstItem="8qi-z0-Amx" firstAttribute="leading" secondItem="572-NE-276" secondAttribute="leadingMargin" id="mhG-Vo-6tg"/>
+                            <constraint firstAttribute="trailing" secondItem="8qi-z0-Amx" secondAttribute="trailing" id="qVG-wE-x92"/>
                             <constraint firstItem="YdQ-90-zMX" firstAttribute="top" secondItem="PHP-Yn-IQM" secondAttribute="bottom" id="w02-x1-cXE"/>
                             <constraint firstItem="8qi-z0-Amx" firstAttribute="top" secondItem="6ix-kG-lqo" secondAttribute="bottom" id="yyD-Ly-cHD"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="headerView" destination="6ix-kG-lqo" id="4rg-SF-FdO"/>
+                        <outlet property="itemTitle" destination="fTr-wh-1t8" id="YAU-QT-11P"/>
                         <outlet property="tableView" destination="8qi-z0-Amx" id="gts-tI-N05"/>
                     </connections>
                 </viewController>
