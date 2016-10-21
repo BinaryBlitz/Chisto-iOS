@@ -55,6 +55,7 @@
             <constraints>
                 <constraint firstItem="wRG-Cw-Weo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Ino-2S-Gmb"/>
                 <constraint firstAttribute="trailing" secondItem="wRG-Cw-Weo" secondAttribute="trailing" constant="38" id="ZNA-iJ-pKU"/>
+                <constraint firstItem="wRG-Cw-Weo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="gZn-du-2k5"/>
                 <constraint firstItem="wRG-Cw-Weo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="38" id="vBc-Cg-LO4"/>
             </constraints>
             <connections>

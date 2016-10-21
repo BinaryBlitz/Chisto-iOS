@@ -25,4 +25,5 @@ class DataManager {
   static let instance = DataManager()
   
   var currentOrderItems = Variable<[OrderItem]>([])
+  
 }

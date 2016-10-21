@@ -39,6 +39,12 @@ class OrderViewController: UIViewController, UIScrollViewDelegate,DefaultBarColo
       self.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
     
+    viewModel.presentItemInfoViewController.drive(onNext: { [weak self] viewModel in
+      let viewController = ItemInfoViewController.storyboardInstance()!
+      viewController.viewModel = viewModel
+      self?.navigationController?.pushViewController(viewController, animated: true)
+    }).addDisposableTo(disposeBag)
+    
     configureTableView()
     
   }
@@ -81,6 +87,11 @@ class OrderViewController: UIViewController, UIScrollViewDelegate,DefaultBarColo
       .drive(tableView.rx.items(dataSource: dataSource))
       .addDisposableTo(self.disposeBag)
     
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    guard let indexPath = tableView.indexPathForSelectedRow else { return }
+    tableView.deselectRow(at: indexPath, animated: true)
   }
 
 }

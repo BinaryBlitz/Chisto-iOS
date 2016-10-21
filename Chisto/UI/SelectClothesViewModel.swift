@@ -14,6 +14,7 @@ import RxCocoa
 struct ClothesItem {
   var name = ""
   var icon: UIImage? = nil
+  var color: UIColor = UIColor.chsRosePink
   var relatedItems: [String] = []
 }
 
@@ -33,11 +34,11 @@ class SelectClothesViewModel: SelectClothesViewModelType {
   
   var defaultClothesItems: [ClothesItem] = [
     ClothesItem(name: "Шапка", icon: #imageLiteral(resourceName: "iconHat"),
-             relatedItems: ["Шапки зимние","Летние из трикотажа", "Хлопка", "Шерсти"]),
+                color: UIColor.chsRosePink, relatedItems: ["Шапки зимние","Летние из трикотажа", "Хлопка", "Шерсти"]),
     ClothesItem(name: "Кепка", icon: #imageLiteral(resourceName: "iconCap"),
-             relatedItems: ["Кепки", "Бейсболки", "Снэпбэки"]),
+             color: UIColor.chsRosePink, relatedItems: ["Кепки", "Бейсболки", "Снэпбэки"]),
     ClothesItem(name: "Шляпа", icon: #imageLiteral(resourceName: "iconNap"),
-             relatedItems: ["Лайкра", "Растительный материал", "Хлопок", "Шерсть", "Лен"])
+             color: UIColor.chsRosePink, relatedItems: ["Лайкра", "Растительный материал", "Хлопок", "Шерсть", "Лен"])
     ]
   
   private let disposeBag = DisposeBag()
@@ -70,8 +71,9 @@ class SelectClothesViewModel: SelectClothesViewModelType {
     }
     
     self.presentSelectServiceSection = itemDidSelect.map{ indexPath in
-      let item = clothesItems.value[indexPath.row]
-      return ServiceSelectViewModel(item: item)
+      let clothesItem = clothesItems.value[indexPath.row]
+      let orderItem = OrderItem(clothesItem: clothesItem, services: [], amount: 1)
+      return ServiceSelectViewModel(item: orderItem)
     }.asDriver(onErrorDriveWith: .empty())
     
   }
