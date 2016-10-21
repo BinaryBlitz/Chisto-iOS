@@ -17,7 +17,7 @@ class CategoryTableViewCell: UITableViewCell {
   
   @IBOutlet weak var descriptionLabel: UILabel!
   
-  func configure(viewModel: CategoryTableViewModelType) {
+  func configure(viewModel: CategoryTableViewCellModelType) {
     categoryIconImageView.image = viewModel.icon
     titleLabel.text = viewModel.titleText
     descriptionLabel.attributedText = viewModel.subTitletext

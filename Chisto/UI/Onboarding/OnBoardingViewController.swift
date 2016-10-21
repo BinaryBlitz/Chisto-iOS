@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import EasyPeasy
 import RxSwift
 
 class OnBoardingViewController: UIViewController {
@@ -20,134 +19,24 @@ class OnBoardingViewController: UIViewController {
     (title: "Ожидайте звонка. Оператор согласует время забора и доставки вещей", icon: #imageLiteral(resourceName: "iconNum5"))
   ]
   
-  let descriptionLabelText = "Все очень просто:"
-  let subTitleViewText = "С Chisto вам больше не нужно тратить время на походы в химчистку."
-  let goButtonText = "Начать"
-  
-  // Header
-  let headerView = UIView()
-  let logoImage = UIImageView()
-  let logoSubTitleView = UILabel()
-  
-  // Middle part
-  let descriptionView = UIView()
-  let descriptionLabel = UILabel()
-  let descriptionListItemView = UIView()
-  
-  // Footer
-  let goButton = UIButton()
+  @IBOutlet weak var stackView: UIStackView!
+  @IBOutlet weak var goButton: UIButton!
   
   let disposeBag = DisposeBag()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    configureFooter()
-    configureHeader()
-    configureDescription()
-  }
-  
-  func configureDescription() {
-    descriptionView.backgroundColor = UIColor.chsWhite
-    descriptionView.layoutMargins = UIEdgeInsets(top: 25, left: 20, bottom: 40, right: 20)
     
-    view.addSubview(descriptionView)
-    descriptionView <- [
-      Top().to(headerView),
-      Left(),
-      Right(),
-      Bottom().to(goButton)
-    ]
-    
-    descriptionLabel.text = descriptionLabelText
-    descriptionLabel.textAlignment = .center
-    descriptionLabel.font = UIFont.chsDescriptionFont()
-    
-    descriptionView.addSubview(descriptionLabel)
-    
-    descriptionLabel <- [
-      Top().to(descriptionView, .topMargin),
-      LeftMargin(),
-      RightMargin()
-    ]
-    
-    let stackView = UIStackView()
-    stackView.distribution = .fillEqually
-    stackView.spacing = 20
-    stackView.axis = .vertical
-    
-    descriptionView.addSubview(stackView)
-    stackView <- [
-      Top(20).to(descriptionLabel, .bottom),
-      Left().to(descriptionView, .leftMargin),
-      Right().to(descriptionView, .rightMargin),
-      Bottom().to(descriptionView, .bottomMargin)
-    ]
+    goButton.rx.tap.asDriver().drive(onNext: { _ in
+      self.navigationController?.pushViewController(CitySelectViewController.storyboardInstance()!, animated: true)
+    }).addDisposableTo(disposeBag)
     
     for (title, icon) in descriptionSteps {
-      let view = DescriptionListItemView(countImage: icon, information: title)
-      descriptionView.addSubview(view)
-      stackView.addArrangedSubview(view)
-      
+      if let descriptionListItemView = DescriptionListItemView.nibInstance() {
+        descriptionListItemView.configure(countImage: icon, information: title)
+        stackView.addArrangedSubview(descriptionListItemView)
+      }
     }
-    
-  }
-  
-  func configureHeader() {
-    headerView.backgroundColor = UIColor.chsSkyBlue
-    headerView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-    view.addSubview(headerView)
-    
-    headerView <- [
-      Top(),
-      Left(),
-      Right()
-    ]
-    
-    logoImage.image = #imageLiteral(resourceName: "logoWhite")
-    logoImage.contentMode = .scaleAspectFit
-    
-    headerView.addSubview(logoImage)
-    
-    logoImage <- [
-      CenterX().to(headerView),
-      Top(50).to(headerView)
-    ]
-    
-    logoSubTitleView.textColor = UIColor.white
-    
-    logoSubTitleView.text = subTitleViewText
-    logoSubTitleView.font = UIFont.preferredFont(forTextStyle: .subheadline)
-    logoSubTitleView.textAlignment = .center
-    logoSubTitleView.numberOfLines = 3
-    
-    headerView.addSubview(logoSubTitleView)
-    
-    logoSubTitleView <- [
-      Left().to(headerView, .leftMargin),
-      Right().to(headerView, .rightMargin),
-      Top(20).to(logoImage),
-      Bottom(20).to(headerView, .bottomMargin)
-    ]
-    
-  }
-  
-  func configureFooter() {
-    view.addSubview(goButton)
-    
-    goButton.backgroundColor = UIColor.chsSkyBlue
-    
-    goButton.titleLabel?.textColor = UIColor.white
-    goButton.setTitle(goButtonText, for: .normal)
-    goButton.rx.tap.asDriver().drive(onNext: {
-      self.navigationController?.pushViewController(CitySelectTableViewController(), animated: true)
-      }, onCompleted: nil, onDisposed: nil).addDisposableTo(disposeBag)
-    
-    goButton <- [
-      Bottom().to(view, .bottom),
-      Left(),
-      Right(),
-      Height(50)
-    ]
   }
   
   override func viewWillAppear(_ animated: Bool) {

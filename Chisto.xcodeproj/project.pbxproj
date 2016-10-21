@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88072D4E1DB967EF00B47D23 /* ItemInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88072D4D1DB967EF00B47D23 /* ItemInfoViewController.storyboard */; };
+		88072D501DB9695300B47D23 /* ItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88072D4F1DB9695200B47D23 /* ItemInfoViewController.swift */; };
+		88072D521DB9695E00B47D23 /* ItemInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88072D511DB9695E00B47D23 /* ItemInfoViewModel.swift */; };
+		88072D551DB9697700B47D23 /* ItemInfoTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88072D541DB9697700B47D23 /* ItemInfoTableViewCellModel.swift */; };
+		88072D571DB9698600B47D23 /* ItemInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88072D561DB9698600B47D23 /* ItemInfoTableViewCell.swift */; };
 		88073ED91DABE1E0000696A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073ED81DABE1E0000696A3 /* AppDelegate.swift */; };
 		88073EE01DABE1E0000696A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88073EDF1DABE1E0000696A3 /* Assets.xcassets */; };
 		88073EE31DABE1E0000696A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88073EE11DABE1E0000696A3 /* LaunchScreen.storyboard */; };
 		88073EEF1DAC1A23000696A3 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073EED1DAC1A23000696A3 /* OnBoardingViewController.swift */; };
-		88073EFC1DAC4661000696A3 /* CitySelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073EFB1DAC4661000696A3 /* CitySelectTableViewController.swift */; };
+		88073EFC1DAC4661000696A3 /* CitySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073EFB1DAC4661000696A3 /* CitySelectViewController.swift */; };
 		88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */; };
 		88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 88073F001DAD6E6F000696A3 /* .swiftlint.yml */; };
 		88073F031DAD6FCF000696A3 /* DescriptionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073F021DAD6FCF000696A3 /* DescriptionListItemView.swift */; };
@@ -20,34 +25,65 @@
 		8814C03C1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C03B1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift */; };
 		8814C03E1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C03D1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift */; };
 		8814C0401DAED9AC005B4967 /* CityNotFoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C03F1DAED9AC005B4967 /* CityNotFoundViewController.swift */; };
-		8814C0481DAF0EB4005B4967 /* EmptyOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0471DAF0EB4005B4967 /* EmptyOrderView.swift */; };
-		8814C04A1DAF12FE005B4967 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0491DAF12FE005B4967 /* OrderViewController.swift */; };
 		8814C04D1DAF159E005B4967 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C04C1DAF159E005B4967 /* OrderViewModel.swift */; };
-		8814C04F1DAF15DA005B4967 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C04E1DAF15DA005B4967 /* RootViewController.swift */; };
+		8814C04F1DAF15DA005B4967 /* ChistoNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C04E1DAF15DA005B4967 /* ChistoNavigationController.swift */; };
 		8814C0561DAFA7B5005B4967 /* BottomBorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0551DAFA7B5005B4967 /* BottomBorderedTextField.swift */; };
 		8814C0581DAFB0F2005B4967 /* CityNotFoundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0571DAFB0F1005B4967 /* CityNotFoundViewModel.swift */; };
 		8814C05A1DAFC96D005B4967 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0591DAFC96D005B4967 /* CategoriesViewController.swift */; };
 		8814C05E1DAFCF28005B4967 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C05C1DAFCF28005B4967 /* CategoryTableViewCell.swift */; };
-		8814C05F1DAFCF28005B4967 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8814C05D1DAFCF28005B4967 /* CategoryTableViewCell.xib */; };
 		8814C0611DAFEE7C005B4967 /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0601DAFEE7C005B4967 /* CategoriesViewModel.swift */; };
 		8814C0631DB03AD7005B4967 /* CategoryTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0621DB03AD7005B4967 /* CategoryTableViewCellModel.swift */; };
 		8814C0651DB03CBC005B4967 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0641DB03CBC005B4967 /* Fonts.swift */; };
 		8814C0671DB04AFB005B4967 /* RussianEnumEndings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */; };
-		8814C0691DB05792005B4967 /* KeyboardLayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0681DB05792005B4967 /* KeyboardLayoutGuide.swift */; };
 		8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */; };
+		882288141DB6D11C000642E0 /* RootViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882288131DB6D11C000642E0 /* RootViewController.storyboard */; };
+		882288161DB6D12C000642E0 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882288151DB6D12C000642E0 /* RootViewController.swift */; };
+		883760D11DB8D97500C9F506 /* OnBoardingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883760D01DB8D97500C9F506 /* OnBoardingNavigationController.swift */; };
+		883760D31DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */; };
+		883760D51DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 883760D41DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard */; };
+		885409B61DB23DEC00219C00 /* CitySelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409B51DB23DEB00219C00 /* CitySelectViewController.storyboard */; };
+		885409B81DB2582200219C00 /* CityNotFound.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409B71DB2582200219C00 /* CityNotFound.storyboard */; };
+		885409BA1DB25B5100219C00 /* GoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885409B91DB25B5100219C00 /* GoButton.swift */; };
+		885409C01DB2C76500219C00 /* OrderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409BF1DB2C76500219C00 /* OrderViewController.storyboard */; };
+		885409C31DB2E43300219C00 /* EmptyOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885409C21DB2E43300219C00 /* EmptyOrderView.swift */; };
+		885409C51DB2E55400219C00 /* CategoriesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409C41DB2E55400219C00 /* CategoriesViewController.storyboard */; };
+		885409C71DB2EC5D00219C00 /* UIButton+round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885409C61DB2EC5D00219C00 /* UIButton+round.swift */; };
 		88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */; };
+		88B0B5501DB1825500C7D0F7 /* OnBoardingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */; };
+		88B0B5521DB19C6E00C7D0F7 /* DescriptionListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B5511DB19C6E00C7D0F7 /* DescriptionListItemView.xib */; };
+		88D8ABBB1DB56E53009D515B /* SelectClothesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABBA1DB56E53009D515B /* SelectClothesViewController.swift */; };
+		88D8ABBD1DB56E89009D515B /* SelectClothesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABBC1DB56E89009D515B /* SelectClothesViewModel.swift */; };
+		88D8ABBF1DB56EB8009D515B /* SelectClothesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D8ABBE1DB56EB8009D515B /* SelectClothesViewController.storyboard */; };
+		88D8ABC21DB587CF009D515B /* SelectClothesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */; };
+		88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */; };
+		88DB32ED1DB4C86A00F9E000 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0491DAF12FE005B4967 /* OrderViewController.swift */; };
+		88E86DA61DB8E800002A7024 /* ServiceSelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E86DA11DB8E800002A7024 /* ServiceSelectViewController.storyboard */; };
+		88E86DA71DB8E800002A7024 /* ServiceSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */; };
+		88E86DA81DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA31DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift */; };
+		88E86DA91DB8E800002A7024 /* ServiceSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA41DB8E800002A7024 /* ServiceSelectViewController.swift */; };
+		88E86DAA1DB8E800002A7024 /* ServiceSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA51DB8E800002A7024 /* ServiceSelectViewModel.swift */; };
+		88E86DAE1DB90B4B002A7024 /* EmptyOrderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88E86DAD1DB90B4B002A7024 /* EmptyOrderView.xib */; };
+		88E86DB01DB90BD1002A7024 /* UIView+nibInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DAF1DB90BD1002A7024 /* UIView+nibInstance.swift */; };
+		88E86DB31DB916B3002A7024 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB21DB916B3002A7024 /* DataManager.swift */; };
+		88E86DB51DB91BAE002A7024 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB41DB91BAE002A7024 /* OrderTableViewCell.swift */; };
+		88E86DB71DB91BBA002A7024 /* OrderTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB61DB91BBA002A7024 /* OrderTableViewCellModel.swift */; };
 		CC63F0EA174EB55F7C1DD247 /* Pods_Chisto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D4403E4AD2DF4A42F5C8FA /* Pods_Chisto.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		40CC6F844478737C97DE22A8 /* Pods-Chisto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chisto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chisto/Pods-Chisto.debug.xcconfig"; sourceTree = "<group>"; };
+		88072D4D1DB967EF00B47D23 /* ItemInfoViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ItemInfoViewController.storyboard; sourceTree = "<group>"; };
+		88072D4F1DB9695200B47D23 /* ItemInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoViewController.swift; sourceTree = "<group>"; };
+		88072D511DB9695E00B47D23 /* ItemInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoViewModel.swift; sourceTree = "<group>"; };
+		88072D541DB9697700B47D23 /* ItemInfoTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoTableViewCellModel.swift; sourceTree = "<group>"; };
+		88072D561DB9698600B47D23 /* ItemInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoTableViewCell.swift; sourceTree = "<group>"; };
 		88073ED51DABE1E0000696A3 /* Chisto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chisto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88073ED81DABE1E0000696A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88073EDF1DABE1E0000696A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88073EE21DABE1E0000696A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88073EE41DABE1E0000696A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88073EED1DAC1A23000696A3 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
-		88073EFB1DAC4661000696A3 /* CitySelectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySelectTableViewController.swift; sourceTree = "<group>"; };
+		88073EFB1DAC4661000696A3 /* CitySelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySelectViewController.swift; sourceTree = "<group>"; };
 		88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySelectViewModel.swift; sourceTree = "<group>"; };
 		88073F001DAD6E6F000696A3 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		88073F021DAD6FCF000696A3 /* DescriptionListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionListItemView.swift; sourceTree = "<group>"; };
@@ -55,24 +91,50 @@
 		8814C0381DAE8F7F005B4967 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		8814C03B1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Rx.swift .swift"; sourceTree = "<group>"; };
 		8814C03D1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCLLocationManagerDelegateProxy.swift; sourceTree = "<group>"; };
-		8814C03F1DAED9AC005B4967 /* CityNotFoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityNotFoundViewController.swift; sourceTree = "<group>"; };
-		8814C0471DAF0EB4005B4967 /* EmptyOrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyOrderView.swift; sourceTree = "<group>"; };
+		8814C03F1DAED9AC005B4967 /* CityNotFoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityNotFoundViewController.swift; path = ../CitySelect/CityNotFoundViewController.swift; sourceTree = "<group>"; };
 		8814C0491DAF12FE005B4967 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		8814C04C1DAF159E005B4967 /* OrderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
-		8814C04E1DAF15DA005B4967 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		8814C04E1DAF15DA005B4967 /* ChistoNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChistoNavigationController.swift; sourceTree = "<group>"; };
 		8814C0551DAFA7B5005B4967 /* BottomBorderedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomBorderedTextField.swift; sourceTree = "<group>"; };
-		8814C0571DAFB0F1005B4967 /* CityNotFoundViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityNotFoundViewModel.swift; sourceTree = "<group>"; };
+		8814C0571DAFB0F1005B4967 /* CityNotFoundViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityNotFoundViewModel.swift; path = ../CitySelect/CityNotFoundViewModel.swift; sourceTree = "<group>"; };
 		8814C0591DAFC96D005B4967 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		8814C05C1DAFCF28005B4967 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
-		8814C05D1DAFCF28005B4967 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
 		8814C0601DAFEE7C005B4967 /* CategoriesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		8814C0621DB03AD7005B4967 /* CategoryTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCellModel.swift; sourceTree = "<group>"; };
 		8814C0641DB03CBC005B4967 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RussianEnumEndings.swift; sourceTree = "<group>"; };
-		8814C0681DB05792005B4967 /* KeyboardLayoutGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutGuide.swift; sourceTree = "<group>"; };
 		8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHideOutside.swift; sourceTree = "<group>"; };
+		882288131DB6D11C000642E0 /* RootViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootViewController.storyboard; sourceTree = "<group>"; };
+		882288151DB6D12C000642E0 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		883760D01DB8D97500C9F506 /* OnBoardingNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingNavigationController.swift; sourceTree = "<group>"; };
+		883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+StoryboardInstance.swift"; sourceTree = "<group>"; };
+		883760D41DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoardingNavigationController.storyboard; sourceTree = "<group>"; };
+		885409B51DB23DEB00219C00 /* CitySelectViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CitySelectViewController.storyboard; sourceTree = "<group>"; };
+		885409B71DB2582200219C00 /* CityNotFound.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CityNotFound.storyboard; path = ../CitySelect/CityNotFound.storyboard; sourceTree = "<group>"; };
+		885409B91DB25B5100219C00 /* GoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoButton.swift; sourceTree = "<group>"; };
+		885409BF1DB2C76500219C00 /* OrderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderViewController.storyboard; sourceTree = "<group>"; };
+		885409C21DB2E43300219C00 /* EmptyOrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyOrderView.swift; sourceTree = "<group>"; };
+		885409C41DB2E55400219C00 /* CategoriesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CategoriesViewController.storyboard; sourceTree = "<group>"; };
+		885409C61DB2EC5D00219C00 /* UIButton+round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+round.swift"; sourceTree = "<group>"; };
 		88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSearchBarTextColor.swift; sourceTree = "<group>"; };
+		88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoardingViewController.storyboard; sourceTree = "<group>"; };
+		88B0B5511DB19C6E00C7D0F7 /* DescriptionListItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionListItemView.xib; sourceTree = "<group>"; };
 		88D4403E4AD2DF4A42F5C8FA /* Pods_Chisto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chisto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88D8ABBA1DB56E53009D515B /* SelectClothesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectClothesViewController.swift; path = SelectClothes/SelectClothesViewController.swift; sourceTree = "<group>"; };
+		88D8ABBC1DB56E89009D515B /* SelectClothesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClothesViewModel.swift; sourceTree = "<group>"; };
+		88D8ABBE1DB56EB8009D515B /* SelectClothesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectClothesViewController.storyboard; sourceTree = "<group>"; };
+		88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectClothesTableViewCell.swift; path = SelectClothes/Views/SelectClothesTableViewCell.swift; sourceTree = "<group>"; };
+		88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClothesTableViewCellModel.swift; sourceTree = "<group>"; };
+		88E86DA11DB8E800002A7024 /* ServiceSelectViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ServiceSelectViewController.storyboard; sourceTree = "<group>"; };
+		88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectTableViewCell.swift; sourceTree = "<group>"; };
+		88E86DA31DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectTableViewCellModel.swift; sourceTree = "<group>"; };
+		88E86DA41DB8E800002A7024 /* ServiceSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectViewController.swift; sourceTree = "<group>"; };
+		88E86DA51DB8E800002A7024 /* ServiceSelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectViewModel.swift; sourceTree = "<group>"; };
+		88E86DAD1DB90B4B002A7024 /* EmptyOrderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyOrderView.xib; sourceTree = "<group>"; };
+		88E86DAF1DB90BD1002A7024 /* UIView+nibInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+nibInstance.swift"; sourceTree = "<group>"; };
+		88E86DB21DB916B3002A7024 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		88E86DB41DB91BAE002A7024 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
+		88E86DB61DB91BBA002A7024 /* OrderTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewCellModel.swift; sourceTree = "<group>"; };
 		EA8A37CB3EB7F2EEDB9E26D5 /* Pods-Chisto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chisto.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chisto/Pods-Chisto.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +157,26 @@
 				EA8A37CB3EB7F2EEDB9E26D5 /* Pods-Chisto.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		88072D4C1DB967D400B47D23 /* ItemInfo */ = {
+			isa = PBXGroup;
+			children = (
+				88072D531DB9696000B47D23 /* Views */,
+				88072D4D1DB967EF00B47D23 /* ItemInfoViewController.storyboard */,
+				88072D4F1DB9695200B47D23 /* ItemInfoViewController.swift */,
+				88072D511DB9695E00B47D23 /* ItemInfoViewModel.swift */,
+			);
+			name = ItemInfo;
+			sourceTree = "<group>";
+		};
+		88072D531DB9696000B47D23 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				88072D541DB9697700B47D23 /* ItemInfoTableViewCellModel.swift */,
+				88072D561DB9698600B47D23 /* ItemInfoTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		88073ECC1DABE1E0000696A3 = {
@@ -135,12 +217,17 @@
 		88073EEC1DAC19E1000696A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8814C04E1DAF15DA005B4967 /* ChistoNavigationController.swift */,
+				88072D4C1DB967D400B47D23 /* ItemInfo */,
+				88E86DA01DB8E7D8002A7024 /* ServiceSelect */,
+				882288121DB6D0FA000642E0 /* Root */,
+				88D8ABB91DB56E09009D515B /* SelectClothes */,
+				885409C11DB2C76B00219C00 /* CityNotFound */,
 				8814C0501DAF2A58005B4967 /* Categories */,
 				88073EF71DAC26EA000696A3 /* CitySelect */,
 				8814C0541DAFA5A2005B4967 /* Common */,
 				88073EF31DAC1CBE000696A3 /* Onboarding */,
 				8814C0441DAF0E89005B4967 /* Order */,
-				8814C04E1DAF15DA005B4967 /* RootViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -148,6 +235,7 @@
 		88073EF11DAC1B3E000696A3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				88E86DB11DB91695002A7024 /* DataManager */,
 				88073EF21DAC1B4A000696A3 /* Models */,
 			);
 			path = Data;
@@ -165,6 +253,9 @@
 			children = (
 				88073EF61DAC26E2000696A3 /* Views */,
 				88073EED1DAC1A23000696A3 /* OnBoardingViewController.swift */,
+				88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */,
+				883760D01DB8D97500C9F506 /* OnBoardingNavigationController.swift */,
+				883760D41DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -173,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				88073F021DAD6FCF000696A3 /* DescriptionListItemView.swift */,
+				88B0B5511DB19C6E00C7D0F7 /* DescriptionListItemView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -180,10 +272,9 @@
 		88073EF71DAC26EA000696A3 /* CitySelect */ = {
 			isa = PBXGroup;
 			children = (
-				8814C03F1DAED9AC005B4967 /* CityNotFoundViewController.swift */,
-				8814C0571DAFB0F1005B4967 /* CityNotFoundViewModel.swift */,
-				88073EFB1DAC4661000696A3 /* CitySelectTableViewController.swift */,
+				88073EFB1DAC4661000696A3 /* CitySelectViewController.swift */,
 				88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */,
+				885409B51DB23DEB00219C00 /* CitySelectViewController.storyboard */,
 			);
 			path = CitySelect;
 			sourceTree = "<group>";
@@ -221,6 +312,7 @@
 				8814C0461DAF0E99005B4967 /* Views */,
 				8814C0491DAF12FE005B4967 /* OrderViewController.swift */,
 				8814C04C1DAF159E005B4967 /* OrderViewModel.swift */,
+				885409BF1DB2C76500219C00 /* OrderViewController.storyboard */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -228,7 +320,10 @@
 		8814C0461DAF0E99005B4967 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8814C0471DAF0EB4005B4967 /* EmptyOrderView.swift */,
+				885409C21DB2E43300219C00 /* EmptyOrderView.swift */,
+				88E86DAD1DB90B4B002A7024 /* EmptyOrderView.xib */,
+				88E86DB41DB91BAE002A7024 /* OrderTableViewCell.swift */,
+				88E86DB61DB91BBA002A7024 /* OrderTableViewCellModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -236,9 +331,10 @@
 		8814C0501DAF2A58005B4967 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				8814C05B1DAFCED7005B4967 /* Views */,
 				8814C0591DAFC96D005B4967 /* CategoriesViewController.swift */,
+				885409C41DB2E55400219C00 /* CategoriesViewController.storyboard */,
 				8814C0601DAFEE7C005B4967 /* CategoriesViewModel.swift */,
+				8814C05B1DAFCED7005B4967 /* Views */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -248,8 +344,11 @@
 			children = (
 				8814C0551DAFA7B5005B4967 /* BottomBorderedTextField.swift */,
 				8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */,
-				8814C0681DB05792005B4967 /* KeyboardLayoutGuide.swift */,
 				88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */,
+				885409B91DB25B5100219C00 /* GoButton.swift */,
+				885409C61DB2EC5D00219C00 /* UIButton+round.swift */,
+				883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */,
+				88E86DAF1DB90BD1002A7024 /* UIView+nibInstance.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -258,10 +357,77 @@
 			isa = PBXGroup;
 			children = (
 				8814C05C1DAFCF28005B4967 /* CategoryTableViewCell.swift */,
-				8814C05D1DAFCF28005B4967 /* CategoryTableViewCell.xib */,
 				8814C0621DB03AD7005B4967 /* CategoryTableViewCellModel.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		882288121DB6D0FA000642E0 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				882288131DB6D11C000642E0 /* RootViewController.storyboard */,
+				882288151DB6D12C000642E0 /* RootViewController.swift */,
+			);
+			name = Root;
+			sourceTree = "<group>";
+		};
+		885409C11DB2C76B00219C00 /* CityNotFound */ = {
+			isa = PBXGroup;
+			children = (
+				8814C03F1DAED9AC005B4967 /* CityNotFoundViewController.swift */,
+				885409B71DB2582200219C00 /* CityNotFound.storyboard */,
+				8814C0571DAFB0F1005B4967 /* CityNotFoundViewModel.swift */,
+			);
+			name = CityNotFound;
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		88D8ABB91DB56E09009D515B /* SelectClothes */ = {
+			isa = PBXGroup;
+			children = (
+				88D8ABC01DB58794009D515B /* Views */,
+				88D8ABBA1DB56E53009D515B /* SelectClothesViewController.swift */,
+				88D8ABBC1DB56E89009D515B /* SelectClothesViewModel.swift */,
+				88D8ABBE1DB56EB8009D515B /* SelectClothesViewController.storyboard */,
+			);
+			name = SelectClothes;
+			sourceTree = "<group>";
+		};
+		88D8ABC01DB58794009D515B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */,
+				88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		88E86DA01DB8E7D8002A7024 /* ServiceSelect */ = {
+			isa = PBXGroup;
+			children = (
+				88E86DAB1DB8E803002A7024 /* Views */,
+				88E86DA11DB8E800002A7024 /* ServiceSelectViewController.storyboard */,
+				88E86DA41DB8E800002A7024 /* ServiceSelectViewController.swift */,
+				88E86DA51DB8E800002A7024 /* ServiceSelectViewModel.swift */,
+			);
+			name = ServiceSelect;
+			sourceTree = "<group>";
+		};
+		88E86DAB1DB8E803002A7024 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */,
+				88E86DA31DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		88E86DB11DB91695002A7024 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				88E86DB21DB916B3002A7024 /* DataManager.swift */,
+			);
+			name = DataManager;
 			sourceTree = "<group>";
 		};
 		E86E04D5222457AEB97ED2EC /* Frameworks */ = {
@@ -336,10 +502,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				885409C51DB2E55400219C00 /* CategoriesViewController.storyboard in Resources */,
+				885409B61DB23DEC00219C00 /* CitySelectViewController.storyboard in Resources */,
 				88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */,
+				883760D51DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard in Resources */,
+				88B0B5521DB19C6E00C7D0F7 /* DescriptionListItemView.xib in Resources */,
+				88072D4E1DB967EF00B47D23 /* ItemInfoViewController.storyboard in Resources */,
+				88B0B5501DB1825500C7D0F7 /* OnBoardingViewController.storyboard in Resources */,
+				885409C01DB2C76500219C00 /* OrderViewController.storyboard in Resources */,
+				88E86DA61DB8E800002A7024 /* ServiceSelectViewController.storyboard in Resources */,
+				88D8ABBF1DB56EB8009D515B /* SelectClothesViewController.storyboard in Resources */,
+				88E86DAE1DB90B4B002A7024 /* EmptyOrderView.xib in Resources */,
+				885409B81DB2582200219C00 /* CityNotFound.storyboard in Resources */,
 				88073EE31DABE1E0000696A3 /* LaunchScreen.storyboard in Resources */,
 				88073EE01DABE1E0000696A3 /* Assets.xcassets in Resources */,
-				8814C05F1DAFCF28005B4967 /* CategoryTableViewCell.xib in Resources */,
+				882288141DB6D11C000642E0 /* RootViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,31 +588,51 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88D8ABBB1DB56E53009D515B /* SelectClothesViewController.swift in Sources */,
+				88E86DB01DB90BD1002A7024 /* UIView+nibInstance.swift in Sources */,
 				88073EEF1DAC1A23000696A3 /* OnBoardingViewController.swift in Sources */,
 				8814C0331DAD8123005B4967 /* Colors.swift in Sources */,
+				88E86DAA1DB8E800002A7024 /* ServiceSelectViewModel.swift in Sources */,
 				8814C0611DAFEE7C005B4967 /* CategoriesViewModel.swift in Sources */,
+				88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */,
+				88072D571DB9698600B47D23 /* ItemInfoTableViewCell.swift in Sources */,
 				8814C05A1DAFC96D005B4967 /* CategoriesViewController.swift in Sources */,
-				8814C04A1DAF12FE005B4967 /* OrderViewController.swift in Sources */,
-				88073EFC1DAC4661000696A3 /* CitySelectTableViewController.swift in Sources */,
-				8814C04F1DAF15DA005B4967 /* RootViewController.swift in Sources */,
+				88072D551DB9697700B47D23 /* ItemInfoTableViewCellModel.swift in Sources */,
+				88073EFC1DAC4661000696A3 /* CitySelectViewController.swift in Sources */,
+				8814C04F1DAF15DA005B4967 /* ChistoNavigationController.swift in Sources */,
 				88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */,
 				8814C0651DB03CBC005B4967 /* Fonts.swift in Sources */,
-				8814C0691DB05792005B4967 /* KeyboardLayoutGuide.swift in Sources */,
 				8814C04D1DAF159E005B4967 /* OrderViewModel.swift in Sources */,
+				883760D31DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift in Sources */,
 				8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */,
 				8814C0401DAED9AC005B4967 /* CityNotFoundViewController.swift in Sources */,
-				8814C0481DAF0EB4005B4967 /* EmptyOrderView.swift in Sources */,
 				8814C0631DB03AD7005B4967 /* CategoryTableViewCellModel.swift in Sources */,
+				88D8ABC21DB587CF009D515B /* SelectClothesTableViewCell.swift in Sources */,
+				88E86DA71DB8E800002A7024 /* ServiceSelectTableViewCell.swift in Sources */,
 				88073F031DAD6FCF000696A3 /* DescriptionListItemView.swift in Sources */,
 				8814C0671DB04AFB005B4967 /* RussianEnumEndings.swift in Sources */,
+				88072D521DB9695E00B47D23 /* ItemInfoViewModel.swift in Sources */,
 				8814C0581DAFB0F2005B4967 /* CityNotFoundViewModel.swift in Sources */,
+				88DB32ED1DB4C86A00F9E000 /* OrderViewController.swift in Sources */,
 				88073ED91DABE1E0000696A3 /* AppDelegate.swift in Sources */,
+				882288161DB6D12C000642E0 /* RootViewController.swift in Sources */,
 				8814C03E1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift in Sources */,
+				88E86DB71DB91BBA002A7024 /* OrderTableViewCellModel.swift in Sources */,
+				88E86DB51DB91BAE002A7024 /* OrderTableViewCell.swift in Sources */,
+				88E86DA91DB8E800002A7024 /* ServiceSelectViewController.swift in Sources */,
+				883760D11DB8D97500C9F506 /* OnBoardingNavigationController.swift in Sources */,
 				8814C05E1DAFCF28005B4967 /* CategoryTableViewCell.swift in Sources */,
+				885409BA1DB25B5100219C00 /* GoButton.swift in Sources */,
 				88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */,
 				8814C0561DAFA7B5005B4967 /* BottomBorderedTextField.swift in Sources */,
+				885409C31DB2E43300219C00 /* EmptyOrderView.swift in Sources */,
 				8814C0391DAE8F7F005B4967 /* LocationManager.swift in Sources */,
+				88D8ABBD1DB56E89009D515B /* SelectClothesViewModel.swift in Sources */,
+				88072D501DB9695300B47D23 /* ItemInfoViewController.swift in Sources */,
+				88E86DA81DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift in Sources */,
 				8814C03C1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift in Sources */,
+				88E86DB31DB916B3002A7024 /* DataManager.swift in Sources */,
+				885409C71DB2EC5D00219C00 /* UIButton+round.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,7 +752,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 4WGG8V34K4;
 				INFOPLIST_FILE = Chisto/Info.plist;
@@ -574,7 +771,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 4WGG8V34K4;
 				INFOPLIST_FILE = Chisto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;

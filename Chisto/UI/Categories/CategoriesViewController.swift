@@ -7,60 +7,51 @@
 //
 
 import UIKit
-import EasyPeasy
 import RxDataSources
 import RxSwift
 
-class CategoriesViewController: UIViewController, UIScrollViewDelegate {
+class CategoriesViewController: UITableViewController, DefaultBarColoredViewController {
   
   var dataSource = RxTableViewSectionedReloadDataSource<CategoriesSectionModel>()
   let viewModel = CategoriesViewModel()
   let disposeBag = DisposeBag()
-  let tableView = UITableView()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     navigationItem.title = viewModel.navigationBarTitle
-    
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     configureTableView()
   }
   
   func configureTableView() {
-    // UI
-    tableView.backgroundColor = UIColor.chsWhite
-    tableView.bounces = false
-    tableView.alwaysBounceVertical = false
-    
-    view.addSubview(tableView)
-    tableView <- [
-      Edges()
-    ]
-    
-    tableView.register(UINib(nibName: "CategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CategoryCell")
     
     // Bindings
     dataSource.configureCell = { _, tableView, indexPath, cellViewModel in
-      let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
+      let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTableViewCell", for: indexPath) as! CategoryTableViewCell
       
       cell.configure(viewModel: cellViewModel)
       return cell
     }
-    
+        
     tableView.delegate = nil
-    tableView.rx.setDelegate(self).addDisposableTo(disposeBag)
+    tableView.rx
+      .setDelegate(self)
+      .addDisposableTo(disposeBag)
     
-    tableView.rx.itemSelected.bindTo(viewModel.itemDidSelect).addDisposableTo(disposeBag)
+    tableView.rx.itemSelected
+      .bindTo(viewModel.itemDidSelect)
+      .addDisposableTo(disposeBag)
     
     tableView.dataSource = nil
     viewModel.sections
-      .drive(self.tableView.rx.items(dataSource: self.dataSource))
+      .drive(tableView.rx.items(dataSource: dataSource))
       .addDisposableTo(self.disposeBag)
     
+    viewModel.presentItemsSection.drive(onNext: { [weak self] viewModel in
+      let viewController = SelectClothesViewController.storyboardInstance()!
+      viewController.viewModel = viewModel
+      self?.navigationController?.pushViewController(viewController, animated: true)
+    }).addDisposableTo(disposeBag)
   }
-}
 
-extension CategoriesViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 80
-  }
 }
