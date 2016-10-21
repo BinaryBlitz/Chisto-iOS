@@ -57,8 +57,10 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
   
   let disposeBag = DisposeBag()
   
-  init(item: ClothesItem) {
-    self.itemTitle = item.name
+  init(item: OrderItem, isNew: Bool = true) {
+    let clothesItem = item.clothesItem
+    
+    self.itemTitle = clothesItem.name
     self.color = UIColor.chsRosePink
     
     let defaultServices = [
@@ -71,7 +73,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
     let services = Variable<[Service]>(defaultServices)
     self.services = services
     
-    let selectedServicesIds = Variable<[String]>([])
+    let selectedServicesIds = Variable<[String]>(item.services.value.map { $0.id })
     self.selectedServicesIds = selectedServicesIds
     
     self.sections = services.asDriver().map { services in
@@ -82,8 +84,10 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
     
     self.presentOrderSection = readyButtonTapped.asObservable().map {
       let services = services.value.filter { selectedServicesIds.value.index(of: $0.id) != nil }
-      let newOrderItem = OrderItem(clothesItem: item, services: services)
-      DataManager.instance.currentOrderItems.value.append(newOrderItem)
+      item.services.value = services
+      if isNew {
+        DataManager.instance.currentOrderItems.value.append(item)
+      }
     }.asDriver(onErrorDriveWith: .empty())
 
     
@@ -98,11 +102,6 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
       self.selectedServicesIds.value.remove(at: index)
     }).addDisposableTo(disposeBag)
     
-<<<<<<< 28e929735ab720ebfc6c619dfbbc6be43a29db2f
-=======
-    
-    
->>>>>>> Add order table
   }
 
 }

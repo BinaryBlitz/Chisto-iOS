@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88072D4E1DB967EF00B47D23 /* ItemInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88072D4D1DB967EF00B47D23 /* ItemInfoViewController.storyboard */; };
+		88072D501DB9695300B47D23 /* ItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88072D4F1DB9695200B47D23 /* ItemInfoViewController.swift */; };
+		88072D521DB9695E00B47D23 /* ItemInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88072D511DB9695E00B47D23 /* ItemInfoViewModel.swift */; };
+		88072D551DB9697700B47D23 /* ItemInfoTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88072D541DB9697700B47D23 /* ItemInfoTableViewCellModel.swift */; };
+		88072D571DB9698600B47D23 /* ItemInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88072D561DB9698600B47D23 /* ItemInfoTableViewCell.swift */; };
 		88073ED91DABE1E0000696A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073ED81DABE1E0000696A3 /* AppDelegate.swift */; };
 		88073EE01DABE1E0000696A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88073EDF1DABE1E0000696A3 /* Assets.xcassets */; };
 		88073EE31DABE1E0000696A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88073EE11DABE1E0000696A3 /* LaunchScreen.storyboard */; };
@@ -67,6 +72,11 @@
 
 /* Begin PBXFileReference section */
 		40CC6F844478737C97DE22A8 /* Pods-Chisto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chisto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chisto/Pods-Chisto.debug.xcconfig"; sourceTree = "<group>"; };
+		88072D4D1DB967EF00B47D23 /* ItemInfoViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ItemInfoViewController.storyboard; sourceTree = "<group>"; };
+		88072D4F1DB9695200B47D23 /* ItemInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoViewController.swift; sourceTree = "<group>"; };
+		88072D511DB9695E00B47D23 /* ItemInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoViewModel.swift; sourceTree = "<group>"; };
+		88072D541DB9697700B47D23 /* ItemInfoTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoTableViewCellModel.swift; sourceTree = "<group>"; };
+		88072D561DB9698600B47D23 /* ItemInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoTableViewCell.swift; sourceTree = "<group>"; };
 		88073ED51DABE1E0000696A3 /* Chisto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chisto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88073ED81DABE1E0000696A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88073EDF1DABE1E0000696A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -149,6 +159,26 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		88072D4C1DB967D400B47D23 /* ItemInfo */ = {
+			isa = PBXGroup;
+			children = (
+				88072D531DB9696000B47D23 /* Views */,
+				88072D4D1DB967EF00B47D23 /* ItemInfoViewController.storyboard */,
+				88072D4F1DB9695200B47D23 /* ItemInfoViewController.swift */,
+				88072D511DB9695E00B47D23 /* ItemInfoViewModel.swift */,
+			);
+			name = ItemInfo;
+			sourceTree = "<group>";
+		};
+		88072D531DB9696000B47D23 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				88072D541DB9697700B47D23 /* ItemInfoTableViewCellModel.swift */,
+				88072D561DB9698600B47D23 /* ItemInfoTableViewCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		88073ECC1DABE1E0000696A3 = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +217,7 @@
 		88073EEC1DAC19E1000696A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				88072D4C1DB967D400B47D23 /* ItemInfo */,
 				88E86DA01DB8E7D8002A7024 /* ServiceSelect */,
 				8814C04E1DAF15DA005B4967 /* ChistoNavigationController.swift */,
 				882288121DB6D0FA000642E0 /* Root */,
@@ -476,6 +507,7 @@
 				88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */,
 				883760D51DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard in Resources */,
 				88B0B5521DB19C6E00C7D0F7 /* DescriptionListItemView.xib in Resources */,
+				88072D4E1DB967EF00B47D23 /* ItemInfoViewController.storyboard in Resources */,
 				88B0B5501DB1825500C7D0F7 /* OnBoardingViewController.storyboard in Resources */,
 				885409C01DB2C76500219C00 /* OrderViewController.storyboard in Resources */,
 				88E86DA61DB8E800002A7024 /* ServiceSelectViewController.storyboard in Resources */,
@@ -563,7 +595,9 @@
 				88E86DAA1DB8E800002A7024 /* ServiceSelectViewModel.swift in Sources */,
 				8814C0611DAFEE7C005B4967 /* CategoriesViewModel.swift in Sources */,
 				88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */,
+				88072D571DB9698600B47D23 /* ItemInfoTableViewCell.swift in Sources */,
 				8814C05A1DAFC96D005B4967 /* CategoriesViewController.swift in Sources */,
+				88072D551DB9697700B47D23 /* ItemInfoTableViewCellModel.swift in Sources */,
 				88073EFC1DAC4661000696A3 /* CitySelectViewController.swift in Sources */,
 				8814C04F1DAF15DA005B4967 /* ChistoNavigationController.swift in Sources */,
 				88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */,
@@ -577,6 +611,7 @@
 				88E86DA71DB8E800002A7024 /* ServiceSelectTableViewCell.swift in Sources */,
 				88073F031DAD6FCF000696A3 /* DescriptionListItemView.swift in Sources */,
 				8814C0671DB04AFB005B4967 /* RussianEnumEndings.swift in Sources */,
+				88072D521DB9695E00B47D23 /* ItemInfoViewModel.swift in Sources */,
 				8814C0581DAFB0F2005B4967 /* CityNotFoundViewModel.swift in Sources */,
 				88DB32ED1DB4C86A00F9E000 /* OrderViewController.swift in Sources */,
 				88073ED91DABE1E0000696A3 /* AppDelegate.swift in Sources */,
@@ -593,6 +628,7 @@
 				885409C31DB2E43300219C00 /* EmptyOrderView.swift in Sources */,
 				8814C0391DAE8F7F005B4967 /* LocationManager.swift in Sources */,
 				88D8ABBD1DB56E89009D515B /* SelectClothesViewModel.swift in Sources */,
+				88072D501DB9695300B47D23 /* ItemInfoViewController.swift in Sources */,
 				88E86DA81DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift in Sources */,
 				8814C03C1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift in Sources */,
 				88E86DB31DB916B3002A7024 /* DataManager.swift in Sources */,

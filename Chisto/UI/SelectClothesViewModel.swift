@@ -70,8 +70,9 @@ class SelectClothesViewModel: SelectClothesViewModelType {
     }
     
     self.presentSelectServiceSection = itemDidSelect.map{ indexPath in
-      let item = clothesItems.value[indexPath.row]
-      return ServiceSelectViewModel(item: item)
+      let clothesItem = clothesItems.value[indexPath.row]
+      let orderItem = OrderItem(clothesItem: clothesItem, services: [])
+      return ServiceSelectViewModel(item: orderItem)
     }.asDriver(onErrorDriveWith: .empty())
     
   }

@@ -12,11 +12,11 @@ import RxCocoa
 
 class OrderItem {
   var clothesItem: ClothesItem
-  var services: [Service]
+  var services: Variable<[Service]>
   var amount: Int
   init (clothesItem: ClothesItem, services: [Service], amount: Int = 1) {
     self.clothesItem = clothesItem
-    self.services = services
+    self.services = Variable<[Service]>(services)
     self.amount = amount
   }
 }
