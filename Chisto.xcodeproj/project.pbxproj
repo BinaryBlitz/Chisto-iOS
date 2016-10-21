@@ -42,7 +42,7 @@
 		883760D31DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */; };
 		883760D51DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 883760D41DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard */; };
 		885409B61DB23DEC00219C00 /* CitySelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409B51DB23DEB00219C00 /* CitySelectViewController.storyboard */; };
-		885409B81DB2582200219C00 /* CityNotFound.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409B71DB2582200219C00 /* CityNotFound.storyboard */; };
+		885409B81DB2582200219C00 /* CityNotFoundViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409B71DB2582200219C00 /* CityNotFoundViewController.storyboard */; };
 		885409BA1DB25B5100219C00 /* GoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885409B91DB25B5100219C00 /* GoButton.swift */; };
 		885409C01DB2C76500219C00 /* OrderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409BF1DB2C76500219C00 /* OrderViewController.storyboard */; };
 		885409C31DB2E43300219C00 /* EmptyOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885409C21DB2E43300219C00 /* EmptyOrderView.swift */; };
@@ -110,7 +110,7 @@
 		883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+StoryboardInstance.swift"; sourceTree = "<group>"; };
 		883760D41DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoardingNavigationController.storyboard; sourceTree = "<group>"; };
 		885409B51DB23DEB00219C00 /* CitySelectViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CitySelectViewController.storyboard; sourceTree = "<group>"; };
-		885409B71DB2582200219C00 /* CityNotFound.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CityNotFound.storyboard; path = ../CitySelect/CityNotFound.storyboard; sourceTree = "<group>"; };
+		885409B71DB2582200219C00 /* CityNotFoundViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CityNotFoundViewController.storyboard; path = ../CitySelect/CityNotFoundViewController.storyboard; sourceTree = "<group>"; };
 		885409B91DB25B5100219C00 /* GoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoButton.swift; sourceTree = "<group>"; };
 		885409BF1DB2C76500219C00 /* OrderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderViewController.storyboard; sourceTree = "<group>"; };
 		885409C21DB2E43300219C00 /* EmptyOrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyOrderView.swift; sourceTree = "<group>"; };
@@ -375,7 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				8814C03F1DAED9AC005B4967 /* CityNotFoundViewController.swift */,
-				885409B71DB2582200219C00 /* CityNotFound.storyboard */,
+				885409B71DB2582200219C00 /* CityNotFoundViewController.storyboard */,
 				8814C0571DAFB0F1005B4967 /* CityNotFoundViewModel.swift */,
 			);
 			name = CityNotFound;
@@ -513,7 +513,7 @@
 				88E86DA61DB8E800002A7024 /* ServiceSelectViewController.storyboard in Resources */,
 				88D8ABBF1DB56EB8009D515B /* SelectClothesViewController.storyboard in Resources */,
 				88E86DAE1DB90B4B002A7024 /* EmptyOrderView.xib in Resources */,
-				885409B81DB2582200219C00 /* CityNotFound.storyboard in Resources */,
+				885409B81DB2582200219C00 /* CityNotFoundViewController.storyboard in Resources */,
 				88073EE31DABE1E0000696A3 /* LaunchScreen.storyboard in Resources */,
 				88073EE01DABE1E0000696A3 /* Assets.xcassets in Resources */,
 				882288141DB6D11C000642E0 /* RootViewController.storyboard in Resources */,
