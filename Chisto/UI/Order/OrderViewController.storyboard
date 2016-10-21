@@ -43,12 +43,8 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Clw-dG-aPm" id="Vl8-Z8-yhd">
-<<<<<<< 270c127662bad844f97c62b26eda7735b2a16e67
-                                            <frame key="frameInset" width="375" height="74.5"/>                                            <autoresizingMask key="autoresizingMask"/>
-=======
                                             <frame key="frameInset" width="375" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
->>>>>>> Fix Interface Builder error
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lJX-Jv-qWW">
                                                     <constraints>
