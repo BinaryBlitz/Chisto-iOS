@@ -72,7 +72,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="NGO-uC-ZeS"/>
                                 </constraints>
-                                <state key="normal" title="Продолжить">
+                                <state key="normal" title="Сохранить">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -104,7 +104,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="oXX-zo-w1V" secondAttribute="trailing" id="BJj-TH-iXt"/>
                                                         <constraint firstItem="oXX-zo-w1V" firstAttribute="top" secondItem="Uki-FF-MTw" secondAttribute="bottom" constant="3" id="IGi-6I-Ykh"/>
@@ -127,6 +127,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="ZZS-IZ-Are" firstAttribute="centerY" secondItem="siK-9C-TpK" secondAttribute="centerY" id="11v-s2-Cjg"/>
                                                 <constraint firstItem="ZZS-IZ-Are" firstAttribute="leading" secondItem="9TA-nn-oVP" secondAttribute="trailing" constant="15" id="1gF-b7-ue0"/>
@@ -137,6 +138,7 @@
                                                 <constraint firstItem="9TA-nn-oVP" firstAttribute="centerY" secondItem="siK-9C-TpK" secondAttribute="centerY" id="yvM-0w-tRh"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="serviceCountLabel" destination="mJH-rA-zdI" id="f8U-Kt-ZvN"/>
                                             <outlet property="serviceDescriptionLabel" destination="oXX-zo-w1V" id="ol2-Ii-KU0"/>
@@ -224,6 +226,7 @@
                         <outlet property="counterDecButton" destination="tSa-II-5k3" id="TOJ-Ns-c9B"/>
                         <outlet property="counterIncButton" destination="GhU-Cv-o6d" id="TYB-D0-hOg"/>
                         <outlet property="counterLabel" destination="ISG-3X-q9u" id="evB-bl-5Id"/>
+                        <outlet property="headerView" destination="VhS-lG-PH8" id="Bkg-f0-M9v"/>
                         <outlet property="tableView" destination="Zp4-2K-8i5" id="2Me-hn-1HW"/>
                     </connections>
                 </viewController>

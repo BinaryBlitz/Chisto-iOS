@@ -217,9 +217,9 @@
 		88073EEC1DAC19E1000696A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8814C04E1DAF15DA005B4967 /* ChistoNavigationController.swift */,
 				88072D4C1DB967D400B47D23 /* ItemInfo */,
 				88E86DA01DB8E7D8002A7024 /* ServiceSelect */,
-				8814C04E1DAF15DA005B4967 /* ChistoNavigationController.swift */,
 				882288121DB6D0FA000642E0 /* Root */,
 				88D8ABB91DB56E09009D515B /* SelectClothes */,
 				885409C11DB2C76B00219C00 /* CityNotFound */,

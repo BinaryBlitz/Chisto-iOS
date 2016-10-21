@@ -59,7 +59,6 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
   
   init(item: OrderItem, isNew: Bool = true) {
     let clothesItem = item.clothesItem
-    
     self.itemTitle = clothesItem.name
     self.color = UIColor.chsRosePink
     
@@ -73,7 +72,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
     let services = Variable<[Service]>(defaultServices)
     self.services = services
     
-    let selectedServicesIds = Variable<[String]>(item.services.value.map { $0.id })
+    let selectedServicesIds = Variable<[String]>(item.services.map { $0.id })
     self.selectedServicesIds = selectedServicesIds
     
     self.sections = services.asDriver().map { services in
@@ -84,7 +83,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
     
     self.presentOrderSection = readyButtonTapped.asObservable().map {
       let services = services.value.filter { selectedServicesIds.value.index(of: $0.id) != nil }
-      item.services.value = services
+      item.services = services
       if isNew {
         DataManager.instance.currentOrderItems.value.append(item)
       }

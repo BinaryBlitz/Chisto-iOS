@@ -12,11 +12,11 @@ import RxCocoa
 
 class OrderItem {
   var clothesItem: ClothesItem
-  var services: Variable<[Service]>
+  var services: [Service]
   var amount: Int
   init (clothesItem: ClothesItem, services: [Service], amount: Int = 1) {
     self.clothesItem = clothesItem
-    self.services = Variable<[Service]>(services)
+    self.services = services
     self.amount = amount
   }
 }
@@ -25,4 +25,5 @@ class DataManager {
   static let instance = DataManager()
   
   var currentOrderItems = Variable<[OrderItem]>([])
+  
 }

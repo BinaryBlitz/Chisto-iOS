@@ -27,7 +27,6 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     navigationItem.title = viewModel?.navigationItemTitle
     
-    headerView.backgroundColor = viewModel?.color
     itemTitle.text = viewModel?.itemTitle
     
     configureTableView()
@@ -77,5 +76,11 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
     
     readyButton.rx.tap.bindTo(viewModel.readyButtonTapped).addDisposableTo(disposeBag)
 
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    guard let color = viewModel?.color else { return }
+    navigationController?.navigationBar.barTintColor = color
+    headerView.backgroundColor = viewModel?.color
   }
 }

@@ -104,6 +104,7 @@
                                                 <constraint firstItem="hFO-t1-lhw" firstAttribute="trailing" secondItem="63f-ki-jFe" secondAttribute="trailingMargin" constant="-15" id="w8A-A6-JeM"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="checkButton" destination="hFO-t1-lhw" id="kKH-wR-QBf"/>
                                             <outlet property="serviceDescriptionLabel" destination="O55-Ig-3rP" id="8rp-Sa-eRd"/>

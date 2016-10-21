@@ -20,12 +20,14 @@ protocol ItemInfoViewModelType {
   var counterIncButtonDidTap: PublishSubject<Void> { get }
   var counterDecButtonDidTap: PublishSubject<Void> { get }
   var tableItemDeleted: PublishSubject<IndexPath> { get }
+  var continueButtonDidTap: PublishSubject<Void> { get }
   
   // Output
   var itemTitle: String { get }
   var itemRelatedText: NSAttributedString { get }
   var currentAmount: Variable<Int> { get }
   var presentServiceSelectSection: Driver<ServiceSelectViewModel> { get }
+  var returnToOrderList: Driver<Void> { get }
   
   var sections: Driver<[ItemInfoSectionModel]> { get }
   
@@ -38,6 +40,7 @@ class ItemInfoViewModel: ItemInfoViewModelType {
   var addServiceButtonDidTap = PublishSubject<Void>()
   var counterIncButtonDidTap = PublishSubject<Void>()
   var counterDecButtonDidTap = PublishSubject<Void>()
+  var continueButtonDidTap = PublishSubject<Void>()
   var tableItemDeleted = PublishSubject<IndexPath>()
   
   // Output
@@ -45,11 +48,14 @@ class ItemInfoViewModel: ItemInfoViewModelType {
   let itemRelatedText: NSAttributedString
   var currentAmount: Variable<Int>
   var presentServiceSelectSection: Driver<ServiceSelectViewModel>
+  var returnToOrderList: Driver<Void>
+  var color: UIColor
   
   var sections: Driver<[ItemInfoSectionModel]>
 
   init(orderItem: OrderItem) {
     self.itemTitle = orderItem.clothesItem.name
+    self.color = orderItem.clothesItem.color
     let currentAmount = Variable<Int>(orderItem.amount)
     self.currentAmount = currentAmount
 
@@ -66,8 +72,9 @@ class ItemInfoViewModel: ItemInfoViewModelType {
     self.itemRelatedText = relatedItemsAttrString
 
     // Table view
+    let services = Variable<[Service]>(orderItem.services)
     
-    self.sections = orderItem.services.asDriver().map { services in
+    self.sections = services.asDriver().map { services in
       let cellModels = services.enumerated().map { (index, service) in
         ItemInfoTableViewCellModel(service: service, count: index)
       } as [ItemInfoTableViewCellModelType]
@@ -78,10 +85,16 @@ class ItemInfoViewModel: ItemInfoViewModelType {
     
     self.presentServiceSelectSection = addServiceButtonDidTap.asObservable().map {
       ServiceSelectViewModel(item: orderItem, isNew: false)
-      }.asDriver(onErrorDriveWith: .empty())
+    }.asDriver(onErrorDriveWith: .empty())
+    
+    self.returnToOrderList = continueButtonDidTap.asObservable().map {
+      // TODO: separate all model from viewModel
+      orderItem.amount = currentAmount.value
+      orderItem.services = services.value
+    }.asDriver(onErrorDriveWith: .empty())
     
     tableItemDeleted.asObservable().subscribe(onNext: { indexPath in
-      orderItem.services.value.remove(at: indexPath.row)
+      services.value.remove(at: indexPath.row)
     }).addDisposableTo(disposeBag)
     
     counterIncButtonDidTap.subscribe(onNext: {
@@ -89,7 +102,9 @@ class ItemInfoViewModel: ItemInfoViewModelType {
     }).addDisposableTo(disposeBag)
     
     counterDecButtonDidTap.subscribe(onNext: {
-      currentAmount.value -= 1
+      if currentAmount.value > 1 {
+        currentAmount.value -= 1
+      }
     }).addDisposableTo(disposeBag)
     
     
