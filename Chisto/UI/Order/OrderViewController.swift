@@ -90,8 +90,9 @@ class OrderViewController: UIViewController, UIScrollViewDelegate,DefaultBarColo
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    guard let indexPath = tableView.indexPathForSelectedRow else { return }
-    tableView.deselectRow(at: indexPath, animated: true)
+    if let indexPath = tableView.indexPathForSelectedRow {
+      tableView.deselectRow(at: indexPath, animated: true)
+    }
   }
 
 }

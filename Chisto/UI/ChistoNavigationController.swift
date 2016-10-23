@@ -18,7 +18,7 @@ class ChistoNavigationController: UINavigationController, UINavigationController
   override func loadView() {
     super.loadView()
     delegate = self
-    
+        
     navigationBar.isTranslucent = false
     view.backgroundColor = UIColor.chsCoolGrey
     navigationBar.barStyle = .black

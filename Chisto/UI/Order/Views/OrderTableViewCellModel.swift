@@ -44,7 +44,7 @@ class OrderTableViewCellModel: OrderTableViewCellModelType {
   
     self.servicesText = servicesAttrString
     
-    self.amountText = "x \(item.amount)"
+    self.amountText = "× \(item.amount)"
     
     self.icon = item.clothesItem.icon
   }

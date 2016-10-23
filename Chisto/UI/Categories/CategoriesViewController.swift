@@ -53,5 +53,11 @@ class CategoriesViewController: UITableViewController, DefaultBarColoredViewCont
       self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
   }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    if let indexPath = tableView.indexPathForSelectedRow {
+      tableView.deselectRow(at: indexPath, animated: true)
+    }
+  }
 
 }

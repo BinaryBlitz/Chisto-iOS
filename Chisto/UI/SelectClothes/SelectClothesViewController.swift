@@ -57,7 +57,13 @@ class SelectClothesViewController: UITableViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    guard let color = viewModel?.navigationBarColor else { return }
-    navigationController?.navigationBar.barTintColor = color
+    if let indexPath = tableView.indexPathForSelectedRow {
+      tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    if let color = viewModel?.navigationBarColor {
+      navigationController?.navigationBar.barTintColor = color
+    }
+    
   }
 }
