@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class ItemInfoViewController: UIViewController, UITableViewDelegate {
+class ItemInfoViewController: UIViewController {
   @IBOutlet weak var clothesItemTitleLabel: UILabel!
   @IBOutlet weak var clothesItemRelatedLabel: UILabel!
   @IBOutlet weak var addServiceButton: UIButton!
@@ -80,6 +80,7 @@ class ItemInfoViewController: UIViewController, UITableViewDelegate {
     viewModel.sections
       .drive(tableView.rx.items(dataSource: dataSource))
       .addDisposableTo(disposeBag)
+    
   }
   
   func configureButtons() {
@@ -96,5 +97,11 @@ class ItemInfoViewController: UIViewController, UITableViewDelegate {
     
     navigationController?.navigationBar.barTintColor = color
     headerView.backgroundColor = viewModel?.color
+  }
+}
+
+extension ItemInfoViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+    return viewModel?.deleteButtonTitle
   }
 }

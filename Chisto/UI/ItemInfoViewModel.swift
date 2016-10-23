@@ -30,7 +30,6 @@ protocol ItemInfoViewModelType {
   var returnToOrderList: Driver<Void> { get }
   
   var sections: Driver<[ItemInfoSectionModel]> { get }
-  
 }
 
 class ItemInfoViewModel: ItemInfoViewModelType {
@@ -51,6 +50,10 @@ class ItemInfoViewModel: ItemInfoViewModelType {
   var returnToOrderList: Driver<Void>
   var color: UIColor
   
+  // Constants
+  let deleteButtonTitle = "Удалить"
+  
+  // Table view
   var sections: Driver<[ItemInfoSectionModel]>
 
   init(orderItem: OrderItem) {
@@ -88,7 +91,7 @@ class ItemInfoViewModel: ItemInfoViewModelType {
     }.asDriver(onErrorDriveWith: .empty())
     
     self.returnToOrderList = continueButtonDidTap.asObservable().map {
-      // TODO: separate all model from viewModel
+      // TODO: remove all model logic from viewModel
       orderItem.amount = currentAmount.value
       orderItem.services = services.value
     }.asDriver(onErrorDriveWith: .empty())
