@@ -138,7 +138,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="bdD-nj-oHj"/>
                     <connections>
-                        <outlet property="goButton" destination="0gy-0u-Iwx" id="Nbp-rw-mCU"/>
+                        <outlet property="continueButton" destination="0gy-0u-Iwx" id="F11-Tj-l0x"/>
                         <outlet property="tableView" destination="WjY-jC-gGD" id="kr2-N4-R7j"/>
                     </connections>
                 </viewController>

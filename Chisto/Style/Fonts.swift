@@ -15,15 +15,19 @@ extension UIFont {
     return UIFont(name: ".AppleSystemUIFont", size: 18.0)
   }
   
-  class func chsDescriptionFont() -> UIFont? {
+  class var chsDescriptionFont: UIFont? {
     return UIFont(name: ".AppleSystemUIFont", size: 18.0)
   }
   
-  class func chsLabelFont() -> UIFont? {
+  class var chsLabelFont: UIFont? {
     return UIFont(name: ".AppleSystemUIFont", size: 16.0)
   }
   
-  class func chsOnBoardStageFont() -> UIFont? {
+  class var chsLaundryItemFont: UIFont? {
+    return UIFont(name: ".AppleSystemUIFont", size: 14.0)
+  }
+  
+  class var chsOnBoardStageFont: UIFont? {
     return UIFont(name: ".AppleSystemUIFont", size: 12.0)
   }
 }

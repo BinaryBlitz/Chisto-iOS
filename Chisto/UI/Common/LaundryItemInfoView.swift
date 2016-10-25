@@ -9,13 +9,23 @@
 import UIKit
 
 class LaundryItemInfoView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+  
+  @IBOutlet weak var iconImageView: UIImageView!
+  @IBOutlet weak var headerLabel: UILabel!
+  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var subTitleLabel: UILabel!
+  
+  func configure(viewModel: LaundryItemInfoViewModel) {
+    iconImageView.image = viewModel.icon
+    headerLabel.text = viewModel.headerText
+    titleLabel.text = viewModel.titleText
+    subTitleLabel.text = viewModel.subTitleText
+    
+    if viewModel.type == .cost {
+      titleLabel.font = UIFont.chsLaundryItemFont
+      titleLabel.textColor = UIColor.chsJadeGreen
     }
-    */
-
+    
+  }
+  
 }

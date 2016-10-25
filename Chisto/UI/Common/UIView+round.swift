@@ -8,21 +8,28 @@
 
 import Foundation
 import UIKit
-extension UIButton {
+
+extension UIView {
   @IBInspectable var cornerRadius: CGFloat {
     return layer.cornerRadius
   }
   
   @IBInspectable var borderWidth: CGFloat {
-    return layer.borderWidth
-  }
-  
-  @IBInspectable var borderColor: UIColor {
     get {
-      return layer.borderColor != nil ? UIColor(cgColor: layer.borderColor!) : UIColor()
+      return layer.borderWidth
     }
     set {
-      layer.borderColor = borderColor.cgColor
+      layer.borderWidth = newValue
     }
   }
+  
+  @IBInspectable var borderColor: UIColor? {
+    get {
+      return UIColor(cgColor: layer.borderColor!)
+    }
+    set {
+      layer.borderColor = newValue?.cgColor
+    }
+  }
+
 }

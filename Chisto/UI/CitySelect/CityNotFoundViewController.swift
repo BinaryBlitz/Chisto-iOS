@@ -36,7 +36,6 @@ class CityNotFoundViewController: UIViewController {
     
     view.backgroundColor = UIColor(white: 0, alpha: 0.5)
     
-    contentView.layer.cornerRadius = 8
     contentView.clipsToBounds = true
     
     // Rx

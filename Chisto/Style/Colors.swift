@@ -75,4 +75,8 @@ extension UIColor {
     return UIColor(white: 255.0 / 255.0, alpha: 0.5)
   }
   
+  class var chsJadeGreen: UIColor {
+    return UIColor(red: 43.0 / 255.0, green: 175.0 / 255.0, blue: 93.0 / 255.0, alpha: 1.0)
+  }
+  
 }

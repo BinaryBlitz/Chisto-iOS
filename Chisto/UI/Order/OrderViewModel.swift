@@ -40,6 +40,7 @@ class OrderViewModel: OrderViewModelType {
   var sections: Driver<[OrderSectionModel]>
   var presentCategoriesViewController: Driver<Void>
   var presentItemInfoViewController: Driver<ItemInfoViewModel>
+  var presentLastTimeOrderPopup: Driver<Void>
   
   // Constants
   let navigationBarTitle = "Заказ"
@@ -53,6 +54,8 @@ class OrderViewModel: OrderViewModelType {
     self.currentOrderItems = currentOrderItems
 
     self.presentCategoriesViewController = Observable.of(navigationAddButtonDidTap.asObservable(), emptyOrderAddButtonDidTap.asObservable()).merge().asDriver(onErrorJustReturn: ())
+    
+    self.presentLastTimeOrderPopup = continueButtonDidTap.asDriver(onErrorJustReturn: ())
     
     self.presentItemInfoViewController = itemDidSelect.asObservable().map { indexPath in
       let orderItem = currentOrderItems.value[indexPath.row]
