@@ -12,4 +12,17 @@ extension UIButton {
   @IBInspectable var cornerRadius: CGFloat {
     return layer.cornerRadius
   }
+  
+  @IBInspectable var borderWidth: CGFloat {
+    return layer.borderWidth
+  }
+  
+  @IBInspectable var borderColor: UIColor {
+    get {
+      return layer.borderColor != nil ? UIColor(cgColor: layer.borderColor!) : UIColor()
+    }
+    set {
+      layer.borderColor = borderColor.cgColor
+    }
+  }
 }
