@@ -63,6 +63,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
     self.color = UIColor.chsRosePink
     
     let defaultServices = [
+      Service(name: "Декор", description: ""),
       Service(name: "Химчистка", description: "Только нежные растворители"),
       Service(name: "Стирка", description: "Стирка при температуре не выше 30"),
       Service(name: "Глажка", description: "Низкая температура 110  С"),

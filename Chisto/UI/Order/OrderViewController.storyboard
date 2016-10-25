@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -77,30 +76,23 @@
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAv-8H-o3U">
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3J4-se-xFb">
-                                                            <attributedString key="attributedText">
-                                                                <fragment content="0">
-                                                                    <attributes>
-                                                                        <color key="NSColor" red="0.1738680007" green="0.62361474260000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <font key="NSFont" size="23" name=".SFNSDisplay"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                            </attributedString>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="шт" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08c-Jy-MvI">
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="шт" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08c-Jy-MvI">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cib-VJ-lNZ">
                                                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                            <color key="textColor" red="0.1738680007" green="0.62361474260000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="08c-Jy-MvI" secondAttribute="bottom" id="6eV-uV-YZP"/>
-                                                        <constraint firstItem="3J4-se-xFb" firstAttribute="top" secondItem="FAv-8H-o3U" secondAttribute="top" id="Dho-b9-2Ic"/>
-                                                        <constraint firstAttribute="trailing" secondItem="08c-Jy-MvI" secondAttribute="trailing" constant="0.5" id="G9b-7s-vbh"/>
-                                                        <constraint firstItem="08c-Jy-MvI" firstAttribute="top" secondItem="3J4-se-xFb" secondAttribute="bottom" multiplier="0.7" constant="1" id="n0q-cB-6za"/>
-                                                        <constraint firstAttribute="trailing" secondItem="3J4-se-xFb" secondAttribute="trailing" id="xts-85-dZX"/>
+                                                        <constraint firstAttribute="trailing" secondItem="08c-Jy-MvI" secondAttribute="trailing" id="G9b-7s-vbh"/>
+                                                        <constraint firstItem="08c-Jy-MvI" firstAttribute="top" secondItem="Cib-VJ-lNZ" secondAttribute="bottom" id="ShU-bU-ZpQ"/>
+                                                        <constraint firstItem="Cib-VJ-lNZ" firstAttribute="top" secondItem="FAv-8H-o3U" secondAttribute="top" id="dhD-34-J37"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Cib-VJ-lNZ" secondAttribute="trailing" id="gc7-8H-vhC"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -116,7 +108,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <outlet property="amountLabel" destination="3J4-se-xFb" id="2Ry-iz-gKl"/>
+                                            <outlet property="amountLabel" destination="Cib-VJ-lNZ" id="3Wn-aO-g1m"/>
                                             <outlet property="categoryIconImageView" destination="lJX-Jv-qWW" id="OqY-7U-7EB"/>
                                             <outlet property="servicesLabel" destination="Tyz-bh-Gy8" id="acB-qr-tXh"/>
                                             <outlet property="titleLabel" destination="YJA-76-BLG" id="ql5-OB-IVL"/>
