@@ -21,7 +21,7 @@ class OrderTableViewCell: UITableViewCell {
     categoryIconImageView.image = viewModel.icon
     titleLabel.text = viewModel.itemTitleText
     servicesLabel.attributedText = viewModel.servicesText
-    amountLabel.text = viewModel.amountText
+    amountLabel.attributedText = viewModel.amountText
   }
   
   override func awakeFromNib() {

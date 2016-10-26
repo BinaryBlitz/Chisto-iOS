@@ -74,41 +74,31 @@
                                                         <constraint firstAttribute="trailing" secondItem="Tyz-bh-Gy8" secondAttribute="trailing" id="pwg-RE-jfU"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAv-8H-o3U">
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="шт" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08c-Jy-MvI">
-                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                            <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cib-VJ-lNZ">
-                                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                            <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="08c-Jy-MvI" secondAttribute="bottom" id="6eV-uV-YZP"/>
-                                                        <constraint firstAttribute="trailing" secondItem="08c-Jy-MvI" secondAttribute="trailing" id="G9b-7s-vbh"/>
-                                                        <constraint firstItem="08c-Jy-MvI" firstAttribute="top" secondItem="Cib-VJ-lNZ" secondAttribute="bottom" id="ShU-bU-ZpQ"/>
-                                                        <constraint firstItem="Cib-VJ-lNZ" firstAttribute="top" secondItem="FAv-8H-o3U" secondAttribute="top" id="dhD-34-J37"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Cib-VJ-lNZ" secondAttribute="trailing" id="gc7-8H-vhC"/>
-                                                    </constraints>
-                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJ2-NI-DR5">
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="×2 шт">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" metaFont="system" size="24"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="FAv-8H-o3U" firstAttribute="centerY" secondItem="Vl8-Z8-yhd" secondAttribute="centerY" id="1vh-KR-mVo"/>
-                                                <constraint firstAttribute="trailing" secondItem="FAv-8H-o3U" secondAttribute="trailing" constant="10" id="3On-Xe-hIp"/>
                                                 <constraint firstItem="2G7-kb-7fG" firstAttribute="centerY" secondItem="Vl8-Z8-yhd" secondAttribute="centerY" id="7bt-X7-cXC"/>
-                                                <constraint firstItem="FAv-8H-o3U" firstAttribute="leading" secondItem="2G7-kb-7fG" secondAttribute="trailing" id="SI4-VR-xO5"/>
+                                                <constraint firstAttribute="trailing" secondItem="FJ2-NI-DR5" secondAttribute="trailing" constant="13" id="LwK-vJ-lTK"/>
                                                 <constraint firstItem="2G7-kb-7fG" firstAttribute="leading" secondItem="lJX-Jv-qWW" secondAttribute="trailing" constant="15" id="Yus-PQ-gyI"/>
+                                                <constraint firstItem="FJ2-NI-DR5" firstAttribute="centerY" secondItem="Vl8-Z8-yhd" secondAttribute="centerY" id="ma7-FS-7xp"/>
                                                 <constraint firstItem="lJX-Jv-qWW" firstAttribute="leading" secondItem="Vl8-Z8-yhd" secondAttribute="leading" constant="15" id="wuv-Af-lZK"/>
                                                 <constraint firstItem="lJX-Jv-qWW" firstAttribute="centerY" secondItem="Vl8-Z8-yhd" secondAttribute="centerY" id="xaA-Zt-gDs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <outlet property="amountLabel" destination="Cib-VJ-lNZ" id="3Wn-aO-g1m"/>
+                                            <outlet property="amountLabel" destination="FJ2-NI-DR5" id="Uum-5r-z9g"/>
                                             <outlet property="categoryIconImageView" destination="lJX-Jv-qWW" id="OqY-7U-7EB"/>
                                             <outlet property="servicesLabel" destination="Tyz-bh-Gy8" id="acB-qr-tXh"/>
                                             <outlet property="titleLabel" destination="YJA-76-BLG" id="ql5-OB-IVL"/>

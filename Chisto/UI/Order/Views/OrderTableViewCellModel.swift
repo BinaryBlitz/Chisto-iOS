@@ -16,7 +16,7 @@ protocol OrderTableViewCellModelType {
   var itemTitleText: String { get }
   var servicesText: NSAttributedString { get }
   var icon: UIImage? { get }
-  var amountText: String { get }
+  var amountText: NSAttributedString { get }
   
   // Input
   
@@ -28,7 +28,7 @@ class OrderTableViewCellModel: OrderTableViewCellModelType {
   let itemTitleText: String
   let servicesText: NSAttributedString
   let icon: UIImage?
-  let amountText: String
+  let amountText: NSAttributedString
   
   init(item: OrderItem) {
     self.itemTitleText = item.clothesItem.name
@@ -44,7 +44,12 @@ class OrderTableViewCellModel: OrderTableViewCellModelType {
   
     self.servicesText = servicesAttrString
     
-    self.amountText = "×\(item.amount)"
+    let amountText = NSMutableAttributedString()
+    amountText.append(NSAttributedString(string: "×", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 24)]))
+    amountText.append(NSAttributedString(string: "\(item.amount)"))
+    amountText.append(NSAttributedString(string: " шт", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)]))
+    
+    self.amountText = amountText
     
     self.icon = item.clothesItem.icon
   }
