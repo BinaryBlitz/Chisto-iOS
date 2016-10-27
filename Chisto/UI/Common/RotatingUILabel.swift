@@ -9,14 +9,10 @@
 import Foundation
 import UIKit
 
-class RotatingUILabel: UILabel {
-  @IBInspectable var rotation: Double = 0 {
-    didSet {
-      rotateView(rotation: rotation)
-    }
-  }
+@IBDesignable class RotatingUILabel: UILabel {
   
-  func rotateView(rotation: Double)  {
-    self.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_2 + rotation))
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    self.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_4))
   }
 }

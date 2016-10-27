@@ -11,16 +11,16 @@
         <scene sceneID="YvA-Xp-wEA">
             <objects>
                 <tableViewController storyboardIdentifier="LaundrySelectViewController" id="qbC-8X-BcN" customClass="LaundrySelectViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="190" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZAD-Ya-x5U">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="190" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZAD-Ya-x5U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="0.49515086409999998" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="laundryCell" rowHeight="190" id="tgx-Lv-wUc" customClass="LaundrySelectTableViewCell" customModule="Chisto" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LaundrySelectTableViewCell" rowHeight="190" id="tgx-Lv-wUc" customClass="LaundrySelectTableViewCell" customModule="Chisto" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="190"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tgx-Lv-wUc" id="PGg-l5-hmz">
-                                    <frame key="frameInset" width="375" height="189"/>
+                                    <frame key="frameInset" width="375" height="189.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ffw-aw-1p4">
@@ -93,24 +93,17 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INL-4j-h4b" customClass="RotatingUILabel" customModule="Chisto" customModuleProvider="target">
                                             <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="96" id="1Wg-Yw-bQ9"/>
+                                                <constraint firstAttribute="width" constant="125" id="1Wg-Yw-bQ9"/>
                                                 <constraint firstAttribute="height" constant="26" id="Bmf-A8-Eg5"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="rotation">
-                                                    <real key="value" value="45"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="Ffw-aw-1p4" firstAttribute="top" secondItem="PGg-l5-hmz" secondAttribute="top" constant="15" id="1ty-UG-sUy"/>
-                                        <constraint firstItem="INL-4j-h4b" firstAttribute="top" secondItem="PGg-l5-hmz" secondAttribute="topMargin" constant="11" id="4Ag-eg-q4B"/>
-                                        <constraint firstItem="INL-4j-h4b" firstAttribute="trailing" secondItem="PGg-l5-hmz" secondAttribute="trailingMargin" id="7Ov-tA-kzL"/>
                                         <constraint firstItem="Aij-3K-dQo" firstAttribute="leading" secondItem="Ffw-aw-1p4" secondAttribute="trailing" constant="16" id="9pG-8n-E6I"/>
                                         <constraint firstItem="bcl-Sr-7aI" firstAttribute="top" secondItem="IAm-T4-HPc" secondAttribute="bottom" constant="7" id="Gsf-sj-E2a"/>
                                         <constraint firstItem="Ffw-aw-1p4" firstAttribute="leading" secondItem="PGg-l5-hmz" secondAttribute="leading" constant="15" id="QKX-0g-Dvc"/>
@@ -118,17 +111,20 @@
                                         <constraint firstItem="NdT-KW-8gH" firstAttribute="leading" secondItem="PGg-l5-hmz" secondAttribute="leadingMargin" id="cW3-sw-3kU"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="IAm-T4-HPc" secondAttribute="trailing" id="kNR-yS-L9d"/>
                                         <constraint firstItem="IAm-T4-HPc" firstAttribute="leading" secondItem="Aij-3K-dQo" secondAttribute="leading" id="kk4-Z1-D5W"/>
+                                        <constraint firstItem="INL-4j-h4b" firstAttribute="top" secondItem="PGg-l5-hmz" secondAttribute="top" constant="10" id="lPs-n4-cJo"/>
                                         <constraint firstItem="NdT-KW-8gH" firstAttribute="bottom" secondItem="PGg-l5-hmz" secondAttribute="bottomMargin" id="lQj-NA-fPM"/>
                                         <constraint firstItem="Aij-3K-dQo" firstAttribute="top" secondItem="PGg-l5-hmz" secondAttribute="top" constant="12" id="lyh-U8-hLh"/>
                                         <constraint firstItem="IAm-T4-HPc" firstAttribute="top" secondItem="Aij-3K-dQo" secondAttribute="bottom" constant="4" id="o7P-nO-FPV"/>
+                                        <constraint firstAttribute="trailing" secondItem="INL-4j-h4b" secondAttribute="trailing" constant="-40" id="pc9-kM-X2d"/>
                                         <constraint firstItem="bcl-Sr-7aI" firstAttribute="leading" secondItem="IAm-T4-HPc" secondAttribute="leading" id="rAC-Uo-xmP"/>
                                         <constraint firstItem="NdT-KW-8gH" firstAttribute="top" secondItem="bcl-Sr-7aI" secondAttribute="bottom" constant="20" id="rTf-iO-LeO"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="laundryLogoImageView" destination="KO3-Ss-Ejm" id="VhK-BA-OzJ"/>
                                     <outlet property="laundrySubTitleLabel" destination="IAm-T4-HPc" id="XeK-g3-fN3"/>
+                                    <outlet property="laundryTagLabel" destination="INL-4j-h4b" id="hsA-uy-I7t"/>
                                     <outlet property="laundryTitleLabel" destination="Aij-3K-dQo" id="qJf-tG-5Ue"/>
                                     <outlet property="ratingView" destination="bcl-Sr-7aI" id="qLW-Xf-bNg"/>
                                     <outlet property="stackView" destination="9tZ-5t-JsK" id="oRW-U9-49O"/>
@@ -140,9 +136,6 @@
                             <outlet property="delegate" destination="qbC-8X-BcN" id="FnG-Oh-qSs"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <outlet property="stackView" destination="9tZ-5t-JsK" id="Jpm-PE-hVt"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hli-sM-iby" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

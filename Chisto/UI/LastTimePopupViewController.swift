@@ -8,25 +8,36 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class LastTimePopupViewController: UIViewController {
+  let disposeBag = DisposeBag()
+  var viewModel: LastTimePopupViewModel? = nil
   
   @IBOutlet weak var LaundryLogoImageView: UIImageView!
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet var contentView: UIView!
+  @IBOutlet weak var showAllLaundriesButton: GoButton!
+  
   
   var animationDuration = 0.2
-  
-  let viewModel = LastTimePopupViewModel()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    viewModel.laundryDescriptionViewModels.enumerated().forEach { (counter, viewModel) in
+    guard let viewModel = self.viewModel else { return }
+    
+    viewModel.dismissViewController.drive(onNext: {
+      self.dismiss(animated: true, completion: nil)
+    }).addDisposableTo(disposeBag)
+    
+    for viewModel in viewModel.laundryDescriptionViewModels {
       let laundryItemView = LaundryItemInfoView.nibInstance()!
       laundryItemView.configure(viewModel: viewModel)
       stackView.addArrangedSubview(laundryItemView)
     }
+    
+    showAllLaundriesButton.rx.tap.bindTo(viewModel.showAllLaundriesButtonDidTap).addDisposableTo(disposeBag)
   }
   
   override func viewWillAppear(_ animated: Bool) {

@@ -36,25 +36,8 @@ class OrderViewController: UIViewController, UIScrollViewDelegate,DefaultBarColo
     navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.navigationAddButtonDidTap).addDisposableTo(disposeBag)
     continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
     
-    viewModel.presentCategoriesViewController.drive(onNext: {
-      let viewController = CategoriesViewController.storyboardInstance()!
-      self.navigationController?.pushViewController(viewController, animated: true)
-    }).addDisposableTo(disposeBag)
-    
-    viewModel.presentItemInfoViewController.drive(onNext: { [weak self] viewModel in
-      let viewController = ItemInfoViewController.storyboardInstance()!
-      viewController.viewModel = viewModel
-      self?.navigationController?.pushViewController(viewController, animated: true)
-    }).addDisposableTo(disposeBag)
-    
-    viewModel.presentLastTimeOrderPopup.drive(onNext: { [weak self] viewModel in
-      let viewController = LastTimePopupViewController.storyboardInstance()!
-      viewController.modalPresentationStyle = .overFullScreen
-      self?.present(viewController, animated: false, completion: nil)
-
-    }).addDisposableTo(disposeBag)
-    
     configureTableView()
+    configureNavigations()
     
   }
   
@@ -102,6 +85,41 @@ class OrderViewController: UIViewController, UIScrollViewDelegate,DefaultBarColo
     if let indexPath = tableView.indexPathForSelectedRow {
       tableView.deselectRow(at: indexPath, animated: true)
     }
+  }
+  
+  func configureNavigations() {
+    
+    viewModel.presentCategoriesViewController.drive(onNext: {
+      let viewController = CategoriesViewController.storyboardInstance()!
+      self.navigationController?.pushViewController(viewController, animated: true)
+    }).addDisposableTo(disposeBag)
+    
+    viewModel.presentItemInfoViewController.drive(onNext: { [weak self] viewModel in
+      let viewController = ItemInfoViewController.storyboardInstance()!
+      viewController.viewModel = viewModel
+      self?.navigationController?.pushViewController(viewController, animated: true)
+    }).addDisposableTo(disposeBag)
+    
+    viewModel.presentLastTimeOrderPopup.drive(onNext: { [weak self] popupViewModel in
+      guard let viewModel = self?.viewModel else { return }
+      
+      popupViewModel.showAllLaundriesButtonDidTap.bindTo(viewModel.showAllLaundriesModalButtonDidTap)
+        .addDisposableTo(popupViewModel.disposeBag)
+      
+      let viewController = LastTimePopupViewController.storyboardInstance()!
+      
+      viewController.viewModel = popupViewModel
+      viewController.modalPresentationStyle = .overFullScreen
+      self?.present(viewController, animated: false, completion: nil)
+      
+    }).addDisposableTo(disposeBag)
+    
+    viewModel.presentLaundrySelectSection.drive(onNext: { [weak self] in
+      let viewController = LaundrySelectViewController.storyboardInstance()!
+      self?.navigationController?.pushViewController(viewController, animated: false)
+    }).addDisposableTo(disposeBag)
+    
+    
   }
 
 }

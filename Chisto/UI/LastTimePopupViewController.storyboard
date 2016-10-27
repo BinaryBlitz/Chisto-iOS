@@ -155,6 +155,7 @@
                     <connections>
                         <outlet property="LaundryLogoImageView" destination="ZP0-8R-d5Z" id="XEz-no-3ah"/>
                         <outlet property="contentView" destination="TKy-eo-SxV" id="czN-Gy-QeF"/>
+                        <outlet property="showAllLaundriesButton" destination="yZE-3M-xOy" id="2Yh-DB-r5g"/>
                         <outlet property="stackView" destination="9gj-VK-KKh" id="lr5-TM-uFh"/>
                     </connections>
                 </viewController>

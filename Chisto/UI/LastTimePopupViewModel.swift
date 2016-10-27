@@ -8,9 +8,25 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
-class LastTimePopupViewModel {
+protocol LastTimePopupViewModelType {
+  // Input
+  var showAllLaundriesButtonDidTap: PublishSubject<Void> { get }
+  // Output
+  var laundryDescriptionViewModels: [LaundryItemInfoViewModel] { get }
+  var dismissViewController: Driver<Void> { get }
+}
+
+class LastTimePopupViewModel: LastTimePopupViewModelType {
+  let disposeBag = DisposeBag()
+  // Input
+  var showAllLaundriesButtonDidTap = PublishSubject<Void>()
+  
+  // Output
   let laundryDescriptionViewModels: [LaundryItemInfoViewModel]
+  var dismissViewController: Driver<Void>
   
   init() {
     let courierItemViewModel = LaundryItemInfoViewModel(type: .courier, titleText: "15.09.2016", subTitleText: "Бесплатно")
@@ -18,5 +34,7 @@ class LastTimePopupViewModel {
     let costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: "3 400 ₽")
     
     self.laundryDescriptionViewModels = [courierItemViewModel, deliveryItemViewModel, costItemViewModel]
+    
+    self.dismissViewController = showAllLaundriesButtonDidTap.asDriver(onErrorDriveWith: .empty())
   }
 }
