@@ -35,12 +35,12 @@ enum LaundryType {
 protocol LaundrySelectViewModelType {
   // Input
   var itemDidSelect: PublishSubject<IndexPath> { get }
-  var filtersButtonDidTap: PublishSubject<Void> { get }
+  var sortButtonDidTap: PublishSubject<Void> { get }
   
   // Output
   var navigationBarTitle: String { get }
   var sections: Driver<[LaundrySelectSectionModel]> { get }
-  var presentSelectFilterSection: Driver<Void> { get }
+  var presentSortSelectSection: Driver<Void> { get }
   
   // Data
   var laundries: Variable<[Laundry]> { get }
@@ -49,12 +49,12 @@ protocol LaundrySelectViewModelType {
 class LaundrySelectViewModel: LaundrySelectViewModelType {
   // Input
   var itemDidSelect = PublishSubject<IndexPath>()
-  var filtersButtonDidTap = PublishSubject<Void>()
+  var sortButtonDidTap = PublishSubject<Void>()
   
   // Output
   var navigationBarTitle = "Прачечные"
   var sections: Driver<[LaundrySelectSectionModel]>
-  var presentSelectFilterSection: Driver<Void>
+  var presentSortSelectSection: Driver<Void>
   
   // Data
   var laundries: Variable<[Laundry]>
@@ -74,7 +74,7 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
       return [section]
     }
     
-    self.presentSelectFilterSection = filtersButtonDidTap.asDriver(onErrorDriveWith: .empty())
+    self.presentSortSelectSection = sortButtonDidTap.asDriver(onErrorDriveWith: .empty())
     
   }
 

@@ -20,6 +20,9 @@
 		88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */; };
 		88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 88073F001DAD6E6F000696A3 /* .swiftlint.yml */; };
 		88073F031DAD6FCF000696A3 /* DescriptionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073F021DAD6FCF000696A3 /* DescriptionListItemView.swift */; };
+		8811FE1D1DC2F36000610712 /* LaundrySortViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8811FE1C1DC2F36000610712 /* LaundrySortViewController.storyboard */; };
+		8811FE1F1DC364B000610712 /* LaundrySortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8811FE1E1DC364B000610712 /* LaundrySortViewController.swift */; };
+		8811FE211DC3661800610712 /* LaundrySortViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8811FE201DC3661800610712 /* LaundrySortViewModel.swift */; };
 		8814C0331DAD8123005B4967 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0321DAD8123005B4967 /* Colors.swift */; };
 		8814C0391DAE8F7F005B4967 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0381DAE8F7F005B4967 /* LocationManager.swift */; };
 		8814C03C1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C03B1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift */; };
@@ -99,6 +102,9 @@
 		88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySelectViewModel.swift; sourceTree = "<group>"; };
 		88073F001DAD6E6F000696A3 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		88073F021DAD6FCF000696A3 /* DescriptionListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionListItemView.swift; sourceTree = "<group>"; };
+		8811FE1C1DC2F36000610712 /* LaundrySortViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaundrySortViewController.storyboard; sourceTree = "<group>"; };
+		8811FE1E1DC364B000610712 /* LaundrySortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySortViewController.swift; sourceTree = "<group>"; };
+		8811FE201DC3661800610712 /* LaundrySortViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySortViewModel.swift; sourceTree = "<group>"; };
 		8814C0321DAD8123005B4967 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8814C0381DAE8F7F005B4967 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		8814C03B1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Rx.swift .swift"; sourceTree = "<group>"; };
@@ -242,6 +248,7 @@
 		88073EEC1DAC19E1000696A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8811FE1B1DC2F31E00610712 /* LaundryFilterModal */,
 				889D87C51DC0A727003E8DAC /* LaundrySelect */,
 				8833B5261DBE6E06004D44CE /* LastTimePopup */,
 				8814C04E1DAF15DA005B4967 /* ChistoNavigationController.swift */,
@@ -304,6 +311,16 @@
 				885409B51DB23DEB00219C00 /* CitySelectViewController.storyboard */,
 			);
 			path = CitySelect;
+			sourceTree = "<group>";
+		};
+		8811FE1B1DC2F31E00610712 /* LaundryFilterModal */ = {
+			isa = PBXGroup;
+			children = (
+				8811FE1C1DC2F36000610712 /* LaundrySortViewController.storyboard */,
+				8811FE1E1DC364B000610712 /* LaundrySortViewController.swift */,
+				8811FE201DC3661800610712 /* LaundrySortViewModel.swift */,
+			);
+			name = LaundryFilterModal;
 			sourceTree = "<group>";
 		};
 		8814C0311DAD8112005B4967 /* Style */ = {
@@ -588,6 +605,7 @@
 				88073EE31DABE1E0000696A3 /* LaunchScreen.storyboard in Resources */,
 				88073EE01DABE1E0000696A3 /* Assets.xcassets in Resources */,
 				882288141DB6D11C000642E0 /* RootViewController.storyboard in Resources */,
+				8811FE1D1DC2F36000610712 /* LaundrySortViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,6 +695,7 @@
 				8814C0651DB03CBC005B4967 /* Fonts.swift in Sources */,
 				8814C04D1DAF159E005B4967 /* OrderViewModel.swift in Sources */,
 				883760D31DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift in Sources */,
+				8811FE211DC3661800610712 /* LaundrySortViewModel.swift in Sources */,
 				8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */,
 				8814C0401DAED9AC005B4967 /* CityNotFoundViewController.swift in Sources */,
 				8814C0631DB03AD7005B4967 /* CategoryTableViewCellModel.swift in Sources */,
@@ -711,6 +730,7 @@
 				88E86DA81DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift in Sources */,
 				8814C03C1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift in Sources */,
 				88E86DB31DB916B3002A7024 /* DataManager.swift in Sources */,
+				8811FE1F1DC364B000610712 /* LaundrySortViewController.swift in Sources */,
 				885409C71DB2EC5D00219C00 /* UIView+IBInspectable.swift in Sources */,
 				8833B5341DBF7F75004D44CE /* LaundryItemInfoViewModel.swift in Sources */,
 			);

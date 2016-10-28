@@ -28,7 +28,7 @@ class LastTimePopupViewController: UIViewController {
     guard let viewModel = self.viewModel else { return }
     
     viewModel.dismissViewController.drive(onNext: {
-      self.dismiss(animated: true, completion: nil)
+      self.dismiss(animated: false, completion: nil)
     }).addDisposableTo(disposeBag)
     
     for viewModel in viewModel.laundryDescriptionViewModels {

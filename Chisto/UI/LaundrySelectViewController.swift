@@ -17,6 +17,15 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
 
   override func viewDidLoad() {
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconSortNavbar"), style: .plain, target: self, action: nil)
+    
+    navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.sortButtonDidTap)
+      .addDisposableTo(disposeBag)
+    
+    viewModel.presentSortSelectSection.drive(onNext: {
+      let viewController = LaundrySortViewController.storyboardInstance()!
+      viewController.modalPresentationStyle = .overFullScreen
+      self.present(viewController, animated: false)
+    }).addDisposableTo(disposeBag)
     configureTableView()
   }
   
