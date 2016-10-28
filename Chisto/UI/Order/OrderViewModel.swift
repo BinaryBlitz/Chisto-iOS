@@ -20,6 +20,7 @@ protocol OrderViewModelType {
   var emptyOrderAddButtonDidTap: PublishSubject<Void> { get }
   var itemDidSelect: PublishSubject<IndexPath> { get }
   var continueButtonDidTap: PublishSubject<Void> { get }
+  var profileButtonDidTap: PublishSubject<Void> { get }
   
   // Output
   var presentCategoriesViewController: Driver<Void> { get }
@@ -38,6 +39,7 @@ class OrderViewModel: OrderViewModelType {
   var itemDidSelect = PublishSubject<IndexPath>()
   var continueButtonDidTap = PublishSubject<Void>()
   var showAllLaundriesModalButtonDidTap = PublishSubject<Void>()
+  var profileButtonDidTap = PublishSubject<Void>()
   
   // Output
   var sections: Driver<[OrderSectionModel]>
@@ -45,6 +47,7 @@ class OrderViewModel: OrderViewModelType {
   var presentItemInfoViewController: Driver<ItemInfoViewModel>
   var presentLastTimeOrderPopup: Driver<LastTimePopupViewModel>
   var presentLaundrySelectSection: Driver<Void>
+  var presentProfileSection: Driver<Void>
   
   // Constants
   let navigationBarTitle = "Заказ"
@@ -76,6 +79,8 @@ class OrderViewModel: OrderViewModelType {
     self.presentLastTimeOrderPopup = continueButtonDidTap.asObservable().map {
       LastTimePopupViewModel()
     }.asDriver(onErrorDriveWith: .empty())
+    
+    self.presentProfileSection = profileButtonDidTap.asDriver(onErrorDriveWith: .empty())
     
   }
 }
