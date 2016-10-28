@@ -63,6 +63,9 @@
 		889D87CE1DC0BA2F003E8DAC /* LaundrySelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889D87CD1DC0BA2F003E8DAC /* LaundrySelectTableViewCell.swift */; };
 		889D87D01DC1F3DE003E8DAC /* LaundrySelectTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889D87CF1DC1F3DE003E8DAC /* LaundrySelectTableViewCellModel.swift */; };
 		889D87D21DC1F71F003E8DAC /* LaundrySelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889D87D11DC1F71E003E8DAC /* LaundrySelectViewModel.swift */; };
+		887DDE231DC2D22B0004F65C /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 887DDE221DC2D22B0004F65C /* ProfileViewController.storyboard */; };
+		887DDE251DC2D2B70004F65C /* ProfileNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 887DDE241DC2D2B70004F65C /* ProfileNavigationController.storyboard */; };
+		887DDE271DC2D2C80004F65C /* ProfileNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887DDE261DC2D2C80004F65C /* ProfileNavigationController.swift */; };
 		88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */; };
 		88B0B5501DB1825500C7D0F7 /* OnBoardingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */; };
 		88B0B5521DB19C6E00C7D0F7 /* DescriptionListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B5511DB19C6E00C7D0F7 /* DescriptionListItemView.xib */; };
@@ -147,6 +150,9 @@
 		889D87CD1DC0BA2F003E8DAC /* LaundrySelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySelectTableViewCell.swift; sourceTree = "<group>"; };
 		889D87CF1DC1F3DE003E8DAC /* LaundrySelectTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySelectTableViewCellModel.swift; sourceTree = "<group>"; };
 		889D87D11DC1F71E003E8DAC /* LaundrySelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySelectViewModel.swift; sourceTree = "<group>"; };
+		887DDE221DC2D22B0004F65C /* ProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
+		887DDE241DC2D2B70004F65C /* ProfileNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileNavigationController.storyboard; sourceTree = "<group>"; };
+		887DDE261DC2D2C80004F65C /* ProfileNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileNavigationController.swift; sourceTree = "<group>"; };
 		88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSearchBarTextColor.swift; sourceTree = "<group>"; };
 		88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoardingViewController.storyboard; sourceTree = "<group>"; };
 		88B0B5511DB19C6E00C7D0F7 /* DescriptionListItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionListItemView.xib; sourceTree = "<group>"; };
@@ -251,6 +257,7 @@
 				8811FE1B1DC2F31E00610712 /* LaundryFilterModal */,
 				889D87C51DC0A727003E8DAC /* LaundrySelect */,
 				8833B5261DBE6E06004D44CE /* LastTimePopup */,
+				887DDE211DC2D21C0004F65C /* Profile */,
 				8814C04E1DAF15DA005B4967 /* ChistoNavigationController.swift */,
 				88072D4C1DB967D400B47D23 /* ItemInfo */,
 				88E86DA01DB8E7D8002A7024 /* ServiceSelect */,
@@ -466,6 +473,14 @@
 				889D87CF1DC1F3DE003E8DAC /* LaundrySelectTableViewCellModel.swift */,
 			);
 			name = Views;
+		887DDE211DC2D21C0004F65C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				887DDE221DC2D22B0004F65C /* ProfileViewController.storyboard */,
+				887DDE241DC2D2B70004F65C /* ProfileNavigationController.storyboard */,
+				887DDE261DC2D2C80004F65C /* ProfileNavigationController.swift */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		88D8ABB91DB56E09009D515B /* SelectClothes */ = {
@@ -587,6 +602,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				887DDE251DC2D2B70004F65C /* ProfileNavigationController.storyboard in Resources */,
 				885409C51DB2E55400219C00 /* CategoriesViewController.storyboard in Resources */,
 				885409B61DB23DEC00219C00 /* CitySelectViewController.storyboard in Resources */,
 				88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */,
@@ -600,6 +616,7 @@
 				885409C01DB2C76500219C00 /* OrderViewController.storyboard in Resources */,
 				88E86DA61DB8E800002A7024 /* ServiceSelectViewController.storyboard in Resources */,
 				88D8ABBF1DB56EB8009D515B /* SelectClothesViewController.storyboard in Resources */,
+				887DDE231DC2D22B0004F65C /* ProfileViewController.storyboard in Resources */,
 				88E86DAE1DB90B4B002A7024 /* EmptyOrderView.xib in Resources */,
 				885409B81DB2582200219C00 /* CityNotFoundViewController.storyboard in Resources */,
 				88073EE31DABE1E0000696A3 /* LaunchScreen.storyboard in Resources */,
@@ -727,6 +744,7 @@
 				88D8ABBD1DB56E89009D515B /* SelectClothesViewModel.swift in Sources */,
 				8833B5361DBF8241004D44CE /* LastTimePopupViewModel.swift in Sources */,
 				88072D501DB9695300B47D23 /* ItemInfoViewController.swift in Sources */,
+				887DDE271DC2D2C80004F65C /* ProfileNavigationController.swift in Sources */,
 				88E86DA81DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift in Sources */,
 				8814C03C1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift in Sources */,
 				88E86DB31DB916B3002A7024 /* DataManager.swift in Sources */,
