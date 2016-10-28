@@ -24,6 +24,11 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" red="0.23921568691730499" green="0.70588237047195435" blue="0.96470588445663452" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Оставьте контактные данные, и мы оповестим вас, когда наш сервис станет доступен в вашем городе" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1J-1X-1h8">
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -100,6 +105,11 @@
                                     <constraint firstItem="E1J-1X-1h8" firstAttribute="top" secondItem="FJR-xQ-1at" secondAttribute="bottom" constant="20" id="zBW-wp-Rvx"/>
                                     <constraint firstItem="V80-Vu-pdb" firstAttribute="top" secondItem="wJY-Rq-sTS" secondAttribute="bottom" constant="30" id="zpd-1x-Fdo"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <constraints>

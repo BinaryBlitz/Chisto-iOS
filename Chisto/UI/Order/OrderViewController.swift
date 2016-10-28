@@ -13,7 +13,7 @@ import RxDataSources
 
 class OrderViewController: UIViewController, UIScrollViewDelegate,DefaultBarColoredViewController {
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var goButton: GoButton!
+  @IBOutlet weak var continueButton: GoButton!
   private let emptyOrderView = EmptyOrderView.nibInstance()
   
   private let viewModel = OrderViewModel()
@@ -30,22 +30,14 @@ class OrderViewController: UIViewController, UIScrollViewDelegate,DefaultBarColo
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconUser"), style: .plain, target: nil, action: nil)
     
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    
     // Rx
     emptyOrderView?.addButton.rx.tap.bindTo(viewModel.emptyOrderAddButtonDidTap).addDisposableTo(disposeBag)
     navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.navigationAddButtonDidTap).addDisposableTo(disposeBag)
-    
-    viewModel.presentCategoriesViewController.drive(onNext: {
-      let viewController = CategoriesViewController.storyboardInstance()!
-      self.navigationController?.pushViewController(viewController, animated: true)
-    }).addDisposableTo(disposeBag)
-    
-    viewModel.presentItemInfoViewController.drive(onNext: { [weak self] viewModel in
-      let viewController = ItemInfoViewController.storyboardInstance()!
-      viewController.viewModel = viewModel
-      self?.navigationController?.pushViewController(viewController, animated: true)
-    }).addDisposableTo(disposeBag)
+    continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
     
     configureTableView()
+    configureNavigations()
     
   }
   
@@ -63,11 +55,11 @@ class OrderViewController: UIViewController, UIScrollViewDelegate,DefaultBarColo
     
     viewModel.currentOrderItems.asDriver().drive(onNext: { [weak self] items in
       if items.count > 0 {
-        self?.goButton.isEnabled = true
+        self?.continueButton.isEnabled = true
         self?.tableView.separatorStyle = .singleLine
         self?.tableView.backgroundView?.isHidden = true
       } else {
-        self?.goButton.isEnabled = false
+        self?.continueButton.isEnabled = false
         self?.tableView.separatorStyle = .none
         self?.tableView.backgroundView?.isHidden = false
       }
@@ -93,6 +85,41 @@ class OrderViewController: UIViewController, UIScrollViewDelegate,DefaultBarColo
     if let indexPath = tableView.indexPathForSelectedRow {
       tableView.deselectRow(at: indexPath, animated: true)
     }
+  }
+  
+  func configureNavigations() {
+    
+    viewModel.presentCategoriesViewController.drive(onNext: {
+      let viewController = CategoriesViewController.storyboardInstance()!
+      self.navigationController?.pushViewController(viewController, animated: true)
+    }).addDisposableTo(disposeBag)
+    
+    viewModel.presentItemInfoViewController.drive(onNext: { [weak self] viewModel in
+      let viewController = ItemInfoViewController.storyboardInstance()!
+      viewController.viewModel = viewModel
+      self?.navigationController?.pushViewController(viewController, animated: true)
+    }).addDisposableTo(disposeBag)
+    
+    viewModel.presentLastTimeOrderPopup.drive(onNext: { [weak self] popupViewModel in
+      guard let viewModel = self?.viewModel else { return }
+      
+      popupViewModel.showAllLaundriesButtonDidTap.bindTo(viewModel.showAllLaundriesModalButtonDidTap)
+        .addDisposableTo(popupViewModel.disposeBag)
+      
+      let viewController = LastTimePopupViewController.storyboardInstance()!
+      
+      viewController.viewModel = popupViewModel
+      viewController.modalPresentationStyle = .overFullScreen
+      self?.present(viewController, animated: false, completion: nil)
+      
+    }).addDisposableTo(disposeBag)
+    
+    viewModel.presentLaundrySelectSection.drive(onNext: { [weak self] in
+      let viewController = LaundrySelectViewController.storyboardInstance()!
+      self?.navigationController?.pushViewController(viewController, animated: false)
+    }).addDisposableTo(disposeBag)
+    
+    
   }
 
 }

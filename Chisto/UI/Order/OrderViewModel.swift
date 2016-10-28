@@ -26,6 +26,8 @@ protocol OrderViewModelType {
   var presentItemInfoViewController: Driver<ItemInfoViewModel> { get }
   var navigationBarTitle: String { get }
   var footerButtonTitle: String { get }
+  var presentLastTimeOrderPopup: Driver<LastTimePopupViewModel> { get }
+  var presentLaundrySelectSection: Driver<Void> { get }
   var sections: Driver<[OrderSectionModel]> { get }
 }
 
@@ -35,11 +37,14 @@ class OrderViewModel: OrderViewModelType {
   var emptyOrderAddButtonDidTap = PublishSubject<Void>()
   var itemDidSelect = PublishSubject<IndexPath>()
   var continueButtonDidTap = PublishSubject<Void>()
+  var showAllLaundriesModalButtonDidTap = PublishSubject<Void>()
   
   // Output
   var sections: Driver<[OrderSectionModel]>
   var presentCategoriesViewController: Driver<Void>
   var presentItemInfoViewController: Driver<ItemInfoViewModel>
+  var presentLastTimeOrderPopup: Driver<LastTimePopupViewModel>
+  var presentLaundrySelectSection: Driver<Void>
   
   // Constants
   let navigationBarTitle = "Заказ"
@@ -66,6 +71,11 @@ class OrderViewModel: OrderViewModelType {
       return [section]
     }
     
+    self.presentLaundrySelectSection = showAllLaundriesModalButtonDidTap.asDriver(onErrorDriveWith: .empty())
+    
+    self.presentLastTimeOrderPopup = continueButtonDidTap.asObservable().map {
+      LastTimePopupViewModel()
+    }.asDriver(onErrorDriveWith: .empty())
     
   }
 }
