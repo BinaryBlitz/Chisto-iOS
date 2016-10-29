@@ -20,9 +20,13 @@
 		88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */; };
 		88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 88073F001DAD6E6F000696A3 /* .swiftlint.yml */; };
 		88073F031DAD6FCF000696A3 /* DescriptionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073F021DAD6FCF000696A3 /* DescriptionListItemView.swift */; };
-		8811FE1D1DC2F36000610712 /* LaundrySortViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8811FE1C1DC2F36000610712 /* LaundrySortViewController.storyboard */; };
-		8811FE1F1DC364B000610712 /* LaundrySortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8811FE1E1DC364B000610712 /* LaundrySortViewController.swift */; };
-		8811FE211DC3661800610712 /* LaundrySortViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8811FE201DC3661800610712 /* LaundrySortViewModel.swift */; };
+		8811FE0E1DC2DB0500610712 /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8811FE0B1DC2DB0500610712 /* ProfileViewController.storyboard */; };
+		8811FE0F1DC2DB0500610712 /* ProfileNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8811FE0C1DC2DB0500610712 /* ProfileNavigationController.swift */; };
+		8811FE101DC2DB0500610712 /* ProfileNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8811FE0D1DC2DB0500610712 /* ProfileNavigationController.storyboard */; };
+		8811FE131DC2DBBE00610712 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8811FE121DC2DBBE00610712 /* ProfileViewController.swift */; };
+		8811FE151DC2DCA600610712 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8811FE141DC2DCA600610712 /* ProfileViewModel.swift */; };
+		8811FE181DC2E5DB00610712 /* AboutViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8811FE171DC2E5DB00610712 /* AboutViewController.storyboard */; };
+		8811FE1A1DC2EF4A00610712 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8811FE191DC2EF4A00610712 /* AboutViewController.swift */; };
 		8814C0331DAD8123005B4967 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0321DAD8123005B4967 /* Colors.swift */; };
 		8814C0391DAE8F7F005B4967 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0381DAE8F7F005B4967 /* LocationManager.swift */; };
 		8814C03C1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C03B1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift */; };
@@ -57,6 +61,9 @@
 		885409C31DB2E43300219C00 /* EmptyOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885409C21DB2E43300219C00 /* EmptyOrderView.swift */; };
 		885409C51DB2E55400219C00 /* CategoriesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409C41DB2E55400219C00 /* CategoriesViewController.storyboard */; };
 		885409C71DB2EC5D00219C00 /* UIView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885409C61DB2EC5D00219C00 /* UIView+IBInspectable.swift */; };
+		885C196F1DC379E40081A4F3 /* LaundrySortViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885C196C1DC379E40081A4F3 /* LaundrySortViewController.storyboard */; };
+		885C19701DC379E40081A4F3 /* LaundrySortViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C196D1DC379E40081A4F3 /* LaundrySortViewModel.swift */; };
+		885C19711DC379E40081A4F3 /* LaundrySortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C196E1DC379E40081A4F3 /* LaundrySortViewController.swift */; };
 		889D87C71DC0A752003E8DAC /* LaundrySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889D87C61DC0A752003E8DAC /* LaundrySelectViewController.swift */; };
 		889D87C91DC0A760003E8DAC /* LaundrySelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889D87C81DC0A760003E8DAC /* LaundrySelectViewController.storyboard */; };
 		889D87CB1DC0B45C003E8DAC /* RotatingUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889D87CA1DC0B45C003E8DAC /* RotatingUILabel.swift */; };
@@ -102,9 +109,13 @@
 		88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySelectViewModel.swift; sourceTree = "<group>"; };
 		88073F001DAD6E6F000696A3 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		88073F021DAD6FCF000696A3 /* DescriptionListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionListItemView.swift; sourceTree = "<group>"; };
-		8811FE1C1DC2F36000610712 /* LaundrySortViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaundrySortViewController.storyboard; sourceTree = "<group>"; };
-		8811FE1E1DC364B000610712 /* LaundrySortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySortViewController.swift; sourceTree = "<group>"; };
-		8811FE201DC3661800610712 /* LaundrySortViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySortViewModel.swift; sourceTree = "<group>"; };
+		8811FE0B1DC2DB0500610712 /* ProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
+		8811FE0C1DC2DB0500610712 /* ProfileNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileNavigationController.swift; sourceTree = "<group>"; };
+		8811FE0D1DC2DB0500610712 /* ProfileNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileNavigationController.storyboard; sourceTree = "<group>"; };
+		8811FE121DC2DBBE00610712 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		8811FE141DC2DCA600610712 /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		8811FE171DC2E5DB00610712 /* AboutViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AboutViewController.storyboard; sourceTree = "<group>"; };
+		8811FE191DC2EF4A00610712 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		8814C0321DAD8123005B4967 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8814C0381DAE8F7F005B4967 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		8814C03B1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Rx.swift .swift"; sourceTree = "<group>"; };
@@ -141,6 +152,9 @@
 		885409C21DB2E43300219C00 /* EmptyOrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyOrderView.swift; sourceTree = "<group>"; };
 		885409C41DB2E55400219C00 /* CategoriesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CategoriesViewController.storyboard; sourceTree = "<group>"; };
 		885409C61DB2EC5D00219C00 /* UIView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectable.swift"; sourceTree = "<group>"; };
+		885C196C1DC379E40081A4F3 /* LaundrySortViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaundrySortViewController.storyboard; sourceTree = "<group>"; };
+		885C196D1DC379E40081A4F3 /* LaundrySortViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySortViewModel.swift; sourceTree = "<group>"; };
+		885C196E1DC379E40081A4F3 /* LaundrySortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySortViewController.swift; sourceTree = "<group>"; };
 		889D87C61DC0A752003E8DAC /* LaundrySelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySelectViewController.swift; sourceTree = "<group>"; };
 		889D87C81DC0A760003E8DAC /* LaundrySelectViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaundrySelectViewController.storyboard; sourceTree = "<group>"; };
 		889D87CA1DC0B45C003E8DAC /* RotatingUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingUILabel.swift; sourceTree = "<group>"; };
@@ -248,7 +262,9 @@
 		88073EEC1DAC19E1000696A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				8811FE1B1DC2F31E00610712 /* LaundryFilterModal */,
+				885C19731DC379FA0081A4F3 /* LaundrySort */,
+				8811FE161DC2E5C800610712 /* About */,
+				8811FE111DC2DB1100610712 /* Profile */,
 				889D87C51DC0A727003E8DAC /* LaundrySelect */,
 				8833B5261DBE6E06004D44CE /* LastTimePopup */,
 				8814C04E1DAF15DA005B4967 /* ChistoNavigationController.swift */,
@@ -313,14 +329,25 @@
 			path = CitySelect;
 			sourceTree = "<group>";
 		};
-		8811FE1B1DC2F31E00610712 /* LaundryFilterModal */ = {
+		8811FE111DC2DB1100610712 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				8811FE1C1DC2F36000610712 /* LaundrySortViewController.storyboard */,
-				8811FE1E1DC364B000610712 /* LaundrySortViewController.swift */,
-				8811FE201DC3661800610712 /* LaundrySortViewModel.swift */,
+				8811FE0B1DC2DB0500610712 /* ProfileViewController.storyboard */,
+				8811FE0C1DC2DB0500610712 /* ProfileNavigationController.swift */,
+				8811FE0D1DC2DB0500610712 /* ProfileNavigationController.storyboard */,
+				8811FE121DC2DBBE00610712 /* ProfileViewController.swift */,
+				8811FE141DC2DCA600610712 /* ProfileViewModel.swift */,
 			);
-			name = LaundryFilterModal;
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		8811FE161DC2E5C800610712 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				8811FE171DC2E5DB00610712 /* AboutViewController.storyboard */,
+				8811FE191DC2EF4A00610712 /* AboutViewController.swift */,
+			);
+			name = About;
 			sourceTree = "<group>";
 		};
 		8814C0311DAD8112005B4967 /* Style */ = {
@@ -446,6 +473,16 @@
 			);
 			name = CityNotFound;
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		885C19731DC379FA0081A4F3 /* LaundrySort */ = {
+			isa = PBXGroup;
+			children = (
+				885C196C1DC379E40081A4F3 /* LaundrySortViewController.storyboard */,
+				885C196D1DC379E40081A4F3 /* LaundrySortViewModel.swift */,
+				885C196E1DC379E40081A4F3 /* LaundrySortViewController.swift */,
+			);
+			name = LaundrySort;
 			sourceTree = "<group>";
 		};
 		889D87C51DC0A727003E8DAC /* LaundrySelect */ = {
@@ -590,12 +627,16 @@
 				885409C51DB2E55400219C00 /* CategoriesViewController.storyboard in Resources */,
 				885409B61DB23DEC00219C00 /* CitySelectViewController.storyboard in Resources */,
 				88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */,
+				885C196F1DC379E40081A4F3 /* LaundrySortViewController.storyboard in Resources */,
+				8811FE181DC2E5DB00610712 /* AboutViewController.storyboard in Resources */,
 				883760D51DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard in Resources */,
 				88B0B5521DB19C6E00C7D0F7 /* DescriptionListItemView.xib in Resources */,
 				889D87C91DC0A760003E8DAC /* LaundrySelectViewController.storyboard in Resources */,
+				8811FE101DC2DB0500610712 /* ProfileNavigationController.storyboard in Resources */,
 				88072D4E1DB967EF00B47D23 /* ItemInfoViewController.storyboard in Resources */,
 				8833B52A1DBE6E38004D44CE /* LastTimePopupViewController.storyboard in Resources */,
 				88B0B5501DB1825500C7D0F7 /* OnBoardingViewController.storyboard in Resources */,
+				8811FE0E1DC2DB0500610712 /* ProfileViewController.storyboard in Resources */,
 				8833B5301DBE8756004D44CE /* LaundryItemInfoView.xib in Resources */,
 				885409C01DB2C76500219C00 /* OrderViewController.storyboard in Resources */,
 				88E86DA61DB8E800002A7024 /* ServiceSelectViewController.storyboard in Resources */,
@@ -605,7 +646,6 @@
 				88073EE31DABE1E0000696A3 /* LaunchScreen.storyboard in Resources */,
 				88073EE01DABE1E0000696A3 /* Assets.xcassets in Resources */,
 				882288141DB6D11C000642E0 /* RootViewController.storyboard in Resources */,
-				8811FE1D1DC2F36000610712 /* LaundrySortViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,6 +724,7 @@
 				8814C0331DAD8123005B4967 /* Colors.swift in Sources */,
 				88E86DAA1DB8E800002A7024 /* ServiceSelectViewModel.swift in Sources */,
 				8814C0611DAFEE7C005B4967 /* CategoriesViewModel.swift in Sources */,
+				885C19701DC379E40081A4F3 /* LaundrySortViewModel.swift in Sources */,
 				88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */,
 				889D87C71DC0A752003E8DAC /* LaundrySelectViewController.swift in Sources */,
 				88072D571DB9698600B47D23 /* ItemInfoTableViewCell.swift in Sources */,
@@ -695,14 +736,15 @@
 				8814C0651DB03CBC005B4967 /* Fonts.swift in Sources */,
 				8814C04D1DAF159E005B4967 /* OrderViewModel.swift in Sources */,
 				883760D31DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift in Sources */,
-				8811FE211DC3661800610712 /* LaundrySortViewModel.swift in Sources */,
 				8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */,
+				8811FE0F1DC2DB0500610712 /* ProfileNavigationController.swift in Sources */,
 				8814C0401DAED9AC005B4967 /* CityNotFoundViewController.swift in Sources */,
 				8814C0631DB03AD7005B4967 /* CategoryTableViewCellModel.swift in Sources */,
 				88D8ABC21DB587CF009D515B /* SelectClothesTableViewCell.swift in Sources */,
 				88E86DA71DB8E800002A7024 /* ServiceSelectTableViewCell.swift in Sources */,
 				88073F031DAD6FCF000696A3 /* DescriptionListItemView.swift in Sources */,
 				8814C0671DB04AFB005B4967 /* RussianEnumEndings.swift in Sources */,
+				8811FE1A1DC2EF4A00610712 /* AboutViewController.swift in Sources */,
 				88072D521DB9695E00B47D23 /* ItemInfoViewModel.swift in Sources */,
 				889D87CE1DC0BA2F003E8DAC /* LaundrySelectTableViewCell.swift in Sources */,
 				8814C0581DAFB0F2005B4967 /* CityNotFoundViewModel.swift in Sources */,
@@ -715,7 +757,9 @@
 				88E86DB51DB91BAE002A7024 /* OrderTableViewCell.swift in Sources */,
 				88E86DA91DB8E800002A7024 /* ServiceSelectViewController.swift in Sources */,
 				883760D11DB8D97500C9F506 /* OnBoardingNavigationController.swift in Sources */,
+				885C19711DC379E40081A4F3 /* LaundrySortViewController.swift in Sources */,
 				8814C05E1DAFCF28005B4967 /* CategoryTableViewCell.swift in Sources */,
+				8811FE151DC2DCA600610712 /* ProfileViewModel.swift in Sources */,
 				889D87CB1DC0B45C003E8DAC /* RotatingUILabel.swift in Sources */,
 				885409BA1DB25B5100219C00 /* GoButton.swift in Sources */,
 				889D87D21DC1F71F003E8DAC /* LaundrySelectViewModel.swift in Sources */,
@@ -723,6 +767,7 @@
 				88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */,
 				8814C0561DAFA7B5005B4967 /* BottomBorderedTextField.swift in Sources */,
 				885409C31DB2E43300219C00 /* EmptyOrderView.swift in Sources */,
+				8811FE131DC2DBBE00610712 /* ProfileViewController.swift in Sources */,
 				8814C0391DAE8F7F005B4967 /* LocationManager.swift in Sources */,
 				88D8ABBD1DB56E89009D515B /* SelectClothesViewModel.swift in Sources */,
 				8833B5361DBF8241004D44CE /* LastTimePopupViewModel.swift in Sources */,
@@ -730,7 +775,6 @@
 				88E86DA81DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift in Sources */,
 				8814C03C1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift in Sources */,
 				88E86DB31DB916B3002A7024 /* DataManager.swift in Sources */,
-				8811FE1F1DC364B000610712 /* LaundrySortViewController.swift in Sources */,
 				885409C71DB2EC5D00219C00 /* UIView+IBInspectable.swift in Sources */,
 				8833B5341DBF7F75004D44CE /* LaundryItemInfoViewModel.swift in Sources */,
 			);

@@ -9,6 +9,7 @@
 import UIKit
 import RxDataSources
 import RxSwift
+import RxCocoa
 
 class CitySelectViewController: UIViewController, UIScrollViewDelegate {
   

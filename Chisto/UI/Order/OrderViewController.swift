@@ -32,9 +32,15 @@ class OrderViewController: UIViewController, UIScrollViewDelegate,DefaultBarColo
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     
     // Rx
-    emptyOrderView?.addButton.rx.tap.bindTo(viewModel.emptyOrderAddButtonDidTap).addDisposableTo(disposeBag)
-    navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.navigationAddButtonDidTap).addDisposableTo(disposeBag)
-    continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
+    emptyOrderView?.addButton.rx.tap.bindTo(viewModel.emptyOrderAddButtonDidTap)
+      .addDisposableTo(disposeBag)
+    
+    navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.navigationAddButtonDidTap)
+      .addDisposableTo(disposeBag)
+    navigationItem.leftBarButtonItem?.rx.tap.bindTo(viewModel.profileButtonDidTap)
+      .addDisposableTo(disposeBag)
+    continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap)
+      .addDisposableTo(disposeBag)
     
     configureTableView()
     configureNavigations()
@@ -117,6 +123,11 @@ class OrderViewController: UIViewController, UIScrollViewDelegate,DefaultBarColo
     viewModel.presentLaundrySelectSection.drive(onNext: { [weak self] in
       let viewController = LaundrySelectViewController.storyboardInstance()!
       self?.navigationController?.pushViewController(viewController, animated: false)
+    }).addDisposableTo(disposeBag)
+    
+    viewModel.presentProfileSection.drive(onNext: { [weak self] in
+      let viewController = ProfileNavigationController.storyboardInstance()!
+      self?.present(viewController, animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
     
     

@@ -71,7 +71,7 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
     guard let viewModel = viewModel else { return }
     
     viewModel.selectedServicesIds.asObservable().map { $0.count > 0 }
-      .bindTo(readyButton.rx.enabled)
+      .bindTo(readyButton.rx.isEnabled)
       .addDisposableTo(disposeBag)
     
     readyButton.rx.tap.bindTo(viewModel.readyButtonTapped).addDisposableTo(disposeBag)
