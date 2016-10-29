@@ -897,7 +897,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 40CC6F844478737C97DE22A8 /* Pods-Chisto.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -916,7 +915,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EA8A37CB3EB7F2EEDB9E26D5 /* Pods-Chisto.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 4WGG8V34K4;
