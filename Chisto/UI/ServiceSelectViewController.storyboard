@@ -99,9 +99,9 @@
                                                     <constraints>
                                                         <constraint firstItem="O55-Ig-3rP" firstAttribute="leading" secondItem="DQP-wg-EZ7" secondAttribute="leadingMargin" id="Arz-Ab-tgc"/>
                                                         <constraint firstAttribute="bottom" secondItem="O55-Ig-3rP" secondAttribute="bottom" id="CzV-nJ-53R"/>
+                                                        <constraint firstItem="7Fj-td-osS" firstAttribute="top" secondItem="DQP-wg-EZ7" secondAttribute="top" id="eYE-G9-Mee"/>
                                                         <constraint firstItem="O55-Ig-3rP" firstAttribute="top" secondItem="7Fj-td-osS" secondAttribute="bottom" constant="8" id="fBK-v7-C1H"/>
                                                         <constraint firstItem="7Fj-td-osS" firstAttribute="leading" secondItem="DQP-wg-EZ7" secondAttribute="leadingMargin" id="h0V-0p-vpC"/>
-                                                        <constraint firstItem="7Fj-td-osS" firstAttribute="top" secondItem="DQP-wg-EZ7" secondAttribute="topMargin" id="ru3-Cs-JYo"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
