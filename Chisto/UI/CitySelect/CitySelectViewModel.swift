@@ -27,7 +27,7 @@ protocol CitySelectViewModelType {
   var cancelSearchButtonDidTap: PublishSubject<Void> { get }
   var itemDidSelect: PublishSubject<IndexPath> { get }
   var cityNotFoundButtonDidTap: PublishSubject<Void> { get }
-  var searchString: ReplaySubject<String> { get }
+  var searchString: PublishSubject<String?> { get }
   var searchBarDidEndEditing: PublishSubject<Void> { get }
   var searchBarDidBeginEditing: PublishSubject<Void> { get }
   
@@ -50,7 +50,7 @@ class CitySelectViewModel: CitySelectViewModelType {
   var cancelSearchButtonDidTap = PublishSubject<Void>()
   var itemDidSelect = PublishSubject<IndexPath>()
   var cityNotFoundButtonDidTap = PublishSubject<Void>()
-  var searchString = ReplaySubject<String>.create(bufferSize: 1)
+  var searchString = PublishSubject<String?>()
   var searchBarDidEndEditing = PublishSubject<Void>()
   var searchBarDidBeginEditing = PublishSubject<Void>()
   
@@ -73,7 +73,7 @@ class CitySelectViewModel: CitySelectViewModelType {
     
     self.sections = Observable.combineLatest(cities.asObservable(), searchString.asObservable(), location.asObservable()) { cities, searchString, location -> [CitySelectSectionModel] in
       var filteredCities = cities
-      if searchString.characters.count > 0 {
+      if let searchString = searchString, searchString.characters.count > 0 {
         filteredCities = cities.filter { $0.title.lowercased().range(of: searchString.lowercased()) != nil }
       }
       return [CitySelectSectionModel(model: "", items: filteredCities)]

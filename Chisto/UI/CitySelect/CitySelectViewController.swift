@@ -9,6 +9,7 @@
 import UIKit
 import RxDataSources
 import RxSwift
+import RxCocoa
 
 class CitySelectViewController: UIViewController, UIScrollViewDelegate {
   
@@ -113,6 +114,12 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate {
   func configureFooter() {
     // Bindings
     goButton.rx.tap.bindTo(viewModel.cityNotFoundButtonDidTap).addDisposableTo(disposeBag)
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    if let indexPath = tableView.indexPathForSelectedRow {
+      tableView.deselectRow(at: indexPath, animated: true)
+    }
   }
   
 }

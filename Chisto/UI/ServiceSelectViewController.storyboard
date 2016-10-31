@@ -83,24 +83,34 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fj-td-osS">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O55-Ig-3rP">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.3960784375667572" green="0.42352941632270813" blue="0.45098039507865906" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DQP-wg-EZ7">
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fj-td-osS">
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O55-Ig-3rP">
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <color key="textColor" red="0.3960784375667572" green="0.42352941632270813" blue="0.45098039507865906" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="O55-Ig-3rP" firstAttribute="leading" secondItem="DQP-wg-EZ7" secondAttribute="leadingMargin" id="Arz-Ab-tgc"/>
+                                                        <constraint firstAttribute="bottom" secondItem="O55-Ig-3rP" secondAttribute="bottom" id="CzV-nJ-53R"/>
+                                                        <constraint firstItem="7Fj-td-osS" firstAttribute="top" secondItem="DQP-wg-EZ7" secondAttribute="top" id="eYE-G9-Mee"/>
+                                                        <constraint firstItem="O55-Ig-3rP" firstAttribute="top" secondItem="7Fj-td-osS" secondAttribute="bottom" constant="8" id="fBK-v7-C1H"/>
+                                                        <constraint firstItem="7Fj-td-osS" firstAttribute="leading" secondItem="DQP-wg-EZ7" secondAttribute="leadingMargin" id="h0V-0p-vpC"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="7Fj-td-osS" firstAttribute="top" secondItem="63f-ki-jFe" secondAttribute="topMargin" constant="26" id="Lhw-UP-QJL"/>
                                                 <constraint firstItem="hFO-t1-lhw" firstAttribute="centerY" secondItem="63f-ki-jFe" secondAttribute="centerY" id="OkR-qo-1Up"/>
-                                                <constraint firstItem="O55-Ig-3rP" firstAttribute="leading" secondItem="63f-ki-jFe" secondAttribute="leadingMargin" constant="15" id="PVb-s9-BYG"/>
-                                                <constraint firstItem="O55-Ig-3rP" firstAttribute="top" secondItem="7Fj-td-osS" secondAttribute="bottom" constant="8" id="flj-oj-3RE"/>
-                                                <constraint firstItem="7Fj-td-osS" firstAttribute="leading" secondItem="63f-ki-jFe" secondAttribute="leadingMargin" constant="15" id="hPG-QF-Slj"/>
+                                                <constraint firstItem="hFO-t1-lhw" firstAttribute="leading" secondItem="DQP-wg-EZ7" secondAttribute="trailing" id="dbz-iR-FGO"/>
+                                                <constraint firstItem="DQP-wg-EZ7" firstAttribute="leading" secondItem="63f-ki-jFe" secondAttribute="leading" constant="15" id="ehj-6L-mCO"/>
+                                                <constraint firstItem="DQP-wg-EZ7" firstAttribute="centerY" secondItem="63f-ki-jFe" secondAttribute="centerY" id="qFl-7B-nfl"/>
                                                 <constraint firstItem="hFO-t1-lhw" firstAttribute="trailing" secondItem="63f-ki-jFe" secondAttribute="trailingMargin" constant="-15" id="w8A-A6-JeM"/>
                                             </constraints>
                                         </tableViewCellContentView>

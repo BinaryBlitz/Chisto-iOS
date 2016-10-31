@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="g05-CP-2py">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Last Time Popup View Controller-->
+        <scene sceneID="uvD-Kv-pPK">
+            <objects>
+                <viewController storyboardIdentifier="LastTimePopupViewController" id="g05-CP-2py" customClass="LastTimePopupViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XPO-7W-nHI"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Ax-d6-OnQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TKy-eo-SxV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dez-cr-F80">
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clothesAlert" translatesAutoresizingMaskIntoConstraints="NO" id="1Ro-qb-qAO">
+                                        <color key="backgroundColor" red="0.2156862745" green="0.34901960780000002" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4R-cS-Sbo">
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZP0-8R-d5Z">
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="ZP0-8R-d5Z" firstAttribute="top" secondItem="P4R-cS-Sbo" secondAttribute="top" id="Hfl-rT-CWj"/>
+                                            <constraint firstAttribute="width" constant="50" id="KkE-Xn-OLc"/>
+                                            <constraint firstAttribute="height" constant="50" id="PKK-mf-3DR"/>
+                                            <constraint firstItem="ZP0-8R-d5Z" firstAttribute="leading" secondItem="P4R-cS-Sbo" secondAttribute="leading" id="WjZ-Wc-FuJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="ZP0-8R-d5Z" secondAttribute="bottom" id="ZvD-He-aEv"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZP0-8R-d5Z" secondAttribute="trailing" id="hFL-QM-WLE"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Химчистка премиум класса №1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPy-yC-wIa">
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZE-3M-xOy" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
+                                        <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="bWl-AM-u60"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Посмотреть все предложения">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                                <color key="value" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XkK-zO-r5M">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="159" id="FV0-85-Dv3"/>
+                                            <constraint firstAttribute="height" constant="36" id="Ydj-Kd-Dki"/>
+                                        </constraints>
+                                        <state key="normal" title="Заказать">
+                                            <color key="titleColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.75686275960000005" green="0.78039217000000005" blue="0.80392158030000005" alpha="0.50163656345565755" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="В прошлый раз вы заказывали в химчистке" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yg-mr-KDz">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYv-mm-yzU">
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="center" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="9gj-VK-KKh">
+                                                <color key="backgroundColor" red="0.75686275960000005" green="0.78039217000000005" blue="0.80392158030000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.75686275960000005" green="0.78039217000000005" blue="0.80392158030000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.75686275960000005" green="0.78039217000000005" blue="0.80392158030000005" alpha="0.50143348619999994" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="9gj-VK-KKh" secondAttribute="bottom" id="OPY-OH-mEa"/>
+                                            <constraint firstAttribute="height" constant="100" id="VND-o0-GO3"/>
+                                            <constraint firstItem="9gj-VK-KKh" firstAttribute="top" secondItem="gYv-mm-yzU" secondAttribute="top" id="WO5-UZ-7Mh"/>
+                                            <constraint firstItem="9gj-VK-KKh" firstAttribute="leading" secondItem="gYv-mm-yzU" secondAttribute="leading" id="XBe-rJ-J3W"/>
+                                            <constraint firstAttribute="trailing" secondItem="9gj-VK-KKh" secondAttribute="trailing" id="ftj-IP-eac"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="yZE-3M-xOy" firstAttribute="top" secondItem="XkK-zO-r5M" secondAttribute="bottom" constant="20" id="1cF-6e-yWf"/>
+                                    <constraint firstItem="gYv-mm-yzU" firstAttribute="top" secondItem="mPy-yC-wIa" secondAttribute="bottom" constant="20" id="3sO-I2-62b"/>
+                                    <constraint firstAttribute="bottom" secondItem="yZE-3M-xOy" secondAttribute="bottom" id="6En-cm-dCP"/>
+                                    <constraint firstItem="yZE-3M-xOy" firstAttribute="leading" secondItem="dez-cr-F80" secondAttribute="leading" id="CEr-ca-Lpv"/>
+                                    <constraint firstItem="P4R-cS-Sbo" firstAttribute="top" secondItem="1Ro-qb-qAO" secondAttribute="bottom" constant="-25" id="EJ3-NV-hek"/>
+                                    <constraint firstItem="XkK-zO-r5M" firstAttribute="centerX" secondItem="dez-cr-F80" secondAttribute="centerX" id="ELj-wJ-B0V"/>
+                                    <constraint firstItem="mPy-yC-wIa" firstAttribute="top" secondItem="P4R-cS-Sbo" secondAttribute="bottom" constant="20" id="KXY-qV-Ybl"/>
+                                    <constraint firstAttribute="trailing" secondItem="1Yg-mr-KDz" secondAttribute="trailing" constant="15" id="Sgk-fq-yZn"/>
+                                    <constraint firstAttribute="trailing" secondItem="1Ro-qb-qAO" secondAttribute="trailing" id="TkW-fr-CFH"/>
+                                    <constraint firstItem="P4R-cS-Sbo" firstAttribute="top" secondItem="1Yg-mr-KDz" secondAttribute="bottom" constant="20" id="Y4t-p9-M5e"/>
+                                    <constraint firstItem="1Ro-qb-qAO" firstAttribute="top" secondItem="dez-cr-F80" secondAttribute="top" id="ZhU-Nn-gDg"/>
+                                    <constraint firstItem="gYv-mm-yzU" firstAttribute="leading" secondItem="dez-cr-F80" secondAttribute="leading" id="a9A-ZC-YdT"/>
+                                    <constraint firstItem="1Ro-qb-qAO" firstAttribute="leading" secondItem="dez-cr-F80" secondAttribute="leading" id="bFo-tp-Gma"/>
+                                    <constraint firstItem="P4R-cS-Sbo" firstAttribute="centerX" secondItem="dez-cr-F80" secondAttribute="centerX" id="dFH-iR-Am6"/>
+                                    <constraint firstItem="XkK-zO-r5M" firstAttribute="top" secondItem="gYv-mm-yzU" secondAttribute="bottom" constant="20" id="fg7-ie-pBQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="yZE-3M-xOy" secondAttribute="trailing" id="kn0-Lg-g26"/>
+                                    <constraint firstItem="1Yg-mr-KDz" firstAttribute="leading" secondItem="dez-cr-F80" secondAttribute="leading" constant="15" id="n4d-H9-oBP"/>
+                                    <constraint firstAttribute="trailing" secondItem="gYv-mm-yzU" secondAttribute="trailing" id="pJp-GQ-PW2"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="mPy-yC-wIa" secondAttribute="trailing" id="vCw-5Q-nGO"/>
+                                    <constraint firstItem="mPy-yC-wIa" firstAttribute="leading" secondItem="dez-cr-F80" secondAttribute="leadingMargin" id="wO9-se-N2E"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dez-cr-F80" firstAttribute="leading" secondItem="TKy-eo-SxV" secondAttribute="leadingMargin" constant="10" id="MqN-NC-tQs"/>
+                            <constraint firstItem="dez-cr-F80" firstAttribute="centerY" secondItem="TKy-eo-SxV" secondAttribute="centerY" id="tbo-dH-bbp"/>
+                            <constraint firstItem="dez-cr-F80" firstAttribute="trailing" secondItem="TKy-eo-SxV" secondAttribute="trailingMargin" constant="-10" id="uD8-xG-et3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="LaundryLogoImageView" destination="ZP0-8R-d5Z" id="XEz-no-3ah"/>
+                        <outlet property="contentView" destination="TKy-eo-SxV" id="czN-Gy-QeF"/>
+                        <outlet property="showAllLaundriesButton" destination="yZE-3M-xOy" id="2Yh-DB-r5g"/>
+                        <outlet property="stackView" destination="9gj-VK-KKh" id="lr5-TM-uFh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8RC-nb-B3Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-468" y="29.23538230884558"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="clothesAlert" width="290" height="110"/>
+    </resources>
+</document>

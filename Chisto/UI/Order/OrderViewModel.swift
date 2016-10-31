@@ -20,12 +20,15 @@ protocol OrderViewModelType {
   var emptyOrderAddButtonDidTap: PublishSubject<Void> { get }
   var itemDidSelect: PublishSubject<IndexPath> { get }
   var continueButtonDidTap: PublishSubject<Void> { get }
+  var profileButtonDidTap: PublishSubject<Void> { get }
   
   // Output
   var presentCategoriesViewController: Driver<Void> { get }
   var presentItemInfoViewController: Driver<ItemInfoViewModel> { get }
   var navigationBarTitle: String { get }
   var footerButtonTitle: String { get }
+  var presentLastTimeOrderPopup: Driver<LastTimePopupViewModel> { get }
+  var presentLaundrySelectSection: Driver<Void> { get }
   var sections: Driver<[OrderSectionModel]> { get }
 }
 
@@ -35,11 +38,16 @@ class OrderViewModel: OrderViewModelType {
   var emptyOrderAddButtonDidTap = PublishSubject<Void>()
   var itemDidSelect = PublishSubject<IndexPath>()
   var continueButtonDidTap = PublishSubject<Void>()
+  var showAllLaundriesModalButtonDidTap = PublishSubject<Void>()
+  var profileButtonDidTap = PublishSubject<Void>()
   
   // Output
   var sections: Driver<[OrderSectionModel]>
   var presentCategoriesViewController: Driver<Void>
   var presentItemInfoViewController: Driver<ItemInfoViewModel>
+  var presentLastTimeOrderPopup: Driver<LastTimePopupViewModel>
+  var presentLaundrySelectSection: Driver<Void>
+  var presentProfileSection: Driver<Void>
   
   // Constants
   let navigationBarTitle = "Заказ"
@@ -48,10 +56,13 @@ class OrderViewModel: OrderViewModelType {
   // Data
   let currentOrderItems: Variable<[OrderItem]>
   
+  let disposeBag = DisposeBag()
+  
   init() {
-    let currentOrderItems = DataManager.instance.currentOrderItems
+    let currentOrderItems = Variable<[OrderItem]>([])
+    DataManager.instance.currentOrderItems.bindTo(currentOrderItems).addDisposableTo(disposeBag)
     self.currentOrderItems = currentOrderItems
-
+    
     self.presentCategoriesViewController = Observable.of(navigationAddButtonDidTap.asObservable(), emptyOrderAddButtonDidTap.asObservable()).merge().asDriver(onErrorJustReturn: ())
     
     self.presentItemInfoViewController = itemDidSelect.asObservable().map { indexPath in
@@ -66,6 +77,13 @@ class OrderViewModel: OrderViewModelType {
       return [section]
     }
     
+    self.presentLaundrySelectSection = showAllLaundriesModalButtonDidTap.asDriver(onErrorDriveWith: .empty())
+    
+    self.presentLastTimeOrderPopup = continueButtonDidTap.asObservable().map {
+      LastTimePopupViewModel()
+    }.asDriver(onErrorDriveWith: .empty())
+    
+    self.presentProfileSection = profileButtonDidTap.asDriver(onErrorDriveWith: .empty())
     
   }
 }

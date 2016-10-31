@@ -32,16 +32,25 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
     configureTableView()
     configureFooter()
     
-    viewModel?.presentOrderSection.drive(onNext: { [weak self] in
-      self?.navigationController?.setViewControllers([OrderViewController.storyboardInstance()!], animated: true)
+    viewModel?.returnToSection.drive(onNext: { [weak self] section in
+      switch section {
+      case .order:
+        self?.navigationController?.setViewControllers([OrderViewController.storyboardInstance()!], animated: true)
+      case .orderItem:
+        _ = self?.navigationController?.popViewController(animated: true)
+      }
     }).addDisposableTo(disposeBag)
   }
   
   func configureTableView() {
     dataSource.configureCell = { _, tableView, indexPath, cellViewModel in
       let cell = tableView.dequeueReusableCell(withIdentifier: "ServiceSelectTableViewCell", for: indexPath) as! ServiceSelectTableViewCell
-      
       cell.configure(viewModel: cellViewModel)
+      if cellViewModel.isSelected {
+        tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+      } else {
+        tableView.deselectRow(at: indexPath, animated: false)
+      }
       
       return cell
     }
@@ -71,7 +80,7 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
     guard let viewModel = viewModel else { return }
     
     viewModel.selectedServicesIds.asObservable().map { $0.count > 0 }
-      .bindTo(readyButton.rx.enabled)
+      .bindTo(readyButton.rx.isEnabled)
       .addDisposableTo(disposeBag)
     
     readyButton.rx.tap.bindTo(viewModel.readyButtonTapped).addDisposableTo(disposeBag)
@@ -79,8 +88,8 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    guard let color = viewModel?.color else { return }
-    navigationController?.navigationBar.barTintColor = color
-    headerView.backgroundColor = viewModel?.color
+    guard let viewModel = viewModel else { return }
+    navigationController?.navigationBar.barTintColor = viewModel.color
+    headerView.backgroundColor = viewModel.color
   }
 }

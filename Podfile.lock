@@ -2,19 +2,21 @@ PODS:
   - Alamofire (4.0.1)
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
-  - Fabric (1.6.10)
-  - IQKeyboardManagerSwift (4.0.6)
-  - RxCocoa (3.0.0-beta.2):
-    - RxSwift (~> 3.0.0-beta.2)
-  - RxDataSources (1.0.0-beta.3):
-    - RxCocoa (~> 3.0.0-beta.2)
-    - RxSwift (~> 3.0.0-beta.2)
-  - RxSwift (3.0.0-beta.2)
+  - Fabric (1.6.11)
+  - FloatRatingView (2.0)
+  - IQKeyboardManagerSwift (4.0.7)
+  - RxCocoa (3.0.0):
+    - RxSwift (~> 3.0)
+  - RxDataSources (1.0.0):
+    - RxCocoa (~> 3.0)
+    - RxSwift (~> 3.0)
+  - RxSwift (3.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - Crashlytics
   - Fabric
+  - FloatRatingView (~> 2.0.0)
   - IQKeyboardManagerSwift
   - RxCocoa (~> 3.0.0-beta.1)
   - RxDataSources (~> 1.0.0-beta.3)
@@ -23,12 +25,13 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
-  Fabric: c73f371ee543e3f0b80608f2674750e4910d1669
-  IQKeyboardManagerSwift: b3015e819559ca76381f87a0833f44d178564603
-  RxCocoa: 1dd105d8a4e18034ccd7bd6d136445363ce67c8e
-  RxDataSources: ddef3c5a718ab960e287aa331a9299b56b0c7ffe
-  RxSwift: 0ea939d7d97cb70657190ffde8dc2a9b455778fc
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  FloatRatingView: 857ab8f10040d06a42fc979f486c8f9fecd2f2e5
+  IQKeyboardManagerSwift: 58bbcf46b5cf9fd4ed625d28a60cb2fbae4ab0f4
+  RxCocoa: 0a2f3ae381cf16f4021a4cee7a4420f83058a965
+  RxDataSources: 824693e84d00781d0a5e5cedc1ff95ce9250aacd
+  RxSwift: a930cd662f5b4a7ca9dc3518585dba91dadf497c
 
-PODFILE CHECKSUM: c05ccae193b31ca14e8aa3ccfb8eee200bb8939b
+PODFILE CHECKSUM: c632a136898896dc7976cbee2d8d01dc668c6c01
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1

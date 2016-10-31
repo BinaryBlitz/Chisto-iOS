@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 
 class OrderItem {
+  var id = UUID().uuidString
   var clothesItem: ClothesItem
   var services: [Service]
   var amount: Int
@@ -24,6 +25,17 @@ class OrderItem {
 class DataManager {
   static let instance = DataManager()
   
-  var currentOrderItems = Variable<[OrderItem]>([])
+  var currentOrderItems = BehaviorSubject<[OrderItem]>(value: [])
+  
+  func updateOrderItem(item: OrderItem, closure: (OrderItem) -> Void) {
+    var items = try! currentOrderItems.value()
+    if let orderItem = items.filter({ $0.id == item.id }).first {
+      closure(orderItem)
+    } else {
+      closure(item)
+      items.append(item)
+    }
+    currentOrderItems.onNext(items)
+  }
   
 }

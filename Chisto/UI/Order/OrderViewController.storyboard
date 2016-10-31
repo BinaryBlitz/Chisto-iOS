@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -43,7 +42,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Clw-dG-aPm" id="Vl8-Z8-yhd">
-                                            <frame key="frameInset" width="375" height="74.5"/>
+                                            <frame key="frameInset" width="375" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lJX-Jv-qWW">
@@ -52,18 +51,6 @@
                                                         <constraint firstAttribute="width" constant="29" id="rDl-vi-XpA"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3J4-se-xFb">
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="0">
-                                                            <attributes>
-                                                                <color key="NSColor" red="0.1738680007" green="0.62361474260000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <font key="NSFont" size="23" name=".SFNSDisplay"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2G7-kb-7fG">
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJA-76-BLG">
@@ -87,27 +74,32 @@
                                                         <constraint firstAttribute="trailing" secondItem="Tyz-bh-Gy8" secondAttribute="trailing" id="pwg-RE-jfU"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="шт" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08c-Jy-MvI">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                    <color key="textColor" red="0.1738680007" green="0.62361474260000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJ2-NI-DR5">
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="×2 шт">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" metaFont="system" size="24"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="2G7-kb-7fG" firstAttribute="centerY" secondItem="Vl8-Z8-yhd" secondAttribute="centerY" id="7bt-X7-cXC"/>
-                                                <constraint firstItem="08c-Jy-MvI" firstAttribute="top" secondItem="3J4-se-xFb" secondAttribute="bottom" multiplier="0.85" id="EE0-Md-gBw"/>
+                                                <constraint firstItem="FJ2-NI-DR5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2G7-kb-7fG" secondAttribute="trailing" id="DOM-da-kRm"/>
+                                                <constraint firstAttribute="trailing" secondItem="FJ2-NI-DR5" secondAttribute="trailing" constant="13" id="LwK-vJ-lTK"/>
                                                 <constraint firstItem="2G7-kb-7fG" firstAttribute="leading" secondItem="lJX-Jv-qWW" secondAttribute="trailing" constant="15" id="Yus-PQ-gyI"/>
-                                                <constraint firstAttribute="trailing" secondItem="3J4-se-xFb" secondAttribute="trailing" constant="10" id="eat-0L-crK"/>
-                                                <constraint firstItem="3J4-se-xFb" firstAttribute="centerY" secondItem="Vl8-Z8-yhd" secondAttribute="centerY" id="uQl-jH-52v"/>
-                                                <constraint firstItem="08c-Jy-MvI" firstAttribute="leading" secondItem="2G7-kb-7fG" secondAttribute="trailing" constant="10" id="wGl-yl-nrB"/>
+                                                <constraint firstItem="FJ2-NI-DR5" firstAttribute="centerY" secondItem="Vl8-Z8-yhd" secondAttribute="centerY" id="ma7-FS-7xp"/>
                                                 <constraint firstItem="lJX-Jv-qWW" firstAttribute="leading" secondItem="Vl8-Z8-yhd" secondAttribute="leading" constant="15" id="wuv-Af-lZK"/>
                                                 <constraint firstItem="lJX-Jv-qWW" firstAttribute="centerY" secondItem="Vl8-Z8-yhd" secondAttribute="centerY" id="xaA-Zt-gDs"/>
-                                                <constraint firstAttribute="trailing" secondItem="08c-Jy-MvI" secondAttribute="trailing" constant="10" id="y2h-zF-uzT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <outlet property="amountLabel" destination="3J4-se-xFb" id="2Ry-iz-gKl"/>
+                                            <outlet property="amountLabel" destination="FJ2-NI-DR5" id="Uum-5r-z9g"/>
                                             <outlet property="categoryIconImageView" destination="lJX-Jv-qWW" id="OqY-7U-7EB"/>
                                             <outlet property="servicesLabel" destination="Tyz-bh-Gy8" id="acB-qr-tXh"/>
                                             <outlet property="titleLabel" destination="YJA-76-BLG" id="ql5-OB-IVL"/>
@@ -129,7 +121,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="bdD-nj-oHj"/>
                     <connections>
-                        <outlet property="goButton" destination="0gy-0u-Iwx" id="Nbp-rw-mCU"/>
+                        <outlet property="continueButton" destination="0gy-0u-Iwx" id="F11-Tj-l0x"/>
                         <outlet property="tableView" destination="WjY-jC-gGD" id="kr2-N4-R7j"/>
                     </connections>
                 </viewController>
