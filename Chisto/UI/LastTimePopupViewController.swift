@@ -37,6 +37,7 @@ class LastTimePopupViewController: UIViewController {
     
     for viewModel in viewModel.laundryDescriptionViewModels {
       let laundryItemView = LaundryItemInfoView.nibInstance()!
+      laundryItemView.backgroundColor = UIColor.white
       laundryItemView.configure(viewModel: viewModel)
       stackView.addArrangedSubview(laundryItemView)
     }

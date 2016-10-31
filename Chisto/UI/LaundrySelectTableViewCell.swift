@@ -18,19 +18,28 @@ class LaundrySelectTableViewCell: UITableViewCell {
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var laundryTagLabel: RotatingUILabel!
   
+  var courierItemView = LaundryItemInfoView.nibInstance()!
+  var deliveryItemView = LaundryItemInfoView.nibInstance()!
+  var costItemView = LaundryItemInfoView.nibInstance()!
+  
   func configure(viewModel: LaundrySelectTableViewCellModelType) {
     laundryTitleLabel.text = viewModel.laundryTitle
     laundrySubTitleLabel.text = viewModel.laundryDescription
     ratingView.rating = viewModel.rating
+    
+    laundryTagLabel.isHidden = viewModel.tagIsHidden
     laundryTagLabel.backgroundColor = viewModel.tagBgColor
     laundryTagLabel.text = viewModel.tagName
     
-    for viewModel in viewModel.laundryDescriptionViewModels {
-      let laundryItemView = LaundryItemInfoView.nibInstance()!
-      laundryItemView.configure(viewModel: viewModel)
-      
-      laundryItemView.backgroundColor = UIColor.chsWhiteTwo
-      stackView.addArrangedSubview(laundryItemView)
-    }
+    courierItemView.configure(viewModel: viewModel.courierItemViewModel)
+    deliveryItemView.configure(viewModel: viewModel.deliveryItemViewModel)
+    costItemView.configure(viewModel: viewModel.costItemViewModel)
+  }
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    stackView.addArrangedSubview(courierItemView)
+    stackView.addArrangedSubview(deliveryItemView)
+    stackView.addArrangedSubview(costItemView)
   }
 }

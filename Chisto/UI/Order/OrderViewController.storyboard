@@ -89,6 +89,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="2G7-kb-7fG" firstAttribute="centerY" secondItem="Vl8-Z8-yhd" secondAttribute="centerY" id="7bt-X7-cXC"/>
+                                                <constraint firstItem="FJ2-NI-DR5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2G7-kb-7fG" secondAttribute="trailing" id="DOM-da-kRm"/>
                                                 <constraint firstAttribute="trailing" secondItem="FJ2-NI-DR5" secondAttribute="trailing" constant="13" id="LwK-vJ-lTK"/>
                                                 <constraint firstItem="2G7-kb-7fG" firstAttribute="leading" secondItem="lJX-Jv-qWW" secondAttribute="trailing" constant="15" id="Yus-PQ-gyI"/>
                                                 <constraint firstItem="FJ2-NI-DR5" firstAttribute="centerY" secondItem="Vl8-Z8-yhd" secondAttribute="centerY" id="ma7-FS-7xp"/>

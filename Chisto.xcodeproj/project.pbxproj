@@ -286,16 +286,8 @@
 			isa = PBXGroup;
 			children = (
 				88E86DB11DB91695002A7024 /* DataManager */,
-				88073EF21DAC1B4A000696A3 /* Models */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		88073EF21DAC1B4A000696A3 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		88073EF31DAC1CBE000696A3 /* Onboarding */ = {

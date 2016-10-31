@@ -87,13 +87,16 @@ class ItemInfoViewModel: ItemInfoViewModelType {
     }
     
     self.presentServiceSelectSection = addServiceButtonDidTap.asObservable().map {
-      ServiceSelectViewModel(item: orderItem, isNew: false)
+      let viewModel = ServiceSelectViewModel(item: orderItem, needSave: false, selectedServices: services.value)
+      viewModel.selectedServices.asObservable().bindTo(services).addDisposableTo(viewModel.disposeBag)
+      return viewModel
     }.asDriver(onErrorDriveWith: .empty())
     
     self.returnToOrderList = continueButtonDidTap.asObservable().map {
-      // TODO: remove all model logic from viewModel
-      orderItem.amount = currentAmount.value
-      orderItem.services = services.value
+      DataManager.instance.updateOrderItem(item: orderItem) { item in
+        orderItem.services = services.value
+        orderItem.amount = currentAmount.value
+      }
     }.asDriver(onErrorDriveWith: .empty())
     
     tableItemDeleted.asObservable().subscribe(onNext: { indexPath in

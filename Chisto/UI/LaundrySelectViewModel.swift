@@ -23,7 +23,7 @@ struct Laundry {
   let deliveryDate: String
   let deliveryPrice: Int
   let cost: Int
-  let type: LaundryType
+  let type: LaundryType?
 }
 
 enum LaundryType {
@@ -62,7 +62,8 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
   init() {
     let testLaundries = [Laundry(name: "Bianka", description: "Химчистка премиум класса № 1", rating: 3.5, courierDate: "15.09.2016", courierTimeInterval: "с 11:00 до 20:00", deliveryDate: "11.09.2016", deliveryPrice: 0, cost: 3400, type: .premium),
       Laundry(name: "Диана", description: "Cеть химчисток-прачечных", rating: 3, courierDate: "10.09.2016", courierTimeInterval: "24 часа", deliveryDate: "12.09.2016", deliveryPrice: 360, cost: 3800, type: .fast),
-      Laundry(name: "Юлайм", description: "Чистка и глажение одежды", rating: 5, courierDate: "10.09.2016", courierTimeInterval: "24 часа", deliveryDate: "12.09.2016", deliveryPrice: 360, cost: 3800, type: .cheap)
+      Laundry(name: "Юлайм", description: "Чистка и глажение одежды", rating: 5, courierDate: "10.09.2016", courierTimeInterval: "24 часа", deliveryDate: "12.09.2016", deliveryPrice: 360, cost: 3800, type: .cheap),
+      Laundry(name: "Химчистка", description: "Тестовая химчистка", rating: 1.5, courierDate: "10.09.2016", courierTimeInterval: "24 часа", deliveryDate: "12.09.2016", deliveryPrice: 360, cost: 3800, type: nil)
     ]
     let laundries = Variable<[Laundry]>(testLaundries)
     self.laundries = laundries

@@ -17,6 +17,14 @@ class Service {
   var name = ""
   var description = ""
   
+  static let defaultServices = [
+    Service(name: "Декор", description: "Декоративная отделка"),
+    Service(name: "Химчистка", description: "Только нежные растворители"),
+    Service(name: "Стирка", description: "Стирка при температуре не выше 30"),
+    Service(name: "Глажка", description: "Низкая температура 110  С"),
+    Service(name: "Подшить", description: "Ушьем за 2 минуты")
+  ]
+  
   init(name: String, description: String) {
     self.name = name
     self.description = description
@@ -36,6 +44,7 @@ protocol ServiceSelectViewModelType {
   var color: UIColor { get }
   var sections: Driver<[ServiceSelectSectionModel]> { get }
   var selectedServicesIds: Variable<[String]> { get }
+  var selectedServices: Variable<[Service]> { get }
 }
 
 class ServiceSelectViewModel: ServiceSelectViewModelType {
@@ -49,45 +58,55 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
   var navigationItemTitle = "Выбор услуг"
   var itemTitle: String
   var sections: Driver<[ServiceSelectSectionModel]>
+  var returnToSection: Driver<NewSection>
   
   // Data
+  enum NewSection {
+    case orderItem
+    case order
+  }
+  
   var selectedServicesIds: Variable<[String]>
   var services: Variable<[Service]>
-  var presentOrderSection: Driver<Void>
+  var selectedServices: Variable<[Service]>
   
   let disposeBag = DisposeBag()
   
-  init(item: OrderItem, isNew: Bool = true) {
+  init(item: OrderItem, needSave: Bool = true, selectedServices: [Service] = []) {
     let clothesItem = item.clothesItem
     self.itemTitle = clothesItem.name
     self.color = UIColor.chsRosePink
     
-    let defaultServices = [
-      Service(name: "Декор", description: ""),
-      Service(name: "Химчистка", description: "Только нежные растворители"),
-      Service(name: "Стирка", description: "Стирка при температуре не выше 30"),
-      Service(name: "Глажка", description: "Низкая температура 110  С"),
-      Service(name: "Подшить", description: "Ушьем за 2 минуты")
-    ]
-    
-    let services = Variable<[Service]>(defaultServices)
+    let services = Variable<[Service]>(Service.defaultServices)
     self.services = services
     
-    let selectedServicesIds = Variable<[String]>(item.services.map { $0.id })
+    let selectedServices = Variable(selectedServices)
+    self.selectedServices = selectedServices
+    
+    let selectedServicesIds = Variable<[String]>(selectedServices.value.map { $0.id })
     self.selectedServicesIds = selectedServicesIds
     
-    self.sections = services.asDriver().map { services in
-      let cellModels = services.map(ServiceSelectTableViewCellModel.init) as [ServiceSelectTableViewCellModelType]
+    selectedServicesIds.asObservable().map { servicesIds in
+      return services.value.filter { servicesIds.contains($0.id) }
+    }.bindTo(selectedServices).addDisposableTo(disposeBag)
+    
+    self.sections = Driver.combineLatest(services.asDriver(), selectedServicesIds.asDriver()) { services, selectedServicesIds in
+      let cellModels = services.map { service in
+        ServiceSelectTableViewCellModel(service: service, isSelected: selectedServicesIds.index(of: service.id) != nil)
+      } as [ServiceSelectTableViewCellModelType]
+      
       let section = ServiceSelectSectionModel(model: "", items: cellModels)
       return [section]
     }
     
-    self.presentOrderSection = readyButtonTapped.asObservable().map {
-      let services = services.value.filter { selectedServicesIds.value.index(of: $0.id) != nil }
-      item.services = services
-      if isNew {
-        DataManager.instance.currentOrderItems.value.append(item)
+    self.returnToSection = readyButtonTapped.asObservable().map {
+      if needSave {
+        DataManager.instance.updateOrderItem(item: item) { orderItem in
+          orderItem.services = selectedServices.value
+        }
+        return .order
       }
+      return .orderItem
     }.asDriver(onErrorDriveWith: .empty())
 
     

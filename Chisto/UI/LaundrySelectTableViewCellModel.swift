@@ -12,52 +12,60 @@ import RxSwift
 import RxDataSources
 
 protocol LaundrySelectTableViewCellModelType {
-  var laundryDescriptionViewModels: [LaundryItemInfoViewModel] { get }
   var laundryTitle: String { get }
   var laundryDescription: String { get }
   var rating: Float { get }
   var tagBgColor: UIColor? { get }
   var tagName: String? { get }
+  var tagIsHidden: Bool { get }
+  var courierItemViewModel: LaundryItemInfoViewModel { get }
+  var deliveryItemViewModel: LaundryItemInfoViewModel { get }
+  var costItemViewModel: LaundryItemInfoViewModel { get }
 
 }
 
 class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
-  let laundryDescriptionViewModels: [LaundryItemInfoViewModel]
   let laundryTitle: String
   let laundryDescription: String
   let rating: Float
-  let tagBgColor: UIColor?
-  let tagName: String?
-  let tagIsHidden: Bool = false
+  var tagBgColor: UIColor? = nil
+  var tagName: String? = nil
+  var tagIsHidden: Bool = false
+  var courierItemViewModel: LaundryItemInfoViewModel
+  var deliveryItemViewModel: LaundryItemInfoViewModel
+  var costItemViewModel: LaundryItemInfoViewModel
+
   
   init(laundry: Laundry) {
     self.laundryTitle = laundry.name
     self.laundryDescription = laundry.description
     self.rating = laundry.rating
     
-    let courierItemViewModel = LaundryItemInfoViewModel(type: .courier, titleText: laundry.courierDate, subTitleText: laundry.courierTimeInterval)
+    self.courierItemViewModel = LaundryItemInfoViewModel(type: .courier, titleText: laundry.courierDate, subTitleText: laundry.courierTimeInterval)
     
     let deliveryPriceString = laundry.deliveryPrice > 0 ? "\(laundry.deliveryPrice) ₽" : "Бесплатно"
-    let deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: laundry.deliveryDate, subTitleText: deliveryPriceString)
+    self.deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: laundry.deliveryDate, subTitleText: deliveryPriceString)
     
     // TODO: move this logic to model
     let costString = laundry.cost > 0 ? "\(laundry.cost) ₽" : "Бесплатно"
-    let costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: costString)
+    self.costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: costString)
     
-    switch laundry.type {
-    case .cheap:
-      tagName = "Дешевая"
-      tagBgColor = UIColor.chsAquaMarine
-    case .fast:
-      tagName = "Быстрая"
-      tagBgColor = UIColor.chsMaize
-    case .premium:
-      tagName = "Премиум"
-      tagBgColor = UIColor.chsRosePink
+    if let type = laundry.type {
+      switch type {
+      case .cheap:
+        tagName = "Дешевая"
+        tagBgColor = UIColor.chsAquaMarine
+      case .fast:
+        tagName = "Быстрая"
+        tagBgColor = UIColor.chsMaize
+      case .premium:
+        tagName = "Премиум"
+        tagBgColor = UIColor.chsRosePink
+      }
+    } else {
+      self.tagIsHidden = false
     }
     
-    self.laundryDescriptionViewModels = [courierItemViewModel, deliveryItemViewModel, costItemViewModel]
-
   }
   
 }

@@ -74,7 +74,7 @@
                                             <constraint firstAttribute="width" constant="159" id="FV0-85-Dv3"/>
                                             <constraint firstAttribute="height" constant="36" id="Ydj-Kd-Dki"/>
                                         </constraints>
-                                        <state key="normal" title="Заказать в">
+                                        <state key="normal" title="Заказать">
                                             <color key="titleColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
