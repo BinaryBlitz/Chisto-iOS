@@ -10,31 +10,19 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class OrderItem {
-  var id = UUID().uuidString
-  var clothesItem: ClothesItem
-  var services: [Service]
-  var amount: Int
-  init (clothesItem: ClothesItem, services: [Service], amount: Int = 1) {
-    self.clothesItem = clothesItem
-    self.services = services
-    self.amount = amount
-  }
-}
-
 class DataManager {
   static let instance = DataManager()
   
   var currentOrderItems = BehaviorSubject<[OrderItem]>(value: [])
   
-  func updateOrderItem(item: OrderItem, closure: (OrderItem) -> Void) {
+  func updateOrderItem(item: OrderItem, closure: (Void) -> Void) {
+    closure()
+    
     var items = try! currentOrderItems.value()
-    if let orderItem = items.filter({ $0.id == item.id }).first {
-      closure(orderItem)
-    } else {
-      closure(item)
+    if items.first(where: { $0.id == item.id }) == nil {
       items.append(item)
     }
+    
     currentOrderItems.onNext(items)
   }
   

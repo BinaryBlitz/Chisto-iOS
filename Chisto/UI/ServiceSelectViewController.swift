@@ -67,7 +67,7 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
       .addDisposableTo(disposeBag)
     
     tableView.rx.itemDeselected
-      .bindTo(viewModel.itemDidDeSelect)
+      .bindTo(viewModel.itemDidDeselect)
       .addDisposableTo(disposeBag)
     
     tableView.dataSource = nil

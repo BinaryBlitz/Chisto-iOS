@@ -64,6 +64,7 @@
 		885C196F1DC379E40081A4F3 /* LaundrySortViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885C196C1DC379E40081A4F3 /* LaundrySortViewController.storyboard */; };
 		885C19701DC379E40081A4F3 /* LaundrySortViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C196D1DC379E40081A4F3 /* LaundrySortViewModel.swift */; };
 		885C19711DC379E40081A4F3 /* LaundrySortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C196E1DC379E40081A4F3 /* LaundrySortViewController.swift */; };
+		8862E6CB1DC8E2C800DDFB00 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862E6CA1DC8E2C800DDFB00 /* OrderItem.swift */; };
 		889D87C71DC0A752003E8DAC /* LaundrySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889D87C61DC0A752003E8DAC /* LaundrySelectViewController.swift */; };
 		889D87C91DC0A760003E8DAC /* LaundrySelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889D87C81DC0A760003E8DAC /* LaundrySelectViewController.storyboard */; };
 		889D87CB1DC0B45C003E8DAC /* RotatingUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889D87CA1DC0B45C003E8DAC /* RotatingUILabel.swift */; };
@@ -155,6 +156,7 @@
 		885C196C1DC379E40081A4F3 /* LaundrySortViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaundrySortViewController.storyboard; sourceTree = "<group>"; };
 		885C196D1DC379E40081A4F3 /* LaundrySortViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySortViewModel.swift; sourceTree = "<group>"; };
 		885C196E1DC379E40081A4F3 /* LaundrySortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySortViewController.swift; sourceTree = "<group>"; };
+		8862E6CA1DC8E2C800DDFB00 /* OrderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		889D87C61DC0A752003E8DAC /* LaundrySelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySelectViewController.swift; sourceTree = "<group>"; };
 		889D87C81DC0A760003E8DAC /* LaundrySelectViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaundrySelectViewController.storyboard; sourceTree = "<group>"; };
 		889D87CA1DC0B45C003E8DAC /* RotatingUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingUILabel.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 		88073EF11DAC1B3E000696A3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				8862E6C91DC8E2BD00DDFB00 /* Model */,
 				88E86DB11DB91695002A7024 /* DataManager */,
 			);
 			path = Data;
@@ -475,6 +478,14 @@
 				885C196E1DC379E40081A4F3 /* LaundrySortViewController.swift */,
 			);
 			name = LaundrySort;
+			sourceTree = "<group>";
+		};
+		8862E6C91DC8E2BD00DDFB00 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8862E6CA1DC8E2C800DDFB00 /* OrderItem.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		889D87C51DC0A727003E8DAC /* LaundrySelect */ = {
@@ -752,6 +763,7 @@
 				885C19711DC379E40081A4F3 /* LaundrySortViewController.swift in Sources */,
 				8814C05E1DAFCF28005B4967 /* CategoryTableViewCell.swift in Sources */,
 				8811FE151DC2DCA600610712 /* ProfileViewModel.swift in Sources */,
+				8862E6CB1DC8E2C800DDFB00 /* OrderItem.swift in Sources */,
 				889D87CB1DC0B45C003E8DAC /* RotatingUILabel.swift in Sources */,
 				885409BA1DB25B5100219C00 /* GoButton.swift in Sources */,
 				889D87D21DC1F71F003E8DAC /* LaundrySelectViewModel.swift in Sources */,

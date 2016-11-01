@@ -36,7 +36,7 @@ typealias ServiceSelectSectionModel = SectionModel<String, ServiceSelectTableVie
 protocol ServiceSelectViewModelType {
   // Input
   var itemDidSelect: PublishSubject<IndexPath> { get }
-  var itemDidDeSelect: PublishSubject<IndexPath> { get }
+  var itemDidDeselect: PublishSubject<IndexPath> { get }
   var readyButtonTapped: PublishSubject<Void> { get }
   
   // Output
@@ -50,7 +50,7 @@ protocol ServiceSelectViewModelType {
 class ServiceSelectViewModel: ServiceSelectViewModelType {
   // Input
   var itemDidSelect = PublishSubject<IndexPath>()
-  var itemDidDeSelect = PublishSubject<IndexPath>()
+  var itemDidDeselect = PublishSubject<IndexPath>()
   var readyButtonTapped = PublishSubject<Void>()
   
   // Output
@@ -72,7 +72,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
   
   let disposeBag = DisposeBag()
   
-  init(item: OrderItem, needSave: Bool = true, selectedServices: [Service] = []) {
+  init(item: OrderItem, saveNeeded: Bool = true, selectedServices: [Service] = []) {
     let clothesItem = item.clothesItem
     self.itemTitle = clothesItem.name
     self.color = UIColor.chsRosePink
@@ -100,9 +100,9 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
     }
     
     self.returnToSection = readyButtonTapped.asObservable().map {
-      if needSave {
-        DataManager.instance.updateOrderItem(item: item) { orderItem in
-          orderItem.services = selectedServices.value
+      if saveNeeded {
+        DataManager.instance.updateOrderItem(item: item) {
+          item.services = selectedServices.value
         }
         return .order
       }
@@ -115,7 +115,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
       self.selectedServicesIds.value.append(service.id)
     }).addDisposableTo(disposeBag)
     
-    self.itemDidDeSelect.asObservable().subscribe(onNext: { indexPath in
+    self.itemDidDeselect.asObservable().subscribe(onNext: { indexPath in
       let service = self.services.value[indexPath.row]
       guard let index = self.selectedServicesIds.value.index(of: service.id) else { return }
       self.selectedServicesIds.value.remove(at: index)
