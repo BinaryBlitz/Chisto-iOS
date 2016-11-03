@@ -1,5 +1,5 @@
 //
-//  RoundedButton.swift
+//  UIView+IBInspectable
 //  Chisto
 //
 //  Created by Алексей on 16.10.16.

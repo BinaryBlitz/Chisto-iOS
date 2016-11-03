@@ -93,7 +93,7 @@ class ItemInfoViewModel: ItemInfoViewModelType {
     }.asDriver(onErrorDriveWith: .empty())
     
     self.returnToOrderList = continueButtonDidTap.asObservable().map {
-      DataManager.instance.updateOrderItem(item: orderItem) {
+      OrderManager.instance.updateOrderItem(item: orderItem) {
         orderItem.services = services.value
         orderItem.amount = currentAmount.value
       }

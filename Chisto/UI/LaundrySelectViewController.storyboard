@@ -11,7 +11,7 @@
         <scene sceneID="YvA-Xp-wEA">
             <objects>
                 <tableViewController storyboardIdentifier="LaundrySelectViewController" id="qbC-8X-BcN" customClass="LaundrySelectViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="190" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZAD-Ya-x5U">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="190" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZAD-Ya-x5U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -126,6 +126,7 @@
                                     <outlet property="laundrySubTitleLabel" destination="IAm-T4-HPc" id="XeK-g3-fN3"/>
                                     <outlet property="laundryTagLabel" destination="INL-4j-h4b" id="hsA-uy-I7t"/>
                                     <outlet property="laundryTitleLabel" destination="Aij-3K-dQo" id="qJf-tG-5Ue"/>
+                                    <outlet property="logoBackgroundView" destination="Ffw-aw-1p4" id="hEE-ZW-tTE"/>
                                     <outlet property="ratingView" destination="bcl-Sr-7aI" id="qLW-Xf-bNg"/>
                                     <outlet property="stackView" destination="9tZ-5t-JsK" id="oRW-U9-49O"/>
                                 </connections>

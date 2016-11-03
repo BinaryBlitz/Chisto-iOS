@@ -60,7 +60,7 @@ class OrderViewModel: OrderViewModelType {
   
   init() {
     let currentOrderItems = Variable<[OrderItem]>([])
-    DataManager.instance.currentOrderItems.bindTo(currentOrderItems).addDisposableTo(disposeBag)
+    OrderManager.instance.currentOrderItems.bindTo(currentOrderItems).addDisposableTo(disposeBag)
     self.currentOrderItems = currentOrderItems
     
     self.presentCategoriesViewController = Observable.of(navigationAddButtonDidTap.asObservable(), emptyOrderAddButtonDidTap.asObservable()).merge().asDriver(onErrorJustReturn: ())

@@ -17,7 +17,7 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
 
   override func viewDidLoad() {
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconSortNavbar"), style: .plain, target: self, action: nil)
-    
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.sortButtonDidTap)
       .addDisposableTo(disposeBag)
     
@@ -26,6 +26,13 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
       viewController.modalPresentationStyle = .overFullScreen
       self.present(viewController, animated: false)
     }).addDisposableTo(disposeBag)
+    
+    viewModel.presentOrderConfirmSection.drive(onNext: { orderViewModel in
+      let viewController = OrderConfirmViewController.storyboardInstance()!
+      viewController.viewModel = orderViewModel
+      self.navigationController?.pushViewController(viewController, animated: true)
+    }).addDisposableTo(disposeBag)
+    
     configureTableView()
   }
   

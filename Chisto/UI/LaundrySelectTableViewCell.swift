@@ -17,6 +17,7 @@ class LaundrySelectTableViewCell: UITableViewCell {
   @IBOutlet weak var ratingView: FloatRatingView!
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var laundryTagLabel: RotatingUILabel!
+  @IBOutlet weak var logoBackgroundView: UIView!
   
   var courierItemView = LaundryItemInfoView.nibInstance()!
   var deliveryItemView = LaundryItemInfoView.nibInstance()!
@@ -41,5 +42,25 @@ class LaundrySelectTableViewCell: UITableViewCell {
     stackView.addArrangedSubview(courierItemView)
     stackView.addArrangedSubview(deliveryItemView)
     stackView.addArrangedSubview(costItemView)
+  }
+  
+  override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+    saveBackgroundColorsWhileChangingState {
+      super.setHighlighted(highlighted, animated: animated)
+    }
+  }
+  
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    saveBackgroundColorsWhileChangingState {
+      super.setSelected(selected, animated: animated)
+    }
+  }
+  
+  func saveBackgroundColorsWhileChangingState(changes: () -> Void) {
+    let tagBackColor = laundryTagLabel.backgroundColor
+    let logoBackColor = logoBackgroundView.backgroundColor
+    changes()
+    laundryTagLabel.backgroundColor = tagBackColor
+    logoBackgroundView.backgroundColor = logoBackColor
   }
 }
