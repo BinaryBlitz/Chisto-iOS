@@ -80,11 +80,11 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
     let services = Variable<[Service]>(Service.defaultServices)
     self.services = services
     
+    let selectedServicesIds = Variable<[String]>(selectedServices.map { $0.id })
+    self.selectedServicesIds = selectedServicesIds
+    
     let selectedServices = Variable(selectedServices)
     self.selectedServices = selectedServices
-    
-    let selectedServicesIds = Variable<[String]>(selectedServices.value.map { $0.id })
-    self.selectedServicesIds = selectedServicesIds
     
     selectedServicesIds.asObservable().map { servicesIds in
       return services.value.filter { servicesIds.contains($0.id) }
@@ -101,7 +101,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
     
     self.returnToSection = readyButtonTapped.asObservable().map {
       if saveNeeded {
-        DataManager.instance.updateOrderItem(item: item) {
+        OrderManager.instance.updateOrderItem(item: item) {
           item.services = selectedServices.value
         }
         return .order

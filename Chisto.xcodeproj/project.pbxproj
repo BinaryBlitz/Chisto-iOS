@@ -51,6 +51,7 @@
 		8833B5321DBE8774004D44CE /* LaundryItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8833B5311DBE8774004D44CE /* LaundryItemInfoView.swift */; };
 		8833B5341DBF7F75004D44CE /* LaundryItemInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8833B5331DBF7F75004D44CE /* LaundryItemInfoViewModel.swift */; };
 		8833B5361DBF8241004D44CE /* LastTimePopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8833B5351DBF8241004D44CE /* LastTimePopupViewModel.swift */; };
+		88373C981DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88373C971DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib */; };
 		883760D11DB8D97500C9F506 /* OnBoardingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883760D01DB8D97500C9F506 /* OnBoardingNavigationController.swift */; };
 		883760D31DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */; };
 		883760D51DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 883760D41DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard */; };
@@ -65,6 +66,12 @@
 		885C19701DC379E40081A4F3 /* LaundrySortViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C196D1DC379E40081A4F3 /* LaundrySortViewModel.swift */; };
 		885C19711DC379E40081A4F3 /* LaundrySortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C196E1DC379E40081A4F3 /* LaundrySortViewController.swift */; };
 		8862E6CB1DC8E2C800DDFB00 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862E6CA1DC8E2C800DDFB00 /* OrderItem.swift */; };
+		8862E6CE1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862E6CD1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift */; };
+		8862E6D01DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8862E6CF1DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard */; };
+		8869D1231DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8869D1221DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift */; };
+		889A84151DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */; };
+		889A84171DCA56CB00E3926D /* OrderConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A84161DCA56CB00E3926D /* OrderConfirmViewModel.swift */; };
+		889A841B1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A841A1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift */; };
 		889D87C71DC0A752003E8DAC /* LaundrySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889D87C61DC0A752003E8DAC /* LaundrySelectViewController.swift */; };
 		889D87C91DC0A760003E8DAC /* LaundrySelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889D87C81DC0A760003E8DAC /* LaundrySelectViewController.storyboard */; };
 		889D87CB1DC0B45C003E8DAC /* RotatingUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889D87CA1DC0B45C003E8DAC /* RotatingUILabel.swift */; };
@@ -80,6 +87,9 @@
 		88D8ABC21DB587CF009D515B /* SelectClothesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */; };
 		88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */; };
 		88DB32ED1DB4C86A00F9E000 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0491DAF12FE005B4967 /* OrderViewController.swift */; };
+		88E6B5991DCB73610024FA1A /* UIView+AddBorders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */; };
+		88E6B59D1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E6B59C1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard */; };
+		88E6B59F1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */; };
 		88E86DA61DB8E800002A7024 /* ServiceSelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E86DA11DB8E800002A7024 /* ServiceSelectViewController.storyboard */; };
 		88E86DA71DB8E800002A7024 /* ServiceSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */; };
 		88E86DA81DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA31DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift */; };
@@ -87,7 +97,7 @@
 		88E86DAA1DB8E800002A7024 /* ServiceSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA51DB8E800002A7024 /* ServiceSelectViewModel.swift */; };
 		88E86DAE1DB90B4B002A7024 /* EmptyOrderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88E86DAD1DB90B4B002A7024 /* EmptyOrderView.xib */; };
 		88E86DB01DB90BD1002A7024 /* UIView+nibInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DAF1DB90BD1002A7024 /* UIView+nibInstance.swift */; };
-		88E86DB31DB916B3002A7024 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB21DB916B3002A7024 /* DataManager.swift */; };
+		88E86DB31DB916B3002A7024 /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB21DB916B3002A7024 /* OrderManager.swift */; };
 		88E86DB51DB91BAE002A7024 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB41DB91BAE002A7024 /* OrderTableViewCell.swift */; };
 		88E86DB71DB91BBA002A7024 /* OrderTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB61DB91BBA002A7024 /* OrderTableViewCellModel.swift */; };
 		CC63F0EA174EB55F7C1DD247 /* Pods_Chisto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D4403E4AD2DF4A42F5C8FA /* Pods_Chisto.framework */; };
@@ -143,6 +153,7 @@
 		8833B5311DBE8774004D44CE /* LaundryItemInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryItemInfoView.swift; sourceTree = "<group>"; };
 		8833B5331DBF7F75004D44CE /* LaundryItemInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryItemInfoViewModel.swift; sourceTree = "<group>"; };
 		8833B5351DBF8241004D44CE /* LastTimePopupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastTimePopupViewModel.swift; sourceTree = "<group>"; };
+		88373C971DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderConfirmServiceItemView.xib; sourceTree = "<group>"; };
 		883760D01DB8D97500C9F506 /* OnBoardingNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingNavigationController.swift; sourceTree = "<group>"; };
 		883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+StoryboardInstance.swift"; sourceTree = "<group>"; };
 		883760D41DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoardingNavigationController.storyboard; sourceTree = "<group>"; };
@@ -157,6 +168,12 @@
 		885C196D1DC379E40081A4F3 /* LaundrySortViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySortViewModel.swift; sourceTree = "<group>"; };
 		885C196E1DC379E40081A4F3 /* LaundrySortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySortViewController.swift; sourceTree = "<group>"; };
 		8862E6CA1DC8E2C800DDFB00 /* OrderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
+		8862E6CD1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmViewController.swift; sourceTree = "<group>"; };
+		8862E6CF1DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderConfirmViewController.storyboard; sourceTree = "<group>"; };
+		8869D1221DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceItemView.swift; sourceTree = "<group>"; };
+		889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceTableViewCell.swift; sourceTree = "<group>"; };
+		889A84161DCA56CB00E3926D /* OrderConfirmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmViewModel.swift; sourceTree = "<group>"; };
+		889A841A1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceTableViewCellModel.swift; sourceTree = "<group>"; };
 		889D87C61DC0A752003E8DAC /* LaundrySelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySelectViewController.swift; sourceTree = "<group>"; };
 		889D87C81DC0A760003E8DAC /* LaundrySelectViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaundrySelectViewController.storyboard; sourceTree = "<group>"; };
 		889D87CA1DC0B45C003E8DAC /* RotatingUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingUILabel.swift; sourceTree = "<group>"; };
@@ -172,6 +189,9 @@
 		88D8ABBE1DB56EB8009D515B /* SelectClothesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectClothesViewController.storyboard; sourceTree = "<group>"; };
 		88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectClothesTableViewCell.swift; path = SelectClothes/Views/SelectClothesTableViewCell.swift; sourceTree = "<group>"; };
 		88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClothesTableViewCellModel.swift; sourceTree = "<group>"; };
+		88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AddBorders.swift"; sourceTree = "<group>"; };
+		88E6B59C1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationPhoneInputViewController.storyboard; sourceTree = "<group>"; };
+		88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPhoneInputViewController.swift; sourceTree = "<group>"; };
 		88E86DA11DB8E800002A7024 /* ServiceSelectViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ServiceSelectViewController.storyboard; sourceTree = "<group>"; };
 		88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectTableViewCell.swift; sourceTree = "<group>"; };
 		88E86DA31DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectTableViewCellModel.swift; sourceTree = "<group>"; };
@@ -179,7 +199,7 @@
 		88E86DA51DB8E800002A7024 /* ServiceSelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectViewModel.swift; sourceTree = "<group>"; };
 		88E86DAD1DB90B4B002A7024 /* EmptyOrderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyOrderView.xib; sourceTree = "<group>"; };
 		88E86DAF1DB90BD1002A7024 /* UIView+nibInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+nibInstance.swift"; sourceTree = "<group>"; };
-		88E86DB21DB916B3002A7024 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		88E86DB21DB916B3002A7024 /* OrderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderManager.swift; sourceTree = "<group>"; };
 		88E86DB41DB91BAE002A7024 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		88E86DB61DB91BBA002A7024 /* OrderTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewCellModel.swift; sourceTree = "<group>"; };
 		EA8A37CB3EB7F2EEDB9E26D5 /* Pods-Chisto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chisto.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chisto/Pods-Chisto.release.xcconfig"; sourceTree = "<group>"; };
@@ -264,6 +284,8 @@
 		88073EEC1DAC19E1000696A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				88E6B59A1DCB7EE70024FA1A /* Registration */,
+				8862E6CC1DC8EC9700DDFB00 /* OrderConfirm */,
 				885C19731DC379FA0081A4F3 /* LaundrySort */,
 				8811FE161DC2E5C800610712 /* About */,
 				8811FE111DC2DB1100610712 /* Profile */,
@@ -288,7 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				8862E6C91DC8E2BD00DDFB00 /* Model */,
-				88E86DB11DB91695002A7024 /* DataManager */,
+				88E86DB11DB91695002A7024 /* OrderManager */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -417,6 +439,7 @@
 				883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */,
 				88E86DAF1DB90BD1002A7024 /* UIView+nibInstance.swift */,
 				889D87CA1DC0B45C003E8DAC /* RotatingUILabel.swift */,
+				88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -459,6 +482,17 @@
 			name = LaundryItemInfo;
 			sourceTree = "<group>";
 		};
+		88373C961DC9E53E00DE4D13 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				88373C971DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib */,
+				8869D1221DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift */,
+				889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */,
+				889A841A1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		885409C11DB2C76B00219C00 /* CityNotFound */ = {
 			isa = PBXGroup;
 			children = (
@@ -486,6 +520,17 @@
 				8862E6CA1DC8E2C800DDFB00 /* OrderItem.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		8862E6CC1DC8EC9700DDFB00 /* OrderConfirm */ = {
+			isa = PBXGroup;
+			children = (
+				88373C961DC9E53E00DE4D13 /* Views */,
+				8862E6CD1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift */,
+				889A84161DCA56CB00E3926D /* OrderConfirmViewModel.swift */,
+				8862E6CF1DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard */,
+			);
+			name = OrderConfirm;
 			sourceTree = "<group>";
 		};
 		889D87C51DC0A727003E8DAC /* LaundrySelect */ = {
@@ -528,6 +573,23 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		88E6B59A1DCB7EE70024FA1A /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				88E6B59B1DCB7F1C0024FA1A /* PhoneInput */,
+			);
+			name = Registration;
+			sourceTree = "<group>";
+		};
+		88E6B59B1DCB7F1C0024FA1A /* PhoneInput */ = {
+			isa = PBXGroup;
+			children = (
+				88E6B59C1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard */,
+				88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */,
+			);
+			name = PhoneInput;
+			sourceTree = "<group>";
+		};
 		88E86DA01DB8E7D8002A7024 /* ServiceSelect */ = {
 			isa = PBXGroup;
 			children = (
@@ -548,12 +610,12 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		88E86DB11DB91695002A7024 /* DataManager */ = {
+		88E86DB11DB91695002A7024 /* OrderManager */ = {
 			isa = PBXGroup;
 			children = (
-				88E86DB21DB916B3002A7024 /* DataManager.swift */,
+				88E86DB21DB916B3002A7024 /* OrderManager.swift */,
 			);
-			name = DataManager;
+			name = OrderManager;
 			sourceTree = "<group>";
 		};
 		E86E04D5222457AEB97ED2EC /* Frameworks */ = {
@@ -632,10 +694,13 @@
 				88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */,
 				885C196F1DC379E40081A4F3 /* LaundrySortViewController.storyboard in Resources */,
 				8811FE181DC2E5DB00610712 /* AboutViewController.storyboard in Resources */,
+				88373C981DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib in Resources */,
 				883760D51DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard in Resources */,
+				8862E6D01DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard in Resources */,
 				88B0B5521DB19C6E00C7D0F7 /* DescriptionListItemView.xib in Resources */,
 				889D87C91DC0A760003E8DAC /* LaundrySelectViewController.storyboard in Resources */,
 				8811FE101DC2DB0500610712 /* ProfileNavigationController.storyboard in Resources */,
+				88E6B59D1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard in Resources */,
 				88072D4E1DB967EF00B47D23 /* ItemInfoViewController.storyboard in Resources */,
 				8833B52A1DBE6E38004D44CE /* LastTimePopupViewController.storyboard in Resources */,
 				88B0B5501DB1825500C7D0F7 /* OnBoardingViewController.storyboard in Resources */,
@@ -730,8 +795,10 @@
 				885C19701DC379E40081A4F3 /* LaundrySortViewModel.swift in Sources */,
 				88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */,
 				889D87C71DC0A752003E8DAC /* LaundrySelectViewController.swift in Sources */,
+				889A84171DCA56CB00E3926D /* OrderConfirmViewModel.swift in Sources */,
 				88072D571DB9698600B47D23 /* ItemInfoTableViewCell.swift in Sources */,
 				8814C05A1DAFC96D005B4967 /* CategoriesViewController.swift in Sources */,
+				889A841B1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift in Sources */,
 				88072D551DB9697700B47D23 /* ItemInfoTableViewCellModel.swift in Sources */,
 				88073EFC1DAC4661000696A3 /* CitySelectViewController.swift in Sources */,
 				8814C04F1DAF15DA005B4967 /* ChistoNavigationController.swift in Sources */,
@@ -744,12 +811,14 @@
 				8814C0401DAED9AC005B4967 /* CityNotFoundViewController.swift in Sources */,
 				8814C0631DB03AD7005B4967 /* CategoryTableViewCellModel.swift in Sources */,
 				88D8ABC21DB587CF009D515B /* SelectClothesTableViewCell.swift in Sources */,
+				8862E6CE1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift in Sources */,
 				88E86DA71DB8E800002A7024 /* ServiceSelectTableViewCell.swift in Sources */,
 				88073F031DAD6FCF000696A3 /* DescriptionListItemView.swift in Sources */,
 				8814C0671DB04AFB005B4967 /* RussianEnumEndings.swift in Sources */,
 				8811FE1A1DC2EF4A00610712 /* AboutViewController.swift in Sources */,
 				88072D521DB9695E00B47D23 /* ItemInfoViewModel.swift in Sources */,
 				889D87CE1DC0BA2F003E8DAC /* LaundrySelectTableViewCell.swift in Sources */,
+				889A84151DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift in Sources */,
 				8814C0581DAFB0F2005B4967 /* CityNotFoundViewModel.swift in Sources */,
 				88DB32ED1DB4C86A00F9E000 /* OrderViewController.swift in Sources */,
 				88073ED91DABE1E0000696A3 /* AppDelegate.swift in Sources */,
@@ -757,6 +826,7 @@
 				889D87D01DC1F3DE003E8DAC /* LaundrySelectTableViewCellModel.swift in Sources */,
 				8814C03E1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift in Sources */,
 				88E86DB71DB91BBA002A7024 /* OrderTableViewCellModel.swift in Sources */,
+				8869D1231DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift in Sources */,
 				88E86DB51DB91BAE002A7024 /* OrderTableViewCell.swift in Sources */,
 				88E86DA91DB8E800002A7024 /* ServiceSelectViewController.swift in Sources */,
 				883760D11DB8D97500C9F506 /* OnBoardingNavigationController.swift in Sources */,
@@ -768,6 +838,7 @@
 				885409BA1DB25B5100219C00 /* GoButton.swift in Sources */,
 				889D87D21DC1F71F003E8DAC /* LaundrySelectViewModel.swift in Sources */,
 				8833B5281DBE6E2B004D44CE /* LastTimePopupViewController.swift in Sources */,
+				88E6B59F1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift in Sources */,
 				88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */,
 				8814C0561DAFA7B5005B4967 /* BottomBorderedTextField.swift in Sources */,
 				885409C31DB2E43300219C00 /* EmptyOrderView.swift in Sources */,
@@ -776,9 +847,10 @@
 				88D8ABBD1DB56E89009D515B /* SelectClothesViewModel.swift in Sources */,
 				8833B5361DBF8241004D44CE /* LastTimePopupViewModel.swift in Sources */,
 				88072D501DB9695300B47D23 /* ItemInfoViewController.swift in Sources */,
+				88E6B5991DCB73610024FA1A /* UIView+AddBorders.swift in Sources */,
 				88E86DA81DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift in Sources */,
 				8814C03C1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift in Sources */,
-				88E86DB31DB916B3002A7024 /* DataManager.swift in Sources */,
+				88E86DB31DB916B3002A7024 /* OrderManager.swift in Sources */,
 				885409C71DB2EC5D00219C00 /* UIView+IBInspectable.swift in Sources */,
 				8833B5341DBF7F75004D44CE /* LaundryItemInfoViewModel.swift in Sources */,
 			);

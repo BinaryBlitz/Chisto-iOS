@@ -55,7 +55,7 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
   var navigationBarTitle = "Прачечные"
   var sections: Driver<[LaundrySelectSectionModel]>
   var presentSortSelectSection: Driver<Void>
-  
+  var presentOrderConfirmSection: Driver<OrderConfirmViewModel>
   // Data
   var laundries: Variable<[Laundry]>
   
@@ -76,6 +76,11 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     }
     
     self.presentSortSelectSection = sortButtonDidTap.asDriver(onErrorDriveWith: .empty())
+    
+    self.presentOrderConfirmSection = itemDidSelect.map { indexPath in
+      let viewModel = OrderConfirmViewModel(laundry: laundries.value[indexPath.row])
+      return viewModel
+      }.asDriver(onErrorDriveWith: .empty())
     
   }
 
