@@ -87,6 +87,13 @@
 		88D8ABC21DB587CF009D515B /* SelectClothesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */; };
 		88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */; };
 		88DB32ED1DB4C86A00F9E000 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0491DAF12FE005B4967 /* OrderViewController.swift */; };
+		88DB93791DCBD11100DAC651 /* MaskedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93781DCBD11100DAC651 /* MaskedTextField.swift */; };
+		88DB937B1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DB937A1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard */; };
+		88DB937D1DCBE0F400DAC651 /* RegistrationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB937C1DCBE0F400DAC651 /* RegistrationNavigationController.swift */; };
+		88DB937F1DCBE88700DAC651 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB937E1DCBE88700DAC651 /* RegistrationViewModel.swift */; };
+		88DB93821DCBEF3200DAC651 /* RegistrationCodeInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93811DCBEF3200DAC651 /* RegistrationCodeInputViewController.swift */; };
+		88DB93841DCBEF8B00DAC651 /* RegistrationCodeInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DB93831DCBEF8B00DAC651 /* RegistrationCodeInputViewController.storyboard */; };
+		88DB93861DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93851DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift */; };
 		88E6B5991DCB73610024FA1A /* UIView+AddBorders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */; };
 		88E6B59D1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E6B59C1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard */; };
 		88E6B59F1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */; };
@@ -189,6 +196,13 @@
 		88D8ABBE1DB56EB8009D515B /* SelectClothesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectClothesViewController.storyboard; sourceTree = "<group>"; };
 		88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectClothesTableViewCell.swift; path = SelectClothes/Views/SelectClothesTableViewCell.swift; sourceTree = "<group>"; };
 		88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClothesTableViewCellModel.swift; sourceTree = "<group>"; };
+		88DB93781DCBD11100DAC651 /* MaskedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskedTextField.swift; sourceTree = "<group>"; };
+		88DB937A1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationNavigationController.storyboard; sourceTree = "<group>"; };
+		88DB937C1DCBE0F400DAC651 /* RegistrationNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationNavigationController.swift; sourceTree = "<group>"; };
+		88DB937E1DCBE88700DAC651 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		88DB93811DCBEF3200DAC651 /* RegistrationCodeInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationCodeInputViewController.swift; sourceTree = "<group>"; };
+		88DB93831DCBEF8B00DAC651 /* RegistrationCodeInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationCodeInputViewController.storyboard; sourceTree = "<group>"; };
+		88DB93851DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationCodeInputViewModel.swift; sourceTree = "<group>"; };
 		88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AddBorders.swift"; sourceTree = "<group>"; };
 		88E6B59C1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationPhoneInputViewController.storyboard; sourceTree = "<group>"; };
 		88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPhoneInputViewController.swift; sourceTree = "<group>"; };
@@ -440,6 +454,7 @@
 				88E86DAF1DB90BD1002A7024 /* UIView+nibInstance.swift */,
 				889D87CA1DC0B45C003E8DAC /* RotatingUILabel.swift */,
 				88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */,
+				88DB93781DCBD11100DAC651 /* MaskedTextField.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -573,9 +588,22 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		88DB93801DCBEF1600DAC651 /* CodeInput */ = {
+			isa = PBXGroup;
+			children = (
+				88DB93811DCBEF3200DAC651 /* RegistrationCodeInputViewController.swift */,
+				88DB93831DCBEF8B00DAC651 /* RegistrationCodeInputViewController.storyboard */,
+				88DB93851DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift */,
+			);
+			name = CodeInput;
+			sourceTree = "<group>";
+		};
 		88E6B59A1DCB7EE70024FA1A /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				88DB93801DCBEF1600DAC651 /* CodeInput */,
+				88DB937A1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard */,
+				88DB937C1DCBE0F400DAC651 /* RegistrationNavigationController.swift */,
 				88E6B59B1DCB7F1C0024FA1A /* PhoneInput */,
 			);
 			name = Registration;
@@ -586,6 +614,7 @@
 			children = (
 				88E6B59C1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard */,
 				88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */,
+				88DB937E1DCBE88700DAC651 /* RegistrationViewModel.swift */,
 			);
 			name = PhoneInput;
 			sourceTree = "<group>";
@@ -690,10 +719,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				885409C51DB2E55400219C00 /* CategoriesViewController.storyboard in Resources */,
+				88DB93841DCBEF8B00DAC651 /* RegistrationCodeInputViewController.storyboard in Resources */,
 				885409B61DB23DEC00219C00 /* CitySelectViewController.storyboard in Resources */,
 				88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */,
 				885C196F1DC379E40081A4F3 /* LaundrySortViewController.storyboard in Resources */,
 				8811FE181DC2E5DB00610712 /* AboutViewController.storyboard in Resources */,
+				88DB937B1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard in Resources */,
 				88373C981DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib in Resources */,
 				883760D51DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard in Resources */,
 				8862E6D01DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard in Resources */,
@@ -788,12 +819,14 @@
 				88D8ABBB1DB56E53009D515B /* SelectClothesViewController.swift in Sources */,
 				88E86DB01DB90BD1002A7024 /* UIView+nibInstance.swift in Sources */,
 				88073EEF1DAC1A23000696A3 /* OnBoardingViewController.swift in Sources */,
+				88DB93861DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift in Sources */,
 				8833B5321DBE8774004D44CE /* LaundryItemInfoView.swift in Sources */,
 				8814C0331DAD8123005B4967 /* Colors.swift in Sources */,
 				88E86DAA1DB8E800002A7024 /* ServiceSelectViewModel.swift in Sources */,
 				8814C0611DAFEE7C005B4967 /* CategoriesViewModel.swift in Sources */,
 				885C19701DC379E40081A4F3 /* LaundrySortViewModel.swift in Sources */,
 				88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */,
+				88DB937F1DCBE88700DAC651 /* RegistrationViewModel.swift in Sources */,
 				889D87C71DC0A752003E8DAC /* LaundrySelectViewController.swift in Sources */,
 				889A84171DCA56CB00E3926D /* OrderConfirmViewModel.swift in Sources */,
 				88072D571DB9698600B47D23 /* ItemInfoTableViewCell.swift in Sources */,
@@ -811,11 +844,13 @@
 				8814C0401DAED9AC005B4967 /* CityNotFoundViewController.swift in Sources */,
 				8814C0631DB03AD7005B4967 /* CategoryTableViewCellModel.swift in Sources */,
 				88D8ABC21DB587CF009D515B /* SelectClothesTableViewCell.swift in Sources */,
+				88DB937D1DCBE0F400DAC651 /* RegistrationNavigationController.swift in Sources */,
 				8862E6CE1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift in Sources */,
 				88E86DA71DB8E800002A7024 /* ServiceSelectTableViewCell.swift in Sources */,
 				88073F031DAD6FCF000696A3 /* DescriptionListItemView.swift in Sources */,
 				8814C0671DB04AFB005B4967 /* RussianEnumEndings.swift in Sources */,
 				8811FE1A1DC2EF4A00610712 /* AboutViewController.swift in Sources */,
+				88DB93821DCBEF3200DAC651 /* RegistrationCodeInputViewController.swift in Sources */,
 				88072D521DB9695E00B47D23 /* ItemInfoViewModel.swift in Sources */,
 				889D87CE1DC0BA2F003E8DAC /* LaundrySelectTableViewCell.swift in Sources */,
 				889A84151DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift in Sources */,
@@ -826,6 +861,7 @@
 				889D87D01DC1F3DE003E8DAC /* LaundrySelectTableViewCellModel.swift in Sources */,
 				8814C03E1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift in Sources */,
 				88E86DB71DB91BBA002A7024 /* OrderTableViewCellModel.swift in Sources */,
+				88DB93791DCBD11100DAC651 /* MaskedTextField.swift in Sources */,
 				8869D1231DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift in Sources */,
 				88E86DB51DB91BAE002A7024 /* OrderTableViewCell.swift in Sources */,
 				88E86DA91DB8E800002A7024 /* ServiceSelectViewController.swift in Sources */,

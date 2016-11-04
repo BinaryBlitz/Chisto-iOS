@@ -334,6 +334,7 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="confirmButton" destination="IVP-Bi-tmz" id="V0x-Rw-jnm"/>
                         <outlet property="courierDateLabel" destination="gvW-kG-hXn" id="NO8-k8-ncL"/>
                         <outlet property="deliveryDateLabel" destination="dco-mo-Uyk" id="qFT-Eu-4jG"/>
                         <outlet property="deliveryPriceLabel" destination="KXv-Bf-mLi" id="zSa-mD-Y4d"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gBg-h4-tPf">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -10,7 +10,7 @@
         <!--Registration Phone Input View Controller-->
         <scene sceneID="2bg-Dg-zfy">
             <objects>
-                <viewController id="gBg-h4-tPf" customClass="RegistrationPhoneInputViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegistrationPhoneInputViewController" id="gBg-h4-tPf" customClass="RegistrationPhoneInputViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ygu-eV-9xy"/>
                         <viewControllerLayoutGuide type="bottom" id="Pdv-Jb-T5S"/>
@@ -36,12 +36,18 @@
                                                 <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="(900) 000･00･00" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yep-yD-h8j">
-                                                <attributedString key="attributedText"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="(900) 000 ∙ 00 ∙ 00" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="yep-yD-h8j" customClass="MaskedTextField" customModule="Chisto" customModuleProvider="target">
+                                                <frame key="frameInset" minX="30" width="193" height="24"/>
+                                                <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="formattingPattern" value="(***) *** ∙ ** ∙ **"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="replacementChar" value="*"/>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="yep-yD-h8j" firstAttribute="leading" secondItem="WCU-e6-OkY" secondAttribute="trailing" constant="5" id="14H-uX-gG1"/>
                                             <constraint firstItem="yep-yD-h8j" firstAttribute="top" secondItem="WLH-ZH-Ug1" secondAttribute="top" id="Eog-o9-NdG"/>
@@ -57,7 +63,8 @@
                                         <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfF-j1-wvn" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfF-j1-wvn" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
+                                        <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="NqR-41-l4t"/>
                                             <constraint firstAttribute="height" constant="50" id="ydi-qR-RSP"/>
@@ -69,10 +76,12 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="25"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                                <color key="value" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="BUz-4N-F8O" firstAttribute="leading" secondItem="vM4-5d-zaK" secondAttribute="leading" id="0zy-hJ-cde"/>
                                     <constraint firstItem="WLH-ZH-Ug1" firstAttribute="centerX" secondItem="vM4-5d-zaK" secondAttribute="centerX" id="8Tq-TX-hJt"/>
@@ -88,13 +97,18 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vM4-5d-zaK" firstAttribute="leading" secondItem="aov-dM-ir9" secondAttribute="leadingMargin" constant="20" id="4GV-aR-LCz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vM4-5d-zaK" secondAttribute="trailing" constant="20" id="Lgf-8K-hKJ"/>
                             <constraint firstItem="vM4-5d-zaK" firstAttribute="centerY" secondItem="aov-dM-ir9" secondAttribute="centerY" id="PbT-b3-2qb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="phoneInputField" destination="yep-yD-h8j" id="o8c-QZ-jzy"/>
+                        <outlet property="sendButton" destination="sfF-j1-wvn" id="fb1-dl-3Qy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eli-9V-Xah" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
