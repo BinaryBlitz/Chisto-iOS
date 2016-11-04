@@ -28,6 +28,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var orderPriceLabel: UILabel!
   @IBOutlet weak var deliveryPriceLabel: UILabel!
+  @IBOutlet weak var confirmButton: GoButton!
   
   override func viewDidLoad() {
     navigationItem.title = viewModel?.navigationBarTitle
@@ -37,8 +38,18 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
     courierDateLabel.text = viewModel?.courierDate
     deliveryDateLabel.text = viewModel?.deliveryDate
     
+    viewModel?.presentRegistrationSection.drive(onNext: {
+      self.present(RegistrationNavigationController.storyboardInstance()!, animated: true, completion: nil)
+    }).addDisposableTo(disposeBag)
+    
+    configureFooter()
     configureTableView()
     
+  }
+  
+  func configureFooter() {
+    guard let viewModel = self.viewModel else { return }
+    confirmButton.rx.tap.bindTo(viewModel.confirmOrderButtonDidTap)
   }
   
   func configureTableView() {
@@ -74,5 +85,4 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
     navigationController?.navigationBar.isTranslucent = true
     navigationController?.navigationBar.backgroundColor = nil
   }
-  
 }

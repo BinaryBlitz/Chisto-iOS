@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2pG-Dw-Hom">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Registration Code Input View Controller-->
+        <scene sceneID="FWp-Sv-qTl">
+            <objects>
+                <viewController id="2pG-Dw-Hom" customClass="RegistrationCodeInputViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c6g-2K-dw5"/>
+                        <viewControllerLayoutGuide type="bottom" id="zJT-f6-OLU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Nc-H4-q6O">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hGb-pa-nZa">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите код" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUa-pg-0d3">
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tXg-Ef-lBw">
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="∙ ∙ ∙ ∙" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ru4-c8-PMA" customClass="MaskedTextField" customModule="Chisto" customModuleProvider="target">
+                                                <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="formattingPattern" value="* ∙ * ∙ * ∙ * ∙ *"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="replacementChar" value="*"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Ru4-c8-PMA" secondAttribute="trailing" id="BMA-SP-dov"/>
+                                            <constraint firstItem="Ru4-c8-PMA" firstAttribute="centerX" secondItem="tXg-Ef-lBw" secondAttribute="centerX" id="Wbf-E9-yqi"/>
+                                            <constraint firstItem="Ru4-c8-PMA" firstAttribute="top" secondItem="tXg-Ef-lBw" secondAttribute="top" id="efY-CP-w4O"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ru4-c8-PMA" secondAttribute="bottom" id="sOY-7b-nR5"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="На ваш номер был отправлен код" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDK-Zh-Zfi">
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AtH-vf-0x7">
+                                        <frame key="frameInset" minY="166" width="303" height="30"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Выслать повторно">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" metaFont="system" size="15"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <state key="selected">
+                                            <attributedString key="attributedTitle"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <attributedString key="attributedTitle"/>
+                                        </state>
+                                        <state key="focused">
+                                            <attributedString key="attributedTitle"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="AtH-vf-0x7" secondAttribute="bottom" id="3Sy-Xr-67l"/>
+                                    <constraint firstItem="KUa-pg-0d3" firstAttribute="top" secondItem="hGb-pa-nZa" secondAttribute="top" id="E6h-fi-GYp"/>
+                                    <constraint firstAttribute="trailing" secondItem="FDK-Zh-Zfi" secondAttribute="trailing" id="JF5-lj-KMz"/>
+                                    <constraint firstItem="KUa-pg-0d3" firstAttribute="leading" secondItem="hGb-pa-nZa" secondAttribute="leading" id="PQo-zX-cI8"/>
+                                    <constraint firstAttribute="trailing" secondItem="KUa-pg-0d3" secondAttribute="trailing" id="UyY-9m-mth"/>
+                                    <constraint firstAttribute="trailing" secondItem="AtH-vf-0x7" secondAttribute="trailing" id="XCe-nA-Lzk"/>
+                                    <constraint firstItem="FDK-Zh-Zfi" firstAttribute="leading" secondItem="hGb-pa-nZa" secondAttribute="leading" id="XgT-UD-frR"/>
+                                    <constraint firstItem="FDK-Zh-Zfi" firstAttribute="top" secondItem="tXg-Ef-lBw" secondAttribute="bottom" constant="30" id="fqi-Zn-NvN"/>
+                                    <constraint firstItem="AtH-vf-0x7" firstAttribute="leading" secondItem="hGb-pa-nZa" secondAttribute="leading" id="iu9-HF-f1O"/>
+                                    <constraint firstItem="tXg-Ef-lBw" firstAttribute="centerX" secondItem="hGb-pa-nZa" secondAttribute="centerX" id="oFE-BP-bXx"/>
+                                    <constraint firstItem="AtH-vf-0x7" firstAttribute="top" secondItem="FDK-Zh-Zfi" secondAttribute="bottom" constant="40" id="sy0-ib-eqC"/>
+                                    <constraint firstItem="tXg-Ef-lBw" firstAttribute="top" secondItem="KUa-pg-0d3" secondAttribute="bottom" constant="30" id="wUf-R2-Pjw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="hGb-pa-nZa" secondAttribute="trailing" constant="20" id="T4b-7K-qMm"/>
+                            <constraint firstItem="hGb-pa-nZa" firstAttribute="centerY" secondItem="3Nc-H4-q6O" secondAttribute="centerY" id="mlL-eh-j2N"/>
+                            <constraint firstItem="hGb-pa-nZa" firstAttribute="leading" secondItem="3Nc-H4-q6O" secondAttribute="leadingMargin" constant="20" id="ygs-Ah-8T2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="codeField" destination="Ru4-c8-PMA" id="ER5-9s-41x"/>
+                        <outlet property="repeatButton" destination="AtH-vf-0x7" id="Gw6-6G-f3C"/>
+                        <outlet property="subTitleLabel" destination="FDK-Zh-Zfi" id="Pqv-0Y-f7T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ekM-ff-S21" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-87.200000000000003" y="162.3688155922039"/>
+        </scene>
+    </scenes>
+</document>
