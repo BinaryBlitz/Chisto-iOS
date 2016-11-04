@@ -49,7 +49,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
   
   func configureFooter() {
     guard let viewModel = self.viewModel else { return }
-    confirmButton.rx.tap.bindTo(viewModel.confirmOrderButtonDidTap)
+    confirmButton.rx.tap.bindTo(viewModel.confirmOrderButtonDidTap).addDisposableTo(disposeBag)
   }
   
   func configureTableView() {
