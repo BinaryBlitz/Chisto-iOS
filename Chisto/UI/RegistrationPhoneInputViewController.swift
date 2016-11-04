@@ -11,9 +11,10 @@ import RxSwift
 import RxCocoa
 
 class RegistrationPhoneInputViewController: UIViewController {
-  var disposeBag = DisposeBag()
+  let disposeBag = DisposeBag()
   @IBOutlet weak var phoneInputField: MaskedTextField!
   @IBOutlet weak var sendButton: GoButton!
+  
   override func viewDidLoad() {
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconNavbarClose"), style: .plain, target: nil, action: nil)
     

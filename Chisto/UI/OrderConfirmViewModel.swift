@@ -60,7 +60,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
         let cellModels = orderItems.map(OrderConfirmServiceTableViewCellModel.init) as [OrderConfirmServiceTableViewCellModelType]
         let section = OrderConfirmSectionModel(model: "", items: cellModels)
         return [section]
-    }
+      }
     
     self.presentRegistrationSection = confirmOrderButtonDidTap.asDriver(onErrorDriveWith: .empty())
     
