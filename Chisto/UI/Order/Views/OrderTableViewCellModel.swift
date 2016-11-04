@@ -10,12 +10,13 @@ import Foundation
 import RxSwift
 import RxCocoa
 import UIKit
+import Kingfisher
 
 protocol OrderTableViewCellModelType {
   // Output
   var itemTitleText: String { get }
   var servicesText: NSAttributedString { get }
-  var icon: UIImage? { get }
+  var iconUrl: URL? { get }
   var amountText: NSAttributedString { get }
   
   // Input
@@ -27,7 +28,7 @@ class OrderTableViewCellModel: OrderTableViewCellModelType {
   // Constants
   let itemTitleText: String
   let servicesText: NSAttributedString
-  let icon: UIImage?
+  let iconUrl: URL?
   let amountText: NSAttributedString
   
   init(item: OrderItem) {
@@ -51,7 +52,7 @@ class OrderTableViewCellModel: OrderTableViewCellModelType {
     
     self.amountText = amountText
     
-    self.icon = item.clothesItem.icon
+    self.iconUrl = URL(string: item.clothesItem.icon)
   }
   
 }

@@ -14,24 +14,38 @@ import RxCocoa
 protocol LastTimePopupViewModelType {
   // Input
   var showAllLaundriesButtonDidTap: PublishSubject<Void> { get }
+  var title: String { get }
+  var laundryLogoUrl: URL? { get }
+  var laundryBackgroundUrl: URL? { get }
+  var laundryDescription: String { get }
   // Output
   var laundryDescriptionViewModels: [LaundryItemInfoViewModel] { get }
   var dismissViewController: Driver<Void> { get }
 }
 
 class LastTimePopupViewModel: LastTimePopupViewModelType {
+
   let disposeBag = DisposeBag()
   // Input
+  var title: String
+  var laundryDescription: String
+  var laundryLogoUrl: URL?
+  var laundryBackgroundUrl: URL?
   var showAllLaundriesButtonDidTap = PublishSubject<Void>()
   
   // Output
   let laundryDescriptionViewModels: [LaundryItemInfoViewModel]
   var dismissViewController: Driver<Void>
   
-  init() {
-    let courierItemViewModel = LaundryItemInfoViewModel(type: .courier, titleText: "15.09.2016", subTitleText: "Бесплатно")
-    let deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: "11.09.2016", subTitleText: "с 11:00 до 20:00")
-    let costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: "3 400 ₽")
+  init(laundry: Laundry) {
+    self.title = "В прошлый раз вы заказывали в химчистке \(laundry.name)"
+    self.laundryDescription = laundry.descriptionText
+    self.laundryLogoUrl = URL(string: laundry.logoUrl)
+    self.laundryBackgroundUrl = URL(string: laundry.backgroundImageUrl)
+    
+    let courierItemViewModel = LaundryItemInfoViewModel(type: .courier, titleText: laundry.courierDate, subTitleText: laundry.courierPriceString)
+    let deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: laundry.deliveryDate, subTitleText: laundry.deliveryTimeInterval)
+    let costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: laundry.costString)
     
     self.laundryDescriptionViewModels = [courierItemViewModel, deliveryItemViewModel, costItemViewModel]
     

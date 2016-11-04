@@ -11,6 +11,7 @@ import UIKit
 
 import Foundation
 import RxSwift
+import Kingfisher
 import UIKit
 
 class SelectClothesTableViewCell: UITableViewCell {
@@ -22,7 +23,7 @@ class SelectClothesTableViewCell: UITableViewCell {
   @IBOutlet weak var descriptionLabel: UILabel!
   
   func configure(viewModel: SelectClothesTableViewCellModelType) {
-    clothesIconImageView.image = viewModel.icon
+    clothesIconImageView.kf.setImage(with: viewModel.iconUrl)
     titleLabel.text = viewModel.titleText
     descriptionLabel.attributedText = viewModel.subTitletext
   }

@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UIApplication.shared.statusBarStyle = .lightContent
     
     IQKeyboardManager.sharedManager().enable = true
-    
     return true
+    
   }
   
   func applicationWillResignActive(_ application: UIApplication) {

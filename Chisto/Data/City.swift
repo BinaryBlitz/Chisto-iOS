@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import RealmSwift
-import Realm
 import ObjectMapper
 
 class City: ChistoObject {

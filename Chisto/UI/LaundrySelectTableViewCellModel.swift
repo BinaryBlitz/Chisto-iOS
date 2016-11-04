@@ -31,6 +31,7 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
   var tagBgColor: UIColor? = nil
   var tagName: String? = nil
   var tagIsHidden: Bool = false
+  var logoUrl: URL?
   var courierItemViewModel: LaundryItemInfoViewModel
   var deliveryItemViewModel: LaundryItemInfoViewModel
   var costItemViewModel: LaundryItemInfoViewModel
@@ -38,17 +39,15 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
   
   init(laundry: Laundry) {
     self.laundryTitle = laundry.name
-    self.laundryDescription = laundry.description
+    self.laundryDescription = laundry.descriptionText
     self.rating = laundry.rating
+    self.logoUrl = URL(string: laundry.logoUrl)
     
-    self.courierItemViewModel = LaundryItemInfoViewModel(type: .courier, titleText: laundry.courierDate, subTitleText: laundry.courierTimeInterval)
+    self.courierItemViewModel = LaundryItemInfoViewModel(type: .courier, titleText: laundry.courierDate, subTitleText: laundry.courierPriceString)
     
-    let deliveryPriceString = laundry.deliveryPrice > 0 ? "\(laundry.deliveryPrice) ₽" : "Бесплатно"
-    self.deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: laundry.deliveryDate, subTitleText: deliveryPriceString)
+    self.deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: laundry.deliveryDate, subTitleText: laundry.deliveryTimeInterval)
     
-    // TODO: move this logic to model
-    let costString = laundry.cost > 0 ? "\(laundry.cost) ₽" : "Бесплатно"
-    self.costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: costString)
+    self.costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: laundry.costString)
     
     if let type = laundry.type {
       switch type {

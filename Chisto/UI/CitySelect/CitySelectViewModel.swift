@@ -59,15 +59,21 @@ class CitySelectViewModel: CitySelectViewModelType {
   var hideCancelButtonAnimated: Driver<Void>
   
   // Data
-  var cities: Driver<[City]>
+  var cities: Variable<[City]>
   var location = Variable<CLLocationCoordinate2D?>(nil)
   
   init() {
+    // Data
     DataManager.instance.fetchCities().subscribe().addDisposableTo(disposeBag)
-    self.cities = Observable.from(uiRealm.objects(City.self))
+    let cities = Variable<[City]>([])
+    Observable.from(uiRealm.objects(City.self))
       .map { Array($0) }
-      .asDriver(onErrorDriveWith: .empty())
+      .bindTo(cities)
+      .addDisposableTo(disposeBag)
     
+    self.cities = cities
+    
+    // Table View
     self.sections = Observable.combineLatest(cities.asObservable(), searchString.asObservable(), location.asObservable()) { cities, searchString, location -> [CitySelectSectionModel] in
       var filteredCities = cities
       if let searchString = searchString, searchString.characters.count > 0 {
@@ -91,9 +97,8 @@ class CitySelectViewModel: CitySelectViewModelType {
       .bindTo(searchString)
       .addDisposableTo(disposeBag)
     
-    // TODO: work with data
     self.presentOrderViewController = itemDidSelect.map { indexPath in
-      UserDefaults.standard.set(indexPath.row, forKey: "userCity")
+      UserDefaults.standard.set(cities.value[indexPath.row].id, forKey: "userCity")
       return Void()
     }.asDriver(onErrorDriveWith: .empty())
     

@@ -12,19 +12,26 @@ import Alamofire
 import RxDataSources
 
 enum APIPath {
-  case FetchCities
-  case FetchCategories
-  case FetchLaundries
+  case fetchCities
+  case fetchCategories
+  case fetchCityLaundries(cityId: Int)
+  case fetchCategoryClothes(categoryId: Int)
+  case fetchClothesTreatments(itemId: Int)
   
   var endpoint: String {
     switch self {
-    case .FetchCities:
+    case .fetchCities:
       return "cities.json"
-    case .FetchCategories:
+    case .fetchCategories:
       return "categories.json"
-    case .FetchLaundries:
-      return "laundries.json"
+    case .fetchCityLaundries(let cityId):
+      return "cities/\(cityId)/laundries.json"
+    case .fetchCategoryClothes(let categoryId):
+      return "categories/\(categoryId)/items.json"
+    case .fetchClothesTreatments(let itemId):
+      return "items/\(itemId)/treatments.json"
     }
+    
   }
   
   var successCode: Int {
@@ -33,14 +40,14 @@ enum APIPath {
 }
 
 enum NetworkError: Error, CustomStringConvertible {
-  case Unknown(description: String)
-  case ServerUnavaliable
+  case unknown(description: String)
+  case serverUnavaliable
   
   var description: String {
     switch self {
-    case .Unknown(let description):
+    case .unknown(let description):
       return description
-    case .ServerUnavaliable:
+    case .serverUnavaliable:
       return "Сервер недоступен"
     }
   }
@@ -57,14 +64,14 @@ class NetworkManager {
           .responseJSON { response in
             debugPrint(response)
             if response.response?.statusCode != path.successCode {
-              observer.onError(NetworkError.Unknown(description: "Ошибка сервера"))
+              observer.onError(NetworkError.unknown(description: "Ошибка сервера"))
             }
             if let result = response.result.value {
               debugPrint(result)
               observer.onNext(result)
               observer.onCompleted()
             } else {
-              observer.onError(NetworkError.Unknown(description: "Unexpected response format"))
+              observer.onError(NetworkError.unknown(description: "Unexpected response format"))
             }
         }
         

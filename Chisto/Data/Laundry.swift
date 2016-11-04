@@ -8,13 +8,28 @@
 
 import Foundation
 import ObjectMapper
+import Realm
+import RealmSwift
 
-class LaundryRLM: ChistoObject {
+enum LaundryType {
+  case premium
+  case fast
+  case cheap
+}
+
+// TODO: remove test data and change properties
+class Laundry: ChistoObject {
   dynamic var name: String = ""
   dynamic var descriptionText: String = ""
-  dynamic var category: String = ""
-  dynamic var backgroundImageUrl: String? = nil
-  dynamic var logoUrl: String? = nil
+  dynamic var courierDate: String = "00.00.2000"
+  dynamic var rating: Float = 0
+  dynamic var category: String? = nil
+  dynamic var backgroundImageUrl: String = ""
+  dynamic var logoUrl: String = ""
+  dynamic var deliveryTimeInterval: String = "с 00:00 до 00:00"
+  dynamic var courierPrice: Int = 0
+  dynamic var deliveryDate: String = "00.00.2000"
+  dynamic var cost: Int = 0
   
   override func mapping(map: Map) {
     super.mapping(map: map)
@@ -24,6 +39,28 @@ class LaundryRLM: ChistoObject {
     backgroundImageUrl <- map["backgroundImageUrl"]
     logoUrl <- map["logoUrl"]
 
+  }
+  
+  var type: LaundryType? {
+    guard let category = self.category else { return nil }
+    switch category {
+    case "premium":
+      return .premium
+    case "cheap":
+      return .cheap
+    case "fast":
+      return .fast
+    default:
+      return nil
+    }
+  }
+  
+  var costString: String {
+    return cost == 0 ? "Бесплатно" : "\(cost) ₽"
+  }
+  
+  var courierPriceString: String {
+    return courierPrice == 0 ? "Бесплатно" : "\(courierPrice) ₽"
   }
   
 }

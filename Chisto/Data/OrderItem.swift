@@ -10,10 +10,10 @@ import Foundation
 
 class OrderItem {
   var id = UUID().uuidString
-  var clothesItem: ClothesItem
+  var clothesItem: Item
   var services: [Service]
   var amount: Int
-  init (clothesItem: ClothesItem, services: [Service], amount: Int = 1) {
+  init (clothesItem: Item, services: [Service], amount: Int = 1) {
     self.clothesItem = clothesItem
     self.services = services
     self.amount = amount

@@ -15,7 +15,7 @@ protocol SelectClothesTableViewCellModelType {
   // Output
   var titleText: String { get }
   var subTitletext: NSAttributedString { get }
-  var icon: UIImage? { get }
+  var iconUrl: URL? { get }
 }
 
 
@@ -27,23 +27,24 @@ class SelectClothesTableViewCellModel: SelectClothesTableViewCellModelType {
   // Output
   var titleText: String
   var subTitletext: NSAttributedString
-  var icon: UIImage?
+  var iconUrl: URL?
 
-  init(clothesItem: ClothesItem) {
-    self.titleText = clothesItem.name
+  init(item: Item) {
+    self.titleText = item.name
     
     let subTitleAttrString = NSMutableAttributedString()
     
-    for (index, relatedItem) in clothesItem.relatedItems.enumerated() {
-      subTitleAttrString.append(NSAttributedString(string: relatedItem, attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey]))
-      if index != clothesItem.relatedItems.count - 1 {
+    for (index, relatedItem) in item.relatedItems.enumerated() {
+      subTitleAttrString.append(NSAttributedString(string: relatedItem.stringValue, attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey]))
+      if index != item.relatedItems.count - 1 {
         subTitleAttrString.append(NSAttributedString(string: " • ", attributes: [NSForegroundColorAttributeName: UIColor.chsSilver]))
       }
     }
     
-    self.subTitletext = (subTitleAttrString)
+    //self.subTitletext = (subTitleAttrString)
+    self.subTitletext = NSAttributedString(string: item.descriptionText)
     
-    self.icon = clothesItem.icon
+    self.iconUrl = URL(string: item.icon)
   }
   
 }

@@ -15,7 +15,7 @@ protocol CategoryTableViewCellModelType {
   // Output
   var titleText: String { get }
   var subTitletext: NSAttributedString { get }
-  var icon: UIImage? { get }
+  var iconUrl: URL? { get }
   
 }
 
@@ -25,16 +25,18 @@ class CategoryTableViewCellModel: CategoryTableViewCellModelType {
   let dayEndings = ["вещь", "вещи", "вещей"]
   let titleText: String
   let subTitletext: NSAttributedString
-  let icon: UIImage?
+  let iconUrl: URL?
   
   init(category: Category) {
     self.titleText = category.name
-
+    // self.iconUrl = URL(string: category.icon)
+    self.iconUrl = URL(string: "https://www.fillmurray.com/30/30")
+    
     let subTitleAttrString = NSMutableAttributedString()
     
     for (index, subCategory) in category.subCategories.enumerated() {
       if index < 3 {
-        subTitleAttrString.append(NSAttributedString(string: subCategory, attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey]))
+        subTitleAttrString.append(NSAttributedString(string: subCategory.stringValue, attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey]))
         if index != 2 {
           subTitleAttrString.append(NSAttributedString(string: " • ", attributes: [NSForegroundColorAttributeName: UIColor.chsSilver]))
         }
@@ -48,9 +50,9 @@ class CategoryTableViewCellModel: CategoryTableViewCellModelType {
       
     }
     
-    self.subTitletext = (subTitleAttrString)
+    // self.subTitletext = (subTitleAttrString)
+    self.subTitletext = NSAttributedString(string: category.descriptionText, attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey])
     
-    self.icon = category.icon
   }
   
 }
