@@ -97,6 +97,12 @@
 		88E6B5991DCB73610024FA1A /* UIView+AddBorders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */; };
 		88E6B59D1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E6B59C1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard */; };
 		88E6B59F1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */; };
+		88DB93891DCC115D00DAC651 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93881DCC115D00DAC651 /* City.swift */; };
+		88DB938B1DCC169A00DAC651 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB938A1DCC169A00DAC651 /* NetworkManager.swift */; };
+		88DB938D1DCC187C00DAC651 /* Laundry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB938C1DCC187C00DAC651 /* Laundry.swift */; };
+		88DB938F1DCC188600DAC651 /* Treatment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB938E1DCC188600DAC651 /* Treatment.swift */; };
+		88DB93911DCC1AA500DAC651 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93901DCC1AA500DAC651 /* DataManager.swift */; };
+		88DB93931DCC20B100DAC651 /* ChistoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93921DCC20B100DAC651 /* ChistoObject.swift */; };
 		88E86DA61DB8E800002A7024 /* ServiceSelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E86DA11DB8E800002A7024 /* ServiceSelectViewController.storyboard */; };
 		88E86DA71DB8E800002A7024 /* ServiceSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */; };
 		88E86DA81DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA31DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift */; };
@@ -206,6 +212,12 @@
 		88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AddBorders.swift"; sourceTree = "<group>"; };
 		88E6B59C1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationPhoneInputViewController.storyboard; sourceTree = "<group>"; };
 		88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPhoneInputViewController.swift; sourceTree = "<group>"; };
+		88DB93881DCC115D00DAC651 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		88DB938A1DCC169A00DAC651 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = ../NetworkManager.swift; sourceTree = "<group>"; };
+		88DB938C1DCC187C00DAC651 /* Laundry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Laundry.swift; sourceTree = "<group>"; };
+		88DB938E1DCC188600DAC651 /* Treatment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Treatment.swift; sourceTree = "<group>"; };
+		88DB93901DCC1AA500DAC651 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		88DB93921DCC20B100DAC651 /* ChistoObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChistoObject.swift; sourceTree = "<group>"; };
 		88E86DA11DB8E800002A7024 /* ServiceSelectViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ServiceSelectViewController.storyboard; sourceTree = "<group>"; };
 		88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectTableViewCell.swift; sourceTree = "<group>"; };
 		88E86DA31DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectTableViewCellModel.swift; sourceTree = "<group>"; };
@@ -323,8 +335,10 @@
 		88073EF11DAC1B3E000696A3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				88DB938A1DCC169A00DAC651 /* NetworkManager.swift */,
 				8862E6C91DC8E2BD00DDFB00 /* Model */,
 				88E86DB11DB91695002A7024 /* OrderManager */,
+				88DB93901DCC1AA500DAC651 /* DataManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -533,6 +547,10 @@
 			isa = PBXGroup;
 			children = (
 				8862E6CA1DC8E2C800DDFB00 /* OrderItem.swift */,
+				88DB93881DCC115D00DAC651 /* City.swift */,
+				88DB938C1DCC187C00DAC651 /* Laundry.swift */,
+				88DB938E1DCC188600DAC651 /* Treatment.swift */,
+				88DB93921DCC20B100DAC651 /* ChistoObject.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -820,10 +838,12 @@
 				88E86DB01DB90BD1002A7024 /* UIView+nibInstance.swift in Sources */,
 				88073EEF1DAC1A23000696A3 /* OnBoardingViewController.swift in Sources */,
 				88DB93861DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift in Sources */,
+				88DB93931DCC20B100DAC651 /* ChistoObject.swift in Sources */,
 				8833B5321DBE8774004D44CE /* LaundryItemInfoView.swift in Sources */,
 				8814C0331DAD8123005B4967 /* Colors.swift in Sources */,
 				88E86DAA1DB8E800002A7024 /* ServiceSelectViewModel.swift in Sources */,
 				8814C0611DAFEE7C005B4967 /* CategoriesViewModel.swift in Sources */,
+				88DB938D1DCC187C00DAC651 /* Laundry.swift in Sources */,
 				885C19701DC379E40081A4F3 /* LaundrySortViewModel.swift in Sources */,
 				88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */,
 				88DB937F1DCBE88700DAC651 /* RegistrationViewModel.swift in Sources */,
@@ -838,10 +858,12 @@
 				88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */,
 				8814C0651DB03CBC005B4967 /* Fonts.swift in Sources */,
 				8814C04D1DAF159E005B4967 /* OrderViewModel.swift in Sources */,
+				88DB93911DCC1AA500DAC651 /* DataManager.swift in Sources */,
 				883760D31DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift in Sources */,
 				8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */,
 				8811FE0F1DC2DB0500610712 /* ProfileNavigationController.swift in Sources */,
 				8814C0401DAED9AC005B4967 /* CityNotFoundViewController.swift in Sources */,
+				88DB93891DCC115D00DAC651 /* City.swift in Sources */,
 				8814C0631DB03AD7005B4967 /* CategoryTableViewCellModel.swift in Sources */,
 				88D8ABC21DB587CF009D515B /* SelectClothesTableViewCell.swift in Sources */,
 				88DB937D1DCBE0F400DAC651 /* RegistrationNavigationController.swift in Sources */,
@@ -870,6 +892,7 @@
 				8814C05E1DAFCF28005B4967 /* CategoryTableViewCell.swift in Sources */,
 				8811FE151DC2DCA600610712 /* ProfileViewModel.swift in Sources */,
 				8862E6CB1DC8E2C800DDFB00 /* OrderItem.swift in Sources */,
+				88DB938B1DCC169A00DAC651 /* NetworkManager.swift in Sources */,
 				889D87CB1DC0B45C003E8DAC /* RotatingUILabel.swift in Sources */,
 				885409BA1DB25B5100219C00 /* GoButton.swift in Sources */,
 				889D87D21DC1F71F003E8DAC /* LaundrySelectViewModel.swift in Sources */,
@@ -877,6 +900,7 @@
 				88E6B59F1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift in Sources */,
 				88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */,
 				8814C0561DAFA7B5005B4967 /* BottomBorderedTextField.swift in Sources */,
+				88DB938F1DCC188600DAC651 /* Treatment.swift in Sources */,
 				885409C31DB2E43300219C00 /* EmptyOrderView.swift in Sources */,
 				8811FE131DC2DBBE00610712 /* ProfileViewController.swift in Sources */,
 				8814C0391DAE8F7F005B4967 /* LocationManager.swift in Sources */,

@@ -13,11 +13,6 @@ import RxCocoa
 import UIKit
 import CoreLocation
 
-struct City {
-  let index = 0
-  var title = ""
-}
-
 typealias CitySelectSectionModel = SectionModel<String, City>
 
 protocol CitySelectViewModelType {
@@ -64,17 +59,19 @@ class CitySelectViewModel: CitySelectViewModelType {
   var hideCancelButtonAnimated: Driver<Void>
   
   // Data
-  var cities: Variable<[City]>
+  var cities: Driver<[City]>
   var location = Variable<CLLocationCoordinate2D?>(nil)
   
   init() {
-    let defaultCities = ["Москва", "Санкт-Петербург"] + [String](repeating: "Город", count: 25)
-    cities = Variable<[City]>(defaultCities.map { City(title: $0) })
+    DataManager.instance.fetchCities().subscribe().addDisposableTo(disposeBag)
+    self.cities = Observable.from(uiRealm.objects(City.self))
+      .map { Array($0) }
+      .asDriver(onErrorDriveWith: .empty())
     
     self.sections = Observable.combineLatest(cities.asObservable(), searchString.asObservable(), location.asObservable()) { cities, searchString, location -> [CitySelectSectionModel] in
       var filteredCities = cities
       if let searchString = searchString, searchString.characters.count > 0 {
-        filteredCities = cities.filter { $0.title.lowercased().range(of: searchString.lowercased()) != nil }
+        filteredCities = cities.filter { $0.name.lowercased().range(of: searchString.lowercased()) != nil }
       }
       return [CitySelectSectionModel(model: "", items: filteredCities)]
     }.asDriver(onErrorJustReturn: [])

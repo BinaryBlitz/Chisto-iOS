@@ -10,6 +10,9 @@ import UIKit
 import Fabric
 import Crashlytics
 import IQKeyboardManagerSwift
+import RealmSwift
+
+let uiRealm = try! Realm()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -10,6 +10,8 @@ import UIKit
 import RxDataSources
 import RxSwift
 import RxCocoa
+import RealmSwift
+import RxRealm
 
 class CitySelectViewController: UIViewController, UIScrollViewDelegate {
   
@@ -95,7 +97,7 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate {
     // Bindings
     dataSource.configureCell = { _, tableView, indexPath, city in
       let cell = tableView.dequeueReusableCell(withIdentifier: "CitySelectTableViewCell", for: indexPath)
-      cell.textLabel?.text = city.title      
+      cell.textLabel?.text = city.name
       return cell
     }
     
