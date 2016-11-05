@@ -43,9 +43,11 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
     self.rating = laundry.rating
     self.logoUrl = URL(string: laundry.logoUrl)
     
-    self.courierItemViewModel = LaundryItemInfoViewModel(type: .courier, titleText: laundry.courierDate, subTitleText: laundry.courierPriceString)
+    let courierDateString = Date(timeIntervalSince1970: laundry.courierDate).shortDate
+    self.courierItemViewModel = LaundryItemInfoViewModel(type: .courier, titleText: courierDateString, subTitleText: laundry.courierPriceString)
     
-    self.deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: laundry.deliveryDate, subTitleText: laundry.deliveryTimeInterval)
+    let deliveryDateString = Date(timeIntervalSince1970: laundry.deliveryDate).shortDate
+    self.deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: deliveryDateString, subTitleText: laundry.deliveryTimeInterval)
     
     self.costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: laundry.costString)
     

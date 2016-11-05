@@ -22,10 +22,10 @@ protocol LaundrySelectViewModelType {
   // Output
   var navigationBarTitle: String { get }
   var sections: Driver<[LaundrySelectSectionModel]> { get }
-  var presentSortSelectSection: Driver<Void> { get }
+  var presentSortSelectSection: Driver<LaundrySortViewModel> { get }
   
   // Data
-  var laundries: Variable<[Laundry]> { get }
+  var sortedLaundries: Variable<[Laundry]> { get }
 }
 
 class LaundrySelectViewModel: LaundrySelectViewModelType {
@@ -37,10 +37,12 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
   // Output
   var navigationBarTitle = "Прачечные"
   var sections: Driver<[LaundrySelectSectionModel]>
-  var presentSortSelectSection: Driver<Void>
   var presentOrderConfirmSection: Driver<OrderConfirmViewModel>
+  var presentSortSelectSection: Driver<LaundrySortViewModel>
+  
   // Data
-  var laundries: Variable<[Laundry]>
+  var sortedLaundries: Variable<[Laundry]>
+  var sortType: Variable<LaundrySortType>
   
   init() {
     DataManager.instance.fetchLaundries().subscribe().addDisposableTo(disposeBag)
@@ -51,22 +53,52 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
       .bindTo(laundries)
       .addDisposableTo(disposeBag)
     
-    self.laundries = laundries
+    let sortType = Variable<LaundrySortType>(LaundrySortType.byRating)
+    self.sortType = sortType
     
-    self.sections = laundries.asDriver().map { laundries in
+    let sortedLaundries = Variable(laundries.value)
+    self.sortedLaundries = sortedLaundries
+    
+    self.sections = sortedLaundries.asDriver().map { laundries in
       let cellModels = laundries.map(LaundrySelectTableViewCellModel.init) as [LaundrySelectTableViewCellModelType]
       
       let section = LaundrySelectSectionModel(model: "", items: cellModels)
       return [section]
     }
     
-    self.presentSortSelectSection = sortButtonDidTap.asDriver(onErrorDriveWith: .empty())
+    self.presentSortSelectSection = sortButtonDidTap.asObservable().map {
+      let viewModel = LaundrySortViewModel()
+      viewModel.selectedSortType.bindTo(sortType).addDisposableTo(viewModel.disposeBag)
+      return viewModel
+    }.asDriver(onErrorDriveWith: .empty())
     
     self.presentOrderConfirmSection = itemDidSelect.map { indexPath in
       let viewModel = OrderConfirmViewModel(laundry: laundries.value[indexPath.row])
       return viewModel
-      }.asDriver(onErrorDriveWith: .empty())
+    }.asDriver(onErrorDriveWith: .empty())
     
+    Observable.combineLatest(laundries.asObservable(), sortType.asObservable()) { laundries, sortType -> [Laundry] in
+      return self.sortLaundries(laundries: laundries, sortType: sortType)
+    }.bindTo(sortedLaundries).addDisposableTo(disposeBag)
+    
+    
+  }
+  
+  func sortLaundries(laundries: [Laundry], sortType: LaundrySortType) -> [Laundry] {
+    switch sortType {
+    case .byPrice:
+      return laundries.sorted {
+        $0.0.cost < $0.1.cost
+      }
+    case .byRating:
+      return laundries.sorted {
+        $0.0.rating > $0.1.rating
+      }
+    case .bySpeed:
+      return laundries.sorted {
+        $0.0.deliveryDate < $0.1.deliveryDate
+      }
+    }
   }
 
 }

@@ -21,14 +21,14 @@ enum LaundryType {
 class Laundry: ChistoObject {
   dynamic var name: String = ""
   dynamic var descriptionText: String = ""
-  dynamic var courierDate: String = "00.00.2000"
+  dynamic var courierDate: Double = 0.0
   dynamic var rating: Float = 0
   dynamic var category: String? = nil
   dynamic var backgroundImageUrl: String = ""
   dynamic var logoUrl: String = ""
   dynamic var deliveryTimeInterval: String = "с 00:00 до 00:00"
   dynamic var courierPrice: Int = 0
-  dynamic var deliveryDate: String = "00.00.2000"
+  dynamic var deliveryDate: Double = 0.0
   dynamic var cost: Int = 0
   
   override func mapping(map: Map) {

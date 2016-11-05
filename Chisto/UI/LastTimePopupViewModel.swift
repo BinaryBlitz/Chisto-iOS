@@ -43,8 +43,11 @@ class LastTimePopupViewModel: LastTimePopupViewModelType {
     self.laundryLogoUrl = URL(string: laundry.logoUrl)
     self.laundryBackgroundUrl = URL(string: laundry.backgroundImageUrl)
     
-    let courierItemViewModel = LaundryItemInfoViewModel(type: .courier, titleText: laundry.courierDate, subTitleText: laundry.courierPriceString)
-    let deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: laundry.deliveryDate, subTitleText: laundry.deliveryTimeInterval)
+    let courierDateString = Date(timeIntervalSince1970: laundry.courierDate).shortDate
+    let courierItemViewModel = LaundryItemInfoViewModel(type: .courier, titleText: courierDateString, subTitleText: laundry.courierPriceString)
+    
+    let deliveryDateString = Date(timeIntervalSince1970: laundry.deliveryDate).shortDate
+    let deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: deliveryDateString, subTitleText: laundry.deliveryTimeInterval)
     let costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: laundry.costString)
     
     self.laundryDescriptionViewModels = [courierItemViewModel, deliveryItemViewModel, costItemViewModel]
