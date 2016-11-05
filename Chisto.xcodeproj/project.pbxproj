@@ -78,6 +78,7 @@
 		889D87CE1DC0BA2F003E8DAC /* LaundrySelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889D87CD1DC0BA2F003E8DAC /* LaundrySelectTableViewCell.swift */; };
 		889D87D01DC1F3DE003E8DAC /* LaundrySelectTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889D87CF1DC1F3DE003E8DAC /* LaundrySelectTableViewCellModel.swift */; };
 		889D87D21DC1F71F003E8DAC /* LaundrySelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889D87D11DC1F71E003E8DAC /* LaundrySelectViewModel.swift */; };
+		88A221681DCE013100CAD2B0 /* LaundryTreatment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A221671DCE013100CAD2B0 /* LaundryTreatment.swift */; };
 		88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */; };
 		88B0B5501DB1825500C7D0F7 /* OnBoardingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */; };
 		88B0B5521DB19C6E00C7D0F7 /* DescriptionListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B5511DB19C6E00C7D0F7 /* DescriptionListItemView.xib */; };
@@ -97,15 +98,15 @@
 		88DB93821DCBEF3200DAC651 /* RegistrationCodeInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93811DCBEF3200DAC651 /* RegistrationCodeInputViewController.swift */; };
 		88DB93841DCBEF8B00DAC651 /* RegistrationCodeInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DB93831DCBEF8B00DAC651 /* RegistrationCodeInputViewController.storyboard */; };
 		88DB93861DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93851DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift */; };
-		88E6B5991DCB73610024FA1A /* UIView+AddBorders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */; };
-		88E6B59D1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E6B59C1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard */; };
-		88E6B59F1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */; };
 		88DB93891DCC115D00DAC651 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93881DCC115D00DAC651 /* City.swift */; };
 		88DB938B1DCC169A00DAC651 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB938A1DCC169A00DAC651 /* NetworkManager.swift */; };
 		88DB938D1DCC187C00DAC651 /* Laundry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB938C1DCC187C00DAC651 /* Laundry.swift */; };
 		88DB938F1DCC188600DAC651 /* Treatment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB938E1DCC188600DAC651 /* Treatment.swift */; };
 		88DB93911DCC1AA500DAC651 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93901DCC1AA500DAC651 /* DataManager.swift */; };
 		88DB93931DCC20B100DAC651 /* ChistoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93921DCC20B100DAC651 /* ChistoObject.swift */; };
+		88E6B5991DCB73610024FA1A /* UIView+AddBorders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */; };
+		88E6B59D1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E6B59C1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard */; };
+		88E6B59F1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */; };
 		88E705641DCCC2FB007F779E /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E705631DCCC2FB007F779E /* Category.swift */; };
 		88E86DA61DB8E800002A7024 /* ServiceSelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E86DA11DB8E800002A7024 /* ServiceSelectViewController.storyboard */; };
 		88E86DA71DB8E800002A7024 /* ServiceSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */; };
@@ -197,6 +198,7 @@
 		889D87CD1DC0BA2F003E8DAC /* LaundrySelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySelectTableViewCell.swift; sourceTree = "<group>"; };
 		889D87CF1DC1F3DE003E8DAC /* LaundrySelectTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySelectTableViewCellModel.swift; sourceTree = "<group>"; };
 		889D87D11DC1F71E003E8DAC /* LaundrySelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySelectViewModel.swift; sourceTree = "<group>"; };
+		88A221671DCE013100CAD2B0 /* LaundryTreatment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryTreatment.swift; sourceTree = "<group>"; };
 		88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSearchBarTextColor.swift; sourceTree = "<group>"; };
 		88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoardingViewController.storyboard; sourceTree = "<group>"; };
 		88B0B5511DB19C6E00C7D0F7 /* DescriptionListItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionListItemView.xib; sourceTree = "<group>"; };
@@ -216,15 +218,15 @@
 		88DB93811DCBEF3200DAC651 /* RegistrationCodeInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationCodeInputViewController.swift; sourceTree = "<group>"; };
 		88DB93831DCBEF8B00DAC651 /* RegistrationCodeInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationCodeInputViewController.storyboard; sourceTree = "<group>"; };
 		88DB93851DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationCodeInputViewModel.swift; sourceTree = "<group>"; };
-		88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AddBorders.swift"; sourceTree = "<group>"; };
-		88E6B59C1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationPhoneInputViewController.storyboard; sourceTree = "<group>"; };
-		88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPhoneInputViewController.swift; sourceTree = "<group>"; };
 		88DB93881DCC115D00DAC651 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		88DB938A1DCC169A00DAC651 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = ../NetworkManager.swift; sourceTree = "<group>"; };
 		88DB938C1DCC187C00DAC651 /* Laundry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Laundry.swift; sourceTree = "<group>"; };
 		88DB938E1DCC188600DAC651 /* Treatment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Treatment.swift; sourceTree = "<group>"; };
 		88DB93901DCC1AA500DAC651 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		88DB93921DCC20B100DAC651 /* ChistoObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChistoObject.swift; sourceTree = "<group>"; };
+		88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AddBorders.swift"; sourceTree = "<group>"; };
+		88E6B59C1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationPhoneInputViewController.storyboard; sourceTree = "<group>"; };
+		88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPhoneInputViewController.swift; sourceTree = "<group>"; };
 		88E705631DCCC2FB007F779E /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		88E86DA11DB8E800002A7024 /* ServiceSelectViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ServiceSelectViewController.storyboard; sourceTree = "<group>"; };
 		88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectTableViewCell.swift; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 				88E705631DCCC2FB007F779E /* Category.swift */,
 				88C9F6DC1DCD03010046DDD7 /* Item.swift */,
 				88C9F6DE1DCD2B320046DDD7 /* RealmString.swift */,
+				88A221671DCE013100CAD2B0 /* LaundryTreatment.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -630,10 +633,10 @@
 		88E6B59A1DCB7EE70024FA1A /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				88E6B59B1DCB7F1C0024FA1A /* PhoneInput */,
 				88DB93801DCBEF1600DAC651 /* CodeInput */,
 				88DB937A1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard */,
 				88DB937C1DCBE0F400DAC651 /* RegistrationNavigationController.swift */,
-				88E6B59B1DCB7F1C0024FA1A /* PhoneInput */,
 			);
 			name = Registration;
 			sourceTree = "<group>";
@@ -898,6 +901,7 @@
 				889D87D01DC1F3DE003E8DAC /* LaundrySelectTableViewCellModel.swift in Sources */,
 				8814C03E1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift in Sources */,
 				88E86DB71DB91BBA002A7024 /* OrderTableViewCellModel.swift in Sources */,
+				88A221681DCE013100CAD2B0 /* LaundryTreatment.swift in Sources */,
 				88DB93791DCBD11100DAC651 /* MaskedTextField.swift in Sources */,
 				8869D1231DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift in Sources */,
 				88E86DB51DB91BAE002A7024 /* OrderTableViewCell.swift in Sources */,

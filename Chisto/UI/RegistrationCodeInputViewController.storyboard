@@ -31,7 +31,7 @@
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="∙ ∙ ∙ ∙ ∙" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ru4-c8-PMA" customClass="MaskedTextField" customModule="Chisto" customModuleProvider="target">
                                                 <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="formattingPattern" value="* ∙ * ∙ * ∙ * ∙ *"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="replacementChar" value="*"/>

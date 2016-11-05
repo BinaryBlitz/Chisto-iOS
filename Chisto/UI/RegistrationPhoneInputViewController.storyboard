@@ -40,7 +40,7 @@
                                                 <frame key="frameInset" minX="30" width="193" height="24"/>
                                                 <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="formattingPattern" value="(***) *** ∙ ** ∙ **"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="replacementChar" value="*"/>
@@ -106,6 +106,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="contentView" destination="vM4-5d-zaK" id="lsv-Pe-97I"/>
                         <outlet property="phoneInputField" destination="yep-yD-h8j" id="o8c-QZ-jzy"/>
                         <outlet property="sendButton" destination="sfF-j1-wvn" id="fb1-dl-3Qy"/>
                     </connections>

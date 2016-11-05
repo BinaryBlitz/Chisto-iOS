@@ -30,6 +30,7 @@ class Laundry: ChistoObject {
   dynamic var courierPrice: Int = 0
   dynamic var deliveryDate: Double = 0.0
   dynamic var cost: Int = 0
+  var treatments = List<Treatment>()
   
   override func mapping(map: Map) {
     super.mapping(map: map)
@@ -38,6 +39,7 @@ class Laundry: ChistoObject {
     category <- map["category"]
     backgroundImageUrl <- map["backgroundImageUrl"]
     logoUrl <- map["logoUrl"]
+    treatments <- map["laundry_treatments"]
 
   }
   

@@ -14,6 +14,7 @@ target 'Chisto' do
   pod 'IQKeyboardManagerSwift'
   pod 'FloatRatingView', '~> 2.0.0'
   pod 'ObjectMapper', '~> 2.2'
+  pod 'ObjectMapper+Realm', '~> 0.2'
   pod 'RealmSwift', '~> 2.0.3'
   pod 'RxRealm', '~> 0.3.1'
   pod 'Kingfisher', '~> 3.0'
