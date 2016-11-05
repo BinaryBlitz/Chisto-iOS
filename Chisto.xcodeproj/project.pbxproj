@@ -557,13 +557,12 @@
 		8862E6C91DC8E2BD00DDFB00 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				88A221691DCE372500CAD2B0 /* Common */,
 				88DB93881DCC115D00DAC651 /* City.swift */,
 				88DB938C1DCC187C00DAC651 /* Laundry.swift */,
 				88DB938E1DCC188600DAC651 /* Treatment.swift */,
-				88DB93921DCC20B100DAC651 /* ServerObjct.swift */,
 				88E705631DCCC2FB007F779E /* Category.swift */,
 				88C9F6DC1DCD03010046DDD7 /* Item.swift */,
-				88C9F6DE1DCD2B320046DDD7 /* RealmString.swift */,
 				88A221671DCE013100CAD2B0 /* LaundryTreatment.swift */,
 			);
 			name = Model;
@@ -598,6 +597,15 @@
 				889D87CF1DC1F3DE003E8DAC /* LaundrySelectTableViewCellModel.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		88A221691DCE372500CAD2B0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				88DB93921DCC20B100DAC651 /* ServerObjct.swift */,
+				88C9F6DE1DCD2B320046DDD7 /* RealmString.swift */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 		88D8ABB91DB56E09009D515B /* SelectClothes */ = {

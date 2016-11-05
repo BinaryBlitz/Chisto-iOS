@@ -80,23 +80,19 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     Observable.combineLatest(laundries.asObservable(), sortType.asObservable()) { laundries, sortType -> [Laundry] in
       return self.sortLaundries(laundries: laundries, sortType: sortType)
     }.bindTo(sortedLaundries).addDisposableTo(disposeBag)
+
     
   }
   
   func sortLaundries(laundries: [Laundry], sortType: LaundrySortType) -> [Laundry] {
+    let orderManager = OrderManager.instance
     switch sortType {
     case .byPrice:
-      return laundries.sorted {
-         OrderManager.instance.price(laundry: $0.0) < OrderManager.instance.price(laundry: $0.1)
-      }
+      return laundries.sorted { orderManager.price(laundry: $0) < orderManager.price(laundry: $1) }
     case .byRating:
-      return laundries.sorted {
-        $0.0.rating > $0.1.rating
-      }
+      return laundries.sorted { $0.rating > $1.rating }
     case .bySpeed:
-      return laundries.sorted {
-        $0.0.deliveryDate < $0.1.deliveryDate
-      }
+      return laundries.sorted { $0.deliveryDate < $1.deliveryDate }
     }
   }
 
