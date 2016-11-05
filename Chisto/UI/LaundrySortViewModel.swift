@@ -11,20 +11,21 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-enum SortType {
+enum LaundrySortType {
   case byPrice
   case bySpeed
   case byRating
 }
 
-struct SortItem {
-  var type: SortType
+struct LaundrySortItem {
+  var type: LaundrySortType
   var title: String
 }
 
-typealias LaundrySortSectionModel = SectionModel<String, SortItem>
+typealias LaundrySortSectionModel = SectionModel<String, LaundrySortItem>
 
 class LaundrySortViewModel {
+  let disposeBag = DisposeBag()
   // Input
   var itemDidSelect = PublishSubject<IndexPath>()
   
@@ -32,7 +33,10 @@ class LaundrySortViewModel {
   var sections: Driver<[LaundrySortSectionModel]>
   var dismissViewController: Driver<Void>
   
-  var sortItems = Variable([SortItem(type: .byPrice, title: "По цене"), SortItem(type: .bySpeed, title: "По скорости"), SortItem(type: .byRating, title: "По рейтингу")])
+  // Data
+  var selectedSortType = PublishSubject<LaundrySortType>()
+  
+  var sortItems = Variable([LaundrySortItem(type: .byPrice, title: "По цене"), LaundrySortItem(type: .bySpeed, title: "По скорости"), LaundrySortItem(type: .byRating, title: "По рейтингу")])
   
   init() {
     self.dismissViewController = itemDidSelect.asObservable().map { _ in Void() }.asDriver(onErrorDriveWith: .empty())
@@ -42,5 +46,11 @@ class LaundrySortViewModel {
       let section = SectionModel(model: "", items: sortItems)
       return [section]
     }
+    
+    itemDidSelect.asObservable().subscribe(onNext: { [weak self] indexPath in
+      guard let sortItem = self?.sortItems.value[indexPath.row] else { return }
+      self?.selectedSortType.onNext(sortItem.type)
+    }).addDisposableTo(disposeBag)
+    
   }
 }

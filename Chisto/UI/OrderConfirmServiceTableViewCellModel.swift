@@ -10,18 +10,18 @@ import Foundation
 import UIKit
 
 protocol OrderConfirmServiceTableViewCellModelType {
-  var clothesIcon: UIImage? { get }
+  var clothesIconUrl: URL? { get }
   var clothesTitle: String { get }
   var clothesServices: [Service] { get }
 
 }
 class OrderConfirmServiceTableViewCellModel: OrderConfirmServiceTableViewCellModelType {
-  var clothesIcon: UIImage?
+  var clothesIconUrl: URL?
   var clothesTitle: String
   var clothesServices: [Service]
   
   init(orderItem: OrderItem) {
-    self.clothesIcon = orderItem.clothesItem.icon
+    self.clothesIconUrl = URL(string: orderItem.clothesItem.icon)
     self.clothesTitle = orderItem.clothesItem.name + "× \(orderItem.amount)"
     self.clothesServices = orderItem.services
   }

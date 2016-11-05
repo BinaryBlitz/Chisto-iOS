@@ -21,8 +21,9 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
     navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.sortButtonDidTap)
       .addDisposableTo(disposeBag)
     
-    viewModel.presentSortSelectSection.drive(onNext: {
+    viewModel.presentSortSelectSection.drive(onNext: { sortViewModel in
       let viewController = LaundrySortViewController.storyboardInstance()!
+      viewController.viewModel = sortViewModel
       viewController.modalPresentationStyle = .overFullScreen
       self.present(viewController, animated: false)
     }).addDisposableTo(disposeBag)

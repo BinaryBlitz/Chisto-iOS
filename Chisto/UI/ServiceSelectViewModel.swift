@@ -13,7 +13,7 @@ import RxSwift
 import RxDataSources
 
 class Service {
-  var id = UUID().uuidString
+  var id = UUID().hashValue
   var name = ""
   var description = ""
   
@@ -29,6 +29,18 @@ class Service {
     self.name = name
     self.description = description
   }
+  
+  func price(laundry: Laundry) -> Int {
+    var price = 0
+    laundry.treatments.filter { $0.treatmentId == self.id }
+      .forEach { price += $0.price }
+    return price
+  }
+  
+  func priceString(laundry: Laundry) -> String {
+    let price = self.price(laundry: laundry)
+    return price == 0 ? "Бесплатно" : "\(price) ₽"
+  }
 }
 
 typealias ServiceSelectSectionModel = SectionModel<String, ServiceSelectTableViewCellModelType>
@@ -43,7 +55,7 @@ protocol ServiceSelectViewModelType {
   var itemTitle: String { get }
   var color: UIColor { get }
   var sections: Driver<[ServiceSelectSectionModel]> { get }
-  var selectedServicesIds: Variable<[String]> { get }
+  var selectedServicesIds: Variable<[Int]> { get }
   var selectedServices: Variable<[Service]> { get }
 }
 
@@ -66,7 +78,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
     case order
   }
   
-  var selectedServicesIds: Variable<[String]>
+  var selectedServicesIds: Variable<[Int]>
   var services: Variable<[Service]>
   var selectedServices: Variable<[Service]>
   
@@ -80,7 +92,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
     let services = Variable<[Service]>(Service.defaultServices)
     self.services = services
     
-    let selectedServicesIds = Variable<[String]>(selectedServices.map { $0.id })
+    let selectedServicesIds = Variable<[Int]>(selectedServices.map { $0.id })
     self.selectedServicesIds = selectedServicesIds
     
     let selectedServices = Variable(selectedServices)

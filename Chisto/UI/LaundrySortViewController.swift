@@ -13,7 +13,7 @@ import RxCocoa
 import RxDataSources
 
 class LaundrySortViewController: UIViewController, UITableViewDelegate {
-  let viewModel = LaundrySortViewModel()
+  var viewModel: LaundrySortViewModel? = nil
   var dataSource = RxTableViewSectionedReloadDataSource<LaundrySortSectionModel>()
   let disposeBag = DisposeBag()
   
@@ -24,7 +24,7 @@ class LaundrySortViewController: UIViewController, UITableViewDelegate {
   override func viewDidLoad() {    
     configureTableView()
 
-    viewModel.dismissViewController.drive(onNext: { [weak self] in
+    viewModel?.dismissViewController.drive(onNext: { [weak self] in
       UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {
         self?.view.alpha = 0
         }, completion: { _ in
@@ -34,6 +34,8 @@ class LaundrySortViewController: UIViewController, UITableViewDelegate {
   }
   
   func configureTableView() {
+    guard let viewModel = self.viewModel else { return }
+    
     dataSource.configureCell = { _, tableView, indexPath, sortItem in
       let cell = tableView.dequeueReusableCell(withIdentifier: "LaundrySortTableViewCell", for: indexPath)
       cell.textLabel?.text = sortItem.title

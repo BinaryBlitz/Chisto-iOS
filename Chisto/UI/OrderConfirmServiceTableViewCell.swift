@@ -7,14 +7,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 class OrderConfirmServiceTableViewCell: UITableViewCell {
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var iconView: UIImageView!
   
-  
   func configure(viewModel: OrderConfirmServiceTableViewCellModelType) {
-    self.iconView.image = viewModel.clothesIcon
+    self.iconView.kf.setImage(with: viewModel.clothesIconUrl)
     
     let headerItemView = OrderConfirmServiceItemView.nibInstance()!
     headerItemView.leftLabel.text = viewModel.clothesTitle

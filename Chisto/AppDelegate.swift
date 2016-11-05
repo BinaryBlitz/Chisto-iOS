@@ -10,6 +10,9 @@ import UIKit
 import Fabric
 import Crashlytics
 import IQKeyboardManagerSwift
+import RealmSwift
+
+let uiRealm = try! Realm()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UIApplication.shared.statusBarStyle = .lightContent
     
     IQKeyboardManager.sharedManager().enable = true
-    
     return true
+    
   }
   
   func applicationWillResignActive(_ application: UIApplication) {

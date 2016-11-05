@@ -11,13 +11,6 @@ import RxSwift
 import RxDataSources
 import RxCocoa
 
-struct ClothesItem {
-  var name = ""
-  var icon: UIImage? = nil
-  var color: UIColor = UIColor.chsRosePink
-  var relatedItems: [String] = []
-}
-
 typealias SelectClothesSectionModel = SectionModel<String, SelectClothesTableViewCellModelType>
 
 protocol SelectClothesViewModelType {
@@ -32,15 +25,6 @@ protocol SelectClothesViewModelType {
 
 class SelectClothesViewModel: SelectClothesViewModelType {
   
-  var defaultClothesItems: [ClothesItem] = [
-    ClothesItem(name: "Шапка", icon: #imageLiteral(resourceName: "iconHat"),
-                color: UIColor.chsRosePink, relatedItems: ["Шапки зимние","Летние из трикотажа", "Хлопка", "Шерсти"]),
-    ClothesItem(name: "Кепка", icon: #imageLiteral(resourceName: "iconCap"),
-             color: UIColor.chsRosePink, relatedItems: ["Кепки", "Бейсболки", "Снэпбэки"]),
-    ClothesItem(name: "Шляпа", icon: #imageLiteral(resourceName: "iconNap"),
-             color: UIColor.chsRosePink, relatedItems: ["Лайкра", "Растительный материал", "Хлопок", "Шерсть", "Лен"])
-    ]
-  
   private let disposeBag = DisposeBag()
   
   // Input
@@ -53,25 +37,35 @@ class SelectClothesViewModel: SelectClothesViewModelType {
   var presentSelectServiceSection: Driver<ServiceSelectViewModel>
   
   // Data
-  var clothesItems: Variable<[ClothesItem]>
+  var items: Variable<[Item]>
   
   init(category: Category) {
     self.navigationBarTitle = category.name
-    self.navigationBarColor = category.color
     
-    let clothesItems = Variable<[ClothesItem]>(defaultClothesItems)
+    // TODO: get a category's color from model
+    //self.navigationBarColor = category.color
     
-    self.clothesItems = clothesItems
     
-    self.sections = clothesItems.asDriver().map { clothesItems in
-      let cellModels = clothesItems.map(SelectClothesTableViewCellModel.init) as [SelectClothesTableViewCellModelType]
+    DataManager.instance.fetchCategoryClothes(categoryId: category.id).subscribe().addDisposableTo(disposeBag)
+    
+    let items = Variable<[Item]>([])
+    
+    Observable.from(uiRealm.objects(Item.self))
+      .map { Array($0) }
+      .bindTo(items)
+      .addDisposableTo(disposeBag)
+
+    self.items = items
+    
+    self.sections = items.asDriver().map { items in
+      let cellModels = items.map(SelectClothesTableViewCellModel.init) as [SelectClothesTableViewCellModelType]
       
       let section = SelectClothesSectionModel(model: "", items: cellModels)
       return [section]
     }
     
     self.presentSelectServiceSection = itemDidSelect.map{ indexPath in
-      let clothesItem = clothesItems.value[indexPath.row]
+      let clothesItem = items.value[indexPath.row]
       let orderItem = OrderItem(clothesItem: clothesItem, services: [], amount: 1)
       return ServiceSelectViewModel(item: orderItem)
     }.asDriver(onErrorDriveWith: .empty())

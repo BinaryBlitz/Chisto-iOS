@@ -13,11 +13,6 @@ import RxCocoa
 import UIKit
 import CoreLocation
 
-struct City {
-  let index = 0
-  var title = ""
-}
-
 typealias CitySelectSectionModel = SectionModel<String, City>
 
 protocol CitySelectViewModelType {
@@ -68,13 +63,21 @@ class CitySelectViewModel: CitySelectViewModelType {
   var location = Variable<CLLocationCoordinate2D?>(nil)
   
   init() {
-    let defaultCities = ["Москва", "Санкт-Петербург"] + [String](repeating: "Город", count: 25)
-    cities = Variable<[City]>(defaultCities.map { City(title: $0) })
+    // Data
+    DataManager.instance.fetchCities().subscribe().addDisposableTo(disposeBag)
+    let cities = Variable<[City]>([])
+    Observable.from(uiRealm.objects(City.self))
+      .map { Array($0) }
+      .bindTo(cities)
+      .addDisposableTo(disposeBag)
     
+    self.cities = cities
+    
+    // Table View
     self.sections = Observable.combineLatest(cities.asObservable(), searchString.asObservable(), location.asObservable()) { cities, searchString, location -> [CitySelectSectionModel] in
       var filteredCities = cities
       if let searchString = searchString, searchString.characters.count > 0 {
-        filteredCities = cities.filter { $0.title.lowercased().range(of: searchString.lowercased()) != nil }
+        filteredCities = cities.filter { $0.name.lowercased().range(of: searchString.lowercased()) != nil }
       }
       return [CitySelectSectionModel(model: "", items: filteredCities)]
     }.asDriver(onErrorJustReturn: [])
@@ -94,9 +97,8 @@ class CitySelectViewModel: CitySelectViewModelType {
       .bindTo(searchString)
       .addDisposableTo(disposeBag)
     
-    // TODO: work with data
     self.presentOrderViewController = itemDidSelect.map { indexPath in
-      UserDefaults.standard.set(indexPath.row, forKey: "userCity")
+      UserDefaults.standard.set(cities.value[indexPath.row].id, forKey: "userCity")
       return Void()
     }.asDriver(onErrorDriveWith: .empty())
     

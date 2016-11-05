@@ -9,14 +9,17 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import IQKeyboardManagerSwift
 
 class RegistrationPhoneInputViewController: UIViewController {
   let disposeBag = DisposeBag()
   @IBOutlet weak var phoneInputField: MaskedTextField!
   @IBOutlet weak var sendButton: GoButton!
+  @IBOutlet weak var contentView: UIView!
   
   override func viewDidLoad() {
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconNavbarClose"), style: .plain, target: nil, action: nil)
+    
     
     navigationItem.leftBarButtonItem?.rx.tap.asDriver().drive(onNext: {[weak self] in
       self?.dismiss(animated: true, completion: nil)

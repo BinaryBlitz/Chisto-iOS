@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import Kingfisher
 import UIKit
 
 class CategoryTableViewCell: UITableViewCell {
@@ -18,7 +19,7 @@ class CategoryTableViewCell: UITableViewCell {
   @IBOutlet weak var descriptionLabel: UILabel!
   
   func configure(viewModel: CategoryTableViewCellModelType) {
-    categoryIconImageView.image = viewModel.icon
+    categoryIconImageView.kf.setImage(with: viewModel.iconUrl)
     titleLabel.text = viewModel.titleText
     descriptionLabel.attributedText = viewModel.subTitletext
   }

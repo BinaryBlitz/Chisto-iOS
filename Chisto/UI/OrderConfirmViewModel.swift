@@ -49,10 +49,10 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   
   init(laundry: Laundry) {
     self.navigationBarTitle = laundry.name
-    self.laundryDescriprionTitle = laundry.description
+    self.laundryDescriprionTitle = laundry.descriptionText
     self.laundryRating = laundry.rating
-    self.courierDate = laundry.courierDate
-    self.deliveryDate = laundry.deliveryDate
+    self.courierDate = Date(timeIntervalSince1970: laundry.courierDate).shortDate
+    self.deliveryDate = Date(timeIntervalSince1970: laundry.deliveryDate).shortDate
     
     self.sections = OrderManager.instance.currentOrderItems
       .asDriver(onErrorDriveWith: .empty())

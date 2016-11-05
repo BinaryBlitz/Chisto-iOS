@@ -58,7 +58,9 @@ class ItemInfoViewModel: ItemInfoViewModelType {
 
   init(orderItem: OrderItem) {
     self.itemTitle = orderItem.clothesItem.name
-    self.color = orderItem.clothesItem.color
+    // TODO: get a color from item model
+    //self.color = orderItem.clothesItem.color
+    self.color = UIColor.chsSkyBlue
     let currentAmount = Variable<Int>(orderItem.amount)
     self.currentAmount = currentAmount
 
@@ -66,7 +68,7 @@ class ItemInfoViewModel: ItemInfoViewModelType {
     let relatedItemsAttrString = NSMutableAttributedString()
     
     for (index, relatedItem) in orderItem.clothesItem.relatedItems.enumerated() {
-      relatedItemsAttrString.append(NSAttributedString(string: relatedItem, attributes: [NSForegroundColorAttributeName: UIColor.chsWhite]))
+      relatedItemsAttrString.append(NSAttributedString(string: relatedItem.stringValue, attributes: [NSForegroundColorAttributeName: UIColor.chsWhite]))
       if index != orderItem.clothesItem.relatedItems.count - 1 {
         relatedItemsAttrString.append(NSAttributedString(string: " • ", attributes: [NSForegroundColorAttributeName: UIColor.chsWhiteTwo50]))
       }

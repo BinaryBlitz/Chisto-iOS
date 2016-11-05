@@ -9,16 +9,19 @@
 import Foundation
 import UIKit
 import RxSwift
+import Kingfisher
 
 class LastTimePopupViewController: UIViewController {
   let disposeBag = DisposeBag()
   var viewModel: LastTimePopupViewModel? = nil
   
-  @IBOutlet weak var LaundryLogoImageView: UIImageView!
+  @IBOutlet weak var backgroundLaundryImageView: UIImageView!
+  @IBOutlet weak var laundryLogoImageView: UIImageView!
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet var contentView: UIView!
   @IBOutlet weak var showAllLaundriesButton: GoButton!
-  
+  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var descriptionLabel: UILabel!
   
   var animationDuration = 0.2
   
@@ -26,6 +29,11 @@ class LastTimePopupViewController: UIViewController {
     super.viewDidLoad()
     
     guard let viewModel = self.viewModel else { return }
+    
+    titleLabel.text = viewModel.title
+    descriptionLabel.text = viewModel.laundryDescription
+    laundryLogoImageView.kf.setImage(with: viewModel.laundryLogoUrl)
+    backgroundLaundryImageView.kf.setImage(with: viewModel.laundryBackgroundUrl)
     
     viewModel.dismissViewController.drive(onNext: { [weak self] in
       UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {

@@ -106,23 +106,24 @@ class OrderViewController: UIViewController, UIScrollViewDelegate,DefaultBarColo
       self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
     
-    viewModel.presentLastTimeOrderPopup.drive(onNext: { [weak self] popupViewModel in
-      guard let viewModel = self?.viewModel else { return }
+    viewModel.presentLastTimeOrderPopup.asDriver(onErrorDriveWith: .empty())
+      .drive(onNext: { [weak self] popupViewModel in
+        guard let viewModel = self?.viewModel else { return }
       
-      popupViewModel.showAllLaundriesButtonDidTap.bindTo(viewModel.showAllLaundriesModalButtonDidTap)
-        .addDisposableTo(popupViewModel.disposeBag)
+        popupViewModel.showAllLaundriesButtonDidTap.bindTo(viewModel.showAllLaundriesModalButtonDidTap)
+          .addDisposableTo(popupViewModel.disposeBag)
       
-      let viewController = LastTimePopupViewController.storyboardInstance()!
+        let viewController = LastTimePopupViewController.storyboardInstance()!
       
-      viewController.viewModel = popupViewModel
-      viewController.modalPresentationStyle = .overFullScreen
-      self?.present(viewController, animated: false, completion: nil)
-      
-    }).addDisposableTo(disposeBag)
+        viewController.viewModel = popupViewModel
+        viewController.modalPresentationStyle = .overFullScreen
+        self?.present(viewController, animated: false, completion: nil)
+      }).addDisposableTo(disposeBag)
     
-    viewModel.presentLaundrySelectSection.drive(onNext: { [weak self] in
-      let viewController = LaundrySelectViewController.storyboardInstance()!
-      self?.navigationController?.pushViewController(viewController, animated: false)
+    viewModel.presentLaundrySelectSection.asDriver(onErrorDriveWith: .empty())
+      .drive(onNext: { [weak self] in
+        let viewController = LaundrySelectViewController.storyboardInstance()!
+        self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
     
     viewModel.presentProfileSection.drive(onNext: { [weak self] in
