@@ -49,7 +49,8 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
     let deliveryDateString = Date(timeIntervalSince1970: laundry.deliveryDate).shortDate
     self.deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: deliveryDateString, subTitleText: laundry.deliveryTimeInterval)
     
-    self.costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: laundry.costString)
+    let costString = OrderManager.instance.priceString(laundry: laundry)
+    self.costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: costString)
     
     if let type = laundry.type {
       switch type {

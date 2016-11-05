@@ -11,7 +11,7 @@ import RealmSwift
 import Realm
 import ObjectMapper
 
-class ChistoObject: Object, Mappable {
+class ServerObjct: Object, Mappable {
   dynamic var id: Int
   
   required init(map: Map) {

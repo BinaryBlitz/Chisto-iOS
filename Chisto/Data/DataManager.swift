@@ -44,7 +44,7 @@ class DataManager {
   let apiToken = "foobar"
   let networkManager = NetworkManager()
   
-  func fetchItems<ItemType>(type: ItemType.Type, apiPath: APIPath) -> Observable<Void> where ItemType: ChistoObject {
+  func fetchItems<ItemType>(type: ItemType.Type, apiPath: APIPath) -> Observable<Void> where ItemType: ServerObjct {
     
     return networkManager.doRequest(method: .get, apiPath, ["api_token": apiToken])
       .catchError { error in

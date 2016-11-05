@@ -48,7 +48,9 @@ class LastTimePopupViewModel: LastTimePopupViewModelType {
     
     let deliveryDateString = Date(timeIntervalSince1970: laundry.deliveryDate).shortDate
     let deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: deliveryDateString, subTitleText: laundry.deliveryTimeInterval)
-    let costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: laundry.costString)
+    
+    let costString = OrderManager.instance.priceString(laundry: laundry)
+    let costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: costString)
     
     self.laundryDescriptionViewModels = [courierItemViewModel, deliveryItemViewModel, costItemViewModel]
     

@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-class City: ChistoObject {
+class City: ServerObjct {
   dynamic var name: String = ""
   
   override func mapping(map: Map) {

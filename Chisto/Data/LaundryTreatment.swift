@@ -11,7 +11,7 @@ import ObjectMapper
 import RealmSwift
 import ObjectMapper_Realm
 
-class LaundryTreatment: ChistoObject {
+class LaundryTreatment: ServerObjct {
   var laundryId: Int!
   var treatmentId: Int!
   var price: Int = 0

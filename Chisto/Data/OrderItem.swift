@@ -18,4 +18,17 @@ class OrderItem {
     self.services = services
     self.amount = amount
   }
+  
+  func price(laundry: Laundry) -> Int {
+    var price = 0
+    for service in services {
+      price += service.price(laundry: laundry)
+    }
+    return price
+  }
+  
+  func priceString(laundry: Laundry) -> String {
+    let price = self.price(laundry: laundry)
+    return price == 0 ? "Бесплатно" : "\(price) ₽"
+  }
 }

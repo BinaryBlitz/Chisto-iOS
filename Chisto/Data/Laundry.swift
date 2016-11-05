@@ -18,7 +18,7 @@ enum LaundryType {
 }
 
 // TODO: remove test data and change properties
-class Laundry: ChistoObject {
+class Laundry: ServerObjct {
   dynamic var name: String = ""
   dynamic var descriptionText: String = ""
   dynamic var courierDate: Double = 0.0
@@ -29,8 +29,7 @@ class Laundry: ChistoObject {
   dynamic var deliveryTimeInterval: String = "с 00:00 до 00:00"
   dynamic var courierPrice: Int = 0
   dynamic var deliveryDate: Double = 0.0
-  dynamic var cost: Int = 0
-  var treatments = List<Treatment>()
+  var treatments = List<LaundryTreatment>()
   
   override func mapping(map: Map) {
     super.mapping(map: map)
@@ -55,10 +54,6 @@ class Laundry: ChistoObject {
     default:
       return nil
     }
-  }
-  
-  var costString: String {
-    return cost == 0 ? "Бесплатно" : "\(cost) ₽"
   }
   
   var courierPriceString: String {

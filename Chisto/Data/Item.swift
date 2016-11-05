@@ -11,7 +11,7 @@ import RealmSwift
 import Realm
 import ObjectMapper
 
-class Item: ChistoObject {
+class Item: ServerObjct {
   dynamic var name: String = ""
   dynamic var icon: String = ""
   dynamic var descriptionText: String = ""

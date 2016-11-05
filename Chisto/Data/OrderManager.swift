@@ -26,4 +26,19 @@ class OrderManager {
     currentOrderItems.onNext(items)
   }
   
+  func price(laundry: Laundry) -> Int {
+    var price = 0
+    let items = try! currentOrderItems.value()
+    for item in items {
+      price += item.price(laundry: laundry)
+    }
+    
+    return price
+  }
+  
+  func priceString(laundry: Laundry) -> String {
+    let price = self.price(laundry: laundry)
+    return price == 0 ? "Бесплатно" : "\(price) ₽"
+  }
+  
 }

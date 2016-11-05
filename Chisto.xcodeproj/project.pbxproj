@@ -103,7 +103,7 @@
 		88DB938D1DCC187C00DAC651 /* Laundry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB938C1DCC187C00DAC651 /* Laundry.swift */; };
 		88DB938F1DCC188600DAC651 /* Treatment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB938E1DCC188600DAC651 /* Treatment.swift */; };
 		88DB93911DCC1AA500DAC651 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93901DCC1AA500DAC651 /* DataManager.swift */; };
-		88DB93931DCC20B100DAC651 /* ChistoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93921DCC20B100DAC651 /* ChistoObject.swift */; };
+		88DB93931DCC20B100DAC651 /* ServerObjct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93921DCC20B100DAC651 /* ServerObjct.swift */; };
 		88E6B5991DCB73610024FA1A /* UIView+AddBorders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */; };
 		88E6B59D1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E6B59C1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard */; };
 		88E6B59F1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */; };
@@ -223,7 +223,7 @@
 		88DB938C1DCC187C00DAC651 /* Laundry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Laundry.swift; sourceTree = "<group>"; };
 		88DB938E1DCC188600DAC651 /* Treatment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Treatment.swift; sourceTree = "<group>"; };
 		88DB93901DCC1AA500DAC651 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		88DB93921DCC20B100DAC651 /* ChistoObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChistoObject.swift; sourceTree = "<group>"; };
+		88DB93921DCC20B100DAC651 /* ServerObjct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerObjct.swift; sourceTree = "<group>"; };
 		88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AddBorders.swift"; sourceTree = "<group>"; };
 		88E6B59C1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationPhoneInputViewController.storyboard; sourceTree = "<group>"; };
 		88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPhoneInputViewController.swift; sourceTree = "<group>"; };
@@ -560,7 +560,7 @@
 				88DB93881DCC115D00DAC651 /* City.swift */,
 				88DB938C1DCC187C00DAC651 /* Laundry.swift */,
 				88DB938E1DCC188600DAC651 /* Treatment.swift */,
-				88DB93921DCC20B100DAC651 /* ChistoObject.swift */,
+				88DB93921DCC20B100DAC651 /* ServerObjct.swift */,
 				88E705631DCCC2FB007F779E /* Category.swift */,
 				88C9F6DC1DCD03010046DDD7 /* Item.swift */,
 				88C9F6DE1DCD2B320046DDD7 /* RealmString.swift */,
@@ -853,7 +853,7 @@
 				88E86DB01DB90BD1002A7024 /* UIView+nibInstance.swift in Sources */,
 				88073EEF1DAC1A23000696A3 /* OnBoardingViewController.swift in Sources */,
 				88DB93861DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift in Sources */,
-				88DB93931DCC20B100DAC651 /* ChistoObject.swift in Sources */,
+				88DB93931DCC20B100DAC651 /* ServerObjct.swift in Sources */,
 				8833B5321DBE8774004D44CE /* LaundryItemInfoView.swift in Sources */,
 				8814C0331DAD8123005B4967 /* Colors.swift in Sources */,
 				88E86DAA1DB8E800002A7024 /* ServiceSelectViewModel.swift in Sources */,

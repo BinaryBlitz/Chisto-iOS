@@ -81,14 +81,13 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
       return self.sortLaundries(laundries: laundries, sortType: sortType)
     }.bindTo(sortedLaundries).addDisposableTo(disposeBag)
     
-    
   }
   
   func sortLaundries(laundries: [Laundry], sortType: LaundrySortType) -> [Laundry] {
     switch sortType {
     case .byPrice:
       return laundries.sorted {
-        $0.0.cost < $0.1.cost
+         OrderManager.instance.price(laundry: $0.0) < OrderManager.instance.price(laundry: $0.1)
       }
     case .byRating:
       return laundries.sorted {
