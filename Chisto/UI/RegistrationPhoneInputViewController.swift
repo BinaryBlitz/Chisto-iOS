@@ -13,7 +13,8 @@ import IQKeyboardManagerSwift
 
 class RegistrationPhoneInputViewController: UIViewController {
   let disposeBag = DisposeBag()
-  @IBOutlet weak var phoneInputField: MaskedTextField!
+  let maskedPhoneInput = MaskedInput(formattingPattern: "(***) *** ∙ ** ∙ **", replacementChar: "*")
+  @IBOutlet weak var phoneInputField: UITextField!
   @IBOutlet weak var sendButton: GoButton!
   @IBOutlet weak var contentView: UIView!
   
@@ -25,7 +26,9 @@ class RegistrationPhoneInputViewController: UIViewController {
       self?.dismiss(animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
     
-    phoneInputField.isValid.asObservable().bindTo(sendButton.rx.isEnabled).addDisposableTo(disposeBag)
+    maskedPhoneInput.configure(textField: phoneInputField)
+    
+    maskedPhoneInput.isValid.asObservable().bindTo(sendButton.rx.isEnabled).addDisposableTo(disposeBag)
     
     sendButton.rx.tap.asDriver().drive(onNext: { [weak self] in
       guard let phoneText = self?.phoneInputField.text else { return }
@@ -35,5 +38,6 @@ class RegistrationPhoneInputViewController: UIViewController {
       viewController.viewModel = viewModel
       self?.navigationController?.setViewControllers([viewController], animated: false)
     }).addDisposableTo(disposeBag)
+    
   }
 }
