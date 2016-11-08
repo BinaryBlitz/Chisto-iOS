@@ -18,6 +18,7 @@ target 'Chisto' do
   pod 'RealmSwift', '~> 2.0.3'
   pod 'RxRealm', '~> 0.3.1'
   pod 'Kingfisher', '~> 3.0'
+  pod 'TextFieldEffects'
 
   pod 'Crashlytics'
 

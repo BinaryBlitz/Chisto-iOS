@@ -12,8 +12,9 @@ import RxSwift
 
 class RegistrationCodeInputViewController: UIViewController {
   let disposeBag = DisposeBag()
+  let maskedCodeInput = MaskedInput(formattingPattern: "* ∙ * ∙ * ∙ * ∙ *", replacementChar: "*")
   var viewModel: RegistrationCodeInputViewModel? = nil
-  @IBOutlet weak var codeField: MaskedTextField!
+  @IBOutlet weak var codeField: UITextField!
   @IBOutlet weak var repeatButton: UIButton!
   @IBOutlet weak var subTitleLabel: UILabel!
   
@@ -27,6 +28,12 @@ class RegistrationCodeInputViewController: UIViewController {
 
     subTitleLabel.text = viewModel?.subTitleText
     repeatButton.setAttributedTitle(viewModel?.resendLabelText, for: .normal)
+    
+    maskedCodeInput.configure(textField: codeField)
+    
+    maskedCodeInput.isValid.asDriver().filter{$0 == true}.drive(onNext: { [weak self] _ in
+      self?.navigationController?.pushViewController(OrderRegistrationViewController.storyboardInstance()!, animated: true)
+    })
     
   }
 }
