@@ -20,20 +20,18 @@ class RegistrationCodeInputViewController: UIViewController {
   
   override func viewDidLoad() {
     
-    navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconNavbarClose"), style: .plain, target: nil, action: nil)
-    
-    navigationItem.leftBarButtonItem?.rx.tap.asDriver().drive(onNext: {[weak self] in
-      self?.dismiss(animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
-
     subTitleLabel.text = viewModel?.subTitleText
     repeatButton.setAttributedTitle(viewModel?.resendLabelText, for: .normal)
     
     maskedCodeInput.configure(textField: codeField)
     
-    maskedCodeInput.isValid.asDriver().filter{$0 == true}.drive(onNext: { [weak self] _ in
-      self?.navigationController?.pushViewController(OrderRegistrationViewController.storyboardInstance()!, animated: true)
-    })
+    guard let viewModel = viewModel else { return }
+    
+    maskedCodeInput.isValid.asObservable().bindTo(viewModel.codeIsValid).addDisposableTo(disposeBag)
+    
+    viewModel.presentRegistrationScreen.drive(onNext: { [weak self] in
+      self?.navigationController?.setViewControllers([OrderRegistrationViewController.storyboardInstance()!], animated: true)
+    }).addDisposableTo(disposeBag)
     
   }
 }

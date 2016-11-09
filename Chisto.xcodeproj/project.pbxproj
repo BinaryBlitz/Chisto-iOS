@@ -69,6 +69,12 @@
 		8862E6CE1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862E6CD1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift */; };
 		8862E6D01DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8862E6CF1DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard */; };
 		8869D1231DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8869D1221DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift */; };
+		88923E111DD340C500BC3AC0 /* twoWayBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E101DD340C500BC3AC0 /* twoWayBinding.swift */; };
+		88923E131DD35F7600BC3AC0 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E121DD35F7600BC3AC0 /* ProfileManager.swift */; };
+		88923E161DD369F400BC3AC0 /* ProfileContactDataViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88923E151DD369F400BC3AC0 /* ProfileContactDataViewController.storyboard */; };
+		88923E181DD36AB900BC3AC0 /* ProfileContactDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E171DD36AB900BC3AC0 /* ProfileContactDataViewController.swift */; };
+		88923E1A1DD36ACD00BC3AC0 /* ProfileContactDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E191DD36ACD00BC3AC0 /* ProfileContactDataViewModel.swift */; };
+		88923E1C1DD3852A00BC3AC0 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E1B1DD3852A00BC3AC0 /* OnBoardingViewModel.swift */; };
 		889A84151DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */; };
 		889A84171DCA56CB00E3926D /* OrderConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A84161DCA56CB00E3926D /* OrderConfirmViewModel.swift */; };
 		889A841B1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A841A1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift */; };
@@ -127,6 +133,7 @@
 		88E86DB51DB91BAE002A7024 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB41DB91BAE002A7024 /* OrderTableViewCell.swift */; };
 		88E86DB71DB91BBA002A7024 /* OrderTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB61DB91BBA002A7024 /* OrderTableViewCellModel.swift */; };
 		88FA1DF61DD23F3A00431822 /* ContactFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA1DF51DD23F3A00431822 /* ContactFormViewModel.swift */; };
+		88FA1DFA1DD2944400431822 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA1DF91DD2944400431822 /* Profile.swift */; };
 		CC63F0EA174EB55F7C1DD247 /* Pods_Chisto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D4403E4AD2DF4A42F5C8FA /* Pods_Chisto.framework */; };
 /* End PBXBuildFile section */
 
@@ -198,6 +205,12 @@
 		8862E6CD1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmViewController.swift; sourceTree = "<group>"; };
 		8862E6CF1DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderConfirmViewController.storyboard; sourceTree = "<group>"; };
 		8869D1221DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceItemView.swift; sourceTree = "<group>"; };
+		88923E101DD340C500BC3AC0 /* twoWayBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = twoWayBinding.swift; sourceTree = "<group>"; };
+		88923E121DD35F7600BC3AC0 /* ProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
+		88923E151DD369F400BC3AC0 /* ProfileContactDataViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileContactDataViewController.storyboard; sourceTree = "<group>"; };
+		88923E171DD36AB900BC3AC0 /* ProfileContactDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileContactDataViewController.swift; sourceTree = "<group>"; };
+		88923E191DD36ACD00BC3AC0 /* ProfileContactDataViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileContactDataViewModel.swift; sourceTree = "<group>"; };
+		88923E1B1DD3852A00BC3AC0 /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
 		889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceTableViewCell.swift; sourceTree = "<group>"; };
 		889A84161DCA56CB00E3926D /* OrderConfirmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmViewModel.swift; sourceTree = "<group>"; };
 		889A841A1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceTableViewCellModel.swift; sourceTree = "<group>"; };
@@ -256,6 +269,7 @@
 		88E86DB41DB91BAE002A7024 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		88E86DB61DB91BBA002A7024 /* OrderTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewCellModel.swift; sourceTree = "<group>"; };
 		88FA1DF51DD23F3A00431822 /* ContactFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFormViewModel.swift; sourceTree = "<group>"; };
+		88FA1DF91DD2944400431822 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		EA8A37CB3EB7F2EEDB9E26D5 /* Pods-Chisto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chisto.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chisto/Pods-Chisto.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -338,6 +352,7 @@
 		88073EEC1DAC19E1000696A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				88923E141DD369DD00BC3AC0 /* ProfileContactData */,
 				88CD68381DD1D458004B7726 /* ContactForm */,
 				88CD68351DD0DAAA004B7726 /* OrderRegistration */,
 				88E6B59A1DCB7EE70024FA1A /* Registration */,
@@ -366,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				88DB93901DCC1AA500DAC651 /* DataManager.swift */,
+				88923E121DD35F7600BC3AC0 /* ProfileManager.swift */,
 				88DB938A1DCC169A00DAC651 /* NetworkManager.swift */,
 				8862E6C91DC8E2BD00DDFB00 /* Model */,
 				88E86DB11DB91695002A7024 /* OrderManager */,
@@ -381,6 +397,7 @@
 				88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */,
 				883760D01DB8D97500C9F506 /* OnBoardingNavigationController.swift */,
 				883760D41DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard */,
+				88923E1B1DD3852A00BC3AC0 /* OnBoardingViewModel.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -440,6 +457,7 @@
 				8814C0381DAE8F7F005B4967 /* LocationManager.swift */,
 				8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */,
 				88C9F6E01DCDE36F0046DDD7 /* Date+toString.swift */,
+				88923E101DD340C500BC3AC0 /* twoWayBinding.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -584,6 +602,7 @@
 				88E705631DCCC2FB007F779E /* Category.swift */,
 				88C9F6DC1DCD03010046DDD7 /* Item.swift */,
 				88A221671DCE013100CAD2B0 /* LaundryTreatment.swift */,
+				88FA1DF91DD2944400431822 /* Profile.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -597,6 +616,16 @@
 				8862E6CF1DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard */,
 			);
 			name = OrderConfirm;
+			sourceTree = "<group>";
+		};
+		88923E141DD369DD00BC3AC0 /* ProfileContactData */ = {
+			isa = PBXGroup;
+			children = (
+				88923E151DD369F400BC3AC0 /* ProfileContactDataViewController.storyboard */,
+				88923E171DD36AB900BC3AC0 /* ProfileContactDataViewController.swift */,
+				88923E191DD36ACD00BC3AC0 /* ProfileContactDataViewModel.swift */,
+			);
+			name = ProfileContactData;
 			sourceTree = "<group>";
 		};
 		889D87C51DC0A727003E8DAC /* LaundrySelect */ = {
@@ -813,6 +842,7 @@
 				885409C51DB2E55400219C00 /* CategoriesViewController.storyboard in Resources */,
 				88DB93841DCBEF8B00DAC651 /* RegistrationCodeInputViewController.storyboard in Resources */,
 				885409B61DB23DEC00219C00 /* CitySelectViewController.storyboard in Resources */,
+				88923E161DD369F400BC3AC0 /* ProfileContactDataViewController.storyboard in Resources */,
 				88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */,
 				885C196F1DC379E40081A4F3 /* LaundrySortViewController.storyboard in Resources */,
 				8811FE181DC2E5DB00610712 /* AboutViewController.storyboard in Resources */,
@@ -914,6 +944,7 @@
 				88D8ABBB1DB56E53009D515B /* SelectClothesViewController.swift in Sources */,
 				88E86DB01DB90BD1002A7024 /* UIView+nibInstance.swift in Sources */,
 				88073EEF1DAC1A23000696A3 /* OnBoardingViewController.swift in Sources */,
+				88923E1C1DD3852A00BC3AC0 /* OnBoardingViewModel.swift in Sources */,
 				88DB93861DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift in Sources */,
 				88DB93931DCC20B100DAC651 /* ServerObjct.swift in Sources */,
 				8833B5321DBE8774004D44CE /* LaundryItemInfoView.swift in Sources */,
@@ -951,6 +982,7 @@
 				88E86DA71DB8E800002A7024 /* ServiceSelectTableViewCell.swift in Sources */,
 				88073F031DAD6FCF000696A3 /* DescriptionListItemView.swift in Sources */,
 				8814C0671DB04AFB005B4967 /* RussianEnumEndings.swift in Sources */,
+				88923E111DD340C500BC3AC0 /* twoWayBinding.swift in Sources */,
 				8811FE1A1DC2EF4A00610712 /* AboutViewController.swift in Sources */,
 				88CD68471DD215F8004B7726 /* ContactFormTableHeaderViewModel.swift in Sources */,
 				88DB93821DCBEF3200DAC651 /* RegistrationCodeInputViewController.swift in Sources */,
@@ -960,6 +992,7 @@
 				8814C0581DAFB0F2005B4967 /* CityNotFoundViewModel.swift in Sources */,
 				88DB32ED1DB4C86A00F9E000 /* OrderViewController.swift in Sources */,
 				88073ED91DABE1E0000696A3 /* AppDelegate.swift in Sources */,
+				88FA1DFA1DD2944400431822 /* Profile.swift in Sources */,
 				882288161DB6D12C000642E0 /* RootViewController.swift in Sources */,
 				88C9F6DD1DCD03010046DDD7 /* Item.swift in Sources */,
 				88CD68451DD2155F004B7726 /* ContactFormTableHeaderView.swift in Sources */,
@@ -974,9 +1007,11 @@
 				88E86DA91DB8E800002A7024 /* ServiceSelectViewController.swift in Sources */,
 				883760D11DB8D97500C9F506 /* OnBoardingNavigationController.swift in Sources */,
 				885C19711DC379E40081A4F3 /* LaundrySortViewController.swift in Sources */,
+				88923E181DD36AB900BC3AC0 /* ProfileContactDataViewController.swift in Sources */,
 				8814C05E1DAFCF28005B4967 /* CategoryTableViewCell.swift in Sources */,
 				88CD683C1DD1D677004B7726 /* ContactFormViewController.swift in Sources */,
 				8811FE151DC2DCA600610712 /* ProfileViewModel.swift in Sources */,
+				88923E1A1DD36ACD00BC3AC0 /* ProfileContactDataViewModel.swift in Sources */,
 				8862E6CB1DC8E2C800DDFB00 /* OrderItem.swift in Sources */,
 				88DB938B1DCC169A00DAC651 /* NetworkManager.swift in Sources */,
 				889D87CB1DC0B45C003E8DAC /* RotatingUILabel.swift in Sources */,
@@ -984,6 +1019,7 @@
 				885409BA1DB25B5100219C00 /* GoButton.swift in Sources */,
 				889D87D21DC1F71F003E8DAC /* LaundrySelectViewModel.swift in Sources */,
 				8833B5281DBE6E2B004D44CE /* LastTimePopupViewController.swift in Sources */,
+				88923E131DD35F7600BC3AC0 /* ProfileManager.swift in Sources */,
 				88E6B59F1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift in Sources */,
 				88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */,
 				8814C0561DAFA7B5005B4967 /* BottomBorderedTextField.swift in Sources */,

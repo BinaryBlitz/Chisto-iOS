@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -131,7 +132,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Город" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q4U-Kd-ebp" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Город" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q4U-Kd-ebp" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                     <rect key="frame" x="46" y="0.0" width="353" height="50"/>
                                                     <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="textColor"/>
@@ -146,13 +147,20 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKR-34-VbJ">
+                                                    <rect key="frame" x="46" y="0.0" width="345" height="50"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="Q4U-Kd-ebp" firstAttribute="leading" secondItem="VVb-ID-S2s" secondAttribute="leading" constant="46" id="3ku-pM-6iw"/>
                                                 <constraint firstAttribute="bottom" secondItem="Q4U-Kd-ebp" secondAttribute="bottom" id="5iR-Bl-p7B"/>
+                                                <constraint firstItem="TKR-34-VbJ" firstAttribute="leading" secondItem="VVb-ID-S2s" secondAttribute="leading" constant="46" id="ARA-Mg-yai"/>
                                                 <constraint firstItem="Q4U-Kd-ebp" firstAttribute="top" secondItem="VVb-ID-S2s" secondAttribute="top" id="DMa-ij-92o"/>
+                                                <constraint firstItem="TKR-34-VbJ" firstAttribute="top" secondItem="Q4U-Kd-ebp" secondAttribute="top" id="LQc-9f-E8T"/>
                                                 <constraint firstAttribute="trailing" secondItem="Q4U-Kd-ebp" secondAttribute="trailing" constant="15" id="Rrk-Kd-W9Z"/>
+                                                <constraint firstItem="TKR-34-VbJ" firstAttribute="bottom" secondItem="Q4U-Kd-ebp" secondAttribute="bottom" id="lVD-6w-O7P"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="TKR-34-VbJ" secondAttribute="trailing" constant="15" id="xxA-6R-ZpJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -288,10 +296,12 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="apartmentField" destination="Ffi-Cd-Wuq" id="WPg-vu-7zw"/>
+                        <outlet property="buildingField" destination="EoK-sS-Wyh" id="Wzy-rb-UI2"/>
+                        <outlet property="cityButton" destination="TKR-34-VbJ" id="0bt-p9-Cee"/>
                         <outlet property="cityField" destination="Q4U-Kd-ebp" id="VEX-1J-S87"/>
                         <outlet property="commentField" destination="mm6-XM-pfY" id="794-1i-sjO"/>
                         <outlet property="firstNameField" destination="7Lr-Mh-tXP" id="alT-bu-974"/>
-                        <outlet property="houseField" destination="EoK-sS-Wyh" id="ahZ-dY-oes"/>
                         <outlet property="lastNameField" destination="0fM-cp-xT4" id="geS-RJ-gF7"/>
                         <outlet property="phoneField" destination="czl-MC-Kzf" id="Pwg-wV-3Tc"/>
                         <outlet property="streetField" destination="acm-lZ-3Xp" id="ycK-lU-aYD"/>

@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import RxSwift
 import UIKit
 import TextFieldEffects
 
 class ContactFormViewController: UITableViewController {
+  let disposeBag = DisposeBag()
   var viewModel: ContactFormViewModel? = nil
   
   @IBOutlet weak var firstNameField: HoshiTextField!
@@ -18,8 +20,10 @@ class ContactFormViewController: UITableViewController {
   @IBOutlet weak var phoneField: HoshiTextField!
   @IBOutlet weak var cityField: HoshiTextField!
   @IBOutlet weak var streetField: HoshiTextField!
-  @IBOutlet weak var houseField: HoshiTextField!
+  @IBOutlet weak var buildingField: HoshiTextField!
+  @IBOutlet weak var apartmentField: HoshiTextField!
   @IBOutlet weak var commentField: HoshiTextField!
+  @IBOutlet weak var cityButton: UIButton!
   
   let contactInfoHeaderView = ContactFormTableHeaderView.nibInstance()!
   let adressHeaderView = ContactFormTableHeaderView.nibInstance()!
@@ -34,8 +38,27 @@ class ContactFormViewController: UITableViewController {
   }
   
   override func viewDidLoad() {
-    maskedPhoneInput.configure(textField: phoneField)
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    configureFields()
     configureSections()
+  }
+  
+  func configureFields() {
+    guard let viewModel = viewModel else { return }
+    (firstNameField.rx.text <-> viewModel.firstName).addDisposableTo(disposeBag)
+    (lastNameField.rx.text <-> viewModel.lastName).addDisposableTo(disposeBag)
+    (phoneField.rx.text <-> viewModel.phone).addDisposableTo(disposeBag)
+    (cityField.rx.text <-> viewModel.city).addDisposableTo(disposeBag)
+    (streetField.rx.text <-> viewModel.street).addDisposableTo(disposeBag)
+    (buildingField.rx.text <-> viewModel.building).addDisposableTo(disposeBag)
+    (apartmentField.rx.text <-> viewModel.apartment).addDisposableTo(disposeBag)
+    (commentField.rx.text <-> viewModel.comment).addDisposableTo(disposeBag)
+    
+    maskedPhoneInput.configure(textField: phoneField)
+    maskedPhoneInput.isValid.asObservable().bindTo(viewModel.phoneIsValid).addDisposableTo(disposeBag)
+    
+    cityButton.rx.tap.bindTo(viewModel.cityFieldDidTap).addDisposableTo(disposeBag)
+
   }
   
   func configureSections() {

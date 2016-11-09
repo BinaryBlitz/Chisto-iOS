@@ -14,6 +14,7 @@ class OrderManager {
   static let instance = OrderManager()
   
   var currentOrderItems = BehaviorSubject<[OrderItem]>(value: [])
+  var currentLaundry: Laundry? = nil
   
   func updateOrderItem(item: OrderItem, closure: (Void) -> Void) {
     closure()
@@ -24,6 +25,16 @@ class OrderManager {
     }
     
     currentOrderItems.onNext(items)
+  }
+  
+  var priceForCurrentLaundry: Int {
+    guard let laundry = currentLaundry else { return 0 }
+    return price(laundry: laundry)
+  }
+  
+  var priceForCurrentLaundryString: String {
+    guard let laundry = currentLaundry else { return "Бесплатно" }
+    return priceString(laundry: laundry)
   }
   
   func price(laundry: Laundry) -> Int {

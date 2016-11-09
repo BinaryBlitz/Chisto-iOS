@@ -30,7 +30,6 @@ protocol CitySelectViewModelType {
   var navigationBarTitle: String { get }
   var sections: Driver<[CitySelectSectionModel]> { get }
   var presentCityNotFoundController: Driver<Void> { get }
-  var presentOrderViewController: Driver<Void> { get }
   var hideKeyboard: Driver<Void> { get }
   var showCancelButtonAnimated: Driver<Void> { get }
   var hideCancelButtonAnimated: Driver<Void> { get }
@@ -38,7 +37,7 @@ protocol CitySelectViewModelType {
 }
 
 class CitySelectViewModel: CitySelectViewModelType {
-  private let disposeBag = DisposeBag()
+  let disposeBag = DisposeBag()
   
   // Input
   var locationButtonDidTap = PublishSubject<Void>()
@@ -53,7 +52,6 @@ class CitySelectViewModel: CitySelectViewModelType {
   var navigationBarTitle = "Выбор города"
   var sections: Driver<[CitySelectSectionModel]>
   var presentCityNotFoundController: Driver<Void>
-  var presentOrderViewController: Driver<Void>
   var hideKeyboard: Driver<Void>
   var showCancelButtonAnimated: Driver<Void>
   var hideCancelButtonAnimated: Driver<Void>
@@ -61,6 +59,7 @@ class CitySelectViewModel: CitySelectViewModelType {
   // Data
   var cities: Variable<[City]>
   var location = Variable<CLLocationCoordinate2D?>(nil)
+  var selectedCity = PublishSubject<City>()
   
   init() {
     // Data
@@ -97,15 +96,15 @@ class CitySelectViewModel: CitySelectViewModelType {
       .bindTo(searchString)
       .addDisposableTo(disposeBag)
     
-    self.presentOrderViewController = itemDidSelect.map { indexPath in
-      UserDefaults.standard.set(cities.value[indexPath.row].id, forKey: "userCity")
-      return Void()
-    }.asDriver(onErrorDriveWith: .empty())
-    
     self.presentCityNotFoundController = cityNotFoundButtonDidTap.asDriver(onErrorDriveWith: .empty())
     self.hideKeyboard = cancelSearchButtonDidTap.asDriver(onErrorDriveWith: .empty())
     self.showCancelButtonAnimated = searchBarDidBeginEditing.asDriver(onErrorDriveWith: .empty())
     self.hideCancelButtonAnimated = searchBarDidEndEditing.asDriver(onErrorDriveWith: .empty())
+    
+    itemDidSelect.asObservable().subscribe(onNext: {[weak self] indexPath in
+      self?.selectedCity.onNext(cities.value[indexPath.row])
+      ProfileManager.instance.saveUserCity(city: cities.value[indexPath.row])
+    }).addDisposableTo(disposeBag)
   }
 
 }

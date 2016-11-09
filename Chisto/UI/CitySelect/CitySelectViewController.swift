@@ -20,7 +20,7 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate {
   @IBOutlet weak var tableView: UITableView!
   
   var dataSource = RxTableViewSectionedReloadDataSource<CitySelectSectionModel>()
-  private let viewModel = CitySelectViewModel()
+  var viewModel: CitySelectViewModel? = nil
   private let disposeBag = DisposeBag()
   
   override func viewDidLoad() {
@@ -31,25 +31,21 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate {
     configureSearch()
     configureFooter()
     
-    viewModel.presentCityNotFoundController.drive(onNext: { [weak self] in
+    viewModel?.presentCityNotFoundController.drive(onNext: { [weak self] in
       let viewController = CityNotFoundViewController.storyboardInstance()!
       viewController.modalPresentationStyle = .overFullScreen
       self?.present(viewController, animated: false, completion: nil)
     }).addDisposableTo(disposeBag)
     
-    viewModel.presentOrderViewController.drive(onNext: { [weak self] in
-      self?.dismiss(animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
-    
-    viewModel.showCancelButtonAnimated.drive(onNext: { [weak self] in
+    viewModel?.showCancelButtonAnimated.drive(onNext: { [weak self] in
       self?.searchBar.setShowsCancelButton(true, animated: true)
     }).addDisposableTo(disposeBag)
     
-    viewModel.hideCancelButtonAnimated.drive(onNext: { [weak self] in
+    viewModel?.hideCancelButtonAnimated.drive(onNext: { [weak self] in
       self?.searchBar.setShowsCancelButton(false, animated: true)
     }).addDisposableTo(disposeBag)
     
-    viewModel.hideKeyboard.drive(onNext: { [weak self] in
+    viewModel?.hideKeyboard.drive(onNext: { [weak self] in
       self?.view.endEditing(true)
     }).addDisposableTo(disposeBag)
     
@@ -61,9 +57,10 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate {
     navigationController?.navigationBar.backItem?.title = ""
     navigationController?.navigationBar.backItem?.backBarButtonItem?.tintColor = UIColor.white
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconLocation"), style: .plain, target: self, action: nil)
-    navigationItem.title = viewModel.navigationBarTitle
+    navigationItem.title = viewModel?.navigationBarTitle
     
     // Bindings
+    guard let viewModel = viewModel else { return }
     navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.locationButtonDidTap).addDisposableTo(disposeBag)
     
   }
@@ -80,6 +77,7 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate {
     searchBar.searchTextPositionAdjustment = UIOffsetMake(5.0, 0.0)
 
     // Bindings
+    guard let viewModel = viewModel else { return }
     searchBar.rx.cancelButtonClicked.bindTo(viewModel.cancelSearchButtonDidTap).addDisposableTo(disposeBag)
     searchBar.rx.textDidBeginEditing.bindTo(viewModel.searchBarDidBeginEditing).addDisposableTo(disposeBag)
     searchBar.rx.textDidEndEditing.bindTo(viewModel.searchBarDidEndEditing).addDisposableTo(disposeBag)
@@ -95,6 +93,8 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate {
     tableView.backgroundView = backView
     
     // Bindings
+    guard let viewModel = viewModel else { return }
+    
     dataSource.configureCell = { _, tableView, indexPath, city in
       let cell = tableView.dequeueReusableCell(withIdentifier: "CitySelectTableViewCell", for: indexPath)
       cell.textLabel?.text = city.name
@@ -115,6 +115,8 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate {
   
   func configureFooter() {
     // Bindings
+    guard let viewModel = viewModel else { return }
+
     goButton.rx.tap.bindTo(viewModel.cityNotFoundButtonDidTap).addDisposableTo(disposeBag)
   }
   
