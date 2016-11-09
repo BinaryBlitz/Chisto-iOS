@@ -33,6 +33,11 @@ class ProfileViewController: UITableViewController {
       let viewController = AboutViewController.storyboardInstance()!
       self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
+    
+    viewModel.presentContactDataSection.drive(onNext: { [weak self] in
+      let viewController = ProfileContactDataViewController.storyboardInstance()!
+      self?.navigationController?.pushViewController(viewController, animated: true)
+    }).addDisposableTo(disposeBag)
 
   }
   

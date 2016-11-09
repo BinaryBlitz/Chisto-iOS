@@ -19,8 +19,8 @@ class RegistrationPhoneInputViewController: UIViewController {
   @IBOutlet weak var contentView: UIView!
   
   override func viewDidLoad() {
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconNavbarClose"), style: .plain, target: nil, action: nil)
-    
     
     navigationItem.leftBarButtonItem?.rx.tap.asDriver().drive(onNext: {[weak self] in
       self?.dismiss(animated: true, completion: nil)
@@ -36,7 +36,7 @@ class RegistrationPhoneInputViewController: UIViewController {
       let viewModel = RegistrationCodeInputViewModel(phoneNumberString: phoneText)
       let viewController = RegistrationCodeInputViewController.storyboardInstance()!
       viewController.viewModel = viewModel
-      self?.navigationController?.setViewControllers([viewController], animated: false)
+      self?.navigationController?.pushViewController(viewController, animated: false)
     }).addDisposableTo(disposeBag)
     
   }

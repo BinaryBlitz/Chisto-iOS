@@ -74,9 +74,6 @@ class DataManager {
 }
 
 extension DataManager: DataManagerServiceType {
-  var cityId: Int? {
-    return UserDefaults.standard.value(forKey: "userCity") as? Int
-  }
   
   func fetchCities() -> Observable<Void> {
     return fetchItems(type: City.self, apiPath: .fetchCities)
@@ -95,7 +92,7 @@ extension DataManager: DataManagerServiceType {
   }
   
   func fetchLaundries() -> Observable<Void> {
-    guard let cityId = self.cityId else { return Observable.error(DataError.unknown) }
+    guard let cityId = ProfileManager.instance.userProfile?.city?.id else { return Observable.error(DataError.unknown) }
     return fetchItems(type: Laundry.self, apiPath: .fetchCityLaundries(cityId: cityId))
   }
 }

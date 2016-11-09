@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 
 class OnBoardingViewController: UIViewController {
+  let viewModel = OnBoardingViewModel()
   
   let descriptionSteps: [(String, UIImage)] = [
     (title: "Добавьте в список вещи, которые хотите сдать в чистку", icon: #imageLiteral(resourceName: "iconNum1")),
@@ -27,8 +28,15 @@ class OnBoardingViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    goButton.rx.tap.asDriver().drive(onNext: { _ in
-      self.navigationController?.pushViewController(CitySelectViewController.storyboardInstance()!, animated: true)
+    goButton.rx.tap.bindTo(viewModel.goButtonDidTap).addDisposableTo(disposeBag)
+    
+    viewModel.dismissViewController.drive(onNext: {[weak self] in
+      self?.dismiss(animated: true, completion: nil)
+    }).addDisposableTo(disposeBag)
+    
+    viewModel.presentCitySelectSection.drive(onNext: { viewModel in
+      let viewController = CitySelectViewController.storyboardInstance()!
+      viewController.viewModel = viewModel
     }).addDisposableTo(disposeBag)
     
     for (title, icon) in descriptionSteps {
