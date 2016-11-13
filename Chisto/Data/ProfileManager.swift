@@ -17,11 +17,12 @@ class ProfileManager {
   
   let userCityDidChange = PublishSubject<Void>()
   
-  func saveUserCity(city: City?) {
+  func updateProfile(closure: ((Profile) -> Void)) {
+    guard let profile = userProfile else { return }
     try! uiRealm.write {
-      userProfile?.city = city
+      closure(profile)
     }
-    userCityDidChange.onNext()
+
   }
   
   init() {

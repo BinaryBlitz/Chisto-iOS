@@ -36,7 +36,7 @@ class MaskedInput {
       if var text = text, text.characters.count > 0, formattingPattern.characters.count > 0 {
         let formattedText = self?.format(text: text)
         
-        textField.text = formattedText
+        textField.rx.text.onNext(formattedText)
         
         self?.isValid.value = formattedText?.characters.count == formattingPattern.characters.count
       }

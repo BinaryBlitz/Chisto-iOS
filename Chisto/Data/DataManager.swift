@@ -7,9 +7,11 @@
 //
 import Foundation
 import RealmSwift
+import Alamofire
 import RxSwift
 import RxCocoa
 import RxRealm
+import SwiftyJSON
 import ObjectMapper
 
 enum DataError: Error, CustomStringConvertible {
@@ -41,7 +43,8 @@ protocol DataManagerServiceType {
 
 class DataManager {
   static let instance = DataManager()
-  let apiToken = "foobar"
+  var apiToken = "foobar"
+  var verificationToken: String? = nil
   let networkManager = NetworkManager()
   
   func fetchItems<ItemType>(type: ItemType.Type, apiPath: APIPath) -> Observable<Void> where ItemType: ServerObjct {
@@ -70,8 +73,34 @@ class DataManager {
     }
 
   }
-
+  
+  func createVerificationToken(phone: String) -> Observable<Void> {
+    return networkManager.doRequest(method: .post, .createVerificationToken, ["phone_number": phone])
+    .flatMap { response -> Observable<Void> in
+      let json = JSON(object: response)
+      // TODO: work with real SMS codes
+      // self.verificationToken = json["token"].stringValue
+      self.verificationToken = "yB9XcdWzvgAUPHzWt4XuySRR"
+      ProfileManager.instance.updateProfile { profile in
+        profile.phone = json["phone_number"].stringValue
+      }
+      return Observable.just()
+    }
+  }
+  
+  func verifyToken(code: String) -> Observable<Void> {
+    guard let verificationToken = self.verificationToken else { return Observable.error(DataError.unknown) }
+    return networkManager.doRequest(method: .patch, .verifyToken(token: verificationToken), ["code": code])
+      .flatMap { response -> Observable<Void> in
+        let json = JSON(object: response)
+        self.apiToken = json["api_token"].stringValue
+        return Observable.just()
+    }
+    
+  }
 }
+
+
 
 extension DataManager: DataManagerServiceType {
   
@@ -94,5 +123,10 @@ extension DataManager: DataManagerServiceType {
   func fetchLaundries() -> Observable<Void> {
     guard let cityId = ProfileManager.instance.userProfile?.city?.id else { return Observable.error(DataError.unknown) }
     return fetchItems(type: Laundry.self, apiPath: .fetchCityLaundries(cityId: cityId))
+  }
+  
+  func placeOrder(order: Order, laundry: Laundry) -> Observable<Void> {
+    let orderJSON = order.toJSON()
+    return networkManager.doRequest(method: .post, .placeOrder(laundryId: laundry.id), ["order": orderJSON], encoding: JSONEncoding.default).map { _ in }
   }
 }

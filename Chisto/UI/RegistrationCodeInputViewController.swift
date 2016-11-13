@@ -12,13 +12,14 @@ import RxSwift
 
 class RegistrationCodeInputViewController: UIViewController {
   let disposeBag = DisposeBag()
-  let maskedCodeInput = MaskedInput(formattingPattern: "* ∙ * ∙ * ∙ * ∙ *", replacementChar: "*")
+  let maskedCodeInput = MaskedInput(formattingPattern: "* ∙ * ∙ * ∙ *", replacementChar: "*")
   var viewModel: RegistrationCodeInputViewModel? = nil
   @IBOutlet weak var codeField: UITextField!
   @IBOutlet weak var repeatButton: UIButton!
   @IBOutlet weak var subTitleLabel: UILabel!
   
   override func viewDidLoad() {
+    hideKeyboardWhenTappedAround()
     
     subTitleLabel.text = viewModel?.subTitleText
     repeatButton.setAttributedTitle(viewModel?.resendLabelText, for: .normal)
@@ -26,6 +27,8 @@ class RegistrationCodeInputViewController: UIViewController {
     maskedCodeInput.configure(textField: codeField)
     
     guard let viewModel = viewModel else { return }
+    
+    codeField.rx.text.bindTo(viewModel.code).addDisposableTo(disposeBag)
     
     maskedCodeInput.isValid.asObservable().bindTo(viewModel.codeIsValid).addDisposableTo(disposeBag)
     

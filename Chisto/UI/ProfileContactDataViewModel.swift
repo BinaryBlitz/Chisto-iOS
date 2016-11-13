@@ -19,6 +19,7 @@ protocol ProfileContactDataViewModelType {
   var presentCitySelectSection: Driver<CitySelectViewModel> { get }
   var popViewController: Driver<Void> { get }
   var cityDidSelect: PublishSubject<Void> { get }
+  var presentLocationSelectSection: Driver<LocationSelectViewModel> { get }
 
 }
 
@@ -30,6 +31,7 @@ class ProfileContactDataViewModel: ProfileContactDataViewModelType {
   let popViewController: Driver<Void>
   let saveButtonDidTap = PublishSubject<Void>()
   let cityDidSelect: PublishSubject<Void>
+  let presentLocationSelectSection: Driver<LocationSelectViewModel>
   
   init() {
     let cityDidSelect = PublishSubject<Void>()
@@ -57,6 +59,13 @@ class ProfileContactDataViewModel: ProfileContactDataViewModelType {
     
     self.popViewController = Observable.of(cityDidSelect.asObservable(), saveButtonDidTap.asObservable()).merge()
       .asDriver(onErrorDriveWith: .empty())
+    
+    self.presentLocationSelectSection = formViewModel.locationHeaderButtonDidTap.map {
+      let viewModel = LocationSelectViewModel()
+      viewModel.streetName.bindTo(formViewModel.street).addDisposableTo(viewModel.disposeBag)
+      viewModel.streetNumber.bindTo(formViewModel.building).addDisposableTo(viewModel.disposeBag)
+      return viewModel
+    }.asDriver(onErrorDriveWith: .empty())
     
     saveButtonDidTap.asDriver(onErrorDriveWith: .empty()).drive(onNext: {
       formViewModel.saveUserProfile()

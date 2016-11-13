@@ -4,6 +4,13 @@ PODS:
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
   - FloatRatingView (2.0)
+  - GoogleMaps (2.1.0):
+    - GoogleMaps/Maps (= 2.1.0)
+  - GoogleMaps/Base (2.1.0)
+  - GoogleMaps/Maps (2.1.0):
+    - GoogleMaps/Base (= 2.1.0)
+  - GooglePlaces (2.1.0):
+    - GoogleMaps/Base (= 2.1.0)
   - IQKeyboardManagerSwift (4.0.7)
   - Kingfisher (3.1.4)
   - ObjectMapper (2.2.1)
@@ -24,6 +31,7 @@ PODS:
     - RealmSwift (~> 2.0)
     - RxSwift (~> 3.0.0)
   - RxSwift (3.0.0)
+  - SwiftyJSON (3.1.1)
   - TextFieldEffects (1.3.0)
 
 DEPENDENCIES:
@@ -31,6 +39,8 @@ DEPENDENCIES:
   - Crashlytics
   - Fabric
   - FloatRatingView (~> 2.0.0)
+  - GoogleMaps
+  - GooglePlaces
   - IQKeyboardManagerSwift
   - Kingfisher (~> 3.0)
   - ObjectMapper (~> 2.2)
@@ -40,6 +50,7 @@ DEPENDENCIES:
   - RxDataSources (~> 1.0.0-beta.3)
   - RxRealm (~> 0.3.1)
   - RxSwift (~> 3.0.0-beta.1)
+  - SwiftyJSON
   - TextFieldEffects
 
 SPEC CHECKSUMS:
@@ -47,6 +58,8 @@ SPEC CHECKSUMS:
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   FloatRatingView: 857ab8f10040d06a42fc979f486c8f9fecd2f2e5
+  GoogleMaps: '06589b9a38097bce0cd6e90f0fd9b5e4b4a9344c'
+  GooglePlaces: 16e96266483b8010e9f275399403647978523c86
   IQKeyboardManagerSwift: 58bbcf46b5cf9fd4ed625d28a60cb2fbae4ab0f4
   Kingfisher: 6c67e3e57f2d81a9cfdfa25052cd86f33ceac9bb
   ObjectMapper: 41e43e1a89f8060ef5ea5d04ba852e269a621d68
@@ -57,8 +70,9 @@ SPEC CHECKSUMS:
   RxDataSources: 824693e84d00781d0a5e5cedc1ff95ce9250aacd
   RxRealm: '0965e07d49b8575d16c3a0487c667dfe64ce6a9c'
   RxSwift: a930cd662f5b4a7ca9dc3518585dba91dadf497c
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
   TextFieldEffects: ef594746f17997c813e07633f8ae5acaf9b04f27
 
-PODFILE CHECKSUM: d0263963ce1a8cafbab8b794d4904a85a8141689
+PODFILE CHECKSUM: 8f74c0f5e92aca1ae62545e407d2cf35460d2d30
 
 COCOAPODS: 1.1.1

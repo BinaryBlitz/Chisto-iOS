@@ -27,7 +27,7 @@ protocol ContactFormViewModelType {
 class ContactFormViewModel {
   let disposeBag = DisposeBag()
   let contactInfoHeaderModel = ContactFormTableHeaderViewModel(title: "Контактная информация", icon: #imageLiteral(resourceName: "iconSmallUser"))
-  let adressHeaderModel = ContactFormTableHeaderViewModel(title: "Адрес доставки", icon: #imageLiteral(resourceName: "iconSmallAddress"))
+  let adressHeaderModel = ContactFormTableHeaderViewModel(title: "Адрес доставки", icon: #imageLiteral(resourceName: "iconSmallAddress"), isEnabledButton: true)
   let commentHeaderModel = ContactFormTableHeaderViewModel(title: "Комментарии к заказу", icon: #imageLiteral(resourceName: "iconSmallComment"))
   
   var city: Variable<String?>
@@ -42,6 +42,8 @@ class ContactFormViewModel {
   var isValid = Variable<Bool>(false)
   
   var cityFieldDidTap = PublishSubject<Void>()
+  
+  var locationHeaderButtonDidTap = PublishSubject<Void>()
   
   init() {
     let profile = ProfileManager.instance.userProfile
@@ -67,6 +69,8 @@ class ContactFormViewModel {
     }
     
     Observable.combineLatest(contactInfoIsValid, adressIsValid) { $0 && $1 }.bindTo(isValid).addDisposableTo(disposeBag)
+    
+    adressHeaderModel.buttonDidTap.asObservable().bindTo(locationHeaderButtonDidTap).addDisposableTo(disposeBag)
   }
   
   func saveUserProfile() {

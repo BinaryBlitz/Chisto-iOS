@@ -29,13 +29,13 @@ protocol ProfileViewModelType {
 
 class ProfileViewModel {
   // Input
-  var itemDidSelect = PublishSubject<IndexPath>()
-  var closeButtonDidTap = PublishSubject<Void>()
+  let itemDidSelect = PublishSubject<IndexPath>()
+  let closeButtonDidTap = PublishSubject<Void>()
   
   // Output
-  var presentAboutSection: Driver<Void>
-  var presentContactDataSection: Driver<Void>
-  var dismissViewController: Driver<Void>
+  let presentAboutSection: Driver<Void>
+  let presentContactDataSection: Driver<Void>
+  let dismissViewController: Driver<Void>
   var ordersCount = 0
 
   init() {
@@ -44,5 +44,6 @@ class ProfileViewModel {
     self.presentContactDataSection = itemDidSelect.filter { $0.section == ProfileSections.contactData.rawValue }.map{_ in Void()}.asDriver(onErrorDriveWith: .empty())
     
     self.dismissViewController = closeButtonDidTap.asDriver(onErrorDriveWith: .empty())
+    
   }
 }

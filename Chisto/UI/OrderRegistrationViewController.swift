@@ -22,6 +22,7 @@ class OrderRegistrationViewController: UIViewController {
   let contactFormViewController = ContactFormViewController.storyboardInstance()!
   
   override func viewDidLoad() {
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconNavbarClose"), style: .plain, target: nil, action: nil)
     
     navigationItem.leftBarButtonItem?.rx.tap.asDriver().drive(onNext: {[weak self] in
@@ -34,6 +35,12 @@ class OrderRegistrationViewController: UIViewController {
     
     viewModel.presentCitySelectSection.drive(onNext: { [weak self] viewModel in
       let viewController = CitySelectViewController.storyboardInstance()!
+      viewController.viewModel = viewModel
+      self?.navigationController?.pushViewController(viewController, animated: true)
+    }).addDisposableTo(disposeBag)
+    
+    viewModel.presentLocationSelectSection.drive(onNext: { [weak self] viewModel in
+      let viewController = LocationSelectViewController.storyboardInstance()!
       viewController.viewModel = viewModel
       self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
