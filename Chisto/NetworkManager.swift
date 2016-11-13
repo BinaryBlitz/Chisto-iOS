@@ -17,6 +17,9 @@ enum APIPath {
   case fetchCityLaundries(cityId: Int)
   case fetchCategoryClothes(categoryId: Int)
   case fetchClothesTreatments(itemId: Int)
+  case createVerificationToken
+  case verifyToken(token: String)
+  case placeOrder(laundryId: Int)
   
   var endpoint: String {
     switch self {
@@ -30,12 +33,24 @@ enum APIPath {
       return "categories/\(categoryId)/items.json"
     case .fetchClothesTreatments(let itemId):
       return "items/\(itemId)/treatments.json"
+    case .createVerificationToken:
+      return "verification_tokens.jsn"
+    case .verifyToken(let token):
+      return "verification_tokens/\(token).json"
+    case .placeOrder(let laundryId):
+      return "laundries/\(laundryId)/orders.json"
     }
+    
     
   }
   
   var successCode: Int {
-    return 200
+    switch self {
+    case .createVerificationToken:
+      return 201
+    default:
+      return 200
+    }
   }
 }
 
@@ -58,9 +73,9 @@ class NetworkManager {
   
   var apiPrefix = "https://chisto-staging.herokuapp.com"
   
-  func doRequest(method: HTTPMethod, _ path: APIPath, _ params: [String: Any]? = [:]) -> Observable<Any> {
+  func doRequest(method: HTTPMethod, _ path: APIPath, _ params: [String: Any]? = [:], encoding: ParameterEncoding = URLEncoding.default) -> Observable<Any> {
       return Observable.create { observer in
-        let req = Alamofire.request(self.apiPrefix + "/api/" + path.endpoint, method: method, parameters: params, encoding: URLEncoding.default)
+        let req = Alamofire.request(self.apiPrefix + "/api/" + path.endpoint, method: method, parameters: params, encoding: encoding)
           .responseJSON { response in
             debugPrint(response)
             if response.response?.statusCode != path.successCode {

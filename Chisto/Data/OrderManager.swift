@@ -27,6 +27,14 @@ class OrderManager {
     currentOrderItems.onNext(items)
   }
   
+  func confirmOrder() {
+    guard let profile = ProfileManager.instance.userProfile else { return }
+    guard let laundry = currentLaundry else { return }
+    let order = Order(profile: profile)
+    DataManager.instance.placeOrder(order: order, laundry: laundry)
+    
+  }
+  
   var priceForCurrentLaundry: Int {
     guard let laundry = currentLaundry else { return 0 }
     return price(laundry: laundry)

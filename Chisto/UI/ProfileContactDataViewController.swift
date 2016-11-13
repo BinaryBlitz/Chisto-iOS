@@ -36,6 +36,12 @@ class ProfileContactDataViewController: UIViewController {
       _ = self?.navigationController?.popViewController(animated: true)
     }).addDisposableTo(disposeBag)
     
+    viewModel.presentLocationSelectSection.drive(onNext: { [weak self] viewModel in
+      let viewController = LocationSelectViewController.storyboardInstance()!
+      viewController.viewModel = viewModel
+      self?.navigationController?.pushViewController(viewController, animated: true)
+    }).addDisposableTo(disposeBag)
+    
     configureForm()
   }
 

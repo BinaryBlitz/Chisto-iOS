@@ -69,12 +69,20 @@
 		8862E6CE1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862E6CD1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift */; };
 		8862E6D01DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8862E6CF1DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard */; };
 		8869D1231DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8869D1221DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift */; };
+		8872F0B11DD7B2E100E8D9EE /* LocationSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8872F0B01DD7B2E100E8D9EE /* LocationSelectViewModel.swift */; };
+		8872F0B81DD8932C00E8D9EE /* OrderConfirmedPopupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8872F0B71DD8932C00E8D9EE /* OrderConfirmedPopupViewController.storyboard */; };
+		8872F0BA1DD8965400E8D9EE /* OrderConfirmedPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8872F0B91DD8965400E8D9EE /* OrderConfirmedPopupViewController.swift */; };
+		8872F0BC1DD8AE0F00E8D9EE /* GeocodingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8872F0BB1DD8AE0F00E8D9EE /* GeocodingManager.swift */; };
+		8872F0BE1DD8D67100E8D9EE /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8872F0BD1DD8D67100E8D9EE /* Order.swift */; };
+		8872F0C01DD8DD3400E8D9EE /* OrderConfirmedPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8872F0BF1DD8DD3400E8D9EE /* OrderConfirmedPopupViewModel.swift */; };
 		88923E111DD340C500BC3AC0 /* twoWayBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E101DD340C500BC3AC0 /* twoWayBinding.swift */; };
 		88923E131DD35F7600BC3AC0 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E121DD35F7600BC3AC0 /* ProfileManager.swift */; };
 		88923E161DD369F400BC3AC0 /* ProfileContactDataViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88923E151DD369F400BC3AC0 /* ProfileContactDataViewController.storyboard */; };
 		88923E181DD36AB900BC3AC0 /* ProfileContactDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E171DD36AB900BC3AC0 /* ProfileContactDataViewController.swift */; };
 		88923E1A1DD36ACD00BC3AC0 /* ProfileContactDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E191DD36ACD00BC3AC0 /* ProfileContactDataViewModel.swift */; };
 		88923E1C1DD3852A00BC3AC0 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E1B1DD3852A00BC3AC0 /* OnBoardingViewModel.swift */; };
+		88923E1F1DD3D5F900BC3AC0 /* LocationSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E1E1DD3D5F900BC3AC0 /* LocationSelectViewController.swift */; };
+		88923E211DD3D60D00BC3AC0 /* LocationSelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88923E201DD3D60D00BC3AC0 /* LocationSelectViewController.storyboard */; };
 		889A84151DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */; };
 		889A84171DCA56CB00E3926D /* OrderConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A84161DCA56CB00E3926D /* OrderConfirmViewModel.swift */; };
 		889A841B1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A841A1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift */; };
@@ -108,7 +116,7 @@
 		88DB93791DCBD11100DAC651 /* MaskedInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93781DCBD11100DAC651 /* MaskedInput.swift */; };
 		88DB937B1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DB937A1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard */; };
 		88DB937D1DCBE0F400DAC651 /* RegistrationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB937C1DCBE0F400DAC651 /* RegistrationNavigationController.swift */; };
-		88DB937F1DCBE88700DAC651 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB937E1DCBE88700DAC651 /* RegistrationViewModel.swift */; };
+		88DB937F1DCBE88700DAC651 /* RegistrationPhoneInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB937E1DCBE88700DAC651 /* RegistrationPhoneInputViewModel.swift */; };
 		88DB93821DCBEF3200DAC651 /* RegistrationCodeInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93811DCBEF3200DAC651 /* RegistrationCodeInputViewController.swift */; };
 		88DB93841DCBEF8B00DAC651 /* RegistrationCodeInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DB93831DCBEF8B00DAC651 /* RegistrationCodeInputViewController.storyboard */; };
 		88DB93861DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93851DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift */; };
@@ -205,12 +213,20 @@
 		8862E6CD1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmViewController.swift; sourceTree = "<group>"; };
 		8862E6CF1DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderConfirmViewController.storyboard; sourceTree = "<group>"; };
 		8869D1221DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceItemView.swift; sourceTree = "<group>"; };
+		8872F0B01DD7B2E100E8D9EE /* LocationSelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSelectViewModel.swift; sourceTree = "<group>"; };
+		8872F0B71DD8932C00E8D9EE /* OrderConfirmedPopupViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderConfirmedPopupViewController.storyboard; sourceTree = "<group>"; };
+		8872F0B91DD8965400E8D9EE /* OrderConfirmedPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmedPopupViewController.swift; sourceTree = "<group>"; };
+		8872F0BB1DD8AE0F00E8D9EE /* GeocodingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocodingManager.swift; sourceTree = "<group>"; };
+		8872F0BD1DD8D67100E8D9EE /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		8872F0BF1DD8DD3400E8D9EE /* OrderConfirmedPopupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmedPopupViewModel.swift; sourceTree = "<group>"; };
 		88923E101DD340C500BC3AC0 /* twoWayBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = twoWayBinding.swift; sourceTree = "<group>"; };
 		88923E121DD35F7600BC3AC0 /* ProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		88923E151DD369F400BC3AC0 /* ProfileContactDataViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileContactDataViewController.storyboard; sourceTree = "<group>"; };
 		88923E171DD36AB900BC3AC0 /* ProfileContactDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileContactDataViewController.swift; sourceTree = "<group>"; };
 		88923E191DD36ACD00BC3AC0 /* ProfileContactDataViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileContactDataViewModel.swift; sourceTree = "<group>"; };
 		88923E1B1DD3852A00BC3AC0 /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
+		88923E1E1DD3D5F900BC3AC0 /* LocationSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSelectViewController.swift; sourceTree = "<group>"; };
+		88923E201DD3D60D00BC3AC0 /* LocationSelectViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocationSelectViewController.storyboard; sourceTree = "<group>"; };
 		889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceTableViewCell.swift; sourceTree = "<group>"; };
 		889A84161DCA56CB00E3926D /* OrderConfirmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmViewModel.swift; sourceTree = "<group>"; };
 		889A841A1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceTableViewCellModel.swift; sourceTree = "<group>"; };
@@ -244,7 +260,7 @@
 		88DB93781DCBD11100DAC651 /* MaskedInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskedInput.swift; sourceTree = "<group>"; };
 		88DB937A1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationNavigationController.storyboard; sourceTree = "<group>"; };
 		88DB937C1DCBE0F400DAC651 /* RegistrationNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationNavigationController.swift; sourceTree = "<group>"; };
-		88DB937E1DCBE88700DAC651 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		88DB937E1DCBE88700DAC651 /* RegistrationPhoneInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPhoneInputViewModel.swift; sourceTree = "<group>"; };
 		88DB93811DCBEF3200DAC651 /* RegistrationCodeInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationCodeInputViewController.swift; sourceTree = "<group>"; };
 		88DB93831DCBEF8B00DAC651 /* RegistrationCodeInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationCodeInputViewController.storyboard; sourceTree = "<group>"; };
 		88DB93851DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationCodeInputViewModel.swift; sourceTree = "<group>"; };
@@ -352,6 +368,8 @@
 		88073EEC1DAC19E1000696A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8872F0B61DD8930F00E8D9EE /* OrderConfirmedPopup */,
+				88923E1D1DD3D5DC00BC3AC0 /* LocationSelect */,
 				88923E141DD369DD00BC3AC0 /* ProfileContactData */,
 				88CD68381DD1D458004B7726 /* ContactForm */,
 				88CD68351DD0DAAA004B7726 /* OrderRegistration */,
@@ -385,6 +403,7 @@
 				88DB938A1DCC169A00DAC651 /* NetworkManager.swift */,
 				8862E6C91DC8E2BD00DDFB00 /* Model */,
 				88E86DB11DB91695002A7024 /* OrderManager */,
+				8872F0BB1DD8AE0F00E8D9EE /* GeocodingManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -618,6 +637,16 @@
 			name = OrderConfirm;
 			sourceTree = "<group>";
 		};
+		8872F0B61DD8930F00E8D9EE /* OrderConfirmedPopup */ = {
+			isa = PBXGroup;
+			children = (
+				8872F0B71DD8932C00E8D9EE /* OrderConfirmedPopupViewController.storyboard */,
+				8872F0B91DD8965400E8D9EE /* OrderConfirmedPopupViewController.swift */,
+				8872F0BF1DD8DD3400E8D9EE /* OrderConfirmedPopupViewModel.swift */,
+			);
+			name = OrderConfirmedPopup;
+			sourceTree = "<group>";
+		};
 		88923E141DD369DD00BC3AC0 /* ProfileContactData */ = {
 			isa = PBXGroup;
 			children = (
@@ -626,6 +655,16 @@
 				88923E191DD36ACD00BC3AC0 /* ProfileContactDataViewModel.swift */,
 			);
 			name = ProfileContactData;
+			sourceTree = "<group>";
+		};
+		88923E1D1DD3D5DC00BC3AC0 /* LocationSelect */ = {
+			isa = PBXGroup;
+			children = (
+				88923E1E1DD3D5F900BC3AC0 /* LocationSelectViewController.swift */,
+				88923E201DD3D60D00BC3AC0 /* LocationSelectViewController.storyboard */,
+				8872F0B01DD7B2E100E8D9EE /* LocationSelectViewModel.swift */,
+			);
+			name = LocationSelect;
 			sourceTree = "<group>";
 		};
 		889D87C51DC0A727003E8DAC /* LaundrySelect */ = {
@@ -734,7 +773,7 @@
 			children = (
 				88E6B59C1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard */,
 				88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */,
-				88DB937E1DCBE88700DAC651 /* RegistrationViewModel.swift */,
+				88DB937E1DCBE88700DAC651 /* RegistrationPhoneInputViewModel.swift */,
 			);
 			name = PhoneInput;
 			sourceTree = "<group>";
@@ -764,6 +803,7 @@
 			children = (
 				8862E6CA1DC8E2C800DDFB00 /* OrderItem.swift */,
 				88E86DB21DB916B3002A7024 /* OrderManager.swift */,
+				8872F0BD1DD8D67100E8D9EE /* Order.swift */,
 			);
 			name = OrderManager;
 			sourceTree = "<group>";
@@ -861,8 +901,10 @@
 				88B0B5501DB1825500C7D0F7 /* OnBoardingViewController.storyboard in Resources */,
 				8811FE0E1DC2DB0500610712 /* ProfileViewController.storyboard in Resources */,
 				8833B5301DBE8756004D44CE /* LaundryItemInfoView.xib in Resources */,
+				88923E211DD3D60D00BC3AC0 /* LocationSelectViewController.storyboard in Resources */,
 				885409C01DB2C76500219C00 /* OrderViewController.storyboard in Resources */,
 				88E86DA61DB8E800002A7024 /* ServiceSelectViewController.storyboard in Resources */,
+				8872F0B81DD8932C00E8D9EE /* OrderConfirmedPopupViewController.storyboard in Resources */,
 				88D8ABBF1DB56EB8009D515B /* SelectClothesViewController.storyboard in Resources */,
 				88E86DAE1DB90B4B002A7024 /* EmptyOrderView.xib in Resources */,
 				885409B81DB2582200219C00 /* CityNotFoundViewController.storyboard in Resources */,
@@ -954,7 +996,7 @@
 				88DB938D1DCC187C00DAC651 /* Laundry.swift in Sources */,
 				885C19701DC379E40081A4F3 /* LaundrySortViewModel.swift in Sources */,
 				88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */,
-				88DB937F1DCBE88700DAC651 /* RegistrationViewModel.swift in Sources */,
+				88DB937F1DCBE88700DAC651 /* RegistrationPhoneInputViewModel.swift in Sources */,
 				88E705641DCCC2FB007F779E /* Category.swift in Sources */,
 				889D87C71DC0A752003E8DAC /* LaundrySelectViewController.swift in Sources */,
 				889A84171DCA56CB00E3926D /* OrderConfirmViewModel.swift in Sources */,
@@ -967,9 +1009,12 @@
 				8814C04F1DAF15DA005B4967 /* ChistoNavigationController.swift in Sources */,
 				88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */,
 				8814C0651DB03CBC005B4967 /* Fonts.swift in Sources */,
+				88923E1F1DD3D5F900BC3AC0 /* LocationSelectViewController.swift in Sources */,
+				8872F0BA1DD8965400E8D9EE /* OrderConfirmedPopupViewController.swift in Sources */,
 				8814C04D1DAF159E005B4967 /* OrderViewModel.swift in Sources */,
 				88DB93911DCC1AA500DAC651 /* DataManager.swift in Sources */,
 				883760D31DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift in Sources */,
+				8872F0BC1DD8AE0F00E8D9EE /* GeocodingManager.swift in Sources */,
 				8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */,
 				8811FE0F1DC2DB0500610712 /* ProfileNavigationController.swift in Sources */,
 				8814C0401DAED9AC005B4967 /* CityNotFoundViewController.swift in Sources */,
@@ -978,6 +1023,7 @@
 				88D8ABC21DB587CF009D515B /* SelectClothesTableViewCell.swift in Sources */,
 				88CD68401DD2090A004B7726 /* OrderRegistrationViewModel.swift in Sources */,
 				88DB937D1DCBE0F400DAC651 /* RegistrationNavigationController.swift in Sources */,
+				8872F0C01DD8DD3400E8D9EE /* OrderConfirmedPopupViewModel.swift in Sources */,
 				8862E6CE1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift in Sources */,
 				88E86DA71DB8E800002A7024 /* ServiceSelectTableViewCell.swift in Sources */,
 				88073F031DAD6FCF000696A3 /* DescriptionListItemView.swift in Sources */,
@@ -1024,6 +1070,8 @@
 				88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */,
 				8814C0561DAFA7B5005B4967 /* BottomBorderedTextField.swift in Sources */,
 				88DB938F1DCC188600DAC651 /* Treatment.swift in Sources */,
+				8872F0BE1DD8D67100E8D9EE /* Order.swift in Sources */,
+				8872F0B11DD7B2E100E8D9EE /* LocationSelectViewModel.swift in Sources */,
 				885409C31DB2E43300219C00 /* EmptyOrderView.swift in Sources */,
 				88C9F6E11DCDE36F0046DDD7 /* Date+toString.swift in Sources */,
 				8811FE131DC2DBBE00610712 /* ProfileViewController.swift in Sources */,

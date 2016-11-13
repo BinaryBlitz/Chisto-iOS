@@ -14,9 +14,13 @@ import RxSwift
 class ContactFormTableHeaderViewModel {
   let title: String
   let icon: UIImage
+  let isEnabled: Bool
   
-  init(title: String, icon: UIImage) {
+  let buttonDidTap = PublishSubject<Void>()
+  
+  init(title: String, icon: UIImage, isEnabledButton: Bool = false) {
     self.title = title
     self.icon = icon
+    self.isEnabled = isEnabledButton
   }
 }

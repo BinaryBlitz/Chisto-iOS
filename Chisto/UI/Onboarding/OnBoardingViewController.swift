@@ -37,6 +37,7 @@ class OnBoardingViewController: UIViewController {
     viewModel.presentCitySelectSection.drive(onNext: { viewModel in
       let viewController = CitySelectViewController.storyboardInstance()!
       viewController.viewModel = viewModel
+      self.present(viewController, animated: true)
     }).addDisposableTo(disposeBag)
     
     for (title, icon) in descriptionSteps {

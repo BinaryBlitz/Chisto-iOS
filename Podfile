@@ -19,6 +19,9 @@ target 'Chisto' do
   pod 'RxRealm', '~> 0.3.1'
   pod 'Kingfisher', '~> 3.0'
   pod 'TextFieldEffects'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
+  pod 'SwiftyJSON'
 
   pod 'Crashlytics'
 

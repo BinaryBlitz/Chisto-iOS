@@ -1,0 +1,73 @@
+//
+//  GeocodingManager.swift
+//  Chisto
+//
+//  Created by Алексей on 13.11.16.
+//  Copyright © 2016 Binary Blitz. All rights reserved.
+//
+
+import Foundation
+import SwiftyJSON
+import CoreLocation
+import Alamofire
+import RxSwift
+
+class GeocodingManager {
+  static let apiKey = "AIzaSyB0YorJGoVc8pdcnUKbxvwhxLRMzdgKhCs"
+  
+  class Adress {
+    let json: JSON
+    let adressComponents: [JSON]?
+    
+    func getComponent(type: String) -> JSON? {
+      return adressComponents?.first { (jsonComponent) -> Bool in
+        return jsonComponent["types"]
+          .arrayValue
+          .map { $0.stringValue }
+          .contains(type)
+      }
+    }
+    
+    var streetNumber: String? {
+      guard let component = getComponent(type: "street_number") else { return nil }
+      return component["long_name"].string
+    }
+    
+    var streetName: String? {
+      guard let component = getComponent(type: "route") else { return nil }
+      return component["long_name"].string
+    }
+    
+    init(json: JSON) {
+      self.json = json
+      self.adressComponents = json["results"].array?[0]["address_components"].array
+    }
+  }
+  
+  
+  static func getAdress(coordinate: CLLocationCoordinate2D) -> Observable<Adress?> {
+    let params = [
+      "latlng": String(coordinate.latitude) + "," + String(coordinate.longitude),
+      "key": apiKey
+    ]
+    
+    return Observable.create { observer in
+      let req = Alamofire.request("https://maps.googleapis.com/maps/api/geocode/json", method: .get, parameters: params, encoding: URLEncoding.default)
+        .responseJSON { response in
+          if let result = response.result.value {
+            let json = JSON(result)
+            observer.onNext(Adress(json: json))
+            observer.onCompleted()
+          } else {
+            observer.onError(DataError.unknown)
+          }
+      }
+      
+      return Disposables.create {
+        req.cancel()
+      }
+      
+    }
+
+  }
+}
