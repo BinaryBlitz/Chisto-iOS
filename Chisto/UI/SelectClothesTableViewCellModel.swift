@@ -31,17 +31,6 @@ class SelectClothesTableViewCellModel: SelectClothesTableViewCellModelType {
 
   init(item: Item) {
     self.titleText = item.name
-    
-    let subTitleAttrString = NSMutableAttributedString()
-    
-    for (index, relatedItem) in item.relatedItems.enumerated() {
-      subTitleAttrString.append(NSAttributedString(string: relatedItem.stringValue, attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey]))
-      if index != item.relatedItems.count - 1 {
-        subTitleAttrString.append(NSAttributedString(string: " • ", attributes: [NSForegroundColorAttributeName: UIColor.chsSilver]))
-      }
-    }
-    
-    //self.subTitletext = (subTitleAttrString)
     self.subTitletext = NSAttributedString(string: item.descriptionText)
     
     self.iconUrl = URL(string: item.icon)

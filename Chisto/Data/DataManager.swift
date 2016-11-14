@@ -38,7 +38,7 @@ protocol DataManagerServiceType {
   func fetchCities() -> Observable<Void>
   func fetchCategories() -> Observable<Void>
   func fetchLaundries() -> Observable<Void>
-  func fetchCategoryClothes(categoryId: Int) -> Observable<Void>
+  func fetchCategoryClothes(category: Category) -> Observable<Void>
 }
 
 class DataManager {
@@ -47,7 +47,7 @@ class DataManager {
   var verificationToken: String? = nil
   let networkManager = NetworkManager()
   
-  func fetchItems<ItemType>(type: ItemType.Type, apiPath: APIPath) -> Observable<Void> where ItemType: ServerObjct {
+  func fetchItems<ItemType>(type: ItemType.Type, apiPath: APIPath, _ modifier: @escaping (ItemType) -> Void = {_ in }) -> Observable<Void> where ItemType: ServerObjct {
     
     return networkManager.doRequest(method: .get, apiPath, ["api_token": apiToken])
       .catchError { error in
@@ -65,6 +65,7 @@ class DataManager {
         
         try realm.write {
           for item in items {
+            modifier(item)
             realm.add(item, update: true)
           }
         }
@@ -101,7 +102,6 @@ class DataManager {
 }
 
 
-
 extension DataManager: DataManagerServiceType {
   
   func fetchCities() -> Observable<Void> {
@@ -112,12 +112,17 @@ extension DataManager: DataManagerServiceType {
     return fetchItems(type: Category.self, apiPath: .fetchCategories)
   }
   
-  func fetchCategoryClothes(categoryId: Int) -> Observable<Void> {
-    return fetchItems(type: Item.self, apiPath: .fetchCategoryClothes(categoryId: categoryId))
+  func fetchCategoryClothes(category: Category) -> Observable<Void> {
+    return fetchItems(type: Item.self, apiPath: .fetchCategoryClothes(categoryId: category.id)) { item in
+      item.category = category
+    }
   }
   
-  func fetchClothesTreatments(itemId: Int) -> Observable<Void> {
-    return fetchItems(type: Treatment.self, apiPath: .fetchClothesTreatments(itemId: itemId))
+  func fetchClothesTreatments(item: Item) -> Observable<Void> {
+    return fetchItems(type: Treatment.self, apiPath: .fetchClothesTreatments(itemId: item.id)) { treatment in
+      treatment.item = item
+    }
+    
   }
   
   func fetchLaundries() -> Observable<Void> {

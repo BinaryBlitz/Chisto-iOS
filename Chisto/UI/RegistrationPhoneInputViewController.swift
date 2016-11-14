@@ -14,7 +14,7 @@ import IQKeyboardManagerSwift
 class RegistrationPhoneInputViewController: UIViewController {
   let disposeBag = DisposeBag()
   let viewModel = RegistrationPhoneInputViewModel()
-  let maskedPhoneInput = MaskedInput(formattingPattern: "(***) *** ∙ ** ∙ **", replacementChar: "*")
+  let maskedPhoneInput = MaskedInput(formattingPattern: "*** *** - ** - **", replacementChar: "*")
   @IBOutlet weak var phoneInputField: UITextField!
   @IBOutlet weak var sendButton: GoButton!
   @IBOutlet weak var contentView: UIView!

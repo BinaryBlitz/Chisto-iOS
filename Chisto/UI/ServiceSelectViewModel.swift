@@ -53,14 +53,14 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
   
   let disposeBag = DisposeBag()
   
-  init(item: OrderItem, saveNeeded: Bool = true, selectedServices: [Treatment] = []) {
+  init(item: OrderItem, saveNeeded: Bool = true, selectedTreatments: [Treatment] = []) {
     let clothesItem = item.clothesItem
     
-    DataManager.instance.fetchClothesTreatments(itemId: clothesItem.id).subscribe().addDisposableTo(disposeBag)
+    DataManager.instance.fetchClothesTreatments(item: clothesItem).subscribe().addDisposableTo(disposeBag)
     
     let treatments = Variable<[Treatment]>([])
     
-    Observable.from(uiRealm.objects(Treatment.self))
+    Observable.from(clothesItem.treatments)
       .map { Array($0) }
       .bindTo(treatments)
       .addDisposableTo(disposeBag)
@@ -70,14 +70,14 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
     self.itemTitle = clothesItem.name
     self.color = UIColor.chsRosePink
     
-    let selectedServicesIds = Variable<[Int]>(selectedServices.map { $0.id })
+    let selectedServicesIds = Variable<[Int]>(selectedTreatments.map { $0.id })
     self.selectedServicesIds = selectedServicesIds
     
-    let selectedServices = Variable(selectedServices)
+    let selectedServices = Variable(selectedTreatments)
     self.selectedServices = selectedServices
     
-    selectedServicesIds.asObservable().map { servicesIds in
-      return treatments.value.filter { servicesIds.contains($0.id) }
+    Observable.combineLatest(treatments.asObservable(), selectedServicesIds.asObservable()) { treatments, selectedServicesIds in
+      return treatments.filter { selectedServicesIds.contains($0.id) }
     }.bindTo(selectedServices).addDisposableTo(disposeBag)
     
     self.sections = Driver.combineLatest(treatments.asDriver(), selectedServicesIds.asDriver()) { services, selectedServicesIds in

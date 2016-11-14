@@ -16,7 +16,7 @@ class Category: ServerObjct {
   dynamic var color: String = ""
   dynamic var icon: String = ""
   dynamic var descriptionText: String = ""
-  var subCategories = List<RealmString>()
+  let clothes = LinkingObjects(fromType: Item.self, property: "category")
   
   override func mapping(map: Map) {
     super.mapping(map: map)

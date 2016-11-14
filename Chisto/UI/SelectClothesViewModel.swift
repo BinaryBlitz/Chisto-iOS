@@ -45,12 +45,11 @@ class SelectClothesViewModel: SelectClothesViewModelType {
     // TODO: get a category's color from model
     //self.navigationBarColor = category.color
     
-    
-    DataManager.instance.fetchCategoryClothes(categoryId: category.id).subscribe().addDisposableTo(disposeBag)
+    DataManager.instance.fetchCategoryClothes(category: category).subscribe().addDisposableTo(disposeBag)
     
     let items = Variable<[Item]>([])
     
-    Observable.from(uiRealm.objects(Item.self))
+    Observable.from(category.clothes)
       .map { Array($0) }
       .bindTo(items)
       .addDisposableTo(disposeBag)

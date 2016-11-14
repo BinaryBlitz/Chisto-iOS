@@ -15,7 +15,8 @@ class Item: ServerObjct {
   dynamic var name: String = ""
   dynamic var icon: String = ""
   dynamic var descriptionText: String = ""
-  var relatedItems = List<RealmString>()
+  let treatments = LinkingObjects(fromType: Treatment.self, property: "item")
+  var category: Category? = nil
   
   override func mapping(map: Map) {
     super.mapping(map: map)
