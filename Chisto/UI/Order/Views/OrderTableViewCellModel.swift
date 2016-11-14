@@ -46,7 +46,7 @@ class OrderTableViewCellModel: OrderTableViewCellModelType {
     self.servicesText = servicesAttrString
     
     let amountText = NSMutableAttributedString()
-    amountText.append(NSAttributedString(string: "×", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 24)]))
+    amountText.append(NSAttributedString(string: "× ", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 24)]))
     amountText.append(NSAttributedString(string: "\(item.amount)"))
     amountText.append(NSAttributedString(string: " шт", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)]))
     

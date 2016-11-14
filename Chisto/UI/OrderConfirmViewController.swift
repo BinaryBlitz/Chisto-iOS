@@ -12,12 +12,14 @@ import FloatRatingView
 import RxSwift
 import RxDataSources
 import RxCocoa
+import Kingfisher
 
 class OrderConfirmViewController: UIViewController, UITableViewDelegate {
   let disposeBag = DisposeBag()
   var viewModel : OrderConfirmViewModel? = nil
   var dataSource = RxTableViewSectionedReloadDataSource<OrderConfirmSectionModel>()
   
+  @IBOutlet weak var backgroundImageView: UIImageView!
   
   @IBOutlet weak var laundryDescriptionLabel: UILabel!
   @IBOutlet weak var laundryIconView: UIImageView!
@@ -33,11 +35,12 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
   override func viewDidLoad() {
     navigationItem.title = viewModel?.navigationBarTitle
     laundryDescriptionLabel.text = viewModel?.laundryDescriprionTitle
-    laundryIconView.image = viewModel?.laundryIcon
+    laundryIconView.kf.setImage(with: viewModel?.laundryIcon)
     laundryRatingView.rating = viewModel?.laundryRating ?? 0
     courierDateLabel.text = viewModel?.courierDate
     deliveryDateLabel.text = viewModel?.deliveryDate
-    
+    backgroundImageView.kf.setImage(with: viewModel?.laundryBackground)
+        
     viewModel?.presentRegistrationSection.drive(onNext: {
       self.present(RegistrationNavigationController.storyboardInstance()!, animated: true, completion: nil)
     }).addDisposableTo(disposeBag)

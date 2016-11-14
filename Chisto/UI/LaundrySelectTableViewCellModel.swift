@@ -18,6 +18,7 @@ protocol LaundrySelectTableViewCellModelType {
   var tagBgColor: UIColor? { get }
   var tagName: String? { get }
   var tagIsHidden: Bool { get }
+  var logoUrl: URL? { get }
   var courierItemViewModel: LaundryItemInfoViewModel { get }
   var deliveryItemViewModel: LaundryItemInfoViewModel { get }
   var costItemViewModel: LaundryItemInfoViewModel { get }
@@ -42,6 +43,7 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
     self.laundryDescription = laundry.descriptionText
     self.rating = laundry.rating
     self.logoUrl = URL(string: laundry.logoUrl)
+    
     
     let courierDateString = Date(timeIntervalSince1970: laundry.courierDate).shortDate
     self.courierItemViewModel = LaundryItemInfoViewModel(type: .courier, titleText: courierDateString, subTitleText: laundry.courierPriceString)

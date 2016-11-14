@@ -36,8 +36,8 @@ class Laundry: ServerObjct {
     name <- map["name"]
     descriptionText <- map["description"]
     category <- map["category"]
-    backgroundImageUrl <- map["backgroundImageUrl"]
-    logoUrl <- map["logoUrl"]
+    backgroundImageUrl <- map["logo_url"]
+    logoUrl <- map["icon_url"]
     treatments <- map["laundry_treatments"]
 
   }

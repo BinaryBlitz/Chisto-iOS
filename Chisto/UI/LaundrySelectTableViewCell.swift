@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import FloatRatingView
+import Kingfisher
 
 class LaundrySelectTableViewCell: UITableViewCell {
   @IBOutlet weak var laundryLogoImageView: UIImageView!
@@ -27,6 +28,8 @@ class LaundrySelectTableViewCell: UITableViewCell {
     laundryTitleLabel.text = viewModel.laundryTitle
     laundrySubTitleLabel.text = viewModel.laundryDescription
     ratingView.rating = viewModel.rating
+    
+    laundryLogoImageView.kf.setImage(with: viewModel.logoUrl)
     
     laundryTagLabel.isHidden = viewModel.tagIsHidden
     laundryTagLabel.backgroundColor = viewModel.tagBgColor
