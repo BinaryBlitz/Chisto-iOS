@@ -25,7 +25,8 @@ protocol OrderConfirmViewModelType {
   var laundryRating: Float { get }
   var courierDate: String { get }
   var deliveryDate: String { get }
-  var laundryIcon: UIImage? { get }
+  var laundryIcon: URL? { get }
+  var laundryBackground: URL? { get }
   var sections: Driver<[OrderConfirmSectionModel]> { get }
   var presentRegistrationSection: Driver<Void> { get }
   
@@ -40,7 +41,8 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   // Output
   var navigationBarTitle: String
   var laundryDescriprionTitle: String
-  var laundryIcon: UIImage? = nil
+  var laundryIcon: URL?  = nil
+  var laundryBackground: URL? = nil
   var laundryRating: Float
   var courierDate: String
   var deliveryDate: String
@@ -52,6 +54,8 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
     self.navigationBarTitle = laundry.name
     self.laundryDescriprionTitle = laundry.descriptionText
     self.laundryRating = laundry.rating
+    self.laundryIcon = URL(string: laundry.logoUrl)
+    self.laundryBackground = URL(string: laundry.backgroundImageUrl)
     self.courierDate = Date(timeIntervalSince1970: laundry.courierDate).shortDate
     self.deliveryDate = Date(timeIntervalSince1970: laundry.deliveryDate).shortDate
     

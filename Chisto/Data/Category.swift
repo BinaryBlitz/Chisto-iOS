@@ -22,7 +22,7 @@ class Category: ServerObjct {
     super.mapping(map: map)
     name <- map["name"]
     descriptionText <- map["description"]
-    icon <- map["icon"]
+    icon <- map["icon_url"]
   }
 
 }

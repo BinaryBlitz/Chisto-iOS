@@ -29,30 +29,8 @@ class CategoryTableViewCellModel: CategoryTableViewCellModelType {
   
   init(category: Category) {
     self.titleText = category.name
-    // self.iconUrl = URL(string: category.icon)
-    self.iconUrl = URL(string: "https://www.fillmurray.com/30/30")
-    /*
-    let subTitleAttrString = NSMutableAttributedString()
+    self.iconUrl = URL(string: category.icon)
     
-    
-    for (index, subCategory) in category..enumerated() {
-      if index < 3 {
-        subTitleAttrString.append(NSAttributedString(string: subCategory.stringValue, attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey]))
-        if index != 2 {
-          subTitleAttrString.append(NSAttributedString(string: " • ", attributes: [NSForegroundColorAttributeName: UIColor.chsSilver]))
-        }
-      }
-      
-    }
-    
-    let leftCount = category.subCategories.count - 3
-    if leftCount > 0 {
-      subTitleAttrString.append(NSAttributedString(string: " и еще \(leftCount) " + getRussianNumEnding(number: leftCount, endings: dayEndings), attributes: [NSForegroundColorAttributeName: UIColor.chsSilver]))
-      
-    }
-     */
-    
-    // self.subTitletext = (subTitleAttrString)
     self.subTitletext = NSAttributedString(string: category.descriptionText, attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey])
     
   }
