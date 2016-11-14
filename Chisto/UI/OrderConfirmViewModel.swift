@@ -33,6 +33,7 @@ protocol OrderConfirmViewModelType {
 
 class OrderConfirmViewModel: OrderConfirmViewModelType {
   // Input
+  let disposeBag = DisposeBag()
   var itemDidSelect = PublishSubject<IndexPath>()
   var confirmOrderButtonDidTap = PublishSubject<Void>()
   
@@ -63,6 +64,10 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
       }
     
     self.presentRegistrationSection = confirmOrderButtonDidTap.asDriver(onErrorDriveWith: .empty())
+    
+    confirmOrderButtonDidTap.asDriver(onErrorDriveWith: .empty()).drive(onNext: {
+      OrderManager.instance.currentLaundry = laundry
+    }).addDisposableTo(disposeBag)
     
   }
 }

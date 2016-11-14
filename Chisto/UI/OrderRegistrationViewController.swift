@@ -32,6 +32,8 @@ class OrderRegistrationViewController: UIViewController {
     orderCostLabel.text = viewModel.orderCost
     viewModel.buttonsAreEnabled.asObservable().bindTo(payInCashButton.rx.isEnabled).addDisposableTo(disposeBag)
     viewModel.buttonsAreEnabled.asObservable().bindTo(payWithCardButton.rx.isEnabled).addDisposableTo(disposeBag)
+    payInCashButton.rx.tap.bindTo(viewModel.payInCashButtonDidTap).addDisposableTo(disposeBag)
+    payWithCardButton.rx.tap.bindTo(viewModel.payWithCreditCardButtonDidTap).addDisposableTo(disposeBag)
     
     viewModel.presentCitySelectSection.drive(onNext: { [weak self] viewModel in
       let viewController = CitySelectViewController.storyboardInstance()!
@@ -45,7 +47,16 @@ class OrderRegistrationViewController: UIViewController {
       self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
     
-    viewModel.dismissViewController.drive(onNext: {[weak self] in
+    viewModel.presentOrderPlacedPopup.drive(onNext: { [weak self] viewModel in
+      let viewController = OrderPlacedPopupViewController.storyboardInstance()!
+      viewController.viewModel = viewModel
+      viewController.modalPresentationStyle = .overFullScreen
+      self?.present(viewController, animated: true)
+    }).addDisposableTo(disposeBag)
+    
+    viewModel.dismissViewController
+      .asDriver(onErrorDriveWith: .empty())
+      .drive(onNext: {[weak self] in
       self?.dismiss(animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
 

@@ -11,18 +11,18 @@ import Foundation
 class OrderItem {
   var id = UUID().uuidString
   var clothesItem: Item
-  var services: [Service]
+  var treatments: [Treatment]
   var amount: Int
-  init (clothesItem: Item, services: [Service], amount: Int = 1) {
+  init (clothesItem: Item, treatments: [Treatment] = [], amount: Int = 1) {
     self.clothesItem = clothesItem
-    self.services = services
+    self.treatments = treatments
     self.amount = amount
   }
   
   func price(laundry: Laundry) -> Int {
     var price = 0
-    for service in services {
-      price += service.price(laundry: laundry)
+    for treatment in treatments {
+      price += treatment.price(laundry: laundry)
     }
     return price
   }

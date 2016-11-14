@@ -36,9 +36,9 @@ class OrderTableViewCellModel: OrderTableViewCellModelType {
     
     let servicesAttrString = NSMutableAttributedString()
     
-    for (index, service) in item.services.enumerated() {
+    for (index, service) in item.treatments.enumerated() {
       servicesAttrString.append(NSAttributedString(string: service.name, attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey]))
-      if index != item.services.count - 1 {
+      if index != item.treatments.count - 1 {
         servicesAttrString.append(NSAttributedString(string: " • ", attributes: [NSForegroundColorAttributeName: UIColor.chsSilver]))
       }
     }

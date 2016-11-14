@@ -10,12 +10,13 @@ import Foundation
 import ObjectMapper
 
 class Order: Mappable {
-  var streetName: String!
-  var houseNumber: String!
-  var apartmentNumber: String!
-  var contactNumber: String!
+  var streetName: String = ""
+  var houseNumber: String = ""
+  var apartmentNumber: String = ""
+  var contactNumber: String = ""
   var notes: String? = nil
-  var email: String? = nil
+  var email: String? = "foo@bar.com" // TODO: remove test email
+  var lineItemsArttributes: [LineItemAttribute] = []
   
   init(profile: Profile) {
     apartmentNumber = profile.apartment
@@ -26,14 +27,17 @@ class Order: Mappable {
   }
   
   required init(map: Map) {
+    
   }
-  
+
   func mapping(map: Map) {
     streetName <- map["street_name"]
     houseNumber <- map["house_number"]
     apartmentNumber <- map["apartment_number"]
     contactNumber <- map["contact_number"]
     notes <- map["notes"]
+    email <- map["email"]
+    lineItemsArttributes <- map["line_items_attributes"]
   }
   
 }

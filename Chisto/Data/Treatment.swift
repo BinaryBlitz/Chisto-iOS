@@ -11,10 +11,12 @@ import ObjectMapper
 
 class Treatment: ServerObjct {
   dynamic var name: String = ""
-  
+  dynamic var descriptionText: String = ""
+
   override func mapping(map: Map) {
     super.mapping(map: map)
     name <- map["name"]
+    descriptionText <- map["description"]
   }
   
   func price(laundry: Laundry) -> Int {

@@ -12,17 +12,17 @@ import UIKit
 protocol OrderConfirmServiceTableViewCellModelType {
   var clothesIconUrl: URL? { get }
   var clothesTitle: String { get }
-  var clothesServices: [Service] { get }
+  var clothesServices: [Treatment] { get }
 
 }
 class OrderConfirmServiceTableViewCellModel: OrderConfirmServiceTableViewCellModelType {
   var clothesIconUrl: URL?
   var clothesTitle: String
-  var clothesServices: [Service]
+  var clothesServices: [Treatment]
   
   init(orderItem: OrderItem) {
     self.clothesIconUrl = URL(string: orderItem.clothesItem.icon)
     self.clothesTitle = orderItem.clothesItem.name + "× \(orderItem.amount)"
-    self.clothesServices = orderItem.services
+    self.clothesServices = orderItem.treatments
   }
 }

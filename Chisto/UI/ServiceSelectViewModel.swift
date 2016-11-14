@@ -11,38 +11,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 import RxDataSources
-
-class Service {
-  var id = UUID().hashValue
-  var name = ""
-  var description = ""
-  
-  static let defaultServices = [
-    Service(name: "Декор", description: "Декоративная отделка"),
-    Service(name: "Химчистка", description: "Только нежные растворители"),
-    Service(name: "Стирка", description: "Стирка при температуре не выше 30"),
-    Service(name: "Глажка", description: "Низкая температура 110  С"),
-    Service(name: "Подшить", description: "Ушьем за 2 минуты")
-  ]
-  
-  init(name: String, description: String) {
-    self.name = name
-    self.description = description
-  }
-  
-  func price(laundry: Laundry) -> Int {
-    var price = 0
-    laundry.treatments.filter { $0.treatmentId == self.id }
-      .forEach { price += $0.price }
-    return price
-  }
-  
-  func priceString(laundry: Laundry) -> String {
-    let price = self.price(laundry: laundry)
-    return price == 0 ? "Бесплатно" : "\(price) ₽"
-  }
-}
-
+ 
 typealias ServiceSelectSectionModel = SectionModel<String, ServiceSelectTableViewCellModelType>
 
 protocol ServiceSelectViewModelType {
@@ -56,7 +25,7 @@ protocol ServiceSelectViewModelType {
   var color: UIColor { get }
   var sections: Driver<[ServiceSelectSectionModel]> { get }
   var selectedServicesIds: Variable<[Int]> { get }
-  var selectedServices: Variable<[Service]> { get }
+  var selectedServices: Variable<[Treatment]> { get }
 }
 
 class ServiceSelectViewModel: ServiceSelectViewModelType {
@@ -79,18 +48,27 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
   }
   
   var selectedServicesIds: Variable<[Int]>
-  var services: Variable<[Service]>
-  var selectedServices: Variable<[Service]>
+  var treatments: Variable<[Treatment]>
+  var selectedServices: Variable<[Treatment]>
   
   let disposeBag = DisposeBag()
   
-  init(item: OrderItem, saveNeeded: Bool = true, selectedServices: [Service] = []) {
+  init(item: OrderItem, saveNeeded: Bool = true, selectedServices: [Treatment] = []) {
     let clothesItem = item.clothesItem
+    
+    DataManager.instance.fetchClothesTreatments(itemId: clothesItem.id).subscribe().addDisposableTo(disposeBag)
+    
+    let treatments = Variable<[Treatment]>([])
+    
+    Observable.from(uiRealm.objects(Treatment.self))
+      .map { Array($0) }
+      .bindTo(treatments)
+      .addDisposableTo(disposeBag)
+    
+    self.treatments = treatments
+    
     self.itemTitle = clothesItem.name
     self.color = UIColor.chsRosePink
-    
-    let services = Variable<[Service]>(Service.defaultServices)
-    self.services = services
     
     let selectedServicesIds = Variable<[Int]>(selectedServices.map { $0.id })
     self.selectedServicesIds = selectedServicesIds
@@ -99,12 +77,12 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
     self.selectedServices = selectedServices
     
     selectedServicesIds.asObservable().map { servicesIds in
-      return services.value.filter { servicesIds.contains($0.id) }
+      return treatments.value.filter { servicesIds.contains($0.id) }
     }.bindTo(selectedServices).addDisposableTo(disposeBag)
     
-    self.sections = Driver.combineLatest(services.asDriver(), selectedServicesIds.asDriver()) { services, selectedServicesIds in
+    self.sections = Driver.combineLatest(treatments.asDriver(), selectedServicesIds.asDriver()) { services, selectedServicesIds in
       let cellModels = services.map { service in
-        ServiceSelectTableViewCellModel(service: service, isSelected: selectedServicesIds.index(of: service.id) != nil)
+        ServiceSelectTableViewCellModel(treatment: service, isSelected: selectedServicesIds.index(of: service.id) != nil)
       } as [ServiceSelectTableViewCellModelType]
       
       let section = ServiceSelectSectionModel(model: "", items: cellModels)
@@ -114,7 +92,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
     self.returnToSection = readyButtonTapped.asObservable().map {
       if saveNeeded {
         OrderManager.instance.updateOrderItem(item: item) {
-          item.services = selectedServices.value
+          item.treatments = selectedServices.value
         }
         return .order
       }
@@ -123,12 +101,12 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
 
     
     self.itemDidSelect.asObservable().subscribe(onNext: { indexPath in
-      let service = self.services.value[indexPath.row]
+      let service = self.treatments.value[indexPath.row]
       self.selectedServicesIds.value.append(service.id)
     }).addDisposableTo(disposeBag)
     
     self.itemDidDeselect.asObservable().subscribe(onNext: { indexPath in
-      let service = self.services.value[indexPath.row]
+      let service = self.treatments.value[indexPath.row]
       guard let index = self.selectedServicesIds.value.index(of: service.id) else { return }
       self.selectedServicesIds.value.remove(at: index)
     }).addDisposableTo(disposeBag)

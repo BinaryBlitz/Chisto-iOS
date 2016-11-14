@@ -46,6 +46,8 @@ enum APIPath {
   
   var successCode: Int {
     switch self {
+    case .placeOrder:
+      return 201
     case .createVerificationToken:
       return 201
     default:
@@ -73,9 +75,10 @@ class NetworkManager {
   
   var apiPrefix = "https://chisto-staging.herokuapp.com"
   
-  func doRequest(method: HTTPMethod, _ path: APIPath, _ params: [String: Any]? = [:], encoding: ParameterEncoding = URLEncoding.default) -> Observable<Any> {
+  func doRequest(method: HTTPMethod, _ path: APIPath, _ params: [String: String]? = nil, body: Parameters = [:], encoding: ParameterEncoding = URLEncoding.default) -> Observable<Any> {
       return Observable.create { observer in
-        let req = Alamofire.request(self.apiPrefix + "/api/" + path.endpoint, method: method, parameters: params, encoding: encoding)
+        let url = URL(string: self.apiPrefix + "/api/" + path.endpoint)!
+        let req = Alamofire.request(url.appendingQueryParams(parameters: params), method: method, parameters: body, encoding: encoding, headers: nil)
           .responseJSON { response in
             debugPrint(response)
             if response.response?.statusCode != path.successCode {

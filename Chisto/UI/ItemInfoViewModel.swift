@@ -77,11 +77,11 @@ class ItemInfoViewModel: ItemInfoViewModelType {
     self.itemRelatedText = relatedItemsAttrString
 
     // Table view
-    let services = Variable<[Service]>(orderItem.services)
+    let services = Variable<[Treatment]>(orderItem.treatments)
     
     self.sections = services.asDriver().map { services in
       let cellModels = services.enumerated().map { (index, service) in
-        ItemInfoTableViewCellModel(service: service, count: index)
+        ItemInfoTableViewCellModel(treatment: service, count: index)
       } as [ItemInfoTableViewCellModelType]
       
       let section = ItemInfoSectionModel(model: "", items: cellModels)
@@ -96,7 +96,7 @@ class ItemInfoViewModel: ItemInfoViewModelType {
     
     self.returnToOrderList = continueButtonDidTap.asObservable().map {
       OrderManager.instance.updateOrderItem(item: orderItem) {
-        orderItem.services = services.value
+        orderItem.treatments = services.value
         orderItem.amount = currentAmount.value
       }
     }.asDriver(onErrorDriveWith: .empty())
