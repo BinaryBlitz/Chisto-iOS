@@ -13,9 +13,9 @@ import RxRealm
 
 class RootViewController: ChistoNavigationController {
   let disposeBag = DisposeBag()
-  let profileManager = ProfileManager.instance
 
   override func viewDidAppear(_ animated: Bool) {
+    let profileManager = ProfileManager.instance
     guard profileManager.userProfile?.city == nil else { return }
     
     present(OnBoardingNavigationController.storyboardInstance()!, animated: true)
@@ -23,7 +23,7 @@ class RootViewController: ChistoNavigationController {
   
   override func loadView() {
     super.loadView()
-    profileManager.userCityDidChange.asObservable().subscribe(onNext: {[weak self] _ in
+    OrderManager.instance.currentOrderItems.asObservable().subscribe(onNext: {[weak self] _ in
       self?.setViewControllers([OrderViewController.storyboardInstance()!], animated: true)
     }).addDisposableTo(disposeBag)
   }

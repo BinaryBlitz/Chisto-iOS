@@ -34,13 +34,7 @@ class OrderRegistrationViewController: UIViewController {
     viewModel.buttonsAreEnabled.asObservable().bindTo(payWithCardButton.rx.isEnabled).addDisposableTo(disposeBag)
     payInCashButton.rx.tap.bindTo(viewModel.payInCashButtonDidTap).addDisposableTo(disposeBag)
     payWithCardButton.rx.tap.bindTo(viewModel.payWithCreditCardButtonDidTap).addDisposableTo(disposeBag)
-    
-    viewModel.presentCitySelectSection.drive(onNext: { [weak self] viewModel in
-      let viewController = CitySelectViewController.storyboardInstance()!
-      viewController.viewModel = viewModel
-      self?.navigationController?.pushViewController(viewController, animated: true)
-    }).addDisposableTo(disposeBag)
-    
+        
     viewModel.presentLocationSelectSection.drive(onNext: { [weak self] viewModel in
       let viewController = LocationSelectViewController.storyboardInstance()!
       viewController.viewModel = viewModel
@@ -51,7 +45,7 @@ class OrderRegistrationViewController: UIViewController {
       let viewController = OrderPlacedPopupViewController.storyboardInstance()!
       viewController.viewModel = viewModel
       viewController.modalPresentationStyle = .overFullScreen
-      self?.present(viewController, animated: true)
+      self?.present(viewController, animated: false)
     }).addDisposableTo(disposeBag)
     
     viewModel.dismissViewController
@@ -69,5 +63,8 @@ class OrderRegistrationViewController: UIViewController {
     contactFormViewController.didMove(toParentViewController: self)
     dataView.addSubview(contactFormViewController.view)
     contactFormViewController.view.frame = dataView.bounds
+    
+    contactFormViewController.cityButton.isEnabled = false
+    contactFormViewController.cityField.textColor = UIColor.chsSilver
   }
 }

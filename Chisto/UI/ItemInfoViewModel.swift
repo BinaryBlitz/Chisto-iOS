@@ -67,20 +67,13 @@ class ItemInfoViewModel: ItemInfoViewModelType {
     // Subtitle
     let relatedItemsAttrString = NSMutableAttributedString()
     
-    for (index, relatedItem) in orderItem.clothesItem.relatedItems.enumerated() {
-      relatedItemsAttrString.append(NSAttributedString(string: relatedItem.stringValue, attributes: [NSForegroundColorAttributeName: UIColor.chsWhite]))
-      if index != orderItem.clothesItem.relatedItems.count - 1 {
-        relatedItemsAttrString.append(NSAttributedString(string: " • ", attributes: [NSForegroundColorAttributeName: UIColor.chsWhiteTwo50]))
-      }
-    }
-    
     self.itemRelatedText = relatedItemsAttrString
 
     // Table view
-    let services = Variable<[Treatment]>(orderItem.treatments)
+    let treatments = Variable<[Treatment]>(orderItem.treatments)
     
-    self.sections = services.asDriver().map { services in
-      let cellModels = services.enumerated().map { (index, service) in
+    self.sections = treatments.asDriver().map { treatments in
+      let cellModels = treatments.enumerated().map { (index, service) in
         ItemInfoTableViewCellModel(treatment: service, count: index)
       } as [ItemInfoTableViewCellModelType]
       
@@ -89,20 +82,20 @@ class ItemInfoViewModel: ItemInfoViewModelType {
     }
     
     self.presentServiceSelectSection = addServiceButtonDidTap.asObservable().map {
-      let viewModel = ServiceSelectViewModel(item: orderItem, saveNeeded: false, selectedServices: services.value)
-      viewModel.selectedServices.asObservable().bindTo(services).addDisposableTo(viewModel.disposeBag)
+      let viewModel = ServiceSelectViewModel(item: orderItem, saveNeeded: false, selectedTreatments: treatments.value)
+      viewModel.selectedServices.asObservable().bindTo(treatments).addDisposableTo(viewModel.disposeBag)
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
     
     self.returnToOrderList = continueButtonDidTap.asObservable().map {
       OrderManager.instance.updateOrderItem(item: orderItem) {
-        orderItem.treatments = services.value
+        orderItem.treatments = treatments.value
         orderItem.amount = currentAmount.value
       }
     }.asDriver(onErrorDriveWith: .empty())
     
     tableItemDeleted.asObservable().subscribe(onNext: { indexPath in
-      services.value.remove(at: indexPath.row)
+      treatments.value.remove(at: indexPath.row)
     }).addDisposableTo(disposeBag)
     
     counterIncButtonDidTap.subscribe(onNext: {

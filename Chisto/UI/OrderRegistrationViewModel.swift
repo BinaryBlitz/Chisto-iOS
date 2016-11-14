@@ -18,7 +18,6 @@ class OrderRegistrationViewModel {
   let orderCost: String
   let dismissViewController: PublishSubject<Void>
   let cityDidSelect: PublishSubject<Void>
-  let presentCitySelectSection: Driver<CitySelectViewModel>
   let presentLocationSelectSection: Driver<LocationSelectViewModel>
   let payInCashButtonDidTap = PublishSubject<Void>()
   let payWithCreditCardButtonDidTap = PublishSubject<Void>()
@@ -37,15 +36,6 @@ class OrderRegistrationViewModel {
     self.formViewModel = formViewModel
     
     self.orderCost = OrderManager.instance.priceForCurrentLaundryString
-    self.presentCitySelectSection = formViewModel.cityFieldDidTap
-      .asObservable().map {
-        let viewModel = CitySelectViewModel()
-        viewModel.itemDidSelect
-          .asObservable().map{ _ in Void() }
-          .bindTo(cityDidSelect)
-          .addDisposableTo(viewModel.disposeBag)
-        return viewModel
-      }.asDriver(onErrorDriveWith: .empty())
     
     self.presentLocationSelectSection = formViewModel.locationHeaderButtonDidTap.map {
       let viewModel = LocationSelectViewModel()
@@ -60,7 +50,7 @@ class OrderRegistrationViewModel {
         formViewModel.saveUserProfile()
         return OrderManager.instance.placeOrder().map { id in
           let viewModel = OrderPlacedPopupViewModel(orderNumber: "\(id)")
-          viewModel.continueButtonDidTap.asObservable()
+          viewModel.dismissParentViewController.asObservable()
             .bindTo(dismissViewController)
             .addDisposableTo(viewModel.disposeBag)
           return viewModel

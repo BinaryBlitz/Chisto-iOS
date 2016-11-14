@@ -14,9 +14,7 @@ class ProfileManager {
   private let profileKey = "profileId"
   
   let userProfile: Profile?
-  
-  let userCityDidChange = PublishSubject<Void>()
-  
+    
   func updateProfile(closure: ((Profile) -> Void)) {
     guard let profile = userProfile else { return }
     try! uiRealm.write {

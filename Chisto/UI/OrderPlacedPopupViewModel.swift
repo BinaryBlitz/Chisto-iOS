@@ -14,6 +14,7 @@ class OrderPlacedPopupViewModel {
   let disposeBag = DisposeBag()
   let continueButtonDidTap = PublishSubject<Void>()
   let dismissViewController: Driver<Void>
+  let dismissParentViewController = PublishSubject<Void>()
   let orderNumber: String
   
   init(orderNumber: String) {
