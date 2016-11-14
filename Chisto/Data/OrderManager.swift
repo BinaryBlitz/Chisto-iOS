@@ -27,12 +27,22 @@ class OrderManager {
     currentOrderItems.onNext(items)
   }
   
-  func confirmOrder() {
-    guard let profile = ProfileManager.instance.userProfile else { return }
-    guard let laundry = currentLaundry else { return }
+  func placeOrder() -> Observable<Int> {
+    guard let profile = ProfileManager.instance.userProfile else { return Observable.empty() }
+    guard let laundry = currentLaundry else { return Observable.empty() }
     let order = Order(profile: profile)
-    DataManager.instance.placeOrder(order: order, laundry: laundry)
-    
+    let items = try! currentOrderItems.value()
+    for item in items {
+      for treatment in item.treatments {
+        let lineItemAttribute = LineItemAttribute(laundryTreatmentId: treatment.id, quantity: item.amount)
+        order.lineItemsArttributes.append(lineItemAttribute)
+      }
+    }
+    let placeOrderObservable = DataManager.instance.placeOrder(order: order, laundry: laundry)
+    _ = placeOrderObservable.do(onNext: { [weak self] _ in
+      self?.currentOrderItems.onNext([])
+    })
+    return placeOrderObservable
   }
   
   var priceForCurrentLaundry: Int {

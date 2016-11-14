@@ -102,7 +102,6 @@ class CitySelectViewModel: CitySelectViewModelType {
     self.hideCancelButtonAnimated = searchBarDidEndEditing.asDriver(onErrorDriveWith: .empty())
     
     itemDidSelect.asObservable().subscribe(onNext: {[weak self] indexPath in
-      // TODO: remove it completely
       ProfileManager.instance.updateProfile { profile in
         profile.city = cities.value[indexPath.row]
       }

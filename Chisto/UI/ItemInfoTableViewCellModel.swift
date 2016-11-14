@@ -22,9 +22,9 @@ class ItemInfoTableViewCellModel: ItemInfoTableViewCellModelType {
   var serviceDescription: String
   var countText: String
   
-  init(service: Service, count: Int) {
-    self.serviceTitle = service.name
-    self.serviceDescription = service.description
+  init(treatment: Treatment, count: Int) {
+    self.serviceTitle = treatment.name
+    self.serviceDescription = treatment.descriptionText
     self.countText = String(count + 1)
   }
 }

@@ -16,15 +16,22 @@ class OrderRegistrationViewModel {
   let formViewModel: ContactFormViewModel
   let buttonsAreEnabled = Variable(false)
   let orderCost: String
-  let dismissViewController: Driver<Void>
+  let dismissViewController: PublishSubject<Void>
   let cityDidSelect: PublishSubject<Void>
   let presentCitySelectSection: Driver<CitySelectViewModel>
   let presentLocationSelectSection: Driver<LocationSelectViewModel>
+  let payInCashButtonDidTap = PublishSubject<Void>()
+  let payWithCreditCardButtonDidTap = PublishSubject<Void>()
+  let presentOrderPlacedPopup: Driver<OrderPlacedPopupViewModel>
   
   init() {
     let cityDidSelect = PublishSubject<Void>()
     self.cityDidSelect = cityDidSelect
-    self.dismissViewController = cityDidSelect.asDriver(onErrorDriveWith: .empty())
+    
+    let dismissViewController = PublishSubject<Void>()
+    self.dismissViewController = dismissViewController
+    
+    cityDidSelect.bindTo(dismissViewController).addDisposableTo(disposeBag)
     
     let formViewModel = ContactFormViewModel()
     self.formViewModel = formViewModel
@@ -46,6 +53,19 @@ class OrderRegistrationViewModel {
       viewModel.streetNumber.bindTo(formViewModel.building).addDisposableTo(viewModel.disposeBag)
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
+    
+    self.presentOrderPlacedPopup = Observable.of(payWithCreditCardButtonDidTap.asObservable(), payInCashButtonDidTap.asObservable()).merge()
+      .asDriver(onErrorDriveWith: .empty())
+      .flatMap { _ -> Driver<OrderPlacedPopupViewModel> in
+        formViewModel.saveUserProfile()
+        return OrderManager.instance.placeOrder().map { id in
+          let viewModel = OrderPlacedPopupViewModel(orderNumber: "\(id)")
+          viewModel.continueButtonDidTap.asObservable()
+            .bindTo(dismissViewController)
+            .addDisposableTo(viewModel.disposeBag)
+          return viewModel
+        }.asDriver(onErrorDriveWith: .empty())
+      }
 
     formViewModel.isValid.asObservable().bindTo(buttonsAreEnabled).addDisposableTo(disposeBag)
 

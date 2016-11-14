@@ -125,8 +125,14 @@ extension DataManager: DataManagerServiceType {
     return fetchItems(type: Laundry.self, apiPath: .fetchCityLaundries(cityId: cityId))
   }
   
-  func placeOrder(order: Order, laundry: Laundry) -> Observable<Void> {
+  func placeOrder(order: Order, laundry: Laundry) -> Observable<Int> {
     let orderJSON = order.toJSON()
-    return networkManager.doRequest(method: .post, .placeOrder(laundryId: laundry.id), ["order": orderJSON], encoding: JSONEncoding.default).map { _ in }
+    print(orderJSON)
+    return networkManager.doRequest(method: .post, .placeOrder(laundryId: laundry.id),
+                                    ["api_token": apiToken],
+                                    body: ["order": orderJSON], encoding: JSONEncoding.default)
+      .map { result in
+        return JSON(result)["id"].intValue
+    }
   }
 }

@@ -10,18 +10,20 @@ import Foundation
 import UIKit
 import RxSwift
 
-class OrderConfirmedPopupViewController: UIViewController {
+class OrderPlacedPopupViewController: UIViewController {
   @IBOutlet weak var contentView: UIView!
   @IBOutlet weak var orderNumberLabel: UILabel!
   @IBOutlet weak var continueButton: GoButton!
   
   let disposeBag = DisposeBag()
-  let viewModel: OrderConfirmedPopupViewModel? = nil
+  var viewModel: OrderPlacedPopupViewModel? = nil
   
   // Constants
   let animationDuration = 0.2
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    orderNumberLabel.text = viewModel?.orderNumber
     
     view.backgroundColor = UIColor(white: 0, alpha: 0.5)
     
