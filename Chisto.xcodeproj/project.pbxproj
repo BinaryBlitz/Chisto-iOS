@@ -175,12 +175,12 @@
 		8814C0381DAE8F7F005B4967 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		8814C03B1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Rx.swift .swift"; sourceTree = "<group>"; };
 		8814C03D1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCLLocationManagerDelegateProxy.swift; sourceTree = "<group>"; };
-		8814C03F1DAED9AC005B4967 /* CityNotFoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityNotFoundViewController.swift; path = ../CitySelect/CityNotFoundViewController.swift; sourceTree = "<group>"; };
+		8814C03F1DAED9AC005B4967 /* CityNotFoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityNotFoundViewController.swift; path = CityNotFoundViewController.swift; sourceTree = "<group>"; };
 		8814C0491DAF12FE005B4967 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		8814C04C1DAF159E005B4967 /* OrderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 		8814C04E1DAF15DA005B4967 /* ChistoNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChistoNavigationController.swift; sourceTree = "<group>"; };
 		8814C0551DAFA7B5005B4967 /* BottomBorderedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomBorderedTextField.swift; sourceTree = "<group>"; };
-		8814C0571DAFB0F1005B4967 /* CityNotFoundViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityNotFoundViewModel.swift; path = ../CitySelect/CityNotFoundViewModel.swift; sourceTree = "<group>"; };
+		8814C0571DAFB0F1005B4967 /* CityNotFoundViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityNotFoundViewModel.swift; path = CityNotFoundViewModel.swift; sourceTree = "<group>"; };
 		8814C0591DAFC96D005B4967 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		8814C05C1DAFCF28005B4967 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		8814C0601DAFEE7C005B4967 /* CategoriesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 		8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHideOutside.swift; sourceTree = "<group>"; };
 		882288131DB6D11C000642E0 /* RootViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootViewController.storyboard; sourceTree = "<group>"; };
 		882288151DB6D12C000642E0 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		8833B5231DBCEC0B004D44CE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		8833B5231DBCEC0B004D44CE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8833B5271DBE6E2B004D44CE /* LastTimePopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastTimePopupViewController.swift; sourceTree = "<group>"; };
 		8833B5291DBE6E38004D44CE /* LastTimePopupViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LastTimePopupViewController.storyboard; sourceTree = "<group>"; };
 		8833B52F1DBE8756004D44CE /* LaundryItemInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaundryItemInfoView.xib; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 		883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+StoryboardInstance.swift"; sourceTree = "<group>"; };
 		883760D41DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoardingNavigationController.storyboard; sourceTree = "<group>"; };
 		885409B51DB23DEB00219C00 /* CitySelectViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CitySelectViewController.storyboard; sourceTree = "<group>"; };
-		885409B71DB2582200219C00 /* CityNotFoundViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CityNotFoundViewController.storyboard; path = ../CitySelect/CityNotFoundViewController.storyboard; sourceTree = "<group>"; };
+		885409B71DB2582200219C00 /* CityNotFoundViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CityNotFoundViewController.storyboard; path = CityNotFoundViewController.storyboard; sourceTree = "<group>"; };
 		885409B91DB25B5100219C00 /* GoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoButton.swift; sourceTree = "<group>"; };
 		885409BF1DB2C76500219C00 /* OrderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderViewController.storyboard; sourceTree = "<group>"; };
 		885409C21DB2E43300219C00 /* EmptyOrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyOrderView.swift; sourceTree = "<group>"; };
@@ -256,10 +256,10 @@
 		88CD68461DD215F8004B7726 /* ContactFormTableHeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFormTableHeaderViewModel.swift; sourceTree = "<group>"; };
 		88CDDE461DD922DC002BCC5E /* NSURL+QueryParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+QueryParams.swift"; sourceTree = "<group>"; };
 		88D4403E4AD2DF4A42F5C8FA /* Pods_Chisto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chisto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		88D8ABBA1DB56E53009D515B /* SelectClothesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectClothesViewController.swift; path = SelectClothes/SelectClothesViewController.swift; sourceTree = "<group>"; };
+		88D8ABBA1DB56E53009D515B /* SelectClothesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectClothesViewController.swift; path = SelectClothesViewController.swift; sourceTree = "<group>"; };
 		88D8ABBC1DB56E89009D515B /* SelectClothesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClothesViewModel.swift; sourceTree = "<group>"; };
 		88D8ABBE1DB56EB8009D515B /* SelectClothesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectClothesViewController.storyboard; sourceTree = "<group>"; };
-		88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectClothesTableViewCell.swift; path = SelectClothes/Views/SelectClothesTableViewCell.swift; sourceTree = "<group>"; };
+		88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectClothesTableViewCell.swift; path = SelectClothesTableViewCell.swift; sourceTree = "<group>"; };
 		88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClothesTableViewCellModel.swift; sourceTree = "<group>"; };
 		88DB93781DCBD11100DAC651 /* MaskedInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskedInput.swift; sourceTree = "<group>"; };
 		88DB937A1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationNavigationController.storyboard; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 		88DB93831DCBEF8B00DAC651 /* RegistrationCodeInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationCodeInputViewController.storyboard; sourceTree = "<group>"; };
 		88DB93851DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationCodeInputViewModel.swift; sourceTree = "<group>"; };
 		88DB93881DCC115D00DAC651 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
-		88DB938A1DCC169A00DAC651 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = ../NetworkManager.swift; sourceTree = "<group>"; };
+		88DB938A1DCC169A00DAC651 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		88DB938C1DCC187C00DAC651 /* Laundry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Laundry.swift; sourceTree = "<group>"; };
 		88DB938E1DCC188600DAC651 /* Treatment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Treatment.swift; sourceTree = "<group>"; };
 		88DB93901DCC1AA500DAC651 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -323,15 +323,17 @@
 				88072D511DB9695E00B47D23 /* ItemInfoViewModel.swift */,
 			);
 			name = ItemInfo;
+			path = ItemInfo;
 			sourceTree = "<group>";
 		};
 		88072D531DB9696000B47D23 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				88072D541DB9697700B47D23 /* ItemInfoTableViewCellModel.swift */,
 				88072D561DB9698600B47D23 /* ItemInfoTableViewCell.swift */,
+				88072D541DB9697700B47D23 /* ItemInfoTableViewCellModel.swift */,
 			);
 			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		88073ECC1DABE1E0000696A3 = {
@@ -372,29 +374,29 @@
 		88073EEC1DAC19E1000696A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				8872F0B61DD8930F00E8D9EE /* OrderPlacedPopup */,
-				88923E1D1DD3D5DC00BC3AC0 /* LocationSelect */,
-				88923E141DD369DD00BC3AC0 /* ProfileContactData */,
-				88CD68381DD1D458004B7726 /* ContactForm */,
-				88CD68351DD0DAAA004B7726 /* OrderRegistration */,
-				88E6B59A1DCB7EE70024FA1A /* Registration */,
-				8862E6CC1DC8EC9700DDFB00 /* OrderConfirm */,
-				885C19731DC379FA0081A4F3 /* LaundrySort */,
 				8811FE161DC2E5C800610712 /* About */,
-				8811FE111DC2DB1100610712 /* Profile */,
-				889D87C51DC0A727003E8DAC /* LaundrySelect */,
-				8833B5261DBE6E06004D44CE /* LastTimePopup */,
-				8814C04E1DAF15DA005B4967 /* ChistoNavigationController.swift */,
-				88072D4C1DB967D400B47D23 /* ItemInfo */,
-				88E86DA01DB8E7D8002A7024 /* ServiceSelect */,
-				882288121DB6D0FA000642E0 /* Root */,
-				88D8ABB91DB56E09009D515B /* SelectClothes */,
-				885409C11DB2C76B00219C00 /* CityNotFound */,
 				8814C0501DAF2A58005B4967 /* Categories */,
+				885409C11DB2C76B00219C00 /* CityNotFound */,
 				88073EF71DAC26EA000696A3 /* CitySelect */,
 				8814C0541DAFA5A2005B4967 /* Common */,
+				88CD68381DD1D458004B7726 /* ContactForm */,
+				88072D4C1DB967D400B47D23 /* ItemInfo */,
+				8833B5261DBE6E06004D44CE /* LastTimePopup */,
+				889D87C51DC0A727003E8DAC /* LaundrySelect */,
+				885C19731DC379FA0081A4F3 /* LaundrySort */,
+				88923E1D1DD3D5DC00BC3AC0 /* LocationSelect */,
 				88073EF31DAC1CBE000696A3 /* Onboarding */,
 				8814C0441DAF0E89005B4967 /* Order */,
+				8862E6CC1DC8EC9700DDFB00 /* OrderConfirm */,
+				8872F0B61DD8930F00E8D9EE /* OrderPlacedPopup */,
+				88CD68351DD0DAAA004B7726 /* OrderRegistration */,
+				8811FE111DC2DB1100610712 /* Profile */,
+				88923E141DD369DD00BC3AC0 /* ProfileContactData */,
+				88E6B59A1DCB7EE70024FA1A /* Registration */,
+				882288121DB6D0FA000642E0 /* Root */,
+				88D8ABB91DB56E09009D515B /* SelectClothes */,
+				88E86DA01DB8E7D8002A7024 /* ServiceSelect */,
+				8814C04E1DAF15DA005B4967 /* ChistoNavigationController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -402,12 +404,12 @@
 		88073EF11DAC1B3E000696A3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				88DB93901DCC1AA500DAC651 /* DataManager.swift */,
-				88923E121DD35F7600BC3AC0 /* ProfileManager.swift */,
-				88DB938A1DCC169A00DAC651 /* NetworkManager.swift */,
 				8862E6C91DC8E2BD00DDFB00 /* Model */,
 				88E86DB11DB91695002A7024 /* OrderManager */,
+				88DB93901DCC1AA500DAC651 /* DataManager.swift */,
 				8872F0BB1DD8AE0F00E8D9EE /* GeocodingManager.swift */,
+				88DB938A1DCC169A00DAC651 /* NetworkManager.swift */,
+				88923E121DD35F7600BC3AC0 /* ProfileManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -416,10 +418,10 @@
 			isa = PBXGroup;
 			children = (
 				88073EF61DAC26E2000696A3 /* Views */,
-				88073EED1DAC1A23000696A3 /* OnBoardingViewController.swift */,
-				88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */,
-				883760D01DB8D97500C9F506 /* OnBoardingNavigationController.swift */,
 				883760D41DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard */,
+				883760D01DB8D97500C9F506 /* OnBoardingNavigationController.swift */,
+				88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */,
+				88073EED1DAC1A23000696A3 /* OnBoardingViewController.swift */,
 				88923E1B1DD3852A00BC3AC0 /* OnBoardingViewModel.swift */,
 			);
 			path = Onboarding;
@@ -437,9 +439,9 @@
 		88073EF71DAC26EA000696A3 /* CitySelect */ = {
 			isa = PBXGroup;
 			children = (
+				885409B51DB23DEB00219C00 /* CitySelectViewController.storyboard */,
 				88073EFB1DAC4661000696A3 /* CitySelectViewController.swift */,
 				88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */,
-				885409B51DB23DEB00219C00 /* CitySelectViewController.storyboard */,
 			);
 			path = CitySelect;
 			sourceTree = "<group>";
@@ -447,13 +449,14 @@
 		8811FE111DC2DB1100610712 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				8811FE0B1DC2DB0500610712 /* ProfileViewController.storyboard */,
-				8811FE0C1DC2DB0500610712 /* ProfileNavigationController.swift */,
 				8811FE0D1DC2DB0500610712 /* ProfileNavigationController.storyboard */,
+				8811FE0C1DC2DB0500610712 /* ProfileNavigationController.swift */,
+				8811FE0B1DC2DB0500610712 /* ProfileViewController.storyboard */,
 				8811FE121DC2DBBE00610712 /* ProfileViewController.swift */,
 				8811FE141DC2DCA600610712 /* ProfileViewModel.swift */,
 			);
 			name = Profile;
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		8811FE161DC2E5C800610712 /* About */ = {
@@ -463,6 +466,7 @@
 				8811FE191DC2EF4A00610712 /* AboutViewController.swift */,
 			);
 			name = About;
+			path = About;
 			sourceTree = "<group>";
 		};
 		8814C0311DAD8112005B4967 /* Style */ = {
@@ -477,11 +481,11 @@
 		8814C0371DAE8F4B005B4967 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				8814C0381DAE8F7F005B4967 /* LocationManager.swift */,
-				8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */,
 				88C9F6E01DCDE36F0046DDD7 /* Date+toString.swift */,
-				88923E101DD340C500BC3AC0 /* twoWayBinding.swift */,
+				8814C0381DAE8F7F005B4967 /* LocationManager.swift */,
 				88CDDE461DD922DC002BCC5E /* NSURL+QueryParams.swift */,
+				8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */,
+				88923E101DD340C500BC3AC0 /* twoWayBinding.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -499,9 +503,9 @@
 			isa = PBXGroup;
 			children = (
 				8814C0461DAF0E99005B4967 /* Views */,
+				885409BF1DB2C76500219C00 /* OrderViewController.storyboard */,
 				8814C0491DAF12FE005B4967 /* OrderViewController.swift */,
 				8814C04C1DAF159E005B4967 /* OrderViewModel.swift */,
-				885409BF1DB2C76500219C00 /* OrderViewController.storyboard */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -520,10 +524,10 @@
 		8814C0501DAF2A58005B4967 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				8814C0591DAFC96D005B4967 /* CategoriesViewController.swift */,
-				885409C41DB2E55400219C00 /* CategoriesViewController.storyboard */,
-				8814C0601DAFEE7C005B4967 /* CategoriesViewModel.swift */,
 				8814C05B1DAFCED7005B4967 /* Views */,
+				885409C41DB2E55400219C00 /* CategoriesViewController.storyboard */,
+				8814C0591DAFC96D005B4967 /* CategoriesViewController.swift */,
+				8814C0601DAFEE7C005B4967 /* CategoriesViewModel.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -533,15 +537,15 @@
 			children = (
 				8833B52C1DBE86EF004D44CE /* LaundryItemInfo */,
 				8814C0551DAFA7B5005B4967 /* BottomBorderedTextField.swift */,
-				8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */,
-				88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */,
 				885409B91DB25B5100219C00 /* GoButton.swift */,
-				885409C61DB2EC5D00219C00 /* UIView+IBInspectable.swift */,
-				883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */,
-				88E86DAF1DB90BD1002A7024 /* UIView+nibInstance.swift */,
-				889D87CA1DC0B45C003E8DAC /* RotatingUILabel.swift */,
-				88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */,
+				8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */,
 				88DB93781DCBD11100DAC651 /* MaskedInput.swift */,
+				889D87CA1DC0B45C003E8DAC /* RotatingUILabel.swift */,
+				88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */,
+				88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */,
+				885409C61DB2EC5D00219C00 /* UIView+IBInspectable.swift */,
+				88E86DAF1DB90BD1002A7024 /* UIView+nibInstance.swift */,
+				883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -562,84 +566,91 @@
 				882288151DB6D12C000642E0 /* RootViewController.swift */,
 			);
 			name = Root;
+			path = Root;
 			sourceTree = "<group>";
 		};
 		8833B5261DBE6E06004D44CE /* LastTimePopup */ = {
 			isa = PBXGroup;
 			children = (
-				8833B5271DBE6E2B004D44CE /* LastTimePopupViewController.swift */,
 				8833B5291DBE6E38004D44CE /* LastTimePopupViewController.storyboard */,
+				8833B5271DBE6E2B004D44CE /* LastTimePopupViewController.swift */,
 				8833B5351DBF8241004D44CE /* LastTimePopupViewModel.swift */,
 			);
 			name = LastTimePopup;
+			path = LastTimePopup;
 			sourceTree = "<group>";
 		};
 		8833B52C1DBE86EF004D44CE /* LaundryItemInfo */ = {
 			isa = PBXGroup;
 			children = (
-				8833B52F1DBE8756004D44CE /* LaundryItemInfoView.xib */,
 				8833B5311DBE8774004D44CE /* LaundryItemInfoView.swift */,
+				8833B52F1DBE8756004D44CE /* LaundryItemInfoView.xib */,
 				8833B5331DBF7F75004D44CE /* LaundryItemInfoViewModel.swift */,
 			);
 			name = LaundryItemInfo;
+			path = LaundryItemInfo;
 			sourceTree = "<group>";
 		};
 		88373C961DC9E53E00DE4D13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				88373C971DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib */,
 				8869D1221DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift */,
+				88373C971DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib */,
 				889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */,
 				889A841A1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift */,
 			);
 			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		885409C11DB2C76B00219C00 /* CityNotFound */ = {
 			isa = PBXGroup;
 			children = (
-				8814C03F1DAED9AC005B4967 /* CityNotFoundViewController.swift */,
 				885409B71DB2582200219C00 /* CityNotFoundViewController.storyboard */,
+				8814C03F1DAED9AC005B4967 /* CityNotFoundViewController.swift */,
 				8814C0571DAFB0F1005B4967 /* CityNotFoundViewModel.swift */,
 			);
 			name = CityNotFound;
-			path = Categories;
+			path = CityNotFound;
 			sourceTree = "<group>";
 		};
 		885C19731DC379FA0081A4F3 /* LaundrySort */ = {
 			isa = PBXGroup;
 			children = (
 				885C196C1DC379E40081A4F3 /* LaundrySortViewController.storyboard */,
-				885C196D1DC379E40081A4F3 /* LaundrySortViewModel.swift */,
 				885C196E1DC379E40081A4F3 /* LaundrySortViewController.swift */,
+				885C196D1DC379E40081A4F3 /* LaundrySortViewModel.swift */,
 			);
 			name = LaundrySort;
+			path = LaundrySort;
 			sourceTree = "<group>";
 		};
 		8862E6C91DC8E2BD00DDFB00 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				88A221691DCE372500CAD2B0 /* Common */,
-				88DB938C1DCC187C00DAC651 /* Laundry.swift */,
-				88DB93881DCC115D00DAC651 /* City.swift */,
-				88DB938E1DCC188600DAC651 /* Treatment.swift */,
 				88E705631DCCC2FB007F779E /* Category.swift */,
+				88DB93881DCC115D00DAC651 /* City.swift */,
 				88C9F6DC1DCD03010046DDD7 /* Item.swift */,
+				88DB938C1DCC187C00DAC651 /* Laundry.swift */,
 				88A221671DCE013100CAD2B0 /* LaundryTreatment.swift */,
 				88FA1DF91DD2944400431822 /* Profile.swift */,
+				88DB938E1DCC188600DAC651 /* Treatment.swift */,
 			);
 			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		8862E6CC1DC8EC9700DDFB00 /* OrderConfirm */ = {
 			isa = PBXGroup;
 			children = (
 				88373C961DC9E53E00DE4D13 /* Views */,
+				8862E6CF1DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard */,
 				8862E6CD1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift */,
 				889A84161DCA56CB00E3926D /* OrderConfirmViewModel.swift */,
-				8862E6CF1DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard */,
 			);
 			name = OrderConfirm;
+			path = OrderConfirm;
 			sourceTree = "<group>";
 		};
 		8872F0B61DD8930F00E8D9EE /* OrderPlacedPopup */ = {
@@ -650,6 +661,7 @@
 				8872F0BF1DD8DD3400E8D9EE /* OrderPlacedPopupViewModel.swift */,
 			);
 			name = OrderPlacedPopup;
+			path = OrderPlacedPopup;
 			sourceTree = "<group>";
 		};
 		88923E141DD369DD00BC3AC0 /* ProfileContactData */ = {
@@ -660,27 +672,30 @@
 				88923E191DD36ACD00BC3AC0 /* ProfileContactDataViewModel.swift */,
 			);
 			name = ProfileContactData;
+			path = ProfileContactData;
 			sourceTree = "<group>";
 		};
 		88923E1D1DD3D5DC00BC3AC0 /* LocationSelect */ = {
 			isa = PBXGroup;
 			children = (
-				88923E1E1DD3D5F900BC3AC0 /* LocationSelectViewController.swift */,
 				88923E201DD3D60D00BC3AC0 /* LocationSelectViewController.storyboard */,
+				88923E1E1DD3D5F900BC3AC0 /* LocationSelectViewController.swift */,
 				8872F0B01DD7B2E100E8D9EE /* LocationSelectViewModel.swift */,
 			);
 			name = LocationSelect;
+			path = LocationSelect;
 			sourceTree = "<group>";
 		};
 		889D87C51DC0A727003E8DAC /* LaundrySelect */ = {
 			isa = PBXGroup;
 			children = (
 				889D87CC1DC0B8E3003E8DAC /* Views */,
-				889D87C61DC0A752003E8DAC /* LaundrySelectViewController.swift */,
 				889D87C81DC0A760003E8DAC /* LaundrySelectViewController.storyboard */,
+				889D87C61DC0A752003E8DAC /* LaundrySelectViewController.swift */,
 				889D87D11DC1F71E003E8DAC /* LaundrySelectViewModel.swift */,
 			);
 			name = LaundrySelect;
+			path = LaundrySelect;
 			sourceTree = "<group>";
 		};
 		889D87CC1DC0B8E3003E8DAC /* Views */ = {
@@ -690,15 +705,17 @@
 				889D87CF1DC1F3DE003E8DAC /* LaundrySelectTableViewCellModel.swift */,
 			);
 			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		88A221691DCE372500CAD2B0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				88DB93921DCC20B100DAC651 /* ServerObjct.swift */,
 				88C9F6DE1DCD2B320046DDD7 /* RealmString.swift */,
+				88DB93921DCC20B100DAC651 /* ServerObjct.swift */,
 			);
 			name = Common;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		88CD68351DD0DAAA004B7726 /* OrderRegistration */ = {
@@ -709,6 +726,7 @@
 				88CD683F1DD2090A004B7726 /* OrderRegistrationViewModel.swift */,
 			);
 			name = OrderRegistration;
+			path = OrderRegistration;
 			sourceTree = "<group>";
 		};
 		88CD68381DD1D458004B7726 /* ContactForm */ = {
@@ -720,27 +738,30 @@
 				88FA1DF51DD23F3A00431822 /* ContactFormViewModel.swift */,
 			);
 			name = ContactForm;
+			path = ContactForm;
 			sourceTree = "<group>";
 		};
 		88CD68411DD21080004B7726 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				88CD68421DD212F1004B7726 /* ContactFormTableHeaderView.xib */,
 				88CD68441DD2155F004B7726 /* ContactFormTableHeaderView.swift */,
+				88CD68421DD212F1004B7726 /* ContactFormTableHeaderView.xib */,
 				88CD68461DD215F8004B7726 /* ContactFormTableHeaderViewModel.swift */,
 			);
 			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		88D8ABB91DB56E09009D515B /* SelectClothes */ = {
 			isa = PBXGroup;
 			children = (
 				88D8ABC01DB58794009D515B /* Views */,
+				88D8ABBE1DB56EB8009D515B /* SelectClothesViewController.storyboard */,
 				88D8ABBA1DB56E53009D515B /* SelectClothesViewController.swift */,
 				88D8ABBC1DB56E89009D515B /* SelectClothesViewModel.swift */,
-				88D8ABBE1DB56EB8009D515B /* SelectClothesViewController.storyboard */,
 			);
 			name = SelectClothes;
+			path = SelectClothes;
 			sourceTree = "<group>";
 		};
 		88D8ABC01DB58794009D515B /* Views */ = {
@@ -750,27 +771,30 @@
 				88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */,
 			);
 			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		88DB93801DCBEF1600DAC651 /* CodeInput */ = {
 			isa = PBXGroup;
 			children = (
-				88DB93811DCBEF3200DAC651 /* RegistrationCodeInputViewController.swift */,
 				88DB93831DCBEF8B00DAC651 /* RegistrationCodeInputViewController.storyboard */,
+				88DB93811DCBEF3200DAC651 /* RegistrationCodeInputViewController.swift */,
 				88DB93851DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift */,
 			);
 			name = CodeInput;
+			path = CodeInput;
 			sourceTree = "<group>";
 		};
 		88E6B59A1DCB7EE70024FA1A /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				88E6B59B1DCB7F1C0024FA1A /* PhoneInput */,
 				88DB93801DCBEF1600DAC651 /* CodeInput */,
+				88E6B59B1DCB7F1C0024FA1A /* PhoneInput */,
 				88DB937A1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard */,
 				88DB937C1DCBE0F400DAC651 /* RegistrationNavigationController.swift */,
 			);
 			name = Registration;
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		88E6B59B1DCB7F1C0024FA1A /* PhoneInput */ = {
@@ -781,6 +805,7 @@
 				88DB937E1DCBE88700DAC651 /* RegistrationPhoneInputViewModel.swift */,
 			);
 			name = PhoneInput;
+			path = PhoneInput;
 			sourceTree = "<group>";
 		};
 		88E86DA01DB8E7D8002A7024 /* ServiceSelect */ = {
@@ -792,6 +817,7 @@
 				88E86DA51DB8E800002A7024 /* ServiceSelectViewModel.swift */,
 			);
 			name = ServiceSelect;
+			path = ServiceSelect;
 			sourceTree = "<group>";
 		};
 		88E86DAB1DB8E803002A7024 /* Views */ = {
@@ -801,17 +827,19 @@
 				88E86DA31DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift */,
 			);
 			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		88E86DB11DB91695002A7024 /* OrderManager */ = {
 			isa = PBXGroup;
 			children = (
+				887817871DD903D300A89DEC /* LineItemAttribute.swift */,
+				8872F0BD1DD8D67100E8D9EE /* Order.swift */,
 				8862E6CA1DC8E2C800DDFB00 /* OrderItem.swift */,
 				88E86DB21DB916B3002A7024 /* OrderManager.swift */,
-				8872F0BD1DD8D67100E8D9EE /* Order.swift */,
-				887817871DD903D300A89DEC /* LineItemAttribute.swift */,
 			);
 			name = OrderManager;
+			path = OrderManager;
 			sourceTree = "<group>";
 		};
 		E86E04D5222457AEB97ED2EC /* Frameworks */ = {
@@ -979,7 +1007,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
