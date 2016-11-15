@@ -20,11 +20,13 @@ class OrderConfirmServiceTableViewCellModel: OrderConfirmServiceTableViewCellMod
 
   var clothesIconUrl: URL?
   var clothesTitle: String
+  var clothesPrice: String
   var clothesServices: [Treatment]
 
-  init(orderItem: OrderItem) {
+  init(orderItem: OrderItem, laundry: Laundry) {
     self.clothesIconUrl = URL(string: orderItem.clothesItem.icon)
-    self.clothesTitle = orderItem.clothesItem.name + "× \(orderItem.amount)"
+    self.clothesTitle = orderItem.clothesItem.name + " " + orderItem.priceString(laundry: laundry, 1) + " × \(orderItem.amount)"
+    self.clothesPrice = orderItem.priceString(laundry: laundry)
     self.clothesServices = orderItem.treatments
   }
 

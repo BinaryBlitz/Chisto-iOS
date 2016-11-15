@@ -31,7 +31,7 @@ class ContactFormViewController: UITableViewController {
   let adressHeaderView = ContactFormTableHeaderView.nibInstance()!
   let commentHeaderView = ContactFormTableHeaderView.nibInstance()!
 
-  let maskedPhoneInput = MaskedInput(formattingPattern: "+* (***) *** ∙ ** ∙ **", replacementChar: "*")
+  let maskedPhoneInput = MaskedInput(formattingPattern: "+* *** *** ** **", replacementChar: "*")
 
   enum Sections: Int {
     case contactInfo = 0

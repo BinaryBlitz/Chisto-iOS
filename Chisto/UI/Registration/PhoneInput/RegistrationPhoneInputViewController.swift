@@ -16,7 +16,7 @@ class RegistrationPhoneInputViewController: UIViewController {
   let disposeBag = DisposeBag()
   let viewModel = RegistrationPhoneInputViewModel()
 
-  let maskedPhoneInput = MaskedInput(formattingPattern: "*** *** - ** - **", replacementChar: "*")
+  let maskedPhoneInput = MaskedInput(formattingPattern: " *** ***-**-**", replacementChar: "*")
 
   @IBOutlet weak var phoneInputField: UITextField!
   @IBOutlet weak var sendButton: GoButton!
@@ -24,6 +24,11 @@ class RegistrationPhoneInputViewController: UIViewController {
 
   override func viewDidLoad() {
     hideKeyboardWhenTappedAround()
+    
+    phoneInputField.inputAccessoryView = UIView()
+    phoneInputField.tintColor = UIColor.chsSkyBlue
+    navigationItem.title = viewModel.navigationBarTitle
+    
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconNavbarClose"), style: .plain, target: nil, action: nil)
 
@@ -48,6 +53,11 @@ class RegistrationPhoneInputViewController: UIViewController {
       alertController.addAction(defaultAction)
       self.present(alertController, animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    phoneInputField.becomeFirstResponder()
   }
 
 }

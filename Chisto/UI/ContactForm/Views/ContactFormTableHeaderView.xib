@@ -19,7 +19,7 @@
                     <rect key="frame" x="0.0" y="20" width="333" height="34"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dO-2e-jvs">
-                            <rect key="frame" x="50" y="2" width="283" height="30"/>
+                            <rect key="frame" x="45" y="2" width="288" height="30"/>
                             <color key="tintColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="Контактная информация">
                                 <color key="titleColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -37,7 +37,7 @@
                     <constraints>
                         <constraint firstItem="glB-vu-NaN" firstAttribute="centerY" secondItem="LxB-X4-iIZ" secondAttribute="centerY" id="IOW-ac-iht"/>
                         <constraint firstItem="3dO-2e-jvs" firstAttribute="centerY" secondItem="LxB-X4-iIZ" secondAttribute="centerY" id="JRh-UI-QLf"/>
-                        <constraint firstItem="3dO-2e-jvs" firstAttribute="leading" secondItem="glB-vu-NaN" secondAttribute="trailing" constant="15" id="Sfv-W6-OjW"/>
+                        <constraint firstItem="3dO-2e-jvs" firstAttribute="leading" secondItem="glB-vu-NaN" secondAttribute="trailing" constant="10" id="Sfv-W6-OjW"/>
                         <constraint firstItem="glB-vu-NaN" firstAttribute="leading" secondItem="LxB-X4-iIZ" secondAttribute="leading" constant="15" id="WM9-Fk-AH4"/>
                         <constraint firstAttribute="trailing" secondItem="3dO-2e-jvs" secondAttribute="trailing" id="uim-u9-Hfr"/>
                     </constraints>

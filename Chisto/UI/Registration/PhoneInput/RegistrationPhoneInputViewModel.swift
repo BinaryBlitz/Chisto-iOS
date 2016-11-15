@@ -16,6 +16,7 @@ class RegistrationPhoneInputViewModel {
   let presentCodeInputSection: Observable<RegistrationCodeInputViewModel>
   let sendButtonDidTap = PublishSubject<Void>()
   let phoneText: Variable<String?>
+  let navigationBarTitle = "Регистрация"
 
   init() {
     let phoneText = Variable<String?>(nil)

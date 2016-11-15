@@ -62,7 +62,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
     self.sections = OrderManager.instance.currentOrderItems
       .asDriver(onErrorDriveWith: .empty())
       .map { orderItems in
-        let cellModels = orderItems.map(OrderConfirmServiceTableViewCellModel.init) as [OrderConfirmServiceTableViewCellModelType]
+        let cellModels = orderItems.map { OrderConfirmServiceTableViewCellModel(orderItem: $0, laundry: laundry) } as [OrderConfirmServiceTableViewCellModelType]
         let section = OrderConfirmSectionModel(model: "", items: cellModels)
         return [section]
       }

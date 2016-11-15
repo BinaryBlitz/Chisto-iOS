@@ -37,7 +37,7 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
   var sortButtonDidTap = PublishSubject<Void>()
 
   // Output
-  var navigationBarTitle = "Прачечные"
+  var navigationBarTitle = "Химчистки"
   var sections: Driver<[LaundrySelectSectionModel]>
   var presentOrderConfirmSection: Driver<OrderConfirmViewModel>
   var presentSortSelectSection: Driver<LaundrySortViewModel>

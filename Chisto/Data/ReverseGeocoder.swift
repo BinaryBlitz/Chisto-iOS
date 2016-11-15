@@ -12,7 +12,7 @@ import CoreLocation
 import Alamofire
 import RxSwift
 
-class GeocodingManager {
+class ReverseGeocoder {
 
   static let apiKey = "AIzaSyB0YorJGoVc8pdcnUKbxvwhxLRMzdgKhCs"
 

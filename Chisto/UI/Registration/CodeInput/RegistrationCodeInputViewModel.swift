@@ -17,6 +17,7 @@ class RegistrationCodeInputViewModel {
   let resendLabelText: NSAttributedString
   let codeIsValid: Variable<Bool>
   let code: Variable<String?>
+  let navigationBarTitle = "Регистрация"
   let presentRegistrationScreen: Driver<Void>
 
   init(phoneNumberString: String) {

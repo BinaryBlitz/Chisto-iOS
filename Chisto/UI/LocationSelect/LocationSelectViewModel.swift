@@ -30,7 +30,7 @@ class LocationSelectViewModel: LocationSelectViewModelType {
   var cityLocation = CLLocationCoordinate2D()
   let markerLocation = PublishSubject<CLLocationCoordinate2D>()
 
-  let cityZoom: Float = 10
+  let cityZoom: Float = 15
   let markerZoom: Float = 20
 
   let saveButtonDidDap = PublishSubject<Void>()
@@ -47,7 +47,7 @@ class LocationSelectViewModel: LocationSelectViewModelType {
     self.streetName = streetName
 
     self.popViewContoller = didPickCoordinate.asObservable().flatMap { coordinate in
-      return GeocodingManager.getAdress(coordinate: coordinate).map { adress in
+      return ReverseGeocoder.getAdress(coordinate: coordinate).map { adress in
         if let number = adress?.streetNumber {
           streetNumber.onNext(number)
         }

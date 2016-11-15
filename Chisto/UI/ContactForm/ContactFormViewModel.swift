@@ -79,7 +79,7 @@ class ContactFormViewModel {
     try? uiRealm.write {
       profile.firstName = firstName.value ?? ""
       profile.lastName = lastName.value ?? ""
-      profile.phone = phone.value ?? ""
+      profile.phone = phone.value?.onlyDigits ?? ""
       profile.street = street.value ?? ""
       profile.building = building.value ?? ""
       profile.apartment = apartment.value ?? ""

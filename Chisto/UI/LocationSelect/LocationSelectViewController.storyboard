@@ -12,7 +12,7 @@
         <!--Location Select View Controller-->
         <scene sceneID="uox-Gc-eqh">
             <objects>
-                <viewController id="SN9-hS-Aqo" customClass="LocationSelectViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="SN9-hS-Aqo" customClass="LocationSelectViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2LP-LJ-tEF"/>
                         <viewControllerLayoutGuide type="bottom" id="5Qu-Db-a5s"/>
@@ -68,6 +68,7 @@
                             <constraint firstItem="fSh-h2-lxm" firstAttribute="leading" secondItem="Yu0-IG-Sn5" secondAttribute="leading" id="qs1-aS-lyw"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
                         <outlet property="mapView" destination="fSh-h2-lxm" id="DJG-a4-qaW"/>
                         <outlet property="saveButton" destination="lYV-b4-3eu" id="Zq4-Za-i7v"/>

@@ -79,20 +79,22 @@ class LocationSelectViewController: UIViewController {
   func configureSearch() {
     resultsViewController.delegate = self
     resultsViewController.tableCellBackgroundColor = UIColor.chsWhiteTwo
-
+    definesPresentationContext = true
     searchController = UISearchController(searchResultsController: resultsViewController)
     searchController?.searchResultsUpdater = resultsViewController
-    searchController?.definesPresentationContext = true
-    searchController?.extendedLayoutIncludesOpaqueBars = true
     searchController?.hidesNavigationBarDuringPresentation = false
-    searchController?.dimsBackgroundDuringPresentation = false
+    resultsViewController.extendedLayoutIncludesOpaqueBars = true
+    searchController?.extendedLayoutIncludesOpaqueBars = true
+    searchController?.dimsBackgroundDuringPresentation = true
 
     guard let searchBar = searchController?.searchBar else { return }
 
     searchBar.barTintColor = UIColor.chsSkyBlue
+    searchBar.barStyle = .black
     searchBar.tintColor = UIColor.white
     searchBar.backgroundColor = UIColor.chsSkyBlue
     searchBar.backgroundImage = UIImage()
+    searchBar.searchBarStyle = .minimal
     searchBar.setSearchFieldBackgroundImage(#imageLiteral(resourceName: "searchBarTextBack"), for: .normal)
     searchBar.setImage(#imageLiteral(resourceName: "iconSearch"), for: .search, state: .normal)
     searchBar.setTextColor(color: UIColor.white)

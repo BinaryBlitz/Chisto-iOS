@@ -107,16 +107,17 @@
                             <constraint firstItem="zIQ-E0-bp1" firstAttribute="top" secondItem="pSa-TL-Sfz" secondAttribute="bottom" id="3ll-uV-I8O"/>
                             <constraint firstAttribute="trailing" secondItem="pSa-TL-Sfz" secondAttribute="trailing" id="3r6-DL-cxk"/>
                             <constraint firstItem="TYG-l4-uzm" firstAttribute="top" secondItem="zIQ-E0-bp1" secondAttribute="bottom" id="6Rl-a8-oys"/>
+                            <constraint firstItem="No7-Ao-Srb" firstAttribute="top" secondItem="TYG-l4-uzm" secondAttribute="bottom" id="DLl-tS-A4Q"/>
                             <constraint firstItem="pSa-TL-Sfz" firstAttribute="top" secondItem="Rsb-V2-uhs" secondAttribute="bottom" id="GLp-5f-8ay"/>
                             <constraint firstItem="TYG-l4-uzm" firstAttribute="leading" secondItem="yhS-1a-yda" secondAttribute="leading" id="XfJ-o8-rjO"/>
                             <constraint firstItem="zIQ-E0-bp1" firstAttribute="leading" secondItem="yhS-1a-yda" secondAttribute="leading" id="XyF-w7-4DE"/>
                             <constraint firstItem="pSa-TL-Sfz" firstAttribute="leading" secondItem="yhS-1a-yda" secondAttribute="leading" id="a4O-Th-4le"/>
                             <constraint firstAttribute="trailing" secondItem="TYG-l4-uzm" secondAttribute="trailing" id="bcZ-QZ-ggm"/>
                             <constraint firstAttribute="trailing" secondItem="zIQ-E0-bp1" secondAttribute="trailing" id="jAa-cJ-wg3"/>
-                            <constraint firstItem="No7-Ao-Srb" firstAttribute="top" secondItem="TYG-l4-uzm" secondAttribute="bottom" id="prE-Oh-6z1"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomLayoutGuideConstraint" destination="DLl-tS-A4Q" id="LOd-9f-MRm"/>
                         <outlet property="dataView" destination="pSa-TL-Sfz" id="pMS-Qe-sGI"/>
                         <outlet property="orderCostLabel" destination="4hY-Ln-EBY" id="uwV-1B-Qmi"/>
                         <outlet property="payInCashButton" destination="7aJ-4D-70l" id="MhB-g1-PEy"/>

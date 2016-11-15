@@ -14,14 +14,16 @@ class RegistrationCodeInputViewController: UIViewController {
   let disposeBag = DisposeBag()
   var viewModel: RegistrationCodeInputViewModel? = nil
 
-  let maskedCodeInput = MaskedInput(formattingPattern: "* ∙ * ∙ * ∙ *", replacementChar: "*")
+  let maskedCodeInput = MaskedInput(formattingPattern: "*∙*∙*∙*", replacementChar: "*")
 
   @IBOutlet weak var codeField: UITextField!
   @IBOutlet weak var repeatButton: UIButton!
   @IBOutlet weak var subTitleLabel: UILabel!
 
   override func viewDidLoad() {
+    navigationItem.title = viewModel?.navigationBarTitle
     hideKeyboardWhenTappedAround()
+    codeField.inputAccessoryView = UIView()
 
     subTitleLabel.text = viewModel?.subTitleText
     repeatButton.setAttributedTitle(viewModel?.resendLabelText, for: .normal)

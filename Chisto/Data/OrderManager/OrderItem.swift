@@ -21,12 +21,13 @@ class OrderItem {
     self.amount = amount
   }
 
-  func price(laundry: Laundry) -> Int {
-    return treatments.map { $0.price(laundry: laundry) }.reduce(0, +)
+  func price(laundry: Laundry, _ count: Int? = nil) -> Int {
+    let amount = count ?? self.amount
+    return treatments.map { $0.price(laundry: laundry) }.reduce(0, +) * amount
   }
 
-  func priceString(laundry: Laundry) -> String {
-    let price = self.price(laundry: laundry)
+  func priceString(laundry: Laundry, _ count: Int? = nil) -> String {
+    let price = self.price(laundry: laundry, count)
     return price == 0 ? "Бесплатно" : "\(price) ₽"
   }
 }

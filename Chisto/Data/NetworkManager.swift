@@ -74,7 +74,7 @@ class NetworkManager {
   func doRequest(method: HTTPMethod, _ path: APIPath, _ params: [String: String]? = nil, body: Parameters = [:], encoding: ParameterEncoding = URLEncoding.default) -> Observable<Any> {
       return Observable.create { observer in
         let url = URL(string: self.apiPrefix + "/api/" + path.endpoint)!
-        let req = Alamofire.request(url.appendingQueryParams(parameters: params), method: method, parameters: body, encoding: encoding, headers: nil)
+        let request = Alamofire.request(url.appendingQueryParams(parameters: params), method: method, parameters: body, encoding: encoding, headers: nil)
           .responseJSON { response in
             debugPrint(response)
             if response.response?.statusCode != path.successCode {
@@ -90,7 +90,7 @@ class NetworkManager {
         }
 
         return Disposables.create {
-          req.cancel()
+          request.cancel()
 
         }
       }

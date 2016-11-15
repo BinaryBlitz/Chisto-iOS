@@ -23,16 +23,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vM4-5d-zaK">
-                                <rect key="frame" x="36" y="206" width="303" height="255.5"/>
+                                <rect key="frame" x="36" y="218" width="303" height="231.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите номер вашего телефона" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbd-Mb-6l0">
-                                        <rect key="frame" x="0.0" y="0.0" width="303" height="48"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите номер телефона" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbd-Mb-6l0">
+                                        <rect key="frame" x="0.0" y="0.0" width="303" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLH-ZH-Ug1">
-                                        <rect key="frame" x="42.5" y="78" width="218" height="24"/>
+                                        <rect key="frame" x="62.5" y="54" width="179" height="24"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCU-e6-OkY">
                                                 <rect key="frame" x="0.0" y="0.0" width="25" height="24"/>
@@ -43,8 +43,8 @@
                                                 <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="900 000 - 00 - 00" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="yep-yD-h8j">
-                                                <rect key="frame" x="30" y="0.0" width="188" height="24"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="900 000-00-00" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="yep-yD-h8j">
+                                                <rect key="frame" x="27" y="0.0" width="152" height="24"/>
                                                 <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -52,7 +52,7 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="yep-yD-h8j" firstAttribute="leading" secondItem="WCU-e6-OkY" secondAttribute="trailing" constant="5" id="14H-uX-gG1"/>
+                                            <constraint firstItem="yep-yD-h8j" firstAttribute="leading" secondItem="WCU-e6-OkY" secondAttribute="trailing" constant="2" id="14H-uX-gG1"/>
                                             <constraint firstItem="yep-yD-h8j" firstAttribute="top" secondItem="WLH-ZH-Ug1" secondAttribute="top" id="Eog-o9-NdG"/>
                                             <constraint firstAttribute="bottom" secondItem="WCU-e6-OkY" secondAttribute="bottom" id="YLE-37-HNN"/>
                                             <constraint firstAttribute="trailing" secondItem="yep-yD-h8j" secondAttribute="trailing" id="bbR-mn-MrM"/>
@@ -62,13 +62,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="На этот номер будет отправлен 5-значный код" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUz-4N-F8O">
-                                        <rect key="frame" x="0.0" y="132" width="303" height="33.5"/>
+                                        <rect key="frame" x="0.0" y="108" width="303" height="33.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfF-j1-wvn" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
-                                        <rect key="frame" x="71.5" y="205.5" width="160" height="50"/>
+                                        <rect key="frame" x="71.5" y="181.5" width="160" height="50"/>
                                         <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="NqR-41-l4t"/>

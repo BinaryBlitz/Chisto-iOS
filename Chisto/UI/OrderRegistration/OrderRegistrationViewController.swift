@@ -10,12 +10,14 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import IQKeyboardManagerSwift
 
 class OrderRegistrationViewController: UIViewController {
 
   let disposeBag = DisposeBag()
   let viewModel = OrderRegistrationViewModel()
 
+  @IBOutlet weak var bottomLayoutGuideConstraint: NSLayoutConstraint!
   @IBOutlet weak var dataView: UIView!
   @IBOutlet weak var payWithCardButton: GoButton!
   @IBOutlet weak var payInCashButton: GoButton!
@@ -24,6 +26,7 @@ class OrderRegistrationViewController: UIViewController {
   let contactFormViewController = ContactFormViewController.storyboardInstance()!
 
   override func viewDidLoad() {
+
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconNavbarClose"), style: .plain, target: nil, action: nil)
 
@@ -65,6 +68,13 @@ class OrderRegistrationViewController: UIViewController {
     contactFormViewController.didMove(toParentViewController: self)
     dataView.addSubview(contactFormViewController.view)
     contactFormViewController.view.frame = dataView.bounds
+    
+    IQKeyboardManager.sharedManager().disabledDistanceHandlingClasses.append(ContactFormViewController.self)
+    
+    contactFormViewController.IQLayoutGuideConstraint = bottomLayoutGuideConstraint
+    IQLayoutGuideConstraint = bottomLayoutGuideConstraint
+
+    self.contactFormViewController.apartmentField.keyboardDistanceFromTextField = 8
 
     contactFormViewController.cityButton.isEnabled = false
     contactFormViewController.cityField.textColor = UIColor.chsSilver
