@@ -12,9 +12,11 @@ import UIKit
 import TextFieldEffects
 
 class ContactFormViewController: UITableViewController {
+
   let disposeBag = DisposeBag()
+
   var viewModel: ContactFormViewModel? = nil
-  
+
   @IBOutlet weak var firstNameField: HoshiTextField!
   @IBOutlet weak var lastNameField: HoshiTextField!
   @IBOutlet weak var phoneField: HoshiTextField!
@@ -24,25 +26,25 @@ class ContactFormViewController: UITableViewController {
   @IBOutlet weak var apartmentField: HoshiTextField!
   @IBOutlet weak var commentField: HoshiTextField!
   @IBOutlet weak var cityButton: UIButton!
-  
+
   let contactInfoHeaderView = ContactFormTableHeaderView.nibInstance()!
   let adressHeaderView = ContactFormTableHeaderView.nibInstance()!
   let commentHeaderView = ContactFormTableHeaderView.nibInstance()!
-  
+
   let maskedPhoneInput = MaskedInput(formattingPattern: "+* (***) *** ∙ ** ∙ **", replacementChar: "*")
-  
+
   enum Sections: Int {
     case contactInfo = 0
     case adress
     case comment
   }
-  
+
   override func viewDidLoad() {
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     configureFields()
     configureSections()
   }
-  
+
   func configureFields() {
     guard let viewModel = viewModel else { return }
     (firstNameField.rx.text <-> viewModel.firstName).addDisposableTo(disposeBag)
@@ -53,22 +55,22 @@ class ContactFormViewController: UITableViewController {
     (buildingField.rx.text <-> viewModel.building).addDisposableTo(disposeBag)
     (apartmentField.rx.text <-> viewModel.apartment).addDisposableTo(disposeBag)
     (commentField.rx.text <-> viewModel.comment).addDisposableTo(disposeBag)
-    
+
     maskedPhoneInput.configure(textField: phoneField)
     maskedPhoneInput.isValid.asObservable().bindTo(viewModel.phoneIsValid).addDisposableTo(disposeBag)
-    
+
     cityButton.rx.tap.bindTo(viewModel.cityFieldDidTap).addDisposableTo(disposeBag)
 
   }
-  
+
   func configureSections() {
     guard let viewModel = viewModel else { return }
-    
+
     contactInfoHeaderView.configure(viewModel: viewModel.contactInfoHeaderModel)
     adressHeaderView.configure(viewModel: viewModel.adressHeaderModel)
     commentHeaderView.configure(viewModel: viewModel.commentHeaderModel)
   }
-  
+
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     switch section {
     case Sections.contactInfo.rawValue:
@@ -81,10 +83,9 @@ class ContactFormViewController: UITableViewController {
       return nil
     }
   }
-  
+
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return 40
   }
-  
-  
+
 }

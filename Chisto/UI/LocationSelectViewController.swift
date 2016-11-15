@@ -13,66 +13,69 @@ import GoogleMaps
 import GooglePlaces
 
 class LocationSelectViewController: UIViewController {
+
   let disposeBag = DisposeBag()
-  var viewModel: LocationSelectViewModel? = nil
-  var searchController: UISearchController? = nil
+
   let resultsViewController = GMSAutocompleteResultsViewController()
   let marker = GMSMarker()
+
+  var viewModel: LocationSelectViewModel? = nil
+  var searchController: UISearchController? = nil
 
   @IBOutlet weak var mapView: GMSMapView!
   @IBOutlet weak var saveButton: GoButton!
   @IBOutlet weak var searchView: UIView!
-  
+
   override func viewDidLoad() {
     saveButton.isEnabled = false
-    
+
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconLocation"), style: .plain, target: nil, action: nil)
-    
+
     configureNavigation()
     configureMap()
     configureSearch()
   }
-  
+
   func configureNavigation() {
-    
+
     guard let viewModel = viewModel else { return }
-    
+
     navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.locationButtonDidTap).addDisposableTo(disposeBag)
     navigationItem.rightBarButtonItem?.rx.tap.asDriver().drive(onNext: { [weak self] in
       self?.mapView.isMyLocationEnabled = true
     }).addDisposableTo(disposeBag)
-    
+
     viewModel.popViewContoller.drive(onNext: { [weak self] in
       _ = self?.navigationController?.popViewController(animated: true)
     }).addDisposableTo(disposeBag)
 
   }
-  
+
   func configureMap() {
     mapView.delegate = self
-    
+
     guard let viewModel = viewModel else { return }
-    
+
     mapView.camera = GMSCameraPosition.camera(withLatitude: viewModel.cityLocation.latitude, longitude: viewModel.cityLocation.longitude, zoom: viewModel.cityZoom)
-    
+
     marker.icon = #imageLiteral(resourceName: "iconPoint")
     marker.isDraggable = true
     marker.map = mapView
-    
+
     viewModel.markerLocation.asObservable().subscribe(onNext: { [weak self] location in
       self?.saveButton.isEnabled = true
       self?.marker.position = location
       let cameraUpdate = GMSCameraUpdate.setTarget(location, zoom: viewModel.markerZoom)
       self?.mapView.animate(with: cameraUpdate)
     }).addDisposableTo(disposeBag)
-    
+
     saveButton.rx.tap.asObservable()
       .map { self.marker.position }
       .bindTo(viewModel.didPickCoordinate)
       .addDisposableTo(disposeBag)
 
   }
-  
+
   func configureSearch() {
     resultsViewController.delegate = self
     resultsViewController.tableCellBackgroundColor = UIColor.chsWhiteTwo
@@ -83,9 +86,9 @@ class LocationSelectViewController: UIViewController {
     searchController?.extendedLayoutIncludesOpaqueBars = true
     searchController?.hidesNavigationBarDuringPresentation = false
     searchController?.dimsBackgroundDuringPresentation = false
-    
+
     guard let searchBar = searchController?.searchBar else { return }
-    
+
     searchBar.barTintColor = UIColor.chsSkyBlue
     searchBar.tintColor = UIColor.white
     searchBar.backgroundColor = UIColor.chsSkyBlue
@@ -94,10 +97,11 @@ class LocationSelectViewController: UIViewController {
     searchBar.setImage(#imageLiteral(resourceName: "iconSearch"), for: .search, state: .normal)
     searchBar.setTextColor(color: UIColor.white)
     searchBar.searchTextPositionAdjustment = UIOffsetMake(5.0, 0.0)
-    
+
     searchBar.sizeToFit()
     searchView.addSubview(searchBar)
   }
+
 }
 
 extension LocationSelectViewController: GMSAutocompleteResultsViewControllerDelegate {
@@ -106,7 +110,7 @@ extension LocationSelectViewController: GMSAutocompleteResultsViewControllerDele
     searchController?.isActive = false
     viewModel?.markerLocation.onNext(place.coordinate)
   }
-  
+
   func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                          didFailAutocompleteWithError error: Error){
     let alertController = UIAlertController(title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert)
@@ -115,7 +119,6 @@ extension LocationSelectViewController: GMSAutocompleteResultsViewControllerDele
     self.present(alertController, animated: true, completion: nil)
 
   }
- 
 }
 
 extension LocationSelectViewController: GMSMapViewDelegate {
@@ -123,4 +126,3 @@ extension LocationSelectViewController: GMSMapViewDelegate {
     viewModel?.markerLocation.onNext(coordinate)
   }
 }
-

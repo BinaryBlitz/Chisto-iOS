@@ -11,14 +11,17 @@ import RxSwift
 import RxCocoa
 
 class OrderPlacedPopupViewModel {
+
   let disposeBag = DisposeBag()
+
   let continueButtonDidTap = PublishSubject<Void>()
   let dismissViewController: Driver<Void>
   let dismissParentViewController = PublishSubject<Void>()
   let orderNumber: String
-  
+
   init(orderNumber: String) {
     self.orderNumber = "№ " + orderNumber
     self.dismissViewController = continueButtonDidTap.asDriver(onErrorDriveWith: .empty())
   }
+
 }

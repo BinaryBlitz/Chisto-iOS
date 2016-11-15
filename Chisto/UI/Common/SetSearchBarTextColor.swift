@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 extension UISearchBar {
-  
+
   func setTextColor(color: UIColor) {
     for subview in self.subviews {
       for secondLevelSubview in subview.subviews {
@@ -22,7 +22,7 @@ extension UISearchBar {
 
         searchBarTextField.attributedPlaceholder = placeholder
         searchBarTextField.textColor = color
-        
+
         break
       }
     }

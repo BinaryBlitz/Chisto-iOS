@@ -17,15 +17,17 @@ protocol ServiceSelectTableViewCellModelType {
 }
 
 class ServiceSelectTableViewCellModel: ServiceSelectTableViewCellModelType {
+
   var isSelected: Bool
   var serviceTitle: String
   var serviceDescription: String
   var color: UIColor
-  
+
   init(treatment: Treatment, isSelected: Bool) {
     self.serviceTitle = treatment.name
     self.serviceDescription = treatment.descriptionText
     self.color = UIColor.chsRosePink
     self.isSelected = isSelected
   }
+
 }

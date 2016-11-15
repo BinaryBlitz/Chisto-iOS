@@ -18,13 +18,15 @@ protocol ItemInfoTableViewCellModelType {
 }
 
 class ItemInfoTableViewCellModel: ItemInfoTableViewCellModelType {
+
   var serviceTitle: String
   var serviceDescription: String
   var countText: String
-  
+
   init(treatment: Treatment, count: Int) {
     self.serviceTitle = treatment.name
     self.serviceDescription = treatment.descriptionText
     self.countText = String(count + 1)
   }
+
 }

@@ -16,7 +16,7 @@ typealias CategoriesSectionModel = SectionModel<String, CategoryTableViewCellMod
 protocol CategoriesViewModelType {
   // Input
   var itemDidSelect: PublishSubject<IndexPath> { get }
-  
+
   // Output
   var navigationBarTitle: String { get }
   var sections: Driver<[CategoriesSectionModel]> { get }
@@ -24,41 +24,41 @@ protocol CategoriesViewModelType {
 }
 
 class CategoriesViewModel: CategoriesViewModelType {
-  
+
   private let disposeBag = DisposeBag()
-  
+
   // Input
   var itemDidSelect = PublishSubject<IndexPath>()
-  
+
   // Output
   var navigationBarTitle: String
   var sections: Driver<[CategoriesSectionModel]>
   var presentItemsSection: Driver<SelectClothesViewModel>
-  
-  
+
+
   // Data
   var categories: Variable<[Category]>
-  
+
   init() {
     self.navigationBarTitle = "Выбор вещи"
     // Data
     DataManager.instance.fetchCategories().subscribe().addDisposableTo(disposeBag)
     let categories = Variable<[Category]>([])
-    
+
     Observable.from(uiRealm.objects(Category.self))
       .map { Array($0) }
       .bindTo(categories)
       .addDisposableTo(disposeBag)
-    
+
     self.categories = categories
-    
+
     self.sections = categories.asDriver().map { categories in
       let cellModels = categories.map(CategoryTableViewCellModel.init) as [CategoryTableViewCellModelType]
-      
+
       let section = CategoriesSectionModel(model: "", items: cellModels)
       return [section]
     }
-    
+
     self.presentItemsSection = itemDidSelect.asObservable().map { indexPath in
       let category = categories.value[indexPath.row]
       return SelectClothesViewModel(category: category)

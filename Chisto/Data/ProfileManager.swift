@@ -13,9 +13,9 @@ class ProfileManager {
 
   static let instance = ProfileManager()
   private let profileKey = "profileId"
-  
+
   let userProfile: Profile?
-    
+
   func updateProfile(closure: ((Profile) -> Void)) {
     guard let profile = userProfile else { return }
 
@@ -23,13 +23,13 @@ class ProfileManager {
       closure(profile)
     }
   }
-  
+
   init() {
     if let profileId = UserDefaults.standard.value(forKey: profileKey) {
       self.userProfile = uiRealm.object(ofType: Profile.self, forPrimaryKey: profileId)
       return
     }
-    
+
     let profile = Profile()
 
     try! uiRealm.write {

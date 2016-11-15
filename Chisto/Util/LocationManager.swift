@@ -12,29 +12,30 @@ import RxSwift
 import CoreLocation
 
 class LocationManager {
-  
+
   static let instance = LocationManager()
+  private let locationManager = CLLocationManager()
+
   private (set) var autorized: Driver<Bool>
   private (set) var location: Observable<CLLocationCoordinate2D?>
-  
-  private let locationManager = CLLocationManager()
-  
+
+
   private init() {
     locationManager.distanceFilter = kCLDistanceFilterNone
     locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    
+
     autorized = locationManager.rx
       .didChangeAuthorizationStatus
       .startWith(CLLocationManager.authorizationStatus())
       .asDriver(onErrorJustReturn: CLAuthorizationStatus.notDetermined)
       .map { $0 == .authorizedAlways || $0 == .authorizedWhenInUse }
-  
+
     location = locationManager.rx
       .didUpdateLocations
       .filter { $0.count > 0 }
       .map { $0.last!.coordinate }
   }
-  
+
   func locateDevice() -> Observable<CLLocationCoordinate2D?> {
     locationManager.requestWhenInUseAuthorization()
     locationManager.startUpdatingLocation()
@@ -44,7 +45,6 @@ class LocationManager {
       .do(onCompleted: { [weak self] in
         self?.locationManager.stopUpdatingLocation()
       })
-    
   }
 
 }

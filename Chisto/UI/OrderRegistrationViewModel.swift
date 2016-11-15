@@ -12,8 +12,10 @@ import RxSwift
 import RxCocoa
 
 class OrderRegistrationViewModel {
+
   let disposeBag = DisposeBag()
   let formViewModel: ContactFormViewModel
+
   let buttonsAreEnabled = Variable(false)
   let orderCost: String
   let dismissViewController: PublishSubject<Void>
@@ -22,28 +24,28 @@ class OrderRegistrationViewModel {
   let payInCashButtonDidTap = PublishSubject<Void>()
   let payWithCreditCardButtonDidTap = PublishSubject<Void>()
   let presentOrderPlacedPopup: Driver<OrderPlacedPopupViewModel>
-  
+
   init() {
     let cityDidSelect = PublishSubject<Void>()
     self.cityDidSelect = cityDidSelect
-    
+
     let dismissViewController = PublishSubject<Void>()
     self.dismissViewController = dismissViewController
-    
+
     cityDidSelect.bindTo(dismissViewController).addDisposableTo(disposeBag)
-    
+
     let formViewModel = ContactFormViewModel()
     self.formViewModel = formViewModel
-    
+
     self.orderCost = OrderManager.instance.priceForCurrentLaundryString
-    
+
     self.presentLocationSelectSection = formViewModel.locationHeaderButtonDidTap.map {
       let viewModel = LocationSelectViewModel()
       viewModel.streetName.bindTo(formViewModel.street).addDisposableTo(viewModel.disposeBag)
       viewModel.streetNumber.bindTo(formViewModel.building).addDisposableTo(viewModel.disposeBag)
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
-    
+
     self.presentOrderPlacedPopup = Observable.of(payWithCreditCardButtonDidTap.asObservable(), payInCashButtonDidTap.asObservable()).merge()
       .asDriver(onErrorDriveWith: .empty())
       .flatMap { _ -> Driver<OrderPlacedPopupViewModel> in
@@ -58,6 +60,6 @@ class OrderRegistrationViewModel {
       }
 
     formViewModel.isValid.asObservable().bindTo(buttonsAreEnabled).addDisposableTo(disposeBag)
-
   }
+
 }

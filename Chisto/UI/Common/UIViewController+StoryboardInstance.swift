@@ -14,7 +14,7 @@ extension UIViewController {
     let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
     return storyboard.instantiateInitialViewController() as? T
   }
-  
+
   class func storyboardInstance() -> Self? {
     return getStoryboardInstance()
   }

@@ -19,7 +19,7 @@ class Item: ServerObjct {
 
   let treatments = LinkingObjects(fromType: Treatment.self, property: "item")
   var category: Category? = nil
-  
+
   override func mapping(map: Map) {
     super.mapping(map: map)
 

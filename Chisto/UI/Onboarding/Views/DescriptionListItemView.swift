@@ -9,15 +9,15 @@
 import UIKit
 
 class DescriptionListItemView: UIView {
-  
+
   @IBOutlet weak var countImageView: UIImageView!
-  
+
   @IBOutlet weak var descriptionLabel: UILabel!
-  
+
   func configure(countImage: UIImage, information: String) {
     countImageView.image = countImage
     descriptionLabel.text = information
     descriptionLabel.sizeToFit()
   }
-  
+
 }

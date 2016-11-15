@@ -22,10 +22,10 @@ protocol LaundrySelectTableViewCellModelType {
   var courierItemViewModel: LaundryItemInfoViewModel { get }
   var deliveryItemViewModel: LaundryItemInfoViewModel { get }
   var costItemViewModel: LaundryItemInfoViewModel { get }
-
 }
 
 class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
+
   let laundryTitle: String
   let laundryDescription: String
   let rating: Float
@@ -37,23 +37,21 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
   var deliveryItemViewModel: LaundryItemInfoViewModel
   var costItemViewModel: LaundryItemInfoViewModel
 
-  
   init(laundry: Laundry) {
     self.laundryTitle = laundry.name
     self.laundryDescription = laundry.descriptionText
     self.rating = laundry.rating
     self.logoUrl = URL(string: laundry.logoUrl)
-    
-    
+
     let courierDateString = Date(timeIntervalSince1970: laundry.courierDate).shortDate
     self.courierItemViewModel = LaundryItemInfoViewModel(type: .courier, titleText: courierDateString, subTitleText: laundry.courierPriceString)
-    
+
     let deliveryDateString = Date(timeIntervalSince1970: laundry.deliveryDate).shortDate
     self.deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: deliveryDateString, subTitleText: laundry.deliveryTimeInterval)
-    
+
     let costString = OrderManager.instance.priceString(laundry: laundry)
     self.costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: costString)
-    
+
     if let type = laundry.type {
       switch type {
       case .cheap:
@@ -69,7 +67,6 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
     } else {
       self.tagIsHidden = false
     }
-    
   }
-  
+
 }

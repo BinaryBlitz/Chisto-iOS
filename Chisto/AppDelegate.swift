@@ -19,9 +19,10 @@ let uiRealm = try! Realm()
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
+
   let googlePlacesApiKey = "AIzaSyCq77FZeOGLaYpUpuhHbD0_x_3PFlkURFo"
   let googleMapsApiKey = "AIzaSyAL0CZs1iU-NhOfNhKxaLhuCL2Dud1b1Ak"
-  
+
   func application(_ application: UIApplication, didFinishLaunchingWithOptions
     launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
@@ -40,20 +41,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     return true
   }
-  
+
   func applicationWillResignActive(_ application: UIApplication) {
   }
-  
+
   func applicationDidEnterBackground(_ application: UIApplication) {
   }
-  
+
   func applicationWillEnterForeground(_ application: UIApplication) {
   }
-  
+
   func applicationDidBecomeActive(_ application: UIApplication) {
   }
-  
+
   func applicationWillTerminate(_ application: UIApplication) {
   }
-  
+
 }

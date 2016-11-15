@@ -11,27 +11,26 @@ import Kingfisher
 import UIKit
 
 class CategoryTableViewCell: UITableViewCell {
-  
+
   @IBOutlet weak var categoryIconImageView: UIImageView!
-  
+
   @IBOutlet weak var titleLabel: UILabel!
-  
+
   @IBOutlet weak var descriptionLabel: UILabel!
-  
+
   func configure(viewModel: CategoryTableViewCellModelType) {
     categoryIconImageView.kf.setImage(with: viewModel.iconUrl)
     titleLabel.text = viewModel.titleText
     descriptionLabel.attributedText = viewModel.subTitletext
   }
-  
+
   override func awakeFromNib() {
     super.awakeFromNib()
     backgroundColor = UIColor.chsWhite
   }
-  
+
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
-    
   }
-  
+
 }

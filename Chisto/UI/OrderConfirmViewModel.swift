@@ -18,7 +18,7 @@ protocol OrderConfirmViewModelType {
   // Input
   var itemDidSelect: PublishSubject<IndexPath> { get }
   var confirmOrderButtonDidTap: PublishSubject<Void> { get }
-  
+
   // Output
   var navigationBarTitle: String { get }
   var laundryDescriprionTitle: String { get }
@@ -29,15 +29,16 @@ protocol OrderConfirmViewModelType {
   var laundryBackground: URL? { get }
   var sections: Driver<[OrderConfirmSectionModel]> { get }
   var presentRegistrationSection: Driver<Void> { get }
-  
 }
 
 class OrderConfirmViewModel: OrderConfirmViewModelType {
-  // Input
+
   let disposeBag = DisposeBag()
+
+  // Input
   var itemDidSelect = PublishSubject<IndexPath>()
   var confirmOrderButtonDidTap = PublishSubject<Void>()
-  
+
   // Output
   var navigationBarTitle: String
   var laundryDescriprionTitle: String
@@ -49,7 +50,6 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   var sections: Driver<[OrderConfirmSectionModel]>
   var presentRegistrationSection: Driver<Void>
 
-  
   init(laundry: Laundry) {
     self.navigationBarTitle = laundry.name
     self.laundryDescriprionTitle = laundry.descriptionText
@@ -58,7 +58,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
     self.laundryBackground = URL(string: laundry.backgroundImageUrl)
     self.courierDate = Date(timeIntervalSince1970: laundry.courierDate).shortDate
     self.deliveryDate = Date(timeIntervalSince1970: laundry.deliveryDate).shortDate
-    
+
     self.sections = OrderManager.instance.currentOrderItems
       .asDriver(onErrorDriveWith: .empty())
       .map { orderItems in
@@ -66,12 +66,12 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
         let section = OrderConfirmSectionModel(model: "", items: cellModels)
         return [section]
       }
-    
+
     self.presentRegistrationSection = confirmOrderButtonDidTap.asDriver(onErrorDriveWith: .empty())
-    
+
     confirmOrderButtonDidTap.asDriver(onErrorDriveWith: .empty()).drive(onNext: {
       OrderManager.instance.currentLaundry = laundry
     }).addDisposableTo(disposeBag)
-    
   }
+
 }

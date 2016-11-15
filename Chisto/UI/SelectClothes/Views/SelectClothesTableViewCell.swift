@@ -15,17 +15,15 @@ import Kingfisher
 import UIKit
 
 class SelectClothesTableViewCell: UITableViewCell {
-  
+
   @IBOutlet weak var clothesIconImageView: UIImageView!
-  
   @IBOutlet weak var titleLabel: UILabel!
-  
   @IBOutlet weak var descriptionLabel: UILabel!
-  
+
   func configure(viewModel: SelectClothesTableViewCellModelType) {
     clothesIconImageView.kf.setImage(with: viewModel.iconUrl)
     titleLabel.text = viewModel.titleText
     descriptionLabel.attributedText = viewModel.subTitletext
   }
-  
+
 }

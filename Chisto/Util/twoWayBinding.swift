@@ -21,6 +21,6 @@ func <-> <T>(property: ControlProperty<T>, variable: Variable<T>) -> Disposable 
     }, onCompleted:  {
       bindToUIDisposable.dispose()
     })
-  
+
   return Disposables.create(bindToUIDisposable, bindToVariable)
 }

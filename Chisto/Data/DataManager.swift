@@ -19,7 +19,7 @@ enum DataError: Error, CustomStringConvertible {
   case responseConvertError
   case unknownApiPath
   case unknown
-  
+
   var description: String {
     switch self {
     case .network(let error):
@@ -47,9 +47,9 @@ class DataManager {
   var apiToken = "foobar"
   var verificationToken: String? = nil
   let networkManager = NetworkManager()
-  
+
   func fetchItems<ItemType>(type: ItemType.Type, apiPath: APIPath, _ modifier: @escaping (ItemType) -> Void = {_ in }) -> Observable<Void> where ItemType: ServerObjct {
-    
+
     return networkManager.doRequest(method: .get, apiPath, ["api_token": apiToken])
       .catchError { error in
         guard error is NetworkError else { return Observable.error(DataError.unknown) }
@@ -60,20 +60,20 @@ class DataManager {
         guard let items = Mapper<ItemType>().mapArray(JSONObject: itemsJSON) else {
           return Observable.error(DataError.responseConvertError)
         }
-        
+
         let realm = try! Realm()
-        
+
         try realm.write {
           for item in items {
             modifier(item)
             realm.add(item, update: true)
           }
         }
-        
+
         return Observable.empty()
       }
   }
-  
+
   func createVerificationToken(phone: String) -> Observable<Void> {
     return networkManager
       .doRequest(method: .post, .createVerificationToken, ["phone_number": phone])
@@ -88,7 +88,7 @@ class DataManager {
         return Observable.just()
       }
   }
-  
+
   func verifyToken(code: String) -> Observable<Void> {
     guard let verificationToken = self.verificationToken else { return Observable.error(DataError.unknown) }
 
@@ -108,15 +108,15 @@ class DataManager {
 
 
 extension DataManager: DataManagerServiceType {
-  
+
   func fetchCities() -> Observable<Void> {
     return fetchItems(type: City.self, apiPath: .fetchCities)
   }
-  
+
   func fetchCategories() -> Observable<Void> {
     return fetchItems(type: Category.self, apiPath: .fetchCategories)
   }
-  
+
   func fetchCategoryClothes(category: Category) -> Observable<Void> {
     return fetchItems(
         type: Item.self, apiPath: .fetchCategoryClothes(categoryId: category.id)
@@ -124,19 +124,19 @@ extension DataManager: DataManagerServiceType {
         item.category = category
       }
   }
-  
+
   func fetchClothesTreatments(item: Item) -> Observable<Void> {
     return fetchItems(type: Treatment.self, apiPath: .fetchClothesTreatments(itemId: item.id)) { treatment in
       treatment.item = item
     }
   }
-  
+
   func fetchLaundries() -> Observable<Void> {
     guard let cityId = ProfileManager.instance.userProfile?.city?.id else { return Observable.error(DataError.unknown) }
 
     return fetchItems(type: Laundry.self, apiPath: .fetchCityLaundries(cityId: cityId))
   }
-  
+
   func placeOrder(order: Order, laundry: Laundry) -> Observable<Int> {
     let orderJSON = order.toJSON()
 

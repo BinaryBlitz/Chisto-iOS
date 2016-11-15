@@ -19,7 +19,7 @@ class Order: Mappable {
   var notes: String? = nil
   var email: String? = "foo@bar.com"
   var lineItemsArttributes: [LineItemAttribute] = []
-  
+
   init(profile: Profile) {
     apartmentNumber = profile.apartment
     houseNumber = profile.building
@@ -27,7 +27,7 @@ class Order: Mappable {
     contactNumber = profile.phone
     streetName = profile.street
   }
-  
+
   required init(map: Map) {}
 
   func mapping(map: Map) {
@@ -39,5 +39,5 @@ class Order: Mappable {
     email <- map["email"]
     lineItemsArttributes <- map["line_items_attributes"]
   }
-  
+
 }

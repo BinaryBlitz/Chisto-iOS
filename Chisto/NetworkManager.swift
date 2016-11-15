@@ -20,7 +20,7 @@ enum APIPath {
   case createVerificationToken
   case verifyToken(token: String)
   case placeOrder(laundryId: Int)
-  
+
   var endpoint: String {
     switch self {
     case .fetchCities:
@@ -41,7 +41,7 @@ enum APIPath {
       return "laundries/\(laundryId)/orders.json"
     }
   }
-  
+
   var successCode: Int {
     switch self {
     case .placeOrder, .createVerificationToken:
@@ -55,7 +55,7 @@ enum APIPath {
 enum NetworkError: Error, CustomStringConvertible {
   case unknown(description: String)
   case serverUnavaliable
-  
+
   var description: String {
     switch self {
     case .unknown(let description):
@@ -64,13 +64,13 @@ enum NetworkError: Error, CustomStringConvertible {
       return "Сервер недоступен"
     }
   }
-  
+
 }
 
 class NetworkManager {
-  
+
   var apiPrefix = "https://chisto-staging.herokuapp.com"
-  
+
   func doRequest(method: HTTPMethod, _ path: APIPath, _ params: [String: String]? = nil, body: Parameters = [:], encoding: ParameterEncoding = URLEncoding.default) -> Observable<Any> {
       return Observable.create { observer in
         let url = URL(string: self.apiPrefix + "/api/" + path.endpoint)!
@@ -88,10 +88,10 @@ class NetworkManager {
               observer.onError(NetworkError.unknown(description: "Unexpected response format"))
             }
         }
-        
+
         return Disposables.create {
           req.cancel()
-          
+
         }
       }
   }

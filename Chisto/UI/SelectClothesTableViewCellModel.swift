@@ -20,10 +20,11 @@ protocol SelectClothesTableViewCellModelType {
 
 
 class SelectClothesTableViewCellModel: SelectClothesTableViewCellModelType {
+
   // Input
   var navigationAddButtonDidTap = PublishSubject<Void>()
   var emptyOrderAddButtonDidTap = PublishSubject<Void>()
-  
+
   // Output
   var titleText: String
   var subTitletext: NSAttributedString
@@ -32,8 +33,8 @@ class SelectClothesTableViewCellModel: SelectClothesTableViewCellModelType {
   init(item: Item) {
     self.titleText = item.name
     self.subTitletext = NSAttributedString(string: item.descriptionText)
-    
+
     self.iconUrl = URL(string: item.icon)
   }
-  
+
 }

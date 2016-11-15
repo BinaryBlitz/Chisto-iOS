@@ -18,9 +18,8 @@ protocol OrderTableViewCellModelType {
   var servicesText: NSAttributedString { get }
   var iconUrl: URL? { get }
   var amountText: NSAttributedString { get }
-  
+
   // Input
-  
 }
 
 
@@ -30,29 +29,29 @@ class OrderTableViewCellModel: OrderTableViewCellModelType {
   let servicesText: NSAttributedString
   let iconUrl: URL?
   let amountText: NSAttributedString
-  
+
   init(item: OrderItem) {
     self.itemTitleText = item.clothesItem.name
-    
+
     let servicesAttrString = NSMutableAttributedString()
-    
+
     for (index, service) in item.treatments.enumerated() {
       servicesAttrString.append(NSAttributedString(string: service.name, attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey]))
       if index != item.treatments.count - 1 {
         servicesAttrString.append(NSAttributedString(string: " • ", attributes: [NSForegroundColorAttributeName: UIColor.chsSilver]))
       }
     }
-  
+
     self.servicesText = servicesAttrString
-    
+
     let amountText = NSMutableAttributedString()
     amountText.append(NSAttributedString(string: "× ", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 24)]))
     amountText.append(NSAttributedString(string: "\(item.amount)"))
     amountText.append(NSAttributedString(string: " шт", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)]))
-    
+
     self.amountText = amountText
-    
+
     self.iconUrl = URL(string: item.clothesItem.icon)
   }
-  
+
 }

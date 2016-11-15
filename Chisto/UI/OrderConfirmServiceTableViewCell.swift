@@ -10,25 +10,26 @@ import UIKit
 import Kingfisher
 
 class OrderConfirmServiceTableViewCell: UITableViewCell {
+
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var iconView: UIImageView!
-  
+
   func configure(viewModel: OrderConfirmServiceTableViewCellModelType) {
     self.iconView.kf.setImage(with: viewModel.clothesIconUrl)
-    
+
     let headerItemView = OrderConfirmServiceItemView.nibInstance()!
     headerItemView.leftLabel.text = viewModel.clothesTitle
     headerItemView.font = UIFont.chsLabelFont
     headerItemView.textColor = UIColor.black
     stackView.addArrangedSubview(headerItemView)
-    
+
     for service in viewModel.clothesServices {
       let view = OrderConfirmServiceItemView.nibInstance()!
       view.leftLabel.text = service.name
       stackView.addArrangedSubview(view)
     }
   }
-  
+
   override func prepareForReuse() {
     super.prepareForReuse()
     for view in stackView.arrangedSubviews {

@@ -21,10 +21,10 @@ class LaundryItemInfoViewModel {
   let titleText: String
   let subTitleText: String?
   let type: LaundryItemInfoType
-  
+
   init(type: LaundryItemInfoType, titleText: String, subTitleText: String? = nil) {
     self.type = type
-    
+
     switch type {
     case .courier:
       self.icon = #imageLiteral(resourceName: "iconSmallCourier")
@@ -36,9 +36,9 @@ class LaundryItemInfoViewModel {
       self.icon = #imageLiteral(resourceName: "iconSmallCost")
       self.headerText = "Стоимость"
     }
-    
+
     self.titleText = titleText
     self.subTitleText = subTitleText
-    
+
   }
 }

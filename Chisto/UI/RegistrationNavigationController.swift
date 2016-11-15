@@ -10,6 +10,4 @@ import Foundation
 import UIKit
 import RxSwift
 
-class RegistrationNavigationController: ChistoNavigationController {
-  
-}
+class RegistrationNavigationController: ChistoNavigationController {}

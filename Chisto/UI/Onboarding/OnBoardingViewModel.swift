@@ -12,7 +12,7 @@ import RxCocoa
 
 protocol OnBoardingViewModelType {
   var goButtonDidTap: PublishSubject<Void> { get }
-  
+
   var presentCitySelectSection: Driver<CitySelectViewModel> { get }
   var dismissViewController: Driver<Void> { get }
 }
@@ -20,15 +20,15 @@ protocol OnBoardingViewModelType {
 class OnBoardingViewModel {
   var goButtonDidTap = PublishSubject<Void>()
   var cityDidSelected: PublishSubject<Void>
-  
+
   var presentCitySelectSection: Driver<CitySelectViewModel>
   var dismissViewController: Driver<Void>
-  
+
   init() {
     let cityDidSelected = PublishSubject<Void>()
     self.cityDidSelected = cityDidSelected
     self.dismissViewController = cityDidSelected.asDriver(onErrorDriveWith: .empty())
-    
+
     self.presentCitySelectSection = goButtonDidTap.asObservable().map {
       let viewModel = CitySelectViewModel()
       viewModel.itemDidSelect.asObservable().map{ _ in Void() }

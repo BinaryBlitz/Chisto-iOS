@@ -11,21 +11,21 @@ import UIKit
 import Kingfisher
 
 class OrderTableViewCell: UITableViewCell {
-  
+
   @IBOutlet weak var categoryIconImageView: UIImageView!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var servicesLabel: UILabel!
   @IBOutlet weak var amountLabel: UILabel!
-  
+
   func configure(viewModel: OrderTableViewCellModelType) {
     categoryIconImageView.kf.setImage(with: viewModel.iconUrl)
     titleLabel.text = viewModel.itemTitleText
     servicesLabel.attributedText = viewModel.servicesText
     amountLabel.attributedText = viewModel.amountText
   }
-  
+
   override func awakeFromNib() {
     super.awakeFromNib()
   }
-  
+
 }

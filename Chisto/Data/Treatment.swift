@@ -36,5 +36,5 @@ class Treatment: ServerObjct {
 
     return price == 0 ? "Бесплатно" : "\(price) ₽"
   }
-  
+
 }

@@ -15,14 +15,17 @@ protocol OrderConfirmServiceTableViewCellModelType {
   var clothesServices: [Treatment] { get }
 
 }
+
 class OrderConfirmServiceTableViewCellModel: OrderConfirmServiceTableViewCellModelType {
+
   var clothesIconUrl: URL?
   var clothesTitle: String
   var clothesServices: [Treatment]
-  
+
   init(orderItem: OrderItem) {
     self.clothesIconUrl = URL(string: orderItem.clothesItem.icon)
     self.clothesTitle = orderItem.clothesItem.name + "× \(orderItem.amount)"
     self.clothesServices = orderItem.treatments
   }
+
 }

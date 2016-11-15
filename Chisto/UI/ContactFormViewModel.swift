@@ -25,11 +25,13 @@ protocol ContactFormViewModelType {
 }
 
 class ContactFormViewModel {
+
   let disposeBag = DisposeBag()
+
   let contactInfoHeaderModel = ContactFormTableHeaderViewModel(title: "Контактная информация", icon: #imageLiteral(resourceName: "iconSmallUser"))
   let adressHeaderModel = ContactFormTableHeaderViewModel(title: "Адрес доставки", icon: #imageLiteral(resourceName: "iconSmallAddress"), isEnabledButton: true)
   let commentHeaderModel = ContactFormTableHeaderViewModel(title: "Комментарии к заказу", icon: #imageLiteral(resourceName: "iconSmallComment"))
-  
+
   var city: Variable<String?>
   var firstName: Variable<String?>
   var lastName: Variable<String?>
@@ -40,11 +42,10 @@ class ContactFormViewModel {
   var comment = Variable<String?>(nil)
   var phoneIsValid = Variable<Bool>(false)
   var isValid = Variable<Bool>(false)
-  
+
   var cityFieldDidTap = PublishSubject<Void>()
-  
   var locationHeaderButtonDidTap = PublishSubject<Void>()
-  
+
   init() {
     let profile = ProfileManager.instance.userProfile
     self.firstName = Variable(profile?.firstName)
@@ -54,25 +55,25 @@ class ContactFormViewModel {
     self.street = Variable(profile?.street)
     self.building = Variable(profile?.building)
     self.apartment = Variable(profile?.apartment)
-    
+
     let contactInfoIsValid = Observable.combineLatest(firstName.asObservable(), lastName.asObservable(), phoneIsValid.asObservable()) { firstName, lastName, phoneIsValid -> Bool in
       guard let firstName = firstName, let lastName = lastName else { return false }
-      
+
       return phoneIsValid && firstName.characters.count > 0 && lastName.characters.count > 0
-      
+
     }
-    
+
     let adressIsValid = Observable.combineLatest(street.asObservable(), building.asObservable(), apartment.asObservable()) { street, building, apartment -> Bool in
       guard let street = street, let building = building, let apartment = apartment else { return false }
       return street.characters.count > 0 && building.characters.count > 0 && apartment.characters.count > 0
-      
+
     }
-    
+
     Observable.combineLatest(contactInfoIsValid, adressIsValid) { $0 && $1 }.bindTo(isValid).addDisposableTo(disposeBag)
-    
+
     adressHeaderModel.buttonDidTap.asObservable().bindTo(locationHeaderButtonDidTap).addDisposableTo(disposeBag)
   }
-  
+
   func saveUserProfile() {
     guard let profile = ProfileManager.instance.userProfile else { return }
     try? uiRealm.write {
@@ -84,6 +85,6 @@ class ContactFormViewModel {
       profile.apartment = apartment.value ?? ""
 
     }
-
   }
+
 }

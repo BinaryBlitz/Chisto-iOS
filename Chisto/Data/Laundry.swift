@@ -30,7 +30,7 @@ class Laundry: ServerObjct {
   dynamic var courierPrice: Int = 0
   dynamic var deliveryDate: Double = 0.0
   var treatments = List<LaundryTreatment>()
-  
+
   override func mapping(map: Map) {
     super.mapping(map: map)
     name <- map["name"]
@@ -41,7 +41,7 @@ class Laundry: ServerObjct {
     treatments <- map["laundry_treatments"]
 
   }
-  
+
   var type: LaundryType? {
     guard let category = self.category else { return nil }
     switch category {
@@ -55,9 +55,9 @@ class Laundry: ServerObjct {
       return nil
     }
   }
-  
+
   var courierPriceString: String {
     return courierPrice == 0 ? "Бесплатно" : "\(courierPrice) ₽"
   }
-  
+
 }

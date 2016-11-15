@@ -13,7 +13,7 @@ extension UIView {
     return UINib(nibName: String(describing: self), bundle: nil).instantiate(withOwner: nil, options: nil).first as? T
 
   }
-  
+
   class func nibInstance() -> Self? {
     return getNibInstance()
   }
