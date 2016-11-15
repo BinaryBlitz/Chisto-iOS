@@ -42,6 +42,7 @@ protocol DataManagerServiceType {
 }
 
 class DataManager {
+
   static let instance = DataManager()
   var apiToken = "foobar"
   var verificationToken: String? = nil
@@ -51,15 +52,14 @@ class DataManager {
     
     return networkManager.doRequest(method: .get, apiPath, ["api_token": apiToken])
       .catchError { error in
-        if let error = error as? NetworkError {
-          return Observable.error(DataError.network(error))
-        } else {
-          return Observable.error(DataError.unknown)
-        }
+        guard error is NetworkError else { return Observable.error(DataError.unknown) }
+
+        return Observable.error(DataError.unknown)
       }
       .flatMap { itemsJSON -> Observable<Void> in
-        guard let items = Mapper<ItemType>().mapArray(JSONObject: itemsJSON) else { return Observable.error(
-          DataError.responseConvertError) }
+        guard let items = Mapper<ItemType>().mapArray(JSONObject: itemsJSON) else {
+          return Observable.error(DataError.responseConvertError)
+        }
         
         let realm = try! Realm()
         
@@ -71,34 +71,39 @@ class DataManager {
         }
         
         return Observable.empty()
-    }
-
+      }
   }
   
   func createVerificationToken(phone: String) -> Observable<Void> {
-    return networkManager.doRequest(method: .post, .createVerificationToken, ["phone_number": phone])
-    .flatMap { response -> Observable<Void> in
-      let json = JSON(object: response)
-      // TODO: work with real SMS codes
-      // self.verificationToken = json["token"].stringValue
-      self.verificationToken = "yB9XcdWzvgAUPHzWt4XuySRR"
-      ProfileManager.instance.updateProfile { profile in
-        profile.phone = json["phone_number"].stringValue
+    return networkManager
+      .doRequest(method: .post, .createVerificationToken, ["phone_number": phone])
+      .flatMap { response -> Observable<Void> in
+        let json = JSON(object: response)
+        // TODO: work with real SMS codes
+        // self.verificationToken = json["token"].stringValue
+        self.verificationToken = "yB9XcdWzvgAUPHzWt4XuySRR"
+        ProfileManager.instance.updateProfile { profile in
+          profile.phone = json["phone_number"].stringValue
+        }
+        return Observable.just()
       }
-      return Observable.just()
-    }
   }
   
   func verifyToken(code: String) -> Observable<Void> {
     guard let verificationToken = self.verificationToken else { return Observable.error(DataError.unknown) }
-    return networkManager.doRequest(method: .patch, .verifyToken(token: verificationToken), ["code": code])
+
+    return networkManager.doRequest(
+        method: .patch,
+        .verifyToken(token: verificationToken),
+        ["code": code]
+      )
       .flatMap { response -> Observable<Void> in
         let json = JSON(object: response)
         self.apiToken = json["api_token"].stringValue
         return Observable.just()
-    }
-    
+      }
   }
+
 }
 
 
@@ -113,31 +118,34 @@ extension DataManager: DataManagerServiceType {
   }
   
   func fetchCategoryClothes(category: Category) -> Observable<Void> {
-    return fetchItems(type: Item.self, apiPath: .fetchCategoryClothes(categoryId: category.id)) { item in
-      item.category = category
-    }
+    return fetchItems(
+        type: Item.self, apiPath: .fetchCategoryClothes(categoryId: category.id)
+      ) { item in
+        item.category = category
+      }
   }
   
   func fetchClothesTreatments(item: Item) -> Observable<Void> {
     return fetchItems(type: Treatment.self, apiPath: .fetchClothesTreatments(itemId: item.id)) { treatment in
       treatment.item = item
     }
-    
   }
   
   func fetchLaundries() -> Observable<Void> {
     guard let cityId = ProfileManager.instance.userProfile?.city?.id else { return Observable.error(DataError.unknown) }
+
     return fetchItems(type: Laundry.self, apiPath: .fetchCityLaundries(cityId: cityId))
   }
   
   func placeOrder(order: Order, laundry: Laundry) -> Observable<Int> {
     let orderJSON = order.toJSON()
-    print(orderJSON)
-    return networkManager.doRequest(method: .post, .placeOrder(laundryId: laundry.id),
-                                    ["api_token": apiToken],
-                                    body: ["order": orderJSON], encoding: JSONEncoding.default)
-      .map { result in
-        return JSON(result)["id"].intValue
-    }
+
+    return networkManager.doRequest(
+        method: .post,
+        .placeOrder(laundryId: laundry.id),
+        ["api_token": apiToken],
+        body: ["order": orderJSON], encoding: JSONEncoding.default
+      ).map { result in return JSON(result)["id"].intValue }
   }
+
 }

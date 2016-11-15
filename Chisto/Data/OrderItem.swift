@@ -9,10 +9,12 @@
 import Foundation
 
 class OrderItem {
+
   var id = UUID().uuidString
   var clothesItem: Item
   var treatments: [Treatment]
   var amount: Int
+
   init (clothesItem: Item, treatments: [Treatment] = [], amount: Int = 1) {
     self.clothesItem = clothesItem
     self.treatments = treatments
@@ -20,11 +22,7 @@ class OrderItem {
   }
   
   func price(laundry: Laundry) -> Int {
-    var price = 0
-    for treatment in treatments {
-      price += treatment.price(laundry: laundry)
-    }
-    return price
+    return treatments.map { $0.price(laundry: laundry) }.reduce(0, +)
   }
   
   func priceString(laundry: Laundry) -> String {

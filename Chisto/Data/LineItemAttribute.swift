@@ -10,6 +10,7 @@ import Foundation
 import ObjectMapper
 
 class LineItemAttribute: Mappable {
+
   var laundryTreatmentId: Int!
   var quantity: Int!
   
@@ -18,11 +19,11 @@ class LineItemAttribute: Mappable {
     self.quantity = quantity
   }
   
-  required init(map: Map) {
-  }
+  required init(map: Map) {}
   
   func mapping(map: Map) {
     laundryTreatmentId <- map["laundry_treatment_id"]
     quantity <- map["quantity"]
   }
+
 }

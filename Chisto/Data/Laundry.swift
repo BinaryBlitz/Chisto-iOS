@@ -26,7 +26,7 @@ class Laundry: ServerObjct {
   dynamic var category: String? = nil
   dynamic var backgroundImageUrl: String = ""
   dynamic var logoUrl: String = ""
-  dynamic var deliveryTimeInterval: String = "с 00:00 до 00:00"
+  dynamic var deliveryTimeInterval: String = "с 00:00 до 23:59"
   dynamic var courierPrice: Int = 0
   dynamic var deliveryDate: Double = 0.0
   var treatments = List<LaundryTreatment>()

@@ -13,6 +13,7 @@ import Alamofire
 import RxSwift
 
 class GeocodingManager {
+
   static let apiKey = "AIzaSyB0YorJGoVc8pdcnUKbxvwhxLRMzdgKhCs"
   
   class Adress {
@@ -30,11 +31,13 @@ class GeocodingManager {
     
     var streetNumber: String? {
       guard let component = getComponent(type: "street_number") else { return nil }
+
       return component["long_name"].string
     }
     
     var streetName: String? {
       guard let component = getComponent(type: "route") else { return nil }
+
       return component["long_name"].string
     }
     
@@ -43,31 +46,32 @@ class GeocodingManager {
       self.adressComponents = json["results"].array?[0]["address_components"].array
     }
   }
-  
-  
+
   static func getAdress(coordinate: CLLocationCoordinate2D) -> Observable<Adress?> {
     let params = [
-      "latlng": String(coordinate.latitude) + "," + String(coordinate.longitude),
+      "latlng": "\(String(coordinate.latitude)),\(String(coordinate.longitude))",
       "key": apiKey
     ]
     
     return Observable.create { observer in
-      let req = Alamofire.request("https://maps.googleapis.com/maps/api/geocode/json", method: .get, parameters: params, encoding: URLEncoding.default)
+      let url = "https://maps.googleapis.com/maps/api/geocode/json"
+
+      let request = Alamofire.request(url, parameters: params, encoding: URLEncoding.default)
         .responseJSON { response in
-          if let result = response.result.value {
-            let json = JSON(result)
-            observer.onNext(Adress(json: json))
-            observer.onCompleted()
-          } else {
+          guard let result = response.result.value else {
             observer.onError(DataError.unknown)
+            return
           }
-      }
+
+          let json = JSON(result)
+          observer.onNext(Adress(json: json))
+          observer.onCompleted()
+        }
       
       return Disposables.create {
-        req.cancel()
+        request.cancel()
       }
-      
     }
-
   }
+
 }

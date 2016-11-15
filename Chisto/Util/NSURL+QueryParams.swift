@@ -11,7 +11,8 @@ import Foundation
 extension URL {
   
   func appendingQueryParams(parameters: [String: String]?) -> URL {
-    guard let parameters = parameters,
+    guard
+      let parameters = parameters,
       let urlComponents = NSURLComponents(url: self, resolvingAgainstBaseURL: true) else {
         return self
     }
@@ -19,7 +20,6 @@ extension URL {
     var mutableQueryItems: [URLQueryItem] = urlComponents.queryItems ?? []
     
     mutableQueryItems.append(contentsOf: parameters.map{ URLQueryItem(name: $0, value: $1) })
-    
     urlComponents.queryItems = mutableQueryItems
     
     return urlComponents.url!

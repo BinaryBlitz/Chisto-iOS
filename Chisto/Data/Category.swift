@@ -12,14 +12,17 @@ import Realm
 import ObjectMapper
 
 class Category: ServerObjct {
+
   dynamic var name: String = ""
   dynamic var color: String = ""
   dynamic var icon: String = ""
   dynamic var descriptionText: String = ""
+
   let clothes = LinkingObjects(fromType: Item.self, property: "category")
-  
+
   override func mapping(map: Map) {
     super.mapping(map: map)
+
     name <- map["name"]
     descriptionText <- map["description"]
     icon <- map["icon_url"]

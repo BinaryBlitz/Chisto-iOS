@@ -8,9 +8,10 @@
 //
 
 import CoreLocation
+
 #if !RX_NO_MODULE
-    import RxSwift
-    import RxCocoa
+  import RxSwift
+  import RxCocoa
 #endif
 
 class RxCLLocationManagerDelegateProxy : DelegateProxy

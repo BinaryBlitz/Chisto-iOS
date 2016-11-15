@@ -34,21 +34,17 @@ enum APIPath {
     case .fetchClothesTreatments(let itemId):
       return "items/\(itemId)/treatments.json"
     case .createVerificationToken:
-      return "verification_tokens.jsn"
+      return "verification_tokens.json"
     case .verifyToken(let token):
       return "verification_tokens/\(token).json"
     case .placeOrder(let laundryId):
       return "laundries/\(laundryId)/orders.json"
     }
-    
-    
   }
   
   var successCode: Int {
     switch self {
-    case .placeOrder:
-      return 201
-    case .createVerificationToken:
+    case .placeOrder, .createVerificationToken:
       return 201
     default:
       return 200

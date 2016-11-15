@@ -24,14 +24,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions
     launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    Fabric.with([Crashlytics.self])
+
+    // Status bar style
     UIApplication.shared.statusBarStyle = .lightContent
-    
+
+    // Fabric
+    Fabric.with([Crashlytics.self])
+
+    // Google Maps & Google Places
     GMSServices.provideAPIKey(googleMapsApiKey)
     GMSPlacesClient.provideAPIKey(googlePlacesApiKey)
+
+    // IQKeyboardManager
     IQKeyboardManager.sharedManager().enable = true
+
     return true
-    
   }
   
   func applicationWillResignActive(_ application: UIApplication) {
@@ -48,6 +55,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func applicationWillTerminate(_ application: UIApplication) {
   }
-  
   
 }
