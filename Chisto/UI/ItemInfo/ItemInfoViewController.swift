@@ -32,9 +32,10 @@ class ItemInfoViewController: UIViewController {
     super.viewDidLoad()
 
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconNavbarClose"), style: .plain, target: nil, action: nil)
 
     clothesItemTitleLabel.text = viewModel?.itemTitle
-    clothesItemRelatedLabel.attributedText = viewModel?.itemRelatedText
+    clothesItemRelatedLabel.text = viewModel?.itemDescription
 
     viewModel?.currentAmount.asObservable().map { String($0) }
       .bindTo(counterLabel.rx.text)
@@ -50,7 +51,7 @@ class ItemInfoViewController: UIViewController {
     }).addDisposableTo(disposeBag)
 
     viewModel?.returnToOrderList.drive(onNext: { [weak self] in
-      _ = self?.navigationController?.popViewController(animated: true)
+      self?.dismiss(animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
 
   }
@@ -86,7 +87,8 @@ class ItemInfoViewController: UIViewController {
 
   func configureButtons() {
     guard let viewModel = viewModel else { return }
-
+    
+    navigationItem.leftBarButtonItem?.rx.tap.bindTo(viewModel.navigationCloseButtonDidTap).addDisposableTo(viewModel.disposeBag)
     addServiceButton.rx.tap.bindTo(viewModel.addServiceButtonDidTap).addDisposableTo(disposeBag)
     continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
     counterIncButton.rx.tap.bindTo(viewModel.counterIncButtonDidTap).addDisposableTo(disposeBag)

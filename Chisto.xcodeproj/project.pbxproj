@@ -51,6 +51,7 @@
 		8833B5321DBE8774004D44CE /* LaundryItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8833B5311DBE8774004D44CE /* LaundryItemInfoView.swift */; };
 		8833B5341DBF7F75004D44CE /* LaundryItemInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8833B5331DBF7F75004D44CE /* LaundryItemInfoViewModel.swift */; };
 		8833B5361DBF8241004D44CE /* LastTimePopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8833B5351DBF8241004D44CE /* LastTimePopupViewModel.swift */; };
+		8834B8411DDCA6C1009D2949 /* NSLayoutConstraint+updateWithKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8834B8401DDCA6C1009D2949 /* NSLayoutConstraint+updateWithKeyboard.swift */; };
 		88373C981DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88373C971DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib */; };
 		883760D11DB8D97500C9F506 /* OnBoardingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883760D01DB8D97500C9F506 /* OnBoardingNavigationController.swift */; };
 		883760D31DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */; };
@@ -84,6 +85,10 @@
 		88923E1C1DD3852A00BC3AC0 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E1B1DD3852A00BC3AC0 /* OnBoardingViewModel.swift */; };
 		88923E1F1DD3D5F900BC3AC0 /* LocationSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E1E1DD3D5F900BC3AC0 /* LocationSelectViewController.swift */; };
 		88923E211DD3D60D00BC3AC0 /* LocationSelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88923E201DD3D60D00BC3AC0 /* LocationSelectViewController.storyboard */; };
+		889923941DDCAF8200D73905 /* ItemInfoNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889923931DDCAF8200D73905 /* ItemInfoNavigationController.storyboard */; };
+		889923961DDCAF9400D73905 /* ItemInfoNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923951DDCAF9400D73905 /* ItemInfoNavigationController.swift */; };
+		8899239C1DDD288200D73905 /* Errors.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8899239E1DDD288200D73905 /* Errors.strings */; };
+		889923A11DDD2A0200D73905 /* String+localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923A01DDD2A0200D73905 /* String+localized.swift */; };
 		889A84151DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */; };
 		889A84171DCA56CB00E3926D /* OrderConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A84161DCA56CB00E3926D /* OrderConfirmViewModel.swift */; };
 		889A841B1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A841A1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift */; };
@@ -196,6 +201,7 @@
 		8833B5311DBE8774004D44CE /* LaundryItemInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryItemInfoView.swift; sourceTree = "<group>"; };
 		8833B5331DBF7F75004D44CE /* LaundryItemInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryItemInfoViewModel.swift; sourceTree = "<group>"; };
 		8833B5351DBF8241004D44CE /* LastTimePopupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastTimePopupViewModel.swift; sourceTree = "<group>"; };
+		8834B8401DDCA6C1009D2949 /* NSLayoutConstraint+updateWithKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+updateWithKeyboard.swift"; sourceTree = "<group>"; };
 		88373C971DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderConfirmServiceItemView.xib; sourceTree = "<group>"; };
 		883760D01DB8D97500C9F506 /* OnBoardingNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingNavigationController.swift; sourceTree = "<group>"; };
 		883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+StoryboardInstance.swift"; sourceTree = "<group>"; };
@@ -229,6 +235,11 @@
 		88923E1B1DD3852A00BC3AC0 /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
 		88923E1E1DD3D5F900BC3AC0 /* LocationSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSelectViewController.swift; sourceTree = "<group>"; };
 		88923E201DD3D60D00BC3AC0 /* LocationSelectViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocationSelectViewController.storyboard; sourceTree = "<group>"; };
+		889923931DDCAF8200D73905 /* ItemInfoNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ItemInfoNavigationController.storyboard; sourceTree = "<group>"; };
+		889923951DDCAF9400D73905 /* ItemInfoNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoNavigationController.swift; sourceTree = "<group>"; };
+		8899239D1DDD288200D73905 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Errors.strings; sourceTree = "<group>"; };
+		8899239F1DDD289400D73905 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Errors.strings; sourceTree = "<group>"; };
+		889923A01DDD2A0200D73905 /* String+localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+localized.swift"; sourceTree = "<group>"; };
 		889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceTableViewCell.swift; sourceTree = "<group>"; };
 		889A84161DCA56CB00E3926D /* OrderConfirmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmViewModel.swift; sourceTree = "<group>"; };
 		889A841A1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceTableViewCellModel.swift; sourceTree = "<group>"; };
@@ -320,6 +331,8 @@
 				88072D4D1DB967EF00B47D23 /* ItemInfoViewController.storyboard */,
 				88072D4F1DB9695200B47D23 /* ItemInfoViewController.swift */,
 				88072D511DB9695E00B47D23 /* ItemInfoViewModel.swift */,
+				889923931DDCAF8200D73905 /* ItemInfoNavigationController.storyboard */,
+				889923951DDCAF9400D73905 /* ItemInfoNavigationController.swift */,
 			);
 			path = ItemInfo;
 			sourceTree = "<group>";
@@ -360,9 +373,9 @@
 				8814C0311DAD8112005B4967 /* Style */,
 				88073EEC1DAC19E1000696A3 /* UI */,
 				8814C0371DAE8F4B005B4967 /* Util */,
+				889923991DDD27AB00D73905 /* Supporting */,
 				88073ED81DABE1E0000696A3 /* AppDelegate.swift */,
 				88073EDF1DABE1E0000696A3 /* Assets.xcassets */,
-				88073EE41DABE1E0000696A3 /* Info.plist */,
 				88073EE11DABE1E0000696A3 /* LaunchScreen.storyboard */,
 			);
 			path = Chisto;
@@ -387,7 +400,6 @@
 				8862E6CC1DC8EC9700DDFB00 /* OrderConfirm */,
 				8872F0B61DD8930F00E8D9EE /* OrderPlacedPopup */,
 				88CD68351DD0DAAA004B7726 /* OrderRegistration */,
-				8811FE111DC2DB1100610712 /* Profile */,
 				88923E141DD369DD00BC3AC0 /* ProfileContactData */,
 				88E6B59A1DCB7EE70024FA1A /* Registration */,
 				882288121DB6D0FA000642E0 /* Root */,
@@ -452,7 +464,8 @@
 				8811FE121DC2DBBE00610712 /* ProfileViewController.swift */,
 				8811FE141DC2DCA600610712 /* ProfileViewModel.swift */,
 			);
-			path = Profile;
+			name = Profile;
+			path = ../Profile;
 			sourceTree = "<group>";
 		};
 		8811FE161DC2E5C800610712 /* About */ = {
@@ -481,6 +494,7 @@
 				88CDDE461DD922DC002BCC5E /* NSURL+QueryParams.swift */,
 				8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */,
 				88923E101DD340C500BC3AC0 /* twoWayBinding.swift */,
+				889923A01DDD2A0200D73905 /* String+localized.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -541,6 +555,7 @@
 				885409C61DB2EC5D00219C00 /* UIView+IBInspectable.swift */,
 				88E86DAF1DB90BD1002A7024 /* UIView+nibInstance.swift */,
 				883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */,
+				8834B8401DDCA6C1009D2949 /* NSLayoutConstraint+updateWithKeyboard.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -670,6 +685,15 @@
 			path = LocationSelect;
 			sourceTree = "<group>";
 		};
+		889923991DDD27AB00D73905 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				88073EE41DABE1E0000696A3 /* Info.plist */,
+				8899239E1DDD288200D73905 /* Errors.strings */,
+			);
+			name = Supporting;
+			sourceTree = "<group>";
+		};
 		889D87C51DC0A727003E8DAC /* LaundrySelect */ = {
 			isa = PBXGroup;
 			children = (
@@ -703,8 +727,9 @@
 			isa = PBXGroup;
 			children = (
 				88CD68361DD0DABD004B7726 /* OrderRegistrationViewController.storyboard */,
-				88CD683D1DD208E2004B7726 /* OrderRegistrationViewController.swift */,
 				88CD683F1DD2090A004B7726 /* OrderRegistrationViewModel.swift */,
+				88CD683D1DD208E2004B7726 /* OrderRegistrationViewController.swift */,
+				8811FE111DC2DB1100610712 /* Profile */,
 			);
 			path = OrderRegistration;
 			sourceTree = "<group>";
@@ -867,6 +892,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
+				ru,
 			);
 			mainGroup = 88073ECC1DABE1E0000696A3;
 			productRefGroup = 88073ED61DABE1E0000696A3 /* Products */;
@@ -892,6 +918,8 @@
 				8811FE181DC2E5DB00610712 /* AboutViewController.storyboard in Resources */,
 				88DB937B1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard in Resources */,
 				88373C981DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib in Resources */,
+				889923941DDCAF8200D73905 /* ItemInfoNavigationController.storyboard in Resources */,
+				8899239C1DDD288200D73905 /* Errors.strings in Resources */,
 				88CD68371DD0DABD004B7726 /* OrderRegistrationViewController.storyboard in Resources */,
 				883760D51DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard in Resources */,
 				8862E6D01DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard in Resources */,
@@ -1057,6 +1085,7 @@
 				8869D1231DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift in Sources */,
 				88E86DB51DB91BAE002A7024 /* OrderTableViewCell.swift in Sources */,
 				88E86DA91DB8E800002A7024 /* ServiceSelectViewController.swift in Sources */,
+				8834B8411DDCA6C1009D2949 /* NSLayoutConstraint+updateWithKeyboard.swift in Sources */,
 				883760D11DB8D97500C9F506 /* OnBoardingNavigationController.swift in Sources */,
 				885C19711DC379E40081A4F3 /* LaundrySortViewController.swift in Sources */,
 				88923E181DD36AB900BC3AC0 /* ProfileContactDataViewController.swift in Sources */,
@@ -1076,6 +1105,7 @@
 				88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */,
 				8814C0561DAFA7B5005B4967 /* BottomBorderedTextField.swift in Sources */,
 				88DB938F1DCC188600DAC651 /* Treatment.swift in Sources */,
+				889923A11DDD2A0200D73905 /* String+localized.swift in Sources */,
 				8872F0BE1DD8D67100E8D9EE /* Order.swift in Sources */,
 				8872F0B11DD7B2E100E8D9EE /* LocationSelectViewModel.swift in Sources */,
 				885409C31DB2E43300219C00 /* EmptyOrderView.swift in Sources */,
@@ -1084,6 +1114,7 @@
 				8814C0391DAE8F7F005B4967 /* LocationManager.swift in Sources */,
 				88D8ABBD1DB56E89009D515B /* SelectClothesViewModel.swift in Sources */,
 				8833B5361DBF8241004D44CE /* LastTimePopupViewModel.swift in Sources */,
+				889923961DDCAF9400D73905 /* ItemInfoNavigationController.swift in Sources */,
 				88072D501DB9695300B47D23 /* ItemInfoViewController.swift in Sources */,
 				88E6B5991DCB73610024FA1A /* UIView+AddBorders.swift in Sources */,
 				88E86DA81DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift in Sources */,
@@ -1104,6 +1135,15 @@
 			);
 			name = LaunchScreen.storyboard;
 			path = .;
+			sourceTree = "<group>";
+		};
+		8899239E1DDD288200D73905 /* Errors.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8899239D1DDD288200D73905 /* Base */,
+				8899239F1DDD289400D73905 /* ru */,
+			);
+			name = Errors.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -12,44 +12,46 @@ import CoreLocation
 import Alamofire
 import RxSwift
 
+class Adress {
+  let json: JSON
+  let adressComponents: [JSON]?
+  
+  func getComponent(type: String) -> JSON? {
+    return adressComponents?.first { (jsonComponent) -> Bool in
+      return jsonComponent["types"]
+        .arrayValue
+        .map { $0.stringValue }
+        .contains(type)
+    }
+  }
+  
+  var streetNumber: String? {
+    guard let component = getComponent(type: "street_number") else { return nil }
+    
+    return component["long_name"].string
+  }
+  
+  var streetName: String? {
+    guard let component = getComponent(type: "route") else { return nil }
+    
+    return component["long_name"].string
+  }
+  
+  init(json: JSON) {
+    self.json = json
+    self.adressComponents = json["results"].array?[0]["address_components"].array
+  }
+}
+
 class ReverseGeocoder {
 
   static let apiKey = "AIzaSyB0YorJGoVc8pdcnUKbxvwhxLRMzdgKhCs"
 
-  class Adress {
-    let json: JSON
-    let adressComponents: [JSON]?
-
-    func getComponent(type: String) -> JSON? {
-      return adressComponents?.first { (jsonComponent) -> Bool in
-        return jsonComponent["types"]
-          .arrayValue
-          .map { $0.stringValue }
-          .contains(type)
-      }
-    }
-
-    var streetNumber: String? {
-      guard let component = getComponent(type: "street_number") else { return nil }
-
-      return component["long_name"].string
-    }
-
-    var streetName: String? {
-      guard let component = getComponent(type: "route") else { return nil }
-
-      return component["long_name"].string
-    }
-
-    init(json: JSON) {
-      self.json = json
-      self.adressComponents = json["results"].array?[0]["address_components"].array
-    }
-  }
 
   static func getAdress(coordinate: CLLocationCoordinate2D) -> Observable<Adress?> {
     let params = [
       "latlng": "\(String(coordinate.latitude)),\(String(coordinate.longitude))",
+      "language": "ru",
       "key": apiKey
     ]
 

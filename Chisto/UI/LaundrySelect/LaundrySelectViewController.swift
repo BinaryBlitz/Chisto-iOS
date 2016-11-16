@@ -24,11 +24,26 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
     navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.sortButtonDidTap)
       .addDisposableTo(disposeBag)
 
-    viewModel.presentSortSelectSection.drive(onNext: { sortViewModel in
-      let viewController = LaundrySortViewController.storyboardInstance()!
-      viewController.viewModel = sortViewModel
-      viewController.modalPresentationStyle = .overFullScreen
-      self.present(viewController, animated: false)
+    viewModel.presentSortSelectSection.drive(onNext: {_ in
+      let alertController = UIAlertController(title: "Отображать химчистки по:", message: nil, preferredStyle: .actionSheet)
+      
+      let byPriceAction = UIAlertAction(title: "По цене", style: .default, handler: { [weak self] _ in
+        self?.viewModel.sortType.value = .byPrice
+      })
+      
+      let bySpeedAction = UIAlertAction(title: "По скорости", style: .default, handler: { [weak self] _ in
+        self?.viewModel.sortType.value = .bySpeed
+      })
+      
+      let byRatingAction = UIAlertAction(title: "По рейтингу", style: .default, handler: { [weak self] _ in
+        self?.viewModel.sortType.value = .byRating
+      })
+      
+      alertController.addAction(byPriceAction)
+      alertController.addAction(bySpeedAction)
+      alertController.addAction(byRatingAction)
+      
+      self.present(alertController, animated: true)
     }).addDisposableTo(disposeBag)
 
     viewModel.presentOrderConfirmSection.drive(onNext: { orderViewModel in

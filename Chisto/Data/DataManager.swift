@@ -32,6 +32,10 @@ enum DataError: Error, CustomStringConvertible {
       return ""
     }
   }
+  
+  var localizedDescription: String {
+    return description
+  }
 }
 
 protocol DataManagerServiceType {
@@ -53,7 +57,7 @@ class DataManager {
     return networkManager.doRequest(method: .get, apiPath, ["api_token": apiToken])
       .catchError { error in
         guard error is NetworkError else { return Observable.error(DataError.unknown) }
-
+        
         return Observable.error(DataError.unknown)
       }
       .flatMap { itemsJSON -> Observable<Void> in
@@ -145,7 +149,14 @@ extension DataManager: DataManagerServiceType {
         .placeOrder(laundryId: laundry.id),
         ["api_token": apiToken],
         body: ["order": orderJSON], encoding: JSONEncoding.default
-      ).map { result in return JSON(result)["id"].intValue }
+      )
+      .catchError { error in
+        // TODO refactor
+        guard error is NetworkError else { return Observable.error(DataError.unknown) }
+        
+        return Observable.error(DataError.unknown)
+      }
+      .map { result in return JSON(result)["id"].intValue }
   }
 
 }

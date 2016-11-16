@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="202"/>
                                 <subviews>
                                     <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="1XC-Ug-df6">
-                                        <rect key="frame" x="128.5" y="40" width="118" height="30"/>
+                                        <rect key="frame" x="129" y="40" width="118" height="30"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="С Chisto вам больше не нужно тратить время на походы в химчистку." textAlignment="center" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ga-vJ-HIb">
                                         <rect key="frame" x="20" y="90" width="335" height="72"/>
@@ -47,13 +47,13 @@
                                 <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="40" right="20"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Все очень просто:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNs-hU-jV4">
-                                <rect key="frame" x="0.0" y="222" width="375" height="26.5"/>
+                                <rect key="frame" x="0.0" y="222" width="375" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" layoutMarginsFollowReadableWidth="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="8vf-fD-DLA">
-                                <rect key="frame" x="15" y="268.5" width="340" height="325.5"/>
+                                <rect key="frame" x="15" y="269" width="340" height="325"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="018-W6-wbK" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="614" width="375" height="53"/>

@@ -21,10 +21,11 @@ protocol ItemInfoViewModelType {
   var counterDecButtonDidTap: PublishSubject<Void> { get }
   var tableItemDeleted: PublishSubject<IndexPath> { get }
   var continueButtonDidTap: PublishSubject<Void> { get }
+  var navigationCloseButtonDidTap: PublishSubject<Void> { get }
 
   // Output
   var itemTitle: String { get }
-  var itemRelatedText: NSAttributedString { get }
+  var itemDescription: String { get }
   var currentAmount: Variable<Int> { get }
   var presentServiceSelectSection: Driver<ServiceSelectViewModel> { get }
   var returnToOrderList: Driver<Void> { get }
@@ -37,15 +38,16 @@ class ItemInfoViewModel: ItemInfoViewModelType {
   let disposeBag = DisposeBag()
 
   // Input
-  var addServiceButtonDidTap = PublishSubject<Void>()
-  var counterIncButtonDidTap = PublishSubject<Void>()
-  var counterDecButtonDidTap = PublishSubject<Void>()
-  var continueButtonDidTap = PublishSubject<Void>()
-  var tableItemDeleted = PublishSubject<IndexPath>()
+  let addServiceButtonDidTap = PublishSubject<Void>()
+  let counterIncButtonDidTap = PublishSubject<Void>()
+  let counterDecButtonDidTap = PublishSubject<Void>()
+  let continueButtonDidTap = PublishSubject<Void>()
+  let tableItemDeleted = PublishSubject<IndexPath>()
+  let navigationCloseButtonDidTap =  PublishSubject<Void>()
 
   // Output
   let itemTitle: String
-  let itemRelatedText: NSAttributedString
+  let itemDescription: String
   var currentAmount: Variable<Int>
   var presentServiceSelectSection: Driver<ServiceSelectViewModel>
   var returnToOrderList: Driver<Void>
@@ -58,17 +60,14 @@ class ItemInfoViewModel: ItemInfoViewModelType {
   var sections: Driver<[ItemInfoSectionModel]>
 
   init(orderItem: OrderItem) {
-    self.itemTitle = orderItem.clothesItem.name
-    // TODO: get a color from item model
-    //self.color = orderItem.clothesItem.color
+    let clothesItem = orderItem.clothesItem
+    self.itemTitle = clothesItem.name
     self.color = UIColor.chsSkyBlue
     let currentAmount = Variable<Int>(orderItem.amount)
     self.currentAmount = currentAmount
 
     // Subtitle
-    let relatedItemsAttrString = NSMutableAttributedString()
-
-    self.itemRelatedText = relatedItemsAttrString
+    self.itemDescription = clothesItem.descriptionText
 
     // Table view
     let treatments = Variable<[Treatment]>(orderItem.treatments)
@@ -88,12 +87,9 @@ class ItemInfoViewModel: ItemInfoViewModelType {
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
 
-    self.returnToOrderList = continueButtonDidTap.asObservable().map {
-      OrderManager.instance.updateOrderItem(item: orderItem) {
-        orderItem.treatments = treatments.value
-        orderItem.amount = currentAmount.value
-      }
-    }.asDriver(onErrorDriveWith: .empty())
+    self.returnToOrderList = Observable.of(navigationCloseButtonDidTap.asObservable(), continueButtonDidTap.asObservable())
+      .merge()
+      .asDriver(onErrorDriveWith: .empty())
 
     tableItemDeleted.asObservable().subscribe(onNext: { indexPath in
       treatments.value.remove(at: indexPath.row)
@@ -106,6 +102,13 @@ class ItemInfoViewModel: ItemInfoViewModelType {
     counterDecButtonDidTap.subscribe(onNext: {
       if currentAmount.value > 1 {
         currentAmount.value -= 1
+      }
+    }).addDisposableTo(disposeBag)
+    
+    continueButtonDidTap.asObservable().subscribe(onNext: {
+      OrderManager.instance.updateOrderItem(item: orderItem) {
+        orderItem.treatments = treatments.value
+        orderItem.amount = currentAmount.value
       }
     }).addDisposableTo(disposeBag)
   }

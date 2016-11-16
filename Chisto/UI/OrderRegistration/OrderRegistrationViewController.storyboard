@@ -118,6 +118,7 @@
                     </view>
                     <connections>
                         <outlet property="bottomLayoutGuideConstraint" destination="DLl-tS-A4Q" id="LOd-9f-MRm"/>
+                        <outlet property="buttonSeparatorView" destination="oJp-Dy-zmo" id="PI4-0K-Tbh"/>
                         <outlet property="dataView" destination="pSa-TL-Sfz" id="pMS-Qe-sGI"/>
                         <outlet property="orderCostLabel" destination="4hY-Ln-EBY" id="uwV-1B-Qmi"/>
                         <outlet property="payInCashButton" destination="7aJ-4D-70l" id="MhB-g1-PEy"/>

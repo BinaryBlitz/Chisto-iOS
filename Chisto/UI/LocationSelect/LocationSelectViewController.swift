@@ -70,24 +70,26 @@ class LocationSelectViewController: UIViewController {
     }).addDisposableTo(disposeBag)
 
     saveButton.rx.tap.asObservable()
-      .map { self.marker.position }
-      .bindTo(viewModel.didPickCoordinate)
+      .bindTo(viewModel.saveButtonDidTap)
       .addDisposableTo(disposeBag)
 
   }
 
   func configureSearch() {
+    guard let viewModel = viewModel else { return }
+    
     resultsViewController.delegate = self
-    resultsViewController.tableCellBackgroundColor = UIColor.chsWhiteTwo
-    definesPresentationContext = true
     searchController = UISearchController(searchResultsController: resultsViewController)
     searchController?.searchResultsUpdater = resultsViewController
-    searchController?.hidesNavigationBarDuringPresentation = false
+    
+    definesPresentationContext = true
     resultsViewController.extendedLayoutIncludesOpaqueBars = true
-    searchController?.extendedLayoutIncludesOpaqueBars = true
-    searchController?.dimsBackgroundDuringPresentation = true
-
+    searchController?.dimsBackgroundDuringPresentation = false
+    resultsViewController.edgesForExtendedLayout = UIRectEdge([])
+    
     guard let searchBar = searchController?.searchBar else { return }
+        
+    _ = searchBar.rx.text <-> viewModel.searchBarText
 
     searchBar.barTintColor = UIColor.chsSkyBlue
     searchBar.barStyle = .black

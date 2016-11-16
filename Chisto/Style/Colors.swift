@@ -86,5 +86,9 @@ extension UIColor {
   class var chsMaize: UIColor {
     return UIColor(red: 247.0 / 255.0, green: 183.0 / 255.0, blue: 91.0 / 255.0, alpha: 1.0)
   }
+  
+  class var chsWhite20: UIColor {
+    return UIColor(white: 255.0 / 255.0, alpha: 0.2)
+  }
 
 }

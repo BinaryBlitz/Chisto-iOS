@@ -102,9 +102,10 @@ class OrderViewController: UIViewController, UIScrollViewDelegate,DefaultBarColo
     }).addDisposableTo(disposeBag)
 
     viewModel.presentItemInfoViewController.drive(onNext: { [weak self] viewModel in
-      let viewController = ItemInfoViewController.storyboardInstance()!
-      viewController.viewModel = viewModel
-      self?.navigationController?.pushViewController(viewController, animated: true)
+      let navigationItemInfoViewController = ItemInfoNavigationController.storyboardInstance()!
+      let itemInfoViewController = navigationItemInfoViewController.viewControllers[0] as! ItemInfoViewController
+      itemInfoViewController.viewModel = viewModel
+      self?.navigationController?.present(navigationItemInfoViewController, animated: true)
     }).addDisposableTo(disposeBag)
 
     viewModel.presentLastTimeOrderPopup.asDriver(onErrorDriveWith: .empty())

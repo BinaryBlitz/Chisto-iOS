@@ -30,14 +30,16 @@ class LocationSelectViewModel: LocationSelectViewModelType {
   var cityLocation = CLLocationCoordinate2D()
   let markerLocation = PublishSubject<CLLocationCoordinate2D>()
 
-  let cityZoom: Float = 15
-  let markerZoom: Float = 20
+  let cityZoom: Float = 8
+  let markerZoom: Float = 12
 
-  let saveButtonDidDap = PublishSubject<Void>()
-  let didPickCoordinate = PublishSubject<CLLocationCoordinate2D>()
+  let saveButtonDidTap = PublishSubject<Void>()
   let popViewContoller: Driver<Void>
   let streetNumber:  PublishSubject<String>
   let streetName: PublishSubject<String>
+  let searchBarText = Variable<String?>(nil)
+  
+  let adress: Variable<Adress?>
 
   init() {
     let streetNumber =  PublishSubject<String>()
@@ -45,21 +47,24 @@ class LocationSelectViewModel: LocationSelectViewModelType {
 
     let streetName = PublishSubject<String>()
     self.streetName = streetName
+    
+    let adress = Variable<Adress?>(nil)
+    self.adress = adress
 
-    self.popViewContoller = didPickCoordinate.asObservable().flatMap { coordinate in
-      return ReverseGeocoder.getAdress(coordinate: coordinate).map { adress in
-        if let number = adress?.streetNumber {
-          streetNumber.onNext(number)
-        }
-
-        if let name = adress?.streetName {
-          streetName.onNext(name)
-        }
-
-        return Void()
+    self.popViewContoller = saveButtonDidTap.asDriver(onErrorDriveWith: .empty())
+    
+    saveButtonDidTap.asObservable().subscribe(onNext: { coordinate in
+      guard let adress = adress.value else { return }
+      
+      if let number = adress.streetNumber {
+        streetNumber.onNext(number)
+      }
+      
+      if let name = adress.streetName {
+        streetName.onNext(name)
       }
 
-    }.asDriver(onErrorDriveWith: .empty())
+    }).addDisposableTo(disposeBag)
 
     guard let city = ProfileManager.instance.userProfile?.city else { return }
 
@@ -73,5 +78,19 @@ class LocationSelectViewModel: LocationSelectViewModelType {
       .map { return $0! }
       .bindTo(markerLocation)
       .addDisposableTo(disposeBag)
+    
+    markerLocation.asObservable().flatMap { coordinate -> Driver<Adress?> in
+      ReverseGeocoder.getAdress(coordinate: coordinate).asDriver(onErrorJustReturn: nil)
+    }.bindTo(adress).addDisposableTo(disposeBag)
+    
+    adress.asObservable().map { adress -> String in
+      guard let number = adress?.streetNumber else { return "" }
+      guard let streetName = adress?.streetName else { return "" }
+      
+      return "\(streetName), \(number)"
+    }.bindTo(searchBarText).addDisposableTo(disposeBag)
+    
   }
+  
+  
 }

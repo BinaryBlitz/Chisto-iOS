@@ -25,7 +25,7 @@ protocol ServiceSelectViewModelType {
   var color: UIColor { get }
   var sections: Driver<[ServiceSelectSectionModel]> { get }
   var selectedServicesIds: Variable<[Int]> { get }
-  var selectedServices: Variable<[Treatment]> { get }
+  var selectedServices: PublishSubject<[Treatment]> { get }
 }
 
 class ServiceSelectViewModel: ServiceSelectViewModelType {
@@ -52,7 +52,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
 
   var selectedServicesIds: Variable<[Int]>
   var treatments: Variable<[Treatment]>
-  var selectedServices: Variable<[Treatment]>
+  var selectedServices: PublishSubject<[Treatment]>
 
   init(item: OrderItem, saveNeeded: Bool = true, selectedTreatments: [Treatment] = []) {
     let clothesItem = item.clothesItem
@@ -74,12 +74,8 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
     let selectedServicesIds = Variable<[Int]>(selectedTreatments.map { $0.id })
     self.selectedServicesIds = selectedServicesIds
 
-    let selectedServices = Variable(selectedTreatments)
+    let selectedServices = PublishSubject<[Treatment]>()
     self.selectedServices = selectedServices
-
-    Observable.combineLatest(treatments.asObservable(), selectedServicesIds.asObservable()) { treatments, selectedServicesIds in
-      return treatments.filter { selectedServicesIds.contains($0.id) }
-    }.bindTo(selectedServices).addDisposableTo(disposeBag)
 
     self.sections = Driver.combineLatest(treatments.asDriver(), selectedServicesIds.asDriver()) { services, selectedServicesIds in
       let cellModels = services.map { service in
@@ -89,16 +85,22 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
       let section = ServiceSelectSectionModel(model: "", items: cellModels)
       return [section]
     }
-
-    self.returnToSection = readyButtonTapped.asObservable().map {
+    
+    self.returnToSection = readyButtonTapped.asDriver(onErrorDriveWith: .empty()).map {
+      return saveNeeded ? .order : .orderItem
+    }
+    
+    readyButtonTapped.asObservable().map {
+      treatments.value.filter { selectedServicesIds.value.contains($0.id) }
+    }.bindTo(selectedServices).addDisposableTo(disposeBag)
+    
+    selectedServices.asObservable().subscribe(onNext: { treatments in
       if saveNeeded {
         OrderManager.instance.updateOrderItem(item: item) {
-          item.treatments = selectedServices.value
+          item.treatments = treatments
         }
-        return .order
       }
-      return .orderItem
-    }.asDriver(onErrorDriveWith: .empty())
+    }).addDisposableTo(disposeBag)
 
 
     self.itemDidSelect.asObservable().subscribe(onNext: { indexPath in

@@ -18,6 +18,7 @@ protocol ContactFormViewModelType {
   var firstName: Variable<String?> { get }
   var lastName: Variable<String?> { get }
   var phone: Variable<String?> { get }
+  var email: Variable<String?> { get }
   var street: Variable<String?> { get }
   var building: Variable<String?> { get }
   var apartment: Variable<String?> { get }
@@ -36,6 +37,7 @@ class ContactFormViewModel {
   var firstName: Variable<String?>
   var lastName: Variable<String?>
   var phone: Variable<String?>
+  var email: Variable<String?>
   var street: Variable<String?>
   var building: Variable<String?>
   var apartment: Variable<String?>
@@ -51,15 +53,16 @@ class ContactFormViewModel {
     self.firstName = Variable(profile?.firstName)
     self.lastName = Variable(profile?.lastName)
     self.phone = Variable(profile?.phone.onlyDigits)
+    self.email = Variable(profile?.email)
     self.city = Variable(profile?.city?.name)
     self.street = Variable(profile?.street)
     self.building = Variable(profile?.building)
     self.apartment = Variable(profile?.apartment)
 
-    let contactInfoIsValid = Observable.combineLatest(firstName.asObservable(), lastName.asObservable(), phoneIsValid.asObservable()) { firstName, lastName, phoneIsValid -> Bool in
-      guard let firstName = firstName, let lastName = lastName else { return false }
+    let contactInfoIsValid = Observable.combineLatest(firstName.asObservable(), lastName.asObservable(), phoneIsValid.asObservable(), email.asObservable()) { firstName, lastName, phoneIsValid, email -> Bool in
+      guard let firstName = firstName, let lastName = lastName, let email = email else { return false }
 
-      return phoneIsValid && firstName.characters.count > 0 && lastName.characters.count > 0
+      return phoneIsValid && firstName.characters.count > 0 && lastName.characters.count > 0 && email.characters.count > 0
 
     }
 
@@ -80,6 +83,7 @@ class ContactFormViewModel {
       profile.firstName = firstName.value ?? ""
       profile.lastName = lastName.value ?? ""
       profile.phone = phone.value?.onlyDigits ?? ""
+      profile.email = email.value ?? ""
       profile.street = street.value ?? ""
       profile.building = building.value ?? ""
       profile.apartment = apartment.value ?? ""

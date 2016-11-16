@@ -11,12 +11,6 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-enum LaundrySortType {
-  case byPrice
-  case bySpeed
-  case byRating
-}
-
 struct LaundrySortItem {
   var type: LaundrySortType
   var title: String

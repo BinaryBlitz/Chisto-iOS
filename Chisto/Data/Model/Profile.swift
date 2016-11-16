@@ -16,6 +16,7 @@ class Profile: ServerObjct {
   dynamic var firstName: String = ""
   dynamic var lastName: String = ""
   dynamic var phone: String = ""
+  dynamic var email: String = ""
   dynamic var street: String = ""
   dynamic var building: String = ""
   dynamic var apartment: String = ""

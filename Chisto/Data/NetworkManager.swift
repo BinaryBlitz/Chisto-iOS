@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import Alamofire
 import RxDataSources
+import SwiftyJSON
 
 enum APIPath {
   case fetchCities
@@ -53,16 +54,38 @@ enum APIPath {
 }
 
 enum NetworkError: Error, CustomStringConvertible {
-  case unknown(description: String)
+  case unprocessableData(response: Any)
+  case unknown
   case serverUnavaliable
+  case unexpectedResponseFormat
 
   var description: String {
     switch self {
-    case .unknown(let description):
-      return description
+    case .unprocessableData(let response):
+      let json = JSON(response)
+      guard let errorDictionary = json.dictionary else { return json.stringValue }
+      return parseErrorDictionary(errorDictionary)
+    case .unknown:
+      return "Неизвестная ошибка"
     case .serverUnavaliable:
       return "Сервер недоступен"
+    case .unexpectedResponseFormat:
+      return "Неизвестный формат ответа сервера"
     }
+  }
+  
+  func parseErrorDictionary(_ dictionary: [String: JSON]) -> String {
+    var errorString = ""
+    
+    for (errorKey, errorValue) in dictionary {
+      errorString += errorKey.localized("Errors")
+      if let valueString = errorValue.string {
+        errorString += ": " + valueString.localized("Errors")
+      }
+      errorString += "\n"
+    }
+    
+    return errorString
   }
 
 }
@@ -77,16 +100,19 @@ class NetworkManager {
         let request = Alamofire.request(url.appendingQueryParams(parameters: params), method: method, parameters: body, encoding: encoding, headers: nil)
           .responseJSON { response in
             debugPrint(response)
-            if response.response?.statusCode != path.successCode {
-              observer.onError(NetworkError.unknown(description: "Ошибка сервера"))
+            
+            let statusCode = response.response?.statusCode
+            if statusCode != path.successCode {
+              observer.onError(self.getError(statusCode, response: response))
             }
+            
             if let result = response.result.value {
-              debugPrint(result)
               observer.onNext(result)
               observer.onCompleted()
             } else {
-              observer.onError(NetworkError.unknown(description: "Unexpected response format"))
+              observer.onError(NetworkError.unexpectedResponseFormat)
             }
+            
         }
 
         return Disposables.create {
@@ -94,6 +120,20 @@ class NetworkManager {
 
         }
       }
+  }
+  
+  func getError(_ statusCode: Int?, response: Any) -> NetworkError {
+    guard let statusCode = statusCode else { return .unknown }
+    
+    switch statusCode {
+    case 422:
+      return .unprocessableData(response: response)
+    case 503:
+      return .serverUnavaliable
+    default:
+      return .unknown
+    }
+    
   }
 
 }

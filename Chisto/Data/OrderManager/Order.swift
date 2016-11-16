@@ -17,7 +17,7 @@ class Order: Mappable {
   var apartmentNumber: String = ""
   var contactNumber: String = ""
   var notes: String? = nil
-  var email: String? = "foo@bar.com"
+  var email: String? = nil
   var lineItemsArttributes: [LineItemAttribute] = []
 
   init(profile: Profile) {

@@ -23,7 +23,7 @@ class OrderRegistrationViewModel {
   let presentLocationSelectSection: Driver<LocationSelectViewModel>
   let payInCashButtonDidTap = PublishSubject<Void>()
   let payWithCreditCardButtonDidTap = PublishSubject<Void>()
-  let presentOrderPlacedPopup: Driver<OrderPlacedPopupViewModel>
+  let presentOrderPlacedPopup: Observable<OrderPlacedPopupViewModel>
 
   init() {
     let cityDidSelect = PublishSubject<Void>()
@@ -47,16 +47,17 @@ class OrderRegistrationViewModel {
     }.asDriver(onErrorDriveWith: .empty())
 
     self.presentOrderPlacedPopup = Observable.of(payWithCreditCardButtonDidTap.asObservable(), payInCashButtonDidTap.asObservable()).merge()
-      .asDriver(onErrorDriveWith: .empty())
-      .flatMap { _ -> Driver<OrderPlacedPopupViewModel> in
+      .flatMap { _ -> Observable<OrderPlacedPopupViewModel> in
+        
         formViewModel.saveUserProfile()
+        
         return OrderManager.instance.placeOrder().map { id in
           let viewModel = OrderPlacedPopupViewModel(orderNumber: "\(id)")
           viewModel.dismissParentViewController.asObservable()
             .bindTo(dismissViewController)
             .addDisposableTo(viewModel.disposeBag)
           return viewModel
-        }.asDriver(onErrorDriveWith: .empty())
+        }
       }
 
     formViewModel.isValid.asObservable().bindTo(buttonsAreEnabled).addDisposableTo(disposeBag)

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import RxSwift
+import IQKeyboardManagerSwift
 
 class RegistrationCodeInputViewController: UIViewController {
   let disposeBag = DisposeBag()
@@ -19,11 +20,14 @@ class RegistrationCodeInputViewController: UIViewController {
   @IBOutlet weak var codeField: UITextField!
   @IBOutlet weak var repeatButton: UIButton!
   @IBOutlet weak var subTitleLabel: UILabel!
+  @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
 
   override func viewDidLoad() {
     navigationItem.title = viewModel?.navigationBarTitle
-    hideKeyboardWhenTappedAround()
+    bottomLayoutConstraint.updateWithKeyboard()
+    IQLayoutGuideConstraint = bottomLayoutConstraint
     codeField.inputAccessoryView = UIView()
+    codeField.tintColor = UIColor.chsSkyBlue
 
     subTitleLabel.text = viewModel?.subTitleText
     repeatButton.setAttributedTitle(viewModel?.resendLabelText, for: .normal)

@@ -16,14 +16,16 @@ class RegistrationPhoneInputViewController: UIViewController {
   let disposeBag = DisposeBag()
   let viewModel = RegistrationPhoneInputViewModel()
 
-  let maskedPhoneInput = MaskedInput(formattingPattern: " *** ***-**-**", replacementChar: "*")
+  let maskedPhoneInput = MaskedInput(formattingPattern: "*** ***-**-**", replacementChar: "*")
 
   @IBOutlet weak var phoneInputField: UITextField!
   @IBOutlet weak var sendButton: GoButton!
   @IBOutlet weak var contentView: UIView!
 
+  @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
   override func viewDidLoad() {
-    hideKeyboardWhenTappedAround()
+    bottomLayoutConstraint.updateWithKeyboard()
+    IQLayoutGuideConstraint = bottomLayoutConstraint
     
     phoneInputField.inputAccessoryView = UIView()
     phoneInputField.tintColor = UIColor.chsSkyBlue
@@ -48,7 +50,8 @@ class RegistrationPhoneInputViewController: UIViewController {
       viewController.viewModel = viewModel
       self?.navigationController?.pushViewController(viewController, animated: false)
     }, onError: { error in
-      let alertController = UIAlertController(title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert)
+      guard let dataError = error as? DataError else { return }
+      let alertController = UIAlertController(title: "Ошибка", message: dataError.description, preferredStyle: .alert)
       let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
       alertController.addAction(defaultAction)
       self.present(alertController, animated: true, completion: nil)

@@ -28,6 +28,12 @@ protocol LaundrySelectViewModelType {
   var sortedLaundries: Variable<[Laundry]> { get }
 }
 
+enum LaundrySortType {
+  case byPrice
+  case bySpeed
+  case byRating
+}
+
 class LaundrySelectViewModel: LaundrySelectViewModelType {
 
   let disposeBag = DisposeBag()
