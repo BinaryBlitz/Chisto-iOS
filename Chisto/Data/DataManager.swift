@@ -52,8 +52,9 @@ class DataManager {
   var verificationToken: String? = nil
   let networkManager = NetworkManager()
 
-  func fetchItems<ItemType>(type: ItemType.Type, apiPath: APIPath, _ modifier: @escaping (ItemType) -> Void = {_ in }) -> Observable<Void> where ItemType: ServerObjct {
-    
+  func fetchItems<ItemType>(type: ItemType.Type, apiPath: APIPath,
+                  _ modifier: @escaping (ItemType) -> Void = {_ in }) -> Observable<Void> where ItemType: ServerObjct {
+    // TODO: get a real api token
     let token = apiToken
     
     return networkManager.doRequest(method: .get, apiPath, ["api_token": token])
@@ -109,6 +110,7 @@ class DataManager {
         ["code": code]
       )
       .flatMap { response -> Observable<Void> in
+        // TODO: use real token
         //let json = JSON(object: response)
         ProfileManager.instance.updateProfile { profile in
           // profile.apiToken = json["api_token"].stringValue

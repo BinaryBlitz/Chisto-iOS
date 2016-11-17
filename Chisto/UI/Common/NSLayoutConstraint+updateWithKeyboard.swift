@@ -29,7 +29,5 @@ extension NSLayoutConstraint {
       .subscribe(onNext: { _ in
         self.constant = currentConstant
       })
-    
-    
   }
 }
