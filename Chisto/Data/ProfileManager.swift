@@ -18,18 +18,20 @@ class ProfileManager {
   static let instance = ProfileManager()
   private let profileKey = "profileId"
 
-  let userProfile: Profile?
+  let userProfile: Profile
   
-  let apiToken: Variable<String?>
+  var apiToken: Observable<String?> {
+    return Observable.from(userProfile)
+      .map { $0.apiToken }
 
+  }
+  
   // TODO: refactor
   func updateProfile(closure: ((Profile) -> Void)) {
-    guard let profile = userProfile else { return }
-    
     let realm = try! Realm()
     
     try! realm.write {
-      closure(profile)
+      closure(userProfile)
     }
   }
 
@@ -51,13 +53,6 @@ class ProfileManager {
     }
 
     self.userProfile = profile
-    
-    self.apiToken = Variable<String?>(profile.apiToken)
-    
-    Observable.from(profile)
-      .map { $0.apiToken }
-      .bindTo(apiToken)
-      .addDisposableTo(disposeBag)
     
     UserDefaults.standard.set(profile.id, forKey: profileKey)
 

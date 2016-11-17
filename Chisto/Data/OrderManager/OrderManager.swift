@@ -30,7 +30,7 @@ class OrderManager {
   }
 
   func placeOrder() -> Observable<Int> {
-    guard let profile = ProfileManager.instance.userProfile else { return Observable.empty() }
+    let profile = ProfileManager.instance.userProfile
     guard let laundry = currentLaundry else { return Observable.empty() }
 
     let order = Order(profile: profile)

@@ -146,7 +146,7 @@ extension DataManager: DataManagerServiceType {
   }
 
   func fetchLaundries() -> Observable<Void> {
-    guard let cityId = ProfileManager.instance.userProfile?.city?.id else { return Observable.error(DataError.unknown) }
+    guard let cityId = ProfileManager.instance.userProfile.city?.id else { return Observable.error(DataError.unknown) }
 
     return fetchItems(type: Laundry.self, apiPath: .fetchCityLaundries(cityId: cityId))
   }

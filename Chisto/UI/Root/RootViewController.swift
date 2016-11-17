@@ -17,7 +17,7 @@ class RootViewController: ChistoNavigationController {
 
   override func viewDidAppear(_ animated: Bool) {
     let profileManager = ProfileManager.instance
-    guard profileManager.userProfile?.city == nil else { return }
+    guard profileManager.userProfile.city == nil else { return }
 
     present(OnBoardingNavigationController.storyboardInstance()!, animated: true)
   }

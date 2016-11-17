@@ -50,14 +50,14 @@ class ContactFormViewModel {
 
   init() {
     let profile = ProfileManager.instance.userProfile
-    self.firstName = Variable(profile?.firstName)
-    self.lastName = Variable(profile?.lastName)
-    self.phone = Variable(profile?.phone.onlyDigits)
-    self.email = Variable(profile?.email)
-    self.city = Variable(profile?.city?.name)
-    self.street = Variable(profile?.street)
-    self.building = Variable(profile?.building)
-    self.apartment = Variable(profile?.apartment)
+    self.firstName = Variable(profile.firstName)
+    self.lastName = Variable(profile.lastName)
+    self.phone = Variable(profile.phone.onlyDigits)
+    self.email = Variable(profile.email)
+    self.city = Variable(profile.city?.name)
+    self.street = Variable(profile.street)
+    self.building = Variable(profile.building)
+    self.apartment = Variable(profile.apartment)
 
     let contactInfoIsValid = Observable.combineLatest(firstName.asObservable(), lastName.asObservable(), phoneIsValid.asObservable(), email.asObservable()) { firstName, lastName, phoneIsValid, email -> Bool in
       guard let firstName = firstName, let lastName = lastName, let email = email else { return false }
@@ -78,7 +78,7 @@ class ContactFormViewModel {
   }
 
   func saveUserProfile() {
-    guard let profile = ProfileManager.instance.userProfile else { return }
+    let profile = ProfileManager.instance.userProfile
     try? uiRealm.write {
       profile.firstName = firstName.value ?? ""
       profile.lastName = lastName.value ?? ""
