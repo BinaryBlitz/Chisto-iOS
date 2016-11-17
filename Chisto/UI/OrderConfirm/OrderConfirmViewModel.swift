@@ -69,13 +69,16 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
         return [section]
       }
     
-    let tokenObservable = ProfileManager.instance.apiToken.asObservable()
+    let tokenObservable = ProfileManager.instance.apiToken.asObservable().distinctUntilChanged { $0 == $1 }
     let confirmButtonObservable = confirmOrderButtonDidTap.asObservable()
     
-    self.presentRegistrationSection = Observable.combineLatest(tokenObservable.filter { $0 == nil }.take(1), confirmButtonObservable) { _ -> Void in }
-      .asDriver(onErrorDriveWith: .empty())
+    let registrationRequired = Observable.combineLatest(confirmButtonObservable,
+      tokenObservable) { _, token -> Bool in token == nil }
     
-    self.presentOrderContactDataSection = Observable.combineLatest(tokenObservable.filter { $0 != nil }.take(1), confirmButtonObservable) { _ -> Void in }
+    self.presentOrderContactDataSection = registrationRequired.filter { $0 == false }.map { _ in }
+      .asDriver(onErrorDriveWith: .empty())
+
+    self.presentRegistrationSection = registrationRequired.filter { $0 == true }.map { _ in }
       .asDriver(onErrorDriveWith: .empty())
 
     confirmOrderButtonDidTap.asDriver(onErrorDriveWith: .empty()).drive(onNext: {

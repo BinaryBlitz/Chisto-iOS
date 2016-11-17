@@ -21,11 +21,11 @@ class RegistrationPhoneInputViewController: UIViewController {
   @IBOutlet weak var phoneInputField: UITextField!
   @IBOutlet weak var sendButton: GoButton!
   @IBOutlet weak var contentView: UIView!
-
   @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
+  
   override func viewDidLoad() {
+    IQKeyboardManager.sharedManager().disabledDistanceHandlingClasses.append(RegistrationPhoneInputViewController.self)
     bottomLayoutConstraint.updateWithKeyboard()
-    IQLayoutGuideConstraint = bottomLayoutConstraint
     
     phoneInputField.inputAccessoryView = UIView()
     phoneInputField.tintColor = UIColor.chsSkyBlue

@@ -20,11 +20,7 @@ class ProfileManager {
 
   let userProfile: Profile
   
-  var apiToken: Observable<String?> {
-    return Observable.from(userProfile)
-      .map { $0.apiToken }
-
-  }
+  var apiToken: Observable<String?>
   
   // TODO: refactor
   func updateProfile(closure: ((Profile) -> Void)) {
@@ -38,24 +34,20 @@ class ProfileManager {
   init() {
     var profile: Profile
     
-    if let profileId = UserDefaults.standard.value(forKey: profileKey), let savedProfile = uiRealm.object(ofType: Profile.self, forPrimaryKey: profileId){
-      
+    if let profileId = UserDefaults.standard.value(forKey: profileKey),
+      let savedProfile = uiRealm.object(ofType: Profile.self, forPrimaryKey: profileId) {
       profile = savedProfile
-      
     } else {
-      
       profile = Profile()
       try! uiRealm.write {
         uiRealm.add(profile)
       }
       UserDefaults.standard.set(profile.id, forKey: profileKey)
-
     }
 
     self.userProfile = profile
+    self.apiToken = uiRealm.observableObject(type: Profile.self, primaryKey: profile.id).map { $0?.apiToken }
     
     UserDefaults.standard.set(profile.id, forKey: profileKey)
-
   }
-
 }

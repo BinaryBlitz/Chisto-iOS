@@ -9,5 +9,6 @@
 import Foundation
 import UIKit
 import RxSwift
+import IQKeyboardManagerSwift
 
-class RegistrationNavigationController: ChistoNavigationController {}
+class RegistrationNavigationController: ChistoNavigationController { }

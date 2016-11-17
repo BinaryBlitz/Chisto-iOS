@@ -78,7 +78,7 @@ class OrderViewModel: OrderViewModelType {
       let orderItem = currentOrderItems.value[indexPath.row]
       return ItemInfoViewModel(orderItem: orderItem)
     }.asDriver(onErrorDriveWith: .empty())
-
+    
     self.presentProfileSection = profileButtonDidTap.asDriver(onErrorDriveWith: .empty())
 
     continueButtonDidTap.asDriver(onErrorDriveWith: .empty()).drive(onNext: {

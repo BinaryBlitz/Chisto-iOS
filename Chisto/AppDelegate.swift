@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Google Maps & Google Places
     GMSServices.provideAPIKey(googleMapsApiKey)
     GMSPlacesClient.provideAPIKey(googlePlacesApiKey)
-
+    
     // IQKeyboardManager
     IQKeyboardManager.sharedManager().enable = true
 

@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
-import IQKeyboardManagerSwift
 
 class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewController {
 
@@ -23,6 +22,7 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
   @IBOutlet weak var payInCashButton: GoButton!
   @IBOutlet weak var orderCostLabel: UILabel!
   @IBOutlet weak var buttonSeparatorView: UIView!
+  @IBOutlet weak var buttonsView: UIView!
   
   let contactFormViewController = ContactFormViewController.storyboardInstance()!
 
@@ -30,7 +30,7 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
     navigationItem.title = "Регистрация"
     
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-
+    
     orderCostLabel.text = viewModel.orderCost
     viewModel.buttonsAreEnabled.asObservable().bindTo(payInCashButton.rx.isEnabled).addDisposableTo(disposeBag)
     viewModel.buttonsAreEnabled.asObservable().bindTo(payWithCardButton.rx.isEnabled).addDisposableTo(disposeBag)
@@ -75,14 +75,6 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
     contactFormViewController.didMove(toParentViewController: self)
     dataView.addSubview(contactFormViewController.view)
     contactFormViewController.view.frame = dataView.bounds
-    
-    IQKeyboardManager.sharedManager().disabledDistanceHandlingClasses.append(ContactFormViewController.self)
-    
-    contactFormViewController.IQLayoutGuideConstraint = bottomLayoutGuideConstraint
-    IQLayoutGuideConstraint = bottomLayoutGuideConstraint
-
-    self.contactFormViewController.apartmentField.keyboardDistanceFromTextField = 8
-
     contactFormViewController.cityButton.isEnabled = false
     contactFormViewController.cityField.textColor = UIColor.chsSilver
   }
