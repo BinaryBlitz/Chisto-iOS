@@ -31,7 +31,7 @@ PODS:
     - RealmSwift (~> 2.0)
     - RxSwift (~> 3.0.0)
   - RxSwift (3.0.1)
-  - SwiftyJSON (3.1.1)
+  - SwiftyJSON (3.1.3)
   - TextFieldEffects (1.3.0)
 
 DEPENDENCIES:
@@ -70,7 +70,7 @@ SPEC CHECKSUMS:
   RxDataSources: 824693e84d00781d0a5e5cedc1ff95ce9250aacd
   RxRealm: '0965e07d49b8575d16c3a0487c667dfe64ce6a9c'
   RxSwift: af5680055c4ad04480189c52d28385b1029493a6
-  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
+  SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
   TextFieldEffects: ef594746f17997c813e07633f8ae5acaf9b04f27
 
 PODFILE CHECKSUM: 8f74c0f5e92aca1ae62545e407d2cf35460d2d30
