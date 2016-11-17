@@ -29,6 +29,7 @@ protocol OrderConfirmViewModelType {
   var laundryBackground: URL? { get }
   var sections: Driver<[OrderConfirmSectionModel]> { get }
   var presentRegistrationSection: Driver<Void> { get }
+  var presentOrderContactDataSection: Driver<Void> { get }
 }
 
 class OrderConfirmViewModel: OrderConfirmViewModelType {
@@ -49,6 +50,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   var deliveryDate: String
   var sections: Driver<[OrderConfirmSectionModel]>
   var presentRegistrationSection: Driver<Void>
+  var presentOrderContactDataSection: Driver<Void>
 
   init(laundry: Laundry) {
     self.navigationBarTitle = laundry.name
@@ -66,8 +68,15 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
         let section = OrderConfirmSectionModel(model: "", items: cellModels)
         return [section]
       }
-
-    self.presentRegistrationSection = confirmOrderButtonDidTap.asDriver(onErrorDriveWith: .empty())
+    
+    let tokenObservable = ProfileManager.instance.apiToken.asObservable()
+    let confirmButtonObservable = confirmOrderButtonDidTap.asObservable()
+    
+    self.presentRegistrationSection = Observable.combineLatest(tokenObservable.filter { $0 == nil }.take(1), confirmButtonObservable) { _ -> Void in }
+      .asDriver(onErrorDriveWith: .empty())
+    
+    self.presentOrderContactDataSection = Observable.combineLatest(tokenObservable.filter { $0 != nil }.take(1), confirmButtonObservable) { _ -> Void in }
+      .asDriver(onErrorDriveWith: .empty())
 
     confirmOrderButtonDidTap.asDriver(onErrorDriveWith: .empty()).drive(onNext: {
       OrderManager.instance.currentLaundry = laundry

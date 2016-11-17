@@ -26,6 +26,7 @@ class Order: Mappable {
     apartmentNumber = profile.apartment
     contactNumber = profile.phone
     streetName = profile.street
+    email = profile.email
   }
 
   required init(map: Map) {}

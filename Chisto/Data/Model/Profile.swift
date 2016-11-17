@@ -20,4 +20,5 @@ class Profile: ServerObjct {
   dynamic var street: String = ""
   dynamic var building: String = ""
   dynamic var apartment: String = ""
+  dynamic var apiToken: String? = nil
 }

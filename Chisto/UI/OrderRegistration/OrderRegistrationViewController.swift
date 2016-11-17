@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 import IQKeyboardManagerSwift
 
-class OrderRegistrationViewController: UIViewController {
+class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewController {
 
   let disposeBag = DisposeBag()
   let viewModel = OrderRegistrationViewModel()
@@ -27,13 +27,9 @@ class OrderRegistrationViewController: UIViewController {
   let contactFormViewController = ContactFormViewController.storyboardInstance()!
 
   override func viewDidLoad() {
-
+    navigationItem.title = "Регистрация"
+    
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconNavbarClose"), style: .plain, target: nil, action: nil)
-
-    navigationItem.leftBarButtonItem?.rx.tap.asDriver().drive(onNext: {[weak self] in
-      self?.dismiss(animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
 
     orderCostLabel.text = viewModel.orderCost
     viewModel.buttonsAreEnabled.asObservable().bindTo(payInCashButton.rx.isEnabled).addDisposableTo(disposeBag)
@@ -50,23 +46,24 @@ class OrderRegistrationViewController: UIViewController {
       self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
 
-    viewModel.presentOrderPlacedPopup.subscribe(onNext: { [weak self] viewModel in
+    viewModel.presentOrderPlacedPopup.catchErrorAndContinue { error in
+      guard let error = error as? DataError else { return }
+      let alertController = UIAlertController(title: "Ошибка", message: error.description, preferredStyle: .alert)
+      let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+      alertController.addAction(defaultAction)
+      self.present(alertController, animated: true, completion: nil)
+    }.subscribe(onNext: { [weak self] viewModel in
       let viewController = OrderPlacedPopupViewController.storyboardInstance()!
       viewController.viewModel = viewModel
       viewController.modalPresentationStyle = .overFullScreen
       self?.present(viewController, animated: false)
-    }, onError: { error in
-      let alertController = UIAlertController(title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert)
-      let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-      alertController.addAction(defaultAction)
-      self.present(alertController, animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
 
 
-    viewModel.dismissViewController
+    viewModel.returnToOrderViewController
       .asDriver(onErrorDriveWith: .empty())
       .drive(onNext: {[weak self] in
-      self?.dismiss(animated: true, completion: nil)
+        self?.navigationController?.setViewControllers([OrderViewController.storyboardInstance()!], animated: false)
     }).addDisposableTo(disposeBag)
 
     configureForm()

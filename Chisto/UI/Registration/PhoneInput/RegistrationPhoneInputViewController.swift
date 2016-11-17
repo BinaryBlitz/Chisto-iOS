@@ -45,16 +45,16 @@ class RegistrationPhoneInputViewController: UIViewController {
 
     sendButton.rx.tap.bindTo(viewModel.sendButtonDidTap).addDisposableTo(disposeBag)
 
-    viewModel.presentCodeInputSection.subscribe(onNext: { [weak self] viewModel in
-      let viewController = RegistrationCodeInputViewController.storyboardInstance()!
-      viewController.viewModel = viewModel
-      self?.navigationController?.pushViewController(viewController, animated: false)
-    }, onError: { error in
-      guard let dataError = error as? DataError else { return }
-      let alertController = UIAlertController(title: "Ошибка", message: dataError.description, preferredStyle: .alert)
+    viewModel.presentCodeInputSection.catchErrorAndContinue { error in
+      guard let error = error as? DataError else { return }
+      let alertController = UIAlertController(title: "Ошибка", message: error.description, preferredStyle: .alert)
       let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
       alertController.addAction(defaultAction)
       self.present(alertController, animated: true, completion: nil)
+    }.subscribe(onNext: { [weak self] viewModel in
+      let viewController = RegistrationCodeInputViewController.storyboardInstance()!
+      viewController.viewModel = viewModel
+      self?.navigationController?.pushViewController(viewController, animated: false)
     }).addDisposableTo(disposeBag)
   }
   

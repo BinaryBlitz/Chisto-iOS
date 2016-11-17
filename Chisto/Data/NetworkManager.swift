@@ -42,6 +42,15 @@ enum APIPath {
       return "laundries/\(laundryId)/orders.json"
     }
   }
+  
+  var encoding: ParameterEncoding {
+    switch self {
+    case .placeOrder, .createVerificationToken, .verifyToken:
+      return JSONEncoding.default
+    default:
+      return URLEncoding.default
+    }
+  }
 
   var successCode: Int {
     switch self {
@@ -63,7 +72,8 @@ enum NetworkError: Error, CustomStringConvertible {
     switch self {
     case .unprocessableData(let response):
       let json = JSON(response)
-      guard let errorDictionary = json.dictionary else { return json.stringValue }
+      print(response)
+      guard let errorDictionary = json.dictionary else { return json.rawString() ?? "" }
       return parseErrorDictionary(errorDictionary)
     case .unknown:
       return "Неизвестная ошибка"
@@ -77,10 +87,13 @@ enum NetworkError: Error, CustomStringConvertible {
   func parseErrorDictionary(_ dictionary: [String: JSON]) -> String {
     var errorString = ""
     
-    for (errorKey, errorValue) in dictionary {
+    for (errorKey, errorValues) in dictionary {
       errorString += errorKey.localized("Errors")
-      if let valueString = errorValue.string {
-        errorString += ": " + valueString.localized("Errors")
+      if let valuesArray = errorValues.array {
+        errorString += ":"
+        for value in valuesArray {
+          errorString += " " + value.stringValue.localized("Errors")
+        }
       }
       errorString += "\n"
     }
@@ -94,19 +107,20 @@ class NetworkManager {
 
   var apiPrefix = "https://chisto-staging.herokuapp.com"
 
-  func doRequest(method: HTTPMethod, _ path: APIPath, _ params: [String: String]? = nil, body: Parameters = [:], encoding: ParameterEncoding = URLEncoding.default) -> Observable<Any> {
+  func doRequest(method: HTTPMethod, _ path: APIPath, _ params: Parameters = [:]) -> Observable<Any> {
       return Observable.create { observer in
         let url = URL(string: self.apiPrefix + "/api/" + path.endpoint)!
-        let request = Alamofire.request(url.appendingQueryParams(parameters: params), method: method, parameters: body, encoding: encoding, headers: nil)
+        let request = Alamofire.request(url, method: method, parameters: params, encoding: path.encoding, headers: nil)
           .responseJSON { response in
             debugPrint(response)
             
-            let statusCode = response.response?.statusCode
-            if statusCode != path.successCode {
-              observer.onError(self.getError(statusCode, response: response))
-            }
-            
             if let result = response.result.value {
+              
+              let statusCode = response.response?.statusCode
+              if statusCode != path.successCode {
+                observer.onError(self.getError(statusCode, response: result))
+              }
+              
               observer.onNext(result)
               observer.onCompleted()
             } else {

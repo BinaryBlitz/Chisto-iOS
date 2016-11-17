@@ -30,8 +30,8 @@ class LocationSelectViewModel: LocationSelectViewModelType {
   var cityLocation = CLLocationCoordinate2D()
   let markerLocation = PublishSubject<CLLocationCoordinate2D>()
 
-  let cityZoom: Float = 8
-  let markerZoom: Float = 12
+  let cityZoom: Float = 10
+  let markerZoom: Float = 17 
 
   let saveButtonDidTap = PublishSubject<Void>()
   let popViewContoller: Driver<Void>

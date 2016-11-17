@@ -18,21 +18,16 @@ class OrderRegistrationViewModel {
 
   let buttonsAreEnabled = Variable(false)
   let orderCost: String
-  let dismissViewController: PublishSubject<Void>
-  let cityDidSelect: PublishSubject<Void>
+  let returnToOrderViewController: PublishSubject<Void>
   let presentLocationSelectSection: Driver<LocationSelectViewModel>
   let payInCashButtonDidTap = PublishSubject<Void>()
   let payWithCreditCardButtonDidTap = PublishSubject<Void>()
   let presentOrderPlacedPopup: Observable<OrderPlacedPopupViewModel>
 
   init() {
-    let cityDidSelect = PublishSubject<Void>()
-    self.cityDidSelect = cityDidSelect
-
-    let dismissViewController = PublishSubject<Void>()
-    self.dismissViewController = dismissViewController
-
-    cityDidSelect.bindTo(dismissViewController).addDisposableTo(disposeBag)
+    
+    let returnToOrderViewController = PublishSubject<Void>()
+    self.returnToOrderViewController = returnToOrderViewController
 
     let formViewModel = ContactFormViewModel()
     self.formViewModel = formViewModel
@@ -53,8 +48,8 @@ class OrderRegistrationViewModel {
         
         return OrderManager.instance.placeOrder().map { id in
           let viewModel = OrderPlacedPopupViewModel(orderNumber: "\(id)")
-          viewModel.dismissParentViewController.asObservable()
-            .bindTo(dismissViewController)
+          viewModel.returnToOrderViewController.asObservable()
+            .bindTo(returnToOrderViewController)
             .addDisposableTo(viewModel.disposeBag)
           return viewModel
         }

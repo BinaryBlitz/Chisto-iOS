@@ -36,6 +36,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
 
   override func viewDidLoad() {
     navigationItem.title = viewModel?.navigationBarTitle
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     laundryDescriptionLabel.text = viewModel?.laundryDescriprionTitle
     laundryIconView.kf.setImage(with: viewModel?.laundryIcon)
     laundryRatingView.rating = viewModel?.laundryRating ?? 0
@@ -45,6 +46,10 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
 
     viewModel?.presentRegistrationSection.drive(onNext: {
       self.present(RegistrationNavigationController.storyboardInstance()!, animated: true, completion: nil)
+    }).addDisposableTo(disposeBag)
+    
+    viewModel?.presentOrderContactDataSection.drive (onNext: { [weak self] in
+      self?.navigationController?.pushViewController(OrderRegistrationViewController.storyboardInstance()!, animated: true)
     }).addDisposableTo(disposeBag)
 
     configureFooter()

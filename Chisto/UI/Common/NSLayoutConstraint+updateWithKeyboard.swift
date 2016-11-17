@@ -19,7 +19,7 @@ extension NSLayoutConstraint {
       .subscribe(onNext: { notification in
       if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
         let keyboardHeight = keyboardSize.height
-        self.constant = self.constant + keyboardHeight
+        self.constant = currentConstant + keyboardHeight
       }
     })
     

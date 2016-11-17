@@ -8,35 +8,57 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
+import RealmSwift
 
 class ProfileManager {
+  
+  let disposeBag = DisposeBag()
 
   static let instance = ProfileManager()
   private let profileKey = "profileId"
 
   let userProfile: Profile?
+  
+  let apiToken: Variable<String?>
 
+  // TODO: refactor
   func updateProfile(closure: ((Profile) -> Void)) {
     guard let profile = userProfile else { return }
-
-    try! uiRealm.write {
+    
+    let realm = try! Realm()
+    
+    try! realm.write {
       closure(profile)
     }
   }
 
   init() {
-    if let profileId = UserDefaults.standard.value(forKey: profileKey) {
-      self.userProfile = uiRealm.object(ofType: Profile.self, forPrimaryKey: profileId)
-      return
-    }
+    var profile: Profile
+    
+    if let profileId = UserDefaults.standard.value(forKey: profileKey), let savedProfile = uiRealm.object(ofType: Profile.self, forPrimaryKey: profileId){
+      
+      profile = savedProfile
+      
+    } else {
+      
+      profile = Profile()
+      try! uiRealm.write {
+        uiRealm.add(profile)
+      }
+      UserDefaults.standard.set(profile.id, forKey: profileKey)
 
-    let profile = Profile()
-
-    try! uiRealm.write {
-      uiRealm.add(profile)
     }
 
     self.userProfile = profile
+    
+    self.apiToken = Variable<String?>(profile.apiToken)
+    
+    Observable.from(profile)
+      .map { $0.apiToken }
+      .bindTo(apiToken)
+      .addDisposableTo(disposeBag)
+    
     UserDefaults.standard.set(profile.id, forKey: profileKey)
 
   }

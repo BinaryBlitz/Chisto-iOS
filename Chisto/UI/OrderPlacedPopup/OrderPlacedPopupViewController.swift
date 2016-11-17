@@ -42,7 +42,7 @@ class OrderPlacedPopupViewController: UIViewController {
         self?.view.alpha = 0
       }, completion: { _ in
         self?.dismiss(animated: false, completion: {
-          viewModel.dismissParentViewController.onNext()
+          viewModel.returnToOrderViewController.onNext()
         })
       })
     }).addDisposableTo(disposeBag)

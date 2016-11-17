@@ -89,6 +89,7 @@
 		889923961DDCAF9400D73905 /* ItemInfoNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923951DDCAF9400D73905 /* ItemInfoNavigationController.swift */; };
 		8899239C1DDD288200D73905 /* Errors.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8899239E1DDD288200D73905 /* Errors.strings */; };
 		889923A11DDD2A0200D73905 /* String+localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923A01DDD2A0200D73905 /* String+localized.swift */; };
+		889923A31DDDFC1000D73905 /* flatMapLatest+continueWithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923A21DDDFC1000D73905 /* flatMapLatest+continueWithError.swift */; };
 		889A84151DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */; };
 		889A84171DCA56CB00E3926D /* OrderConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A84161DCA56CB00E3926D /* OrderConfirmViewModel.swift */; };
 		889A841B1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A841A1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift */; };
@@ -240,6 +241,7 @@
 		8899239D1DDD288200D73905 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Errors.strings; sourceTree = "<group>"; };
 		8899239F1DDD289400D73905 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Errors.strings; sourceTree = "<group>"; };
 		889923A01DDD2A0200D73905 /* String+localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+localized.swift"; sourceTree = "<group>"; };
+		889923A21DDDFC1000D73905 /* flatMapLatest+continueWithError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "flatMapLatest+continueWithError.swift"; sourceTree = "<group>"; };
 		889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceTableViewCell.swift; sourceTree = "<group>"; };
 		889A84161DCA56CB00E3926D /* OrderConfirmViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmViewModel.swift; sourceTree = "<group>"; };
 		889A841A1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceTableViewCellModel.swift; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 			children = (
 				8814C03B1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift */,
 				8814C03D1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift */,
+				889923A21DDDFC1000D73905 /* flatMapLatest+continueWithError.swift */,
 			);
 			path = RxUtils;
 			sourceTree = "<group>";
@@ -1111,6 +1114,7 @@
 				885409C31DB2E43300219C00 /* EmptyOrderView.swift in Sources */,
 				88C9F6E11DCDE36F0046DDD7 /* Date+toString.swift in Sources */,
 				8811FE131DC2DBBE00610712 /* ProfileViewController.swift in Sources */,
+				889923A31DDDFC1000D73905 /* flatMapLatest+continueWithError.swift in Sources */,
 				8814C0391DAE8F7F005B4967 /* LocationManager.swift in Sources */,
 				88D8ABBD1DB56E89009D515B /* SelectClothesViewModel.swift in Sources */,
 				8833B5361DBF8241004D44CE /* LastTimePopupViewModel.swift in Sources */,

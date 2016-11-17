@@ -18,7 +18,7 @@ class RegistrationCodeInputViewModel {
   let codeIsValid: Variable<Bool>
   let code: Variable<String?>
   let navigationBarTitle = "Регистрация"
-  let presentRegistrationScreen: Driver<Void>
+  let dismissViewController: Driver<Void>
 
   init(phoneNumberString: String) {
     let code = Variable<String?>(nil)
@@ -37,7 +37,7 @@ class RegistrationCodeInputViewModel {
       return DataManager.instance.verifyToken(code: code.onlyDigits).map { true }.asDriver(onErrorDriveWith: Driver.just(false))
     }
 
-    self.presentRegistrationScreen = validationConfirmed.filter { $0 == true }.map { _ in }
+    self.dismissViewController = validationConfirmed.filter { $0 == true }.map { _ in }
   }
 
 }

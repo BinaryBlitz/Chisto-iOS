@@ -16,3 +16,5 @@
 "line_items.price" = "Цена";
 
 "is not a number" = "не является числом";
+
+"phone_number" = "Номер телефона";

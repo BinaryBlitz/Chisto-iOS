@@ -19,7 +19,7 @@ enum DataError: Error, CustomStringConvertible {
   case responseConvertError
   case unknownApiPath
   case unknown
-
+  
   var description: String {
     switch self {
     case .network(let error):
@@ -53,8 +53,10 @@ class DataManager {
   let networkManager = NetworkManager()
 
   func fetchItems<ItemType>(type: ItemType.Type, apiPath: APIPath, _ modifier: @escaping (ItemType) -> Void = {_ in }) -> Observable<Void> where ItemType: ServerObjct {
-
-    return networkManager.doRequest(method: .get, apiPath, ["api_token": apiToken])
+    
+    let token = apiToken
+    
+    return networkManager.doRequest(method: .get, apiPath, ["api_token": token])
       .catchError { error in
         guard error is NetworkError else { return Observable.error(DataError.unknown) }
         
@@ -81,6 +83,11 @@ class DataManager {
   func createVerificationToken(phone: String) -> Observable<Void> {
     return networkManager
       .doRequest(method: .post, .createVerificationToken, ["phone_number": phone])
+      .catchError { error in
+        guard let error = error as? NetworkError else { return Observable.error(DataError.unknown) }
+        
+        return Observable.error(DataError.network(error))
+      }
       .flatMap { response -> Observable<Void> in
         let json = JSON(object: response)
         // TODO: work with real SMS codes
@@ -102,8 +109,11 @@ class DataManager {
         ["code": code]
       )
       .flatMap { response -> Observable<Void> in
-        let json = JSON(object: response)
-        self.apiToken = json["api_token"].stringValue
+        //let json = JSON(object: response)
+        ProfileManager.instance.updateProfile { profile in
+          // profile.apiToken = json["api_token"].stringValue
+          profile.apiToken = "foobar"
+        }
         return Observable.just()
       }
   }
@@ -143,18 +153,18 @@ extension DataManager: DataManagerServiceType {
 
   func placeOrder(order: Order, laundry: Laundry) -> Observable<Int> {
     let orderJSON = order.toJSON()
-
+    
+    let token = apiToken
+    
     return networkManager.doRequest(
         method: .post,
         .placeOrder(laundryId: laundry.id),
-        ["api_token": apiToken],
-        body: ["order": orderJSON], encoding: JSONEncoding.default
+        ["api_token": token, "order": orderJSON]
       )
       .catchError { error in
-        // TODO refactor
-        guard error is NetworkError else { return Observable.error(DataError.unknown) }
+        guard let error = error as? NetworkError else { return Observable.error(DataError.unknown) }
         
-        return Observable.error(DataError.unknown)
+        return Observable.error(DataError.network(error))
       }
       .map { result in return JSON(result)["id"].intValue }
   }

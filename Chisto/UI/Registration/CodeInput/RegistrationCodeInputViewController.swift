@@ -40,9 +40,13 @@ class RegistrationCodeInputViewController: UIViewController {
 
     maskedCodeInput.isValid.asObservable().bindTo(viewModel.codeIsValid).addDisposableTo(disposeBag)
 
-    viewModel.presentRegistrationScreen.drive(onNext: { [weak self] in
-      self?.navigationController?.setViewControllers([OrderRegistrationViewController.storyboardInstance()!], animated: true)
+    viewModel.dismissViewController.drive(onNext: { [weak self] in
+      self?.dismiss(animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
 
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    codeField.becomeFirstResponder()
   }
 }

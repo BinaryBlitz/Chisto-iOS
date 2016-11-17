@@ -5,3 +5,16 @@
   Created by Алексей on 17.11.16.
   Copyright © 2016 Binary Blitz. All rights reserved.
 */
+"email" = "Почта";
+
+"is invalid" = "неправильный формат";
+
+"line_items.laundry_treatment" = "Услуга химчистки";
+
+"must exist" = "должна существовать";
+
+"line_items.price" = "Цена";
+
+"is not a number" = "не является числом";
+
+"phone_number" = "Номер телефона";
