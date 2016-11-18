@@ -39,6 +39,7 @@ class OrderViewModel: OrderViewModelType {
   var continueButtonDidTap = PublishSubject<Void>()
   var showAllLaundriesModalButtonDidTap = PublishSubject<Void>()
   var profileButtonDidTap = PublishSubject<Void>()
+  let tableItemDeleted = PublishSubject<IndexPath>()
 
   // Output
   var sections: Driver<[OrderSectionModel]>
@@ -50,6 +51,7 @@ class OrderViewModel: OrderViewModelType {
 
   // Constants
   let navigationBarTitle = "Заказ"
+  let deleteButtonTitle = "Удалить"
   let footerButtonTitle = "Ничего не выбрано"
 
   // Data
@@ -89,6 +91,12 @@ class OrderViewModel: OrderViewModelType {
       } else {
         self.presentLaundrySelectSection.onNext()
       }
+    }).addDisposableTo(disposeBag)
+    
+    tableItemDeleted.asObservable().subscribe(onNext: { indexPath in
+      var items = currentOrderItems.value
+      items.remove(at: indexPath.row)
+      OrderManager.instance.currentOrderItems.onNext(items)
     }).addDisposableTo(disposeBag)
 
   }

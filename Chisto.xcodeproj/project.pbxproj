@@ -63,9 +63,6 @@
 		885409C31DB2E43300219C00 /* EmptyOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885409C21DB2E43300219C00 /* EmptyOrderView.swift */; };
 		885409C51DB2E55400219C00 /* CategoriesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409C41DB2E55400219C00 /* CategoriesViewController.storyboard */; };
 		885409C71DB2EC5D00219C00 /* UIView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885409C61DB2EC5D00219C00 /* UIView+IBInspectable.swift */; };
-		885C196F1DC379E40081A4F3 /* LaundrySortViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885C196C1DC379E40081A4F3 /* LaundrySortViewController.storyboard */; };
-		885C19701DC379E40081A4F3 /* LaundrySortViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C196D1DC379E40081A4F3 /* LaundrySortViewModel.swift */; };
-		885C19711DC379E40081A4F3 /* LaundrySortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C196E1DC379E40081A4F3 /* LaundrySortViewController.swift */; };
 		8862E6CB1DC8E2C800DDFB00 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862E6CA1DC8E2C800DDFB00 /* OrderItem.swift */; };
 		8862E6CE1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862E6CD1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift */; };
 		8862E6D01DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8862E6CF1DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard */; };
@@ -215,9 +212,6 @@
 		885409C21DB2E43300219C00 /* EmptyOrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyOrderView.swift; sourceTree = "<group>"; };
 		885409C41DB2E55400219C00 /* CategoriesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CategoriesViewController.storyboard; sourceTree = "<group>"; };
 		885409C61DB2EC5D00219C00 /* UIView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectable.swift"; sourceTree = "<group>"; };
-		885C196C1DC379E40081A4F3 /* LaundrySortViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaundrySortViewController.storyboard; sourceTree = "<group>"; };
-		885C196D1DC379E40081A4F3 /* LaundrySortViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySortViewModel.swift; sourceTree = "<group>"; };
-		885C196E1DC379E40081A4F3 /* LaundrySortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySortViewController.swift; sourceTree = "<group>"; };
 		8862E6CA1DC8E2C800DDFB00 /* OrderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		8862E6CD1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmViewController.swift; sourceTree = "<group>"; };
 		8862E6CF1DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderConfirmViewController.storyboard; sourceTree = "<group>"; };
@@ -229,7 +223,7 @@
 		8872F0BD1DD8D67100E8D9EE /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		8872F0BF1DD8DD3400E8D9EE /* OrderPlacedPopupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderPlacedPopupViewModel.swift; sourceTree = "<group>"; };
 		887817871DD903D300A89DEC /* LineItemAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineItemAttribute.swift; sourceTree = "<group>"; };
-		88923E101DD340C500BC3AC0 /* twoWayBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = twoWayBinding.swift; sourceTree = "<group>"; };
+		88923E101DD340C500BC3AC0 /* twoWayBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = twoWayBinding.swift; path = ../Util/twoWayBinding.swift; sourceTree = "<group>"; };
 		88923E121DD35F7600BC3AC0 /* ProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		88923E151DD369F400BC3AC0 /* ProfileContactDataViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileContactDataViewController.storyboard; sourceTree = "<group>"; };
 		88923E171DD36AB900BC3AC0 /* ProfileContactDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileContactDataViewController.swift; sourceTree = "<group>"; };
@@ -397,7 +391,6 @@
 				88072D4C1DB967D400B47D23 /* ItemInfo */,
 				8833B5261DBE6E06004D44CE /* LastTimePopup */,
 				889D87C51DC0A727003E8DAC /* LaundrySelect */,
-				885C19731DC379FA0081A4F3 /* LaundrySort */,
 				88923E1D1DD3D5DC00BC3AC0 /* LocationSelect */,
 				88073EF31DAC1CBE000696A3 /* Onboarding */,
 				8814C0441DAF0E89005B4967 /* Order */,
@@ -497,7 +490,6 @@
 				8814C0381DAE8F7F005B4967 /* LocationManager.swift */,
 				88CDDE461DD922DC002BCC5E /* NSURL+QueryParams.swift */,
 				8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */,
-				88923E101DD340C500BC3AC0 /* twoWayBinding.swift */,
 				889923A01DDD2A0200D73905 /* String+localized.swift */,
 			);
 			path = Util;
@@ -506,6 +498,7 @@
 		8814C03A1DAEBCD7005B4967 /* RxUtils */ = {
 			isa = PBXGroup;
 			children = (
+				88923E101DD340C500BC3AC0 /* twoWayBinding.swift */,
 				8814C03B1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift */,
 				8814C03D1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift */,
 				889923A21DDDFC1000D73905 /* flatMapLatest+continueWithError.swift */,
@@ -623,16 +616,6 @@
 				8814C0571DAFB0F1005B4967 /* CityNotFoundViewModel.swift */,
 			);
 			path = CityNotFound;
-			sourceTree = "<group>";
-		};
-		885C19731DC379FA0081A4F3 /* LaundrySort */ = {
-			isa = PBXGroup;
-			children = (
-				885C196C1DC379E40081A4F3 /* LaundrySortViewController.storyboard */,
-				885C196E1DC379E40081A4F3 /* LaundrySortViewController.swift */,
-				885C196D1DC379E40081A4F3 /* LaundrySortViewModel.swift */,
-			);
-			path = LaundrySort;
 			sourceTree = "<group>";
 		};
 		8862E6C91DC8E2BD00DDFB00 /* Model */ = {
@@ -920,7 +903,6 @@
 				885409B61DB23DEC00219C00 /* CitySelectViewController.storyboard in Resources */,
 				88923E161DD369F400BC3AC0 /* ProfileContactDataViewController.storyboard in Resources */,
 				88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */,
-				885C196F1DC379E40081A4F3 /* LaundrySortViewController.storyboard in Resources */,
 				8811FE181DC2E5DB00610712 /* AboutViewController.storyboard in Resources */,
 				88DB937B1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard in Resources */,
 				88373C981DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib in Resources */,
@@ -1032,7 +1014,6 @@
 				88E86DAA1DB8E800002A7024 /* ServiceSelectViewModel.swift in Sources */,
 				8814C0611DAFEE7C005B4967 /* CategoriesViewModel.swift in Sources */,
 				88DB938D1DCC187C00DAC651 /* Laundry.swift in Sources */,
-				885C19701DC379E40081A4F3 /* LaundrySortViewModel.swift in Sources */,
 				88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */,
 				88DB937F1DCBE88700DAC651 /* RegistrationPhoneInputViewModel.swift in Sources */,
 				88E705641DCCC2FB007F779E /* Category.swift in Sources */,
@@ -1094,7 +1075,6 @@
 				88E86DA91DB8E800002A7024 /* ServiceSelectViewController.swift in Sources */,
 				8834B8411DDCA6C1009D2949 /* NSLayoutConstraint+updateWithKeyboard.swift in Sources */,
 				883760D11DB8D97500C9F506 /* OnBoardingNavigationController.swift in Sources */,
-				885C19711DC379E40081A4F3 /* LaundrySortViewController.swift in Sources */,
 				88923E181DD36AB900BC3AC0 /* ProfileContactDataViewController.swift in Sources */,
 				8814C05E1DAFCF28005B4967 /* CategoryTableViewCell.swift in Sources */,
 				88CD683C1DD1D677004B7726 /* ContactFormViewController.swift in Sources */,

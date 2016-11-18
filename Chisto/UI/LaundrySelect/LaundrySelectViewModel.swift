@@ -22,7 +22,7 @@ protocol LaundrySelectViewModelType {
   // Output
   var navigationBarTitle: String { get }
   var sections: Driver<[LaundrySelectSectionModel]> { get }
-  var presentSortSelectSection: Driver<LaundrySortViewModel> { get }
+  var presentSortSelectSection: Driver<Void> { get }
 
   // Data
   var sortedLaundries: Variable<[Laundry]> { get }
@@ -46,7 +46,7 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
   var navigationBarTitle = "Химчистки"
   var sections: Driver<[LaundrySelectSectionModel]>
   var presentOrderConfirmSection: Driver<OrderConfirmViewModel>
-  var presentSortSelectSection: Driver<LaundrySortViewModel>
+  var presentSortSelectSection: Driver<Void>
 
   // Data
   var sortedLaundries: Variable<[Laundry]>
@@ -74,11 +74,7 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
       return [section]
     }
 
-    self.presentSortSelectSection = sortButtonDidTap.asObservable().map {
-      let viewModel = LaundrySortViewModel()
-      viewModel.selectedSortType.bindTo(sortType).addDisposableTo(viewModel.disposeBag)
-      return viewModel
-    }.asDriver(onErrorDriveWith: .empty())
+    self.presentSortSelectSection = sortButtonDidTap.asDriver(onErrorDriveWith: .empty())
 
     self.presentOrderConfirmSection = itemDidSelect.map { indexPath in
       let viewModel = OrderConfirmViewModel(laundry: laundries.value[indexPath.row])
