@@ -40,7 +40,6 @@ class Laundry: ServerObjct {
     logoUrl <- map["logo_url"]
     backgroundImageUrl <- map["background_image_url"]
     treatments <- (map["laundry_treatments"], ListTransform<LaundryTreatment>())
-    
   }
   
   var type: LaundryType? {

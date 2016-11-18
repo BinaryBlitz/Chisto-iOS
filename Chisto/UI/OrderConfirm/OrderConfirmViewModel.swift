@@ -81,9 +81,6 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
     self.presentOrderContactDataSection = registrationRequired.filter { $0 == false }.map { _ in }
       .asDriver(onErrorDriveWith: .empty())
 
-    self.presentRegistrationSection = registrationRequired.filter { $0 == true }.map { _ in }
-      .asDriver(onErrorDriveWith: .empty())
-
     confirmOrderButtonDidTap.asDriver(onErrorDriveWith: .empty()).drive(onNext: {
       OrderManager.instance.currentLaundry = laundry
     }).addDisposableTo(disposeBag)
