@@ -33,6 +33,8 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
   @IBOutlet weak var orderPriceLabel: UILabel!
   @IBOutlet weak var deliveryPriceLabel: UILabel!
   @IBOutlet weak var confirmButton: GoButton!
+  
+  
 
   override func viewDidLoad() {
     navigationItem.title = viewModel?.navigationBarTitle
@@ -44,13 +46,19 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
     orderPriceLabel.text = viewModel?.orderPrice
     deliveryDateLabel.text = viewModel?.deliveryDate
     backgroundImageView.kf.setImage(with: viewModel?.laundryBackground)
-
+    
     viewModel?.presentRegistrationSection.drive(onNext: {
       self.present(RegistrationNavigationController.storyboardInstance()!, animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
     
     viewModel?.presentOrderContactDataSection.drive (onNext: { [weak self] in
       self?.navigationController?.pushViewController(OrderRegistrationViewController.storyboardInstance()!, animated: true)
+    }).addDisposableTo(disposeBag)
+    
+    viewModel?.presentLaundryReviewsSection.drive (onNext: { [weak self] viewModel in
+      let viewController = LaundryReviewsViewController.storyboardInstance()!
+      viewController.viewModel = viewModel
+      self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
 
     configureFooter()
@@ -99,4 +107,9 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
   override func viewDidDisappear(_ animated: Bool) {
     navigationController?.navigationBar.isTranslucent = false
   }
+  
+  @IBAction func headerViewDidTap(_ sender: Any) {
+    viewModel?.headerViewDidTap.onNext()
+  }
+  
 }
