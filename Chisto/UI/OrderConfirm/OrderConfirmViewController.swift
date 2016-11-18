@@ -95,7 +95,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
     navigationController?.navigationBar.backgroundColor = nil
   }
   
-  override func viewWillDisappear(_ animated: Bool) {
+  override func viewDidDisappear(_ animated: Bool) {
     navigationController?.navigationBar.isTranslucent = false
   }
 

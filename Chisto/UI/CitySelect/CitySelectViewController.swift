@@ -13,7 +13,7 @@ import RxCocoa
 import RealmSwift
 import RxRealm
 
-class CitySelectViewController: UIViewController, UIScrollViewDelegate {
+class CitySelectViewController: UIViewController, UIScrollViewDelegate, UISearchBarDelegate {
 
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var goButton: UIButton!
@@ -69,6 +69,7 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate {
     // UI
     searchBar.barTintColor = UIColor.chsSkyBlue
     searchBar.tintColor = UIColor.white
+    searchBar.delegate = self
     searchBar.backgroundColor = UIColor.chsSkyBlue
     searchBar.backgroundImage = UIImage()
     searchBar.setSearchFieldBackgroundImage(#imageLiteral(resourceName: "searchBarTextBack"), for: .normal)
@@ -78,6 +79,9 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate {
 
     // Bindings
     guard let viewModel = viewModel else { return }
+    searchBar.rx.searchButtonClicked.asDriver().drive(onNext: { [weak self] in
+      self?.searchBar.resignFirstResponder()
+    }).addDisposableTo(disposeBag)
     searchBar.rx.cancelButtonClicked.bindTo(viewModel.cancelSearchButtonDidTap).addDisposableTo(disposeBag)
     searchBar.rx.textDidBeginEditing.bindTo(viewModel.searchBarDidBeginEditing).addDisposableTo(disposeBag)
     searchBar.rx.textDidEndEditing.bindTo(viewModel.searchBarDidEndEditing).addDisposableTo(disposeBag)
@@ -98,6 +102,9 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate {
     dataSource.configureCell = { _, tableView, indexPath, city in
       let cell = tableView.dequeueReusableCell(withIdentifier: "CitySelectTableViewCell", for: indexPath)
       cell.textLabel?.text = city.name
+      if viewModel.cityClosedToUser.value == city {
+        cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "iconMap"))
+      }
       return cell
     }
 

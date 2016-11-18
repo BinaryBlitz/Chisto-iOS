@@ -25,6 +25,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" image="order-confirm-bckg" translatesAutoresizingMaskIntoConstraints="NO" id="M8K-q6-Gzn">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="129"/>
+                                <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="129" id="Sff-CU-XXz"/>
                                 </constraints>

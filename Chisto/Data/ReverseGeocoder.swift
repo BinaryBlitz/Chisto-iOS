@@ -37,6 +37,12 @@ class Adress {
     return component["long_name"].string
   }
   
+  var cityName: String? {
+    guard let component = getComponent(type: "locality") else { return nil }
+    
+    return component["long_name"].string
+  }
+  
   init(json: JSON) {
     self.json = json
     self.adressComponents = json["results"].array?[0]["address_components"].array
