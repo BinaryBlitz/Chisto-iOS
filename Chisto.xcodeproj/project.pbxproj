@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88004FB41DDF3DE300A8632A /* LaundryReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88004FB31DDF3DE300A8632A /* LaundryReviewsViewController.swift */; };
+		88004FB61DDF3DF200A8632A /* LaundryReviewsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88004FB51DDF3DF200A8632A /* LaundryReviewsViewController.storyboard */; };
+		88004FB81DDF49F300A8632A /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88004FB71DDF49F300A8632A /* Rating.swift */; };
+		88004FBB1DDF578500A8632A /* LaundryReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88004FBA1DDF578500A8632A /* LaundryReviewsTableViewCell.swift */; };
+		88004FBD1DDF579300A8632A /* LaundryReviewsTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88004FBC1DDF579300A8632A /* LaundryReviewsTableViewCellModel.swift */; };
+		88004FBF1DDF77DF00A8632A /* LaundryReviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88004FBE1DDF77DF00A8632A /* LaundryReviewsViewModel.swift */; };
 		88072D4E1DB967EF00B47D23 /* ItemInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88072D4D1DB967EF00B47D23 /* ItemInfoViewController.storyboard */; };
 		88072D501DB9695300B47D23 /* ItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88072D4F1DB9695200B47D23 /* ItemInfoViewController.swift */; };
 		88072D521DB9695E00B47D23 /* ItemInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88072D511DB9695E00B47D23 /* ItemInfoViewModel.swift */; };
@@ -153,6 +159,12 @@
 
 /* Begin PBXFileReference section */
 		40CC6F844478737C97DE22A8 /* Pods-Chisto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chisto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chisto/Pods-Chisto.debug.xcconfig"; sourceTree = "<group>"; };
+		88004FB31DDF3DE300A8632A /* LaundryReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryReviewsViewController.swift; sourceTree = "<group>"; };
+		88004FB51DDF3DF200A8632A /* LaundryReviewsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaundryReviewsViewController.storyboard; sourceTree = "<group>"; };
+		88004FB71DDF49F300A8632A /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		88004FBA1DDF578500A8632A /* LaundryReviewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryReviewsTableViewCell.swift; sourceTree = "<group>"; };
+		88004FBC1DDF579300A8632A /* LaundryReviewsTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryReviewsTableViewCellModel.swift; sourceTree = "<group>"; };
+		88004FBE1DDF77DF00A8632A /* LaundryReviewsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryReviewsViewModel.swift; sourceTree = "<group>"; };
 		88072D4D1DB967EF00B47D23 /* ItemInfoViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ItemInfoViewController.storyboard; sourceTree = "<group>"; };
 		88072D4F1DB9695200B47D23 /* ItemInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoViewController.swift; sourceTree = "<group>"; };
 		88072D511DB9695E00B47D23 /* ItemInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoViewModel.swift; sourceTree = "<group>"; };
@@ -322,6 +334,26 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		88004FB21DDF3DC900A8632A /* LaundryReviews */ = {
+			isa = PBXGroup;
+			children = (
+				88004FB91DDF560F00A8632A /* View */,
+				88004FB31DDF3DE300A8632A /* LaundryReviewsViewController.swift */,
+				88004FB51DDF3DF200A8632A /* LaundryReviewsViewController.storyboard */,
+				88004FBE1DDF77DF00A8632A /* LaundryReviewsViewModel.swift */,
+			);
+			name = LaundryReviews;
+			sourceTree = "<group>";
+		};
+		88004FB91DDF560F00A8632A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				88004FBA1DDF578500A8632A /* LaundryReviewsTableViewCell.swift */,
+				88004FBC1DDF579300A8632A /* LaundryReviewsTableViewCellModel.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		88072D4C1DB967D400B47D23 /* ItemInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,6 +414,7 @@
 		88073EEC1DAC19E1000696A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				88004FB21DDF3DC900A8632A /* LaundryReviews */,
 				8811FE161DC2E5C800610712 /* About */,
 				8814C0501DAF2A58005B4967 /* Categories */,
 				885409C11DB2C76B00219C00 /* CityNotFound */,
@@ -629,6 +662,7 @@
 				88A221671DCE013100CAD2B0 /* LaundryTreatment.swift */,
 				88FA1DF91DD2944400431822 /* Profile.swift */,
 				88DB938E1DCC188600DAC651 /* Treatment.swift */,
+				88004FB71DDF49F300A8632A /* Rating.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -903,6 +937,8 @@
 				885409B61DB23DEC00219C00 /* CitySelectViewController.storyboard in Resources */,
 				88923E161DD369F400BC3AC0 /* ProfileContactDataViewController.storyboard in Resources */,
 				88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */,
+				88004FB61DDF3DF200A8632A /* LaundryReviewsViewController.storyboard in Resources */,
+				885C196F1DC379E40081A4F3 /* LaundrySortViewController.storyboard in Resources */,
 				8811FE181DC2E5DB00610712 /* AboutViewController.storyboard in Resources */,
 				88DB937B1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard in Resources */,
 				88373C981DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib in Resources */,
@@ -1019,8 +1055,10 @@
 				88E705641DCCC2FB007F779E /* Category.swift in Sources */,
 				889D87C71DC0A752003E8DAC /* LaundrySelectViewController.swift in Sources */,
 				889A84171DCA56CB00E3926D /* OrderConfirmViewModel.swift in Sources */,
+				88004FB81DDF49F300A8632A /* Rating.swift in Sources */,
 				889923A71DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift in Sources */,
 				88072D571DB9698600B47D23 /* ItemInfoTableViewCell.swift in Sources */,
+				88004FBF1DDF77DF00A8632A /* LaundryReviewsViewModel.swift in Sources */,
 				8814C05A1DAFC96D005B4967 /* CategoriesViewController.swift in Sources */,
 				889A841B1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift in Sources */,
 				88072D551DB9697700B47D23 /* ItemInfoTableViewCellModel.swift in Sources */,
@@ -1084,6 +1122,7 @@
 				88DB938B1DCC169A00DAC651 /* NetworkManager.swift in Sources */,
 				889D87CB1DC0B45C003E8DAC /* RotatingUILabel.swift in Sources */,
 				88FA1DF61DD23F3A00431822 /* ContactFormViewModel.swift in Sources */,
+				88004FBD1DDF579300A8632A /* LaundryReviewsTableViewCellModel.swift in Sources */,
 				885409BA1DB25B5100219C00 /* GoButton.swift in Sources */,
 				889D87D21DC1F71F003E8DAC /* LaundrySelectViewModel.swift in Sources */,
 				8833B5281DBE6E2B004D44CE /* LastTimePopupViewController.swift in Sources */,
@@ -1105,8 +1144,10 @@
 				889923961DDCAF9400D73905 /* ItemInfoNavigationController.swift in Sources */,
 				88072D501DB9695300B47D23 /* ItemInfoViewController.swift in Sources */,
 				88E6B5991DCB73610024FA1A /* UIView+AddBorders.swift in Sources */,
+				88004FBB1DDF578500A8632A /* LaundryReviewsTableViewCell.swift in Sources */,
 				88E86DA81DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift in Sources */,
 				8814C03C1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift in Sources */,
+				88004FB41DDF3DE300A8632A /* LaundryReviewsViewController.swift in Sources */,
 				88E86DB31DB916B3002A7024 /* OrderManager.swift in Sources */,
 				885409C71DB2EC5D00219C00 /* UIView+IBInspectable.swift in Sources */,
 				8833B5341DBF7F75004D44CE /* LaundryItemInfoViewModel.swift in Sources */,

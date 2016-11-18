@@ -17,6 +17,7 @@ typealias OrderConfirmSectionModel = SectionModel<String, OrderConfirmServiceTab
 protocol OrderConfirmViewModelType {
   // Input
   var itemDidSelect: PublishSubject<IndexPath> { get }
+  var headerViewDidTap: PublishSubject<Void> { get }
   var confirmOrderButtonDidTap: PublishSubject<Void> { get }
 
   // Output
@@ -31,6 +32,7 @@ protocol OrderConfirmViewModelType {
   var sections: Driver<[OrderConfirmSectionModel]> { get }
   var presentRegistrationSection: Driver<Void> { get }
   var presentOrderContactDataSection: Driver<Void> { get }
+  var presentLaundryReviewsSection: Driver<LaundryReviewsViewModel> { get }
 }
 
 class OrderConfirmViewModel: OrderConfirmViewModelType {
@@ -38,8 +40,9 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   let disposeBag = DisposeBag()
 
   // Input
-  var itemDidSelect = PublishSubject<IndexPath>()
-  var confirmOrderButtonDidTap = PublishSubject<Void>()
+  let headerViewDidTap = PublishSubject<Void>()
+  let itemDidSelect = PublishSubject<IndexPath>()
+  let confirmOrderButtonDidTap = PublishSubject<Void>()
 
   // Output
   var navigationBarTitle: String
@@ -53,7 +56,8 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   var sections: Driver<[OrderConfirmSectionModel]>
   var presentRegistrationSection: Driver<Void>
   var presentOrderContactDataSection: Driver<Void>
-
+  let presentLaundryReviewsSection: Driver<LaundryReviewsViewModel>
+  
   init(laundry: Laundry) {
     self.navigationBarTitle = laundry.name
     self.laundryDescriprionTitle = laundry.descriptionText
@@ -79,6 +83,13 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
       tokenObservable) { _, token -> Bool in token == nil }
     
     self.presentOrderContactDataSection = registrationRequired.filter { $0 == false }.map { _ in }
+      .asDriver(onErrorDriveWith: .empty())
+    
+    self.presentRegistrationSection = registrationRequired.filter { $0 == true }.map { _ in }
+      .asDriver(onErrorDriveWith: .empty())
+    
+    self.presentLaundryReviewsSection = headerViewDidTap
+      .map { LaundryReviewsViewModel(laundry: laundry) }
       .asDriver(onErrorDriveWith: .empty())
 
     confirmOrderButtonDidTap.asDriver(onErrorDriveWith: .empty()).drive(onNext: {

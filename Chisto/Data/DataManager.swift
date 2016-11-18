@@ -48,25 +48,49 @@ protocol DataManagerServiceType {
 class DataManager {
 
   static let instance = DataManager()
-  var apiToken = "foobar"
-  var verificationToken: String? = nil
-  let networkManager = NetworkManager()
-
-  func fetchItems<ItemType>(type: ItemType.Type, apiPath: APIPath,
-                  _ modifier: @escaping (ItemType) -> Void = {_ in }) -> Observable<Void> where ItemType: ServerObjct {
-    // TODO: get a real api token
+  private var apiToken = "foobar"
+  private var verificationToken: String? = nil
+  private let networkManager = NetworkManager()
+  
+  func networkRequest(method: HTTPMethod, _ path: APIPath, _ params: Parameters = [:]) -> Observable<Any> {
+    var parameters = params
     let token = apiToken
-    
-    return networkManager.doRequest(method: .get, apiPath, ["api_token": token])
+    parameters["api_token"] = token
+    return networkManager.doRequest(method: method, path, params)
       .catchError { error in
         guard error is NetworkError else { return Observable.error(DataError.unknown) }
-        
         return Observable.error(DataError.unknown)
-      }
-      .flatMap { itemsJSON -> Observable<Void> in
+    }
+  }
+  
+  func getItems <ItemType>(type: ItemType.Type, apiPath: APIPath) -> Observable<[ItemType]> where ItemType: Mappable {
+    return networkRequest(method: .get, apiPath)
+      .flatMap { itemsJSON -> Observable<[ItemType]> in
         guard let items = Mapper<ItemType>().mapArray(JSONObject: itemsJSON) else {
           return Observable.error(DataError.responseConvertError)
         }
+        return Observable.just(items)
+    }
+
+  }
+  
+  func deleteCachedObjectsIfNeeded<ItemType>(type: ItemType.Type, serverObjects: [ItemType]) where ItemType: ServerObjct {
+    let realm = try! Realm()
+    
+    try? realm.write {
+      for object in realm.objects(type) {
+        if !serverObjects.contains { $0.id == object.id } {
+          realm.delete(object)
+        }
+      }
+    }
+  }
+
+  func fetchItems<ItemType>(type: ItemType.Type, apiPath: APIPath,
+                  _ modifier: @escaping (ItemType) -> Void = {_ in }) -> Observable<Void> where ItemType: ServerObjct {
+    
+    return getItems(type: type, apiPath: apiPath)
+      .flatMap { items -> Observable<Void> in
 
         let realm = try! Realm()
 
@@ -76,19 +100,15 @@ class DataManager {
             realm.add(item, update: true)
           }
         }
+        
+        self.deleteCachedObjectsIfNeeded(type: type, serverObjects: items)
 
         return Observable.empty()
       }
   }
 
   func createVerificationToken(phone: String) -> Observable<Void> {
-    return networkManager
-      .doRequest(method: .post, .createVerificationToken, ["phone_number": phone])
-      .catchError { error in
-        guard let error = error as? NetworkError else { return Observable.error(DataError.unknown) }
-        
-        return Observable.error(DataError.network(error))
-      }
+    return networkRequest(method: .post, .createVerificationToken, ["phone_number": phone])
       .flatMap { response -> Observable<Void> in
         let json = JSON(object: response)
         // TODO: work with real SMS codes
@@ -149,25 +169,21 @@ extension DataManager: DataManagerServiceType {
 
   func fetchLaundries() -> Observable<Void> {
     guard let cityId = ProfileManager.instance.userProfile.city?.id else { return Observable.error(DataError.unknown) }
-
     return fetchItems(type: Laundry.self, apiPath: .fetchCityLaundries(cityId: cityId))
+  }
+  
+  func fetchRatings(laundry: Laundry) -> Observable<[Rating]> {
+    return getItems(type: Rating.self, apiPath: .fetchRatings(laundryId: laundry.id))
   }
 
   func placeOrder(order: Order, laundry: Laundry) -> Observable<Int> {
     let orderJSON = order.toJSON()
     
-    let token = apiToken
-    
-    return networkManager.doRequest(
+    return networkRequest(
         method: .post,
         .placeOrder(laundryId: laundry.id),
-        ["api_token": token, "order": orderJSON]
+        ["order": orderJSON]
       )
-      .catchError { error in
-        guard let error = error as? NetworkError else { return Observable.error(DataError.unknown) }
-        
-        return Observable.error(DataError.network(error))
-      }
       .map { result in return JSON(result)["id"].intValue }
   }
 
