@@ -26,7 +26,7 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
       .addDisposableTo(disposeBag)
 
     viewModel.presentSortSelectSection.drive(onNext: {_ in
-      let alertController = UIAlertController(title: "Отображать химчистки по:", message: nil, preferredStyle: .alert)
+      let alertController = UIAlertController(title: "Сортировать химчистки по:", message: nil, preferredStyle: .alert)
       
       let byPriceAction = UIAlertAction(title: "По цене", style: .default, handler: { [weak self] _ in
         self?.viewModel.sortType.value = .byPrice
