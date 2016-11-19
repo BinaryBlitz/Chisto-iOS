@@ -33,7 +33,8 @@ class OrderManager {
     let profile = ProfileManager.instance.userProfile
     guard let laundry = currentLaundry else { return Observable.empty() }
 
-    let order = Order(profile: profile)
+    let order = Order()
+    order.configure(profile: profile)
     let items = try! currentOrderItems.value()
 
     for item in items {

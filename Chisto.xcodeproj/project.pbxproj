@@ -154,6 +154,10 @@
 		88E86DB71DB91BBA002A7024 /* OrderTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB61DB91BBA002A7024 /* OrderTableViewCellModel.swift */; };
 		88FA1DF61DD23F3A00431822 /* ContactFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA1DF51DD23F3A00431822 /* ContactFormViewModel.swift */; };
 		88FA1DFA1DD2944400431822 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA1DF91DD2944400431822 /* Profile.swift */; };
+		88FE7AFC1DE0AC4A00A16289 /* MyOrdersViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88FE7AFB1DE0AC4A00A16289 /* MyOrdersViewController.storyboard */; };
+		88FE7AFE1DE0AF8000A16289 /* MyOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE7AFD1DE0AF8000A16289 /* MyOrdersViewController.swift */; };
+		88FE7B031DE0AFE600A16289 /* MyOrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE7B021DE0AFE600A16289 /* MyOrdersTableViewCell.swift */; };
+		88FE7B051DE0AFF300A16289 /* MyOrdersTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE7B041DE0AFF300A16289 /* MyOrdersTableViewCellModel.swift */; };
 		CC63F0EA174EB55F7C1DD247 /* Pods_Chisto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D4403E4AD2DF4A42F5C8FA /* Pods_Chisto.framework */; };
 /* End PBXBuildFile section */
 
@@ -310,6 +314,10 @@
 		88E86DB61DB91BBA002A7024 /* OrderTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewCellModel.swift; sourceTree = "<group>"; };
 		88FA1DF51DD23F3A00431822 /* ContactFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFormViewModel.swift; sourceTree = "<group>"; };
 		88FA1DF91DD2944400431822 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		88FE7AFB1DE0AC4A00A16289 /* MyOrdersViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyOrdersViewController.storyboard; sourceTree = "<group>"; };
+		88FE7AFD1DE0AF8000A16289 /* MyOrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersViewController.swift; sourceTree = "<group>"; };
+		88FE7B021DE0AFE600A16289 /* MyOrdersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersTableViewCell.swift; sourceTree = "<group>"; };
+		88FE7B041DE0AFF300A16289 /* MyOrdersTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersTableViewCellModel.swift; sourceTree = "<group>"; };
 		EA8A37CB3EB7F2EEDB9E26D5 /* Pods-Chisto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chisto.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chisto/Pods-Chisto.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -414,6 +422,7 @@
 		88073EEC1DAC19E1000696A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				88FE7AFA1DE0AC3700A16289 /* MyOrders */,
 				88004FB21DDF3DC900A8632A /* LaundryReviews */,
 				8811FE161DC2E5C800610712 /* About */,
 				8814C0501DAF2A58005B4967 /* Categories */,
@@ -860,6 +869,25 @@
 			path = OrderManager;
 			sourceTree = "<group>";
 		};
+		88FE7AFA1DE0AC3700A16289 /* MyOrders */ = {
+			isa = PBXGroup;
+			children = (
+				88FE7B011DE0AFCA00A16289 /* Views */,
+				88FE7AFB1DE0AC4A00A16289 /* MyOrdersViewController.storyboard */,
+				88FE7AFD1DE0AF8000A16289 /* MyOrdersViewController.swift */,
+			);
+			name = MyOrders;
+			sourceTree = "<group>";
+		};
+		88FE7B011DE0AFCA00A16289 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				88FE7B021DE0AFE600A16289 /* MyOrdersTableViewCell.swift */,
+				88FE7B041DE0AFF300A16289 /* MyOrdersTableViewCellModel.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		E86E04D5222457AEB97ED2EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -936,9 +964,9 @@
 				88DB93841DCBEF8B00DAC651 /* RegistrationCodeInputViewController.storyboard in Resources */,
 				885409B61DB23DEC00219C00 /* CitySelectViewController.storyboard in Resources */,
 				88923E161DD369F400BC3AC0 /* ProfileContactDataViewController.storyboard in Resources */,
+				88FE7AFC1DE0AC4A00A16289 /* MyOrdersViewController.storyboard in Resources */,
 				88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */,
 				88004FB61DDF3DF200A8632A /* LaundryReviewsViewController.storyboard in Resources */,
-				885C196F1DC379E40081A4F3 /* LaundrySortViewController.storyboard in Resources */,
 				8811FE181DC2E5DB00610712 /* AboutViewController.storyboard in Resources */,
 				88DB937B1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard in Resources */,
 				88373C981DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib in Resources */,
@@ -1046,6 +1074,7 @@
 				88DB93861DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift in Sources */,
 				88DB93931DCC20B100DAC651 /* ServerObjct.swift in Sources */,
 				8833B5321DBE8774004D44CE /* LaundryItemInfoView.swift in Sources */,
+				88FE7B051DE0AFF300A16289 /* MyOrdersTableViewCellModel.swift in Sources */,
 				8814C0331DAD8123005B4967 /* Colors.swift in Sources */,
 				88E86DAA1DB8E800002A7024 /* ServiceSelectViewModel.swift in Sources */,
 				8814C0611DAFEE7C005B4967 /* CategoriesViewModel.swift in Sources */,
@@ -1075,6 +1104,7 @@
 				883760D31DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift in Sources */,
 				8872F0BC1DD8AE0F00E8D9EE /* ReverseGeocoder.swift in Sources */,
 				8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */,
+				88FE7B031DE0AFE600A16289 /* MyOrdersTableViewCell.swift in Sources */,
 				8811FE0F1DC2DB0500610712 /* ProfileNavigationController.swift in Sources */,
 				8814C0401DAED9AC005B4967 /* CityNotFoundViewController.swift in Sources */,
 				88DB93891DCC115D00DAC651 /* City.swift in Sources */,
@@ -1128,6 +1158,7 @@
 				8833B5281DBE6E2B004D44CE /* LastTimePopupViewController.swift in Sources */,
 				88923E131DD35F7600BC3AC0 /* ProfileManager.swift in Sources */,
 				88E6B59F1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift in Sources */,
+				88FE7AFE1DE0AF8000A16289 /* MyOrdersViewController.swift in Sources */,
 				88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */,
 				8814C0561DAFA7B5005B4967 /* BottomBorderedTextField.swift in Sources */,
 				88DB938F1DCC188600DAC651 /* Treatment.swift in Sources */,

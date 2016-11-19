@@ -56,7 +56,7 @@ class DataManager {
     var parameters = params
     let token = apiToken
     parameters["api_token"] = token
-    return networkManager.doRequest(method: method, path, params)
+    return networkManager.doRequest(method: method, path, parameters)
       .catchError { error in
         guard error is NetworkError else { return Observable.error(DataError.unknown) }
         return Observable.error(DataError.unknown)

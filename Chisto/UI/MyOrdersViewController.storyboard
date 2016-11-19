@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Мои заказы-->
+        <scene sceneID="nwD-JO-b4N">
+            <objects>
+                <tableViewController title="Мои заказы" id="wIM-b5-N7G" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="67" sectionHeaderHeight="28" sectionFooterHeight="28" id="nP1-qc-F7v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="fKM-yK-83q">
+                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fKM-yK-83q" id="VKL-Lk-jb1">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="APm-WA-9jj">
+                                            <rect key="frame" x="8" y="22" width="16" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="16" id="L5C-A9-WqO"/>
+                                                <constraint firstAttribute="height" constant="16" id="g8h-9e-AVx"/>
+                                            </constraints>
+                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5rY-t2-XWx">
+                                            <rect key="frame" x="39" y="13" width="336" height="33.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Заказ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eey-JS-ElJ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="43.5" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gco-sH-CeR">
+                                                    <rect key="frame" x="0.0" y="21.5" width="24" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="gco-sH-CeR" secondAttribute="bottom" id="8ma-Nr-JhH"/>
+                                                <constraint firstItem="eey-JS-ElJ" firstAttribute="leading" secondItem="5rY-t2-XWx" secondAttribute="leading" id="E9V-3l-lLK"/>
+                                                <constraint firstItem="eey-JS-ElJ" firstAttribute="top" secondItem="5rY-t2-XWx" secondAttribute="top" id="Ivn-fT-2mD"/>
+                                                <constraint firstItem="gco-sH-CeR" firstAttribute="leading" secondItem="5rY-t2-XWx" secondAttribute="leading" id="XT7-2O-Bn8"/>
+                                                <constraint firstItem="gco-sH-CeR" firstAttribute="top" secondItem="eey-JS-ElJ" secondAttribute="bottom" constant="2" id="eBN-vA-XR1"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="APm-WA-9jj" firstAttribute="leading" secondItem="VKL-Lk-jb1" secondAttribute="leadingMargin" id="4ei-bq-MLg"/>
+                                        <constraint firstItem="5rY-t2-XWx" firstAttribute="leading" secondItem="APm-WA-9jj" secondAttribute="trailing" constant="15" id="6fT-oW-Hu9"/>
+                                        <constraint firstItem="5rY-t2-XWx" firstAttribute="centerY" secondItem="VKL-Lk-jb1" secondAttribute="centerY" id="JHF-xw-lD8"/>
+                                        <constraint firstItem="APm-WA-9jj" firstAttribute="centerY" secondItem="VKL-Lk-jb1" secondAttribute="centerY" id="dM9-h5-k2f"/>
+                                        <constraint firstAttribute="trailing" secondItem="5rY-t2-XWx" secondAttribute="trailing" id="jnG-Mz-FRO"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <edgeInsets key="layoutMargins" top="15" left="15" bottom="15" right="15"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="wIM-b5-N7G" id="bbR-uU-ilq"/>
+                            <outlet property="delegate" destination="wIM-b5-N7G" id="Fhi-Ml-z7Q"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WYw-Jd-vTx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="84" y="219.94002998500753"/>
+        </scene>
+    </scenes>
+</document>
