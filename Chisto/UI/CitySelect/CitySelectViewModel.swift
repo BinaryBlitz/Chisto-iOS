@@ -58,6 +58,7 @@ class CitySelectViewModel: CitySelectViewModelType {
 
   // Data
   var cities: Variable<[City]>
+  let cityClosedToUser: Variable<City?>
   var location = Variable<CLLocationCoordinate2D?>(nil)
   var selectedCity = PublishSubject<City>()
 
@@ -69,6 +70,9 @@ class CitySelectViewModel: CitySelectViewModelType {
       .map { Array($0) }
       .bindTo(cities)
       .addDisposableTo(disposeBag)
+    
+    let cityClosedToUser = Variable<City?>(nil)
+    self.cityClosedToUser = cityClosedToUser
 
     self.cities = cities
 
@@ -76,7 +80,14 @@ class CitySelectViewModel: CitySelectViewModelType {
     self.sections = Observable.combineLatest(cities.asObservable(), searchString.asObservable(), location.asObservable()) { cities, searchString, location -> [CitySelectSectionModel] in
       var filteredCities = cities
       if let searchString = searchString, searchString.characters.count > 0 {
-        filteredCities = cities.filter { $0.name.lowercased().range(of: searchString.lowercased()) != nil }
+        filteredCities = cities
+          .filter { $0.name.lowercased().range(of: searchString.lowercased()) != nil }
+      }
+      
+      filteredCities.sort { $0.distanceTo(location) < $1.distanceTo(location) }
+      
+      if location != nil {
+        cityClosedToUser.value = filteredCities.first
       }
       return [CitySelectSectionModel(model: "", items: filteredCities)]
     }.asDriver(onErrorJustReturn: [])

@@ -23,6 +23,7 @@ protocol OrderConfirmViewModelType {
   var navigationBarTitle: String { get }
   var laundryDescriprionTitle: String { get }
   var laundryRating: Float { get }
+  var orderPrice: String { get }
   var courierDate: String { get }
   var deliveryDate: String { get }
   var laundryIcon: URL? { get }
@@ -47,6 +48,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   var laundryBackground: URL? = nil
   var laundryRating: Float
   var courierDate: String
+  var orderPrice: String
   var deliveryDate: String
   var sections: Driver<[OrderConfirmSectionModel]>
   var presentRegistrationSection: Driver<Void>
@@ -60,6 +62,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
     self.laundryBackground = URL(string: laundry.backgroundImageUrl)
     self.courierDate = Date(timeIntervalSince1970: laundry.courierDate).shortDate
     self.deliveryDate = Date(timeIntervalSince1970: laundry.deliveryDate).shortDate
+    self.orderPrice = OrderManager.instance.priceString(laundry: laundry)
 
     self.sections = OrderManager.instance.currentOrderItems
       .asDriver(onErrorDriveWith: .empty())
@@ -69,13 +72,16 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
         return [section]
       }
     
-    let tokenObservable = ProfileManager.instance.apiToken.asObservable()
+    let tokenObservable = ProfileManager.instance.apiToken.asObservable().distinctUntilChanged { $0 == $1 }
     let confirmButtonObservable = confirmOrderButtonDidTap.asObservable()
     
-    self.presentRegistrationSection = Observable.combineLatest(tokenObservable.filter { $0 == nil }.take(1), confirmButtonObservable) { _ -> Void in }
-      .asDriver(onErrorDriveWith: .empty())
+    let registrationRequired = Observable.combineLatest(confirmButtonObservable,
+      tokenObservable) { _, token -> Bool in token == nil }
     
-    self.presentOrderContactDataSection = Observable.combineLatest(tokenObservable.filter { $0 != nil }.take(1), confirmButtonObservable) { _ -> Void in }
+    self.presentOrderContactDataSection = registrationRequired.filter { $0 == false }.map { _ in }
+      .asDriver(onErrorDriveWith: .empty())
+
+    self.presentRegistrationSection = registrationRequired.filter { $0 == true }.map { _ in }
       .asDriver(onErrorDriveWith: .empty())
 
     confirmOrderButtonDidTap.asDriver(onErrorDriveWith: .empty()).drive(onNext: {

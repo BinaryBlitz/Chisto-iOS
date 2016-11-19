@@ -22,13 +22,10 @@ class Treatment: ServerObjct {
   }
 
   func price(laundry: Laundry) -> Int {
-    var price = 0
+    
+    return laundry.treatments
+      .first { $0.treatment?.id == self.id }?.price ?? 0
 
-    laundry.treatments
-      .filter { $0.treatmentId == self.id }
-      .forEach { price += $0.price }
-
-    return price
   }
 
   func priceString(laundry: Laundry) -> String {

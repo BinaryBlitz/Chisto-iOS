@@ -19,6 +19,7 @@ class OrderConfirmServiceTableViewCell: UITableViewCell {
 
     let headerItemView = OrderConfirmServiceItemView.nibInstance()!
     headerItemView.leftLabel.text = viewModel.clothesTitle
+    headerItemView.rightLabel.text = viewModel.clothesPrice
     headerItemView.font = UIFont.chsLabelFont
     headerItemView.textColor = UIColor.black
     stackView.addArrangedSubview(headerItemView)
@@ -26,6 +27,7 @@ class OrderConfirmServiceTableViewCell: UITableViewCell {
     for service in viewModel.clothesServices {
       let view = OrderConfirmServiceItemView.nibInstance()!
       view.leftLabel.text = service.name
+      view.rightLabel.text = service.priceString(laundry: viewModel.laundry)
       stackView.addArrangedSubview(view)
     }
   }

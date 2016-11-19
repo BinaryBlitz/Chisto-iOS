@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hGb-pa-nZa">
-                                        <rect key="frame" x="20" y="226" width="335" height="195"/>
+                                        <rect key="frame" x="20" y="231" width="335" height="185"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите код" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUa-pg-0d3">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="24"/>
@@ -57,7 +57,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AtH-vf-0x7">
-                                                <rect key="frame" x="0.0" y="165" width="335" height="30"/>
+                                                <rect key="frame" x="0.0" y="155" width="335" height="30"/>
                                                 <state key="normal">
                                                     <attributedString key="attributedTitle">
                                                         <fragment content="Выслать повторно">
@@ -90,7 +90,7 @@
                                             <constraint firstItem="FDK-Zh-Zfi" firstAttribute="top" secondItem="tXg-Ef-lBw" secondAttribute="bottom" constant="30" id="fqi-Zn-NvN"/>
                                             <constraint firstItem="AtH-vf-0x7" firstAttribute="leading" secondItem="hGb-pa-nZa" secondAttribute="leading" id="iu9-HF-f1O"/>
                                             <constraint firstItem="tXg-Ef-lBw" firstAttribute="centerX" secondItem="hGb-pa-nZa" secondAttribute="centerX" id="oFE-BP-bXx"/>
-                                            <constraint firstItem="AtH-vf-0x7" firstAttribute="top" secondItem="FDK-Zh-Zfi" secondAttribute="bottom" constant="40" id="sy0-ib-eqC"/>
+                                            <constraint firstItem="AtH-vf-0x7" firstAttribute="top" secondItem="FDK-Zh-Zfi" secondAttribute="bottom" constant="30" id="sy0-ib-eqC"/>
                                             <constraint firstItem="tXg-Ef-lBw" firstAttribute="top" secondItem="KUa-pg-0d3" secondAttribute="bottom" constant="30" id="wUf-R2-Pjw"/>
                                         </constraints>
                                     </view>

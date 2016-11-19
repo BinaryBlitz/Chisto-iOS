@@ -24,9 +24,6 @@ class RootViewController: ChistoNavigationController {
 
   override func loadView() {
     super.loadView()
-    OrderManager.instance.currentOrderItems.asObservable().subscribe(onNext: {[weak self] _ in
-      self?.setViewControllers([OrderViewController.storyboardInstance()!], animated: true)
-    }).addDisposableTo(disposeBag)
   }
 
 }

@@ -11,13 +11,13 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class OrderViewController: UIViewController, UIScrollViewDelegate,DefaultBarColoredViewController {
+class OrderViewController: UIViewController, DefaultBarColoredViewController {
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var continueButton: GoButton!
   private let emptyOrderView = EmptyOrderView.nibInstance()
 
-  private let viewModel = OrderViewModel()
+  let viewModel = OrderViewModel()
   private let disposeBag = DisposeBag()
   var dataSource = RxTableViewSectionedReloadDataSource<OrderSectionModel>()
 
@@ -80,6 +80,14 @@ class OrderViewController: UIViewController, UIScrollViewDelegate,DefaultBarColo
     tableView.rx.itemSelected
       .bindTo(viewModel.itemDidSelect)
       .addDisposableTo(disposeBag)
+    
+    dataSource.canEditRowAtIndexPath = { _ in
+      return true
+    }
+    
+    tableView.rx.itemDeleted.bindTo(viewModel.tableItemDeleted)
+      .addDisposableTo(disposeBag)
+
 
     tableView.dataSource = nil
     viewModel.sections
@@ -135,4 +143,10 @@ class OrderViewController: UIViewController, UIScrollViewDelegate,DefaultBarColo
 
   }
 
+}
+
+extension OrderViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+    return viewModel.deleteButtonTitle
+  }
 }

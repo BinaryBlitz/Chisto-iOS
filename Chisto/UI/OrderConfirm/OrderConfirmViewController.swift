@@ -41,6 +41,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
     laundryIconView.kf.setImage(with: viewModel?.laundryIcon)
     laundryRatingView.rating = viewModel?.laundryRating ?? 0
     courierDateLabel.text = viewModel?.courierDate
+    orderPriceLabel.text = viewModel?.orderPrice
     deliveryDateLabel.text = viewModel?.deliveryDate
     backgroundImageView.kf.setImage(with: viewModel?.laundryBackground)
 
@@ -93,6 +94,10 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
     super.viewWillAppear(animated)
     navigationController?.navigationBar.isTranslucent = true
     navigationController?.navigationBar.backgroundColor = nil
+  }
+  
+  override func viewDidDisappear(_ animated: Bool) {
+    navigationController?.navigationBar.isTranslucent = false
   }
 
 }
