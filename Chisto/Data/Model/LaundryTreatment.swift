@@ -12,16 +12,13 @@ import RealmSwift
 import ObjectMapper_Realm
 
 class LaundryTreatment: ServerObjct {
-
-  var laundryId: Int!
-  var treatmentId: Int!
-  var price: Int = 0
+  dynamic var treatment: Treatment?
+  dynamic var price: Int = 0
 
   override func mapping(map: Map) {
     super.mapping(map: map)
 
-    laundryId <- map["laundry"]
-    treatmentId <- map["treatment"]
+    treatment <- map["treatment"]
     price <- map["price"]
   }
 

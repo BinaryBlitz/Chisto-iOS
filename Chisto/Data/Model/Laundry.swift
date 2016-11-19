@@ -8,6 +8,7 @@
 
 import Foundation
 import ObjectMapper
+import ObjectMapper_Realm
 import Realm
 import RealmSwift
 
@@ -30,7 +31,7 @@ class Laundry: ServerObjct {
   dynamic var courierPrice: Int = 0
   dynamic var deliveryDate: Double = 0.0
   var treatments = List<LaundryTreatment>()
-
+  
   override func mapping(map: Map) {
     super.mapping(map: map)
     name <- map["name"]
@@ -38,10 +39,10 @@ class Laundry: ServerObjct {
     category <- map["category"]
     logoUrl <- map["logo_url"]
     backgroundImageUrl <- map["background_image_url"]
-    treatments <- map["laundry_treatments"]
-
+    treatments <- (map["laundry_treatments"], ListTransform<LaundryTreatment>())
+    
   }
-
+  
   var type: LaundryType? {
     guard let category = self.category else { return nil }
     switch category {
@@ -55,9 +56,9 @@ class Laundry: ServerObjct {
       return nil
     }
   }
-
+  
   var courierPriceString: String {
     return courierPrice == 0 ? "Бесплатно" : "\(courierPrice) ₽"
   }
-
+  
 }

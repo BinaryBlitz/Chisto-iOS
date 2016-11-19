@@ -23,6 +23,7 @@ protocol OrderConfirmViewModelType {
   var navigationBarTitle: String { get }
   var laundryDescriprionTitle: String { get }
   var laundryRating: Float { get }
+  var orderPrice: String { get }
   var courierDate: String { get }
   var deliveryDate: String { get }
   var laundryIcon: URL? { get }
@@ -47,6 +48,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   var laundryBackground: URL? = nil
   var laundryRating: Float
   var courierDate: String
+  var orderPrice: String
   var deliveryDate: String
   var sections: Driver<[OrderConfirmSectionModel]>
   var presentRegistrationSection: Driver<Void>
@@ -60,6 +62,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
     self.laundryBackground = URL(string: laundry.backgroundImageUrl)
     self.courierDate = Date(timeIntervalSince1970: laundry.courierDate).shortDate
     self.deliveryDate = Date(timeIntervalSince1970: laundry.deliveryDate).shortDate
+    self.orderPrice = OrderManager.instance.priceString(laundry: laundry)
 
     self.sections = OrderManager.instance.currentOrderItems
       .asDriver(onErrorDriveWith: .empty())
