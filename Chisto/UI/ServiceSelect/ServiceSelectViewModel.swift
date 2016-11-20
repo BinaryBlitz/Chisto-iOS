@@ -69,7 +69,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
     self.treatments = treatments
 
     self.itemTitle = clothesItem.name
-    self.color = UIColor.chsRosePink
+    self.color = clothesItem.category?.color ?? UIColor.chsSkyBlue
 
     let selectedServicesIds = Variable<[Int]>(selectedTreatments.map { $0.id })
     self.selectedServicesIds = selectedServicesIds

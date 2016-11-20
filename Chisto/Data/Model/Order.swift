@@ -16,7 +16,7 @@ enum OrderStatus {
   case errored
 }
 
-class Order: ServerObjct {
+class Order: ServerObject {
   
   // TODO: remove test email
   dynamic var streetName: String = ""

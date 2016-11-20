@@ -16,6 +16,7 @@ protocol SelectClothesTableViewCellModelType {
   var titleText: String { get }
   var subTitletext: NSAttributedString { get }
   var iconUrl: URL? { get }
+  var iconColor: UIColor { get }
 }
 
 
@@ -29,12 +30,14 @@ class SelectClothesTableViewCellModel: SelectClothesTableViewCellModelType {
   var titleText: String
   var subTitletext: NSAttributedString
   var iconUrl: URL?
+  var iconColor: UIColor
 
   init(item: Item) {
     self.titleText = item.name
     self.subTitletext = NSAttributedString(string: item.descriptionText)
 
     self.iconUrl = URL(string: item.icon)
+    self.iconColor = item.category?.color ?? UIColor.chsSkyBlue
   }
 
 }

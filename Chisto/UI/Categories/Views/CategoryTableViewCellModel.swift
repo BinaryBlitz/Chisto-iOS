@@ -16,6 +16,7 @@ protocol CategoryTableViewCellModelType {
   var titleText: String { get }
   var subTitletext: NSAttributedString { get }
   var iconUrl: URL? { get }
+  var iconColor: UIColor { get }
 }
 
 
@@ -25,10 +26,12 @@ class CategoryTableViewCellModel: CategoryTableViewCellModelType {
   let titleText: String
   let subTitletext: NSAttributedString
   let iconUrl: URL?
+  let iconColor: UIColor
 
   init(category: Category) {
     self.titleText = category.name
     self.iconUrl = URL(string: category.icon)
+    self.iconColor = category.color
 
     self.subTitletext = NSAttributedString(string: category.descriptionText, attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey])
   }

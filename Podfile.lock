@@ -33,6 +33,7 @@ PODS:
   - RxSwift (3.0.1)
   - SwiftyJSON (3.1.3)
   - TextFieldEffects (1.3.0)
+  - UIColor_Hex_Swift (3.0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
@@ -52,6 +53,7 @@ DEPENDENCIES:
   - RxSwift (~> 3.0.0-beta.1)
   - SwiftyJSON
   - TextFieldEffects
+  - UIColor_Hex_Swift (~> 3.0.2)
 
 SPEC CHECKSUMS:
   Alamofire: e266cf991b933498df791e645e0d8ac294492153
@@ -72,7 +74,8 @@ SPEC CHECKSUMS:
   RxSwift: af5680055c4ad04480189c52d28385b1029493a6
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
   TextFieldEffects: ef594746f17997c813e07633f8ae5acaf9b04f27
+  UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
 
-PODFILE CHECKSUM: dc35819326a01b6a4a7a65b957dd5db6571b5fd8
+PODFILE CHECKSUM: 0e34339f2ea248a355efb7755634327da735969d
 
 COCOAPODS: 1.1.1

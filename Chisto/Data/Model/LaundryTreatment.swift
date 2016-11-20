@@ -11,7 +11,7 @@ import ObjectMapper
 import RealmSwift
 import ObjectMapper_Realm
 
-class LaundryTreatment: ServerObjct {
+class LaundryTreatment: ServerObject {
   dynamic var treatment: Treatment?
   dynamic var price: Int = 0
 

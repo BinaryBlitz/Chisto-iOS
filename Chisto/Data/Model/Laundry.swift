@@ -19,7 +19,7 @@ enum LaundryType {
 }
 
 // TODO: remove test data and change properties
-class Laundry: ServerObjct {
+class Laundry: ServerObject {
   dynamic var name: String = ""
   dynamic var descriptionText: String = ""
   dynamic var courierDate: Double = 0.0

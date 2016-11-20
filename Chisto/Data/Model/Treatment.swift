@@ -9,11 +9,11 @@
 import Foundation
 import ObjectMapper
 
-class Treatment: ServerObjct {
+class Treatment: ServerObject {
 
   dynamic var name: String = ""
   dynamic var descriptionText: String = ""
-  var item: Item? = nil
+  dynamic var item: Item? = nil
 
   override func mapping(map: Map) {
     super.mapping(map: map)
