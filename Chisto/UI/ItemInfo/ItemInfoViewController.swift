@@ -65,10 +65,6 @@ class ItemInfoViewController: UIViewController {
       return cell
     }
 
-    dataSource.canEditRowAtIndexPath = { _ in
-      return true
-    }
-
     tableView.rx
       .setDelegate(self)
       .addDisposableTo(disposeBag)
@@ -82,6 +78,10 @@ class ItemInfoViewController: UIViewController {
     viewModel.sections
       .drive(tableView.rx.items(dataSource: dataSource))
       .addDisposableTo(disposeBag)
+    
+    dataSource.canEditRowAtIndexPath = { _ in
+      return viewModel.canEditRow.value
+    }
 
   }
 

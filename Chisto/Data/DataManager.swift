@@ -42,6 +42,7 @@ protocol DataManagerServiceType {
   func fetchCities() -> Observable<Void>
   func fetchCategories() -> Observable<Void>
   func fetchLaundries() -> Observable<Void>
+  func fetchOrders() -> Observable<Void>
   func fetchCategoryClothes(category: Category) -> Observable<Void>
 }
 
@@ -58,8 +59,8 @@ class DataManager {
     parameters["api_token"] = token
     return networkManager.doRequest(method: method, path, parameters)
       .catchError { error in
-        guard error is NetworkError else { return Observable.error(DataError.unknown) }
-        return Observable.error(DataError.unknown)
+        guard let error = error as? NetworkError else { return Observable.error(DataError.unknown) }
+        return Observable.error(DataError.network(error))
     }
   }
   
@@ -175,8 +176,12 @@ extension DataManager: DataManagerServiceType {
   func fetchRatings(laundry: Laundry) -> Observable<[Rating]> {
     return getItems(type: Rating.self, apiPath: .fetchRatings(laundryId: laundry.id))
   }
+  
+  func fetchOrders() -> Observable<Void> {
+    return fetchItems(type: Order.self, apiPath: .fetchOrders)
+  }
 
-  func placeOrder(order: Order, laundry: Laundry) -> Observable<Int> {
+  func placeOrder(order: RequestOrder, laundry: Laundry) -> Observable<Order> {
     let orderJSON = order.toJSON()
     
     return networkRequest(
@@ -184,7 +189,12 @@ extension DataManager: DataManagerServiceType {
         .placeOrder(laundryId: laundry.id),
         ["order": orderJSON]
       )
-      .map { result in return JSON(result)["id"].intValue }
+      .flatMap { result -> Observable<Order> in
+        guard let order = Mapper<Order>().map(JSONObject: result) else { return Observable.error(DataError.responseConvertError) }
+        let realm = try! Realm()
+        realm.add(order, update: true)
+        return Observable.just(order)
+    }
   }
 
 }
