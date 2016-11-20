@@ -47,15 +47,22 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
   var sections: Driver<[LaundrySelectSectionModel]>
   var presentOrderConfirmSection: Driver<OrderConfirmViewModel>
   var presentSortSelectSection: Driver<Void>
+  var presentErrorAlert: PublishSubject<Error>
 
   // Data
   var sortedLaundries: Variable<[Laundry]>
   var sortType: Variable<LaundrySortType>
 
   init() {
-    DataManager.instance.fetchLaundries().subscribe().addDisposableTo(disposeBag)
-    let laundries = Variable<[Laundry]>([])
+    let presentErrorAlert = PublishSubject<Error>()
+    self.presentErrorAlert = presentErrorAlert
 
+    DataManager.instance.fetchLaundries().subscribe(onError: { error in
+      presentErrorAlert.onNext(error)
+    }).addDisposableTo(disposeBag)
+    
+    let laundries = Variable<[Laundry]>([])
+    
     Observable.from(uiRealm.objects(Laundry.self))
       .map { Array($0) }
       .bindTo(laundries)

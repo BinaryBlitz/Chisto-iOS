@@ -44,6 +44,11 @@ class MyOrdersViewController: UITableViewController, DefaultBarColoredViewContro
       .drive(self.tableView.rx.items(dataSource: self.dataSource))
       .addDisposableTo(self.disposeBag)
   }
-
   
+  override func viewWillAppear(_ animated: Bool) {
+    if let indexPath = tableView.indexPathForSelectedRow {
+      tableView.deselectRow(at: indexPath, animated: true)
+    }
+  }
+
 }

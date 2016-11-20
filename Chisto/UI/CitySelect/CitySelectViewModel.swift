@@ -40,21 +40,22 @@ class CitySelectViewModel: CitySelectViewModelType {
   let disposeBag = DisposeBag()
 
   // Input
-  var locationButtonDidTap = PublishSubject<Void>()
-  var cancelSearchButtonDidTap = PublishSubject<Void>()
-  var itemDidSelect = PublishSubject<IndexPath>()
-  var cityNotFoundButtonDidTap = PublishSubject<Void>()
-  var searchString = PublishSubject<String?>()
-  var searchBarDidEndEditing = PublishSubject<Void>()
-  var searchBarDidBeginEditing = PublishSubject<Void>()
+  let locationButtonDidTap = PublishSubject<Void>()
+  let cancelSearchButtonDidTap = PublishSubject<Void>()
+  let itemDidSelect = PublishSubject<IndexPath>()
+  let cityNotFoundButtonDidTap = PublishSubject<Void>()
+  let searchString = PublishSubject<String?>()
+  let searchBarDidEndEditing = PublishSubject<Void>()
+  let searchBarDidBeginEditing = PublishSubject<Void>()
 
   // Output
-  var navigationBarTitle = "Выбор города"
-  var sections: Driver<[CitySelectSectionModel]>
-  var presentCityNotFoundController: Driver<Void>
-  var hideKeyboard: Driver<Void>
-  var showCancelButtonAnimated: Driver<Void>
-  var hideCancelButtonAnimated: Driver<Void>
+  let navigationBarTitle = "Выбор города"
+  let sections: Driver<[CitySelectSectionModel]>
+  let presentCityNotFoundController: Driver<Void>
+  let hideKeyboard: Driver<Void>
+  let showCancelButtonAnimated: Driver<Void>
+  let hideCancelButtonAnimated: Driver<Void>
+  let presentErrorAlert: PublishSubject<Error>
 
   // Data
   var cities: Variable<[City]>
@@ -64,7 +65,13 @@ class CitySelectViewModel: CitySelectViewModelType {
 
   init() {
     // Data
-    DataManager.instance.fetchCities().subscribe().addDisposableTo(disposeBag)
+    let presentErrorAlert = PublishSubject<Error>()
+    self.presentErrorAlert = presentErrorAlert
+    
+    DataManager.instance.fetchCities().subscribe(onError: { error in
+      presentErrorAlert.onNext(error)
+    }).addDisposableTo(disposeBag)
+    
     let cities = Variable<[City]>([])
     Observable.from(uiRealm.objects(City.self))
       .map { Array($0) }

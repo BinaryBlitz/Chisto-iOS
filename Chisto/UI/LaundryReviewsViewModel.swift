@@ -26,6 +26,7 @@ protocol LaundryReviewsViewModelType {
 class LaundryReviewsViewModel: LaundryReviewsViewModelType {
   let disposeBag = DisposeBag()
   let sections: Driver<[LaundryReviewsSectionModel]>
+  let presentErrorAlert: PublishSubject<Error>
   let ratings: Variable<[Rating]>
   let laundryBackgroundUrl: URL?
   let laundryLogoUrl: URL?
@@ -38,7 +39,13 @@ class LaundryReviewsViewModel: LaundryReviewsViewModelType {
     
     let ratings = Variable<[Rating]>([])
     self.ratings = ratings
-    DataManager.instance.fetchRatings(laundry: laundry).bindTo(ratings).addDisposableTo(disposeBag)
+    
+    let presentErrorAlert = PublishSubject<Error>()
+    self.presentErrorAlert = presentErrorAlert
+
+    DataManager.instance.fetchRatings(laundry: laundry).do(onError: { error in
+      presentErrorAlert.onNext(error)
+    }).bindTo(ratings).addDisposableTo(disposeBag)
     
     self.laundryTitle = laundry.name
     self.laundryRating = laundry.rating

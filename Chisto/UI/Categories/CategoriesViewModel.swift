@@ -34,6 +34,7 @@ class CategoriesViewModel: CategoriesViewModelType {
   var navigationBarTitle: String
   var sections: Driver<[CategoriesSectionModel]>
   var presentItemsSection: Driver<SelectClothesViewModel>
+  var presentErrorAlert: PublishSubject<Error>
 
 
   // Data
@@ -42,9 +43,16 @@ class CategoriesViewModel: CategoriesViewModelType {
   init() {
     self.navigationBarTitle = "Выбор вещи"
     // Data
-    DataManager.instance.fetchCategories().subscribe().addDisposableTo(disposeBag)
-    let categories = Variable<[Category]>([])
+    
+    let presentErrorAlert = PublishSubject<Error>()
+    self.presentErrorAlert = presentErrorAlert
 
+    DataManager.instance.fetchCategories().subscribe(onError: { error in
+      presentErrorAlert.onNext(error)
+    }).addDisposableTo(disposeBag)
+    
+    let categories = Variable<[Category]>([])
+    
     Observable.from(uiRealm.objects(Category.self))
       .map { Array($0) }
       .bindTo(categories)
