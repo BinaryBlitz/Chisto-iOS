@@ -62,7 +62,7 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
     viewModel.returnToOrderViewController
       .asDriver(onErrorDriveWith: .empty())
       .drive(onNext: {[weak self] in
-        self?.navigationController?.setViewControllers([OrderViewController.storyboardInstance()!], animated: false)
+        self?.navigationController?.setViewControllers([OrderViewController.storyboardInstance()!], animated: true)
     }).addDisposableTo(disposeBag)
 
     configureForm()

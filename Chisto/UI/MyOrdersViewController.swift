@@ -50,5 +50,5 @@ class MyOrdersViewController: UITableViewController, DefaultBarColoredViewContro
       tableView.deselectRow(at: indexPath, animated: true)
     }
   }
-
+  
 }

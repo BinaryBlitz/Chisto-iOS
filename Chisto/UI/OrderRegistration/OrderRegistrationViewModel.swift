@@ -46,8 +46,8 @@ class OrderRegistrationViewModel {
         
         formViewModel.saveUserProfile()
         
-        return OrderManager.instance.placeOrder().map { id in
-          let viewModel = OrderPlacedPopupViewModel(orderNumber: "\(id)")
+        return OrderManager.instance.placeOrder().map { order in
+          let viewModel = OrderPlacedPopupViewModel(orderNumber: "\(order.id)")
           viewModel.returnToOrderViewController.asObservable()
             .bindTo(returnToOrderViewController)
             .addDisposableTo(viewModel.disposeBag)

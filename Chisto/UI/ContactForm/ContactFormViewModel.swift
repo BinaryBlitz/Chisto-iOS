@@ -41,7 +41,7 @@ class ContactFormViewModel {
   var street: Variable<String?>
   var building: Variable<String?>
   var apartment: Variable<String?>
-  var comment = Variable<String?>(nil)
+  var comment: Variable<String?>
   var phoneIsValid = Variable<Bool>(false)
   var isValid = Variable<Bool>(false)
 
@@ -58,6 +58,7 @@ class ContactFormViewModel {
     self.street = Variable(profile.street)
     self.building = Variable(profile.building)
     self.apartment = Variable(profile.apartment)
+    self.comment = Variable(profile.notes)
 
     let contactInfoIsValid = Observable.combineLatest(firstName.asObservable(), lastName.asObservable(), phoneIsValid.asObservable(), email.asObservable()) { firstName, lastName, phoneIsValid, email -> Bool in
       guard let firstName = firstName, let lastName = lastName, let email = email else { return false }
@@ -86,6 +87,7 @@ class ContactFormViewModel {
       profile.street = street.value ?? ""
       profile.building = building.value ?? ""
       profile.apartment = apartment.value ?? ""
+      profile.notes = comment.value ?? ""
     }
   }
 

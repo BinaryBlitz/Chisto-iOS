@@ -196,6 +196,7 @@ extension DataManager: DataManagerServiceType {
         try realm.write {
           realm.add(order, update: true)
         }
+        
         return Observable.just(order)
     }
   }

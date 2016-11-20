@@ -22,6 +22,7 @@ class Profile: Object {
   dynamic var building: String = ""
   dynamic var apartment: String = ""
   dynamic var apiToken: String? = nil
+  dynamic var notes: String = ""
   
   required init(value: Any, schema: RLMSchema) {
     super.init(value: value, schema: schema)

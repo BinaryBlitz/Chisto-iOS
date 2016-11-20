@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Profile Contact Data View Controller-->
+        <!--Контактные данные-->
         <scene sceneID="haQ-XQ-qS0">
             <objects>
-                <viewController id="uG7-v4-qmp" customClass="ProfileContactDataViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Контактные данные" id="uG7-v4-qmp" customClass="ProfileContactDataViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="36j-Xy-YEP"/>
                         <viewControllerLayoutGuide type="bottom" id="cJC-EB-yaf"/>

@@ -27,6 +27,7 @@ class RequestOrder: Mappable {
     contactNumber = profile.phone
     streetName = profile.street
     email = profile.email
+    notes = profile.notes
   }
   
   required init(map: Map) { }

@@ -22,13 +22,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" image="order-confirm-bckg" translatesAutoresizingMaskIntoConstraints="NO" id="fva-Qt-lTD">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="129"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="129" id="WC5-Fa-cEe"/>
-                                </constraints>
-                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
-                            </imageView>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9D9-Up-kgT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="129"/>
                                 <subviews>
@@ -65,6 +58,8 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="wqI-UJ-wvB" firstAttribute="leading" secondItem="9D9-Up-kgT" secondAttribute="leading" constant="15" id="0uR-LC-k5g"/>
                                     <constraint firstItem="9D7-q4-2Kc" firstAttribute="leading" secondItem="9D9-Up-kgT" secondAttribute="leading" id="7kx-yS-RcZ"/>
@@ -76,6 +71,13 @@
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" image="order-confirm-bckg" translatesAutoresizingMaskIntoConstraints="NO" id="fva-Qt-lTD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="129"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="129" id="WC5-Fa-cEe"/>
+                                </constraints>
+                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="108" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tmw-qP-8c0">
                                 <rect key="frame" x="0.0" y="154" width="375" height="513"/>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -145,6 +147,7 @@
                                         <connections>
                                             <outlet property="authorNameLabel" destination="QWo-Pc-E6T" id="mDL-6c-D2B"/>
                                             <outlet property="reviewContentLabel" destination="rWJ-Ue-7pP" id="F5r-pE-mli"/>
+                                            <outlet property="reviewDateLabel" destination="lfk-4a-7g5" id="vqx-HI-pie"/>
                                             <outlet property="reviewRatingView" destination="zUP-9b-Fti" id="w3S-mJ-L5u"/>
                                         </connections>
                                     </tableViewCell>
