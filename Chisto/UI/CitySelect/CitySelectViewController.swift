@@ -36,6 +36,14 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate, UISearch
       viewController.modalPresentationStyle = .overFullScreen
       self?.present(viewController, animated: false, completion: nil)
     }).addDisposableTo(disposeBag)
+    
+    viewModel?.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { error in
+      guard let error = error as? DataError else { return }
+      let alertController = UIAlertController(title: "Ошибка", message: error.description, preferredStyle: .alert)
+      let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+      alertController.addAction(defaultAction)
+      self.present(alertController, animated: true, completion: nil)
+    }).addDisposableTo(disposeBag)
 
     viewModel?.showCancelButtonAnimated.drive(onNext: { [weak self] in
       self?.searchBar.setShowsCancelButton(true, animated: true)

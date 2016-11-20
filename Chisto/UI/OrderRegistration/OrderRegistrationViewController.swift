@@ -59,7 +59,6 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
       self?.present(viewController, animated: false)
     }).addDisposableTo(disposeBag)
 
-
     viewModel.returnToOrderViewController
       .asDriver(onErrorDriveWith: .empty())
       .drive(onNext: {[weak self] in

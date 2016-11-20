@@ -21,6 +21,20 @@ class CategoriesViewController: UITableViewController, DefaultBarColoredViewCont
     navigationItem.title = viewModel.navigationBarTitle
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     configureTableView()
+    
+    viewModel.presentItemsSection.drive(onNext: { [weak self] viewModel in
+      let viewController = SelectClothesViewController.storyboardInstance()!
+      viewController.viewModel = viewModel
+      self?.navigationController?.pushViewController(viewController, animated: true)
+    }).addDisposableTo(disposeBag)
+    
+    viewModel.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { error in
+      guard let error = error as? DataError else { return }
+      let alertController = UIAlertController(title: "Ошибка", message: error.description, preferredStyle: .alert)
+      let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+      alertController.addAction(defaultAction)
+      self.present(alertController, animated: true, completion: nil)
+    }).addDisposableTo(disposeBag)
   }
 
   func configureTableView() {
@@ -46,12 +60,6 @@ class CategoriesViewController: UITableViewController, DefaultBarColoredViewCont
     viewModel.sections
       .drive(tableView.rx.items(dataSource: dataSource))
       .addDisposableTo(self.disposeBag)
-
-    viewModel.presentItemsSection.drive(onNext: { [weak self] viewModel in
-      let viewController = SelectClothesViewController.storyboardInstance()!
-      viewController.viewModel = viewModel
-      self?.navigationController?.pushViewController(viewController, animated: true)
-    }).addDisposableTo(disposeBag)
   }
 
   override func viewWillAppear(_ animated: Bool) {

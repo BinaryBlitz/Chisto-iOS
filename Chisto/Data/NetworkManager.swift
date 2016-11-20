@@ -131,7 +131,13 @@ class NetworkManager {
               observer.onNext(result)
               observer.onCompleted()
             } else {
-              observer.onError(NetworkError.unexpectedResponseFormat)
+              
+              if let error = response.result.error {
+                observer.onError(error)
+              } else {
+                observer.onError(NetworkError.unexpectedResponseFormat)
+              }
+              
             }
             
         }

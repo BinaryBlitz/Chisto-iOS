@@ -35,16 +35,22 @@ class SelectClothesViewModel: SelectClothesViewModelType {
   var navigationBarColor: UIColor?
   var sections: Driver<[SelectClothesSectionModel]>
   var presentSelectServiceSection: Driver<ServiceSelectViewModel>
+  let presentErrorAlert: PublishSubject<Error>
 
   // Data
   var items: Variable<[Item]>
 
   init(category: Category) {
     self.navigationBarTitle = category.name
-
     self.navigationBarColor = category.color
+    
+    let presentErrorAlert = PublishSubject<Error>()
+    self.presentErrorAlert = presentErrorAlert
+    
+    DataManager.instance.fetchCategoryClothes(category: category).subscribe(onError: { error in
+      presentErrorAlert.onNext(error)
+    }).addDisposableTo(disposeBag)
 
-    DataManager.instance.fetchCategoryClothes(category: category).subscribe().addDisposableTo(disposeBag)
 
     let items = Variable<[Item]>([])
 

@@ -59,7 +59,7 @@ class OrderInfoViewModel: OrderInfoViewModelType {
   init(order: Order) {
     self.navigationBarTitle = "Заказ № \(order.id)"
     self.orderNumber = "№ \(order.id)"
-    self.orderDate = order.createdAtDate.longDate
+    self.orderDate = order.createdAtDate.mediumDate
     self.orderStatus = order.status.description
     self.orderStatusIcon = order.status.image
     self.orderStatusColor = order.status.color
