@@ -85,7 +85,7 @@ enum NetworkError: Error, CustomStringConvertible {
     case .unknown:
       return "Неизвестная ошибка"
     case .serverUnavaliable:
-      return "Сервер недоступен"
+      return "Ошибка на сервере"
     case .unexpectedResponseFormat:
       return "Неизвестный формат ответа сервера"
     }
@@ -149,7 +149,7 @@ class NetworkManager {
     switch statusCode {
     case 422:
       return .unprocessableData(response: response)
-    case 503:
+    case 503, 500:
       return .serverUnavaliable
     default:
       return .unknown

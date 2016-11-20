@@ -49,7 +49,7 @@ class ContactFormViewModel {
   var locationHeaderButtonDidTap = PublishSubject<Void>()
 
   init() {
-    let profile = ProfileManager.instance.userProfile
+    let profile = ProfileManager.instance.userProfile.value
     self.firstName = Variable(profile.firstName)
     self.lastName = Variable(profile.lastName)
     self.phone = Variable(profile.phone.onlyDigits)
@@ -78,8 +78,7 @@ class ContactFormViewModel {
   }
 
   func saveUserProfile() {
-    let profile = ProfileManager.instance.userProfile
-    try? uiRealm.write {
+    ProfileManager.instance.updateProfile { profile in
       profile.firstName = firstName.value ?? ""
       profile.lastName = lastName.value ?? ""
       profile.phone = phone.value?.onlyDigits ?? ""
@@ -87,7 +86,6 @@ class ContactFormViewModel {
       profile.street = street.value ?? ""
       profile.building = building.value ?? ""
       profile.apartment = apartment.value ?? ""
-
     }
   }
 

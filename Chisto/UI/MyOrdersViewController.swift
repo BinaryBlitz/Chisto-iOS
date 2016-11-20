@@ -19,7 +19,15 @@ class MyOrdersViewController: UITableViewController, DefaultBarColoredViewContro
   
   override func viewDidLoad() {
     navigationItem.title = viewModel.navigationBarTitle
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
     configureTableView()
+    
+    viewModel.presentOrderInfoSection.drive(onNext: { [weak self] viewModel in
+      let viewController = OrderInfoViewController.storyboardInstance()!
+      viewController.viewModel = viewModel
+      self?.navigationController?.pushViewController(viewController, animated: true)
+    }).addDisposableTo(disposeBag)
   }
   
   func configureTableView() {
@@ -28,6 +36,8 @@ class MyOrdersViewController: UITableViewController, DefaultBarColoredViewContro
       cell.configure(viewModel: cellViewModel)
       return cell
     }
+    
+    tableView.rx.itemSelected.bindTo(viewModel.itemDidSelect).addDisposableTo(disposeBag)
     
     tableView.dataSource = nil
     viewModel.sections

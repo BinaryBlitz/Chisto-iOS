@@ -18,16 +18,15 @@ class ProfileManager {
   static let instance = ProfileManager()
   private let profileKey = "profileId"
 
-  let userProfile: Profile
-  
-  var apiToken: Observable<String?>
-  
-  // TODO: refactor
+  let userProfile: Variable<Profile>
+    
   func updateProfile(closure: ((Profile) -> Void)) {
     let realm = try! Realm()
     
+    let profile = userProfile.value
+    
     try! realm.write {
-      closure(userProfile)
+      closure(profile)
     }
   }
 
@@ -45,8 +44,14 @@ class ProfileManager {
       UserDefaults.standard.set(profile.id, forKey: profileKey)
     }
 
-    self.userProfile = profile
-    self.apiToken = uiRealm.observableObject(type: Profile.self, primaryKey: profile.id).map { $0?.apiToken }
+    self.userProfile = Variable(profile)
+    
+    let observableProfile = uiRealm.observableObject(type: Profile.self, primaryKey: profile.id)
+    observableProfile.filter { $0 != nil}
+      .map { $0! }
+      .bindTo(userProfile)
+      .addDisposableTo(disposeBag)
+
     
     UserDefaults.standard.set(profile.id, forKey: profileKey)
   }

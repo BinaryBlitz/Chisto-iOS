@@ -66,7 +66,7 @@ class LocationSelectViewModel: LocationSelectViewModelType {
 
     }).addDisposableTo(disposeBag)
 
-    guard let city = ProfileManager.instance.userProfile.city else { return }
+    guard let city = ProfileManager.instance.userProfile.value.city else { return }
 
     self.cityLocation = CLLocationCoordinate2D(latitude: city.latitude, longitude: city.longitude)
 
