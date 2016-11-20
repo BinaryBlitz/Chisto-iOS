@@ -74,21 +74,9 @@ class DataManager {
     }
 
   }
-  
-  func deleteCachedObjectsIfNeeded<ItemType>(type: ItemType.Type, serverObjects: [ItemType]) where ItemType: ServerObjct {
-    let realm = try! Realm()
-    
-    try? realm.write {
-      for object in realm.objects(type) {
-        if !serverObjects.contains { $0.id == object.id } {
-          realm.delete(object)
-        }
-      }
-    }
-  }
 
   func fetchItems<ItemType>(type: ItemType.Type, apiPath: APIPath,
-                  _ modifier: @escaping (ItemType) -> Void = {_ in }) -> Observable<Void> where ItemType: ServerObjct {
+                  _ modifier: @escaping (ItemType) -> Void = {_ in }) -> Observable<Void> where ItemType: ServerObject {
     
     return getItems(type: type, apiPath: apiPath)
       .flatMap { items -> Observable<Void> in
@@ -102,8 +90,6 @@ class DataManager {
           }
         }
         
-        self.deleteCachedObjectsIfNeeded(type: type, serverObjects: items)
-
         return Observable.empty()
       }
   }

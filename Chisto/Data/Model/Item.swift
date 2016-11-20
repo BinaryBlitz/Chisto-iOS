@@ -11,14 +11,14 @@ import RealmSwift
 import Realm
 import ObjectMapper
 
-class Item: ServerObjct {
+class Item: ServerObject {
 
   dynamic var name: String = ""
   dynamic var icon: String = ""
   dynamic var descriptionText: String = ""
+  dynamic var category: Category? = nil
 
   let treatments = LinkingObjects(fromType: Treatment.self, property: "item")
-  var category: Category? = nil
 
   override func mapping(map: Map) {
     super.mapping(map: map)

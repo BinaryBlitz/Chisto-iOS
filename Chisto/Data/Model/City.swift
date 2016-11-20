@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 import CoreLocation
 
-class City: ServerObjct {
+class City: ServerObject {
 
   dynamic var name: String = ""
   dynamic var latitude: Double = 0.0

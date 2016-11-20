@@ -42,8 +42,7 @@ class SelectClothesViewModel: SelectClothesViewModelType {
   init(category: Category) {
     self.navigationBarTitle = category.name
 
-    // TODO: get a category's color from model
-    //self.navigationBarColor = category.color
+    self.navigationBarColor = category.color
 
     DataManager.instance.fetchCategoryClothes(category: category).subscribe().addDisposableTo(disposeBag)
 

@@ -13,7 +13,7 @@ import ObjectMapper
 import RxSwift
 import RxCocoa
 
-class ServerObjct: Object, Mappable {
+class ServerObject: Object, Mappable {
   dynamic var id: Int
 
   required init(map: Map) {

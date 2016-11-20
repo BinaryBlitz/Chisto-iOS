@@ -17,6 +17,7 @@ protocol OrderTableViewCellModelType {
   var itemTitleText: String { get }
   var servicesText: NSAttributedString { get }
   var iconUrl: URL? { get }
+  var iconColor: UIColor { get }
   var amountText: NSAttributedString { get }
 
   // Input
@@ -28,10 +29,12 @@ class OrderTableViewCellModel: OrderTableViewCellModelType {
   let itemTitleText: String
   let servicesText: NSAttributedString
   let iconUrl: URL?
+  let iconColor: UIColor
   let amountText: NSAttributedString
 
   init(item: OrderItem) {
     self.itemTitleText = item.clothesItem.name
+    self.iconColor = item.clothesItem.category?.color ?? UIColor.chsSkyBlue
 
     let servicesAttrString = NSMutableAttributedString()
 

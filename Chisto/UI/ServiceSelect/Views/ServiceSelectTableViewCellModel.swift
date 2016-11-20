@@ -26,7 +26,7 @@ class ServiceSelectTableViewCellModel: ServiceSelectTableViewCellModelType {
   init(treatment: Treatment, isSelected: Bool) {
     self.serviceTitle = treatment.name
     self.serviceDescription = treatment.descriptionText
-    self.color = UIColor.chsRosePink
+    self.color = treatment.item?.category?.color ?? UIColor.chsSkyBlue
     self.isSelected = isSelected
   }
 

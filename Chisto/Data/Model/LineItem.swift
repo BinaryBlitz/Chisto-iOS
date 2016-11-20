@@ -11,7 +11,7 @@ import ObjectMapper
 import RealmSwift
 import ObjectMapper_Realm
 
-class LineItem: ServerObjct {
+class LineItem: ServerObject {
   dynamic var laundryTtreatment: LaundryTreatment?
   dynamic var price: Int = 0
   

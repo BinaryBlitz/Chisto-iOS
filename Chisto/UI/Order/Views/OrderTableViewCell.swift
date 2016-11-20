@@ -18,7 +18,11 @@ class OrderTableViewCell: UITableViewCell {
   @IBOutlet weak var amountLabel: UILabel!
 
   func configure(viewModel: OrderTableViewCellModelType) {
-    categoryIconImageView.kf.setImage(with: viewModel.iconUrl)
+    categoryIconImageView.kf.setImage(with: viewModel.iconUrl) { [weak self] image, _, _, _ in
+      guard let image = image?.withRenderingMode(.alwaysTemplate) else { return }
+      self?.categoryIconImageView.image = image
+      self?.categoryIconImageView.tintColor = viewModel.iconColor
+    }
     titleLabel.text = viewModel.itemTitleText
     servicesLabel.attributedText = viewModel.servicesText
     amountLabel.attributedText = viewModel.amountText

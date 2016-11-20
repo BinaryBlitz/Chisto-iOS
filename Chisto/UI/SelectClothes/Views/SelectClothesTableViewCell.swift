@@ -21,7 +21,11 @@ class SelectClothesTableViewCell: UITableViewCell {
   @IBOutlet weak var descriptionLabel: UILabel!
 
   func configure(viewModel: SelectClothesTableViewCellModelType) {
-    clothesIconImageView.kf.setImage(with: viewModel.iconUrl)
+    clothesIconImageView.kf.setImage(with: viewModel.iconUrl) { [weak self] image, _, _, _ in
+      guard let image = image?.withRenderingMode(.alwaysTemplate) else { return }
+      self?.clothesIconImageView.image = image
+      self?.clothesIconImageView.tintColor = viewModel.iconColor
+    }
     titleLabel.text = viewModel.titleText
     descriptionLabel.attributedText = viewModel.subTitletext
   }

@@ -63,7 +63,7 @@ class ItemInfoViewModel: ItemInfoViewModelType {
   init(orderItem: OrderItem) {
     let clothesItem = orderItem.clothesItem
     self.itemTitle = clothesItem.name
-    self.color = UIColor.chsSkyBlue
+    self.color = clothesItem.category?.color ?? UIColor.chsSkyBlue
     let currentAmount = Variable<Int>(orderItem.amount)
     self.currentAmount = currentAmount
 
@@ -77,7 +77,7 @@ class ItemInfoViewModel: ItemInfoViewModelType {
     self.canEditRow = canEditRow
     
     treatments.asObservable()
-      .map { $0.count > 0 }
+      .map { $0.count > 1 }
       .bindTo(canEditRow)
       .addDisposableTo(disposeBag)
 
