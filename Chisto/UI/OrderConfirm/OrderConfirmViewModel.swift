@@ -76,7 +76,10 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
         return [section]
       }
     
-    let tokenObservable = ProfileManager.instance.apiToken.asObservable().distinctUntilChanged { $0 == $1 }
+    let tokenObservable = ProfileManager.instance.userProfile
+      .asObservable()
+      .map { $0.apiToken }
+      .distinctUntilChanged { $0 == $1 }
     let confirmButtonObservable = confirmOrderButtonDidTap.asObservable()
     
     let registrationRequired = Observable.combineLatest(confirmButtonObservable,

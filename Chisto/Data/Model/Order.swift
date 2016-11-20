@@ -14,12 +14,46 @@ enum OrderStatus {
   case processing
   case completed
   case errored
+  
+  var image: UIImage {
+    switch self {
+    case .processing:
+      return #imageLiteral(resourceName: "iconIndicatorDuring")
+    case .completed:
+     return #imageLiteral(resourceName: "iconIndicatorExecuted")
+    case .errored:
+      return #imageLiteral(resourceName: "iconIndicatorError")
+    }
+  }
+  
+  var description: String {
+    switch self {
+    case .processing:
+      return "В процессе"
+    case .completed:
+      return "Выполнен"
+    case .errored:
+      return "Ошибка"
+    }
+  }
+  
+  var color: UIColor {
+    switch self {
+    case .processing:
+      return UIColor.chsSkyBlue
+    case .completed:
+      return UIColor.chsJadeGreen
+    case .errored:
+      return UIColor.chsWatermelon
+    }
+  }
 }
 
 class Order: ServerObject {
   
   // TODO: remove test email
   dynamic var streetName: String = ""
+  dynamic var laundryId: Int = UUID().hashValue
   dynamic var houseNumber: String = ""
   dynamic var apartmentNumber: String = ""
   dynamic var contactNumber: String = ""
@@ -61,6 +95,7 @@ class Order: ServerObject {
     paid <- map["paid"]
     createdAt <- map["created_at"]
     statusString <- map["status"]
+    laundryId <- map["laundry_id"]
   }
   
 }

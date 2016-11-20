@@ -14,17 +14,23 @@ import RxCocoa
 typealias MyOrdersSectionModel = SectionModel<String, MyOrdersTableViewCellModelType>
 
 protocol MyOrdersViewModelType {
+  var itemDidSelect: PublishSubject<IndexPath> { get }
+  
   var sections: Driver<[MyOrdersSectionModel]> { get }
   var navigationBarTitle: String { get }
   var orders: Variable<[Order]> { get }
+  var presentOrderInfoSection: Driver<OrderInfoViewModel> { get }
 
 }
 
 class MyOrdersViewModel: MyOrdersViewModelType {
   let disposeBag = DisposeBag()
+  
+  let itemDidSelect = PublishSubject<IndexPath>()
   let sections: Driver<[MyOrdersSectionModel]>
   let navigationBarTitle = "Мои заказы"
   let orders: Variable<[Order]>
+  let presentOrderInfoSection: Driver<OrderInfoViewModel>
   
   init() {
     
@@ -44,6 +50,11 @@ class MyOrdersViewModel: MyOrdersViewModelType {
       let section = MyOrdersSectionModel(model: "", items: cellModels)
       return [section]
     }
+    
+    self.presentOrderInfoSection = itemDidSelect.map { indexPath in
+      let order = orders.value[indexPath.row]
+      return OrderInfoViewModel(order: order)
+    }.asDriver(onErrorDriveWith: .empty())
     
   }
 }

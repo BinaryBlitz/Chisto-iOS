@@ -49,6 +49,7 @@ protocol DataManagerServiceType {
 class DataManager {
 
   static let instance = DataManager()
+  let disposeBag = DisposeBag()
   private var apiToken = "foobar"
   private var verificationToken: String? = nil
   private let networkManager = NetworkManager()
@@ -89,7 +90,7 @@ class DataManager {
             realm.add(item, update: true)
           }
         }
-        
+                
         return Observable.empty()
       }
   }
@@ -126,6 +127,19 @@ class DataManager {
         return Observable.just()
       }
   }
+  
+  init() {
+    
+    // 
+    ProfileManager.instance.userProfile.asObservable()
+      .filter { $0.city != nil }
+      .map { $0.city! }
+      .distinctUntilChanged()
+      .subscribe(onNext: { [weak self] _ in
+        guard let disposeBag = self?.disposeBag else { return }
+        self?.fetchLaundries().subscribe().addDisposableTo(disposeBag)
+      }).addDisposableTo(disposeBag)
+  }
 
 }
 
@@ -155,7 +169,7 @@ extension DataManager: DataManagerServiceType {
   }
 
   func fetchLaundries() -> Observable<Void> {
-    guard let cityId = ProfileManager.instance.userProfile.city?.id else { return Observable.error(DataError.unknown) }
+    guard let cityId = ProfileManager.instance.userProfile.value.city?.id else { return Observable.error(DataError.unknown) }
     return fetchItems(type: Laundry.self, apiPath: .fetchCityLaundries(cityId: cityId))
   }
   
@@ -178,7 +192,10 @@ extension DataManager: DataManagerServiceType {
       .flatMap { result -> Observable<Order> in
         guard let order = Mapper<Order>().map(JSONObject: result) else { return Observable.error(DataError.responseConvertError) }
         let realm = try! Realm()
-        realm.add(order, update: true)
+        
+        try realm.write {
+          realm.add(order, update: true)
+        }
         return Observable.just(order)
     }
   }
