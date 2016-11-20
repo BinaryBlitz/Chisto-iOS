@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-class Order: ServerObjct {
+class RequestOrder: Mappable {
 
   // TODO: remove test email
   var streetName: String = ""
@@ -20,7 +20,7 @@ class Order: ServerObjct {
   var email: String? = nil
   var lineItemsArttributes: [LineItemAttribute] = []
 
-  func configure(profile: Profile) {
+  init(profile: Profile) {
     apartmentNumber = profile.apartment
     houseNumber = profile.building
     apartmentNumber = profile.apartment
@@ -28,9 +28,10 @@ class Order: ServerObjct {
     streetName = profile.street
     email = profile.email
   }
+  
+  required init(map: Map) { }
 
-  override func mapping(map: Map) {
-    super.mapping(map: map)
+  func mapping(map: Map) {
     streetName <- map["street_name"]
     houseNumber <- map["house_number"]
     apartmentNumber <- map["apartment_number"]

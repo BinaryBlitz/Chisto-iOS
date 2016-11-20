@@ -51,6 +51,7 @@ class ItemInfoViewModel: ItemInfoViewModelType {
   var currentAmount: Variable<Int>
   var presentServiceSelectSection: Driver<ServiceSelectViewModel>
   var returnToOrderList: Driver<Void>
+  var canEditRow: Variable<Bool>
   var color: UIColor
 
   // Constants
@@ -58,7 +59,7 @@ class ItemInfoViewModel: ItemInfoViewModelType {
 
   // Table view
   var sections: Driver<[ItemInfoSectionModel]>
-
+  
   init(orderItem: OrderItem) {
     let clothesItem = orderItem.clothesItem
     self.itemTitle = clothesItem.name
@@ -71,6 +72,14 @@ class ItemInfoViewModel: ItemInfoViewModelType {
 
     // Table view
     let treatments = Variable<[Treatment]>(orderItem.treatments)
+    
+    let canEditRow = Variable(true)
+    self.canEditRow = canEditRow
+    
+    treatments.asObservable()
+      .map { $0.count > 0 }
+      .bindTo(canEditRow)
+      .addDisposableTo(disposeBag)
 
     self.sections = treatments.asDriver().map { treatments in
       let cellModels = treatments.enumerated().map { (index, service) in

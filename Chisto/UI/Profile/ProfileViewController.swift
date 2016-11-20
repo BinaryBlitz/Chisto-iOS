@@ -12,6 +12,7 @@ import RxSwift
 import RxCocoa
 
 class ProfileViewController: UITableViewController {
+  @IBOutlet weak var ordersCountLabel: UILabel!
 
   let disposeBag = DisposeBag()
   let viewModel = ProfileViewModel()
@@ -39,6 +40,13 @@ class ProfileViewController: UITableViewController {
       let viewController = ProfileContactDataViewController.storyboardInstance()!
       self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
+    
+    viewModel.presentMyOrdersSection.drive(onNext: { [weak self] in
+      let viewController = MyOrdersViewController.storyboardInstance()!
+      self?.navigationController?.pushViewController(viewController, animated: true)
+    }).addDisposableTo(disposeBag)
+    
+    viewModel.ordersCount.asObservable().bindTo(ordersCountLabel.rx.text).addDisposableTo(disposeBag)
   }
 
   override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

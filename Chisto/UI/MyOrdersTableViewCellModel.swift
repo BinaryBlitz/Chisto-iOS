@@ -7,3 +7,33 @@
 //
 
 import Foundation
+import UIKit
+
+protocol MyOrdersTableViewCellModelType {
+  var icon: UIImage? { get }
+  var orderNumberTitle: String { get }
+  var dateTitle: String { get }
+  var priceTitle: String? { get }
+}
+
+class MyOrdersTableViewCellModel: MyOrdersTableViewCellModelType {
+  var icon: UIImage? = nil
+  let orderNumberTitle: String
+  let dateTitle: String
+  var priceTitle: String? = ""
+  
+  init(order: Order) {
+    self.orderNumberTitle = "Заказ № \(order.id)"
+    self.dateTitle = Date.from(string: order.createdAt)?.longDate ?? ""
+    
+    switch order.status {
+    case .processing:
+      self.icon = #imageLiteral(resourceName: "iconIndicatorDuring")
+    case .completed:
+      self.icon = #imageLiteral(resourceName: "iconIndicatorExecuted")
+    case .errored:
+      self.icon = #imageLiteral(resourceName: "iconIndicatorError")
+    }
+  }
+  
+}

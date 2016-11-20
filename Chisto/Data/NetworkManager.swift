@@ -22,6 +22,7 @@ enum APIPath {
   case verifyToken(token: String)
   case placeOrder(laundryId: Int)
   case fetchRatings(laundryId: Int)
+  case fetchOrders
 
   var endpoint: String {
     switch self {
@@ -43,6 +44,8 @@ enum APIPath {
       return "laundries/\(laundryId)/orders.json"
     case .fetchRatings(let laundryId):
       return "laundries/\(laundryId)/ratings.json"
+    case .fetchOrders:
+      return "orders.json"
 
     }
   }
