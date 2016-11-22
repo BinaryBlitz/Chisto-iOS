@@ -16,7 +16,11 @@ class OrderInfoTableViewCell: UITableViewCell {
   @IBOutlet weak var iconView: UIImageView!
   
   func configure(viewModel: OrderInfoTableViewCellModelType) {
-    self.iconView.kf.setImage(with: viewModel.clothesIconUrl)
+    self.iconView.kf.setImage(with: viewModel.clothesIconUrl)  { [weak self] image, _, _, _ in
+      guard let image = image?.withRenderingMode(.alwaysTemplate) else { return }
+      self?.iconView.image = image
+      self?.iconView.tintColor = viewModel.clothesIconColor
+    }
     
     let headerItemView = OrderConfirmServiceItemView.nibInstance()!
     headerItemView.leftLabel.text = viewModel.clothesTitle
@@ -25,15 +29,12 @@ class OrderInfoTableViewCell: UITableViewCell {
     headerItemView.textColor = UIColor.black
     stackView.addArrangedSubview(headerItemView)
     
-    
-    /* TODO: use real data to display treatments
-    for service in viewModel.clothesTreatments {
+    for lineItem in viewModel.orderLineItems {
       let view = OrderConfirmServiceItemView.nibInstance()!
-      view.leftLabel.text = service.name
-      view.rightLabel.text = service.priceString(laundry: viewModel.laundry)
+      view.leftLabel.text = lineItem.orderLaundryTreatment?.orderTreatment?.name
+      view.rightLabel.text = lineItem.priceString(amount: 1)
       stackView.addArrangedSubview(view)
     }
-    */
   }
   
   override func prepareForReuse() {

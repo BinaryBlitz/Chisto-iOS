@@ -58,6 +58,7 @@ class DataManager {
     var parameters = params
     let token = apiToken
     parameters["api_token"] = token
+    parameters["Accept"] = "application/json"
     return networkManager.doRequest(method: method, path, parameters)
       .catchError { error in
         guard let networkError = error as? NetworkError else { return Observable.error(error) }
@@ -198,6 +199,19 @@ extension DataManager: DataManagerServiceType {
         }
         
         return Observable.just(order)
+    }
+  }
+  
+  func fetchOrder(order: Order) -> Observable<Void> {
+    return networkRequest(method: .get, .fetchOrder(orderId: order.id)).flatMap { result -> Observable<Void> in
+      guard let order = Mapper<Order>().map(JSONObject: result) else { return Observable.error(DataError.responseConvertError) }
+      let realm = try! Realm()
+      
+      try realm.write {
+        realm.add(order, update: true)
+      }
+      
+      return Observable.empty()
     }
   }
 

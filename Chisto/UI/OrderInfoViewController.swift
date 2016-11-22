@@ -32,7 +32,7 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
   
   @IBOutlet weak var supportButton: GoButton!
   var viewModel : OrderInfoViewModel? = nil
-  var dataSource = RxTableViewSectionedReloadDataSource<OrderConfirmSectionModel>()
+  var dataSource = RxTableViewSectionedReloadDataSource<OrderInfoSectionModel>()
   
   override func viewDidLoad() {
     navigationItem.title = viewModel?.navigationBarTitle
@@ -53,17 +53,16 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
   }
   
   func configureFooter() {
-    orderPriceLabel.text = viewModel?.orderPrice
-    deliveryPriceLabel.text = viewModel?.deliveryPrice
-    orderTotalCostLabel.text = viewModel?.totalCost
-
-    guard let viewModel = self.viewModel else { return }
+    guard let viewModel = viewModel else { return }
+    viewModel.orderPrice.asObservable().bindTo(orderPriceLabel.rx.text).addDisposableTo(disposeBag)
+    viewModel.deliveryPrice.asObservable().bindTo(deliveryPriceLabel.rx.text).addDisposableTo(disposeBag)
+    viewModel.totalCost.asObservable().bindTo(orderTotalCostLabel.rx.text).addDisposableTo(disposeBag)
     supportButton.rx.tap.bindTo(viewModel.supportButtonDidTap).addDisposableTo(disposeBag)
   }
   
   func configureTableView() {
     dataSource.configureCell = { _, tableView, indexPath, cellViewModel in
-      let cell = tableView.dequeueReusableCell(withIdentifier: "OrderConfirmServiceTableViewCell", for: indexPath) as! OrderConfirmServiceTableViewCell
+      let cell = tableView.dequeueReusableCell(withIdentifier: "OrderInfoTableViewCell", for: indexPath) as! OrderInfoTableViewCell
       
       cell.configure(viewModel: cellViewModel)
       return cell
@@ -74,8 +73,9 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
       .setDelegate(self)
       .addDisposableTo(disposeBag)
         
-    /* TODO: configure table view source
     tableView.dataSource = nil
+    
+    guard let viewModel = viewModel else { return }
     
     viewModel.sections
       .drive(self.tableView.rx.items(dataSource: self.dataSource))
@@ -83,7 +83,6 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
     
     tableView.estimatedRowHeight = 100
     tableView.rowHeight = UITableViewAutomaticDimension
-     */
   }
   
 }

@@ -24,14 +24,14 @@ protocol OrderInfoViewModelType {
   var laundryDescriprion: String { get }
   var laundryIcon: URL? { get }
   var orderNumber: String { get }
-  var orderPrice: String { get }
-  var deliveryPrice: String { get }
-  var totalCost: String { get }
+  var orderPrice: Variable<String> { get }
+  var deliveryPrice: Variable<String>  { get }
+  var totalCost: Variable<String>  { get }
   var orderDate: String { get }
   var orderStatus: String { get }
   var orderStatusIcon: UIImage { get }
   var orderStatusColor: UIColor { get }
-  //var sections: Driver<[OrderInfoSectionModel]> { get }
+  var sections: Driver<[OrderInfoSectionModel]> { get }
 }
 
 class OrderInfoViewModel: OrderInfoViewModelType {
@@ -48,15 +48,26 @@ class OrderInfoViewModel: OrderInfoViewModelType {
   var laundryIcon: URL?  = nil
   var orderNumber: String
   var orderDate: String
-  var orderPrice: String = "Бесплатно"
-  var deliveryPrice: String = "Бесплатно"
-  var totalCost: String = "Бесплатно"
+  var orderPrice = Variable<String>("...")
+  var deliveryPrice = Variable<String>("Бесплатно")
+  var totalCost = Variable<String>("...")
   var orderStatus: String
   var orderStatusIcon: UIImage
   var orderStatusColor: UIColor
-  //var sections: Driver<[OrderConfirmSectionModel]>
+  var sections: Driver<[OrderInfoSectionModel]>
+  let presentErrorAlert: PublishSubject<Error>
+  
+  // Data
+  let order: Variable<Order>
   
   init(order: Order) {
+    let presentErrorAlert = PublishSubject<Error>()
+    self.presentErrorAlert = presentErrorAlert
+    
+    DataManager.instance.fetchOrder(order: order).subscribe(onError: { error in
+      presentErrorAlert.onNext(error)
+    }).addDisposableTo(disposeBag)
+    
     self.navigationBarTitle = "Заказ № \(order.id)"
     self.orderNumber = "№ \(order.id)"
     self.orderDate = order.createdAtDate.mediumDate
@@ -64,7 +75,45 @@ class OrderInfoViewModel: OrderInfoViewModelType {
     self.orderStatusIcon = order.status.image
     self.orderStatusColor = order.status.color
     
-    guard let laundry = uiRealm.object(ofType: Laundry.self, forPrimaryKey: order.laundryId) else { return }
+    let order = Variable<Order>(order)
+    self.order = order
+    
+    let itemsObservable = Observable.from(uiRealm.objects(Item.self)).map { Array($0) }
+    let orderLineItemsObservable = order.asObservable().map { Array($0.lineItems) }
+    
+    let orderItemsObservable = Observable.combineLatest(itemsObservable, orderLineItemsObservable) { items, orderLineItems -> [Item] in
+      let filteredItems = items.filter { item in
+        return orderLineItems.contains { item.id == $0.orderLaundryTreatment?.orderTreatment?.itemId }
+      }
+      
+      return filteredItems
+    }
+    
+    self.sections = Observable.combineLatest(orderItemsObservable, orderLineItemsObservable) { items, orderLineItems in
+      let cellModels = items.map { item -> OrderInfoTableViewCellModel in
+        let filteredLineItems = orderLineItems.filter { $0.orderLaundryTreatment?.orderTreatment?.itemId == item.id }
+        return OrderInfoTableViewCellModel(item: item, orderLineItems: filteredLineItems)
+      } as [OrderInfoTableViewCellModelType]
+      
+      let section = OrderInfoSectionModel(model: "", items: cellModels)
+      return [section]
+    }.asDriver(onErrorDriveWith: .empty())
+    
+    order.asObservable().map { order in
+      return "\(order.price) ₽"
+    }.bindTo(orderPrice).addDisposableTo(disposeBag)
+    
+    order.asObservable().map { order in
+      return "\(order.price + order.deliveryPrice) ₽"
+    }.bindTo(totalCost).addDisposableTo(disposeBag)
+    
+    uiRealm.observableObject(type: Order.self, primaryKey: order.value.id)
+      .filter{ $0 != nil}
+      .map { $0! }
+      .bindTo(order)
+      .addDisposableTo(disposeBag)
+      
+    guard let laundry = uiRealm.object(ofType: Laundry.self, forPrimaryKey: order.value.laundryId) else { return }
     self.laundryTitle = laundry.name
     self.laundryDescriprion = laundry.descriptionText
     self.laundryIcon = URL(string: laundry.logoUrl)

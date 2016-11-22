@@ -11,17 +11,28 @@ import UIKit
 
 protocol OrderInfoTableViewCellModelType {
   var clothesIconUrl: URL? { get }
-  var clothesTitle: String { get }
-  var clothesPrice: String { get }
+  var clothesTitle: String? { get }
+  var clothesPrice: String? { get }
+  var clothesIconColor: UIColor { get }
+  var orderLineItems: [OrderLineItem] { get }
 }
 
 class OrderInfoTableViewCellModel: OrderInfoTableViewCellModelType {
   
-  let clothesIconUrl: URL? = nil
-  let clothesTitle: String = ""
-  let clothesPrice: String = ""
+  let clothesIconUrl: URL?
+  var clothesIconColor: UIColor
+  let clothesTitle: String?
+  let clothesPrice: String?
+  var orderLineItems: [OrderLineItem]
   
-  init() {
+  init(item: Item, orderLineItems: [OrderLineItem]) {
+    self.clothesIconUrl = URL(string: item.icon)
+    self.clothesIconColor = item.category?.color ?? UIColor.chsSkyBlue
+    
+    let quantity = orderLineItems.first?.quantity ?? 0
+    self.clothesTitle = item.name + " " + item.priceString(lineItems: orderLineItems, quantity: 1) + " × \(quantity)"
+    self.clothesPrice = item.priceString(lineItems: orderLineItems)
+    self.orderLineItems = orderLineItems
   }
   
 }

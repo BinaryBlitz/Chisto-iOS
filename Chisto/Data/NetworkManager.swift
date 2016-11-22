@@ -23,29 +23,32 @@ enum APIPath {
   case placeOrder(laundryId: Int)
   case fetchRatings(laundryId: Int)
   case fetchOrders
+  case fetchOrder(orderId: Int)
 
   var endpoint: String {
     switch self {
     case .fetchCities:
-      return "cities.json"
+      return "cities"
     case .fetchCategories:
-      return "categories.json"
+      return "categories"
     case .fetchCityLaundries(let cityId):
-      return "cities/\(cityId)/laundries.json"
+      return "cities/\(cityId)/laundries"
     case .fetchCategoryClothes(let categoryId):
-      return "categories/\(categoryId)/items.json"
+      return "categories/\(categoryId)/items"
     case .fetchClothesTreatments(let itemId):
-      return "items/\(itemId)/treatments.json"
+      return "items/\(itemId)/treatments"
     case .createVerificationToken:
-      return "verification_tokens.json"
+      return "verification_tokens"
     case .verifyToken(let token):
-      return "verification_tokens/\(token).json"
+      return "verification_tokens/\(token)"
     case .placeOrder(let laundryId):
-      return "laundries/\(laundryId)/orders.json"
+      return "laundries/\(laundryId)/orders"
     case .fetchRatings(let laundryId):
-      return "laundries/\(laundryId)/ratings.json"
+      return "laundries/\(laundryId)/ratings"
     case .fetchOrders:
-      return "orders.json"
+      return "orders"
+    case .fetchOrder(let orderId):
+      return "orders/\(orderId)"
 
     }
   }

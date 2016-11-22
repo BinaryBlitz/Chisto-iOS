@@ -8,6 +8,7 @@
 
 import Foundation
 import ObjectMapper
+import ObjectMapper_Realm
 import RealmSwift
 
 enum OrderStatus {
@@ -51,7 +52,6 @@ enum OrderStatus {
 
 class Order: ServerObject {
   
-  // TODO: remove test email
   dynamic var streetName: String = ""
   dynamic var laundryId: Int = UUID().hashValue
   dynamic var houseNumber: String = ""
@@ -63,11 +63,16 @@ class Order: ServerObject {
   dynamic var paymentUrl: String = ""
   dynamic var amount: Double = 0
   dynamic var email: String? = nil
+  dynamic var deliveryPrice: Int = 0
   dynamic var createdAt: String = ""
-  var lineItems = List<LineItem>()
+  var lineItems = List<OrderLineItem>()
   
   var createdAtDate: Date {
     return Date.from(string: createdAt) ?? Date()
+  }
+  
+  var price: Int {
+    return lineItems.map { $0.price() }.reduce(0, +)
   }
   
   var status: OrderStatus {
@@ -91,11 +96,12 @@ class Order: ServerObject {
     contactNumber <- map["contact_number"]
     notes <- map["notes"]
     email <- map["email"]
-    lineItems <- map["line_items"]
+    lineItems <- (map["line_items"], ListTransform<OrderLineItem>())
     paid <- map["paid"]
     createdAt <- map["created_at"]
     statusString <- map["status"]
     laundryId <- map["laundry_id"]
+    deliveryPrice <- map["delivery_price"]
   }
   
 }
