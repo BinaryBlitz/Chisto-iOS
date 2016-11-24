@@ -90,22 +90,21 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     
     let currentOrderItemsObservable = OrderManager.instance.currentOrderItems.asObservable()
     
-    let filteredLaundriesObservable = Observable.combineLatest(laundries.asObservable(), currentOrderItemsObservable) { laundries, currentOrderItems -> [Laundry] in
-      return laundries.filter { laundry in
-        let laundryTreatments = laundry.treatments.toArray()
-          .filter { $0.treatment != nil }
-          .map { $0.treatment! }
-        let orderTreatments = currentOrderItems.map { $0.treatments }.reduce([], +)
-        return Set(orderTreatments).subtracting(Set(laundryTreatments)).isEmpty
-      }
+    let filteredLaundriesObservable = Observable.combineLatest(laundries.asObservable(), currentOrderItemsObservable) { [weak self] laundries, currentOrderItems -> [Laundry] in
+      self?.filterLaundries(laundries: laundries, currentOrderItems: currentOrderItems) ?? []
     }
 
     Observable.combineLatest(filteredLaundriesObservable.asObservable(), sortType.asObservable()) { laundries, sortType -> [Laundry] in
-      
       return self.sortLaundries(laundries: laundries, sortType: sortType)
     }.bindTo(sortedLaundries).addDisposableTo(disposeBag)
-
-
+  }
+  
+  func filterLaundries(laundries: [Laundry], currentOrderItems: [OrderItem]) -> [Laundry] {
+    return laundries.filter { laundry in
+      let laundryTreatments = Set(laundry.treatments)
+      let orderTreatments = Set(currentOrderItems.map { $0.treatments }.reduce([], +))
+      return orderTreatments.subtracting(laundryTreatments).isEmpty
+    }
   }
 
   func sortLaundries(laundries: [Laundry], sortType: LaundrySortType) -> [Laundry] {

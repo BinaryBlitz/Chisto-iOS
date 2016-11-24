@@ -30,8 +30,14 @@ class Laundry: ServerObject {
   dynamic var deliveryTimeInterval: String = "с 00:00 до 23:59"
   dynamic var courierPrice: Int = 0
   dynamic var deliveryDate: Double = 0.0
-  var treatments = List<LaundryTreatment>()
+  var laundryTreatments = List<LaundryTreatment>()
   
+  var treatments: [Treatment] {
+    return laundryTreatments.toArray()
+      .filter { $0.treatment != nil }
+      .map { $0.treatment! }
+  }
+ 
   override func mapping(map: Map) {
     super.mapping(map: map)
     name <- map["name"]
@@ -39,7 +45,7 @@ class Laundry: ServerObject {
     category <- map["category"]
     logoUrl <- map["logo_url"]
     backgroundImageUrl <- map["background_image_url"]
-    treatments <- (map["laundry_treatments"], ListTransform<LaundryTreatment>())
+    laundryTreatments <- (map["laundry_treatments"], ListTransform<LaundryTreatment>())
   }
   
   var type: LaundryType? {

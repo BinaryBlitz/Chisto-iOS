@@ -23,7 +23,7 @@ class Treatment: ServerObject {
 
   func price(laundry: Laundry) -> Int {
     
-    return laundry.treatments
+    return laundry.laundryTreatments
       .first { $0.treatment?.id == self.id }?.price ?? 0
 
   }
