@@ -71,7 +71,7 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     let sortType = Variable<LaundrySortType>(LaundrySortType.byRating)
     self.sortType = sortType
 
-    let sortedLaundries = Variable(laundries.value)
+    let sortedLaundries = Variable<[Laundry]>([])
     self.sortedLaundries = sortedLaundries
 
     self.sections = sortedLaundries.asDriver().map { laundries in
@@ -84,11 +84,24 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     self.presentSortSelectSection = sortButtonDidTap.asDriver(onErrorDriveWith: .empty())
 
     self.presentOrderConfirmSection = itemDidSelect.map { indexPath in
-      let viewModel = OrderConfirmViewModel(laundry: laundries.value[indexPath.row])
+      let viewModel = OrderConfirmViewModel(laundry: sortedLaundries.value[indexPath.row])
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
+    
+    let currentOrderItemsObservable = OrderManager.instance.currentOrderItems.asObservable()
+    
+    let filteredLaundriesObservable = Observable.combineLatest(laundries.asObservable(), currentOrderItemsObservable) { laundries, currentOrderItems -> [Laundry] in
+      return laundries.filter { laundry in
+        let laundryTreatments = laundry.treatments.toArray()
+          .filter { $0.treatment != nil }
+          .map { $0.treatment! }
+        let orderTreatments = currentOrderItems.map { $0.treatments }.reduce([], +)
+        return Set(orderTreatments).subtracting(Set(laundryTreatments)).isEmpty
+      }
+    }
 
-    Observable.combineLatest(laundries.asObservable(), sortType.asObservable()) { laundries, sortType -> [Laundry] in
+    Observable.combineLatest(filteredLaundriesObservable.asObservable(), sortType.asObservable()) { laundries, sortType -> [Laundry] in
+      
       return self.sortLaundries(laundries: laundries, sortType: sortType)
     }.bindTo(sortedLaundries).addDisposableTo(disposeBag)
 
