@@ -51,7 +51,6 @@ class ItemInfoViewModel: ItemInfoViewModelType {
   var currentAmount: Variable<Int>
   var presentServiceSelectSection: Driver<ServiceSelectViewModel>
   var returnToOrderList: Driver<Void>
-  var canEditRow: Variable<Bool>
   var color: UIColor
 
   // Constants
@@ -60,39 +59,52 @@ class ItemInfoViewModel: ItemInfoViewModelType {
   // Table view
   var sections: Driver<[ItemInfoSectionModel]>
   
+  // Data
+  let treatments: Variable<[Treatment]>
+  
+  enum Section: Int {
+    case decoration = 0
+    case treatments
+  }
+  
   init(orderItem: OrderItem) {
     let clothesItem = orderItem.clothesItem
     self.itemTitle = clothesItem.name
     self.color = clothesItem.category?.color ?? UIColor.chsSkyBlue
     let currentAmount = Variable<Int>(orderItem.amount)
     self.currentAmount = currentAmount
+    
+    let hasDecoration = Variable(orderItem.hasDecoration)
+    
+    let decorationCellModel = ItemInfoTableViewCellModel("Декор", "Декоративная отделка") as ItemInfoTableViewCellModelType
 
     // Subtitle
     self.itemDescription = clothesItem.descriptionText
 
     // Table view
     let treatments = Variable<[Treatment]>(orderItem.treatments)
-    
-    let canEditRow = Variable(true)
-    self.canEditRow = canEditRow
-    
-    treatments.asObservable()
-      .map { $0.count > 1 }
-      .bindTo(canEditRow)
-      .addDisposableTo(disposeBag)
+    self.treatments = treatments
 
-    self.sections = treatments.asDriver().map { treatments in
+    self.sections = Driver.combineLatest(treatments.asDriver(), hasDecoration.asDriver()) { treatments, hasDecoration in
       let cellModels = treatments.enumerated().map { (index, service) in
-        ItemInfoTableViewCellModel(treatment: service, count: index)
+        var count = index + 1
+        if hasDecoration { count += 1 }
+        return ItemInfoTableViewCellModel(treatment: service, count: count)
       } as [ItemInfoTableViewCellModelType]
 
-      let section = ItemInfoSectionModel(model: "", items: cellModels)
-      return [section]
+      var sections = [ItemInfoSectionModel(model: "", items: cellModels)]
+      if hasDecoration {
+        let itemInfoSection = ItemInfoSectionModel(model: "", items: [decorationCellModel])
+        sections.insert(itemInfoSection, at: 0)
+      }
+      return sections
     }
 
     self.presentServiceSelectSection = addServiceButtonDidTap.asObservable().map {
-      let viewModel = ServiceSelectViewModel(item: orderItem, saveNeeded: false, selectedTreatments: treatments.value)
+      let viewModel = ServiceSelectViewModel(orderItem: orderItem, saveNeeded: false,
+          selectedTreatments: treatments.value, hasDecor: hasDecoration.value)
       viewModel.selectedServices.asObservable().bindTo(treatments).addDisposableTo(viewModel.disposeBag)
+      viewModel.hasDecoration.asObservable().bindTo(hasDecoration).addDisposableTo(viewModel.disposeBag)
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
 
@@ -101,7 +113,14 @@ class ItemInfoViewModel: ItemInfoViewModelType {
       .asDriver(onErrorDriveWith: .empty())
 
     tableItemDeleted.asObservable().subscribe(onNext: { indexPath in
-      treatments.value.remove(at: indexPath.row)
+      switch indexPath.section {
+      case Section.decoration.rawValue:
+        hasDecoration.value = false
+      case Section.treatments.rawValue:
+        treatments.value.remove(at: indexPath.row)
+      default:
+        break
+      }
     }).addDisposableTo(disposeBag)
 
     counterIncButtonDidTap.subscribe(onNext: {
@@ -118,8 +137,13 @@ class ItemInfoViewModel: ItemInfoViewModelType {
       OrderManager.instance.updateOrderItem(item: orderItem) {
         orderItem.treatments = treatments.value
         orderItem.amount = currentAmount.value
+        orderItem.hasDecoration = hasDecoration.value
       }
     }).addDisposableTo(disposeBag)
+  }
+  
+  func canDeleteItem(at indexPath: IndexPath) -> Bool {
+    return indexPath.section == Section.decoration.rawValue || !treatments.value.isEmpty
   }
 
 }

@@ -68,7 +68,7 @@
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelection="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="102" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8qi-z0-Amx">
                                 <rect key="frame" x="0.0" y="91.5" width="375" height="525.5"/>
-                                <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ServiceSelectTableViewCell" rowHeight="102" id="MOv-NB-eAm" customClass="ServiceSelectTableViewCell" customModule="Chisto" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="102"/>
@@ -126,7 +126,6 @@
                                                 <constraint firstItem="hFO-t1-lhw" firstAttribute="trailing" secondItem="63f-ki-jFe" secondAttribute="trailingMargin" constant="-15" id="w8A-A6-JeM"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="checkButton" destination="hFO-t1-lhw" id="kKH-wR-QBf"/>
                                             <outlet property="serviceDescriptionLabel" destination="O55-Ig-3rP" id="8rp-Sa-eRd"/>
@@ -134,6 +133,7 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <sections/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="calibratedRGB"/>
