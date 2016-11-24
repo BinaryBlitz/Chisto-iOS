@@ -20,7 +20,6 @@ protocol LaundrySelectViewModelType {
   var sortButtonDidTap: PublishSubject<Void> { get }
 
   // Output
-  var navigationBarTitle: String { get }
   var sections: Driver<[LaundrySelectSectionModel]> { get }
   var presentSortSelectSection: Driver<Void> { get }
 
@@ -43,7 +42,6 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
   var sortButtonDidTap = PublishSubject<Void>()
 
   // Output
-  var navigationBarTitle = "Химчистки"
   var sections: Driver<[LaundrySelectSectionModel]>
   var presentOrderConfirmSection: Driver<OrderConfirmViewModel>
   var presentSortSelectSection: Driver<Void>

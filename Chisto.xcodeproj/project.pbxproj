@@ -55,6 +55,7 @@
 		882ECDB11DE2160C00EE3507 /* OrderInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDB01DE2160C00EE3507 /* OrderInfoTableViewCell.swift */; };
 		882ECDB31DE2211700EE3507 /* OrderInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDB21DE2211700EE3507 /* OrderInfoViewModel.swift */; };
 		882ECDB61DE2C46200EE3507 /* OrderLineItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDB51DE2C46200EE3507 /* OrderLineItem.swift */; };
+		882ECDB81DE5899600EE3507 /* Sequence+categorize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDB71DE5899600EE3507 /* Sequence+categorize.swift */; };
 		8833B5281DBE6E2B004D44CE /* LastTimePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8833B5271DBE6E2B004D44CE /* LastTimePopupViewController.swift */; };
 		8833B52A1DBE6E38004D44CE /* LastTimePopupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8833B5291DBE6E38004D44CE /* LastTimePopupViewController.storyboard */; };
 		8833B5301DBE8756004D44CE /* LaundryItemInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8833B52F1DBE8756004D44CE /* LaundryItemInfoView.xib */; };
@@ -223,6 +224,7 @@
 		882ECDB01DE2160C00EE3507 /* OrderInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoTableViewCell.swift; sourceTree = "<group>"; };
 		882ECDB21DE2211700EE3507 /* OrderInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoViewModel.swift; sourceTree = "<group>"; };
 		882ECDB51DE2C46200EE3507 /* OrderLineItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderLineItem.swift; sourceTree = "<group>"; };
+		882ECDB71DE5899600EE3507 /* Sequence+categorize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+categorize.swift"; sourceTree = "<group>"; };
 		8833B5271DBE6E2B004D44CE /* LastTimePopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastTimePopupViewController.swift; sourceTree = "<group>"; };
 		8833B5291DBE6E38004D44CE /* LastTimePopupViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LastTimePopupViewController.storyboard; sourceTree = "<group>"; };
 		8833B52F1DBE8756004D44CE /* LaundryItemInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaundryItemInfoView.xib; sourceTree = "<group>"; };
@@ -552,6 +554,7 @@
 				88CDDE461DD922DC002BCC5E /* NSURL+QueryParams.swift */,
 				8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */,
 				889923A01DDD2A0200D73905 /* String+localized.swift */,
+				882ECDB71DE5899600EE3507 /* Sequence+categorize.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1157,6 +1160,7 @@
 				883760D31DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift in Sources */,
 				8872F0BC1DD8AE0F00E8D9EE /* ReverseGeocoder.swift in Sources */,
 				8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */,
+				882ECDB81DE5899600EE3507 /* Sequence+categorize.swift in Sources */,
 				88FE7B031DE0AFE600A16289 /* MyOrdersTableViewCell.swift in Sources */,
 				8811FE0F1DC2DB0500610712 /* ProfileNavigationController.swift in Sources */,
 				8814C0401DAED9AC005B4967 /* CityNotFoundViewController.swift in Sources */,

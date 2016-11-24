@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Laundry Select View Controller-->
+        <!--Химчистки-->
         <scene sceneID="YvA-Xp-wEA">
             <objects>
-                <tableViewController storyboardIdentifier="LaundrySelectViewController" id="qbC-8X-BcN" customClass="LaundrySelectViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LaundrySelectViewController" title="Химчистки" id="qbC-8X-BcN" customClass="LaundrySelectViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="190" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZAD-Ya-x5U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

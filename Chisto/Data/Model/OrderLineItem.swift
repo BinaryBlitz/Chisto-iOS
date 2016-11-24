@@ -14,6 +14,20 @@ import RealmSwift
 import Realm
 import ObjectMapper_Realm
 
+struct LineItemInfo: Hashable {
+  let item: Item?
+  let quantity: Int
+  
+  var hashValue: Int {
+    guard let item = item else { return quantity.hashValue }
+    return item.hashValue + quantity.hashValue
+  }
+  
+  static func ==(lhs: LineItemInfo, rhs: LineItemInfo) -> Bool {
+    return lhs.hashValue == rhs.hashValue
+  }
+}
+
 class OrderTreatment: ServerObject {
   dynamic var name: String = ""
   dynamic var descriptionText: String = ""
@@ -42,6 +56,15 @@ class OrderLaundryTreatment: ServerObject {
 class OrderLineItem: ServerObject {
   dynamic var orderLaundryTreatment: OrderLaundryTreatment?
   dynamic var quantity: Int = 0
+  
+  var item: Item? {
+    guard let realm = self.realm else { return nil }
+    return realm.object(ofType: Item.self, forPrimaryKey: orderLaundryTreatment?.orderTreatment?.itemId)
+  }
+  
+  var lineItemInfo: LineItemInfo {
+    return LineItemInfo(item: item, quantity: quantity)
+  }
 
   func price(amount: Int? = nil) -> Int {
     guard let orderLaundryTreatmentPrice = orderLaundryTreatment?.price else { return 0 }
