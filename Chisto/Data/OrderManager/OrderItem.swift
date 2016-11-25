@@ -12,13 +12,15 @@ class OrderItem {
 
   var id = UUID().uuidString
   var clothesItem: Item
+  var hasDecoration: Bool
   var treatments: [Treatment]
   var amount: Int
 
-  init (clothesItem: Item, treatments: [Treatment] = [], amount: Int = 1) {
+  init (clothesItem: Item, treatments: [Treatment] = [], amount: Int = 1, hasDecoration: Bool = false) {
     self.clothesItem = clothesItem
     self.treatments = treatments
     self.amount = amount
+    self.hasDecoration = hasDecoration
   }
 
   func price(laundry: Laundry, _ count: Int? = nil) -> Int {

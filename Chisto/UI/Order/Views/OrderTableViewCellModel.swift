@@ -37,6 +37,11 @@ class OrderTableViewCellModel: OrderTableViewCellModelType {
     self.iconColor = item.clothesItem.category?.color ?? UIColor.chsSkyBlue
 
     let servicesAttrString = NSMutableAttributedString()
+    
+    if item.hasDecoration {
+      servicesAttrString.append(NSAttributedString(string: "Декор", attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey]))
+      servicesAttrString.append(NSAttributedString(string: " • ", attributes: [NSForegroundColorAttributeName: UIColor.chsSilver]))
+    }
 
     for (index, service) in item.treatments.enumerated() {
       servicesAttrString.append(NSAttributedString(string: service.name, attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey]))

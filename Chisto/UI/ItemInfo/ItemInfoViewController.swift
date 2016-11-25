@@ -79,8 +79,8 @@ class ItemInfoViewController: UIViewController {
       .drive(tableView.rx.items(dataSource: dataSource))
       .addDisposableTo(disposeBag)
     
-    dataSource.canEditRowAtIndexPath = { _ in
-      return viewModel.canEditRow.value
+    dataSource.canEditRowAtIndexPath = { _, indexPath in
+      viewModel.canDeleteItem(at: indexPath)
     }
 
   }

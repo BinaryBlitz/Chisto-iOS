@@ -71,7 +71,7 @@ class SelectClothesViewModel: SelectClothesViewModelType {
     self.presentSelectServiceSection = itemDidSelect.map{ indexPath in
       let clothesItem = items.value[indexPath.row]
       let orderItem = OrderItem(clothesItem: clothesItem, treatments: [], amount: 1)
-      return ServiceSelectViewModel(item: orderItem)
+      return ServiceSelectViewModel(orderItem: orderItem)
     }.asDriver(onErrorDriveWith: .empty())
 
   }
