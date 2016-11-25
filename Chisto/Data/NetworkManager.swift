@@ -118,7 +118,8 @@ class NetworkManager {
   var apiPrefix = "https://chisto-staging.herokuapp.com"
 
   func doRequest(method: HTTPMethod, _ path: APIPath, _ params: Parameters = [:]) -> Observable<Any> {
-      return Observable.create { observer in
+    let requestObservable: Observable<Any> = Observable.create { observer in
+
         let url = URL(string: self.apiPrefix + "/api/" + path.endpoint)!
         let request = Alamofire.request(url, method: method, parameters: params, encoding: path.encoding, headers: nil)
           .responseJSON { response in
@@ -142,14 +143,22 @@ class NetworkManager {
               }
               
             }
-            
         }
 
         return Disposables.create {
           request.cancel()
-
         }
-      }
+    }
+    return requestObservable.do(
+    onError: { _ in
+      UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }, onCompleted: { _ in
+      UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }, onSubscribe: { _ in
+      UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }, onDispose: { _ in
+      UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    })
   }
   
   func getError(_ statusCode: Int?, response: Any) -> NetworkError {
