@@ -15,6 +15,7 @@ import RxCocoa
 class MyOrdersViewController: UITableViewController, DefaultBarColoredViewController {
   let disposeBag = DisposeBag()
   let dataSource = RxTableViewSectionedReloadDataSource<MyOrdersSectionModel>()
+  let emptyTableBackgroundView = EmptyTableBackgroundView.nibInstance()!
   var viewModel = MyOrdersViewModel()
   
   override func viewDidLoad() {
@@ -31,6 +32,10 @@ class MyOrdersViewController: UITableViewController, DefaultBarColoredViewContro
   }
   
   func configureTableView() {
+    emptyTableBackgroundView.title = "Нет заказов"
+    tableView.backgroundView = emptyTableBackgroundView
+    tableView.backgroundView?.isHidden = true
+
     dataSource.configureCell = { _, tableView, indexPath, cellViewModel in
       let cell = tableView.dequeueReusableCell(withIdentifier: "MyOrdersTableViewCell", for: indexPath) as! MyOrdersTableViewCell
       cell.configure(viewModel: cellViewModel)
@@ -43,6 +48,12 @@ class MyOrdersViewController: UITableViewController, DefaultBarColoredViewContro
     viewModel.sections
       .drive(self.tableView.rx.items(dataSource: self.dataSource))
       .addDisposableTo(self.disposeBag)
+    
+    
+    viewModel.tableIsEmpty.asDriver().drive(onNext: { [weak self] tableIsEmpty in
+      self?.tableView.separatorStyle =  tableIsEmpty ? .none : .singleLine
+      self?.tableView.backgroundView?.isHidden = tableIsEmpty ? false : true
+    }).addDisposableTo(disposeBag)
   }
   
   override func viewWillAppear(_ animated: Bool) {
