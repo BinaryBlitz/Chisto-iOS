@@ -34,7 +34,8 @@ class LastTimePopupViewController: UIViewController {
     titleLabel.text = viewModel.title
     descriptionLabel.text = viewModel.laundryDescription
     laundryLogoImageView.kf.setImage(with: viewModel.laundryLogoUrl)
-    backgroundLaundryImageView.kf.setImage(with: viewModel.laundryBackgroundUrl)
+    let backgroundProcessor = OverlayImageProcessor(overlay: .black, fraction: 0.7)
+    backgroundLaundryImageView.kf.setImage(with: viewModel.laundryBackgroundUrl, options: [.processor(backgroundProcessor)])
 
     viewModel.dismissViewController.drive(onNext: { [weak self] in
       UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {

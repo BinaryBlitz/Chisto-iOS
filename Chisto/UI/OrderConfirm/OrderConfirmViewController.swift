@@ -38,14 +38,24 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
     navigationItem.title = viewModel?.navigationBarTitle
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     laundryDescriptionLabel.text = viewModel?.laundryDescriprionTitle
+    
     laundryIconView.kf.setImage(with: viewModel?.laundryIcon)
+    
     laundryRatingView.rating = viewModel?.laundryRating ?? 0
     courierDateLabel.text = viewModel?.courierDate
     orderPriceLabel.text = viewModel?.orderPrice
     deliveryDateLabel.text = viewModel?.deliveryDate
     deliveryPriceLabel.text = viewModel?.courierPrice
-    backgroundImageView.kf.setImage(with: viewModel?.laundryBackground)
     
+    let backgroundProcessor = OverlayImageProcessor(overlay: .black, fraction: 0.7)
+    backgroundImageView.kf.setImage(with: viewModel?.laundryBackground, options: [.processor(backgroundProcessor)])
+
+    configureNavigations()
+    configureFooter()
+    configureTableView()
+  }
+  
+  func configureNavigations() {
     viewModel?.presentRegistrationSection.drive(onNext: {
       self.present(RegistrationNavigationController.storyboardInstance()!, animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
@@ -59,9 +69,6 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
       viewController.viewModel = viewModel
       self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
-
-    configureFooter()
-    configureTableView()
   }
 
   func configureFooter() {
