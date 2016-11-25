@@ -75,6 +75,10 @@ class Order: ServerObject {
     return lineItems.map { $0.price() }.reduce(0, +)
   }
   
+  var deliveryPriceString: String {
+    return deliveryPrice == 0 ? "Бесплатно": "\(deliveryPrice) ₽"
+  }
+  
   var status: OrderStatus {
     switch statusString {
     case "processing":

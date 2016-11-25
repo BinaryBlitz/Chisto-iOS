@@ -33,8 +33,6 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
   @IBOutlet weak var orderPriceLabel: UILabel!
   @IBOutlet weak var deliveryPriceLabel: UILabel!
   @IBOutlet weak var confirmButton: GoButton!
-  
-  
 
   override func viewDidLoad() {
     navigationItem.title = viewModel?.navigationBarTitle
@@ -45,6 +43,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
     courierDateLabel.text = viewModel?.courierDate
     orderPriceLabel.text = viewModel?.orderPrice
     deliveryDateLabel.text = viewModel?.deliveryDate
+    deliveryPriceLabel.text = viewModel?.courierPrice
     backgroundImageView.kf.setImage(with: viewModel?.laundryBackground)
     
     viewModel?.presentRegistrationSection.drive(onNext: {

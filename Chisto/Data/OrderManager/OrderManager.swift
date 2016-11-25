@@ -75,7 +75,7 @@ class OrderManager {
   func priceString(laundry: Laundry) -> String {
     let price = self.price(laundry: laundry)
 
-    return price == 0 ? "Бесплатно" : "\(price) ₽"
+    return "\(price) ₽"
   }
 
 }

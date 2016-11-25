@@ -261,7 +261,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0 ₽" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXv-Bf-mLi">
-                                                <rect key="frame" x="337" y="0.0" width="23" height="30"/>
+                                                <rect key="frame" x="337" y="0.0" width="23" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -269,10 +269,10 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="KXv-Bf-mLi" firstAttribute="bottom" secondItem="fva-O0-GQl" secondAttribute="bottom" id="7N5-PL-rgI"/>
                                             <constraint firstAttribute="bottom" secondItem="fva-O0-GQl" secondAttribute="bottom" constant="12" id="F0z-kD-51j"/>
                                             <constraint firstItem="fva-O0-GQl" firstAttribute="top" secondItem="nqI-Jx-5a3" secondAttribute="top" id="OIE-2f-w4k"/>
                                             <constraint firstItem="KXv-Bf-mLi" firstAttribute="leading" secondItem="fva-O0-GQl" secondAttribute="trailing" id="R0w-bu-vqf"/>
-                                            <constraint firstAttribute="bottom" secondItem="KXv-Bf-mLi" secondAttribute="bottom" id="lTb-60-IOb"/>
                                             <constraint firstItem="fva-O0-GQl" firstAttribute="leading" secondItem="nqI-Jx-5a3" secondAttribute="leading" constant="15" id="mLT-NJ-7s2"/>
                                             <constraint firstItem="KXv-Bf-mLi" firstAttribute="top" secondItem="nqI-Jx-5a3" secondAttribute="top" id="o6C-1Z-H6T"/>
                                             <constraint firstAttribute="trailing" secondItem="KXv-Bf-mLi" secondAttribute="trailing" constant="15" id="qK6-5f-048"/>

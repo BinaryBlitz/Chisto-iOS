@@ -75,7 +75,7 @@ class OrderLineItem: ServerObject {
   func priceString(amount: Int? = nil) -> String {
     let price = self.price(amount: amount)
     
-    return price == 0 ? "Бесплатно" : "\(price) ₽"
+    return "\(price) ₽"
   }
   
   override func mapping(map: Map) {

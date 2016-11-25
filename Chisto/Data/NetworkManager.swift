@@ -117,11 +117,10 @@ class NetworkManager {
 
   var apiPrefix = "https://chisto-staging.herokuapp.com"
 
-  func doRequest(method: HTTPMethod, _ path: APIPath, _ params: Parameters = [:]) -> Observable<Any> {
+  func doRequest(method: HTTPMethod, _ path: APIPath, _ params: Parameters = [:], _ headers: HTTPHeaders? = nil) -> Observable<Any> {
     let requestObservable: Observable<Any> = Observable.create { observer in
-
         let url = URL(string: self.apiPrefix + "/api/" + path.endpoint)!
-        let request = Alamofire.request(url, method: method, parameters: params, encoding: path.encoding, headers: nil)
+        let request = Alamofire.request(url, method: method, parameters: params, encoding: path.encoding, headers: headers)
           .responseJSON { response in
             debugPrint(response)
             

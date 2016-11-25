@@ -49,7 +49,7 @@ class OrderInfoViewModel: OrderInfoViewModelType {
   var orderNumber: String
   var orderDate: String
   var orderPrice = Variable<String>("...")
-  var deliveryPrice = Variable<String>("Бесплатно")
+  var deliveryPrice = Variable<String>("...")
   var totalCost = Variable<String>("...")
   var orderStatus: String
   var orderStatusIcon: UIImage
@@ -88,6 +88,10 @@ class OrderInfoViewModel: OrderInfoViewModelType {
       let cellModels = lineItemDictionary.map(OrderInfoTableViewCellModel.init) as [OrderInfoTableViewCellModelType]
       return [OrderInfoSectionModel(model: "", items: cellModels)]
     }.asDriver(onErrorDriveWith: .empty())
+    
+    order.asObservable().map { order in
+      return order.deliveryPriceString
+    }.bindTo(deliveryPrice).addDisposableTo(disposeBag)
     
     order.asObservable().map { order in
       return "\(order.price) ₽"
