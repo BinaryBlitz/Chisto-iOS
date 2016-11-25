@@ -47,7 +47,7 @@ class ProfileContactDataViewModel: ProfileContactDataViewModelType {
       .map{
         let viewModel = CitySelectViewModel()
 
-        viewModel.selectedCity.asObservable().map{ $0.name }
+        viewModel.selectedCity.asObservable().map { $0.name }
           .bindTo(formViewModel.city)
           .addDisposableTo(viewModel.disposeBag)
 

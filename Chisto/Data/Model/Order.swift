@@ -66,6 +66,7 @@ class Order: ServerObject {
   dynamic var deliveryPrice: Int = 0
   dynamic var createdAt: String = ""
   dynamic var updatedAt: String = ""
+  dynamic var payment: Payment? = nil
   var lineItems = List<OrderLineItem>()
   
   var createdAtDate: Date {
@@ -112,6 +113,7 @@ class Order: ServerObject {
     laundryId <- map["laundry_id"]
     deliveryPrice <- map["delivery_price"]
     updatedAt <- map["updated_at"]
+    payment <- map["payment"]
   }
   
 }

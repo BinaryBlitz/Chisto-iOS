@@ -42,11 +42,11 @@ class ProfileViewModel {
   var ordersCount = Variable<String>("0")
 
   init() {
-    self.presentAboutSection = itemDidSelect.filter { $0.section == ProfileSections.aboutApp.rawValue }.map{_ in Void()}.asDriver(onErrorDriveWith: .empty())
+    self.presentAboutSection = itemDidSelect.filter { $0.section == ProfileSections.aboutApp.rawValue }.map {_ in Void()}.asDriver(onErrorDriveWith: .empty())
     
-    self.presentContactDataSection = itemDidSelect.filter { $0.section == ProfileSections.contactData.rawValue }.map{_ in Void()}.asDriver(onErrorDriveWith: .empty())
+    self.presentContactDataSection = itemDidSelect.filter { $0.section == ProfileSections.contactData.rawValue }.map {_ in Void()}.asDriver(onErrorDriveWith: .empty())
     
-    self.presentMyOrdersSection = itemDidSelect.filter { $0.section == ProfileSections.myOrders.rawValue }.map{_ in Void()}.asDriver(onErrorDriveWith: .empty())
+    self.presentMyOrdersSection = itemDidSelect.filter { $0.section == ProfileSections.myOrders.rawValue }.map {_ in Void()}.asDriver(onErrorDriveWith: .empty())
 
     self.dismissViewController = closeButtonDidTap.asDriver(onErrorDriveWith: .empty())
     

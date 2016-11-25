@@ -47,11 +47,7 @@ class OrderManager {
       }
     }
 
-    let placeOrderObservable = DataManager.instance.placeOrder(order: order, laundry: laundry)
-
-    return placeOrderObservable.do(onNext: { [weak self] _ in
-      self?.currentOrderItems.onNext([])
-    })
+    return DataManager.instance.placeOrder(order: order, laundry: laundry)
   }
 
   var priceForCurrentLaundry: Int {
@@ -64,6 +60,10 @@ class OrderManager {
     guard let laundry = currentLaundry else { return "Бесплатно" }
 
     return priceString(laundry: laundry)
+  }
+  
+  func clearOrderItems() {
+    currentOrderItems.onNext([])
   }
 
   func price(laundry: Laundry) -> Int {

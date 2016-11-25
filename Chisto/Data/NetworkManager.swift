@@ -19,7 +19,7 @@ enum APIPath {
   case fetchCategoryClothes(categoryId: Int)
   case fetchClothesTreatments(itemId: Int)
   case createVerificationToken
-  case verifyToken(token: String)
+  case verifyToken
   case placeOrder(laundryId: Int)
   case fetchRatings(laundryId: Int)
   case fetchOrders
@@ -37,10 +37,8 @@ enum APIPath {
       return "categories/\(categoryId)/items"
     case .fetchClothesTreatments(let itemId):
       return "items/\(itemId)/treatments"
-    case .createVerificationToken:
-      return "verification_tokens"
-    case .verifyToken(let token):
-      return "verification_tokens/\(token)"
+    case .createVerificationToken, .verifyToken:
+      return "verification_token"
     case .placeOrder(let laundryId):
       return "laundries/\(laundryId)/orders"
     case .fetchRatings(let laundryId):

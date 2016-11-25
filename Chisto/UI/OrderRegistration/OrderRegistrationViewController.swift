@@ -45,18 +45,27 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
       viewController.viewModel = viewModel
       self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
-
-    viewModel.presentOrderPlacedPopup.catchErrorAndContinue { error in
+    
+    viewModel.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] error in
       guard let error = error as? DataError else { return }
       let alertController = UIAlertController(title: "Ошибка", message: error.description, preferredStyle: .alert)
       let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
       alertController.addAction(defaultAction)
-      self.present(alertController, animated: true, completion: nil)
-    }.subscribe(onNext: { [weak self] viewModel in
+      self?.present(alertController, animated: true, completion: nil)
+    }).addDisposableTo(disposeBag)
+    
+    viewModel.presentOrderPlacedPopup.drive(onNext: { [weak self] viewModel in
       let viewController = OrderPlacedPopupViewController.storyboardInstance()!
       viewController.viewModel = viewModel
       viewController.modalPresentationStyle = .overFullScreen
       self?.present(viewController, animated: false)
+    }).addDisposableTo(disposeBag)
+    
+    viewModel.presentPaymentSection.drive(onNext: { [weak self] viewModel in
+      let navigationPaymentController = PaymentNavigationController.storyboardInstance()!
+      let viewController = navigationPaymentController.viewControllers.first as! PaymentViewController
+      viewController.viewModel = viewModel
+      self?.present(navigationPaymentController, animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
 
     viewModel.returnToOrderViewController

@@ -68,7 +68,7 @@ class SelectClothesViewModel: SelectClothesViewModelType {
       return [section]
     }
 
-    self.presentSelectServiceSection = itemDidSelect.map{ indexPath in
+    self.presentSelectServiceSection = itemDidSelect.map { indexPath in
       let clothesItem = items.value[indexPath.row]
       let orderItem = OrderItem(clothesItem: clothesItem, treatments: [], amount: 1)
       return ServiceSelectViewModel(orderItem: orderItem)

@@ -50,14 +50,14 @@ class DataManager {
 
   static let instance = DataManager()
   let disposeBag = DisposeBag()
-  private var apiToken = "foobar"
   private var verificationToken: String? = nil
   private let networkManager = NetworkManager()
   
   func networkRequest(method: HTTPMethod, _ path: APIPath, _ params: Parameters = [:]) -> Observable<Any> {
     var parameters = params
-    let token = apiToken
-    parameters["api_token"] = token
+    if let token = ProfileManager.instance.userProfile.value.apiToken {
+      parameters["api_token"] = token
+    }
     let headers: HTTPHeaders = ["Accept": "application/json"]
     return networkManager.doRequest(method: method, path, parameters, headers)
       .catchError { error in
@@ -101,8 +101,7 @@ class DataManager {
       .flatMap { response -> Observable<Void> in
         let json = JSON(object: response)
         // TODO: work with real SMS codes
-        // self.verificationToken = json["token"].stringValue
-        self.verificationToken = "yB9XcdWzvgAUPHzWt4XuySRR"
+        self.verificationToken = json["token"].stringValue
         ProfileManager.instance.updateProfile { profile in
           profile.phone = json["phone_number"].stringValue
         }
@@ -115,15 +114,14 @@ class DataManager {
 
     return networkManager.doRequest(
         method: .patch,
-        .verifyToken(token: verificationToken),
-        ["code": code]
+        .verifyToken,
+        ["code": code,
+         "token": verificationToken]
       )
       .flatMap { response -> Observable<Void> in
-        // TODO: use real token
-        //let json = JSON(object: response)
+        let json = JSON(object: response)
         ProfileManager.instance.updateProfile { profile in
-          // profile.apiToken = json["api_token"].stringValue
-          profile.apiToken = "foobar"
+          profile.apiToken = json["api_token"].stringValue
         }
         return Observable.just()
       }

@@ -18,7 +18,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
 
   let disposeBag = DisposeBag()
 
-  var viewModel : OrderConfirmViewModel? = nil
+  var viewModel: OrderConfirmViewModel? = nil
   var dataSource = RxTableViewSectionedReloadDataSource<OrderConfirmSectionModel>()
 
   @IBOutlet weak var backgroundImageView: UIImageView!
