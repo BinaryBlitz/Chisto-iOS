@@ -30,6 +30,6 @@ class OrderItem {
 
   func priceString(laundry: Laundry, _ count: Int? = nil) -> String {
     let price = self.price(laundry: laundry, count)
-    return price == 0 ? "Бесплатно" : "\(price) ₽"
+    return "\(price) ₽"
   }
 }

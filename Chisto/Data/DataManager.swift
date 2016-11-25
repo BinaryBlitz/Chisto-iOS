@@ -58,8 +58,8 @@ class DataManager {
     var parameters = params
     let token = apiToken
     parameters["api_token"] = token
-    parameters["Accept"] = "application/json"
-    return networkManager.doRequest(method: method, path, parameters)
+    let headers: HTTPHeaders = ["Accept": "application/json"]
+    return networkManager.doRequest(method: method, path, parameters, headers)
       .catchError { error in
         guard let networkError = error as? NetworkError else { return Observable.error(error) }
         return Observable.error(DataError.network(networkError))

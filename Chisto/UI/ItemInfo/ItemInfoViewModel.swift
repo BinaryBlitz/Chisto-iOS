@@ -102,7 +102,7 @@ class ItemInfoViewModel: ItemInfoViewModelType {
 
     self.presentServiceSelectSection = addServiceButtonDidTap.asObservable().map {
       let viewModel = ServiceSelectViewModel(orderItem: orderItem, saveNeeded: false,
-          selectedTreatments: treatments.value, hasDecor: hasDecoration.value)
+          selectedTreatments: treatments.value, hasDecoration: hasDecoration.value)
       viewModel.selectedServices.asObservable().bindTo(treatments).addDisposableTo(viewModel.disposeBag)
       viewModel.hasDecoration.asObservable().bindTo(hasDecoration).addDisposableTo(viewModel.disposeBag)
       return viewModel
