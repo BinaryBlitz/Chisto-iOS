@@ -15,7 +15,7 @@ class RegistrationCodeInputViewController: UIViewController {
   let disposeBag = DisposeBag()
   var viewModel: RegistrationCodeInputViewModel? = nil
 
-  let maskedCodeInput = MaskedInput(formattingPattern: "*∙*∙*∙*", replacementChar: "*")
+  let maskedCodeInput = MaskedInput(formattingPattern: "*∙*∙*∙*∙*", replacementChar: "*")
 
   @IBOutlet weak var codeField: UITextField!
   @IBOutlet weak var repeatButton: UIButton!
