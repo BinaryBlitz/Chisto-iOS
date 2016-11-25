@@ -60,6 +60,11 @@
 		882ECDB81DE5899600EE3507 /* Sequence+categorize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDB71DE5899600EE3507 /* Sequence+categorize.swift */; };
 		882ECDCB1DE7CB4B00EE3507 /* EmptyTableBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 882ECDCA1DE7CB4B00EE3507 /* EmptyTableBackgroundView.xib */; };
 		882ECDCD1DE7CC4600EE3507 /* EmptyTableBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDCC1DE7CC4600EE3507 /* EmptyTableBackgroundView.swift */; };
+		882ECDBE1DE7ADE100EE3507 /* PaymentViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882ECDBD1DE7ADE100EE3507 /* PaymentViewController.storyboard */; };
+		882ECDC01DE7ADFD00EE3507 /* PaymentNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDBF1DE7ADFD00EE3507 /* PaymentNavigationController.swift */; };
+		882ECDC21DE7AE2B00EE3507 /* PaymentNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882ECDC11DE7AE2B00EE3507 /* PaymentNavigationController.storyboard */; };
+		882ECDC41DE7B80C00EE3507 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDC31DE7B80C00EE3507 /* PaymentViewController.swift */; };
+		882ECDC61DE7B9E700EE3507 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDC51DE7B9E700EE3507 /* PaymentViewModel.swift */; };
 		8833B5281DBE6E2B004D44CE /* LastTimePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8833B5271DBE6E2B004D44CE /* LastTimePopupViewController.swift */; };
 		8833B52A1DBE6E38004D44CE /* LastTimePopupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8833B5291DBE6E38004D44CE /* LastTimePopupViewController.storyboard */; };
 		8833B5301DBE8756004D44CE /* LaundryItemInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8833B52F1DBE8756004D44CE /* LaundryItemInfoView.xib */; };
@@ -233,6 +238,11 @@
 		882ECDB71DE5899600EE3507 /* Sequence+categorize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+categorize.swift"; sourceTree = "<group>"; };
 		882ECDCA1DE7CB4B00EE3507 /* EmptyTableBackgroundView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyTableBackgroundView.xib; sourceTree = "<group>"; };
 		882ECDCC1DE7CC4600EE3507 /* EmptyTableBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTableBackgroundView.swift; sourceTree = "<group>"; };
+		882ECDBD1DE7ADE100EE3507 /* PaymentViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PaymentViewController.storyboard; sourceTree = "<group>"; };
+		882ECDBF1DE7ADFD00EE3507 /* PaymentNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentNavigationController.swift; sourceTree = "<group>"; };
+		882ECDC11DE7AE2B00EE3507 /* PaymentNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PaymentNavigationController.storyboard; sourceTree = "<group>"; };
+		882ECDC31DE7B80C00EE3507 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		882ECDC51DE7B9E700EE3507 /* PaymentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		8833B5271DBE6E2B004D44CE /* LastTimePopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastTimePopupViewController.swift; sourceTree = "<group>"; };
 		8833B5291DBE6E38004D44CE /* LastTimePopupViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LastTimePopupViewController.storyboard; sourceTree = "<group>"; };
 		8833B52F1DBE8756004D44CE /* LaundryItemInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaundryItemInfoView.xib; sourceTree = "<group>"; };
@@ -450,6 +460,7 @@
 		88073EEC1DAC19E1000696A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				882ECDBC1DE7ADCE00EE3507 /* Payment */,
 				88FE7B0C1DE0DFE800A16289 /* OrderInfo */,
 				88FE7AFA1DE0AC3700A16289 /* MyOrders */,
 				88004FB21DDF3DC900A8632A /* LaundryReviews */,
@@ -677,6 +688,16 @@
 				882ECDCC1DE7CC4600EE3507 /* EmptyTableBackgroundView.swift */,
 			);
 			name = EmptyTableBackground;
+		882ECDBC1DE7ADCE00EE3507 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				882ECDBD1DE7ADE100EE3507 /* PaymentViewController.storyboard */,
+				882ECDBF1DE7ADFD00EE3507 /* PaymentNavigationController.swift */,
+				882ECDC11DE7AE2B00EE3507 /* PaymentNavigationController.storyboard */,
+				882ECDC31DE7B80C00EE3507 /* PaymentViewController.swift */,
+				882ECDC51DE7B9E700EE3507 /* PaymentViewModel.swift */,
+			);
+			name = Payment;
 			sourceTree = "<group>";
 		};
 		8833B5261DBE6E06004D44CE /* LastTimePopup */ = {
@@ -1039,6 +1060,7 @@
 				88923E161DD369F400BC3AC0 /* ProfileContactDataViewController.storyboard in Resources */,
 				88FE7AFC1DE0AC4A00A16289 /* MyOrdersViewController.storyboard in Resources */,
 				88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */,
+				882ECDC21DE7AE2B00EE3507 /* PaymentNavigationController.storyboard in Resources */,
 				88004FB61DDF3DF200A8632A /* LaundryReviewsViewController.storyboard in Resources */,
 				8811FE181DC2E5DB00610712 /* AboutViewController.storyboard in Resources */,
 				88DB937B1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard in Resources */,
@@ -1054,6 +1076,7 @@
 				8811FE101DC2DB0500610712 /* ProfileNavigationController.storyboard in Resources */,
 				88E6B59D1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard in Resources */,
 				88072D4E1DB967EF00B47D23 /* ItemInfoViewController.storyboard in Resources */,
+				882ECDBE1DE7ADE100EE3507 /* PaymentViewController.storyboard in Resources */,
 				8833B52A1DBE6E38004D44CE /* LastTimePopupViewController.storyboard in Resources */,
 				88CD68431DD212F1004B7726 /* ContactFormTableHeaderView.xib in Resources */,
 				88B0B5501DB1825500C7D0F7 /* OnBoardingViewController.storyboard in Resources */,
@@ -1249,6 +1272,7 @@
 				88DB938F1DCC188600DAC651 /* Treatment.swift in Sources */,
 				889923A11DDD2A0200D73905 /* String+localized.swift in Sources */,
 				8872F0BE1DD8D67100E8D9EE /* RequestOrder.swift in Sources */,
+				882ECDC61DE7B9E700EE3507 /* PaymentViewModel.swift in Sources */,
 				8872F0B11DD7B2E100E8D9EE /* LocationSelectViewModel.swift in Sources */,
 				885409C31DB2E43300219C00 /* EmptyOrderView.swift in Sources */,
 				88C9F6E11DCDE36F0046DDD7 /* Date+toString.swift in Sources */,
@@ -1256,12 +1280,14 @@
 				8811FE131DC2DBBE00610712 /* ProfileViewController.swift in Sources */,
 				882ECDB11DE2160C00EE3507 /* OrderInfoTableViewCell.swift in Sources */,
 				889923A31DDDFC1000D73905 /* flatMapLatest+continueWithError.swift in Sources */,
+				882ECDC01DE7ADFD00EE3507 /* PaymentNavigationController.swift in Sources */,
 				8814C0391DAE8F7F005B4967 /* LocationManager.swift in Sources */,
 				88D8ABBD1DB56E89009D515B /* SelectClothesViewModel.swift in Sources */,
 				8833B5361DBF8241004D44CE /* LastTimePopupViewModel.swift in Sources */,
 				889923961DDCAF9400D73905 /* ItemInfoNavigationController.swift in Sources */,
 				88072D501DB9695300B47D23 /* ItemInfoViewController.swift in Sources */,
 				88E6B5991DCB73610024FA1A /* UIView+AddBorders.swift in Sources */,
+				882ECDC41DE7B80C00EE3507 /* PaymentViewController.swift in Sources */,
 				88004FBB1DDF578500A8632A /* LaundryReviewsTableViewCell.swift in Sources */,
 				88E86DA81DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift in Sources */,
 				8814C03C1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift in Sources */,
