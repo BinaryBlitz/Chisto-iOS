@@ -18,7 +18,6 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
   var dataSource = RxTableViewSectionedReloadDataSource<LaundrySelectSectionModel>()
 
   override func viewDidLoad() {
-    navigationItem.title = viewModel.navigationBarTitle
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconSortNavbar"), style: .plain, target: self, action: nil)
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     

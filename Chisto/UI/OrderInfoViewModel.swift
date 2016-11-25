@@ -78,25 +78,15 @@ class OrderInfoViewModel: OrderInfoViewModelType {
     let order = Variable<Order>(order)
     self.order = order
     
-    let itemsObservable = Observable.from(uiRealm.objects(Item.self)).map { Array($0) }
-    let orderLineItemsObservable = order.asObservable().map { Array($0.lineItems) }
+    let orderLineItemsObservable = order.asObservable().map { $0.lineItems.toArray() }
     
-    let orderItemsObservable = Observable.combineLatest(itemsObservable, orderLineItemsObservable) { items, orderLineItems -> [Item] in
-      let filteredItems = items.filter { item in
-        return orderLineItems.contains { item.id == $0.orderLaundryTreatment?.orderTreatment?.itemId }
-      }
-      
-      return filteredItems
+    let groupedLineItemsObservable = orderLineItemsObservable.map { items in
+      items.categorize { $0.lineItemInfo }
     }
     
-    self.sections = Observable.combineLatest(orderItemsObservable, orderLineItemsObservable) { items, orderLineItems in
-      let cellModels = items.map { item -> OrderInfoTableViewCellModel in
-        let filteredLineItems = orderLineItems.filter { $0.orderLaundryTreatment?.orderTreatment?.itemId == item.id }
-        return OrderInfoTableViewCellModel(item: item, orderLineItems: filteredLineItems)
-      } as [OrderInfoTableViewCellModelType]
-      
-      let section = OrderInfoSectionModel(model: "", items: cellModels)
-      return [section]
+    self.sections = groupedLineItemsObservable.map { lineItemDictionary in
+      let cellModels = lineItemDictionary.map(OrderInfoTableViewCellModel.init) as [OrderInfoTableViewCellModelType]
+      return [OrderInfoSectionModel(model: "", items: cellModels)]
     }.asDriver(onErrorDriveWith: .empty())
     
     order.asObservable().map { order in

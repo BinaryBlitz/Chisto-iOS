@@ -19,20 +19,31 @@ protocol OrderInfoTableViewCellModelType {
 
 class OrderInfoTableViewCellModel: OrderInfoTableViewCellModelType {
   
-  let clothesIconUrl: URL?
-  var clothesIconColor: UIColor
-  let clothesTitle: String?
-  let clothesPrice: String?
-  var orderLineItems: [OrderLineItem]
+  var clothesIconUrl: URL? = nil
+  var clothesIconColor: UIColor = UIColor.chsSkyBlue
+  var clothesTitle: String? = nil
+  var clothesPrice: String? = nil
+  var orderLineItems: [OrderLineItem] = []
   
-  init(item: Item, orderLineItems: [OrderLineItem]) {
+  init(itemInfo: LineItemInfo, orderLineItems: [OrderLineItem]) {
+    guard let item = itemInfo.item else { return }
+    
     self.clothesIconUrl = URL(string: item.icon)
     self.clothesIconColor = item.category?.color ?? UIColor.chsSkyBlue
     
-    let quantity = orderLineItems.first?.quantity ?? 0
-    self.clothesTitle = item.name + " " + item.priceString(lineItems: orderLineItems, quantity: 1) + " × \(quantity)"
-    self.clothesPrice = item.priceString(lineItems: orderLineItems)
+    let quantity = itemInfo.quantity
+    self.clothesTitle = item.name + " " + self.priceString(lineItems: orderLineItems, quantity: 1) + " × \(quantity)"
+    self.clothesPrice = self.priceString(lineItems: orderLineItems)
     self.orderLineItems = orderLineItems
+  }
+  
+  func price(orderLineItems: [OrderLineItem], quantity: Int? = nil) -> Int {
+    return orderLineItems.map { $0.price(amount: quantity) }.reduce(0, +)
+  }
+  
+  func priceString(lineItems: [OrderLineItem], quantity: Int? = nil) -> String {
+    let price = self.price(orderLineItems: lineItems, quantity: quantity)
+    return price == 0 ? "Бесплатно" : "\(price) ₽"
   }
   
 }

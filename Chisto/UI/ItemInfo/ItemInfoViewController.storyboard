@@ -53,7 +53,7 @@
                                 <rect key="frame" x="0.0" y="89" width="375" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выбранные услуги" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nT-cu-Usd">
-                                        <rect key="frame" x="15" y="20" width="151" height="20.5"/>
+                                        <rect key="frame" x="15" y="20" width="151" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.3960784375667572" green="0.42352941632270813" blue="0.45098039507865906" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -167,16 +167,16 @@
                                 <rect key="frame" x="0.0" y="505" width="375" height="112"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Количество таких вещей" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12C-Cm-g6y">
-                                        <rect key="frame" x="0.0" y="20" width="375" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="20" width="375" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.3960784375667572" green="0.42352941632270813" blue="0.45098039507865906" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dKR-Sn-R81">
-                                        <rect key="frame" x="0.0" y="40.5" width="375" height="71.5"/>
+                                        <rect key="frame" x="0.0" y="41" width="375" height="71"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISG-3X-q9u">
-                                                <rect key="frame" x="157.5" y="18" width="60" height="36"/>
+                                                <rect key="frame" x="158" y="18" width="60" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="5UA-KB-2QU"/>
                                                 </constraints>
@@ -185,7 +185,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tSa-II-5k3">
-                                                <rect key="frame" x="97.5" y="11" width="50" height="50"/>
+                                                <rect key="frame" x="98" y="11" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="q7N-kM-3AI"/>
                                                     <constraint firstAttribute="height" constant="50" id="uNz-OC-c9n"/>
@@ -196,7 +196,7 @@
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GhU-Cv-o6d">
-                                                <rect key="frame" x="227.5" y="11" width="50" height="50"/>
+                                                <rect key="frame" x="228" y="11" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="IwN-H6-zWJ"/>
                                                     <constraint firstAttribute="width" constant="50" id="hcw-ra-leN"/>
