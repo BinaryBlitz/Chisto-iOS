@@ -9,20 +9,20 @@
 import UIKit
 
 class BottomBorderedTextField: UITextField {
-  
+
   init() {
     super.init(frame: CGRect.null)
     borderStyle = .none
-    
+
     let border = UIView()
-    
+
     addSubview(border)
-    
+
 
   }
-  
+
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
+
 }

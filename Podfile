@@ -11,9 +11,19 @@ target 'Chisto' do
   pod 'RxCocoa', '~> 3.0.0-beta.1'
   pod 'RxDataSources', '~> 1.0.0-beta.3'
   pod 'Fabric'
-  pod 'IQKeyboardManagerSwift'
   pod 'FloatRatingView', '~> 2.0.0'
-  
+  pod 'IQKeyboardManagerSwift'
+  pod 'ObjectMapper', '~> 2.2'
+  pod 'ObjectMapper+Realm', '~> 0.2'
+  pod 'RealmSwift', '~> 2.0.3'
+  pod 'RxRealm', '~> 0.3.1'
+  pod 'Kingfisher', '~> 3.0'
+  pod 'TextFieldEffects'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
+  pod 'SwiftyJSON'
+  pod 'UIColor_Hex_Swift', '~> 3.0.2'
+
   pod 'Crashlytics'
 
   post_install do |installer|

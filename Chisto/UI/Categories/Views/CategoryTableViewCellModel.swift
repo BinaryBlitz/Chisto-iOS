@@ -15,8 +15,8 @@ protocol CategoryTableViewCellModelType {
   // Output
   var titleText: String { get }
   var subTitletext: NSAttributedString { get }
-  var icon: UIImage? { get }
-  
+  var iconUrl: URL? { get }
+  var iconColor: UIColor { get }
 }
 
 
@@ -25,32 +25,15 @@ class CategoryTableViewCellModel: CategoryTableViewCellModelType {
   let dayEndings = ["вещь", "вещи", "вещей"]
   let titleText: String
   let subTitletext: NSAttributedString
-  let icon: UIImage?
-  
+  let iconUrl: URL?
+  let iconColor: UIColor
+
   init(category: Category) {
     self.titleText = category.name
+    self.iconUrl = URL(string: category.icon)
+    self.iconColor = category.color
 
-    let subTitleAttrString = NSMutableAttributedString()
-    
-    for (index, subCategory) in category.subCategories.enumerated() {
-      if index < 3 {
-        subTitleAttrString.append(NSAttributedString(string: subCategory, attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey]))
-        if index != 2 {
-          subTitleAttrString.append(NSAttributedString(string: " • ", attributes: [NSForegroundColorAttributeName: UIColor.chsSilver]))
-        }
-      }
-      
-    }
-    
-    let leftCount = category.subCategories.count - 3
-    if leftCount > 0 {
-      subTitleAttrString.append(NSAttributedString(string: " и еще \(leftCount) " + getRussianNumEnding(number: leftCount, endings: dayEndings), attributes: [NSForegroundColorAttributeName: UIColor.chsSilver]))
-      
-    }
-    
-    self.subTitletext = (subTitleAttrString)
-    
-    self.icon = category.icon
+    self.subTitletext = NSAttributedString(string: category.descriptionText, attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey])
   }
-  
+
 }

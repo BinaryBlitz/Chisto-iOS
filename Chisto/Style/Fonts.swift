@@ -14,19 +14,19 @@ extension UIFont {
   class var descriptionFont: UIFont? {
     return UIFont(name: ".AppleSystemUIFont", size: 18.0)
   }
-  
+
   class var chsDescriptionFont: UIFont? {
     return UIFont(name: ".AppleSystemUIFont", size: 18.0)
   }
-  
+
   class var chsLabelFont: UIFont? {
     return UIFont(name: ".AppleSystemUIFont", size: 16.0)
   }
-  
+
   class var chsLaundryItemFont: UIFont? {
     return UIFont(name: ".AppleSystemUIFont", size: 14.0)
   }
-  
+
   class var chsOnBoardStageFont: UIFont? {
     return UIFont(name: ".AppleSystemUIFont", size: 12.0)
   }

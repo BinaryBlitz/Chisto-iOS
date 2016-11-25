@@ -10,7 +10,8 @@ import UIKit
 import RxSwift
 
 class OnBoardingViewController: UIViewController {
-  
+  let viewModel = OnBoardingViewModel()
+
   let descriptionSteps: [(String, UIImage)] = [
     (title: "Добавьте в список вещи, которые хотите сдать в чистку", icon: #imageLiteral(resourceName: "iconNum1")),
     (title: "Ознакомьтесь с ценой и сроками выполнения вашего заказа", icon: #imageLiteral(resourceName: "iconNum2")),
@@ -18,19 +19,27 @@ class OnBoardingViewController: UIViewController {
     (title: "Оплатите заказ удобным для вас способом", icon: #imageLiteral(resourceName: "iconNum4")),
     (title: "Ожидайте звонка. Оператор согласует время забора и доставки вещей", icon: #imageLiteral(resourceName: "iconNum5"))
   ]
-  
+
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var goButton: UIButton!
-  
+
   let disposeBag = DisposeBag()
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    goButton.rx.tap.asDriver().drive(onNext: { _ in
-      self.navigationController?.pushViewController(CitySelectViewController.storyboardInstance()!, animated: true)
+
+    goButton.rx.tap.bindTo(viewModel.goButtonDidTap).addDisposableTo(disposeBag)
+
+    viewModel.dismissViewController.drive(onNext: {[weak self] in
+      self?.dismiss(animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
-    
+
+    viewModel.presentCitySelectSection.drive(onNext: { viewModel in
+      let viewController = CitySelectViewController.storyboardInstance()!
+      viewController.viewModel = viewModel
+      self.navigationController?.pushViewController(viewController, animated: true)
+    }).addDisposableTo(disposeBag)
+
     for (title, icon) in descriptionSteps {
       if let descriptionListItemView = DescriptionListItemView.nibInstance() {
         descriptionListItemView.configure(countImage: icon, information: title)
@@ -38,11 +47,11 @@ class OnBoardingViewController: UIViewController {
       }
     }
   }
-  
+
   override func viewWillAppear(_ animated: Bool) {
     self.navigationController?.setNavigationBarHidden(true, animated: true)
   }
-  
+
   override func viewWillDisappear(_ animated: Bool) {
     self.navigationController?.setNavigationBarHidden(false, animated: true)
   }

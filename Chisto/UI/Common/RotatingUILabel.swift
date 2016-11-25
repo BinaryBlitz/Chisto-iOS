@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 @IBDesignable class RotatingUILabel: UILabel {
-  
+
   override func awakeFromNib() {
     super.awakeFromNib()
     self.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_4))

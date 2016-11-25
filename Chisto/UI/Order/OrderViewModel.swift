@@ -13,7 +13,6 @@ import RxCocoa
 
 typealias OrderSectionModel = SectionModel<String, OrderTableViewCellModelType>
 
-
 protocol OrderViewModelType {
   // Input
   var navigationAddButtonDidTap: PublishSubject<Void> { get }
@@ -21,14 +20,14 @@ protocol OrderViewModelType {
   var itemDidSelect: PublishSubject<IndexPath> { get }
   var continueButtonDidTap: PublishSubject<Void> { get }
   var profileButtonDidTap: PublishSubject<Void> { get }
-  
+
   // Output
   var presentCategoriesViewController: Driver<Void> { get }
   var presentItemInfoViewController: Driver<ItemInfoViewModel> { get }
   var navigationBarTitle: String { get }
   var footerButtonTitle: String { get }
-  var presentLastTimeOrderPopup: Driver<LastTimePopupViewModel> { get }
-  var presentLaundrySelectSection: Driver<Void> { get }
+  var presentLastTimeOrderPopup: PublishSubject<LastTimePopupViewModel> { get }
+  var presentLaundrySelectSection: PublishSubject<Void> { get }
   var sections: Driver<[OrderSectionModel]> { get }
 }
 
@@ -40,50 +39,65 @@ class OrderViewModel: OrderViewModelType {
   var continueButtonDidTap = PublishSubject<Void>()
   var showAllLaundriesModalButtonDidTap = PublishSubject<Void>()
   var profileButtonDidTap = PublishSubject<Void>()
-  
+  let tableItemDeleted = PublishSubject<IndexPath>()
+
   // Output
   var sections: Driver<[OrderSectionModel]>
   var presentCategoriesViewController: Driver<Void>
   var presentItemInfoViewController: Driver<ItemInfoViewModel>
-  var presentLastTimeOrderPopup: Driver<LastTimePopupViewModel>
-  var presentLaundrySelectSection: Driver<Void>
+  var presentLastTimeOrderPopup = PublishSubject<LastTimePopupViewModel>()
+  var presentLaundrySelectSection = PublishSubject<Void>()
   var presentProfileSection: Driver<Void>
-  
+
   // Constants
   let navigationBarTitle = "Заказ"
+  let deleteButtonTitle = "Удалить"
   let footerButtonTitle = "Ничего не выбрано"
-  
+
   // Data
   let currentOrderItems: Variable<[OrderItem]>
-  
+
   let disposeBag = DisposeBag()
-  
+
   init() {
     let currentOrderItems = Variable<[OrderItem]>([])
-    DataManager.instance.currentOrderItems.bindTo(currentOrderItems).addDisposableTo(disposeBag)
+    OrderManager.instance.currentOrderItems.bindTo(currentOrderItems).addDisposableTo(disposeBag)
     self.currentOrderItems = currentOrderItems
-    
+
     self.presentCategoriesViewController = Observable.of(navigationAddButtonDidTap.asObservable(), emptyOrderAddButtonDidTap.asObservable()).merge().asDriver(onErrorJustReturn: ())
-    
+
+    self.sections = currentOrderItems.asDriver().map { orderItems in
+      let cellModels = orderItems.map(OrderTableViewCellModel.init) as [OrderTableViewCellModelType]
+
+      let section = OrderSectionModel(model: "", items: cellModels)
+      return [section]
+    }
+
+    showAllLaundriesModalButtonDidTap.bindTo(presentLaundrySelectSection)
+      .addDisposableTo(disposeBag)
+
     self.presentItemInfoViewController = itemDidSelect.asObservable().map { indexPath in
       let orderItem = currentOrderItems.value[indexPath.row]
       return ItemInfoViewModel(orderItem: orderItem)
     }.asDriver(onErrorDriveWith: .empty())
     
-    self.sections = currentOrderItems.asDriver().map { orderItems in
-      let cellModels = orderItems.map(OrderTableViewCellModel.init) as [OrderTableViewCellModelType]
-      
-      let section = OrderSectionModel(model: "", items: cellModels)
-      return [section]
-    }
-    
-    self.presentLaundrySelectSection = showAllLaundriesModalButtonDidTap.asDriver(onErrorDriveWith: .empty())
-    
-    self.presentLastTimeOrderPopup = continueButtonDidTap.asObservable().map {
-      LastTimePopupViewModel()
-    }.asDriver(onErrorDriveWith: .empty())
-    
     self.presentProfileSection = profileButtonDidTap.asDriver(onErrorDriveWith: .empty())
+
+    continueButtonDidTap.asDriver(onErrorDriveWith: .empty()).drive(onNext: {
+      // TODO: Change this logic to correct one(as soon as it is ready on backend)
+      if let laundry = uiRealm.objects(Laundry.self).first {
+        let viewModel = LastTimePopupViewModel(laundry: laundry)
+        self.presentLastTimeOrderPopup.onNext(viewModel)
+      } else {
+        self.presentLaundrySelectSection.onNext()
+      }
+    }).addDisposableTo(disposeBag)
     
+    tableItemDeleted.asObservable().subscribe(onNext: { indexPath in
+      var items = currentOrderItems.value
+      items.remove(at: indexPath.row)
+      OrderManager.instance.currentOrderItems.onNext(items)
+    }).addDisposableTo(disposeBag)
+
   }
 }

@@ -12,13 +12,12 @@ import UIKit
 protocol DefaultBarColoredViewController {}
 
 class ChistoNavigationController: UINavigationController, UINavigationControllerDelegate {
-  
+
   let defaultBarTintColor = UIColor.chsSkyBlue
-  
+
   override func loadView() {
     super.loadView()
     delegate = self
-        
     navigationBar.isTranslucent = false
     view.backgroundColor = UIColor.chsCoolGrey
     navigationBar.barStyle = .black
@@ -28,13 +27,12 @@ class ChistoNavigationController: UINavigationController, UINavigationController
     navigationBar.backgroundColor = UIColor.chsSkyBlue
     navigationBar.barTintColor = UIColor.chsSkyBlue
   }
-  
+
   func navigationController(_ navigationController: UINavigationController,
                             willShow viewController: UIViewController, animated: Bool) {
-
     if viewController is DefaultBarColoredViewController {
       navigationBar.barTintColor = defaultBarTintColor
-
+      navigationBar.isTranslucent = false
     }
   }
 

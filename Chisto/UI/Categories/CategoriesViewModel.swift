@@ -11,19 +11,12 @@ import RxSwift
 import RxDataSources
 import RxCocoa
 
-struct Category {
-  var name = ""
-  var icon: UIImage? = nil
-  var subCategories: [String] = [],
-  color: UIColor? = nil
-}
-
 typealias CategoriesSectionModel = SectionModel<String, CategoryTableViewCellModelType>
 
 protocol CategoriesViewModelType {
   // Input
   var itemDidSelect: PublishSubject<IndexPath> { get }
-  
+
   // Output
   var navigationBarTitle: String { get }
   var sections: Driver<[CategoriesSectionModel]> { get }
@@ -31,59 +24,49 @@ protocol CategoriesViewModelType {
 }
 
 class CategoriesViewModel: CategoriesViewModelType {
-  
-  var defaultCategories = [
-    Category(
-      name: "Головные уборы",
-      icon: #imageLiteral(resourceName: "iconHeats"),
-      subCategories: ["Шапки","Береты", "Кепки", "Шляпы", "Косынки"],
-      color: UIColor.chsRosePink
-    ),
-    Category(
-      name: "Обувь",
-      icon: #imageLiteral(resourceName: "iconShoes"),
-      subCategories: ["Кроссовки", "Туфли", "Сапоги", "Кеды", "Сандалии", "", "", ""],
-      color: nil
-    ),
-    Category(
-      name: "Верхняя одежда", icon: #imageLiteral(resourceName: "iconOuterwear"),
-      subCategories: ["Дубленки", "Куртки", "Пальто", "Анораки", "Сандалии", ""],
-      color: nil
-    ),
-    Category(
-      name: "Брюки",
-      icon: #imageLiteral(resourceName: "iconTrousers"),
-      subCategories: ["Джинсы", "Леггинсы", "Шорты", ""], color: nil
-    )
-  ]
-  
+
   private let disposeBag = DisposeBag()
-  
+
   // Input
   var itemDidSelect = PublishSubject<IndexPath>()
-  
+
   // Output
   var navigationBarTitle: String
   var sections: Driver<[CategoriesSectionModel]>
   var presentItemsSection: Driver<SelectClothesViewModel>
-  
-  
+  var presentErrorAlert: PublishSubject<Error>
+
+
   // Data
   var categories: Variable<[Category]>
-  
+
   init() {
     self.navigationBarTitle = "Выбор вещи"
+    // Data
     
-    let categories = Variable<[Category]>(defaultCategories)
+    let presentErrorAlert = PublishSubject<Error>()
+    self.presentErrorAlert = presentErrorAlert
+
+    DataManager.instance.fetchCategories().subscribe(onError: { error in
+      presentErrorAlert.onNext(error)
+    }).addDisposableTo(disposeBag)
+    
+    let categories = Variable<[Category]>([])
+    
+    Observable.from(uiRealm.objects(Category.self))
+      .map { Array($0) }
+      .bindTo(categories)
+      .addDisposableTo(disposeBag)
+
     self.categories = categories
-    
+
     self.sections = categories.asDriver().map { categories in
       let cellModels = categories.map(CategoryTableViewCellModel.init) as [CategoryTableViewCellModelType]
-      
+
       let section = CategoriesSectionModel(model: "", items: cellModels)
       return [section]
     }
-    
+
     self.presentItemsSection = itemDidSelect.asObservable().map { indexPath in
       let category = categories.value[indexPath.row]
       return SelectClothesViewModel(category: category)
