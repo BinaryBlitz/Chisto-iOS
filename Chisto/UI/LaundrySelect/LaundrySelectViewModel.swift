@@ -71,7 +71,7 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     let sortType = Variable<LaundrySortType>(LaundrySortType.byRating)
     self.sortType = sortType
 
-    let sortedLaundries = Variable(laundries.value)
+    let sortedLaundries = Variable<[Laundry]>([])
     self.sortedLaundries = sortedLaundries
 
     self.sections = sortedLaundries.asDriver().map { laundries in
@@ -84,15 +84,27 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     self.presentSortSelectSection = sortButtonDidTap.asDriver(onErrorDriveWith: .empty())
 
     self.presentOrderConfirmSection = itemDidSelect.map { indexPath in
-      let viewModel = OrderConfirmViewModel(laundry: laundries.value[indexPath.row])
+      let viewModel = OrderConfirmViewModel(laundry: sortedLaundries.value[indexPath.row])
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
+    
+    let currentOrderItemsObservable = OrderManager.instance.currentOrderItems.asObservable()
+    
+    let filteredLaundriesObservable = Observable.combineLatest(laundries.asObservable(), currentOrderItemsObservable) { [weak self] laundries, currentOrderItems -> [Laundry] in
+      self?.filterLaundries(laundries: laundries, currentOrderItems: currentOrderItems) ?? []
+    }
 
-    Observable.combineLatest(laundries.asObservable(), sortType.asObservable()) { laundries, sortType -> [Laundry] in
+    Observable.combineLatest(filteredLaundriesObservable.asObservable(), sortType.asObservable()) { laundries, sortType -> [Laundry] in
       return self.sortLaundries(laundries: laundries, sortType: sortType)
     }.bindTo(sortedLaundries).addDisposableTo(disposeBag)
-
-
+  }
+  
+  func filterLaundries(laundries: [Laundry], currentOrderItems: [OrderItem]) -> [Laundry] {
+    return laundries.filter { laundry in
+      let laundryTreatments = Set(laundry.treatments)
+      let orderTreatments = Set(currentOrderItems.map { $0.treatments }.reduce([], +))
+      return orderTreatments.subtracting(laundryTreatments).isEmpty
+    }
   }
 
   func sortLaundries(laundries: [Laundry], sortType: LaundrySortType) -> [Laundry] {
