@@ -30,19 +30,26 @@ class MyOrdersViewModel: MyOrdersViewModelType {
   let sections: Driver<[MyOrdersSectionModel]>
   let navigationBarTitle = "Мои заказы"
   let orders: Variable<[Order]>
+  let tableIsEmpty: Driver<Bool>
   let presentOrderInfoSection: Driver<OrderInfoViewModel>
   
   init() {
-    
-    let orders = Variable<[Order]>([])
+    let realmOrders = uiRealm.objects(Order.self).sorted(byProperty: "updatedAt", ascending: true)
+    let orders = Variable<[Order]>(realmOrders.toArray())
     self.orders = orders
     
     Observable.from(uiRealm.objects(Order.self))
-      .map { Array($0).sorted { $0.createdAtDate > $1.createdAtDate } }
+      .map { Array($0) }
       .bindTo(orders)
       .addDisposableTo(disposeBag)
+    
+    let fetchOrdersObservable = DataManager.instance.fetchOrders()
+    
+    self.tableIsEmpty = Driver.combineLatest(orders.asDriver(), fetchOrdersObservable.asDriver(onErrorDriveWith: .empty())) { orders, _ in
+      return orders.isEmpty
+    }
 
-    DataManager.instance.fetchOrders().subscribe().addDisposableTo(disposeBag)
+    fetchOrdersObservable.subscribe().addDisposableTo(disposeBag)
     
     self.sections = orders.asDriver().map { orders in
       let cellModels = orders.map(MyOrdersTableViewCellModel.init) as [MyOrdersTableViewCellModelType]
