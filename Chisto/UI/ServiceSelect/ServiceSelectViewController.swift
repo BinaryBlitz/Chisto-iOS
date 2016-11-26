@@ -37,7 +37,7 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
     viewModel?.returnToSection.drive(onNext: { [weak self] section in
       switch section {
       case .order:
-        self?.navigationController?.setViewControllers([OrderViewController.storyboardInstance()!], animated: true)
+        self?.dismiss(animated: true, completion: nil)
       case .orderItem:
         _ = self?.navigationController?.popViewController(animated: true)
       }

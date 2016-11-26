@@ -26,6 +26,8 @@
 		88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */; };
 		88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 88073F001DAD6E6F000696A3 /* .swiftlint.yml */; };
 		88073F031DAD6FCF000696A3 /* DescriptionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073F021DAD6FCF000696A3 /* DescriptionListItemView.swift */; };
+		880E03EE1DE9975000311721 /* CategoriesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880E03ED1DE9975000311721 /* CategoriesNavigationController.swift */; };
+		880E03F01DE9976000311721 /* CategoriesNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880E03EF1DE9976000311721 /* CategoriesNavigationController.storyboard */; };
 		8811FE0E1DC2DB0500610712 /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8811FE0B1DC2DB0500610712 /* ProfileViewController.storyboard */; };
 		8811FE0F1DC2DB0500610712 /* ProfileNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8811FE0C1DC2DB0500610712 /* ProfileNavigationController.swift */; };
 		8811FE101DC2DB0500610712 /* ProfileNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8811FE0D1DC2DB0500610712 /* ProfileNavigationController.storyboard */; };
@@ -196,6 +198,8 @@
 		88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySelectViewModel.swift; sourceTree = "<group>"; };
 		88073F001DAD6E6F000696A3 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		88073F021DAD6FCF000696A3 /* DescriptionListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionListItemView.swift; sourceTree = "<group>"; };
+		880E03ED1DE9975000311721 /* CategoriesNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesNavigationController.swift; sourceTree = "<group>"; };
+		880E03EF1DE9976000311721 /* CategoriesNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CategoriesNavigationController.storyboard; sourceTree = "<group>"; };
 		8811FE0B1DC2DB0500610712 /* ProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
 		8811FE0C1DC2DB0500610712 /* ProfileNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileNavigationController.swift; sourceTree = "<group>"; };
 		8811FE0D1DC2DB0500610712 /* ProfileNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileNavigationController.storyboard; sourceTree = "<group>"; };
@@ -604,6 +608,8 @@
 				885409C41DB2E55400219C00 /* CategoriesViewController.storyboard */,
 				8814C0591DAFC96D005B4967 /* CategoriesViewController.swift */,
 				8814C0601DAFEE7C005B4967 /* CategoriesViewModel.swift */,
+				880E03ED1DE9975000311721 /* CategoriesNavigationController.swift */,
+				880E03EF1DE9976000311721 /* CategoriesNavigationController.storyboard */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1040,6 +1046,7 @@
 				889923941DDCAF8200D73905 /* ItemInfoNavigationController.storyboard in Resources */,
 				8899239C1DDD288200D73905 /* Errors.strings in Resources */,
 				88CD68371DD0DABD004B7726 /* OrderRegistrationViewController.storyboard in Resources */,
+				880E03F01DE9976000311721 /* CategoriesNavigationController.storyboard in Resources */,
 				883760D51DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard in Resources */,
 				8862E6D01DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard in Resources */,
 				88B0B5521DB19C6E00C7D0F7 /* DescriptionListItemView.xib in Resources */,
@@ -1175,6 +1182,7 @@
 				883760D31DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift in Sources */,
 				8872F0BC1DD8AE0F00E8D9EE /* ReverseGeocoder.swift in Sources */,
 				8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */,
+				880E03EE1DE9975000311721 /* CategoriesNavigationController.swift in Sources */,
 				882ECDB81DE5899600EE3507 /* Sequence+categorize.swift in Sources */,
 				88FE7B031DE0AFE600A16289 /* MyOrdersTableViewCell.swift in Sources */,
 				8811FE0F1DC2DB0500610712 /* ProfileNavigationController.swift in Sources */,
