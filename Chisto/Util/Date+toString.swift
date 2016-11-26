@@ -29,15 +29,15 @@ extension Date {
   var shortDate: String {
     return Formatter.shortDate.string(from: self)
   }
-  
+
   var longDate: String {
     return Formatter.longDate.string(from: self)
   }
-  
+
   var mediumDate: String {
     return Formatter.mediumDate.string(from: self)
   }
-  
+
   static func from(string: String) -> Date? {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"

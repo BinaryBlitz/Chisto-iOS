@@ -18,7 +18,7 @@ func <-> <T>(property: ControlProperty<T>, variable: Variable<T>) -> Disposable 
   let bindToVariable = property
     .subscribe(onNext: { nextValue in
       variable.value = nextValue
-    }, onCompleted:  {
+    }, onCompleted: {
       bindToUIDisposable.dispose()
     })
 

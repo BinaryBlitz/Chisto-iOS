@@ -19,7 +19,6 @@ class LocationManager {
   private (set) var autorized: Driver<Bool>
   private (set) var location: Observable<CLLocationCoordinate2D?>
 
-
   private init() {
     locationManager.distanceFilter = kCLDistanceFilterNone
     locationManager.desiredAccuracy = kCLLocationAccuracyBest

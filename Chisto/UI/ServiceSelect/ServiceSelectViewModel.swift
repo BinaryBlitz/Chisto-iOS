@@ -51,7 +51,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
     case orderItem
     case order
   }
-  
+
   enum Section: Int {
     case decoration = 0
     case treatments
@@ -63,13 +63,21 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
   var hasDecoration = PublishSubject<Bool>()
   let decorationCellModel: Variable<ServiceSelectTableViewCellModel>
 
-  init(orderItem: OrderItem, saveNeeded: Bool = true, selectedTreatments: [Treatment] = [], hasDecoration: Bool = false) {
+  init(orderItem: OrderItem, saveNeeded: Bool = true,
+       selectedTreatments: [Treatment] = [],
+       hasDecoration: Bool = false) {
+
     self.saveNeeded = saveNeeded
     self.orderItem = orderItem
-    
+
     let item = orderItem.clothesItem
 
-    let decorationCellModel = Variable(ServiceSelectTableViewCellModel("Декор", "Декоративная отделка", item.category?.color, isSelected: hasDecoration))
+    let decorationCellModel = Variable(
+      ServiceSelectTableViewCellModel(
+        "Декор", "Декоративная отделка", item.category?.color, isSelected: hasDecoration
+      )
+    )
+
     self.decorationCellModel = decorationCellModel
 
     DataManager.instance.fetchClothesTreatments(item: item).subscribe().addDisposableTo(disposeBag)
@@ -94,32 +102,49 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
 
     self.sections = Driver.combineLatest(treatments.asDriver(), selectedServicesIds.asDriver(), decorationCellModel.asDriver()) { services, selectedServicesIds, decorationCellModel in
       let cellModels = services.map { service in
-        ServiceSelectTableViewCellModel(treatment: service, isSelected: selectedServicesIds.index(of: service.id) != nil)
+        ServiceSelectTableViewCellModel(
+          treatment: service,
+          isSelected: selectedServicesIds.index(of: service.id) != nil
+        )
       } as [ServiceSelectTableViewCellModelType]
-      let decorationSection = ServiceSelectSectionModel(model: "", items: [decorationCellModel] as [ServiceSelectTableViewCellModelType])
+
+      let decorationSection = ServiceSelectSectionModel(model: "", items: [decorationCellModel]
+        as [ServiceSelectTableViewCellModelType])
+
       let servicesSection = ServiceSelectSectionModel(model: "", items: cellModels)
+
       return [decorationSection, servicesSection]
     }
-    
+
     self.returnToSection = readyButtonTapped.asDriver(onErrorDriveWith: .empty()).map {
       return saveNeeded ? .order : .orderItem
     }
-    
+
     readyButtonTapped.asObservable().map {
       treatments.value.filter { selectedServicesIds.value.contains($0.id) }
     }.bindTo(selectedServices).addDisposableTo(disposeBag)
-    
+
     readyButtonTapped.asObservable().map {
       decorationCellModel.value.isSelected
     }.bindTo(self.hasDecoration).addDisposableTo(disposeBag)
-    
-    self.hasDecoration.asObservable().subscribe(onNext: saveDecorationIfNeeded).addDisposableTo(disposeBag)
-    selectedServices.asObservable().subscribe(onNext: saveTreatmentsIfNeeded).addDisposableTo(disposeBag)
-    
-    self.itemDidSelect.asObservable().subscribe(onNext: itemDidSelect).addDisposableTo(disposeBag)
-    self.itemDidDeselect.asObservable().subscribe(onNext: itemDidDeselect).addDisposableTo(disposeBag)
+
+    self.hasDecoration.asObservable()
+      .subscribe(onNext: saveDecorationIfNeeded)
+      .addDisposableTo(disposeBag)
+
+    selectedServices.asObservable()
+      .subscribe(onNext: saveTreatmentsIfNeeded)
+      .addDisposableTo(disposeBag)
+
+    self.itemDidSelect.asObservable()
+      .subscribe(onNext: itemDidSelect)
+      .addDisposableTo(disposeBag)
+
+    self.itemDidDeselect.asObservable()
+      .subscribe(onNext: itemDidDeselect)
+      .addDisposableTo(disposeBag)
   }
-  
+
   func saveDecorationIfNeeded(_ hasDecoration: Bool) {
     if saveNeeded {
       OrderManager.instance.updateOrderItem(item: orderItem) {
@@ -127,7 +152,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
       }
     }
   }
-  
+
   func saveTreatmentsIfNeeded(_ treatments: [Treatment]) {
     if saveNeeded {
       OrderManager.instance.updateOrderItem(item: orderItem) {
@@ -135,7 +160,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
       }
     }
   }
-  
+
   func itemDidSelect(_ indexPath: IndexPath) {
     switch indexPath.section {
     case Section.decoration.rawValue:
@@ -149,7 +174,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
       break
     }
   }
-  
+
   func itemDidDeselect(_ indexPath: IndexPath) {
     switch indexPath.section {
     case Section.decoration.rawValue:

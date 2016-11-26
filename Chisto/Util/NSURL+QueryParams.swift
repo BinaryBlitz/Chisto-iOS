@@ -19,7 +19,7 @@ extension URL {
 
     var mutableQueryItems: [URLQueryItem] = urlComponents.queryItems ?? []
 
-    mutableQueryItems.append(contentsOf: parameters.map{ URLQueryItem(name: $0, value: $1) })
+    mutableQueryItems.append(contentsOf: parameters.map { URLQueryItem(name: $0, value: $1) })
     urlComponents.queryItems = mutableQueryItems
 
     return urlComponents.url!

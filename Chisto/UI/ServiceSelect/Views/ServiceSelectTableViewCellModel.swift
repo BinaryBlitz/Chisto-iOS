@@ -22,14 +22,14 @@ class ServiceSelectTableViewCellModel: ServiceSelectTableViewCellModelType {
   var serviceTitle: String
   var serviceDescription: String
   var color: UIColor
-  
+
   init(_ title: String, _ description: String, _ color: UIColor?, isSelected: Bool) {
     self.serviceTitle = title
     self.serviceDescription = description
     self.color = color ?? UIColor.chsSkyBlue
     self.isSelected = isSelected
   }
-  
+
   init(treatment: Treatment, isSelected: Bool) {
     self.serviceTitle = treatment.name
     self.serviceDescription = treatment.descriptionText
