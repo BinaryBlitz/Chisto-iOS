@@ -64,18 +64,10 @@ class Order: ServerObject {
   dynamic var amount: Double = 0
   dynamic var email: String? = nil
   dynamic var deliveryPrice: Int = 0
-  dynamic var createdAt: String = ""
-  dynamic var updatedAt: String = ""
+  dynamic var createdAt: Date = Date()
+  dynamic var updatedAt: Date = Date()
   dynamic var payment: Payment? = nil
   var lineItems = List<OrderLineItem>()
-  
-  var createdAtDate: Date {
-    return Date.from(string: createdAt) ?? Date()
-  }
-  
-  var updatedAtDate: Date {
-    return Date.from(string: updatedAt) ?? Date()
-  }
   
   var price: Int {
     return lineItems.map { $0.price() }.reduce(0, +)
@@ -108,11 +100,11 @@ class Order: ServerObject {
     email <- map["email"]
     lineItems <- (map["line_items"], ListTransform<OrderLineItem>())
     paid <- map["paid"]
-    createdAt <- map["created_at"]
+    createdAt <- (map["created_at"], StringToDateTransform())
     statusString <- map["status"]
     laundryId <- map["laundry_id"]
     deliveryPrice <- map["delivery_price"]
-    updatedAt <- map["updated_at"]
+    updatedAt <- (map["updated_at"], StringToDateTransform())
     payment <- map["payment"]
   }
   

@@ -20,24 +20,30 @@ enum LaundryType {
 
 // TODO: remove test data and change properties
 class Laundry: ServerObject {
+  let dateFormat = "yyyy-MM-dd"
   dynamic var name: String = ""
   dynamic var descriptionText: String = ""
-  dynamic var courierDate: Double = 0.0
+  dynamic var collectionDate: Date = Date()
   dynamic var rating: Float = 0
   dynamic var category: String? = nil
   dynamic var backgroundImageUrl: String = ""
   dynamic var logoUrl: String = ""
-  dynamic var deliveryTimeInterval: String = "с 00:00 до 23:59"
+  dynamic var deliveryDateOpensAt: String = "00:00"
+  dynamic var deliveryDateClosesAt: String = "23:59"
   dynamic var courierPrice: Int = 0
-  dynamic var deliveryDate: Double = 0.0
+  dynamic var deliveryDate: Date = Date()
   var laundryTreatments = List<LaundryTreatment>()
+  
+  var deliveryTimeInterval: String  {
+    return "с \(deliveryDateOpensAt) до \(deliveryDateClosesAt)"
+  }
   
   var treatments: [Treatment] {
     return laundryTreatments.toArray()
       .filter { $0.treatment != nil }
       .map { $0.treatment! }
   }
- 
+  
   override func mapping(map: Map) {
     super.mapping(map: map)
     name <- map["name"]
@@ -47,6 +53,10 @@ class Laundry: ServerObject {
     rating <- map["rating"]
     backgroundImageUrl <- map["background_image_url"]
     laundryTreatments <- (map["laundry_treatments"], ListTransform<LaundryTreatment>())
+    deliveryDate <- (map["delivery_date"], StringToDateTransform(format: dateFormat))
+    collectionDate <- (map["collection_date"], StringToDateTransform(format: dateFormat))
+    deliveryDateOpensAt <- map["delivery_date_opens_at"]
+    deliveryDateClosesAt <- map["delivery_date_closes_at"]
   }
   
   var type: LaundryType? {

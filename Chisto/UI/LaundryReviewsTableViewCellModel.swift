@@ -25,6 +25,6 @@ class LaundryReviewsViewTableViewCellModel: LaundryReviewsViewTableViewCellModel
     self.rating = Float(rating.value)
     self.authorName = rating.author
     self.content = rating.content
-    self.date = rating.createdAtDate.shortDate
+    self.date = rating.createdAt.shortDate
   }
 }
