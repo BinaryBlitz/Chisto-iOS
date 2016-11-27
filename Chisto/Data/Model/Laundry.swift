@@ -32,6 +32,7 @@ class Laundry: ServerObject {
   dynamic var deliveryDateClosesAt: String = "23:59"
   dynamic var courierPrice: Int = 0
   dynamic var deliveryDate: Date = Date()
+  dynamic var ratingsCount: Int = 0
   var laundryTreatments = List<LaundryTreatment>()
   
   var deliveryTimeInterval: String  {
@@ -51,6 +52,7 @@ class Laundry: ServerObject {
     category <- map["category"]
     logoUrl <- map["logo_url"]
     rating <- map["rating"]
+    ratingsCount <- map["ratings_count"]
     backgroundImageUrl <- map["background_image_url"]
     laundryTreatments <- (map["laundry_treatments"], ListTransform<LaundryTreatment>())
     deliveryDate <- (map["delivery_date"], StringToDateTransform(format: dateFormat))

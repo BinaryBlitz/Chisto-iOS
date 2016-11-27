@@ -51,6 +51,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   var laundryIcon: URL?  = nil
   var laundryBackground: URL? = nil
   var laundryRating: Float
+  var ratingsCountText: String
   var courierDate: String
   var courierPrice: String
   var orderPrice: String
@@ -60,10 +61,13 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   var presentOrderContactDataSection: Driver<Void>
   let presentLaundryReviewsSection: Driver<LaundryReviewsViewModel>
   
+  let ratingCountLabels = ["отзыв", "отзыва", "отзывов"]
+  
   init(laundry: Laundry) {
     self.navigationBarTitle = laundry.name
     self.laundryDescriprionTitle = laundry.descriptionText
     self.laundryRating = laundry.rating
+    self.ratingsCountText = "\(laundry.ratingsCount) " + getRussianNumEnding(number: laundry.ratingsCount, endings: ratingCountLabels)
     self.laundryIcon = URL(string: laundry.logoUrl)
     self.laundryBackground = URL(string: laundry.backgroundImageUrl)
     self.courierDate = laundry.collectionDate.shortDate
