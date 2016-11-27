@@ -42,6 +42,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
     laundryIconView.kf.setImage(with: viewModel?.laundryIcon)
     
     laundryRatingView.rating = viewModel?.laundryRating ?? 0
+    laundryReviewsCountLabel.text = viewModel?.ratingsCountText
     courierDateLabel.text = viewModel?.courierDate
     orderPriceLabel.text = viewModel?.orderPrice
     deliveryDateLabel.text = viewModel?.deliveryDate
