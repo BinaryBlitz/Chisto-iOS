@@ -23,7 +23,7 @@ struct LineItemInfo: Hashable {
     return item.hashValue + quantity.hashValue
   }
   
-  static func ==(lhs: LineItemInfo, rhs: LineItemInfo) -> Bool {
+  static func == (lhs: LineItemInfo, rhs: LineItemInfo) -> Bool {
     return lhs.hashValue == rhs.hashValue
   }
 }

@@ -26,6 +26,12 @@
 		88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */; };
 		88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 88073F001DAD6E6F000696A3 /* .swiftlint.yml */; };
 		88073F031DAD6FCF000696A3 /* DescriptionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073F021DAD6FCF000696A3 /* DescriptionListItemView.swift */; };
+		880E03E11DE8F7FF00311721 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880E03E01DE8F7FF00311721 /* Payment.swift */; };
+		880E03E81DE8F81A00311721 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880E03E31DE8F81A00311721 /* PaymentViewController.swift */; };
+		880E03E91DE8F81A00311721 /* PaymentNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880E03E41DE8F81A00311721 /* PaymentNavigationController.swift */; };
+		880E03EA1DE8F81A00311721 /* PaymentNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880E03E51DE8F81A00311721 /* PaymentNavigationController.storyboard */; };
+		880E03EB1DE8F81A00311721 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880E03E61DE8F81A00311721 /* PaymentViewModel.swift */; };
+		880E03EC1DE8F81A00311721 /* PaymentViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880E03E71DE8F81A00311721 /* PaymentViewController.storyboard */; };
 		880E03EE1DE9975000311721 /* CategoriesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880E03ED1DE9975000311721 /* CategoriesNavigationController.swift */; };
 		880E03F01DE9976000311721 /* CategoriesNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880E03EF1DE9976000311721 /* CategoriesNavigationController.storyboard */; };
 		8811FE0E1DC2DB0500610712 /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8811FE0B1DC2DB0500610712 /* ProfileViewController.storyboard */; };
@@ -198,6 +204,12 @@
 		88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySelectViewModel.swift; sourceTree = "<group>"; };
 		88073F001DAD6E6F000696A3 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		88073F021DAD6FCF000696A3 /* DescriptionListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionListItemView.swift; sourceTree = "<group>"; };
+		880E03E01DE8F7FF00311721 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		880E03E31DE8F81A00311721 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		880E03E41DE8F81A00311721 /* PaymentNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentNavigationController.swift; sourceTree = "<group>"; };
+		880E03E51DE8F81A00311721 /* PaymentNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PaymentNavigationController.storyboard; sourceTree = "<group>"; };
+		880E03E61DE8F81A00311721 /* PaymentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
+		880E03E71DE8F81A00311721 /* PaymentViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PaymentViewController.storyboard; sourceTree = "<group>"; };
 		880E03ED1DE9975000311721 /* CategoriesNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesNavigationController.swift; sourceTree = "<group>"; };
 		880E03EF1DE9976000311721 /* CategoriesNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CategoriesNavigationController.storyboard; sourceTree = "<group>"; };
 		8811FE0B1DC2DB0500610712 /* ProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
@@ -450,6 +462,7 @@
 		88073EEC1DAC19E1000696A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				880E03E21DE8F80400311721 /* Payment */,
 				88FE7B0C1DE0DFE800A16289 /* OrderInfo */,
 				88FE7AFA1DE0AC3700A16289 /* MyOrders */,
 				88004FB21DDF3DC900A8632A /* LaundryReviews */,
@@ -522,6 +535,18 @@
 				88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */,
 			);
 			path = CitySelect;
+			sourceTree = "<group>";
+		};
+		880E03E21DE8F80400311721 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				880E03E31DE8F81A00311721 /* PaymentViewController.swift */,
+				880E03E41DE8F81A00311721 /* PaymentNavigationController.swift */,
+				880E03E51DE8F81A00311721 /* PaymentNavigationController.storyboard */,
+				880E03E61DE8F81A00311721 /* PaymentViewModel.swift */,
+				880E03E71DE8F81A00311721 /* PaymentViewController.storyboard */,
+			);
+			name = Payment;
 			sourceTree = "<group>";
 		};
 		8811FE111DC2DB1100610712 /* Profile */ = {
@@ -723,6 +748,7 @@
 		8862E6C91DC8E2BD00DDFB00 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				880E03E01DE8F7FF00311721 /* Payment.swift */,
 				882ECDB41DE2C45500EE3507 /* Order */,
 				88A221691DCE372500CAD2B0 /* Common */,
 				88E705631DCCC2FB007F779E /* Category.swift */,
@@ -1039,6 +1065,7 @@
 				88923E161DD369F400BC3AC0 /* ProfileContactDataViewController.storyboard in Resources */,
 				88FE7AFC1DE0AC4A00A16289 /* MyOrdersViewController.storyboard in Resources */,
 				88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */,
+				880E03EA1DE8F81A00311721 /* PaymentNavigationController.storyboard in Resources */,
 				88004FB61DDF3DF200A8632A /* LaundryReviewsViewController.storyboard in Resources */,
 				8811FE181DC2E5DB00610712 /* AboutViewController.storyboard in Resources */,
 				88DB937B1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard in Resources */,
@@ -1065,6 +1092,7 @@
 				882ECDCB1DE7CB4B00EE3507 /* EmptyTableBackgroundView.xib in Resources */,
 				8872F0B81DD8932C00E8D9EE /* OrderPlacedPopupViewController.storyboard in Resources */,
 				88D8ABBF1DB56EB8009D515B /* SelectClothesViewController.storyboard in Resources */,
+				880E03EC1DE8F81A00311721 /* PaymentViewController.storyboard in Resources */,
 				88E86DAE1DB90B4B002A7024 /* EmptyOrderView.xib in Resources */,
 				885409B81DB2582200219C00 /* CityNotFoundViewController.storyboard in Resources */,
 				88FE7B0E1DE0E02200A16289 /* OrderInfoViewController.storyboard in Resources */,
@@ -1159,8 +1187,10 @@
 				88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */,
 				88DB937F1DCBE88700DAC651 /* RegistrationPhoneInputViewModel.swift in Sources */,
 				88E705641DCCC2FB007F779E /* Category.swift in Sources */,
+				880E03E11DE8F7FF00311721 /* Payment.swift in Sources */,
 				889D87C71DC0A752003E8DAC /* LaundrySelectViewController.swift in Sources */,
 				889A84171DCA56CB00E3926D /* OrderConfirmViewModel.swift in Sources */,
+				880E03E81DE8F81A00311721 /* PaymentViewController.swift in Sources */,
 				88004FB81DDF49F300A8632A /* Rating.swift in Sources */,
 				889923A71DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift in Sources */,
 				88072D571DB9698600B47D23 /* ItemInfoTableViewCell.swift in Sources */,
@@ -1178,12 +1208,14 @@
 				88923E1F1DD3D5F900BC3AC0 /* LocationSelectViewController.swift in Sources */,
 				8872F0BA1DD8965400E8D9EE /* OrderPlacedPopupViewController.swift in Sources */,
 				8814C04D1DAF159E005B4967 /* OrderViewModel.swift in Sources */,
+				880E03EB1DE8F81A00311721 /* PaymentViewModel.swift in Sources */,
 				88DB93911DCC1AA500DAC651 /* DataManager.swift in Sources */,
 				883760D31DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift in Sources */,
 				8872F0BC1DD8AE0F00E8D9EE /* ReverseGeocoder.swift in Sources */,
 				8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */,
 				880E03EE1DE9975000311721 /* CategoriesNavigationController.swift in Sources */,
 				882ECDB81DE5899600EE3507 /* Sequence+categorize.swift in Sources */,
+				880E03E91DE8F81A00311721 /* PaymentNavigationController.swift in Sources */,
 				88FE7B031DE0AFE600A16289 /* MyOrdersTableViewCell.swift in Sources */,
 				8811FE0F1DC2DB0500610712 /* ProfileNavigationController.swift in Sources */,
 				8814C0401DAED9AC005B4967 /* CityNotFoundViewController.swift in Sources */,

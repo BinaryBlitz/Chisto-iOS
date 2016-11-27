@@ -79,7 +79,7 @@ class ContactFormViewModel {
   }
 
   func saveUserProfile() {
-    ProfileManager.instance.updateProfile { profile in
+    return ProfileManager.instance.updateProfile { profile in
       profile.firstName = firstName.value ?? ""
       profile.lastName = lastName.value ?? ""
       profile.phone = phone.value?.onlyDigits ?? ""
