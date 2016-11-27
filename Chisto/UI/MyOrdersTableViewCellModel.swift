@@ -24,7 +24,7 @@ class MyOrdersTableViewCellModel: MyOrdersTableViewCellModelType {
   
   init(order: Order) {
     self.orderNumberTitle = "Заказ № \(order.id)"
-    self.dateTitle = Date.from(string: order.createdAt)?.mediumDate ?? ""
+    self.dateTitle = order.createdAt.mediumDate
     
     switch order.status {
     case .processing:

@@ -119,6 +119,7 @@
 		889D87D01DC1F3DE003E8DAC /* LaundrySelectTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889D87CF1DC1F3DE003E8DAC /* LaundrySelectTableViewCellModel.swift */; };
 		889D87D21DC1F71F003E8DAC /* LaundrySelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889D87D11DC1F71E003E8DAC /* LaundrySelectViewModel.swift */; };
 		88A221681DCE013100CAD2B0 /* LaundryTreatment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A221671DCE013100CAD2B0 /* LaundryTreatment.swift */; };
+		88A2CFC11DEB2CA2000762DE /* StringToDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2CFC01DEB2CA2000762DE /* StringToDateTransform.swift */; };
 		88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */; };
 		88B0B5501DB1825500C7D0F7 /* OnBoardingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */; };
 		88B0B5521DB19C6E00C7D0F7 /* DescriptionListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B5511DB19C6E00C7D0F7 /* DescriptionListItemView.xib */; };
@@ -299,6 +300,7 @@
 		889D87CF1DC1F3DE003E8DAC /* LaundrySelectTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySelectTableViewCellModel.swift; sourceTree = "<group>"; };
 		889D87D11DC1F71E003E8DAC /* LaundrySelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySelectViewModel.swift; sourceTree = "<group>"; };
 		88A221671DCE013100CAD2B0 /* LaundryTreatment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryTreatment.swift; sourceTree = "<group>"; };
+		88A2CFC01DEB2CA2000762DE /* StringToDateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringToDateTransform.swift; sourceTree = "<group>"; };
 		88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSearchBarTextColor.swift; sourceTree = "<group>"; };
 		88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoardingViewController.storyboard; sourceTree = "<group>"; };
 		88B0B5511DB19C6E00C7D0F7 /* DescriptionListItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionListItemView.xib; sourceTree = "<group>"; };
@@ -839,6 +841,7 @@
 			children = (
 				88C9F6DE1DCD2B320046DDD7 /* RealmString.swift */,
 				88DB93921DCC20B100DAC651 /* ServerObjct.swift */,
+				88A2CFC01DEB2CA2000762DE /* StringToDateTransform.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1245,6 +1248,7 @@
 				882ECDAF1DE215FF00EE3507 /* OrderInfoTableViewCellModel.swift in Sources */,
 				882288161DB6D12C000642E0 /* RootViewController.swift in Sources */,
 				88C9F6DD1DCD03010046DDD7 /* Item.swift in Sources */,
+				88A2CFC11DEB2CA2000762DE /* StringToDateTransform.swift in Sources */,
 				88CD68451DD2155F004B7726 /* ContactFormTableHeaderView.swift in Sources */,
 				88C9F6DF1DCD2B320046DDD7 /* RealmString.swift in Sources */,
 				889D87D01DC1F3DE003E8DAC /* LaundrySelectTableViewCellModel.swift in Sources */,

@@ -66,9 +66,9 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
     self.laundryRating = laundry.rating
     self.laundryIcon = URL(string: laundry.logoUrl)
     self.laundryBackground = URL(string: laundry.backgroundImageUrl)
-    self.courierDate = Date(timeIntervalSince1970: laundry.courierDate).shortDate
+    self.courierDate = laundry.collectionDate.shortDate
     self.courierPrice = laundry.courierPriceString
-    self.deliveryDate = Date(timeIntervalSince1970: laundry.deliveryDate).shortDate
+    self.deliveryDate = laundry.deliveryDate.shortDate
     self.orderPrice = OrderManager.instance.priceString(laundry: laundry)
 
     self.sections = OrderManager.instance.currentOrderItems
