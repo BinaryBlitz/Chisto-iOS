@@ -44,6 +44,7 @@ class Laundry: ServerObject {
     descriptionText <- map["description"]
     category <- map["category"]
     logoUrl <- map["logo_url"]
+    rating <- map["rating"]
     backgroundImageUrl <- map["background_image_url"]
     laundryTreatments <- (map["laundry_treatments"], ListTransform<LaundryTreatment>())
   }
