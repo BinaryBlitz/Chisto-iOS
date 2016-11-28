@@ -60,7 +60,7 @@ class DataManager {
     }
     let headers: HTTPHeaders = ["Accept": "application/json"]
     return networkManager.doRequest(method: method, path, parameters, headers)
-      .catchError { error in
+      .map { data in JSON(data: data).rawValue }.catchError { error in
         guard let networkError = error as? NetworkError else { return Observable.error(error) }
         return Observable.error(DataError.network(networkError))
     }
@@ -100,9 +100,9 @@ class DataManager {
     return networkRequest(method: .post, .createVerificationToken, ["phone_number": phone])
       .flatMap { response -> Observable<Void> in
         let json = JSON(object: response)
-        // TODO: work with real SMS codes
-        self.verificationToken = json["token"].stringValue
+        let verificationToken = json["token"].string
         ProfileManager.instance.updateProfile { profile in
+          profile.verificationToken = verificationToken
           profile.phone = json["phone_number"].stringValue
         }
         return Observable.just()
@@ -110,9 +110,9 @@ class DataManager {
   }
 
   func verifyToken(code: String) -> Observable<Void> {
-    guard let verificationToken = self.verificationToken else { return Observable.error(DataError.unknown) }
+    guard let verificationToken = ProfileManager.instance.userProfile.value.verificationToken else { return Observable.error(DataError.unknown) }
 
-    return networkManager.doRequest(
+    return networkRequest(
         method: .patch,
         .verifyToken,
         ["code": code,
@@ -121,15 +121,54 @@ class DataManager {
       .flatMap { response -> Observable<Void> in
         let json = JSON(object: response)
         ProfileManager.instance.updateProfile { profile in
-          profile.apiToken = json["api_token"].stringValue
+          profile.apiToken = json["api_token"].string
         }
         return Observable.just()
       }
   }
   
+  func createUser() -> Observable<Void> {
+    let profile = ProfileManager.instance.userProfile.value
+    let realm = try! Realm()
+    var jsonProfile: [String: Any] = [:]
+    try? realm.write {
+      jsonProfile["user"] = profile.toJSON()
+    }
+    return networkRequest(method: .post, .createUser, jsonProfile).map { json in
+      guard let jsonMap = json as? [String: Any] else { throw DataError.responseConvertError }
+      
+      ProfileManager.instance.updateProfile { profile in
+        let map = Map(mappingType: .fromJSON, JSON: jsonMap)
+        profile.mapping(map: map)
+        profile.isCreated = true
+      }
+    }
+  }
+  
+  func showUser() -> Observable<Void> {
+    return networkRequest(method: .get, .showUser).map { json in
+      guard let jsonMap = json as? [String: Any] else { throw DataError.responseConvertError }
+      
+      ProfileManager.instance.updateProfile { profile in
+        let map = Map(mappingType: .fromJSON, JSON: jsonMap)
+        profile.mapping(map: map)
+        profile.isCreated = true
+      }
+    }
+  }
+  
+  func updateUser() -> Observable<Void> {
+    let profile = ProfileManager.instance.userProfile.value
+    let realm = try! Realm()
+    var jsonProfile: [String: Any] = [:]
+    try? realm.write {
+      jsonProfile["user"] = profile.toJSON()
+    }
+    return networkRequest(method: .patch, .updateUser, jsonProfile).map { _ in }
+  }
+  
   init() {
     
-    // 
     ProfileManager.instance.userProfile.asObservable()
       .filter { $0.city != nil }
       .map { $0.city! }
@@ -141,7 +180,6 @@ class DataManager {
   }
 
 }
-
 
 extension DataManager: DataManagerServiceType {
 
@@ -180,12 +218,12 @@ extension DataManager: DataManagerServiceType {
     return fetchItems(type: Order.self, apiPath: .fetchOrders)
   }
 
-  func placeOrder(order: RequestOrder, laundry: Laundry) -> Observable<Order> {
+  func createOrder(order: RequestOrder, laundry: Laundry) -> Observable<Order> {
     let orderJSON = order.toJSON()
     
     return networkRequest(
         method: .post,
-        .placeOrder(laundryId: laundry.id),
+        .createOrder(laundryId: laundry.id),
         ["order": orderJSON]
       )
       .flatMap { result -> Observable<Order> in

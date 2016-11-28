@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import RealmSwift
+import ObjectMapper
 
 class ProfileManager {
   
@@ -19,17 +20,15 @@ class ProfileManager {
   private let profileKey = "profileId"
 
   let userProfile: Variable<Profile>
-    
+  
   func updateProfile(closure: ((Profile) -> Void)) {
-    let realm = try! Realm()
-    
     let profile = userProfile.value
-    
+    let realm = try! Realm()
     try! realm.write {
       closure(profile)
     }
   }
-
+  
   init() {
     var profile: Profile
     
@@ -51,8 +50,5 @@ class ProfileManager {
       .map { $0! }
       .bindTo(userProfile)
       .addDisposableTo(disposeBag)
-
-    
-    UserDefaults.standard.set(profile.id, forKey: profileKey)
   }
 }

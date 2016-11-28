@@ -20,10 +20,13 @@ enum APIPath {
   case fetchClothesTreatments(itemId: Int)
   case createVerificationToken
   case verifyToken
-  case placeOrder(laundryId: Int)
+  case createOrder(laundryId: Int)
   case fetchRatings(laundryId: Int)
   case fetchOrders
   case fetchOrder(orderId: Int)
+  case createUser
+  case showUser
+  case updateUser
 
   var endpoint: String {
     switch self {
@@ -39,7 +42,7 @@ enum APIPath {
       return "items/\(itemId)/treatments"
     case .createVerificationToken, .verifyToken:
       return "verification_token"
-    case .placeOrder(let laundryId):
+    case .createOrder(let laundryId):
       return "laundries/\(laundryId)/orders"
     case .fetchRatings(let laundryId):
       return "laundries/\(laundryId)/ratings"
@@ -47,13 +50,14 @@ enum APIPath {
       return "orders"
     case .fetchOrder(let orderId):
       return "orders/\(orderId)"
-
+    case .createUser, .showUser, .updateUser:
+      return "user"
     }
   }
   
   var encoding: ParameterEncoding {
     switch self {
-    case .placeOrder, .createVerificationToken, .verifyToken:
+    case .createOrder, .createVerificationToken, .verifyToken, .createUser, .updateUser:
       return JSONEncoding.default
     default:
       return URLEncoding.default
@@ -62,7 +66,7 @@ enum APIPath {
 
   var successCode: Int {
     switch self {
-    case .placeOrder, .createVerificationToken:
+    case .createOrder, .createVerificationToken:
       return 201
     default:
       return 200
@@ -71,7 +75,7 @@ enum APIPath {
 }
 
 enum NetworkError: Error, CustomStringConvertible {
-  case unprocessableData(response: Any)
+  case unprocessableData(response: Data)
   case unknown
   case serverUnavaliable
   case unexpectedResponseFormat
@@ -79,7 +83,7 @@ enum NetworkError: Error, CustomStringConvertible {
   var description: String {
     switch self {
     case .unprocessableData(let response):
-      let json = JSON(response)
+      let json = JSON(data: response)
       print(response)
       guard let errorDictionary = json.dictionary else { return json.rawString() ?? "" }
       return parseErrorDictionary(errorDictionary)
@@ -115,13 +119,12 @@ class NetworkManager {
 
   var apiPrefix = "https://chisto-staging.herokuapp.com"
 
-  func doRequest(method: HTTPMethod, _ path: APIPath, _ params: Parameters = [:], _ headers: HTTPHeaders? = nil) -> Observable<Any> {
-    let requestObservable: Observable<Any> = Observable.create { observer in
+  func doRequest(method: HTTPMethod, _ path: APIPath, _ params: Parameters = [:], _ headers: HTTPHeaders? = nil) -> Observable<Data> {
+    let requestObservable: Observable<Data> = Observable.create { observer in
         let url = URL(string: self.apiPrefix + "/api/" + path.endpoint)!
         let request = Alamofire.request(url, method: method, parameters: params, encoding: path.encoding, headers: headers)
-          .responseJSON { response in
+          .responseData { response in
             debugPrint(response)
-            
             if let result = response.result.value {
               
               let statusCode = response.response?.statusCode
@@ -158,7 +161,7 @@ class NetworkManager {
     })
   }
   
-  func getError(_ statusCode: Int?, response: Any) -> NetworkError {
+  func getError(_ statusCode: Int?, response: Data) -> NetworkError {
     guard let statusCode = statusCode else { return .unknown }
     
     switch statusCode {

@@ -14,7 +14,7 @@ import IQKeyboardManagerSwift
 class RegistrationPhoneInputViewController: UIViewController {
 
   let disposeBag = DisposeBag()
-  let viewModel = RegistrationPhoneInputViewModel()
+  var viewModel: RegistrationPhoneInputViewModel? = nil
 
   let maskedPhoneInput = MaskedInput(formattingPattern: "*** ***-**-**", replacementChar: "*")
 
@@ -29,16 +29,18 @@ class RegistrationPhoneInputViewController: UIViewController {
     
     phoneInputField.inputAccessoryView = UIView()
     phoneInputField.tintColor = UIColor.chsSkyBlue
-    navigationItem.title = viewModel.navigationBarTitle
+    navigationItem.title = viewModel?.navigationBarTitle
     
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconNavbarClose"), style: .plain, target: nil, action: nil)
 
     navigationItem.leftBarButtonItem?.rx.tap.asDriver().drive(onNext: {[weak self] in
-      self?.dismiss(animated: true, completion: nil)
+      self?.dismiss(animated: true, completion: {})
     }).addDisposableTo(disposeBag)
 
     maskedPhoneInput.configure(textField: phoneInputField)
+    
+    guard let viewModel = viewModel else { return }
 
     maskedPhoneInput.isValid.asObservable().bindTo(sendButton.rx.isEnabled).addDisposableTo(disposeBag)
     phoneInputField.rx.text.bindTo(viewModel.phoneText).addDisposableTo(disposeBag)
