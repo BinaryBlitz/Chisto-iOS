@@ -19,6 +19,7 @@ class RegistrationCodeInputViewModel {
   let code: Variable<String?>
   let navigationBarTitle = "Регистрация"
   let dismissViewController: Driver<Void>
+  let didFinishRegistration = PublishSubject<Void>()
 
   init(phoneNumberString: String) {
     let code = Variable<String?>(nil)

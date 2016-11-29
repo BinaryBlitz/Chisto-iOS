@@ -20,8 +20,8 @@ struct StringToDateTransform: TransformType {
   typealias JSON = String
   
   public func transformFromJSON(_ value: Any?) -> Object? {
-    guard let value = value as? String else { return Date() }
-    return Date.from(string: value, format: format) ?? Date()
+    guard let value = value as? String else { return nil }
+    return Date.from(string: value, format: format)
     
   }
   

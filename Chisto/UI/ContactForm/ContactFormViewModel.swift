@@ -78,17 +78,27 @@ class ContactFormViewModel {
     adressHeaderModel.buttonDidTap.asObservable().bindTo(locationHeaderButtonDidTap).addDisposableTo(disposeBag)
   }
 
-  func saveUserProfile() {
-    return ProfileManager.instance.updateProfile { profile in
-      profile.firstName = firstName.value ?? ""
-      profile.lastName = lastName.value ?? ""
-      profile.phone = phone.value?.onlyDigits ?? ""
-      profile.email = email.value ?? ""
-      profile.street = street.value ?? ""
-      profile.building = building.value ?? ""
-      profile.apartment = apartment.value ?? ""
-      profile.notes = comment.value ?? ""
+  func saveUserProfile() -> Observable<Void> {
+    return Observable.deferred { [weak self] in
+      guard let `self` = self else { return Observable.error(DataError.unknown) }
+      let profile = ProfileManager.instance.userProfile.value
+      ProfileManager.instance.updateProfile { profile in
+        profile.firstName = self.firstName.value ?? ""
+        profile.lastName = self.lastName.value ?? ""
+        profile.phone = self.phone.value?.onlyDigits ?? ""
+        profile.email = self.email.value ?? ""
+        profile.street = self.street.value ?? ""
+        profile.building = self.building.value ?? ""
+        profile.apartment = self.apartment.value ?? ""
+        profile.notes = self.comment.value ?? ""
+      }
+      if profile.isCreated {
+        return DataManager.instance.updateUser()
+      } else {
+        return DataManager.instance.createUser()
+      }
     }
+    
   }
 
 }

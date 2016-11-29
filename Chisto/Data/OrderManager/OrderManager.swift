@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+
 class OrderManager {
 
   static let instance = OrderManager()
@@ -29,25 +30,27 @@ class OrderManager {
     currentOrderItems.onNext(items)
   }
 
-  func placeOrder() -> Observable<Order> {
-    let profile = ProfileManager.instance.userProfile.value
-    guard let laundry = currentLaundry else { return Observable.empty() }
-
-    let order = RequestOrder(profile: profile)
-    let items = try! currentOrderItems.value()
-
-    for item in items {
-      for treatment in item.treatments {
-        let lineItemAttribute = LineItemAttribute(
-          laundryTreatmentId: treatment.id,
-          quantity: item.amount
-        )
-
-        order.lineItemsArttributes.append(lineItemAttribute)
+  func createOrder() -> Observable<Order> {
+    return Observable.deferred { [weak self] in
+      let profile = ProfileManager.instance.userProfile.value
+      guard let laundry = self?.currentLaundry else { return Observable.empty() }
+      
+      let order = RequestOrder(profile: profile)
+      guard let items = try! self?.currentOrderItems.value() else { return Observable.empty() }
+      
+      for item in items {
+        for treatment in item.treatments {
+          let lineItemAttribute = LineItemAttribute(
+            laundryTreatmentId: treatment.id,
+            quantity: item.amount
+          )
+          
+          order.lineItemsArttributes.append(lineItemAttribute)
+        }
       }
+      
+      return DataManager.instance.createOrder(order: order, laundry: laundry)
     }
-
-    return DataManager.instance.placeOrder(order: order, laundry: laundry)
   }
 
   var priceForCurrentLaundry: Int {

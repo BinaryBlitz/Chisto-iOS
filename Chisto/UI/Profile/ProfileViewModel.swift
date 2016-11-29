@@ -42,6 +42,7 @@ class ProfileViewModel {
   var ordersCount = Variable<String>("0")
 
   init() {
+    DataManager.instance.showUser().subscribe().addDisposableTo(disposeBag)
     self.presentAboutSection = itemDidSelect.filter { $0.section == ProfileSections.aboutApp.rawValue }.map {_ in Void()}.asDriver(onErrorDriveWith: .empty())
     
     self.presentContactDataSection = itemDidSelect.filter { $0.section == ProfileSections.contactData.rawValue }.map {_ in Void()}.asDriver(onErrorDriveWith: .empty())
@@ -50,8 +51,13 @@ class ProfileViewModel {
 
     self.dismissViewController = closeButtonDidTap.asDriver(onErrorDriveWith: .empty())
     
-    Observable.from(uiRealm.objects(Order.self))
-      .map { String($0.count) }
+    let profile = ProfileManager.instance.userProfile.value
+    
+    self.ordersCount = Variable<String>(String(profile.ordersCount))
+    
+    uiRealm.observableObject(type: Profile.self, primaryKey: profile.id).asObservable()
+      .filter { $0 != nil }
+      .map { String($0!.ordersCount) }
       .bindTo(ordersCount)
       .addDisposableTo(disposeBag)
   }

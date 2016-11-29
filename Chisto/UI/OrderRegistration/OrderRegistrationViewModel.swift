@@ -57,36 +57,34 @@ class OrderRegistrationViewModel {
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
     
-    let payInCashDriver = payInCashButtonDidTap
-      .asDriver(onErrorDriveWith: .empty())
-      .map { formViewModel.saveUserProfile() }
-      .flatMap {
-        OrderManager.instance.placeOrder().do(onError: { error in
-          presentErrorAlert.onNext(error)
-        }).asDriver(onErrorDriveWith: .empty())
-    }
+    let placeOrderDriver = formViewModel.saveUserProfile().flatMap {
+      return OrderManager.instance.createOrder()
+    }.do(onError: { error in
+        presentErrorAlert.onNext(error)
+    }).asDriver(onErrorDriveWith: .empty())
     
+    let payInCashDriver = payInCashButtonDidTap
+      .asDriver(onErrorDriveWith: .empty()).flatMap {
+        return placeOrderDriver
+      }
+  
     self.presentPaymentSection = payWithCreditCardButtonDidTap
-      .asDriver(onErrorDriveWith: .empty())
-      .map { formViewModel.saveUserProfile() }
-      .flatMap {
-        OrderManager.instance.placeOrder().do(onError: { error in
-          presentErrorAlert.onNext(error)
-      }).asDriver(onErrorDriveWith: .empty()).map { order in
-        let viewModel = PaymentViewModel(order: order)
-        viewModel.didFinishPayment.bindTo(paymentCompleted).addDisposableTo(disposeBag)
-        return viewModel
+      .asDriver(onErrorDriveWith: .empty()).flatMap {
+        return placeOrderDriver.map { order in
+          let viewModel = PaymentViewModel(order: order)
+          viewModel.didFinishPayment.bindTo(paymentCompleted).addDisposableTo(disposeBag)
+          return viewModel
       }
     }
     
     self.presentOrderPlacedPopup = Driver.of(paymentCompleted.asDriver(onErrorDriveWith: .empty()), payInCashDriver)
       .merge().map { order in
-      OrderManager.instance.clearOrderItems()
-      let viewModel = OrderPlacedPopupViewModel(orderNumber: "\(order.id)")
-      viewModel.returnToOrderViewController.asObservable()
-        .bindTo(returnToOrderViewController)
-        .addDisposableTo(viewModel.disposeBag)
-      return viewModel
+        OrderManager.instance.clearOrderItems()
+        let viewModel = OrderPlacedPopupViewModel(orderNumber: "\(order.id)")
+        viewModel.returnToOrderViewController.asObservable()
+          .bindTo(returnToOrderViewController)
+          .addDisposableTo(viewModel.disposeBag)
+        return viewModel
     }
     
     formViewModel.isValid.asObservable().bindTo(buttonsAreEnabled).addDisposableTo(disposeBag)
