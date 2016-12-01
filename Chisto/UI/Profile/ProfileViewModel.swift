@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 enum ProfileSections: Int {
-  case contactData = 0, myOrders, aboutApp, rules
+  case contactData = 0, myOrders, aboutApp, terms
 }
 
 protocol ProfileViewModelType {
@@ -39,15 +39,18 @@ class ProfileViewModel {
   let presentContactDataSection: Driver<Void>
   let presentMyOrdersSection: Driver<Void>
   let dismissViewController: Driver<Void>
+  let presentTermsOfServiceSection: Driver<Void>
   var ordersCount = Variable<String>("0")
-
+  
   init() {
     DataManager.instance.showUser().subscribe().addDisposableTo(disposeBag)
-    self.presentAboutSection = itemDidSelect.filter { $0.section == ProfileSections.aboutApp.rawValue }.map {_ in Void()}.asDriver(onErrorDriveWith: .empty())
+    self.presentAboutSection = itemDidSelect.filter { $0.section == ProfileSections.aboutApp.rawValue }.map {_ in }.asDriver(onErrorDriveWith: .empty())
     
-    self.presentContactDataSection = itemDidSelect.filter { $0.section == ProfileSections.contactData.rawValue }.map {_ in Void()}.asDriver(onErrorDriveWith: .empty())
+    self.presentContactDataSection = itemDidSelect.filter { $0.section == ProfileSections.contactData.rawValue }.map {_ in }.asDriver(onErrorDriveWith: .empty())
     
-    self.presentMyOrdersSection = itemDidSelect.filter { $0.section == ProfileSections.myOrders.rawValue }.map {_ in Void()}.asDriver(onErrorDriveWith: .empty())
+    self.presentMyOrdersSection = itemDidSelect.filter { $0.section == ProfileSections.myOrders.rawValue }.map {_ in }.asDriver(onErrorDriveWith: .empty())
+    
+    self.presentTermsOfServiceSection = itemDidSelect.filter { $0.section == ProfileSections.terms.rawValue }.map {_ in }.asDriver(onErrorDriveWith: .empty())
 
     self.dismissViewController = closeButtonDidTap.asDriver(onErrorDriveWith: .empty())
     

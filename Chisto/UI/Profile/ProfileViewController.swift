@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import WebKit
 
 class ProfileViewController: UITableViewController {
   @IBOutlet weak var ordersCountLabel: UILabel!
@@ -43,6 +44,11 @@ class ProfileViewController: UITableViewController {
     
     viewModel.presentMyOrdersSection.drive(onNext: { [weak self] in
       let viewController = MyOrdersViewController.storyboardInstance()!
+      self?.navigationController?.pushViewController(viewController, animated: true)
+    }).addDisposableTo(disposeBag)
+    
+    viewModel.presentTermsOfServiceSection.drive(onNext: { [weak self] url in
+      let viewController = TermsOfServiceViewController()
       self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
     

@@ -56,13 +56,17 @@ class OrderInfoViewModel: OrderInfoViewModelType {
   var orderStatusColor: UIColor
   var sections: Driver<[OrderInfoSectionModel]>
   let presentErrorAlert: PublishSubject<Error>
+  let presentCallSupportAlert: Driver<Void>
   
   // Data
   let order: Variable<Order>
+  let phoneNumber = "+74957667849"
   
   init(order: Order) {
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
+    
+    self.presentCallSupportAlert = supportButtonDidTap.asDriver(onErrorDriveWith: .empty())
     
     DataManager.instance.fetchOrder(order: order).subscribe(onError: { error in
       presentErrorAlert.onNext(error)

@@ -43,7 +43,7 @@
                                 <rect key="frame" x="0.0" y="156" width="187" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Позвонить нам" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqN-3g-yBP">
-                                        <rect key="frame" x="0.0" y="39" width="187" height="21"/>
+                                        <rect key="frame" x="0.0" y="39.5" width="187" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -52,6 +52,7 @@
                                         <rect key="frame" x="86" y="0.0" width="16" height="25"/>
                                     </imageView>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="kqN-3g-yBP" firstAttribute="leading" secondItem="Xtv-LP-1u5" secondAttribute="leading" id="4Wr-si-Vl7"/>
                                     <constraint firstAttribute="trailing" secondItem="kqN-3g-yBP" secondAttribute="trailing" id="8jP-h0-7GT"/>
@@ -59,6 +60,9 @@
                                     <constraint firstItem="YN8-3A-vU6" firstAttribute="top" secondItem="Xtv-LP-1u5" secondAttribute="top" id="RU5-VN-UmF"/>
                                     <constraint firstItem="YN8-3A-vU6" firstAttribute="centerX" secondItem="Xtv-LP-1u5" secondAttribute="centerX" id="jLa-94-oRT"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="hgh-Ww-a79" appends="YES" id="pGl-KL-w3H"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sh7-Ln-vCg">
                                 <rect key="frame" x="188" y="156" width="187" height="60"/>
@@ -67,12 +71,13 @@
                                         <rect key="frame" x="82" y="0.0" width="23" height="18"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Написать письмо" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpr-id-Zaf">
-                                        <rect key="frame" x="0.0" y="39" width="187" height="21"/>
+                                        <rect key="frame" x="0.0" y="39.5" width="187" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="tpr-id-Zaf" secondAttribute="bottom" id="H2H-Ke-F27"/>
                                     <constraint firstItem="CgQ-c0-3C0" firstAttribute="top" secondItem="sh7-Ln-vCg" secondAttribute="top" id="K8n-7s-cRc"/>
@@ -80,6 +85,9 @@
                                     <constraint firstAttribute="trailing" secondItem="tpr-id-Zaf" secondAttribute="trailing" id="nJ0-Y3-aIu"/>
                                     <constraint firstItem="tpr-id-Zaf" firstAttribute="leading" secondItem="sh7-Ln-vCg" secondAttribute="leading" id="zEp-Tc-Kp7"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="aPX-jm-gNx" appends="YES" id="OBV-bq-g3h"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wuz-Up-Zls">
                                 <rect key="frame" x="0.0" y="597" width="375" height="70"/>
@@ -93,19 +101,20 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Напишите нам для сотрудичества" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfC-LZ-nZx">
-                                        <rect key="frame" x="15" y="35" width="231" height="17"/>
+                                        <rect key="frame" x="15" y="35" width="230.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы представитель химчистки?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k22-nY-yNG">
-                                        <rect key="frame" x="15" y="14" width="207" height="17"/>
+                                        <rect key="frame" x="15" y="14" width="206.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="EJ9-SZ-nt2"/>
                                     <constraint firstItem="7iJ-8g-QrW" firstAttribute="centerY" secondItem="wuz-Up-Zls" secondAttribute="centerY" id="EPf-PA-Llu"/>
@@ -115,6 +124,9 @@
                                     <constraint firstItem="k22-nY-yNG" firstAttribute="leading" secondItem="wuz-Up-Zls" secondAttribute="leading" constant="15" id="re9-0U-wG7"/>
                                     <constraint firstItem="ZfC-LZ-nZx" firstAttribute="leading" secondItem="k22-nY-yNG" secondAttribute="leading" id="sg4-OV-roD"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="7wQ-dW-xJ6" appends="YES" id="eP8-DF-IKB"/>
+                                </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOD-P5-oUd" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
                                 <rect key="frame" x="98" y="532" width="180" height="40"/>
@@ -134,9 +146,12 @@
                                         <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="reviewButtonDidTap:" destination="J6y-cP-Ycr" eventType="touchUpInside" id="qPs-fP-jfi"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мы в социальных сетях" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dR-XR-WRY">
-                                <rect key="frame" x="16" y="256" width="343" height="22"/>
+                                <rect key="frame" x="16" y="256" width="343" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.70094421012269936" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -151,15 +166,27 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="PTQ-48-qqM">
                                 <rect key="frame" x="66" y="298" width="243" height="50"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconInstagram" translatesAutoresizingMaskIntoConstraints="NO" id="vOr-Wm-IqK">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blL-23-vhk">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconFacebook" translatesAutoresizingMaskIntoConstraints="NO" id="fHl-AK-tXX">
-                                        <rect key="frame" x="97" y="0.0" width="50" height="50"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconVk" translatesAutoresizingMaskIntoConstraints="NO" id="gD7-V6-f7K">
+                                        <state key="normal" image="iconInstagram"/>
+                                        <connections>
+                                            <action selector="instagramButtonDidTap:" destination="J6y-cP-Ycr" eventType="touchUpInside" id="vSn-12-mpx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aba-yl-O6A">
+                                        <rect key="frame" x="96.5" y="0.0" width="50" height="50"/>
+                                        <state key="normal" image="iconFacebook"/>
+                                        <connections>
+                                            <action selector="facebookButtonDidTap:" destination="J6y-cP-Ycr" eventType="touchUpInside" id="YlR-AX-mS4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vdm-U8-ghb">
                                         <rect key="frame" x="193" y="0.0" width="50" height="50"/>
-                                    </imageView>
+                                        <state key="normal" image="iconVk"/>
+                                        <connections>
+                                            <action selector="vkButtonDidTap:" destination="J6y-cP-Ycr" eventType="touchUpInside" id="orx-NS-3Cc"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -200,6 +227,21 @@
                     <nil key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LLC-Lr-buq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="7wQ-dW-xJ6">
+                    <connections>
+                        <action selector="parntershipViewDidTap:" destination="J6y-cP-Ycr" id="QPu-yV-dA3"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="hgh-Ww-a79">
+                    <connections>
+                        <action selector="callUsViewDidTap:" destination="J6y-cP-Ycr" id="Qk1-BZ-v5o"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="aPX-jm-gNx">
+                    <connections>
+                        <action selector="mailViewDidTap:" destination="J6y-cP-Ycr" id="Zlg-RC-bhe"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="191.25" y="152.11267605633802"/>
         </scene>
