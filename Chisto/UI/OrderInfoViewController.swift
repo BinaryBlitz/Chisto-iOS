@@ -39,6 +39,20 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
     configureHeader()
     configureFooter()
     configureTableView()
+    
+    guard let viewModel = viewModel else { return }
+    viewModel.presentCallSupportAlert.drive(onNext: { [weak self] in
+      let alertController = UIAlertController(title: nil, message: viewModel.phoneNumber, preferredStyle: .alert)
+      let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+      let callAction = UIAlertAction(title: "Позвонить", style: .default, handler: { [weak self] _ in
+        guard let phoneNumber = self?.viewModel?.phoneNumber else { return }
+        guard let url = URL(string: "tel://\(phoneNumber)") else { return }
+        UIApplication.shared.openURL(url)
+      })
+      alertController.addAction(cancelAction)
+      alertController.addAction(callAction)
+      self?.present(alertController, animated: true, completion: nil)
+    }).addDisposableTo(disposeBag)
   }
   
   func configureHeader() {
