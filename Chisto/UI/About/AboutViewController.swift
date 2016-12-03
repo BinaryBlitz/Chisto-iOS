@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class AboutViewController: UIViewController {
+  
   struct URLs {
     static let supportEmail = "info@chis.to"
     static let instagram = "https://www.instagram.com/chistoapp/"
@@ -17,7 +18,7 @@ class AboutViewController: UIViewController {
     static let vk = "https://vk.com/chistoapp"
     static let partnershipEmail = "partner@chis.to"
     static let review = "https://itunes.apple.com/us/app/chisto/id1165430647?ls=1&mt=8"
-    static let phoneNumber = "+74957667849"
+    static let phoneNumber = "+7 495 766-78-49"
   }
   
   @IBAction func instagramButtonDidTap(_ sender: Any) {
@@ -44,7 +45,7 @@ class AboutViewController: UIViewController {
     let alertController = UIAlertController(title: nil, message: URLs.phoneNumber, preferredStyle: .alert)
     let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
     let callAction = UIAlertAction(title: "Позвонить", style: .default, handler: { [weak self] _ in
-      self?.openURL("tel://\(URLs.phoneNumber)")
+      self?.openURL("tel://+\(URLs.phoneNumber.onlyDigits)")
     })
     alertController.addAction(cancelAction)
     alertController.addAction(callAction)

@@ -60,7 +60,7 @@ class OrderInfoViewModel: OrderInfoViewModelType {
   
   // Data
   let order: Variable<Order>
-  let phoneNumber = "+74957667849"
+  let phoneNumber = "+7 495 766-78-49"
   
   init(order: Order) {
     let presentErrorAlert = PublishSubject<Error>()

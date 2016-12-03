@@ -11,6 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import WebKit
+import SafariServices
 
 class ProfileViewController: UITableViewController {
   @IBOutlet weak var ordersCountLabel: UILabel!
@@ -47,9 +48,13 @@ class ProfileViewController: UITableViewController {
       self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
     
-    viewModel.presentTermsOfServiceSection.drive(onNext: { [weak self] url in
-      let viewController = TermsOfServiceViewController()
-      self?.navigationController?.pushViewController(viewController, animated: true)
+    viewModel.presentTermsOfServiceSection.drive(onNext: { [weak self] _ in
+      guard let url = self?.viewModel.termsOfServiceURL else { return }
+      let viewController = SFSafariViewController(url: url)
+      viewController.delegate = self
+      self?.present(viewController, animated: true, completion: {
+        UIApplication.shared.statusBarStyle = .default
+      })
     }).addDisposableTo(disposeBag)
     
     viewModel.ordersCount.asObservable().bindTo(ordersCountLabel.rx.text).addDisposableTo(disposeBag)
@@ -65,4 +70,10 @@ class ProfileViewController: UITableViewController {
     }
   }
 
+}
+
+extension ProfileViewController: SFSafariViewControllerDelegate {
+  func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+    UIApplication.shared.statusBarStyle = .lightContent
+  }
 }
