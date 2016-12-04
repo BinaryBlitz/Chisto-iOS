@@ -44,7 +44,6 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="ZP0-8R-d5Z" firstAttribute="top" secondItem="P4R-cS-Sbo" secondAttribute="top" id="Hfl-rT-CWj"/>
                                             <constraint firstAttribute="width" constant="50" id="KkE-Xn-OLc"/>
