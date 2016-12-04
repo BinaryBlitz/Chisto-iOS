@@ -15,6 +15,7 @@ import RxCocoa
 
 class ServerObject: Object, Mappable {
   dynamic var id: Int
+  dynamic var isDeleted: Bool = false
 
   required init(map: Map) {
     id = UUID().hashValue

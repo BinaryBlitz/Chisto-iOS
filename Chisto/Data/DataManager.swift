@@ -38,7 +38,7 @@ enum DataError: Error, CustomStringConvertible {
   }
 }
 
-protocol DataManagerServiceType {
+protocol FetchItemsManagerType {
   func fetchCities() -> Observable<Void>
   func fetchCategories() -> Observable<Void>
   func fetchLaundries() -> Observable<Void>
@@ -46,10 +46,20 @@ protocol DataManagerServiceType {
   func fetchCategoryClothes(category: Category) -> Observable<Void>
 }
 
+protocol TokenManagerType {
+  func createVerificationToken(phone: String) -> Observable<Void>
+  func verifyToken(code: String) -> Observable<Void>
+}
+
+protocol UserManagerType {
+  func updateUser() -> Observable<Void>
+  func showUser() -> Observable<Void>
+  func createUser() -> Observable<Void>
+}
+
 class DataManager {
 
   static let instance = DataManager()
-  let disposeBag = DisposeBag()
   private var verificationToken: String? = nil
   private let networkManager = NetworkManager()
   
@@ -78,10 +88,10 @@ class DataManager {
   }
 
   func fetchItems<ItemType>(type: ItemType.Type, apiPath: APIPath,
-                  _ modifier: @escaping (ItemType) -> Void = {_ in }) -> Observable<Void> where ItemType: ServerObject {
+                  _ modifier: @escaping (ItemType) -> Void = {_ in }) -> Observable<[ItemType]> where ItemType: ServerObject {
     
     return getItems(type: type, apiPath: apiPath)
-      .flatMap { items -> Observable<Void> in
+      .flatMap { items -> Observable<[ItemType]> in
 
         let realm = try! Realm()
 
@@ -92,41 +102,12 @@ class DataManager {
           }
         }
                 
-        return Observable.empty()
+        return Observable.just(items)
       }
   }
+}
 
-  func createVerificationToken(phone: String) -> Observable<Void> {
-    return networkRequest(method: .post, .createVerificationToken, ["phone_number": phone])
-      .flatMap { response -> Observable<Void> in
-        let json = JSON(object: response)
-        let verificationToken = json["token"].string
-        ProfileManager.instance.updateProfile { profile in
-          profile.verificationToken = verificationToken
-          profile.phone = json["phone_number"].stringValue
-        }
-        return Observable.just()
-      }
-  }
-
-  func verifyToken(code: String) -> Observable<Void> {
-    guard let verificationToken = ProfileManager.instance.userProfile.value.verificationToken else { return Observable.error(DataError.unknown) }
-
-    return networkRequest(
-        method: .patch,
-        .verifyToken,
-        ["code": code,
-         "token": verificationToken]
-      )
-      .flatMap { response -> Observable<Void> in
-        let json = JSON(object: response)
-        ProfileManager.instance.updateProfile { profile in
-          profile.apiToken = json["api_token"].string
-        }
-        return Observable.just()
-      }
-  }
-  
+extension DataManager: UserManagerType {
   func createUser() -> Observable<Void> {
     let profile = ProfileManager.instance.userProfile.value
     let realm = try! Realm()
@@ -166,29 +147,65 @@ class DataManager {
     }
     return networkRequest(method: .patch, .updateUser, jsonProfile).map { _ in }
   }
-  
-  init() {
-    
-    ProfileManager.instance.userProfile.asObservable()
-      .filter { $0.city != nil }
-      .map { $0.city! }
-      .distinctUntilChanged()
-      .subscribe(onNext: { [weak self] _ in
-        guard let disposeBag = self?.disposeBag else { return }
-        self?.fetchLaundries().subscribe().addDisposableTo(disposeBag)
-      }).addDisposableTo(disposeBag)
-  }
-
 }
 
-extension DataManager: DataManagerServiceType {
+extension DataManager: TokenManagerType {
+  func createVerificationToken(phone: String) -> Observable<Void> {
+    return networkRequest(method: .post, .createVerificationToken, ["phone_number": phone])
+      .flatMap { response -> Observable<Void> in
+        let json = JSON(object: response)
+        let verificationToken = json["token"].string
+        ProfileManager.instance.updateProfile { profile in
+          profile.verificationToken = verificationToken
+          profile.phone = json["phone_number"].stringValue
+        }
+        return Observable.just()
+    }
+  }
+  
+  func verifyToken(code: String) -> Observable<Void> {
+    guard let verificationToken = ProfileManager.instance.userProfile.value.verificationToken else { return Observable.error(DataError.unknown) }
+    
+    return networkRequest(
+      method: .patch,
+      .verifyToken,
+      ["code": code,
+       "token": verificationToken]
+      )
+      .flatMap { response -> Observable<Void> in
+        let json = JSON(object: response)
+        ProfileManager.instance.updateProfile { profile in
+          profile.apiToken = json["api_token"].string
+        }
+        return Observable.just()
+    }
+  }
+}
+
+extension DataManager: FetchItemsManagerType {
 
   func fetchCities() -> Observable<Void> {
-    return fetchItems(type: City.self, apiPath: .fetchCities)
+    return fetchItems(type: City.self, apiPath: .fetchCities).map { newCities in
+      let realm = try! Realm()
+      let cities = Set(realm.objects(City.self).toArray())
+      for city in cities.subtracting(Set(newCities)) {
+        try realm.write {
+          city.isDeleted = true
+        }
+      }
+    }
   }
 
   func fetchCategories() -> Observable<Void> {
-    return fetchItems(type: Category.self, apiPath: .fetchCategories)
+    return fetchItems(type: Category.self, apiPath: .fetchCategories).map { newCategories in
+      let realm = try! Realm()
+      let categories = Set(realm.objects(Category.self).toArray())
+      for category in categories.subtracting(Set(newCategories)) {
+        try realm.write {
+          category.isDeleted = true
+        }
+      }
+    }
   }
 
   func fetchCategoryClothes(category: Category) -> Observable<Void> {
@@ -196,18 +213,48 @@ extension DataManager: DataManagerServiceType {
         type: Item.self, apiPath: .fetchCategoryClothes(categoryId: category.id)
       ) { item in
         item.category = category
-      }
+      }.map { newItems in
+        let realm = try! Realm()
+        let clothes = Set(realm.objects(Item.self)
+          .filter { $0.category == category })
+        
+        for item in clothes.subtracting(Set(newItems)) {
+          try realm.write {
+            item.isDeleted = true
+          }
+        }
+    }
   }
 
   func fetchClothesTreatments(item: Item) -> Observable<Void> {
     return fetchItems(type: Treatment.self, apiPath: .fetchClothesTreatments(itemId: item.id)) { treatment in
       treatment.item = item
+    }.map { newTreatments in
+      let realm = try! Realm()
+      let treatments = Set(realm.objects(Treatment.self)
+        .filter { $0.item == item })
+      
+      for treatment in treatments.subtracting(Set(newTreatments)) {
+        try realm.write {
+          treatment.isDeleted = true
+        }
+      }
     }
   }
 
   func fetchLaundries() -> Observable<Void> {
-    guard let cityId = ProfileManager.instance.userProfile.value.city?.id else { return Observable.error(DataError.unknown) }
-    return fetchItems(type: Laundry.self, apiPath: .fetchCityLaundries(cityId: cityId))
+    guard let city = ProfileManager.instance.userProfile.value.city else { return Observable.error(DataError.unknown) }
+    return fetchItems(type: Laundry.self, apiPath: .fetchCityLaundries(cityId: city.id)) { laundry in
+        laundry.city = city
+      }.map { newLaundries in
+      let realm = try! Realm()
+      let laundries = Set(realm.objects(Laundry.self).filter { $0.city == city } )
+      for laundry in laundries.subtracting(Set(newLaundries)) {
+        try realm.write {
+          laundry.isDeleted = true
+        }
+      }
+    }
   }
   
   func fetchRatings(laundry: Laundry) -> Observable<[Rating]> {
@@ -215,7 +262,16 @@ extension DataManager: DataManagerServiceType {
   }
   
   func fetchOrders() -> Observable<Void> {
-    return fetchItems(type: Order.self, apiPath: .fetchOrders)
+    return fetchItems(type: Order.self, apiPath: .fetchOrders).map { newOrders in
+      let realm = try! Realm()
+      let orders = Set(realm.objects(Order.self).toArray())
+      for order in orders.subtracting(Set(newOrders)) {
+        try realm.write {
+          order.isDeleted = true
+        }
+      }
+      
+    }
   }
 
   func createOrder(order: RequestOrder, laundry: Laundry) -> Observable<Order> {

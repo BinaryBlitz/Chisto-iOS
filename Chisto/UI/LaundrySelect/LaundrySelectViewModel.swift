@@ -61,11 +61,6 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     
     let laundries = Variable<[Laundry]>([])
     
-    Observable.from(uiRealm.objects(Laundry.self))
-      .map { Array($0) }
-      .bindTo(laundries)
-      .addDisposableTo(disposeBag)
-
     let sortType = Variable<LaundrySortType>(LaundrySortType.byRating)
     self.sortType = sortType
 
@@ -95,6 +90,12 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     Observable.combineLatest(filteredLaundriesObservable.asObservable(), sortType.asObservable()) { laundries, sortType -> [Laundry] in
       return self.sortLaundries(laundries: laundries, sortType: sortType)
     }.bindTo(sortedLaundries).addDisposableTo(disposeBag)
+    
+    guard let profileCity = ProfileManager.instance.userProfile.value.city else { return }
+    Observable.from(uiRealm.objects(Laundry.self).filter("isDeleted == %@ AND city == %@", false, profileCity))
+      .map { Array($0) }
+      .bindTo(laundries)
+      .addDisposableTo(disposeBag)
   }
   
   func filterLaundries(laundries: [Laundry], currentOrderItems: [OrderItem]) -> [Laundry] {

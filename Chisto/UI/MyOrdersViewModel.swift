@@ -34,11 +34,14 @@ class MyOrdersViewModel: MyOrdersViewModelType {
   let presentOrderInfoSection: Driver<OrderInfoViewModel>
   
   init() {
-    let realmOrders = uiRealm.objects(Order.self).sorted(byProperty: "updatedAt", ascending: true)
+    let realmOrders = uiRealm.objects(Order.self)
+      .filter("isDeleted == %@", false)
+      .sorted(byProperty: "updatedAt", ascending: true)
+    
     let orders = Variable<[Order]>(realmOrders.toArray())
     self.orders = orders
     
-    Observable.from(uiRealm.objects(Order.self))
+    Observable.from(realmOrders)
       .map { Array($0) }
       .bindTo(orders)
       .addDisposableTo(disposeBag)

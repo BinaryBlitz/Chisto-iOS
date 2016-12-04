@@ -21,6 +21,7 @@ enum LaundryType {
 // TODO: remove test data and change properties
 class Laundry: ServerObject {
   let dateFormat = "yyyy-MM-dd"
+  dynamic var city: City? = nil
   dynamic var name: String = ""
   dynamic var descriptionText: String = ""
   dynamic var collectionDate: Date = Date()

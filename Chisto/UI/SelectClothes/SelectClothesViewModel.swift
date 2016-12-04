@@ -54,7 +54,7 @@ class SelectClothesViewModel: SelectClothesViewModelType {
 
     let items = Variable<[Item]>([])
 
-    Observable.from(category.clothes)
+    Observable.from(category.clothes.filter("isDeleted == %@", false))
       .map { Array($0) }
       .bindTo(items)
       .addDisposableTo(disposeBag)
