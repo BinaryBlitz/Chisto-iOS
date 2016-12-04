@@ -168,6 +168,9 @@
 		88E86DB31DB916B3002A7024 /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB21DB916B3002A7024 /* OrderManager.swift */; };
 		88E86DB51DB91BAE002A7024 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB41DB91BAE002A7024 /* OrderTableViewCell.swift */; };
 		88E86DB71DB91BBA002A7024 /* OrderTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB61DB91BBA002A7024 /* OrderTableViewCellModel.swift */; };
+		88F674B81DF3F2140001AC16 /* ItemSizeAlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88F674B71DF3F2140001AC16 /* ItemSizeAlertViewController.storyboard */; };
+		88F674BA1DF475460001AC16 /* ItemSizeAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F674B91DF475460001AC16 /* ItemSizeAlertViewController.swift */; };
+		88F674BC1DF477E50001AC16 /* ItemSizeAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F674BB1DF477E50001AC16 /* ItemSizeAlertViewModel.swift */; };
 		88FA1DF61DD23F3A00431822 /* ContactFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA1DF51DD23F3A00431822 /* ContactFormViewModel.swift */; };
 		88FA1DFA1DD2944400431822 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA1DF91DD2944400431822 /* Profile.swift */; };
 		88FE7AFC1DE0AC4A00A16289 /* MyOrdersViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88FE7AFB1DE0AC4A00A16289 /* MyOrdersViewController.storyboard */; };
@@ -349,6 +352,9 @@
 		88E86DB21DB916B3002A7024 /* OrderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderManager.swift; sourceTree = "<group>"; };
 		88E86DB41DB91BAE002A7024 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		88E86DB61DB91BBA002A7024 /* OrderTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewCellModel.swift; sourceTree = "<group>"; };
+		88F674B71DF3F2140001AC16 /* ItemSizeAlertViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ItemSizeAlertViewController.storyboard; sourceTree = "<group>"; };
+		88F674B91DF475460001AC16 /* ItemSizeAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSizeAlertViewController.swift; sourceTree = "<group>"; };
+		88F674BB1DF477E50001AC16 /* ItemSizeAlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSizeAlertViewModel.swift; sourceTree = "<group>"; };
 		88FA1DF51DD23F3A00431822 /* ContactFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFormViewModel.swift; sourceTree = "<group>"; };
 		88FA1DF91DD2944400431822 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		88FE7AFB1DE0AC4A00A16289 /* MyOrdersViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyOrdersViewController.storyboard; sourceTree = "<group>"; };
@@ -464,6 +470,7 @@
 		88073EEC1DAC19E1000696A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				88F674B61DF3F1FA0001AC16 /* ItemSizeAlert */,
 				880E03E21DE8F80400311721 /* Payment */,
 				88E6B59A1DCB7EE70024FA1A /* Registration */,
 				88FE7B0C1DE0DFE800A16289 /* OrderInfo */,
@@ -959,6 +966,16 @@
 			path = OrderManager;
 			sourceTree = "<group>";
 		};
+		88F674B61DF3F1FA0001AC16 /* ItemSizeAlert */ = {
+			isa = PBXGroup;
+			children = (
+				88F674B71DF3F2140001AC16 /* ItemSizeAlertViewController.storyboard */,
+				88F674B91DF475460001AC16 /* ItemSizeAlertViewController.swift */,
+				88F674BB1DF477E50001AC16 /* ItemSizeAlertViewModel.swift */,
+			);
+			name = ItemSizeAlert;
+			sourceTree = "<group>";
+		};
 		88FE7AFA1DE0AC3700A16289 /* MyOrders */ = {
 			isa = PBXGroup;
 			children = (
@@ -1093,6 +1110,7 @@
 				885409C01DB2C76500219C00 /* OrderViewController.storyboard in Resources */,
 				88E86DA61DB8E800002A7024 /* ServiceSelectViewController.storyboard in Resources */,
 				882ECDCB1DE7CB4B00EE3507 /* EmptyTableBackgroundView.xib in Resources */,
+				88F674B81DF3F2140001AC16 /* ItemSizeAlertViewController.storyboard in Resources */,
 				8872F0B81DD8932C00E8D9EE /* OrderPlacedPopupViewController.storyboard in Resources */,
 				88D8ABBF1DB56EB8009D515B /* SelectClothesViewController.storyboard in Resources */,
 				880E03EC1DE8F81A00311721 /* PaymentViewController.storyboard in Resources */,
@@ -1200,6 +1218,7 @@
 				88004FBF1DDF77DF00A8632A /* LaundryReviewsViewModel.swift in Sources */,
 				8814C05A1DAFC96D005B4967 /* CategoriesViewController.swift in Sources */,
 				889A841B1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift in Sources */,
+				88F674BC1DF477E50001AC16 /* ItemSizeAlertViewModel.swift in Sources */,
 				88072D551DB9697700B47D23 /* ItemInfoTableViewCellModel.swift in Sources */,
 				88CD683E1DD208E2004B7726 /* OrderRegistrationViewController.swift in Sources */,
 				88073EFC1DAC4661000696A3 /* CitySelectViewController.swift in Sources */,
@@ -1257,6 +1276,7 @@
 				88FE7B141DE20FC200A16289 /* OrderInfoViewController.swift in Sources */,
 				88A221681DCE013100CAD2B0 /* LaundryTreatment.swift in Sources */,
 				88DB93791DCBD11100DAC651 /* MaskedInput.swift in Sources */,
+				88F674BA1DF475460001AC16 /* ItemSizeAlertViewController.swift in Sources */,
 				8869D1231DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift in Sources */,
 				88E86DB51DB91BAE002A7024 /* OrderTableViewCell.swift in Sources */,
 				882ECDB31DE2211700EE3507 /* OrderInfoViewModel.swift in Sources */,
