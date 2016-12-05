@@ -18,8 +18,10 @@ class ItemSizeAlertViewModel {
   let areaText: Variable<String?>
   let continueButtonIsEnabled = Variable<Bool>(false)
   let continueButtonDidTap = PublishSubject<Void>()
+  let cancelButtonDidTap = PublishSubject<Void>()
   let dismissViewController: Driver<Void>
   let maxNumberLength = 10
+  let squareCentimetersInMeter: Float = 10000
   
   init() {
     let lengthText = Variable<String?>("")
@@ -32,14 +34,17 @@ class ItemSizeAlertViewModel {
       guard let areaText = areaText else { return false }
       return !areaText.characters.isEmpty
     }.bindTo(continueButtonIsEnabled).addDisposableTo(disposeBag)
-  
-    self.dismissViewController = continueButtonDidTap.asDriver(onErrorDriveWith: .empty())
+
+    let cancelButtonDriver = cancelButtonDidTap.asDriver(onErrorDriveWith: .empty())
+    let continueButtonDriver = continueButtonDidTap.asDriver(onErrorDriveWith: .empty())
+
+    self.dismissViewController = Driver.of(cancelButtonDriver, continueButtonDriver).merge()
     
-    Observable.combineLatest(lengthText.asObservable(), widthText.asObservable()) { lengthText, widthText -> String? in
-      guard let lengthText = lengthText, let widthText = widthText else { return nil }
-      guard let length = Float(lengthText.onlyDigits), let width = Float(widthText.onlyDigits) else { return "0 см" }
-      let area = Int(0.5 * length * width)
-      return "\(area) см"
+    Observable.combineLatest(lengthText.asObservable(), widthText.asObservable()) { [weak self] lengthText, widthText -> String? in
+      guard let lengthText = lengthText, let widthText = widthText, let squareCentimetersInMeter = self?.squareCentimetersInMeter else { return nil }
+      guard let length = Float(lengthText.onlyDigits), let width = Float(widthText.onlyDigits) else { return "0 м²" }
+      let area = Float(length * width / squareCentimetersInMeter)
+      return "\(area) м²"
     }.bindTo(areaText).addDisposableTo(disposeBag)
   }
 }
