@@ -18,6 +18,7 @@ class Category: ServerObject {
   dynamic var colorString: String = ""
   dynamic var icon: String = ""
   dynamic var descriptionText: String = ""
+  dynamic var featured: Bool = false
   
   var color: UIColor {
     return UIColor(colorString)
@@ -32,6 +33,7 @@ class Category: ServerObject {
     colorString <- map["color"]
     descriptionText <- map["description"]
     icon <- map["icon_url"]
+    featured <- map["featured"]
   }
 
 }

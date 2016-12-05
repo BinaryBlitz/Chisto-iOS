@@ -53,9 +53,10 @@ class CategoriesViewModel: CategoriesViewModelType {
     
     let categories = Variable<[Category]>([])
     
-    Observable.from(uiRealm.objects(Category.self).filter("isDeleted == %@", false))
-      .map { Array($0) }
-      .bindTo(categories)
+    Observable.from(uiRealm.objects(Category.self).filter("isDeleted == %@", false)
+      .sorted(byProperty: "name", ascending: true)
+      .sorted(byProperty: "featured", ascending: false))
+      .map { Array($0) }.bindTo(categories)
       .addDisposableTo(disposeBag)
 
     self.categories = categories

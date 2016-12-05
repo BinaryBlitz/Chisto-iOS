@@ -84,7 +84,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
 
     let treatments = Variable<[Treatment]>([])
 
-    Observable.from(item.treatments.filter("isDeleted == %@", false))
+    Observable.from(item.treatments.filter("isDeleted == %@", false).sorted(byProperty: "name"))
       .map { Array($0) }
       .bindTo(treatments)
       .addDisposableTo(disposeBag)
