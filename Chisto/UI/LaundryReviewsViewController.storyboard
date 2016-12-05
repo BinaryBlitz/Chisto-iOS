@@ -165,6 +165,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="3lh-Ae-PHh"/>
                                     <constraint firstAttribute="bottom" secondItem="9yu-uq-pcp" secondAttribute="bottom" id="Hwd-HN-xvu"/>
