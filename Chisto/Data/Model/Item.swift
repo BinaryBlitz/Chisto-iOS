@@ -16,6 +16,7 @@ class Item: ServerObject {
   dynamic var name: String = ""
   dynamic var icon: String = ""
   dynamic var descriptionText: String = ""
+  dynamic var hasDecoration: Bool = true
   dynamic var category: Category? = nil
 
   let treatments = LinkingObjects(fromType: Treatment.self, property: "item")

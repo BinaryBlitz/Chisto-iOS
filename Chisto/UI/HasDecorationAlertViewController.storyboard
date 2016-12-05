@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VRo-W0-g0L">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Has Decoration Alert View Controller-->
+        <scene sceneID="iMK-26-sEp">
+            <objects>
+                <viewController id="VRo-W0-g0L" customClass="HasDecorationAlertViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rdc-xo-zol"/>
+                        <viewControllerLayoutGuide type="bottom" id="rhr-g4-fyU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UhV-DX-iIX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKv-9t-3OQ">
+                                <rect key="frame" x="36" y="191.5" width="303" height="285.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Есть ли у вещи декоративная отделка?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAR-iF-gCu">
+                                        <rect key="frame" x="0.0" y="30" width="303" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qtd-Ir-Ajh">
+                                        <rect key="frame" x="10" y="98" width="283" height="107.5"/>
+                                        <string key="text">К декоративной отделке относятся стразы, бисер, пайетки, сложные кружевные композиции и прочие украшения одежды, нуждающиеся в особом уходе и внимании со стороны химчистки.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVR-Qv-18s">
+                                        <rect key="frame" x="0.0" y="235.5" width="303" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DoY-0v-EYM" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="151" height="50"/>
+                                                <state key="normal" title="Да">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTC-Yh-ULJ" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
+                                                <rect key="frame" x="152" y="0.0" width="151" height="50"/>
+                                                <state key="normal" title="Нет">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                                        <color key="value" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bti-Dd-Tn7">
+                                                <rect key="frame" x="151" y="10" width="1" height="30"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49515086209999998" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="1" id="pwW-9X-Jww"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="FTC-Yh-ULJ" secondAttribute="trailing" id="9Xk-5Q-893"/>
+                                            <constraint firstAttribute="bottom" secondItem="FTC-Yh-ULJ" secondAttribute="bottom" id="Fbo-c6-om8"/>
+                                            <constraint firstAttribute="bottom" secondItem="bti-Dd-Tn7" secondAttribute="bottom" constant="10" id="Fsi-Ui-Ha2"/>
+                                            <constraint firstItem="FTC-Yh-ULJ" firstAttribute="leading" secondItem="bti-Dd-Tn7" secondAttribute="trailing" id="N42-jW-pyz"/>
+                                            <constraint firstAttribute="height" constant="50" id="c1G-Rg-z68"/>
+                                            <constraint firstItem="FTC-Yh-ULJ" firstAttribute="top" secondItem="uVR-Qv-18s" secondAttribute="top" id="efZ-Hs-mjG"/>
+                                            <constraint firstItem="bti-Dd-Tn7" firstAttribute="centerX" secondItem="uVR-Qv-18s" secondAttribute="centerX" id="j4K-Qe-p0D"/>
+                                            <constraint firstItem="bti-Dd-Tn7" firstAttribute="top" secondItem="uVR-Qv-18s" secondAttribute="top" constant="10" id="kJH-BY-PmN"/>
+                                            <constraint firstItem="DoY-0v-EYM" firstAttribute="leading" secondItem="uVR-Qv-18s" secondAttribute="leading" id="kK8-W4-M7V"/>
+                                            <constraint firstAttribute="bottom" secondItem="DoY-0v-EYM" secondAttribute="bottom" id="nXd-cP-Csl"/>
+                                            <constraint firstItem="DoY-0v-EYM" firstAttribute="top" secondItem="uVR-Qv-18s" secondAttribute="top" id="rr1-lf-foh"/>
+                                            <constraint firstItem="bti-Dd-Tn7" firstAttribute="leading" secondItem="DoY-0v-EYM" secondAttribute="trailing" id="tdd-Ng-lxv"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="KAR-iF-gCu" firstAttribute="leading" secondItem="UKv-9t-3OQ" secondAttribute="leading" id="G9Y-ev-uf7"/>
+                                    <constraint firstItem="uVR-Qv-18s" firstAttribute="leading" secondItem="UKv-9t-3OQ" secondAttribute="leading" id="KBR-zg-4aR"/>
+                                    <constraint firstAttribute="trailing" secondItem="KAR-iF-gCu" secondAttribute="trailing" id="L3Y-cW-BgV"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qtd-Ir-Ajh" secondAttribute="trailing" constant="10" id="TYA-jm-g5U"/>
+                                    <constraint firstItem="uVR-Qv-18s" firstAttribute="top" secondItem="Qtd-Ir-Ajh" secondAttribute="bottom" constant="30" id="fyM-i9-eE0"/>
+                                    <constraint firstItem="KAR-iF-gCu" firstAttribute="top" secondItem="UKv-9t-3OQ" secondAttribute="top" constant="30" id="gm5-Oa-ivx"/>
+                                    <constraint firstItem="Qtd-Ir-Ajh" firstAttribute="leading" secondItem="UKv-9t-3OQ" secondAttribute="leading" constant="10" id="ltQ-i8-6wP"/>
+                                    <constraint firstAttribute="bottom" secondItem="uVR-Qv-18s" secondAttribute="bottom" id="oVw-iA-eIV"/>
+                                    <constraint firstItem="Qtd-Ir-Ajh" firstAttribute="top" secondItem="KAR-iF-gCu" secondAttribute="bottom" constant="20" id="t3t-Pn-QI0"/>
+                                    <constraint firstAttribute="trailing" secondItem="uVR-Qv-18s" secondAttribute="trailing" id="zPP-9x-CKA"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="UKv-9t-3OQ" firstAttribute="centerY" secondItem="UhV-DX-iIX" secondAttribute="centerY" id="3b8-Bp-edc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UKv-9t-3OQ" secondAttribute="trailing" constant="20" id="Q1m-f4-Uzw"/>
+                            <constraint firstItem="UKv-9t-3OQ" firstAttribute="leading" secondItem="UhV-DX-iIX" secondAttribute="leadingMargin" constant="20" id="k3r-Wy-HdG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="noButton" destination="FTC-Yh-ULJ" id="5sd-nT-hqI"/>
+                        <outlet property="yesButton" destination="DoY-0v-EYM" id="pyw-dB-p7s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kvu-7m-Zir" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="50" y="213"/>
+        </scene>
+    </scenes>
+</document>
