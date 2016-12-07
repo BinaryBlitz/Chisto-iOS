@@ -26,27 +26,32 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
   @IBOutlet weak var laundryDescriptionLabel: UILabel!
   @IBOutlet weak var laundryIconView: UIImageView!
   @IBOutlet weak var laundryRatingView: FloatRatingView!
-  @IBOutlet weak var courierDateLabel: UILabel!
+  @IBOutlet weak var collectionDateLabel: UILabel!
   @IBOutlet weak var laundryReviewsCountLabel: UILabel!
   @IBOutlet weak var deliveryDateLabel: UILabel!
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var orderPriceLabel: UILabel!
   @IBOutlet weak var deliveryPriceLabel: UILabel!
   @IBOutlet weak var confirmButton: GoButton!
+  @IBOutlet weak var collectionHoursLabel: UILabel!
+  @IBOutlet weak var deliveryHoursLabel: UILabel!
 
   override func viewDidLoad() {
     navigationItem.title = viewModel?.navigationBarTitle
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     laundryDescriptionLabel.text = viewModel?.laundryDescriprionTitle
-    
     laundryIconView.kf.setImage(with: viewModel?.laundryIcon)
+    collectionHoursLabel.text = viewModel?.hoursTitle
+    deliveryHoursLabel.text = viewModel?.hoursTitle
+
+    confirmButton.setTitle(viewModel?.confirmOrderButtonTitle, for: .normal)
     
     laundryRatingView.rating = viewModel?.laundryRating ?? 0
     laundryReviewsCountLabel.text = viewModel?.ratingsCountText
-    courierDateLabel.text = viewModel?.courierDate
+    collectionDateLabel.text = viewModel?.collectionDate
     orderPriceLabel.text = viewModel?.orderPrice
     deliveryDateLabel.text = viewModel?.deliveryDate
-    deliveryPriceLabel.text = viewModel?.courierPrice
+    deliveryPriceLabel.text = viewModel?.collectionPrice
     
     let backgroundProcessor = OverlayImageProcessor(overlay: .black, fraction: 0.7)
     backgroundImageView.kf.setImage(with: viewModel?.laundryBackground, options: [.processor(backgroundProcessor)])

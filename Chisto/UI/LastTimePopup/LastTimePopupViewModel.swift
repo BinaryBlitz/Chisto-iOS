@@ -44,8 +44,8 @@ class LastTimePopupViewModel: LastTimePopupViewModelType {
     self.laundryLogoUrl = URL(string: laundry.logoUrl)
     self.laundryBackgroundUrl = URL(string: laundry.backgroundImageUrl)
 
-    let courierDateString = laundry.collectionDate.shortDate
-    let courierItemViewModel = LaundryItemInfoViewModel(type: .courier, titleText: courierDateString, subTitleText: laundry.courierPriceString)
+    let collectionDateString = laundry.collectionDate.shortDate
+    let collectionItemViewModel = LaundryItemInfoViewModel(type: .collection, titleText: collectionDateString, subTitleText: laundry.collectionPriceString)
 
     let deliveryDateString = laundry.deliveryDate.shortDate
     let deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: deliveryDateString, subTitleText: laundry.deliveryTimeInterval)
@@ -53,7 +53,7 @@ class LastTimePopupViewModel: LastTimePopupViewModelType {
     let costString = OrderManager.instance.priceString(laundry: laundry)
     let costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: costString)
 
-    self.laundryDescriptionViewModels = [courierItemViewModel, deliveryItemViewModel, costItemViewModel]
+    self.laundryDescriptionViewModels = [collectionItemViewModel, deliveryItemViewModel, costItemViewModel]
 
     self.dismissViewController = showAllLaundriesButtonDidTap.asDriver(onErrorDriveWith: .empty())
   }
