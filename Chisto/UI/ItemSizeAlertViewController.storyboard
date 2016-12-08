@@ -23,32 +23,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rke-lU-JT2">
-                                <rect key="frame" x="56" y="188" width="263" height="291"/>
+                                <rect key="frame" x="56" y="178.5" width="263" height="310.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwC-V5-iqc" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="241" width="263" height="50"/>
-                                        <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="cPQ-q7-y2n"/>
-                                        </constraints>
-                                        <state key="normal" title="Продолжить">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Укажите размер вещи" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShZ-1G-tJP">
-                                        <rect key="frame" x="0.0" y="30" width="263" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Укажите размер сторон вещи в сантиметрах" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShZ-1G-tJP">
+                                        <rect key="frame" x="0.0" y="30" width="263" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9ti-Zq-0j4">
-                                        <rect key="frame" x="15" y="81" width="233" height="50"/>
+                                        <rect key="frame" x="15" y="101" width="233" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Длина" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g8i-CC-urW" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                 <rect key="frame" x="0.0" y="0.0" width="109" height="50"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                                         <color key="value" red="0.75686275960000005" green="0.78039217000000005" blue="0.80392158030000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -68,7 +58,7 @@
                                                 <rect key="frame" x="124" y="0.0" width="109" height="50"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                                         <color key="value" red="0.75686275960000005" green="0.78039217000000005" blue="0.80392158030000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -90,7 +80,7 @@
                                         </constraints>
                                     </stackView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0 см" placeholder="Площадь" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3vg-3X-Sgx" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="99" y="161" width="65.5" height="50"/>
+                                        <rect key="frame" x="99" y="180.5" width="65.5" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="pYM-jM-1V1"/>
                                         </constraints>
@@ -106,21 +96,67 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Esk-WO-6Ln">
+                                        <rect key="frame" x="0.0" y="260.5" width="263" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mng-kQ-HBE" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="131" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="Продолжить">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18S-8o-7tg" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
+                                                <rect key="frame" x="132" y="0.0" width="131" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="Отмена">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                                        <color key="value" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uTC-sb-lfm">
+                                                <rect key="frame" x="131" y="10" width="1" height="30"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49515086209999998" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="1" id="ePA-lM-EXa"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="18S-8o-7tg" secondAttribute="bottom" id="0Z6-9W-Gvw"/>
+                                            <constraint firstItem="uTC-sb-lfm" firstAttribute="leading" secondItem="mng-kQ-HBE" secondAttribute="trailing" id="2dT-ac-vAv"/>
+                                            <constraint firstItem="18S-8o-7tg" firstAttribute="leading" secondItem="uTC-sb-lfm" secondAttribute="trailing" id="5Nv-ul-OO7"/>
+                                            <constraint firstItem="uTC-sb-lfm" firstAttribute="top" secondItem="Esk-WO-6Ln" secondAttribute="top" constant="10" id="AVF-qH-DvG"/>
+                                            <constraint firstAttribute="height" constant="50" id="HQn-Qb-L5h"/>
+                                            <constraint firstAttribute="bottom" secondItem="mng-kQ-HBE" secondAttribute="bottom" id="TpN-Gg-StD"/>
+                                            <constraint firstItem="18S-8o-7tg" firstAttribute="top" secondItem="Esk-WO-6Ln" secondAttribute="top" id="TsR-QA-Jwm"/>
+                                            <constraint firstAttribute="trailing" secondItem="18S-8o-7tg" secondAttribute="trailing" id="VmD-ko-l4p"/>
+                                            <constraint firstAttribute="bottom" secondItem="uTC-sb-lfm" secondAttribute="bottom" constant="10" id="Yd4-ft-Fkg"/>
+                                            <constraint firstItem="uTC-sb-lfm" firstAttribute="centerX" secondItem="Esk-WO-6Ln" secondAttribute="centerX" id="nEx-TA-XLc"/>
+                                            <constraint firstItem="mng-kQ-HBE" firstAttribute="leading" secondItem="Esk-WO-6Ln" secondAttribute="leading" id="qvg-ef-f85"/>
+                                            <constraint firstItem="mng-kQ-HBE" firstAttribute="top" secondItem="Esk-WO-6Ln" secondAttribute="top" id="x75-Gk-75r"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="9ti-Zq-0j4" firstAttribute="top" secondItem="ShZ-1G-tJP" secondAttribute="bottom" constant="30" id="63t-oT-i64"/>
-                                    <constraint firstItem="rwC-V5-iqc" firstAttribute="leading" secondItem="rke-lU-JT2" secondAttribute="leading" id="8GR-Zf-Rb8"/>
+                                    <constraint firstItem="Esk-WO-6Ln" firstAttribute="top" secondItem="3vg-3X-Sgx" secondAttribute="bottom" constant="30" id="8Tp-vu-7hs"/>
+                                    <constraint firstItem="Esk-WO-6Ln" firstAttribute="leading" secondItem="rke-lU-JT2" secondAttribute="leading" id="Aie-eX-nnm"/>
                                     <constraint firstItem="ShZ-1G-tJP" firstAttribute="leading" secondItem="rke-lU-JT2" secondAttribute="leading" id="DN0-Tj-Tv7"/>
                                     <constraint firstItem="3vg-3X-Sgx" firstAttribute="centerX" secondItem="rke-lU-JT2" secondAttribute="centerX" id="IuF-w5-cPM"/>
                                     <constraint firstItem="3vg-3X-Sgx" firstAttribute="top" secondItem="9ti-Zq-0j4" secondAttribute="bottom" constant="30" id="Iv8-fx-G1w"/>
-                                    <constraint firstItem="rwC-V5-iqc" firstAttribute="top" secondItem="3vg-3X-Sgx" secondAttribute="bottom" constant="30" id="MnD-X7-dkb"/>
                                     <constraint firstItem="9ti-Zq-0j4" firstAttribute="leading" secondItem="rke-lU-JT2" secondAttribute="leading" constant="15" id="NTx-dV-6Va"/>
                                     <constraint firstAttribute="trailing" secondItem="ShZ-1G-tJP" secondAttribute="trailing" id="OBk-Hy-Zwa"/>
                                     <constraint firstAttribute="trailing" secondItem="9ti-Zq-0j4" secondAttribute="trailing" constant="15" id="SEi-3t-ErW"/>
+                                    <constraint firstAttribute="bottom" secondItem="Esk-WO-6Ln" secondAttribute="bottom" id="Vlw-Uk-eYp"/>
                                     <constraint firstItem="ShZ-1G-tJP" firstAttribute="top" secondItem="rke-lU-JT2" secondAttribute="top" constant="30" id="eTa-hu-OwK"/>
-                                    <constraint firstAttribute="trailing" secondItem="rwC-V5-iqc" secondAttribute="trailing" id="iu1-HK-db1"/>
-                                    <constraint firstAttribute="bottom" secondItem="rwC-V5-iqc" secondAttribute="bottom" id="oJ7-G4-fUs"/>
+                                    <constraint firstAttribute="trailing" secondItem="Esk-WO-6Ln" secondAttribute="trailing" id="xrR-kv-6aK"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -138,10 +174,11 @@
                     </view>
                     <connections>
                         <outlet property="areaField" destination="3vg-3X-Sgx" id="HD3-dK-bH8"/>
+                        <outlet property="cancelButton" destination="18S-8o-7tg" id="IyB-9A-qS7"/>
                         <outlet property="contentView" destination="rke-lU-JT2" id="34e-aj-ccV"/>
                         <outlet property="lengthField" destination="g8i-CC-urW" id="pDw-X9-6dm"/>
                         <outlet property="widthField" destination="zZu-rE-alr" id="avl-7c-1hX"/>
-                        <outlet property="сontinueButton" destination="rwC-V5-iqc" id="jXe-JQ-kOe"/>
+                        <outlet property="сontinueButton" destination="mng-kQ-HBE" id="OMa-2U-Ie6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewy-Mt-teN" userLabel="First Responder" sceneMemberID="firstResponder"/>

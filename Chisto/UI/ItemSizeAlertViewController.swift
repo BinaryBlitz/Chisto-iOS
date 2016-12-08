@@ -22,6 +22,7 @@ class ItemSizeAlertViewController: UIViewController {
   @IBOutlet weak var areaField: HoshiTextField!
   
   @IBOutlet weak var сontinueButton: GoButton!
+  @IBOutlet weak var cancelButton: GoButton!
   
   // Constants
   let animationDuration = 0.2
@@ -30,7 +31,7 @@ class ItemSizeAlertViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     hideKeyboardWhenTappedAround()
-    
+        
     lengthField.delegate = self
     widthField.delegate = self
     
@@ -39,6 +40,7 @@ class ItemSizeAlertViewController: UIViewController {
     viewModel.areaText.asObservable().bindTo(areaField.rx.text).addDisposableTo(disposeBag)
     
     сontinueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
+    cancelButton.rx.tap.bindTo(viewModel.cancelButtonDidTap).addDisposableTo(disposeBag)
     
     view.backgroundColor = UIColor(white: 0, alpha: 0.5)
     
@@ -67,4 +69,5 @@ extension ItemSizeAlertViewController: UITextFieldDelegate {
     let newLength = text.characters.count + string.characters.count - range.length
     return newLength <= viewModel.maxNumberLength
   }
+  
 }
