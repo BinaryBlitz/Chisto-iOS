@@ -21,7 +21,7 @@ class LaundrySelectTableViewCell: UITableViewCell {
   @IBOutlet weak var laundryTagLabel: RotatingUILabel!
   @IBOutlet weak var logoBackgroundView: UIView!
 
-  var courierItemView = LaundryItemInfoView.nibInstance()!
+  var collectionItemView = LaundryItemInfoView.nibInstance()!
   var deliveryItemView = LaundryItemInfoView.nibInstance()!
   var costItemView = LaundryItemInfoView.nibInstance()!
 
@@ -36,14 +36,14 @@ class LaundrySelectTableViewCell: UITableViewCell {
     laundryTagLabel.backgroundColor = viewModel.tagBgColor
     laundryTagLabel.text = viewModel.tagName
 
-    courierItemView.configure(viewModel: viewModel.courierItemViewModel)
+    collectionItemView.configure(viewModel: viewModel.collectionItemViewModel)
     deliveryItemView.configure(viewModel: viewModel.deliveryItemViewModel)
     costItemView.configure(viewModel: viewModel.costItemViewModel)
   }
 
   override func awakeFromNib() {
     super.awakeFromNib()
-    stackView.addArrangedSubview(courierItemView)
+    stackView.addArrangedSubview(collectionItemView)
     stackView.addArrangedSubview(deliveryItemView)
     stackView.addArrangedSubview(costItemView)
   }

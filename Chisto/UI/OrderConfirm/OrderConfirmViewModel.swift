@@ -25,8 +25,8 @@ protocol OrderConfirmViewModelType {
   var laundryDescriprionTitle: String { get }
   var laundryRating: Float { get }
   var orderPrice: String { get }
-  var courierDate: String { get }
-  var courierPrice: String { get }
+  var collectionDate: String { get }
+  var collectionPrice: String { get }
   var deliveryDate: String { get }
   var laundryIcon: URL? { get }
   var laundryBackground: URL? { get }
@@ -52,15 +52,17 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   var laundryBackground: URL? = nil
   var laundryRating: Float
   var ratingsCountText: String
-  var courierDate: String
-  var courierPrice: String
+  var collectionDate: String
+  var collectionPrice: String
   var orderPrice: String
   var deliveryDate: String
   var sections: Driver<[OrderConfirmSectionModel]>
   var presentRegistrationSection: Driver<RegistrationPhoneInputViewModel>
   var presentOrderContactDataSection: Driver<Void>
   let presentLaundryReviewsSection: Driver<LaundryReviewsViewModel>
-  
+  let confirmOrderButtonTitle: String
+  let hoursTitle: String
+
   let ratingCountLabels = ["отзыв", "отзыва", "отзывов"]
   
   enum NextScreen {
@@ -75,10 +77,13 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
     self.ratingsCountText = "\(laundry.ratingsCount) " + getRussianNumEnding(number: laundry.ratingsCount, endings: ratingCountLabels)
     self.laundryIcon = URL(string: laundry.logoUrl)
     self.laundryBackground = URL(string: laundry.backgroundImageUrl)
-    self.courierDate = laundry.collectionDate.shortDate
-    self.courierPrice = laundry.courierPriceString
+    self.collectionDate = laundry.collectionDate.shortDate
+    self.collectionPrice = laundry.collectionPriceString
     self.deliveryDate = laundry.deliveryDate.shortDate
     self.orderPrice = OrderManager.instance.priceString(laundry: laundry)
+    let price = OrderManager.instance.price(laundry: laundry)
+    self.confirmOrderButtonTitle = "Оформить заказ: \(price + laundry.collectionPrice) ₽"
+    self.hoursTitle = laundry.deliveryTimeInterval
 
     self.sections = OrderManager.instance.currentOrderItems
       .asDriver(onErrorDriveWith: .empty())

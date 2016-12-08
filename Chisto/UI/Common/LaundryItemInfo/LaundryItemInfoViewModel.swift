@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum LaundryItemInfoType {
-  case courier
+  case collection
   case delivery
   case cost
 }
@@ -26,7 +26,7 @@ class LaundryItemInfoViewModel {
     self.type = type
 
     switch type {
-    case .courier:
+    case .collection:
       self.icon = #imageLiteral(resourceName: "iconSmallCourier")
       self.headerText = "Курьер"
     case .delivery:

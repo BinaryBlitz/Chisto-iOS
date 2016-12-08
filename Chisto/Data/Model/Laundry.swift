@@ -31,7 +31,7 @@ class Laundry: ServerObject {
   dynamic var logoUrl: String = ""
   dynamic var deliveryDateOpensAt: String = "00:00"
   dynamic var deliveryDateClosesAt: String = "23:59"
-  dynamic var courierPrice: Int = 0
+  dynamic var collectionPrice: Int = 0
   dynamic var deliveryDate: Date = Date()
   dynamic var ratingsCount: Int = 0
   var laundryTreatments = List<LaundryTreatment>()
@@ -76,8 +76,8 @@ class Laundry: ServerObject {
     }
   }
   
-  var courierPriceString: String {
-    return courierPrice == 0 ? "Бесплатно" : "\(courierPrice) ₽"
+  var collectionPriceString: String {
+    return collectionPrice == 0 ? "Бесплатно" : "\(collectionPrice) ₽"
   }
   
 }

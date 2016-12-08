@@ -42,6 +42,11 @@ class LocationSelectViewModel: LocationSelectViewModelType {
   let adress: Variable<Adress?>
 
   init() {
+
+    LocationManager.instance.locateDevice(requestPermission: false)
+      .filter { $0 != nil }
+      .map { $0! }.bindTo(markerLocation).addDisposableTo(disposeBag)
+
     let streetNumber =  PublishSubject<String>()
     self.streetNumber = streetNumber
 
