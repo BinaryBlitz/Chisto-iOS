@@ -84,7 +84,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
 
     let treatments = Variable<[Treatment]>([])
 
-    Observable.from(item.treatments.filter("isDeleted == %@", false))
+    Observable.from(item.treatments.filter("isDeleted == %@", false).sorted(byProperty: "name"))
       .map { Array($0) }
       .bindTo(treatments)
       .addDisposableTo(disposeBag)
@@ -120,13 +120,19 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
       return saveNeeded ? .order : .orderItem
     }
 
-    readyButtonTapped.asObservable().map {
-      treatments.value.filter { selectedServicesIds.value.contains($0.id) }
-    }.bindTo(selectedServices).addDisposableTo(disposeBag)
+    readyButtonTapped.asObservable()
+      .map {
+        treatments.value.filter { selectedServicesIds.value.contains($0.id) }
+      }
+      .bindTo(selectedServices)
+      .addDisposableTo(disposeBag)
 
-    readyButtonTapped.asObservable().map {
-      decorationCellModel.value.isSelected
-    }.bindTo(self.hasDecoration).addDisposableTo(disposeBag)
+    readyButtonTapped.asObservable()
+      .map {
+        decorationCellModel.value.isSelected
+      }
+      .bindTo(self.hasDecoration)
+      .addDisposableTo(disposeBag)
 
     self.hasDecoration.asObservable()
       .subscribe(onNext: saveDecorationIfNeeded)
