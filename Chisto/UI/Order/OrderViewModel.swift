@@ -83,13 +83,12 @@ class OrderViewModel: OrderViewModelType {
     
     self.presentProfileSection = profileButtonDidTap.asDriver(onErrorDriveWith: .empty())
 
-    continueButtonDidTap.asDriver(onErrorDriveWith: .empty()).drive(onNext: {
-      // TODO: Change this logic to correct one(as soon as it is ready on backend)
-      if let laundry = uiRealm.objects(Laundry.self).first {
+    continueButtonDidTap.asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] in
+      if let laundry = self?.lastOrderLaundry {
         let viewModel = LastTimePopupViewModel(laundry: laundry)
-        self.presentLastTimeOrderPopup.onNext(viewModel)
+        self?.presentLastTimeOrderPopup.onNext(viewModel)
       } else {
-        self.presentLaundrySelectSection.onNext()
+        self?.presentLaundrySelectSection.onNext()
       }
     }).addDisposableTo(disposeBag)
     
@@ -99,5 +98,13 @@ class OrderViewModel: OrderViewModelType {
       OrderManager.instance.currentOrderItems.onNext(items)
     }).addDisposableTo(disposeBag)
 
+  }
+  
+  var lastOrderLaundry: Laundry? {
+    guard let lastOrder = uiRealm.objects(Order.self).sorted(byProperty: "updatedAt", ascending: false).first else { return nil }
+    guard let laundry = uiRealm.object(ofType: Laundry.self, forPrimaryKey: lastOrder.laundryId) else { return nil }
+    let orderTreatments = Set(currentOrderItems.value.map { $0.treatments }.reduce([], +))
+    guard orderTreatments.subtracting(laundry.treatments).isEmpty else { return nil }
+    return laundry
   }
 }

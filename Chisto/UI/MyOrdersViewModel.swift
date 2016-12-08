@@ -36,7 +36,7 @@ class MyOrdersViewModel: MyOrdersViewModelType {
   init() {
     let realmOrders = uiRealm.objects(Order.self)
       .filter("isDeleted == %@", false)
-      .sorted(byProperty: "updatedAt", ascending: true)
+      .sorted(byProperty: "updatedAt", ascending: false)
     
     let orders = Variable<[Order]>(realmOrders.toArray())
     self.orders = orders
