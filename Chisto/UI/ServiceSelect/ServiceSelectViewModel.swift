@@ -120,13 +120,19 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
       return saveNeeded ? .order : .orderItem
     }
 
-    readyButtonTapped.asObservable().map {
-      treatments.value.filter { selectedServicesIds.value.contains($0.id) }
-    }.bindTo(selectedServices).addDisposableTo(disposeBag)
+    readyButtonTapped.asObservable()
+      .map {
+        treatments.value.filter { selectedServicesIds.value.contains($0.id) }
+      }
+      .bindTo(selectedServices)
+      .addDisposableTo(disposeBag)
 
-    readyButtonTapped.asObservable().map {
-      decorationCellModel.value.isSelected
-    }.bindTo(self.hasDecoration).addDisposableTo(disposeBag)
+    readyButtonTapped.asObservable()
+      .map {
+        decorationCellModel.value.isSelected
+      }
+      .bindTo(self.hasDecoration)
+      .addDisposableTo(disposeBag)
 
     self.hasDecoration.asObservable()
       .subscribe(onNext: saveDecorationIfNeeded)

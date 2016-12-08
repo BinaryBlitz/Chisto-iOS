@@ -36,14 +36,13 @@ class CategoriesViewModel: CategoriesViewModelType {
   var presentItemsSection: Driver<SelectClothesViewModel>
   var presentErrorAlert: PublishSubject<Error>
 
-
   // Data
   var categories: Variable<[Category]>
 
   init() {
     self.navigationBarTitle = "Выбор вещи"
+
     // Data
-    
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
 
@@ -52,8 +51,9 @@ class CategoriesViewModel: CategoriesViewModelType {
     }).addDisposableTo(disposeBag)
     
     let categories = Variable<[Category]>([])
-    
-    Observable.from(uiRealm.objects(Category.self).filter("isDeleted == %@", false)
+
+    Observable.from(uiRealm.objects(Category.self)
+      .filter("isDeleted == %@", false)
       .sorted(byProperty: "name", ascending: true)
       .sorted(byProperty: "featured", ascending: false))
       .map { Array($0) }.bindTo(categories)

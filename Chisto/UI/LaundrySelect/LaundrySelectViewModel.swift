@@ -58,9 +58,9 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     DataManager.instance.fetchLaundries().subscribe(onError: { error in
       presentErrorAlert.onNext(error)
     }).addDisposableTo(disposeBag)
-    
+
     let laundries = Variable<[Laundry]>([])
-    
+
     let sortType = Variable<LaundrySortType>(LaundrySortType.byRating)
     self.sortType = sortType
 
@@ -82,23 +82,26 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     }.asDriver(onErrorDriveWith: .empty())
     
     let currentOrderItemsObservable = OrderManager.instance.currentOrderItems.asObservable()
-    
-    let filteredLaundriesObservable = Observable.combineLatest(laundries.asObservable(), currentOrderItemsObservable) { [weak self] laundries, currentOrderItems -> [Laundry] in
-      self?.filterLaundries(laundries: laundries, currentOrderItems: currentOrderItems) ?? []
-    }
+
+    let filteredLaundriesObservable = Observable
+      .combineLatest(laundries.asObservable(), currentOrderItemsObservable) { [weak self] laundries, currentOrderItems -> [Laundry] in
+        self?.filterLaundries(laundries: laundries, currentOrderItems: currentOrderItems) ?? []
+      }
 
     Observable.combineLatest(filteredLaundriesObservable.asObservable(), sortType.asObservable()) { laundries, sortType -> [Laundry] in
       return self.sortLaundries(laundries: laundries, sortType: sortType)
     }.bindTo(sortedLaundries).addDisposableTo(disposeBag)
-    
+
     guard let profileCity = ProfileManager.instance.userProfile.value.city else { return }
-    Observable.from(uiRealm.objects(Laundry.self).filter("isDeleted == %@ AND city == %@", false, profileCity)
+
+    Observable.from(uiRealm.objects(Laundry.self)
+      .filter("isDeleted == %@ AND city == %@", false, profileCity)
       .sorted(byProperty: "rating"))
       .map { Array($0) }
       .bindTo(laundries)
       .addDisposableTo(disposeBag)
   }
-  
+
   func filterLaundries(laundries: [Laundry], currentOrderItems: [OrderItem]) -> [Laundry] {
     return laundries.filter { laundry in
       let laundryTreatments = Set(laundry.treatments)
