@@ -13,6 +13,9 @@
 		88004FBB1DDF578500A8632A /* LaundryReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88004FBA1DDF578500A8632A /* LaundryReviewsTableViewCell.swift */; };
 		88004FBD1DDF579300A8632A /* LaundryReviewsTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88004FBC1DDF579300A8632A /* LaundryReviewsTableViewCellModel.swift */; };
 		88004FBF1DDF77DF00A8632A /* LaundryReviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88004FBE1DDF77DF00A8632A /* LaundryReviewsViewModel.swift */; };
+		880107C11DF6053900CA0EB8 /* HasDecorationAlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880107C01DF6053900CA0EB8 /* HasDecorationAlertViewController.storyboard */; };
+		880107C31DF6056600CA0EB8 /* HasDecorationAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880107C21DF6056600CA0EB8 /* HasDecorationAlertViewController.swift */; };
+		880107C51DF6088E00CA0EB8 /* HasDecorationAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880107C41DF6088E00CA0EB8 /* HasDecorationAlertViewModel.swift */; };
 		88072D4E1DB967EF00B47D23 /* ItemInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88072D4D1DB967EF00B47D23 /* ItemInfoViewController.storyboard */; };
 		88072D501DB9695300B47D23 /* ItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88072D4F1DB9695200B47D23 /* ItemInfoViewController.swift */; };
 		88072D521DB9695E00B47D23 /* ItemInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88072D511DB9695E00B47D23 /* ItemInfoViewModel.swift */; };
@@ -193,6 +196,9 @@
 		88004FBA1DDF578500A8632A /* LaundryReviewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryReviewsTableViewCell.swift; sourceTree = "<group>"; };
 		88004FBC1DDF579300A8632A /* LaundryReviewsTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryReviewsTableViewCellModel.swift; sourceTree = "<group>"; };
 		88004FBE1DDF77DF00A8632A /* LaundryReviewsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryReviewsViewModel.swift; sourceTree = "<group>"; };
+		880107C01DF6053900CA0EB8 /* HasDecorationAlertViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HasDecorationAlertViewController.storyboard; sourceTree = "<group>"; };
+		880107C21DF6056600CA0EB8 /* HasDecorationAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasDecorationAlertViewController.swift; sourceTree = "<group>"; };
+		880107C41DF6088E00CA0EB8 /* HasDecorationAlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasDecorationAlertViewModel.swift; sourceTree = "<group>"; };
 		88072D4D1DB967EF00B47D23 /* ItemInfoViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ItemInfoViewController.storyboard; sourceTree = "<group>"; };
 		88072D4F1DB9695200B47D23 /* ItemInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoViewController.swift; sourceTree = "<group>"; };
 		88072D511DB9695E00B47D23 /* ItemInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoViewModel.swift; sourceTree = "<group>"; };
@@ -410,6 +416,16 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		880107BF1DF6051E00CA0EB8 /* HasDecorationAlert */ = {
+			isa = PBXGroup;
+			children = (
+				880107C01DF6053900CA0EB8 /* HasDecorationAlertViewController.storyboard */,
+				880107C21DF6056600CA0EB8 /* HasDecorationAlertViewController.swift */,
+				880107C41DF6088E00CA0EB8 /* HasDecorationAlertViewModel.swift */,
+			);
+			name = HasDecorationAlert;
+			sourceTree = "<group>";
+		};
 		88072D4C1DB967D400B47D23 /* ItemInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,6 +486,7 @@
 		88073EEC1DAC19E1000696A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				880107BF1DF6051E00CA0EB8 /* HasDecorationAlert */,
 				88F674B61DF3F1FA0001AC16 /* ItemSizeAlert */,
 				880E03E21DE8F80400311721 /* Payment */,
 				88E6B59A1DCB7EE70024FA1A /* Registration */,
@@ -1099,6 +1116,7 @@
 				88B0B5521DB19C6E00C7D0F7 /* DescriptionListItemView.xib in Resources */,
 				889D87C91DC0A760003E8DAC /* LaundrySelectViewController.storyboard in Resources */,
 				8811FE101DC2DB0500610712 /* ProfileNavigationController.storyboard in Resources */,
+				880107C11DF6053900CA0EB8 /* HasDecorationAlertViewController.storyboard in Resources */,
 				88E6B59D1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard in Resources */,
 				88072D4E1DB967EF00B47D23 /* ItemInfoViewController.storyboard in Resources */,
 				8833B52A1DBE6E38004D44CE /* LastTimePopupViewController.storyboard in Resources */,
@@ -1237,6 +1255,7 @@
 				8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */,
 				880E03EE1DE9975000311721 /* CategoriesNavigationController.swift in Sources */,
 				882ECDB81DE5899600EE3507 /* Sequence+categorize.swift in Sources */,
+				880107C51DF6088E00CA0EB8 /* HasDecorationAlertViewModel.swift in Sources */,
 				880E03E91DE8F81A00311721 /* PaymentNavigationController.swift in Sources */,
 				88FE7B031DE0AFE600A16289 /* MyOrdersTableViewCell.swift in Sources */,
 				8811FE0F1DC2DB0500610712 /* ProfileNavigationController.swift in Sources */,
@@ -1302,6 +1321,7 @@
 				88FE7AFE1DE0AF8000A16289 /* MyOrdersViewController.swift in Sources */,
 				88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */,
 				8814C0561DAFA7B5005B4967 /* BottomBorderedTextField.swift in Sources */,
+				880107C31DF6056600CA0EB8 /* HasDecorationAlertViewController.swift in Sources */,
 				88DB938F1DCC188600DAC651 /* Treatment.swift in Sources */,
 				889923A11DDD2A0200D73905 /* String+localized.swift in Sources */,
 				8872F0BE1DD8D67100E8D9EE /* RequestOrder.swift in Sources */,

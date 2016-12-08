@@ -28,6 +28,13 @@ class SelectClothesViewController: UITableViewController {
       viewController.viewModel = viewModel
       self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
+
+    viewModel?.presentHasDecorationAlert.drive(onNext: { [weak self] viewModel in
+      let viewController = HasDecorationAlertViewController.storyboardInstance()!
+      viewController.viewModel = viewModel
+      viewController.modalPresentationStyle = .overCurrentContext
+      self?.present(viewController, animated: false, completion: nil)
+    }).addDisposableTo(disposeBag)
     
     viewModel?.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { error in
       guard let error = error as? DataError else { return }
