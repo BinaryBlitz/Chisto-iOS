@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
-
+import RealmSwift
 
 class OrderManager {
 
@@ -52,7 +52,7 @@ class OrderManager {
       return DataManager.instance.createOrder(order: order, laundry: laundry)
     }
   }
-
+  
   func priceForCurrentLaundry(includeCollection: Bool = false) -> Int {
     guard let laundry = currentLaundry else { return 0 }
     let price = self.price(laundry: laundry)
