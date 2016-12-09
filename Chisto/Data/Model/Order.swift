@@ -13,39 +13,51 @@ import RealmSwift
 
 enum OrderStatus {
   case processing
+  case confirmed
+  case cleaning
+  case dispatched
   case completed
+  case canceled
   case errored
   
   var image: UIImage {
     switch self {
-    case .processing:
-      return #imageLiteral(resourceName: "iconIndicatorDuring")
-    case .completed:
+    case .completed, .canceled:
      return #imageLiteral(resourceName: "iconIndicatorExecuted")
     case .errored:
       return #imageLiteral(resourceName: "iconIndicatorError")
+    default:
+      return #imageLiteral(resourceName: "iconIndicatorDuring")
     }
   }
   
   var description: String {
     switch self {
     case .processing:
-      return "В процессе"
+      return "Обрабатывается"
+    case .confirmed:
+      return "Согласован забор вещей"
+    case .cleaning:
+      return "В чистке"
+    case .dispatched:
+      return "Вещи едут к вам"
     case .completed:
-      return "Выполнен"
+      return "Исполнен"
     case .errored:
       return "Ошибка"
+    case .canceled:
+      return "Отменён"
     }
   }
   
   var color: UIColor {
     switch self {
-    case .processing:
-      return UIColor.chsSkyBlue
     case .completed:
       return UIColor.chsJadeGreen
     case .errored:
       return UIColor.chsWatermelon
+    default:
+      return UIColor.chsSkyBlue
     }
   }
 }
@@ -81,6 +93,14 @@ class Order: ServerObject {
     switch statusString {
     case "processing":
       return .processing
+    case "confirmed":
+      return .confirmed
+    case "cleaning":
+      return .cleaning
+    case "dispatched":
+      return .dispatched
+    case "canceled":
+      return .canceled
     case "completed":
       return .completed
     case "errored":

@@ -42,7 +42,7 @@ class OrderRegistrationViewModel {
     let formViewModel = ContactFormViewModel()
     self.formViewModel = formViewModel
 
-    self.orderCost = OrderManager.instance.priceForCurrentLaundryString
+    self.orderCost = "\(OrderManager.instance.priceForCurrentLaundry(includeCollection: true)) ₽"
 
     self.presentLocationSelectSection = formViewModel.locationHeaderButtonDidTap.map {
       let viewModel = LocationSelectViewModel()

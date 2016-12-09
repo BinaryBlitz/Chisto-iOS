@@ -13,7 +13,6 @@ import Realm
 import RealmSwift
 
 enum LaundryType {
-  case premium
   case fast
   case cheap
 }
@@ -26,18 +25,24 @@ class Laundry: ServerObject {
   dynamic var descriptionText: String = ""
   dynamic var collectionDate: Date = Date()
   dynamic var rating: Float = 0
-  dynamic var category: String? = nil
   dynamic var backgroundImageUrl: String = ""
   dynamic var logoUrl: String = ""
   dynamic var deliveryDateOpensAt: String = "00:00"
   dynamic var deliveryDateClosesAt: String = "23:59"
-  dynamic var collectionPrice: Int = 0
+  dynamic var deliveryFee: Int = 0
   dynamic var deliveryDate: Date = Date()
   dynamic var ratingsCount: Int = 0
+  dynamic var minOrderAmount: Int = 0
+  dynamic var freeDeliveryFrom: Int = 0
   var laundryTreatments = List<LaundryTreatment>()
   
   var deliveryTimeInterval: String  {
     return "с \(deliveryDateOpensAt) до \(deliveryDateClosesAt)"
+  }
+
+  func collectionPrice(amount: Int) -> Int {
+    guard amount < freeDeliveryFrom else { return 0 }
+    return amount + deliveryFee
   }
   
   var treatments: [Treatment] {
@@ -50,7 +55,6 @@ class Laundry: ServerObject {
     super.mapping(map: map)
     name <- map["name"]
     descriptionText <- map["description"]
-    category <- map["category"]
     logoUrl <- map["logo_url"]
     rating <- map["rating"]
     ratingsCount <- map["ratings_count"]
@@ -60,24 +64,7 @@ class Laundry: ServerObject {
     collectionDate <- (map["collection_date"], StringToDateTransform(format: dateFormat))
     deliveryDateOpensAt <- map["delivery_date_opens_at"]
     deliveryDateClosesAt <- map["delivery_date_closes_at"]
+    deliveryFee <- map["delivery_fee"]
+    freeDeliveryFrom <- map["free_delivery_from"]
   }
-  
-  var type: LaundryType? {
-    guard let category = self.category else { return nil }
-    switch category {
-    case "premium":
-      return .premium
-    case "cheap":
-      return .cheap
-    case "fast":
-      return .fast
-    default:
-      return nil
-    }
-  }
-  
-  var collectionPriceString: String {
-    return collectionPrice == 0 ? "Бесплатно" : "\(collectionPrice) ₽"
-  }
-  
 }

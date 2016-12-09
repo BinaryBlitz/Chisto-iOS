@@ -68,7 +68,17 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     self.sortedLaundries = sortedLaundries
 
     self.sections = sortedLaundries.asDriver().map { laundries in
-      let cellModels = laundries.map(LaundrySelectTableViewCellModel.init) as [LaundrySelectTableViewCellModelType]
+      let orderManager = OrderManager.instance
+
+      let cheapestLaundry = laundries.sorted { orderManager.price(laundry: $0) > orderManager.price(laundry: $1) }.first
+      let fastestLaundry = laundries.filter { $0 != cheapestLaundry }.sorted { $0.collectionDate > $1.collectionDate }.first
+
+      let cellModels = laundries.map { laundry in
+        var type: LaundryType? = nil
+        if laundry == fastestLaundry { type = .fast }
+        if laundry == cheapestLaundry { type = .cheap }
+        return LaundrySelectTableViewCellModel(laundry: laundry, type: type)
+      } as [LaundrySelectTableViewCellModelType]
 
       let section = LaundrySelectSectionModel(model: "", items: cellModels)
       return [section]
@@ -94,9 +104,10 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
 
     guard let profileCity = ProfileManager.instance.userProfile.value.city else { return }
 
-    Observable.from(uiRealm.objects(Laundry.self)
+    let laundryObjects = uiRealm.objects(Laundry.self)
       .filter("isDeleted == %@ AND city == %@", false, profileCity)
-      .sorted(byProperty: "rating"))
+
+    Observable.from(laundryObjects.sorted(byProperty: "rating"))
       .map { Array($0) }
       .bindTo(laundries)
       .addDisposableTo(disposeBag)
