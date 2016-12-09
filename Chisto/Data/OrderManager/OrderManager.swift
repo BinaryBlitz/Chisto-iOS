@@ -53,32 +53,26 @@ class OrderManager {
     }
   }
 
-  var priceForCurrentLaundry: Int {
+  func priceForCurrentLaundry(includeCollection: Bool = false) -> Int {
     guard let laundry = currentLaundry else { return 0 }
-
-    return price(laundry: laundry)
-  }
-
-  var priceForCurrentLaundryString: String {
-    guard let laundry = currentLaundry else { return "Бесплатно" }
-
-    return priceString(laundry: laundry)
+    let price = self.price(laundry: laundry)
+    guard includeCollection else { return price }
+    return price + laundry.collectionPrice(amount: price)
   }
   
   func clearOrderItems() {
     currentOrderItems.onNext([])
   }
 
-  func price(laundry: Laundry) -> Int {
+  func price(laundry: Laundry, includeCollection: Bool = false) -> Int {
     let items = try! currentOrderItems.value()
-
-    return items.map { $0.price(laundry: laundry) }.reduce(0, +)
+    let price = items.map { $0.price(laundry: laundry) }.reduce(0, +)
+    guard includeCollection else { return price }
+    return price + laundry.collectionPrice(amount: price)
   }
 
-  func priceString(laundry: Laundry) -> String {
-    let price = self.price(laundry: laundry)
-
-    return "\(price) ₽"
+  func collectionPrice(laundry: Laundry) -> Int {
+    return laundry.collectionPrice(amount: price(laundry: laundry))
   }
 
 }

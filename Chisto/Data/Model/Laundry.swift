@@ -31,13 +31,20 @@ class Laundry: ServerObject {
   dynamic var logoUrl: String = ""
   dynamic var deliveryDateOpensAt: String = "00:00"
   dynamic var deliveryDateClosesAt: String = "23:59"
-  dynamic var collectionPrice: Int = 0
+  dynamic var deliveryPrice: Int = 0
   dynamic var deliveryDate: Date = Date()
   dynamic var ratingsCount: Int = 0
+  dynamic var minOrderAmount: Int = 0
+  dynamic var minFreeDeliveryOrderAmount: Int = 0
   var laundryTreatments = List<LaundryTreatment>()
   
   var deliveryTimeInterval: String  {
     return "с \(deliveryDateOpensAt) до \(deliveryDateClosesAt)"
+  }
+
+  func collectionPrice(amount: Int) -> Int {
+    guard amount < minFreeDeliveryOrderAmount else { return 0 }
+    return amount + deliveryPrice
   }
   
   var treatments: [Treatment] {
@@ -74,10 +81,6 @@ class Laundry: ServerObject {
     default:
       return nil
     }
-  }
-  
-  var collectionPriceString: String {
-    return collectionPrice == 0 ? "Бесплатно" : "\(collectionPrice) ₽"
   }
   
 }

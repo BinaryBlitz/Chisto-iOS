@@ -78,11 +78,12 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
     self.laundryIcon = URL(string: laundry.logoUrl)
     self.laundryBackground = URL(string: laundry.backgroundImageUrl)
     self.collectionDate = laundry.collectionDate.shortDate
-    self.collectionPrice = laundry.collectionPriceString
-    self.deliveryDate = laundry.deliveryDate.shortDate
-    self.orderPrice = OrderManager.instance.priceString(laundry: laundry)
     let price = OrderManager.instance.price(laundry: laundry)
-    self.confirmOrderButtonTitle = "Оформить заказ: \(price + laundry.collectionPrice) ₽"
+    let collectionPrice = laundry.collectionPrice(amount: price)
+    self.collectionPrice = collectionPrice > 0 ? "\(collectionPrice) ₽" : "Бесплатно"
+    self.deliveryDate = laundry.deliveryDate.shortDate
+    self.orderPrice = "\(price) ₽"
+    self.confirmOrderButtonTitle = "Оформить заказ: \(price + collectionPrice) ₽"
     self.hoursTitle = laundry.deliveryTimeInterval
 
     self.sections = OrderManager.instance.currentOrderItems

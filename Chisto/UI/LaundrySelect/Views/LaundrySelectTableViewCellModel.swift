@@ -49,7 +49,7 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
     let deliveryDateString = laundry.deliveryDate.shortDate
     self.deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: deliveryDateString, subTitleText: laundry.deliveryTimeInterval)
 
-    let costString = OrderManager.instance.priceString(laundry: laundry)
+    let costString = "\(OrderManager.instance.price(laundry: laundry, includeCollection: true)) ₽"
     self.costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: costString)
 
     if let type = laundry.type {

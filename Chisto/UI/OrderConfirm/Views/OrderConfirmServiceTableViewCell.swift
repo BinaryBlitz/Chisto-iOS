@@ -21,18 +21,31 @@ class OrderConfirmServiceTableViewCell: UITableViewCell {
       self?.iconView.tintColor = viewModel.clothesIconColor
     }
 
+    configureHeader(viewModel: viewModel)
+    configureDecoration(viewModel: viewModel)
+    for service in viewModel.clothesServices {
+      let view = OrderConfirmServiceItemView.nibInstance()!
+      view.leftLabel.text = service.name
+      view.rightLabel.text = service.priceString(laundry: viewModel.laundry)
+      stackView.addArrangedSubview(view)
+    }
+  }
+
+  private func configureHeader(viewModel: OrderConfirmServiceTableViewCellModelType) {
     let headerItemView = OrderConfirmServiceItemView.nibInstance()!
     headerItemView.leftLabel.text = viewModel.clothesTitle
     headerItemView.rightLabel.text = viewModel.clothesPrice
     headerItemView.font = UIFont.chsLabelFont
     headerItemView.textColor = UIColor.black
     stackView.addArrangedSubview(headerItemView)
+  }
 
-    for service in viewModel.clothesServices {
-      let view = OrderConfirmServiceItemView.nibInstance()!
-      view.leftLabel.text = service.name
-      view.rightLabel.text = service.priceString(laundry: viewModel.laundry)
-      stackView.addArrangedSubview(view)
+  private func configureDecoration(viewModel: OrderConfirmServiceTableViewCellModelType) {
+    if viewModel.hasDecoration {
+      let decorationServiceView = OrderConfirmServiceItemView.nibInstance()!
+      decorationServiceView.leftLabel.text = viewModel.decorationTitle
+      decorationServiceView.rightLabel.text = viewModel.decorationPrice
+      stackView.addArrangedSubview(decorationServiceView)
     }
   }
 

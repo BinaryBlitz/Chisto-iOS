@@ -30,9 +30,9 @@ enum OrderStatus {
   var description: String {
     switch self {
     case .processing:
-      return "В процессе"
+      return "Обрабатывается"
     case .completed:
-      return "Выполнен"
+      return "Исполнен"
     case .errored:
       return "Ошибка"
     }

@@ -12,13 +12,15 @@ import RealmSwift
 import ObjectMapper_Realm
 
 class LaundryTreatment: ServerObject {
-  dynamic var treatment: Treatment?
   dynamic var price: Int = 0
+
+  var treatment: Treatment? {
+    guard let realm = self.realm else { return nil }
+    return realm.object(ofType: Treatment.self, forPrimaryKey: id)
+  }
 
   override func mapping(map: Map) {
     super.mapping(map: map)
-
-    treatment <- map["treatment"]
     price <- map["price"]
   }
 
