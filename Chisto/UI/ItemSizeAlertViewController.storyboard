@@ -23,21 +23,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rke-lU-JT2">
-                                <rect key="frame" x="56" y="178.5" width="263" height="310.5"/>
+                                <rect key="frame" x="56" y="188" width="263" height="291"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Укажите размер сторон вещи в сантиметрах" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShZ-1G-tJP">
-                                        <rect key="frame" x="0.0" y="30" width="263" height="41"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Укажите размер вещи" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShZ-1G-tJP">
+                                        <rect key="frame" x="18" y="30" width="227" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9ti-Zq-0j4">
-                                        <rect key="frame" x="15" y="101" width="233" height="50"/>
+                                        <rect key="frame" x="15" y="81.5" width="233" height="50"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Длина" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g8i-CC-urW" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Длина, см" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g8i-CC-urW" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                 <rect key="frame" x="0.0" y="0.0" width="109" height="50"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
@@ -48,16 +48,13 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
                                                         <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ширина" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zZu-rE-alr" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Ширина, см" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zZu-rE-alr" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                 <rect key="frame" x="124" y="0.0" width="109" height="50"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
@@ -68,9 +65,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
                                                         <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
@@ -80,12 +74,12 @@
                                         </constraints>
                                     </stackView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0 см" placeholder="Площадь" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3vg-3X-Sgx" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="99" y="180.5" width="65.5" height="50"/>
+                                        <rect key="frame" x="95" y="161" width="73.5" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="pYM-jM-1V1"/>
                                         </constraints>
                                         <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
@@ -97,7 +91,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Esk-WO-6Ln">
-                                        <rect key="frame" x="0.0" y="260.5" width="263" height="50"/>
+                                        <rect key="frame" x="0.0" y="241" width="263" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mng-kQ-HBE" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="131" height="50"/>
@@ -148,11 +142,11 @@
                                     <constraint firstItem="9ti-Zq-0j4" firstAttribute="top" secondItem="ShZ-1G-tJP" secondAttribute="bottom" constant="30" id="63t-oT-i64"/>
                                     <constraint firstItem="Esk-WO-6Ln" firstAttribute="top" secondItem="3vg-3X-Sgx" secondAttribute="bottom" constant="30" id="8Tp-vu-7hs"/>
                                     <constraint firstItem="Esk-WO-6Ln" firstAttribute="leading" secondItem="rke-lU-JT2" secondAttribute="leading" id="Aie-eX-nnm"/>
-                                    <constraint firstItem="ShZ-1G-tJP" firstAttribute="leading" secondItem="rke-lU-JT2" secondAttribute="leading" id="DN0-Tj-Tv7"/>
+                                    <constraint firstItem="ShZ-1G-tJP" firstAttribute="leading" secondItem="rke-lU-JT2" secondAttribute="leading" constant="18" id="DN0-Tj-Tv7"/>
                                     <constraint firstItem="3vg-3X-Sgx" firstAttribute="centerX" secondItem="rke-lU-JT2" secondAttribute="centerX" id="IuF-w5-cPM"/>
                                     <constraint firstItem="3vg-3X-Sgx" firstAttribute="top" secondItem="9ti-Zq-0j4" secondAttribute="bottom" constant="30" id="Iv8-fx-G1w"/>
                                     <constraint firstItem="9ti-Zq-0j4" firstAttribute="leading" secondItem="rke-lU-JT2" secondAttribute="leading" constant="15" id="NTx-dV-6Va"/>
-                                    <constraint firstAttribute="trailing" secondItem="ShZ-1G-tJP" secondAttribute="trailing" id="OBk-Hy-Zwa"/>
+                                    <constraint firstAttribute="trailing" secondItem="ShZ-1G-tJP" secondAttribute="trailing" constant="18" id="OBk-Hy-Zwa"/>
                                     <constraint firstAttribute="trailing" secondItem="9ti-Zq-0j4" secondAttribute="trailing" constant="15" id="SEi-3t-ErW"/>
                                     <constraint firstAttribute="bottom" secondItem="Esk-WO-6Ln" secondAttribute="bottom" id="Vlw-Uk-eYp"/>
                                     <constraint firstItem="ShZ-1G-tJP" firstAttribute="top" secondItem="rke-lU-JT2" secondAttribute="top" constant="30" id="eTa-hu-OwK"/>

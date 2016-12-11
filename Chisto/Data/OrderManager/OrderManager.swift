@@ -18,7 +18,7 @@ class OrderManager {
   var currentOrderItems = BehaviorSubject<[OrderItem]>(value: [])
   var currentLaundry: Laundry? = nil
 
-  func updateOrderItem(item: OrderItem, closure: (Void) -> Void) {
+  func updateOrderItem(_ item: OrderItem, closure: (Void) -> Void) {
     closure()
 
     var items = try! currentOrderItems.value()

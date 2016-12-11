@@ -43,6 +43,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
   var itemTitle: String
   var sections: Driver<[ServiceSelectSectionModel]>
   var returnToSection: Driver<NewSection>
+  let itemSizeAlertViewModel: ItemSizeAlertViewModel
 
   // Data
   var saveNeeded: Bool
@@ -62,6 +63,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
   var selectedServices: PublishSubject<[Treatment]>
   var hasDecoration = PublishSubject<Bool>()
   let decorationCellModel: Variable<ServiceSelectTableViewCellModel>
+  let needPresentAreaAlert: Bool
 
   init(orderItem: OrderItem, saveNeeded: Bool = true,
        selectedTreatments: [Treatment] = [],
@@ -69,6 +71,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
 
     self.saveNeeded = saveNeeded
     self.orderItem = orderItem
+    self.needPresentAreaAlert = orderItem.clothesItem.useArea
 
     let item = orderItem.clothesItem
 
@@ -77,6 +80,8 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
         "Декор", "Декоративная отделка", item.category?.color, isSelected: hasDecoration
       )
     )
+
+    self.itemSizeAlertViewModel = ItemSizeAlertViewModel(orderItem: orderItem)
 
     self.decorationCellModel = decorationCellModel
 
@@ -153,7 +158,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
 
   func saveDecorationIfNeeded(_ hasDecoration: Bool) {
     if saveNeeded {
-      OrderManager.instance.updateOrderItem(item: orderItem) {
+      OrderManager.instance.updateOrderItem(orderItem) {
         orderItem.hasDecoration = hasDecoration
       }
     }
@@ -161,7 +166,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
 
   func saveTreatmentsIfNeeded(_ treatments: [Treatment]) {
     if saveNeeded {
-      OrderManager.instance.updateOrderItem(item: orderItem) {
+      OrderManager.instance.updateOrderItem(orderItem) {
         orderItem.treatments = treatments
       }
     }
