@@ -53,6 +53,7 @@ class SelectClothesViewModel: SelectClothesViewModelType {
     let decorationAlertDidFinish = PublishSubject<OrderItem>()
     self.decorationAlertDidFinish = decorationAlertDidFinish
 
+
     DataManager.instance.fetchCategoryClothes(category: category).subscribe(onError: { error in
       presentErrorAlert.onNext(error)
     }).addDisposableTo(disposeBag)

@@ -29,13 +29,27 @@ class SelectClothesViewController: UITableViewController {
       self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
 
+    configureAlerts()
+    configureTableView()
+  }
+
+  func configureAlerts() {
     viewModel?.presentHasDecorationAlert.drive(onNext: { [weak self] viewModel in
-      let viewController = HasDecorationAlertViewController.storyboardInstance()!
-      viewController.viewModel = viewModel
-      viewController.modalPresentationStyle = .overCurrentContext
+      let viewController = UIAlertController(title: viewModel.decorationAlertTitle, message: viewModel.decorationAlertMessage, preferredStyle: .alert)
+
+      let yesAction = UIAlertAction(title: "Да", style: .default, handler: { _ in
+        viewModel.yesButtonDidTap.onNext()
+      })
+
+      let noAction = UIAlertAction(title: "Нет", style: .default, handler: { _ in
+        viewModel.noButtonDidTap.onNext()
+      })
+
+      viewController.addAction(yesAction)
+      viewController.addAction(noAction)
       self?.present(viewController, animated: false, completion: nil)
     }).addDisposableTo(disposeBag)
-    
+
     viewModel?.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { error in
       guard let error = error as? DataError else { return }
       let alertController = UIAlertController(title: "Ошибка", message: error.description, preferredStyle: .alert)
@@ -44,7 +58,6 @@ class SelectClothesViewController: UITableViewController {
       self.present(alertController, animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
 
-    configureTableView()
   }
 
   func configureTableView() {

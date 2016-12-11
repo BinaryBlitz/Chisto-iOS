@@ -15,21 +15,25 @@ class HasDecorationAlertViewModel {
   let noButtonDidTap = PublishSubject<Void>()
   let yesButtonDidTap = PublishSubject<Void>()
   let didFinishAlert = PublishSubject<OrderItem>()
-  let dismissViewController: Driver<Void>
 
   let orderItem: OrderItem
-  
+
+  let decorationAlertTitle = "Есть ли у вещи декоративная отделка?"
+  let decorationAlertMessage = "К декоративной отделке относятся стразы, бисер, пайетки, сложные кружевные композиции и прочие украшения одежды, нуждающиеся в особом уходе и внимании со стороны химчистки."
+
   init(orderItem: OrderItem) {
     self.orderItem = orderItem
     
-    let yesButtonDidTapDriver = yesButtonDidTap.asObservable().do(onNext: {
+    let yesButtonDidTapObservable = yesButtonDidTap.asObservable().do(onNext: {
       orderItem.hasDecoration = true
-    }).asDriver(onErrorDriveWith: .empty())
+    })
 
-    let noButtonDidTapDriver = noButtonDidTap.asObservable().do(onNext: {
+    let noButtonDidTapObservable = noButtonDidTap.asObservable().do(onNext: {
       orderItem.hasDecoration = false
-    }).asDriver(onErrorDriveWith: .empty())
+    })
 
-    self.dismissViewController = Driver.of(yesButtonDidTapDriver, noButtonDidTapDriver).merge()
+    Observable.of(yesButtonDidTapObservable, noButtonDidTapObservable).merge().map { orderItem }
+      .bindTo(didFinishAlert)
+      .addDisposableTo(disposeBag)
   }
 }
