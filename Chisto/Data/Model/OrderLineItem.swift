@@ -28,37 +28,38 @@ struct LineItemInfo: Hashable {
   }
 }
 
-class OrderTreatment: ServerObject {
-  dynamic var name: String = ""
-  dynamic var descriptionText: String = ""
-  dynamic var itemId: Int = UUID().hashValue
-  
-  override func mapping(map: Map) {
-    super.mapping(map: map)
+class OrderTreatment: Mappable {
+  var name: String = ""
+  var descriptionText: String = ""
+  var itemId: Int = UUID().hashValue
+
+  required init?(map: Map) { }
+
+  func mapping(map: Map) {
     name <- map["name"]
     descriptionText <- map["description"]
     itemId <- map["item_id"]
   }
 }
 
-class OrderLaundryTreatment: ServerObject {
-  dynamic var orderTreatment: OrderTreatment?
-  dynamic var price: Int = 0
+class OrderLaundryTreatment: Mappable {
+  var orderTreatment: OrderTreatment?
+  var price: Double = 0
+
+  required init?(map: Map) { }
   
-  override func mapping(map: Map) {
-    super.mapping(map: map)
-    
+  func mapping(map: Map) {
     orderTreatment <- map["treatment"]
     price <- map["price"]
   }
 }
 
-class OrderLineItem: ServerObject {
-  dynamic var orderLaundryTreatment: OrderLaundryTreatment?
-  dynamic var quantity: Int = 0
+class OrderLineItem: Mappable {
+  var orderLaundryTreatment: OrderLaundryTreatment?
+  var quantity: Int = 0
   
   var item: Item? {
-    guard let realm = self.realm else { return nil }
+    let realm = try! Realm()
     return realm.object(ofType: Item.self, forPrimaryKey: orderLaundryTreatment?.orderTreatment?.itemId)
   }
   
@@ -66,21 +67,21 @@ class OrderLineItem: ServerObject {
     return LineItemInfo(item: item, quantity: quantity)
   }
 
-  func price(amount: Int? = nil) -> Int {
+  func price(amount: Int? = nil) -> Double {
     guard let orderLaundryTreatmentPrice = orderLaundryTreatment?.price else { return 0 }
-    guard let amount = amount else { return orderLaundryTreatmentPrice * quantity }
-    return amount * orderLaundryTreatmentPrice
+    guard let amount = amount else { return orderLaundryTreatmentPrice * Double(quantity) }
+    return Double(amount) * orderLaundryTreatmentPrice
   }
+
+  required init?(map: Map) { }
   
   func priceString(amount: Int? = nil) -> String {
     let price = self.price(amount: amount)
     
-    return "\(price) ₽"
+    return price.currencyString
   }
   
-  override func mapping(map: Map) {
-    super.mapping(map: map)
-    
+  func mapping(map: Map) {
     orderLaundryTreatment <- map["laundry_treatment"]
     quantity <- map["quantity"]
   }

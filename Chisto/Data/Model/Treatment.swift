@@ -21,17 +21,17 @@ class Treatment: ServerObject {
     descriptionText <- map["description"]
   }
 
-  func price(laundry: Laundry) -> Int {
+  func price(laundry: Laundry, hasDecoration: Bool = false) -> Double {
     
-    return laundry.laundryTreatments
-      .first { $0.treatment?.id == self.id }?.price ?? 0
-
+    guard let laundryTreatment = laundry.laundryTreatments.first (where: { $0.treatment?.id == self.id }) else { return 0 }
+    guard hasDecoration == true else { return laundryTreatment.price }
+    return laundryTreatment.price * laundryTreatment.decorationMultiplier
   }
 
-  func priceString(laundry: Laundry) -> String {
+  func priceString(laundry: Laundry, hasDecoration: Bool = false) -> String {
     let price = self.price(laundry: laundry)
 
-    return "\(price) ₽"
+    return price.currencyString
   }
 
 }

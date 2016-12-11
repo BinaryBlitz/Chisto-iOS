@@ -23,13 +23,13 @@ class OrderItem {
     self.hasDecoration = hasDecoration
   }
 
-  func price(laundry: Laundry, _ count: Int? = nil) -> Int {
+  func price(laundry: Laundry, _ count: Int? = nil) -> Double {
     let amount = count ?? self.amount
-    return treatments.map { $0.price(laundry: laundry) }.reduce(0, +) * amount
+    return treatments.map { $0.price(laundry: laundry) }.reduce(0, +) * Double(amount)
   }
 
   func priceString(laundry: Laundry, _ count: Int? = nil) -> String {
     let price = self.price(laundry: laundry, count)
-    return "\(price) ₽"
+    return price.currencyString
   }
 }

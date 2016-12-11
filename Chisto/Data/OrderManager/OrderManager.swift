@@ -53,7 +53,7 @@ class OrderManager {
     }
   }
   
-  func priceForCurrentLaundry(includeCollection: Bool = false) -> Int {
+  func priceForCurrentLaundry(includeCollection: Bool = false) -> Double {
     guard let laundry = currentLaundry else { return 0 }
     let price = self.price(laundry: laundry)
     guard includeCollection else { return price }
@@ -64,14 +64,14 @@ class OrderManager {
     currentOrderItems.onNext([])
   }
 
-  func price(laundry: Laundry, includeCollection: Bool = false) -> Int {
+  func price(laundry: Laundry, includeCollection: Bool = false) -> Double {
     let items = try! currentOrderItems.value()
     let price = items.map { $0.price(laundry: laundry) }.reduce(0, +)
     guard includeCollection else { return price }
     return price + laundry.collectionPrice(amount: price)
   }
 
-  func collectionPrice(laundry: Laundry) -> Int {
+  func collectionPrice(laundry: Laundry) -> Double {
     return laundry.collectionPrice(amount: price(laundry: laundry))
   }
 

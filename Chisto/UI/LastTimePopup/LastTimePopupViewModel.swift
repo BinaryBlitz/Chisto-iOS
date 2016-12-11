@@ -46,13 +46,14 @@ class LastTimePopupViewModel: LastTimePopupViewModelType {
 
     let collectionDateString = laundry.collectionDate.shortDate
     let collectionPrice = OrderManager.instance.collectionPrice(laundry: laundry)
-    let collectionPriceString = collectionPrice > 0 ? "\(collectionPrice) ₽" : "Бесплатно"
+    let collectionPriceString = collectionPrice > 0 ? collectionPrice.currencyString : "Бесплатно"
     let collectionItemViewModel = LaundryItemInfoViewModel(type: .collection, titleText: collectionDateString, subTitleText: collectionPriceString)
 
     let deliveryDateString = laundry.deliveryDate.shortDate
     let deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: deliveryDateString, subTitleText: laundry.deliveryTimeInterval)
 
-    let costString = "\(OrderManager.instance.price(laundry: laundry, includeCollection: true)) ₽"
+    let price = OrderManager.instance.price(laundry: laundry, includeCollection: true)
+    let costString = price.currencyString
     let costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: costString)
 
     self.laundryDescriptionViewModels = [collectionItemViewModel, deliveryItemViewModel, costItemViewModel]

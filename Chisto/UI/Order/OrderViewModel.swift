@@ -102,7 +102,7 @@ class OrderViewModel: OrderViewModelType {
   
   var lastOrderLaundry: Laundry? {
     guard let lastOrder = uiRealm.objects(Order.self).sorted(byProperty: "updatedAt", ascending: false).first else { return nil }
-    guard let laundry = uiRealm.object(ofType: Laundry.self, forPrimaryKey: lastOrder.laundryId) else { return nil }
+    guard let laundry = uiRealm.object(ofType: Laundry.self, forPrimaryKey: lastOrder.laundryId), laundry.isDeleted == false else { return nil }
     let orderTreatments = Set(currentOrderItems.value.map { $0.treatments }.reduce([], +))
     guard orderTreatments.subtracting(laundry.treatments).isEmpty else { return nil }
     return laundry
