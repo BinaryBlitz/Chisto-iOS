@@ -14,6 +14,7 @@ class OrderItem {
   var clothesItem: Item
   var hasDecoration: Bool
   var treatments: [Treatment]
+  var area: (width: Int, length: Int)? = nil
   var amount: Int
 
   init (clothesItem: Item, treatments: [Treatment] = [], amount: Int = 1, hasDecoration: Bool = false) {

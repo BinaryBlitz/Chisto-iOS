@@ -16,6 +16,7 @@ class Item: ServerObject {
   dynamic var icon: String = ""
   dynamic var descriptionText: String = ""
   dynamic var hasDecoration: Bool = true
+  dynamic var useArea: Bool = false
   dynamic var category: Category? = nil
 
   let treatments = LinkingObjects(fromType: Treatment.self, property: "item")
@@ -26,6 +27,7 @@ class Item: ServerObject {
     name <- map["name"]
     descriptionText <- map["description"]
     icon <- map["icon_url"]
+    useArea <- map["use_area"]
   }
   
   func price(lineItems: [OrderLineItem], quantity: Int? = nil) -> Double {

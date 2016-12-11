@@ -135,7 +135,7 @@ class ItemInfoViewModel: ItemInfoViewModelType {
     }).addDisposableTo(disposeBag)
     
     continueButtonDidTap.asObservable().subscribe(onNext: {
-      OrderManager.instance.updateOrderItem(item: orderItem) {
+      OrderManager.instance.updateOrderItem(orderItem) {
         orderItem.treatments = treatments.value
         orderItem.amount = currentAmount.value
         orderItem.hasDecoration = hasDecoration.value

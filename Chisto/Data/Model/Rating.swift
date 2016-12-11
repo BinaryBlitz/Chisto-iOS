@@ -24,8 +24,7 @@ class Rating: Mappable {
     createdAt <- (map["created_at"], StringToDateTransform())
   }
     
-  required init?(map: Map) {
-  }
+  required init?(map: Map) { }
   
   init() {
     id = UUID().hashValue

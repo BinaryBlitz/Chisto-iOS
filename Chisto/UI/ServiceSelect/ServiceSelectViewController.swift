@@ -93,10 +93,13 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
     guard let viewModel = viewModel else { return }
     navigationController?.navigationBar.barTintColor = viewModel.color
     headerView.backgroundColor = viewModel.color
-    
-    let viewController = ItemSizeAlertViewController.storyboardInstance()!
-    viewController.modalPresentationStyle = .overFullScreen
-    present(viewController, animated: false, completion: nil)
+
+    if viewModel.needPresentAreaAlert {
+      let viewController = ItemSizeAlertViewController.storyboardInstance()!
+      viewController.viewModel = viewModel.itemSizeAlertViewModel
+      viewController.modalPresentationStyle = .overFullScreen
+      present(viewController, animated: false, completion: nil)
+    }
   }
 
 }
