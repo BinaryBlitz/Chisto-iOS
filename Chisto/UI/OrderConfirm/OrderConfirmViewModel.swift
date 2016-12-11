@@ -80,10 +80,12 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
     self.collectionDate = laundry.collectionDate.shortDate
     let price = OrderManager.instance.price(laundry: laundry)
     let collectionPrice = laundry.collectionPrice(amount: price)
-    self.collectionPrice = collectionPrice > 0 ? "\(collectionPrice) ₽" : "Бесплатно"
+    self.collectionPrice = collectionPrice > 0 ? price.currencyString : "Бесплатно"
     self.deliveryDate = laundry.deliveryDate.shortDate
-    self.orderPrice = "\(price) ₽"
-    self.confirmOrderButtonTitle = "Оформить заказ: \(price + collectionPrice) ₽"
+    self.orderPrice = price.currencyString
+
+    let totalPrice = price + collectionPrice
+    self.confirmOrderButtonTitle = "Оформить заказ: " + totalPrice.currencyString
     self.hoursTitle = laundry.deliveryTimeInterval
 
     self.sections = OrderManager.instance.currentOrderItems

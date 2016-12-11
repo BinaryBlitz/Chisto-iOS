@@ -161,6 +161,7 @@
 		88E6B59D1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E6B59C1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard */; };
 		88E6B59F1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */; };
 		88E705641DCCC2FB007F779E /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E705631DCCC2FB007F779E /* Category.swift */; };
+		88E831331DFC7177005E35D9 /* Double+currencyString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E831321DFC7177005E35D9 /* Double+currencyString.swift */; };
 		88E86DA61DB8E800002A7024 /* ServiceSelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E86DA11DB8E800002A7024 /* ServiceSelectViewController.storyboard */; };
 		88E86DA71DB8E800002A7024 /* ServiceSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */; };
 		88E86DA81DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA31DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift */; };
@@ -348,6 +349,7 @@
 		88E6B59C1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationPhoneInputViewController.storyboard; sourceTree = "<group>"; };
 		88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPhoneInputViewController.swift; sourceTree = "<group>"; };
 		88E705631DCCC2FB007F779E /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		88E831321DFC7177005E35D9 /* Double+currencyString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+currencyString.swift"; sourceTree = "<group>"; };
 		88E86DA11DB8E800002A7024 /* ServiceSelectViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ServiceSelectViewController.storyboard; sourceTree = "<group>"; };
 		88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectTableViewCell.swift; sourceTree = "<group>"; };
 		88E86DA31DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectTableViewCellModel.swift; sourceTree = "<group>"; };
@@ -614,6 +616,7 @@
 				8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */,
 				889923A01DDD2A0200D73905 /* String+localized.swift */,
 				882ECDB71DE5899600EE3507 /* Sequence+categorize.swift */,
+				88E831321DFC7177005E35D9 /* Double+currencyString.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1336,6 +1339,7 @@
 				88D8ABBD1DB56E89009D515B /* SelectClothesViewModel.swift in Sources */,
 				8833B5361DBF8241004D44CE /* LastTimePopupViewModel.swift in Sources */,
 				889923961DDCAF9400D73905 /* ItemInfoNavigationController.swift in Sources */,
+				88E831331DFC7177005E35D9 /* Double+currencyString.swift in Sources */,
 				88072D501DB9695300B47D23 /* ItemInfoViewController.swift in Sources */,
 				88E6B5991DCB73610024FA1A /* UIView+AddBorders.swift in Sources */,
 				88004FBB1DDF578500A8632A /* LaundryReviewsTableViewCell.swift in Sources */,

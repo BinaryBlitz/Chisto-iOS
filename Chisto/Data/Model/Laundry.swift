@@ -29,24 +29,24 @@ class Laundry: ServerObject {
   dynamic var logoUrl: String = ""
   dynamic var deliveryDateOpensAt: String = "00:00"
   dynamic var deliveryDateClosesAt: String = "23:59"
-  dynamic var deliveryFee: Int = 0
+  dynamic var deliveryFee: Double = 0
   dynamic var deliveryDate: Date = Date()
   dynamic var ratingsCount: Int = 0
-  dynamic var minOrderAmount: Int = 0
-  dynamic var freeDeliveryFrom: Int = 0
-  var laundryTreatments = List<LaundryTreatment>()
+  dynamic var minOrderAmount: Double = 0
+  dynamic var freeDeliveryFrom: Double = 0
+  var laundryTreatments: [LaundryTreatment] = []
   
   var deliveryTimeInterval: String  {
     return "с \(deliveryDateOpensAt) до \(deliveryDateClosesAt)"
   }
 
-  func collectionPrice(amount: Int) -> Int {
+  func collectionPrice(amount: Double) -> Double {
     guard amount < freeDeliveryFrom else { return 0 }
-    return amount + deliveryFee
+    return deliveryFee
   }
   
   var treatments: [Treatment] {
-    return laundryTreatments.toArray()
+    return laundryTreatments
       .filter { $0.treatment != nil }
       .map { $0.treatment! }
   }
@@ -59,7 +59,7 @@ class Laundry: ServerObject {
     rating <- map["rating"]
     ratingsCount <- map["ratings_count"]
     backgroundImageUrl <- map["background_image_url"]
-    laundryTreatments <- (map["laundry_treatments"], ListTransform<LaundryTreatment>())
+    laundryTreatments <- map["laundry_treatments"]
     deliveryDate <- (map["delivery_date"], StringToDateTransform(format: dateFormat))
     collectionDate <- (map["collection_date"], StringToDateTransform(format: dateFormat))
     deliveryDateOpensAt <- map["delivery_date_opens_at"]

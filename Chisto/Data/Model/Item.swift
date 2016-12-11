@@ -12,7 +12,6 @@ import Realm
 import ObjectMapper
 
 class Item: ServerObject {
-
   dynamic var name: String = ""
   dynamic var icon: String = ""
   dynamic var descriptionText: String = ""
@@ -29,7 +28,7 @@ class Item: ServerObject {
     icon <- map["icon_url"]
   }
   
-  func price(lineItems: [OrderLineItem], quantity: Int? = nil) -> Int {
+  func price(lineItems: [OrderLineItem], quantity: Int? = nil) -> Double {
     let orderLineItems = lineItems.filter { lineItem in
       return lineItem.orderLaundryTreatment?.orderTreatment?.itemId == self.id
     }
@@ -38,6 +37,6 @@ class Item: ServerObject {
   
   func priceString(lineItems: [OrderLineItem], quantity: Int? = nil) -> String {
     let price = self.price(lineItems: lineItems, quantity: quantity)
-    return "\(price) ₽"
+    return price.currencyString
   }
 }

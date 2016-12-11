@@ -82,7 +82,7 @@ class OrderInfoViewModel: OrderInfoViewModelType {
     let order = Variable<Order>(order)
     self.order = order
     
-    let orderLineItemsObservable = order.asObservable().map { $0.lineItems.toArray() }
+    let orderLineItemsObservable = order.asObservable().map { $0.lineItems }
     
     let groupedLineItemsObservable = orderLineItemsObservable.map { items in
       items.categorize { $0.lineItemInfo }
@@ -98,11 +98,11 @@ class OrderInfoViewModel: OrderInfoViewModelType {
     }.bindTo(deliveryPrice).addDisposableTo(disposeBag)
     
     order.asObservable().map { order in
-      return "\(order.price) ₽"
+      return order.price.currencyString
     }.bindTo(orderPrice).addDisposableTo(disposeBag)
-    
+
     order.asObservable().map { order in
-      return "\(order.price + order.deliveryPrice) ₽"
+      return (order.price + order.deliveryPrice).currencyString
     }.bindTo(totalCost).addDisposableTo(disposeBag)
     
     uiRealm.observableObject(type: Order.self, primaryKey: order.value.id)
