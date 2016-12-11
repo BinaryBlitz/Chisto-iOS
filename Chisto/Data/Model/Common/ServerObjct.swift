@@ -18,8 +18,8 @@ class ServerObject: Object, Mappable {
   dynamic var isDeleted: Bool = false
 
   required init(map: Map) {
-    mapping(map: map)
     super.init()
+    mapping(map: map)
   }
 
   required init(value: Any, schema: RLMSchema) {
