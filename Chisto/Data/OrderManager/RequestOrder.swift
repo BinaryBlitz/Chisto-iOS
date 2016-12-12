@@ -24,7 +24,7 @@ class RequestOrder: Mappable {
     apartmentNumber = profile.apartment
     houseNumber = profile.building
     apartmentNumber = profile.apartment
-    contactNumber = profile.phone
+    contactNumber = "+" + profile.phone
     streetName = profile.street
     email = profile.email
     notes = profile.notes
