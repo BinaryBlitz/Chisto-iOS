@@ -15,22 +15,21 @@ import ObjectMapper_Realm
 class LaundryTreatment: Mappable {
 
   var id: Int = 0
+  var treatmentId: Int? = nil
   var price: Double = 0
-  var decorationMultiplier: Double = 1.0
 
   required init?(map: Map) { }
 
-  init() { }
-
   var treatment: Treatment? {
+    guard let treatmentId = treatmentId else { return nil }
     let realm = try! Realm()
-    return realm.object(ofType: Treatment.self, forPrimaryKey: id)
+    return realm.object(ofType: Treatment.self, forPrimaryKey: treatmentId)
   }
 
   func mapping(map: Map) {
     price <- map["price"]
+    treatmentId <- map["treatment_id"]
     id <- map["id"]
-    decorationMultiplier <- map["decoration_multiplier"]
   }
 
 }

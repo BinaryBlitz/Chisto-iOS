@@ -80,11 +80,7 @@ class OrderRegistrationViewModel {
     self.presentOrderPlacedPopup = Driver.of(paymentCompleted.asDriver(onErrorDriveWith: .empty()), payInCashDriver)
       .merge().map { order in
         OrderManager.instance.clearOrderItems()
-        let viewModel = OrderPlacedPopupViewModel(orderNumber: "\(order.id)")
-        viewModel.returnToOrderViewController.asObservable()
-          .bindTo(returnToOrderViewController)
-          .addDisposableTo(viewModel.disposeBag)
-        return viewModel
+        return OrderPlacedPopupViewModel(orderNumber: "\(order.id)")
     }
     
     formViewModel.isValid.asObservable().bindTo(buttonsAreEnabled).addDisposableTo(disposeBag)

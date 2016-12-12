@@ -85,6 +85,8 @@
 		885409C31DB2E43300219C00 /* EmptyOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885409C21DB2E43300219C00 /* EmptyOrderView.swift */; };
 		885409C51DB2E55400219C00 /* CategoriesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885409C41DB2E55400219C00 /* CategoriesViewController.storyboard */; };
 		885409C71DB2EC5D00219C00 /* UIView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885409C61DB2EC5D00219C00 /* UIView+IBInspectable.swift */; };
+		885C00961DFEE57900506961 /* LaundryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C00951DFEE57900506961 /* LaundryItem.swift */; };
+		885C00981DFEF36D00506961 /* UIViewController+transitionCompletionBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C00971DFEF36D00506961 /* UIViewController+transitionCompletionBlock.swift */; };
 		8862E6CB1DC8E2C800DDFB00 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862E6CA1DC8E2C800DDFB00 /* OrderItem.swift */; };
 		8862E6CE1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862E6CD1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift */; };
 		8862E6D01DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8862E6CF1DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard */; };
@@ -270,6 +272,8 @@
 		885409C21DB2E43300219C00 /* EmptyOrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyOrderView.swift; sourceTree = "<group>"; };
 		885409C41DB2E55400219C00 /* CategoriesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CategoriesViewController.storyboard; sourceTree = "<group>"; };
 		885409C61DB2EC5D00219C00 /* UIView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectable.swift"; sourceTree = "<group>"; };
+		885C00951DFEE57900506961 /* LaundryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryItem.swift; sourceTree = "<group>"; };
+		885C00971DFEF36D00506961 /* UIViewController+transitionCompletionBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+transitionCompletionBlock.swift"; sourceTree = "<group>"; };
 		8862E6CA1DC8E2C800DDFB00 /* OrderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		8862E6CD1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmViewController.swift; sourceTree = "<group>"; };
 		8862E6CF1DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderConfirmViewController.storyboard; sourceTree = "<group>"; };
@@ -669,6 +673,7 @@
 				88E86DAF1DB90BD1002A7024 /* UIView+nibInstance.swift */,
 				883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */,
 				8834B8401DDCA6C1009D2949 /* NSLayoutConstraint+updateWithKeyboard.swift */,
+				885C00971DFEF36D00506961 /* UIViewController+transitionCompletionBlock.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -774,6 +779,7 @@
 				88DB938E1DCC188600DAC651 /* Treatment.swift */,
 				88004FB71DDF49F300A8632A /* Rating.swift */,
 				88FE7B081DE0CA4F00A16289 /* LineItem.swift */,
+				885C00951DFEE57900506961 /* LaundryItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1256,6 +1262,7 @@
 				8872F0C01DD8DD3400E8D9EE /* OrderPlacedPopupViewModel.swift in Sources */,
 				8862E6CE1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift in Sources */,
 				88E86DA71DB8E800002A7024 /* ServiceSelectTableViewCell.swift in Sources */,
+				885C00961DFEE57900506961 /* LaundryItem.swift in Sources */,
 				88073F031DAD6FCF000696A3 /* DescriptionListItemView.swift in Sources */,
 				8814C0671DB04AFB005B4967 /* RussianEnumEndings.swift in Sources */,
 				88923E111DD340C500BC3AC0 /* twoWayBinding.swift in Sources */,
@@ -1265,6 +1272,7 @@
 				88072D521DB9695E00B47D23 /* ItemInfoViewModel.swift in Sources */,
 				88CDDE471DD922DC002BCC5E /* NSURL+QueryParams.swift in Sources */,
 				889D87CE1DC0BA2F003E8DAC /* LaundrySelectTableViewCell.swift in Sources */,
+				885C00981DFEF36D00506961 /* UIViewController+transitionCompletionBlock.swift in Sources */,
 				882ECDCD1DE7CC4600EE3507 /* EmptyTableBackgroundView.swift in Sources */,
 				889A84151DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift in Sources */,
 				8814C0581DAFB0F2005B4967 /* CityNotFoundViewModel.swift in Sources */,

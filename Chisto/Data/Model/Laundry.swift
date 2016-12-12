@@ -35,7 +35,8 @@ class Laundry: ServerObject {
   dynamic var minOrderAmount: Double = 0
   dynamic var freeDeliveryFrom: Double = 0
   var laundryTreatments: [LaundryTreatment] = []
-  
+  var laundryItems: [LaundryItem] = []
+
   var deliveryTimeInterval: String  {
     return "с \(deliveryDateOpensAt) до \(deliveryDateClosesAt)"
   }
@@ -60,6 +61,7 @@ class Laundry: ServerObject {
     ratingsCount <- map["ratings_count"]
     backgroundImageUrl <- map["background_image_url"]
     laundryTreatments <- map["laundry_treatments"]
+    laundryItems <- map["laundry_items"]
     deliveryDate <- (map["delivery_date"], StringToDateTransform(format: dateFormat))
     collectionDate <- (map["collection_date"], StringToDateTransform(format: dateFormat))
     deliveryDateOpensAt <- map["delivery_date_opens_at"]

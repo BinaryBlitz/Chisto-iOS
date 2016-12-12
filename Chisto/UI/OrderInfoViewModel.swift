@@ -67,11 +67,7 @@ class OrderInfoViewModel: OrderInfoViewModelType {
     self.presentErrorAlert = presentErrorAlert
     
     self.presentCallSupportAlert = supportButtonDidTap.asDriver(onErrorDriveWith: .empty())
-    
-    DataManager.instance.fetchOrder(order: order).subscribe(onError: { error in
-      presentErrorAlert.onNext(error)
-    }).addDisposableTo(disposeBag)
-    
+
     self.navigationBarTitle = "Заказ № \(order.id)"
     self.orderNumber = "№ \(order.id)"
     self.orderDate = order.createdAt.mediumDate
@@ -81,7 +77,9 @@ class OrderInfoViewModel: OrderInfoViewModelType {
     
     let order = Variable<Order>(order)
     self.order = order
-    
+
+    DataManager.instance.getOrderInfo(order: order.value).bindTo(order).addDisposableTo(disposeBag)
+
     let orderLineItemsObservable = order.asObservable().map { $0.lineItems }
     
     let groupedLineItemsObservable = orderLineItemsObservable.map { items in
@@ -104,13 +102,7 @@ class OrderInfoViewModel: OrderInfoViewModelType {
     order.asObservable().map { order in
       return (order.price + order.deliveryPrice).currencyString
     }.bindTo(totalCost).addDisposableTo(disposeBag)
-    
-    uiRealm.observableObject(type: Order.self, primaryKey: order.value.id)
-      .filter{ $0 != nil}
-      .map { $0! }
-      .bindTo(order)
-      .addDisposableTo(disposeBag)
-      
+          
     guard let laundry = uiRealm.object(ofType: Laundry.self, forPrimaryKey: order.value.laundryId) else { return }
     self.laundryTitle = laundry.name
     self.laundryDescriprion = laundry.descriptionText

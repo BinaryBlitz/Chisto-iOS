@@ -26,7 +26,7 @@ class OrderItem {
 
   func price(laundry: Laundry, _ count: Int? = nil) -> Double {
     let amount = count ?? self.amount
-    return treatments.map { $0.price(laundry: laundry) }.reduce(0, +) * Double(amount)
+    return treatments.map { $0.price(laundry: laundry, hasDecoration: hasDecoration) }.reduce(0, +) * Double(amount)
   }
 
   func priceString(laundry: Laundry, _ count: Int? = nil) -> String {
