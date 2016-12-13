@@ -26,7 +26,9 @@ class SelectClothesViewController: UITableViewController {
     viewModel?.presentSelectServiceSection.drive(onNext: { [weak self] viewModel in
       let viewController = ServiceSelectViewController.storyboardInstance()!
       viewController.viewModel = viewModel
-      self?.navigationController?.pushViewController(viewController, animated: true)
+      self?.navigationController?.pushViewController(viewController, animated: true, completion: {
+        viewController.presentAreaAlertIfNeeded()
+      })
     }).addDisposableTo(disposeBag)
 
     configureAlerts()
@@ -47,7 +49,7 @@ class SelectClothesViewController: UITableViewController {
 
       viewController.addAction(yesAction)
       viewController.addAction(noAction)
-      self?.present(viewController, animated: false, completion: nil)
+      self?.present(viewController, animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
 
     viewModel?.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { error in
