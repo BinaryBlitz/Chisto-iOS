@@ -22,6 +22,7 @@ class CityNotFoundViewController: UIViewController {
   // Fields
   @IBOutlet weak var cityField: UITextField!
   @IBOutlet weak var phoneField: UITextField!
+  let maskedPhoneField = MaskedInput(formattingPattern: "+* *** ***-**-**", replacementChar: "*")
 
   // Footer
   let footerView = UIView()
@@ -33,6 +34,11 @@ class CityNotFoundViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     hideKeyboardWhenTappedAround()
+
+    cityField.delegate = self
+    phoneField.delegate = self
+
+    maskedPhoneField.configure(textField: phoneField)
 
     view.backgroundColor = UIColor(white: 0, alpha: 0.5)
 
@@ -58,4 +64,15 @@ class CityNotFoundViewController: UIViewController {
     }
   }
 
+}
+
+extension CityNotFoundViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    if textField == cityField {
+      phoneField.becomeFirstResponder()
+      return false
+    } else {
+      return true
+    }
+  }
 }
