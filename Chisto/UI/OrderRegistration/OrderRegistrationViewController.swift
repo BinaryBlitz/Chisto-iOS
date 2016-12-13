@@ -55,10 +55,13 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
     }).addDisposableTo(disposeBag)
     
     viewModel.presentOrderPlacedPopup.drive(onNext: { [weak self] viewModel in
-      let viewController = OrderPlacedPopupViewController.storyboardInstance()!
-      viewController.viewModel = viewModel
-      viewController.modalPresentationStyle = .overFullScreen
-      self?.present(viewController, animated: false)
+      let orderViewController = OrderViewController.storyboardInstance()!
+      _ = self?.navigationController?.pushViewController(orderViewController, animated: true, completion: {
+        let viewController = OrderPlacedPopupViewController.storyboardInstance()!
+        viewController.viewModel = viewModel
+        viewController.modalPresentationStyle = .overFullScreen
+        orderViewController.present(viewController, animated: false)
+      })
     }).addDisposableTo(disposeBag)
     
     viewModel.presentPaymentSection.drive(onNext: { [weak self] viewModel in
@@ -66,12 +69,6 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
       let viewController = navigationPaymentController.viewControllers.first as! PaymentViewController
       viewController.viewModel = viewModel
       self?.present(navigationPaymentController, animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
-
-    viewModel.returnToOrderViewController
-      .asDriver(onErrorDriveWith: .empty())
-      .drive(onNext: {[weak self] in
-        self?.navigationController?.setViewControllers([OrderViewController.storyboardInstance()!], animated: true)
     }).addDisposableTo(disposeBag)
 
     configureForm()

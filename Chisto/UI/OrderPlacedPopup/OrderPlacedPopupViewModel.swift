@@ -16,7 +16,6 @@ class OrderPlacedPopupViewModel {
 
   let continueButtonDidTap = PublishSubject<Void>()
   let dismissViewController: Driver<Void>
-  let returnToOrderViewController = PublishSubject<Void>()
   let orderNumber: String
 
   init(orderNumber: String) {

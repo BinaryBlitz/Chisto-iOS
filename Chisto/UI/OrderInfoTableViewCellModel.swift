@@ -43,7 +43,7 @@ class OrderInfoTableViewCellModel: OrderInfoTableViewCellModelType {
 
   func priceString(lineItems: [OrderLineItem], quantity: Int? = nil) -> String {
     let price = self.price(orderLineItems: lineItems, quantity: quantity)
-    return price == 0 ? "Бесплатно" : "\(price) ₽"
+    return price == 0 ? "Бесплатно" : price.currencyString
   }
   
 }

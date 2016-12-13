@@ -42,7 +42,7 @@ class OrderRegistrationViewModel {
     let formViewModel = ContactFormViewModel()
     self.formViewModel = formViewModel
 
-    self.orderCost = "\(OrderManager.instance.priceForCurrentLaundry(includeCollection: true)) ₽"
+    self.orderCost = OrderManager.instance.priceForCurrentLaundry(includeCollection: true).currencyString
 
     self.presentLocationSelectSection = formViewModel.locationHeaderButtonDidTap.map {
       let viewModel = LocationSelectViewModel()
@@ -80,11 +80,7 @@ class OrderRegistrationViewModel {
     self.presentOrderPlacedPopup = Driver.of(paymentCompleted.asDriver(onErrorDriveWith: .empty()), payInCashDriver)
       .merge().map { order in
         OrderManager.instance.clearOrderItems()
-        let viewModel = OrderPlacedPopupViewModel(orderNumber: "\(order.id)")
-        viewModel.returnToOrderViewController.asObservable()
-          .bindTo(returnToOrderViewController)
-          .addDisposableTo(viewModel.disposeBag)
-        return viewModel
+        return OrderPlacedPopupViewModel(orderNumber: "\(order.id)")
     }
     
     formViewModel.isValid.asObservable().bindTo(buttonsAreEnabled).addDisposableTo(disposeBag)

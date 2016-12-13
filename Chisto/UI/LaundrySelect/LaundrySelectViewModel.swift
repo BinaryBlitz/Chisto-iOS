@@ -55,10 +55,6 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
 
-    DataManager.instance.fetchLaundries().subscribe(onError: { error in
-      presentErrorAlert.onNext(error)
-    }).addDisposableTo(disposeBag)
-
     let laundries = Variable<[Laundry]>([])
 
     let sortType = Variable<LaundrySortType>(LaundrySortType.byRating)
@@ -66,6 +62,8 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
 
     let sortedLaundries = Variable<[Laundry]>([])
     self.sortedLaundries = sortedLaundries
+
+    DataManager.instance.getLaundries().bindTo(laundries).addDisposableTo(disposeBag)
 
     self.sections = sortedLaundries.asDriver().map { laundries in
       let orderManager = OrderManager.instance
@@ -101,16 +99,6 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     Observable.combineLatest(filteredLaundriesObservable.asObservable(), sortType.asObservable()) { laundries, sortType -> [Laundry] in
       return self.sortLaundries(laundries: laundries, sortType: sortType)
     }.bindTo(sortedLaundries).addDisposableTo(disposeBag)
-
-    guard let profileCity = ProfileManager.instance.userProfile.value.city else { return }
-
-    let laundryObjects = uiRealm.objects(Laundry.self)
-      .filter("isDeleted == %@ AND city == %@", false, profileCity)
-
-    Observable.from(laundryObjects.sorted(byProperty: "rating"))
-      .map { Array($0) }
-      .bindTo(laundries)
-      .addDisposableTo(disposeBag)
   }
 
   func filterLaundries(laundries: [Laundry], currentOrderItems: [OrderItem]) -> [Laundry] {

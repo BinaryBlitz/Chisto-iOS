@@ -41,7 +41,6 @@ enum DataError: Error, CustomStringConvertible {
 protocol FetchItemsManagerType {
   func fetchCities() -> Observable<Void>
   func fetchCategories() -> Observable<Void>
-  func fetchLaundries() -> Observable<Void>
   func fetchOrders() -> Observable<Void>
   func fetchCategoryClothes(category: Category) -> Observable<Void>
 }
@@ -242,7 +241,7 @@ extension DataManager: FetchItemsManagerType {
     }
   }
 
-  func fetchLaundries() -> Observable<Void> {
+  func getLaundries() -> Observable<[Laundry]> {
     guard let city = ProfileManager.instance.userProfile.value.city else { return Observable.error(DataError.unknown) }
     return fetchItems(type: Laundry.self, apiPath: .fetchCityLaundries(cityId: city.id)) { laundry in
         laundry.city = city
@@ -254,6 +253,7 @@ extension DataManager: FetchItemsManagerType {
           laundry.isDeleted = true
         }
       }
+      return newLaundries
     }
   }
   
@@ -294,8 +294,8 @@ extension DataManager: FetchItemsManagerType {
     }
   }
   
-  func fetchOrder(order: Order) -> Observable<Void> {
-    return networkRequest(method: .get, .fetchOrder(orderId: order.id)).flatMap { result -> Observable<Void> in
+  func getOrderInfo(order: Order) -> Observable<Order> {
+    return networkRequest(method: .get, .fetchOrder(orderId: order.id)).flatMap { result -> Observable<Order> in
       guard let order = Mapper<Order>().map(JSONObject: result) else { return Observable.error(DataError.responseConvertError) }
       let realm = try! Realm()
       
@@ -303,7 +303,7 @@ extension DataManager: FetchItemsManagerType {
         realm.add(order, update: true)
       }
       
-      return Observable.empty()
+      return Observable.just(order)
     }
   }
 
