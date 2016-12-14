@@ -28,6 +28,10 @@ class Profile: Object, Mappable {
   dynamic var verificationToken: String? = nil
   dynamic var ordersCount: Int = 0
   dynamic var notes: String = ""
+
+  private var cityId: Int? {
+    return city?.id
+  }
   
   required init?(map: Map) {
     super.init()
@@ -58,6 +62,7 @@ class Profile: Object, Mappable {
     verificationToken <- map["verification_token"]
     notes <- map["notes"]
     ordersCount <- map["orders_count"]
+    cityId >>> map["city_id"]
   }
   
   override static func primaryKey() -> String? {

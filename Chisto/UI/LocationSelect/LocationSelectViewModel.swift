@@ -43,10 +43,6 @@ class LocationSelectViewModel: LocationSelectViewModelType {
 
   init() {
 
-    LocationManager.instance.locateDevice(requestPermission: false)
-      .filter { $0 != nil }
-      .map { $0! }.bindTo(markerLocation).addDisposableTo(disposeBag)
-
     let streetNumber =  PublishSubject<String>()
     self.streetNumber = streetNumber
 
@@ -83,6 +79,12 @@ class LocationSelectViewModel: LocationSelectViewModelType {
       .map { return $0! }
       .bindTo(markerLocation)
       .addDisposableTo(disposeBag)
+
+    LocationManager.instance.locateDevice()
+      .filter { $0 != nil }
+      .map { $0! }.subscribe(onNext: { [weak self] location in
+        self?.markerLocation.onNext(location)
+      }).addDisposableTo(disposeBag)
     
     markerLocation.asObservable().flatMap { coordinate -> Driver<Adress?> in
       ReverseGeocoder.getAdress(coordinate: coordinate).asDriver(onErrorJustReturn: nil)

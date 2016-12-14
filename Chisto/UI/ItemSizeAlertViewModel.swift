@@ -19,8 +19,8 @@ class ItemSizeAlertViewModel {
   let continueButtonIsEnabled = Variable<Bool>(false)
   let continueButtonDidTap = PublishSubject<Void>()
   let cancelButtonDidTap = PublishSubject<Void>()
-  let dismissViewController: Driver<Void>
-  let didFinishAlert = PublishSubject<Void>()
+  let didFinishAlertSuccess = PublishSubject<Void>()
+  let dismissViewController: Driver<Bool>
   let maxNumberLength = 10
   let squareCentimetersInMeter: Double = 10000
   
@@ -43,15 +43,21 @@ class ItemSizeAlertViewModel {
 
 
     let cancelButtonDriver = cancelButtonDidTap.asDriver(onErrorDriveWith: .empty())
-    let continueButtonDriver = continueButtonDidTap.asDriver(onErrorDriveWith: .empty()).do(onNext: {_ in
-      guard let lengthText = lengthText.value, let widthText = widthText.value else { return }
-      guard let length = Int(lengthText.onlyDigits), let width = Int(widthText.onlyDigits) else { return }
-      OrderManager.instance.updateOrderItem(orderItem) {
-        orderItem.area = (width, length)
-      }
-    })
+    let continueButtonObservable = continueButtonDidTap.asObservable().map { _ -> (width: Int, length: Int) in
+      guard let lengthText = lengthText.value, let widthText = widthText.value else { return ( 0, 0 ) }
+      guard let length = Int(lengthText.onlyDigits), let width = Int(widthText.onlyDigits) else { return ( 0, 0 ) }
+      return (width: width,length: length)
+    }
 
-    self.dismissViewController = Driver.of(cancelButtonDriver, continueButtonDriver).merge()
+    let continueButtonDriver = continueButtonObservable.filter { area in
+      return area.width * area.length != 0
+      }.map { area in
+        OrderManager.instance.updateOrderItem(orderItem) {
+          orderItem.area = area
+        }
+    }.asDriver(onErrorDriveWith: .empty())
+
+    self.dismissViewController = Driver.of(cancelButtonDriver.map { false }, continueButtonDriver.map { true } ).merge()
 
     Observable.combineLatest(lengthText.asObservable(), widthText.asObservable()) { [weak self] lengthText, widthText -> String? in
       self?.area(lengthText: lengthText, widthText: widthText)

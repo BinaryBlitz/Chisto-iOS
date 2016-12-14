@@ -124,7 +124,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
       guard let needPresentAreaAlert = self?.needPresentAreaAlert else { return returnSection }
       guard needPresentAreaAlert else { return returnSection }
       let viewModel = ItemSizeAlertViewModel(orderItem: orderItem)
-      viewModel.didFinishAlert.asObservable().map { returnSection }
+      viewModel.didFinishAlertSuccess.asObservable().map { returnSection }
         .bindTo(showNewSection).addDisposableTo(viewModel.disposeBag)
       return .areaAlert(viewModel: viewModel)
     }.bindTo(showNewSection).addDisposableTo(disposeBag)
