@@ -11,6 +11,7 @@ import RealmSwift
 import Realm
 import UIColor_Hex_Swift
 import ObjectMapper
+import ObjectMapper_Realm
 
 class Category: ServerObject {
 
@@ -18,6 +19,8 @@ class Category: ServerObject {
   dynamic var colorString: String = ""
   dynamic var icon: String = ""
   dynamic var descriptionText: String = ""
+  var itemsPreview = List<RealmString>()
+  dynamic var itemsCount: Int = 0
   dynamic var featured: Bool = false
   
   var color: UIColor {
@@ -33,7 +36,17 @@ class Category: ServerObject {
     colorString <- map["color"]
     descriptionText <- map["description"]
     icon <- map["icon_url"]
+    itemsCount <- map["items_count"]
     featured <- map["featured"]
+
+    var itemsPreview: [String]? = nil
+    itemsPreview <- map["values"]
+    let itemsPreviewList = List<RealmString>()
+    itemsPreview?.forEach { item in
+      let value = RealmString()
+      value.stringValue = item
+      itemsPreviewList.append(value)
+    }
   }
 
 }
