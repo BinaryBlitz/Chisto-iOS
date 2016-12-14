@@ -26,9 +26,7 @@ class SelectClothesViewController: UITableViewController {
     viewModel?.presentSelectServiceSection.drive(onNext: { [weak self] viewModel in
       let viewController = ServiceSelectViewController.storyboardInstance()!
       viewController.viewModel = viewModel
-      self?.navigationController?.pushViewController(viewController, animated: true, completion: {
-        viewController.presentAreaAlertIfNeeded()
-      })
+      self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
 
     configureAlerts()

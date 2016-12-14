@@ -20,6 +20,7 @@ class ItemSizeAlertViewModel {
   let continueButtonDidTap = PublishSubject<Void>()
   let cancelButtonDidTap = PublishSubject<Void>()
   let dismissViewController: Driver<Void>
+  let didFinishAlert = PublishSubject<Void>()
   let maxNumberLength = 10
   let squareCentimetersInMeter: Double = 10000
   
