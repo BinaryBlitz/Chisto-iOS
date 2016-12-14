@@ -1,7 +1,4 @@
-excluded: # paths to ignore during linting. Takes precedence over `included`.
+# Paths to ignore during linting. Takes precedence over `included`
+excluded:
 - Pods
 - Chisto/RxUtils
-
-disabled_rules: # rule identifiers to exclude from running
-- trailing_whitespace
-- line_length

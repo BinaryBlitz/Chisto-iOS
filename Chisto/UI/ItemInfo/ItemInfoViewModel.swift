@@ -86,17 +86,18 @@ class ItemInfoViewModel: ItemInfoViewModelType {
     self.treatments = treatments
 
     self.sections = Driver.combineLatest(treatments.asDriver(), hasDecoration.asDriver()) { treatments, hasDecoration in
-      let cellModels = treatments.enumerated().map { (index, service) in
+      let treatmentsCellModels = treatments.enumerated().map { (index, service) in
         var count = index + 1
         if hasDecoration { count += 1 }
         return ItemInfoTableViewCellModel(treatment: service, count: count)
       } as [ItemInfoTableViewCellModelType]
+      var sections = [ItemInfoSectionModel(model: "", items: treatmentsCellModels)]
+      
+      var decorationCellModels: [ItemInfoTableViewCellModelType] = []
+      if hasDecoration { decorationCellModels.append(decorationCellModel) }
+      let decorationItemInfoSection = ItemInfoSectionModel(model: "", items: decorationCellModels)
+      sections.insert(decorationItemInfoSection, at: 0)
 
-      var sections = [ItemInfoSectionModel(model: "", items: cellModels)]
-      if hasDecoration {
-        let itemInfoSection = ItemInfoSectionModel(model: "", items: [decorationCellModel])
-        sections.insert(itemInfoSection, at: 0)
-      }
       return sections
     }
 
@@ -134,7 +135,7 @@ class ItemInfoViewModel: ItemInfoViewModelType {
     }).addDisposableTo(disposeBag)
     
     continueButtonDidTap.asObservable().subscribe(onNext: {
-      OrderManager.instance.updateOrderItem(item: orderItem) {
+      OrderManager.instance.updateOrderItem(orderItem) {
         orderItem.treatments = treatments.value
         orderItem.amount = currentAmount.value
         orderItem.hasDecoration = hasDecoration.value
@@ -143,7 +144,7 @@ class ItemInfoViewModel: ItemInfoViewModelType {
   }
   
   func canDeleteItem(at indexPath: IndexPath) -> Bool {
-    return indexPath.section == Section.decoration.rawValue || !treatments.value.isEmpty
+    return indexPath.section == Section.decoration.rawValue || treatments.value.count > 1
   }
 
 }

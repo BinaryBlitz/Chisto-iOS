@@ -12,20 +12,29 @@ import RxSwift
 import RxCocoa
 
 class RegistrationPhoneInputViewModel {
-
+  let disposeBag: DisposeBag
   let presentCodeInputSection: Observable<RegistrationCodeInputViewModel>
+  let didFinishRegistration: PublishSubject<Void>
   let sendButtonDidTap = PublishSubject<Void>()
   let phoneText: Variable<String?>
   let navigationBarTitle = "Регистрация"
 
   init() {
+    let disposeBag = DisposeBag()
+    self.disposeBag = disposeBag
+    
     let phoneText = Variable<String?>(nil)
     self.phoneText = phoneText
+    
+    let didFinishRegistration = PublishSubject<Void>()
+    self.didFinishRegistration = didFinishRegistration
 
     self.presentCodeInputSection = sendButtonDidTap.asObservable().flatMap { _ -> Observable<RegistrationCodeInputViewModel> in
       guard let phoneText = phoneText.value else { return Observable.error(DataError.unknown) }
       return DataManager.instance.createVerificationToken(phone: "+7" + phoneText.onlyDigits).map {
-        return RegistrationCodeInputViewModel(phoneNumberString: phoneText)
+        let viewModel = RegistrationCodeInputViewModel(phoneNumberString: phoneText)
+        viewModel.didFinishRegistration.bindTo(didFinishRegistration).addDisposableTo(disposeBag)
+        return viewModel
       }
     }
   }

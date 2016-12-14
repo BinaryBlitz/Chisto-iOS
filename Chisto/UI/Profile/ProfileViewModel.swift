@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 enum ProfileSections: Int {
-  case contactData = 0, myOrders, aboutApp, rules
+  case contactData = 0, myOrders, aboutApp, terms
 }
 
 protocol ProfileViewModelType {
@@ -39,19 +39,30 @@ class ProfileViewModel {
   let presentContactDataSection: Driver<Void>
   let presentMyOrdersSection: Driver<Void>
   let dismissViewController: Driver<Void>
+  let presentTermsOfServiceSection: Driver<Void>
   var ordersCount = Variable<String>("0")
-
+  
+  let termsOfServiceURL = URL(string: "https://chis.to/legal/terms-of-service.pdf")!
+  
   init() {
-    self.presentAboutSection = itemDidSelect.filter { $0.section == ProfileSections.aboutApp.rawValue }.map{_ in Void()}.asDriver(onErrorDriveWith: .empty())
+    DataManager.instance.showUser().subscribe().addDisposableTo(disposeBag)
+    self.presentAboutSection = itemDidSelect.filter { $0.section == ProfileSections.aboutApp.rawValue }.map {_ in }.asDriver(onErrorDriveWith: .empty())
     
-    self.presentContactDataSection = itemDidSelect.filter { $0.section == ProfileSections.contactData.rawValue }.map{_ in Void()}.asDriver(onErrorDriveWith: .empty())
+    self.presentContactDataSection = itemDidSelect.filter { $0.section == ProfileSections.contactData.rawValue }.map {_ in }.asDriver(onErrorDriveWith: .empty())
     
-    self.presentMyOrdersSection = itemDidSelect.filter { $0.section == ProfileSections.myOrders.rawValue }.map{_ in Void()}.asDriver(onErrorDriveWith: .empty())
+    self.presentMyOrdersSection = itemDidSelect.filter { $0.section == ProfileSections.myOrders.rawValue }.map {_ in }.asDriver(onErrorDriveWith: .empty())
+    
+    self.presentTermsOfServiceSection = itemDidSelect.filter { $0.section == ProfileSections.terms.rawValue }.map {_ in }.asDriver(onErrorDriveWith: .empty())
 
     self.dismissViewController = closeButtonDidTap.asDriver(onErrorDriveWith: .empty())
     
-    Observable.from(uiRealm.objects(Order.self))
-      .map { String($0.count) }
+    let profile = ProfileManager.instance.userProfile.value
+    
+    self.ordersCount = Variable<String>(String(profile.ordersCount))
+    
+    uiRealm.observableObject(type: Profile.self, primaryKey: profile.id).asObservable()
+      .filter { $0 != nil }
+      .map { String($0!.ordersCount) }
       .bindTo(ordersCount)
       .addDisposableTo(disposeBag)
   }

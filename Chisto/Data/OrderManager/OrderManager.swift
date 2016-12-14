@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RealmSwift
 
 class OrderManager {
 
@@ -17,7 +18,7 @@ class OrderManager {
   var currentOrderItems = BehaviorSubject<[OrderItem]>(value: [])
   var currentLaundry: Laundry? = nil
 
-  func updateOrderItem(item: OrderItem, closure: (Void) -> Void) {
+  func updateOrderItem(_ item: OrderItem, closure: (Void) -> Void) {
     closure()
 
     var items = try! currentOrderItems.value()
@@ -29,53 +30,49 @@ class OrderManager {
     currentOrderItems.onNext(items)
   }
 
-  func placeOrder() -> Observable<Order> {
-    let profile = ProfileManager.instance.userProfile.value
-    guard let laundry = currentLaundry else { return Observable.empty() }
-
-    let order = RequestOrder(profile: profile)
-    let items = try! currentOrderItems.value()
-
-    for item in items {
-      for treatment in item.treatments {
-        let lineItemAttribute = LineItemAttribute(
-          laundryTreatmentId: treatment.id,
-          quantity: item.amount
-        )
-
-        order.lineItemsArttributes.append(lineItemAttribute)
+  func createOrder() -> Observable<Order> {
+    return Observable.deferred { [weak self] in
+      let profile = ProfileManager.instance.userProfile.value
+      guard let laundry = self?.currentLaundry else { return Observable.empty() }
+      
+      let order = RequestOrder(profile: profile)
+      guard let items = try! self?.currentOrderItems.value() else { return Observable.empty() }
+      
+      for item in items {
+        for treatment in item.treatments {
+          let lineItemAttribute = LineItemAttribute(
+            laundryTreatmentId: treatment.id,
+            quantity: item.amount
+          )
+          
+          order.lineItemsArttributes.append(lineItemAttribute)
+        }
       }
+      
+      return DataManager.instance.createOrder(order: order, laundry: laundry)
     }
-
-    let placeOrderObservable = DataManager.instance.placeOrder(order: order, laundry: laundry)
-
-    return placeOrderObservable.do(onNext: { [weak self] _ in
-      self?.currentOrderItems.onNext([])
-    })
   }
-
-  var priceForCurrentLaundry: Int {
+  
+  func priceForCurrentLaundry(includeCollection: Bool = false) -> Double {
     guard let laundry = currentLaundry else { return 0 }
-
-    return price(laundry: laundry)
-  }
-
-  var priceForCurrentLaundryString: String {
-    guard let laundry = currentLaundry else { return "Бесплатно" }
-
-    return priceString(laundry: laundry)
-  }
-
-  func price(laundry: Laundry) -> Int {
-    let items = try! currentOrderItems.value()
-
-    return items.map { $0.price(laundry: laundry) }.reduce(0, +)
-  }
-
-  func priceString(laundry: Laundry) -> String {
     let price = self.price(laundry: laundry)
+    guard includeCollection else { return price }
+    return price + laundry.collectionPrice(amount: price)
+  }
+  
+  func clearOrderItems() {
+    currentOrderItems.onNext([])
+  }
 
-    return "\(price) ₽"
+  func price(laundry: Laundry, includeCollection: Bool = false) -> Double {
+    let items = try! currentOrderItems.value()
+    let price = items.map { $0.price(laundry: laundry) }.reduce(0, +)
+    guard includeCollection else { return price }
+    return price + laundry.collectionPrice(amount: price)
+  }
+
+  func collectionPrice(laundry: Laundry) -> Double {
+    return laundry.collectionPrice(amount: price(laundry: laundry))
   }
 
 }

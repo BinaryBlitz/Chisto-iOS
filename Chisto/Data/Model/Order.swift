@@ -13,39 +13,51 @@ import RealmSwift
 
 enum OrderStatus {
   case processing
+  case confirmed
+  case cleaning
+  case dispatched
   case completed
+  case canceled
   case errored
   
   var image: UIImage {
     switch self {
-    case .processing:
-      return #imageLiteral(resourceName: "iconIndicatorDuring")
-    case .completed:
+    case .completed, .canceled:
      return #imageLiteral(resourceName: "iconIndicatorExecuted")
     case .errored:
       return #imageLiteral(resourceName: "iconIndicatorError")
+    default:
+      return #imageLiteral(resourceName: "iconIndicatorDuring")
     }
   }
   
   var description: String {
     switch self {
     case .processing:
-      return "В процессе"
+      return "Обрабатывается"
+    case .confirmed:
+      return "Согласован забор вещей"
+    case .cleaning:
+      return "В чистке"
+    case .dispatched:
+      return "Вещи едут к вам"
     case .completed:
-      return "Выполнен"
+      return "Исполнен"
     case .errored:
       return "Ошибка"
+    case .canceled:
+      return "Отменён"
     }
   }
   
   var color: UIColor {
     switch self {
-    case .processing:
-      return UIColor.chsSkyBlue
     case .completed:
       return UIColor.chsJadeGreen
     case .errored:
       return UIColor.chsWatermelon
+    default:
+      return UIColor.chsSkyBlue
     }
   }
 }
@@ -63,31 +75,32 @@ class Order: ServerObject {
   dynamic var paymentUrl: String = ""
   dynamic var amount: Double = 0
   dynamic var email: String? = nil
-  dynamic var deliveryPrice: Int = 0
-  dynamic var createdAt: String = ""
-  dynamic var updatedAt: String = ""
-  var lineItems = List<OrderLineItem>()
+  dynamic var deliveryPrice: Double = 0
+  dynamic var createdAt: Date = Date()
+  dynamic var updatedAt: Date = Date()
+  dynamic var payment: Payment? = nil
+  var lineItems: [OrderLineItem] = []
   
-  var createdAtDate: Date {
-    return Date.from(string: createdAt) ?? Date()
-  }
-  
-  var updatedAtDate: Date {
-    return Date.from(string: updatedAt) ?? Date()
-  }
-  
-  var price: Int {
+  var price: Double {
     return lineItems.map { $0.price() }.reduce(0, +)
   }
   
   var deliveryPriceString: String {
-    return deliveryPrice == 0 ? "Бесплатно": "\(deliveryPrice) ₽"
+    return deliveryPrice == 0 ? "Бесплатно": deliveryPrice.currencyString
   }
   
   var status: OrderStatus {
     switch statusString {
     case "processing":
       return .processing
+    case "confirmed":
+      return .confirmed
+    case "cleaning":
+      return .cleaning
+    case "dispatched":
+      return .dispatched
+    case "canceled":
+      return .canceled
     case "completed":
       return .completed
     case "errored":
@@ -105,13 +118,14 @@ class Order: ServerObject {
     contactNumber <- map["contact_number"]
     notes <- map["notes"]
     email <- map["email"]
-    lineItems <- (map["line_items"], ListTransform<OrderLineItem>())
+    lineItems <- map["line_items"]
     paid <- map["paid"]
-    createdAt <- map["created_at"]
+    createdAt <- (map["created_at"], StringToDateTransform())
     statusString <- map["status"]
     laundryId <- map["laundry_id"]
     deliveryPrice <- map["delivery_price"]
-    updatedAt <- map["updated_at"]
+    updatedAt <- (map["updated_at"], StringToDateTransform())
+    payment <- map["payment"]
   }
   
 }

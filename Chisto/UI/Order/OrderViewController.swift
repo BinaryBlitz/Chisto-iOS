@@ -104,14 +104,14 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
 
   func configureNavigations() {
 
-    viewModel.presentCategoriesViewController.drive(onNext: {
-      let viewController = CategoriesViewController.storyboardInstance()!
-      self.navigationController?.pushViewController(viewController, animated: true)
+    viewModel.presentCategoriesViewController.drive(onNext: { [weak self] in
+      let viewController = CategoriesNavigationController.storyboardInstance()!
+      self?.present(viewController, animated: true)
     }).addDisposableTo(disposeBag)
 
     viewModel.presentItemInfoViewController.drive(onNext: { [weak self] viewModel in
       let navigationItemInfoViewController = ItemInfoNavigationController.storyboardInstance()!
-      let itemInfoViewController = navigationItemInfoViewController.viewControllers[0] as! ItemInfoViewController
+      let itemInfoViewController = navigationItemInfoViewController.viewControllers.first as! ItemInfoViewController
       itemInfoViewController.viewModel = viewModel
       self?.navigationController?.present(navigationItemInfoViewController, animated: true)
     }).addDisposableTo(disposeBag)

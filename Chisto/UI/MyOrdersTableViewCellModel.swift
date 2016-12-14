@@ -24,16 +24,8 @@ class MyOrdersTableViewCellModel: MyOrdersTableViewCellModelType {
   
   init(order: Order) {
     self.orderNumberTitle = "Заказ № \(order.id)"
-    self.dateTitle = Date.from(string: order.createdAt)?.mediumDate ?? ""
-    
-    switch order.status {
-    case .processing:
-      self.icon = #imageLiteral(resourceName: "iconIndicatorDuring")
-    case .completed:
-      self.icon = #imageLiteral(resourceName: "iconIndicatorExecuted")
-    case .errored:
-      self.icon = #imageLiteral(resourceName: "iconIndicatorError")
-    }
+    self.dateTitle = order.createdAt.mediumDate
+    self.icon = order.status.image
   }
   
 }

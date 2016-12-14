@@ -19,7 +19,7 @@ protocol LaundrySelectTableViewCellModelType {
   var tagName: String? { get }
   var tagIsHidden: Bool { get }
   var logoUrl: URL? { get }
-  var courierItemViewModel: LaundryItemInfoViewModel { get }
+  var collectionItemViewModel: LaundryItemInfoViewModel { get }
   var deliveryItemViewModel: LaundryItemInfoViewModel { get }
   var costItemViewModel: LaundryItemInfoViewModel { get }
 }
@@ -33,26 +33,27 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
   var tagName: String? = nil
   var tagIsHidden: Bool = false
   var logoUrl: URL?
-  var courierItemViewModel: LaundryItemInfoViewModel
+  var collectionItemViewModel: LaundryItemInfoViewModel
   var deliveryItemViewModel: LaundryItemInfoViewModel
   var costItemViewModel: LaundryItemInfoViewModel
 
-  init(laundry: Laundry) {
+  init(laundry: Laundry, type: LaundryType?) {
     self.laundryTitle = laundry.name
     self.laundryDescription = laundry.descriptionText
     self.rating = laundry.rating
     self.logoUrl = URL(string: laundry.logoUrl)
 
-    let courierDateString = Date(timeIntervalSince1970: laundry.courierDate).shortDate
-    self.courierItemViewModel = LaundryItemInfoViewModel(type: .courier, titleText: courierDateString, subTitleText: laundry.courierPriceString)
+    let collectionDateString = laundry.collectionDate.shortDate
+    self.collectionItemViewModel = LaundryItemInfoViewModel(type: .collection, titleText: collectionDateString, subTitleText: laundry.deliveryTimeInterval)
 
-    let deliveryDateString = Date(timeIntervalSince1970: laundry.deliveryDate).shortDate
+    let deliveryDateString = laundry.deliveryDate.shortDate
     self.deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: deliveryDateString, subTitleText: laundry.deliveryTimeInterval)
 
-    let costString = OrderManager.instance.priceString(laundry: laundry)
+    let price = OrderManager.instance.price(laundry: laundry, includeCollection: true)
+    let costString = price.currencyString
     self.costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: costString)
 
-    if let type = laundry.type {
+    if let type = type {
       switch type {
       case .cheap:
         tagName = "Дешевая"
@@ -60,9 +61,6 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
       case .fast:
         tagName = "Быстрая"
         tagBgColor = UIColor.chsMaize
-      case .premium:
-        tagName = "Премиум"
-        tagBgColor = UIColor.chsRosePink
       }
     } else {
       self.tagIsHidden = false

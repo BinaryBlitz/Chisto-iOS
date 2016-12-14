@@ -14,25 +14,23 @@ import RxSwift
 import RxCocoa
 
 class ServerObject: Object, Mappable {
-  dynamic var id: Int
+  dynamic var id: Int = UUID().hashValue
+  dynamic var isDeleted: Bool = false
 
   required init(map: Map) {
-    id = UUID().hashValue
     super.init()
+    mapping(map: map)
   }
 
   required init(value: Any, schema: RLMSchema) {
-    id = UUID().hashValue
     super.init(value: value, schema: schema)
   }
 
   required init(realm: RLMRealm, schema: RLMObjectSchema) {
-    id = UUID().hashValue
     super.init(realm: realm, schema: schema)
   }
 
   required init() {
-    id = UUID().hashValue
     super.init()
   }
 

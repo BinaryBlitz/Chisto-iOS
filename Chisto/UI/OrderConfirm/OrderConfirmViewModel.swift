@@ -25,13 +25,13 @@ protocol OrderConfirmViewModelType {
   var laundryDescriprionTitle: String { get }
   var laundryRating: Float { get }
   var orderPrice: String { get }
-  var courierDate: String { get }
-  var courierPrice: String { get }
+  var collectionDate: String { get }
+  var collectionPrice: String { get }
   var deliveryDate: String { get }
   var laundryIcon: URL? { get }
   var laundryBackground: URL? { get }
   var sections: Driver<[OrderConfirmSectionModel]> { get }
-  var presentRegistrationSection: Driver<Void> { get }
+  var presentRegistrationSection: Driver<RegistrationPhoneInputViewModel> { get }
   var presentOrderContactDataSection: Driver<Void> { get }
   var presentLaundryReviewsSection: Driver<LaundryReviewsViewModel> { get }
 }
@@ -51,25 +51,42 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   var laundryIcon: URL?  = nil
   var laundryBackground: URL? = nil
   var laundryRating: Float
-  var courierDate: String
-  var courierPrice: String
+  var ratingsCountText: String
+  var collectionDate: String
+  var collectionPrice: String
   var orderPrice: String
   var deliveryDate: String
   var sections: Driver<[OrderConfirmSectionModel]>
-  var presentRegistrationSection: Driver<Void>
+  var presentRegistrationSection: Driver<RegistrationPhoneInputViewModel>
   var presentOrderContactDataSection: Driver<Void>
   let presentLaundryReviewsSection: Driver<LaundryReviewsViewModel>
+  let confirmOrderButtonTitle: String
+  let hoursTitle: String
+
+  let ratingCountLabels = ["отзыв", "отзыва", "отзывов"]
+  
+  enum NextScreen {
+    case phoneRegistration(viewModel: RegistrationPhoneInputViewModel)
+    case orderRegistration
+  }
   
   init(laundry: Laundry) {
     self.navigationBarTitle = laundry.name
     self.laundryDescriprionTitle = laundry.descriptionText
     self.laundryRating = laundry.rating
+    self.ratingsCountText = "\(laundry.ratingsCount) " + getRussianNumEnding(number: laundry.ratingsCount, endings: ratingCountLabels)
     self.laundryIcon = URL(string: laundry.logoUrl)
     self.laundryBackground = URL(string: laundry.backgroundImageUrl)
-    self.courierDate = Date(timeIntervalSince1970: laundry.courierDate).shortDate
-    self.courierPrice = laundry.courierPriceString
-    self.deliveryDate = Date(timeIntervalSince1970: laundry.deliveryDate).shortDate
-    self.orderPrice = OrderManager.instance.priceString(laundry: laundry)
+    self.collectionDate = laundry.collectionDate.shortDate
+    let price = OrderManager.instance.price(laundry: laundry)
+    let collectionPrice = laundry.collectionPrice(amount: price)
+    self.collectionPrice = collectionPrice > 0 ? price.currencyString : "Бесплатно"
+    self.deliveryDate = laundry.deliveryDate.shortDate
+    self.orderPrice = price.currencyString
+
+    let totalPrice = price + collectionPrice
+    self.confirmOrderButtonTitle = "Оформить заказ: " + totalPrice.currencyString
+    self.hoursTitle = laundry.deliveryTimeInterval
 
     self.sections = OrderManager.instance.currentOrderItems
       .asDriver(onErrorDriveWith: .empty())
@@ -79,20 +96,23 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
         return [section]
       }
     
-    let tokenObservable = ProfileManager.instance.userProfile
-      .asObservable()
-      .map { $0.apiToken }
-      .distinctUntilChanged { $0 == $1 }
-    let confirmButtonObservable = confirmOrderButtonDidTap.asObservable()
+    let didFinishRegistation = PublishSubject<Void>()
     
-    let registrationRequired = Observable.combineLatest(confirmButtonObservable,
-      tokenObservable) { _, token -> Bool in token == nil }
+    let tokenIsValid = ProfileManager.instance.userProfile.value.apiToken != nil ? true : false
     
-    self.presentOrderContactDataSection = registrationRequired.filter { $0 == false }.map { _ in }
-      .asDriver(onErrorDriveWith: .empty())
+    let shouldPresentOrderContactDataSection = confirmOrderButtonDidTap.asObservable().filter { tokenIsValid }
+    let shouldPresentRegistrationSection = confirmOrderButtonDidTap.asObservable().filter { !tokenIsValid }
+
+    self.presentOrderContactDataSection = Driver.of(shouldPresentOrderContactDataSection.asDriver(onErrorDriveWith: .empty()), didFinishRegistation.asDriver(onErrorDriveWith: .empty()))
+      .merge().flatMap {
+        return DataManager.instance.showUser().asDriver(onErrorDriveWith: .just())
+    }
     
-    self.presentRegistrationSection = registrationRequired.filter { $0 == true }.map { _ in }
-      .asDriver(onErrorDriveWith: .empty())
+    self.presentRegistrationSection = shouldPresentRegistrationSection.map {
+      let viewModel = RegistrationPhoneInputViewModel()
+      viewModel.didFinishRegistration.bindTo(didFinishRegistation).addDisposableTo(viewModel.disposeBag)
+      return viewModel
+    }.asDriver(onErrorDriveWith: .empty())
     
     self.presentLaundryReviewsSection = headerViewDidTap
       .map { LaundryReviewsViewModel(laundry: laundry) }

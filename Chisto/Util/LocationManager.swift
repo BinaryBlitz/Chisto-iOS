@@ -19,7 +19,6 @@ class LocationManager {
   private (set) var autorized: Driver<Bool>
   private (set) var location: Observable<CLLocationCoordinate2D?>
 
-
   private init() {
     locationManager.distanceFilter = kCLDistanceFilterNone
     locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -36,8 +35,11 @@ class LocationManager {
       .map { $0.last!.coordinate }
   }
 
-  func locateDevice() -> Observable<CLLocationCoordinate2D?> {
-    locationManager.requestWhenInUseAuthorization()
+  func locateDevice(requestPermission: Bool = true) -> Observable<CLLocationCoordinate2D?> {
+    if requestPermission {
+      locationManager.requestWhenInUseAuthorization()
+    }
+    
     locationManager.startUpdatingLocation()
 
     return location

@@ -41,7 +41,9 @@ class RegistrationCodeInputViewController: UIViewController {
     maskedCodeInput.isValid.asObservable().bindTo(viewModel.codeIsValid).addDisposableTo(disposeBag)
 
     viewModel.dismissViewController.drive(onNext: { [weak self] in
-      self?.dismiss(animated: true, completion: nil)
+      self?.dismiss(animated: true, completion: {
+        viewModel.didFinishRegistration.onNext()
+      })
     }).addDisposableTo(disposeBag)
 
   }

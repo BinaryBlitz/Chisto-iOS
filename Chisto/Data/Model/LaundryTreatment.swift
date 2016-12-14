@@ -8,18 +8,28 @@
 
 import Foundation
 import ObjectMapper
+import Realm
 import RealmSwift
 import ObjectMapper_Realm
 
-class LaundryTreatment: ServerObject {
-  dynamic var treatment: Treatment?
-  dynamic var price: Int = 0
+class LaundryTreatment: Mappable {
 
-  override func mapping(map: Map) {
-    super.mapping(map: map)
+  var id: Int = 0
+  var treatmentId: Int? = nil
+  var price: Double = 0
 
-    treatment <- map["treatment"]
+  required init?(map: Map) { }
+
+  var treatment: Treatment? {
+    guard let treatmentId = treatmentId else { return nil }
+    let realm = try! Realm()
+    return realm.object(ofType: Treatment.self, forPrimaryKey: treatmentId)
+  }
+
+  func mapping(map: Map) {
     price <- map["price"]
+    treatmentId <- map["treatment_id"]
+    id <- map["id"]
   }
 
 }

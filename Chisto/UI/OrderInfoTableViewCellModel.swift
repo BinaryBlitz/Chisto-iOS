@@ -37,13 +37,13 @@ class OrderInfoTableViewCellModel: OrderInfoTableViewCellModelType {
     self.orderLineItems = orderLineItems
   }
   
-  func price(orderLineItems: [OrderLineItem], quantity: Int? = nil) -> Int {
+  func price(orderLineItems: [OrderLineItem], quantity: Int? = nil) -> Double {
     return orderLineItems.map { $0.price(amount: quantity) }.reduce(0, +)
   }
-  
+
   func priceString(lineItems: [OrderLineItem], quantity: Int? = nil) -> String {
     let price = self.price(orderLineItems: lineItems, quantity: quantity)
-    return price == 0 ? "Бесплатно" : "\(price) ₽"
+    return price == 0 ? "Бесплатно" : price.currencyString
   }
   
 }

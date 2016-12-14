@@ -14,6 +14,7 @@ class OrderItem {
   var clothesItem: Item
   var hasDecoration: Bool
   var treatments: [Treatment]
+  var area: (width: Int, length: Int)? = nil
   var amount: Int
 
   init (clothesItem: Item, treatments: [Treatment] = [], amount: Int = 1, hasDecoration: Bool = false) {
@@ -23,13 +24,13 @@ class OrderItem {
     self.hasDecoration = hasDecoration
   }
 
-  func price(laundry: Laundry, _ count: Int? = nil) -> Int {
+  func price(laundry: Laundry, _ count: Int? = nil) -> Double {
     let amount = count ?? self.amount
-    return treatments.map { $0.price(laundry: laundry) }.reduce(0, +) * amount
+    return treatments.map { $0.price(laundry: laundry, hasDecoration: hasDecoration) }.reduce(0, +) * Double(amount)
   }
 
   func priceString(laundry: Laundry, _ count: Int? = nil) -> String {
     let price = self.price(laundry: laundry, count)
-    return "\(price) ₽"
+    return price.currencyString
   }
 }

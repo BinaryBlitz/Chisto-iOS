@@ -12,10 +12,11 @@ import Realm
 import ObjectMapper
 
 class Item: ServerObject {
-
   dynamic var name: String = ""
   dynamic var icon: String = ""
   dynamic var descriptionText: String = ""
+  dynamic var hasDecoration: Bool = true
+  dynamic var useArea: Bool = false
   dynamic var category: Category? = nil
 
   let treatments = LinkingObjects(fromType: Treatment.self, property: "item")
@@ -26,9 +27,10 @@ class Item: ServerObject {
     name <- map["name"]
     descriptionText <- map["description"]
     icon <- map["icon_url"]
+    useArea <- map["use_area"]
   }
   
-  func price(lineItems: [OrderLineItem], quantity: Int? = nil) -> Int {
+  func price(lineItems: [OrderLineItem], quantity: Int? = nil) -> Double {
     let orderLineItems = lineItems.filter { lineItem in
       return lineItem.orderLaundryTreatment?.orderTreatment?.itemId == self.id
     }
@@ -37,6 +39,6 @@ class Item: ServerObject {
   
   func priceString(lineItems: [OrderLineItem], quantity: Int? = nil) -> String {
     let price = self.price(lineItems: lineItems, quantity: quantity)
-    return "\(price) ₽"
+    return price.currencyString
   }
 }

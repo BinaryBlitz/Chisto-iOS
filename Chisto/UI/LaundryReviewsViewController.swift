@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxDataSources
 import RxSwift
+import Kingfisher
 import FloatRatingView
 
 class LaundryReviewsViewController: UIViewController {
@@ -29,9 +30,10 @@ class LaundryReviewsViewController: UIViewController {
     guard let viewModel = viewModel else { return }
     laundryTitleLabel.text = viewModel.laundryTitle
     laundryLogoView.kf.setImage(with: viewModel.laundryLogoUrl)
-    laundryBackgroundImageView.kf.setImage(with: viewModel.laundryBackgroundUrl)
+    let backgroundProcessor = OverlayImageProcessor(overlay: .black, fraction: 0.7)
+    laundryBackgroundImageView.kf.setImage(with: viewModel.laundryBackgroundUrl, options: [.processor(backgroundProcessor)])
     laundryRatingView.rating = viewModel.laundryRating
-    reviewsCountLabel.text = viewModel.laundryReviewsCountLabel
+    reviewsCountLabel.text = viewModel.laundryReviewsCountText
     
     viewModel.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { error in
       guard let error = error as? DataError else { return }

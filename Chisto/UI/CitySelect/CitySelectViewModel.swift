@@ -73,7 +73,7 @@ class CitySelectViewModel: CitySelectViewModelType {
     }).addDisposableTo(disposeBag)
     
     let cities = Variable<[City]>([])
-    Observable.from(uiRealm.objects(City.self))
+    Observable.from(uiRealm.objects(City.self).filter("isDeleted == %@", false))
       .map { Array($0) }
       .bindTo(cities)
       .addDisposableTo(disposeBag)

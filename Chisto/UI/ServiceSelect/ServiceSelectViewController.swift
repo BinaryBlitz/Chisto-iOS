@@ -37,7 +37,7 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
     viewModel?.returnToSection.drive(onNext: { [weak self] section in
       switch section {
       case .order:
-        self?.navigationController?.setViewControllers([OrderViewController.storyboardInstance()!], animated: true)
+        self?.dismiss(animated: true, completion: nil)
       case .orderItem:
         _ = self?.navigationController?.popViewController(animated: true)
       }
@@ -93,6 +93,16 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
     guard let viewModel = viewModel else { return }
     navigationController?.navigationBar.barTintColor = viewModel.color
     headerView.backgroundColor = viewModel.color
+  }
+
+  func presentAreaAlertIfNeeded() {
+    guard let viewModel = viewModel else { return }
+    guard viewModel.needPresentAreaAlert else { return }
+
+    let viewController = ItemSizeAlertViewController.storyboardInstance()!
+    viewController.viewModel = viewModel.itemSizeAlertViewModel
+    viewController.modalPresentationStyle = .overFullScreen
+    present(viewController, animated: false, completion: nil)
   }
 
 }

@@ -56,29 +56,31 @@ class OrderInfoViewModel: OrderInfoViewModelType {
   var orderStatusColor: UIColor
   var sections: Driver<[OrderInfoSectionModel]>
   let presentErrorAlert: PublishSubject<Error>
+  let presentCallSupportAlert: Driver<Void>
   
   // Data
   let order: Variable<Order>
+  let phoneNumber = "+7 495 766-78-49"
   
   init(order: Order) {
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
     
-    DataManager.instance.fetchOrder(order: order).subscribe(onError: { error in
-      presentErrorAlert.onNext(error)
-    }).addDisposableTo(disposeBag)
-    
+    self.presentCallSupportAlert = supportButtonDidTap.asDriver(onErrorDriveWith: .empty())
+
     self.navigationBarTitle = "Заказ № \(order.id)"
     self.orderNumber = "№ \(order.id)"
-    self.orderDate = order.createdAtDate.mediumDate
+    self.orderDate = order.createdAt.mediumDate
     self.orderStatus = order.status.description
     self.orderStatusIcon = order.status.image
     self.orderStatusColor = order.status.color
     
     let order = Variable<Order>(order)
     self.order = order
-    
-    let orderLineItemsObservable = order.asObservable().map { $0.lineItems.toArray() }
+
+    DataManager.instance.getOrderInfo(order: order.value).bindTo(order).addDisposableTo(disposeBag)
+
+    let orderLineItemsObservable = order.asObservable().map { $0.lineItems }
     
     let groupedLineItemsObservable = orderLineItemsObservable.map { items in
       items.categorize { $0.lineItemInfo }
@@ -94,19 +96,13 @@ class OrderInfoViewModel: OrderInfoViewModelType {
     }.bindTo(deliveryPrice).addDisposableTo(disposeBag)
     
     order.asObservable().map { order in
-      return "\(order.price) ₽"
+      return order.price.currencyString
     }.bindTo(orderPrice).addDisposableTo(disposeBag)
-    
+
     order.asObservable().map { order in
-      return "\(order.price + order.deliveryPrice) ₽"
+      return (order.price + order.deliveryPrice).currencyString
     }.bindTo(totalCost).addDisposableTo(disposeBag)
-    
-    uiRealm.observableObject(type: Order.self, primaryKey: order.value.id)
-      .filter{ $0 != nil}
-      .map { $0! }
-      .bindTo(order)
-      .addDisposableTo(disposeBag)
-      
+          
     guard let laundry = uiRealm.object(ofType: Laundry.self, forPrimaryKey: order.value.laundryId) else { return }
     self.laundryTitle = laundry.name
     self.laundryDescriprion = laundry.descriptionText

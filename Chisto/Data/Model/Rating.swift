@@ -15,21 +15,16 @@ class Rating: Mappable {
   var value: Int = 0
   var author: String = ""
   var content: String = ""
-  var createdAt: String = ""
+  var createdAt: Date = Date()
   
   func mapping(map: Map) {
     id <- map["id"]
     value <- map["value"]
     content <- map["content"]
-    createdAt <- map["created_at"]
+    createdAt <- (map["created_at"], StringToDateTransform())
   }
-  
-  var createdAtDate: Date {
-    return Date.from(string: createdAt) ?? Date()
-  }
-  
-  required init?(map: Map) {
-  }
+    
+  required init?(map: Map) { }
   
   init() {
     id = UUID().hashValue

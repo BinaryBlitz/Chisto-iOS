@@ -33,6 +33,7 @@ class ProfileContactDataViewModel: ProfileContactDataViewModelType {
   let popViewController: Driver<Void>
   let saveButtonDidTap = PublishSubject<Void>()
   let cityDidSelect: PublishSubject<Void>
+  let presentErrorAlert: PublishSubject<Error>
   let presentLocationSelectSection: Driver<LocationSelectViewModel>
 
   init() {
@@ -41,13 +42,16 @@ class ProfileContactDataViewModel: ProfileContactDataViewModelType {
 
     let formViewModel = ContactFormViewModel()
     self.formViewModel = formViewModel
+    
+    let presentErrorAlert = PublishSubject<Error>()
+    self.presentErrorAlert = presentErrorAlert
 
     self.presentCitySelectSection = formViewModel.cityFieldDidTap
       .asObservable()
       .map{
         let viewModel = CitySelectViewModel()
 
-        viewModel.selectedCity.asObservable().map{ $0.name }
+        viewModel.selectedCity.asObservable().map { $0.name }
           .bindTo(formViewModel.city)
           .addDisposableTo(viewModel.disposeBag)
 
@@ -58,9 +62,14 @@ class ProfileContactDataViewModel: ProfileContactDataViewModelType {
 
         return viewModel
       }.asDriver(onErrorDriveWith: .empty())
+    
+    let saveProfileDriver = saveButtonDidTap.asObservable().flatMap {
+      return formViewModel.saveUserProfile().do( onError: { error in
+        presentErrorAlert.onNext(error)
+      })
+    }.asDriver(onErrorDriveWith: .empty())
 
-    self.popViewController = Observable.of(cityDidSelect.asObservable(), saveButtonDidTap.asObservable()).merge()
-      .asDriver(onErrorDriveWith: .empty())
+    self.popViewController = Driver.of(cityDidSelect.asDriver(onErrorDriveWith: .empty()), saveProfileDriver).merge()
 
     self.presentLocationSelectSection = formViewModel.locationHeaderButtonDidTap.map {
       let viewModel = LocationSelectViewModel()
@@ -68,10 +77,6 @@ class ProfileContactDataViewModel: ProfileContactDataViewModelType {
       viewModel.streetNumber.bindTo(formViewModel.building).addDisposableTo(viewModel.disposeBag)
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
-
-    saveButtonDidTap.asDriver(onErrorDriveWith: .empty()).drive(onNext: {
-      formViewModel.saveUserProfile()
-    }).addDisposableTo(disposeBag)
 
     formViewModel.isValid.asObservable().bindTo(saveButtonIsEnabled).addDisposableTo(disposeBag)
   }

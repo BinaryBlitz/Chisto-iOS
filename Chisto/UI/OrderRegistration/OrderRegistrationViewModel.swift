@@ -13,7 +13,7 @@ import RxCocoa
 
 class OrderRegistrationViewModel {
 
-  let disposeBag = DisposeBag()
+  let disposeBag: DisposeBag
   let formViewModel: ContactFormViewModel
 
   let buttonsAreEnabled = Variable(false)
@@ -22,9 +22,19 @@ class OrderRegistrationViewModel {
   let presentLocationSelectSection: Driver<LocationSelectViewModel>
   let payInCashButtonDidTap = PublishSubject<Void>()
   let payWithCreditCardButtonDidTap = PublishSubject<Void>()
-  let presentOrderPlacedPopup: Observable<OrderPlacedPopupViewModel>
+  let presentOrderPlacedPopup: Driver<OrderPlacedPopupViewModel>
+  let presentPaymentSection: Driver<PaymentViewModel>
+  let paymentCompleted: PublishSubject<Order>
+  let presentErrorAlert: PublishSubject<Error>
+  
+  enum NextScreen {
+    case orderPlacedPopup(viewModel: OrderPlacedPopupViewModel)
+    case payment(viewModel: PaymentViewModel)
+  }
 
   init() {
+    let disposeBag =  DisposeBag()
+    self.disposeBag = disposeBag
     
     let returnToOrderViewController = PublishSubject<Void>()
     self.returnToOrderViewController = returnToOrderViewController
@@ -32,7 +42,7 @@ class OrderRegistrationViewModel {
     let formViewModel = ContactFormViewModel()
     self.formViewModel = formViewModel
 
-    self.orderCost = OrderManager.instance.priceForCurrentLaundryString
+    self.orderCost = OrderManager.instance.priceForCurrentLaundry(includeCollection: true).currencyString
 
     self.presentLocationSelectSection = formViewModel.locationHeaderButtonDidTap.map {
       let viewModel = LocationSelectViewModel()
@@ -40,21 +50,39 @@ class OrderRegistrationViewModel {
       viewModel.streetNumber.bindTo(formViewModel.building).addDisposableTo(viewModel.disposeBag)
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
-
-    self.presentOrderPlacedPopup = Observable.of(payWithCreditCardButtonDidTap.asObservable(), payInCashButtonDidTap.asObservable()).merge()
-      .flatMap { _ -> Observable<OrderPlacedPopupViewModel> in
-        
-        formViewModel.saveUserProfile()
-        
-        return OrderManager.instance.placeOrder().map { order in
-          let viewModel = OrderPlacedPopupViewModel(orderNumber: "\(order.id)")
-          viewModel.returnToOrderViewController.asObservable()
-            .bindTo(returnToOrderViewController)
-            .addDisposableTo(viewModel.disposeBag)
-          return viewModel
-        }
+    
+    let paymentCompleted = PublishSubject<Order>()
+    self.paymentCompleted = paymentCompleted
+    
+    let presentErrorAlert = PublishSubject<Error>()
+    self.presentErrorAlert = presentErrorAlert
+    
+    let placeOrderDriver = formViewModel.saveUserProfile().flatMap {
+      return OrderManager.instance.createOrder()
+    }.do(onError: { error in
+        presentErrorAlert.onNext(error)
+    }).asDriver(onErrorDriveWith: .empty())
+    
+    let payInCashDriver = payInCashButtonDidTap
+      .asDriver(onErrorDriveWith: .empty()).flatMap {
+        return placeOrderDriver
       }
-
+  
+    self.presentPaymentSection = payWithCreditCardButtonDidTap
+      .asDriver(onErrorDriveWith: .empty()).flatMap {
+        return placeOrderDriver.map { order in
+          let viewModel = PaymentViewModel(order: order)
+          viewModel.didFinishPayment.bindTo(paymentCompleted).addDisposableTo(disposeBag)
+          return viewModel
+      }
+    }
+    
+    self.presentOrderPlacedPopup = Driver.of(paymentCompleted.asDriver(onErrorDriveWith: .empty()), payInCashDriver)
+      .merge().map { order in
+        OrderManager.instance.clearOrderItems()
+        return OrderPlacedPopupViewModel(orderNumber: "\(order.id)")
+    }
+    
     formViewModel.isValid.asObservable().bindTo(buttonsAreEnabled).addDisposableTo(disposeBag)
   }
 

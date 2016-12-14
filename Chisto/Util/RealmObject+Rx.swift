@@ -11,5 +11,5 @@ import RealmSwift
 import RxSwift
 
 extension Object {
-  
+
 }

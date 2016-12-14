@@ -20,6 +20,12 @@ class CategoriesViewController: UITableViewController, DefaultBarColoredViewCont
     super.viewDidLoad()
     navigationItem.title = viewModel.navigationBarTitle
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconNavbarClose"), style: .plain, target: nil, action: nil)
+    
+    navigationItem.leftBarButtonItem?.rx.tap.asDriver().drive(onNext: { [weak self] in
+      self?.dismiss(animated: true, completion: nil)
+    }).addDisposableTo(disposeBag)
+    
     configureTableView()
     
     viewModel.presentItemsSection.drive(onNext: { [weak self] viewModel in

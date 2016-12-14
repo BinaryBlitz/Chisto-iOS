@@ -55,16 +55,7 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
 
-    DataManager.instance.fetchLaundries().subscribe(onError: { error in
-      presentErrorAlert.onNext(error)
-    }).addDisposableTo(disposeBag)
-    
     let laundries = Variable<[Laundry]>([])
-    
-    Observable.from(uiRealm.objects(Laundry.self))
-      .map { Array($0) }
-      .bindTo(laundries)
-      .addDisposableTo(disposeBag)
 
     let sortType = Variable<LaundrySortType>(LaundrySortType.byRating)
     self.sortType = sortType
@@ -72,8 +63,20 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     let sortedLaundries = Variable<[Laundry]>([])
     self.sortedLaundries = sortedLaundries
 
+    DataManager.instance.getLaundries().bindTo(laundries).addDisposableTo(disposeBag)
+
     self.sections = sortedLaundries.asDriver().map { laundries in
-      let cellModels = laundries.map(LaundrySelectTableViewCellModel.init) as [LaundrySelectTableViewCellModelType]
+      let orderManager = OrderManager.instance
+
+      let cheapestLaundry = laundries.sorted { orderManager.price(laundry: $0) > orderManager.price(laundry: $1) }.first
+      let fastestLaundry = laundries.filter { $0 != cheapestLaundry }.sorted { $0.collectionDate > $1.collectionDate }.first
+
+      let cellModels = laundries.map { laundry in
+        var type: LaundryType? = nil
+        if laundry == fastestLaundry { type = .fast }
+        if laundry == cheapestLaundry { type = .cheap }
+        return LaundrySelectTableViewCellModel(laundry: laundry, type: type)
+      } as [LaundrySelectTableViewCellModelType]
 
       let section = LaundrySelectSectionModel(model: "", items: cellModels)
       return [section]
@@ -87,16 +90,17 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     }.asDriver(onErrorDriveWith: .empty())
     
     let currentOrderItemsObservable = OrderManager.instance.currentOrderItems.asObservable()
-    
-    let filteredLaundriesObservable = Observable.combineLatest(laundries.asObservable(), currentOrderItemsObservable) { [weak self] laundries, currentOrderItems -> [Laundry] in
-      self?.filterLaundries(laundries: laundries, currentOrderItems: currentOrderItems) ?? []
-    }
+
+    let filteredLaundriesObservable = Observable
+      .combineLatest(laundries.asObservable(), currentOrderItemsObservable) { [weak self] laundries, currentOrderItems -> [Laundry] in
+        self?.filterLaundries(laundries: laundries, currentOrderItems: currentOrderItems) ?? []
+      }
 
     Observable.combineLatest(filteredLaundriesObservable.asObservable(), sortType.asObservable()) { laundries, sortType -> [Laundry] in
       return self.sortLaundries(laundries: laundries, sortType: sortType)
     }.bindTo(sortedLaundries).addDisposableTo(disposeBag)
   }
-  
+
   func filterLaundries(laundries: [Laundry], currentOrderItems: [OrderItem]) -> [Laundry] {
     return laundries.filter { laundry in
       let laundryTreatments = Set(laundry.treatments)
