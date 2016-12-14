@@ -12,8 +12,8 @@ PODS:
   - GooglePlaces (2.1.1):
     - GoogleMaps/Base (= 2.1.1)
   - IQKeyboardManagerSwift (4.0.7)
-  - Kingfisher (3.2.1)
-  - ObjectMapper (2.2.1)
+  - Kingfisher (3.2.2)
+  - ObjectMapper (2.2.2)
   - ObjectMapper+Realm (0.2):
     - ObjectMapper
     - RealmSwift
@@ -63,8 +63,8 @@ SPEC CHECKSUMS:
   GoogleMaps: a5b5bbe47734e2443bde781a6aa64e69fdb6d785
   GooglePlaces: 35636d86e5020cba3856eb988c09a5491de0a65a
   IQKeyboardManagerSwift: 58bbcf46b5cf9fd4ed625d28a60cb2fbae4ab0f4
-  Kingfisher: 64ef28c6d3d6f344e3ae2d7f5c9da80439505d99
-  ObjectMapper: 41e43e1a89f8060ef5ea5d04ba852e269a621d68
+  Kingfisher: 821466474ad7ffc375a4aecadfa05068cfed67b3
+  ObjectMapper: 9e385c2295bcc4e16eabbcfc85db801442bba545
   ObjectMapper+Realm: 8b45dbfa1be145e311a6f93a306c183d630b40a9
   Realm: 9da97f48365f8b99dd95c28d45ad8222d62e1775
   RealmSwift: 01e8db006035f16003e6307ae8eae1adccce68db
