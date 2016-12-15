@@ -9,11 +9,25 @@
 import Foundation
 import ObjectMapper
 
+class User: Mappable {
+  var id: Int!
+  var firstName: String = ""
+  var lastName: String = ""
+
+  func mapping(map: Map) {
+    id <- map["id"]
+    firstName <- map["first_name"]
+    lastName <- map["last_name"]
+  }
+
+  required init(map: Map) { }
+}
+
 class Rating: Mappable {
 
   var id: Int!
   var value: Int = 0
-  var author: String = ""
+  var user: User? = nil
   var content: String = ""
   var createdAt: Date = Date()
   
@@ -21,6 +35,7 @@ class Rating: Mappable {
     id <- map["id"]
     value <- map["value"]
     content <- map["content"]
+    user <- map["user"]
     createdAt <- (map["created_at"], StringToDateTransform())
   }
     
