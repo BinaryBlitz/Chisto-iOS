@@ -113,7 +113,7 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     let orderManager = OrderManager.instance
     switch sortType {
     case .byPrice:
-      return laundries.sorted { orderManager.price(laundry: $0) < orderManager.price(laundry: $1) }
+      return laundries.sorted { orderManager.price(laundry: $0, includeCollection: true) < orderManager.price(laundry: $1, includeCollection: true) }
     case .byRating:
       return laundries.sorted { $0.rating > $1.rating }
     case .bySpeed:

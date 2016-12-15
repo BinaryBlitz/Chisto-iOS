@@ -80,7 +80,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
     self.collectionDate = laundry.collectionDate.shortDate
     let price = OrderManager.instance.price(laundry: laundry)
     let collectionPrice = laundry.collectionPrice(amount: price)
-    self.collectionPrice = collectionPrice > 0 ? price.currencyString : "Бесплатно"
+    self.collectionPrice = collectionPrice > 0 ? collectionPrice.currencyString : "Бесплатно"
     self.deliveryDate = laundry.deliveryDate.shortDate
     self.orderPrice = price.currencyString
 
