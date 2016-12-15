@@ -7,22 +7,22 @@ target 'Chisto' do
 
   # Pods for BinaryBlitzTest
   pod 'Alamofire', '~> 4.0'
-  pod 'RxSwift', '~> 3.0.0-beta.1'
-  pod 'RxCocoa', '~> 3.0.0-beta.1'
-  pod 'RxDataSources', '~> 1.0.0-beta.3'
+  pod 'RxSwift', '~> 3.0'
+  pod 'RxCocoa', '~> 3.0'
+  pod 'RxDataSources', '~> 1.0'
   pod 'Fabric'
-  pod 'FloatRatingView', '~> 2.0.0'
+  pod 'FloatRatingView', '~> 2.0'
   pod 'IQKeyboardManagerSwift'
   pod 'ObjectMapper', '~> 2.2'
   pod 'ObjectMapper+Realm', '~> 0.2'
   pod 'RealmSwift', '~> 2.0.3'
-  pod 'RxRealm', '~> 0.3.1'
+  pod 'RxRealm', '~> 0.3'
   pod 'Kingfisher', '~> 3.0'
   pod 'TextFieldEffects'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'SwiftyJSON'
-  pod 'UIColor_Hex_Swift', '~> 3.0.2'
+  pod 'UIColor_Hex_Swift', '~> 3.0'
 
   pod 'Crashlytics'
 
