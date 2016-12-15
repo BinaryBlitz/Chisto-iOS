@@ -41,11 +41,13 @@ class Category: ServerObject {
 
     var itemsPreview: [String]? = nil
     itemsPreview <- map["items_preview"]
+    let newList = List<RealmString>()
     itemsPreview?.forEach { item in
       let value = RealmString()
       value.stringValue = item
-      self.itemsPreview.append(value)
+      newList.append(value)
     }
+    self.itemsPreview = newList
   }
 
 }
