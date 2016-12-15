@@ -66,7 +66,7 @@ enum APIPath {
 
   var successCode: Int {
     switch self {
-    case .createOrder, .createVerificationToken:
+    case .createOrder, .createVerificationToken, .createUser:
       return 201
     default:
       return 200

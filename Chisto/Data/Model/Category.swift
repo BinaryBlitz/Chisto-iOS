@@ -40,12 +40,11 @@ class Category: ServerObject {
     featured <- map["featured"]
 
     var itemsPreview: [String]? = nil
-    itemsPreview <- map["values"]
-    let itemsPreviewList = List<RealmString>()
+    itemsPreview <- map["items_preview"]
     itemsPreview?.forEach { item in
       let value = RealmString()
       value.stringValue = item
-      itemsPreviewList.append(value)
+      self.itemsPreview.append(value)
     }
   }
 
