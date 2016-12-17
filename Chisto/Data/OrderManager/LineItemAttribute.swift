@@ -14,7 +14,7 @@ class LineItemAttribute: Mappable {
   var laundryTreatmentId: Int!
   var quantity: Int!
 
-  init(laundryTreatmentId: Int, quantity: Int) {
+  init(_ laundryTreatmentId: Int, quantity: Int) {
     self.laundryTreatmentId = laundryTreatmentId
     self.quantity = quantity
   }

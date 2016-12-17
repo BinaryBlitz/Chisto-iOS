@@ -31,7 +31,12 @@ class OrderConfirmServiceTableViewCellModel: OrderConfirmServiceTableViewCellMod
     self.laundry = laundry
     self.clothesIconUrl = URL(string: orderItem.clothesItem.icon)
     self.clothesIconColor = orderItem.clothesItem.category?.color ?? UIColor.chsSkyBlue
-    self.clothesTitle = orderItem.clothesItem.name + " " + orderItem.priceString(laundry: laundry, 1) + " × \(orderItem.amount)"
+    var clothesTitle = orderItem.clothesItem.name
+    if orderItem.area != 0 {
+      clothesTitle +=  " \(orderItem.area) м² "
+    }
+    clothesTitle += " " + orderItem.priceString(laundry: laundry, 1) + " × \(orderItem.amount)"
+    self.clothesTitle = clothesTitle
     self.clothesPrice = orderItem.priceString(laundry: laundry)
     self.clothesServices = orderItem.treatments
   }

@@ -31,7 +31,7 @@ class ItemSizeAlertViewModel {
     self.widthText = widthText
     self.areaText = Variable<String?>("0 м²")
 
-    if let area = orderItem.area {
+    if let area = orderItem.size {
       lengthText.value = String(area.length)
       widthText.value = String(area.width)
     }
@@ -53,7 +53,7 @@ class ItemSizeAlertViewModel {
       return area.width * area.length != 0
       }.map { area in
         OrderManager.instance.updateOrderItem(orderItem) {
-          orderItem.area = area
+          orderItem.size = area
         }
     }.asDriver(onErrorDriveWith: .empty())
 
@@ -67,11 +67,7 @@ class ItemSizeAlertViewModel {
   func area(lengthText: String?, widthText: String?) -> String? {
     guard let lengthText = lengthText, let widthText = widthText else { return "0 м²" }
     guard let length = Double(lengthText.onlyDigits), let width = Double(widthText.onlyDigits) else { return "0 м²" }
-    let area = Double(length * width / squareCentimetersInMeter) as NSNumber
-    let numberFormatter = NumberFormatter()
-    numberFormatter.minimumIntegerDigits = 1
-    numberFormatter.maximumFractionDigits = 5
-    guard let areaString = numberFormatter.string(from: area) else { return "0 м²" }
-    return "\(areaString) м²"
+    let area = ceil(Double(length * width / squareCentimetersInMeter))
+    return "\(Int(area)) м²"
   }
 }

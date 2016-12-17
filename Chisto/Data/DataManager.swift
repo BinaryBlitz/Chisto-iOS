@@ -17,6 +17,7 @@ import ObjectMapper
 enum DataError: Error, CustomStringConvertible {
   case network(NetworkError)
   case responseConvertError
+  case requestConvertError
   case unknownApiPath
   case unknown
   
