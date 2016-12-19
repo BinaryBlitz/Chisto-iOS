@@ -33,6 +33,8 @@ class LastTimePopupViewModel: LastTimePopupViewModelType {
   var laundryLogoUrl: URL?
   var laundryBackgroundUrl: URL?
   var showAllLaundriesButtonDidTap = PublishSubject<Void>()
+  var didChooseLaundry: Observable<Laundry>
+  var orderButtonDidTap = PublishSubject<Void>()
 
   // Output
   let laundryDescriptionViewModels: [LaundryItemInfoViewModel]
@@ -58,7 +60,11 @@ class LastTimePopupViewModel: LastTimePopupViewModelType {
 
     self.laundryDescriptionViewModels = [collectionItemViewModel, deliveryItemViewModel, costItemViewModel]
 
-    self.dismissViewController = showAllLaundriesButtonDidTap.asDriver(onErrorDriveWith: .empty())
+    let didChooseLaundry = orderButtonDidTap.map { laundry }
+    self.didChooseLaundry = didChooseLaundry
+
+    self.dismissViewController = Observable.of(showAllLaundriesButtonDidTap.asObservable(), didChooseLaundry.map {_ in } ).merge()
+      .asDriver(onErrorDriveWith: .empty())
   }
 
 }

@@ -74,18 +74,18 @@ class Order: ServerObject {
   dynamic var paid: Bool = false
   dynamic var statusString: String = ""
   dynamic var paymentUrl: String = ""
-  dynamic var amount: Double = 0
   dynamic var email: String? = nil
   dynamic var deliveryPrice: Double = 0
   dynamic var createdAt: Date = Date()
   dynamic var updatedAt: Date = Date()
+  dynamic var totalPrice: Double = 0
   dynamic var payment: Payment? = nil
   var lineItems: [OrderLineItem] = []
-  
-  var price: Double {
-    return lineItems.map { $0.price() }.reduce(0, +)
+
+  var orderPrice: Double {
+    return totalPrice - deliveryPrice
   }
-  
+
   var deliveryPriceString: String {
     return deliveryPrice == 0 ? "Бесплатно": deliveryPrice.currencyString
   }
@@ -125,7 +125,8 @@ class Order: ServerObject {
     statusString <- map["status"]
     laundryId <- map["laundry_id"]
     laundry <- map["laundry"]
-    deliveryPrice <- map["delivery_price"]
+    totalPrice <- map["total_price"]
+    deliveryPrice <- map["delivery_fee"]
     updatedAt <- (map["updated_at"], StringToDateTransform())
     payment <- map["payment"]
   }

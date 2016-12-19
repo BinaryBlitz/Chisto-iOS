@@ -24,18 +24,18 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
     navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.sortButtonDidTap)
       .addDisposableTo(disposeBag)
 
-    viewModel.presentSortSelectSection.drive(onNext: {_ in
+    viewModel.presentSortSelectSection.drive(onNext: { [weak self] _ in
       let alertController = UIAlertController(title: "Сортировать химчистки по:", message: nil, preferredStyle: .alert)
       
-      let byPriceAction = UIAlertAction(title: "По цене", style: .default, handler: { [weak self] _ in
+      let byPriceAction = UIAlertAction(title: "По цене", style: .default, handler: { _ in
         self?.viewModel.sortType.value = .byPrice
       })
       
-      let bySpeedAction = UIAlertAction(title: "По скорости", style: .default, handler: { [weak self] _ in
+      let bySpeedAction = UIAlertAction(title: "По скорости", style: .default, handler: { _ in
         self?.viewModel.sortType.value = .bySpeed
       })
       
-      let byRatingAction = UIAlertAction(title: "По рейтингу", style: .default, handler: { [weak self] _ in
+      let byRatingAction = UIAlertAction(title: "По рейтингу", style: .default, handler: { _ in
         self?.viewModel.sortType.value = .byRating
       })
       
@@ -46,24 +46,37 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
       alertController.addAction(byRatingAction)
       alertController.addAction(cancelAction)
       
-      self.present(alertController, animated: true)
+      self?.present(alertController, animated: true)
     }).addDisposableTo(disposeBag)
 
-    viewModel.presentOrderConfirmSection.drive(onNext: { orderViewModel in
+    viewModel.presentOrderConfirmSection.asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] orderViewModel in
       let viewController = OrderConfirmViewController.storyboardInstance()!
       viewController.viewModel = orderViewModel
-      self.navigationController?.pushViewController(viewController, animated: true)
+      self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
-    
-    viewModel.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { error in
+
+    viewModel.presentLastTimeOrderPopup.asDriver(onErrorDriveWith: .empty())
+      .drive(onNext: { [weak self] popupViewModel in
+        let viewController = LastTimePopupViewController.storyboardInstance()!
+
+        viewController.viewModel = popupViewModel
+        viewController.modalPresentationStyle = .overFullScreen
+        self?.present(viewController, animated: false, completion: nil)
+    }).addDisposableTo(disposeBag)
+
+    viewModel.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] error in
       guard let error = error as? DataError else { return }
       let alertController = UIAlertController(title: "Ошибка", message: error.description, preferredStyle: .alert)
       let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
       alertController.addAction(defaultAction)
-      self.present(alertController, animated: true, completion: nil)
-      }).addDisposableTo(disposeBag)
+      self?.present(alertController, animated: true, completion: nil)
+    }).addDisposableTo(disposeBag)
 
     configureTableView()
+  }
+
+  func presentLastOrderPopupIfNeeded() {
+    
   }
 
   func configureTableView() {
@@ -84,7 +97,7 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
 
     tableView.dataSource = nil
     viewModel.sections
-      .drive(self.tableView.rx.items(dataSource: self.dataSource))
+      .drive(tableView.rx.items(dataSource: self.dataSource))
       .addDisposableTo(self.disposeBag)
   }
 

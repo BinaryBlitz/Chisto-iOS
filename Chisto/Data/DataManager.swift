@@ -129,11 +129,18 @@ extension DataManager: UserManagerType {
   func showUser() -> Observable<Void> {
     return networkRequest(method: .get, .showUser).map { json in
       guard let jsonMap = json as? [String: Any] else { throw DataError.responseConvertError }
-      
+      let realm = try! Realm()
+
+      let order = Mapper<Order>().map(JSONObject: jsonMap["order"])
+      if let order = order {
+        try! realm.write { realm.add(order, update: true) }
+      }
+
       ProfileManager.instance.updateProfile { profile in
         let map = Map(mappingType: .fromJSON, JSON: jsonMap)
         profile.mapping(map: map)
         profile.isCreated = true
+        profile.order = order
       }
     }
   }
@@ -312,6 +319,19 @@ extension DataManager: FetchItemsManagerType {
     let userData : Dictionary = ["user": ["device_token": tokenString, "platform": "ios"]]
 
     return networkRequest(method: .patch, .updateUser, userData).map{ _ in }
+  }
+  
+  func showLaundry(laundryId: Int) -> Observable<Laundry> {
+    return networkRequest(method: .get, .showLaundry(laundryId: laundryId)).flatMap { result -> Observable<Laundry> in
+      guard let laundry = Mapper<Laundry>().map(JSONObject: result) else { return Observable.error(DataError.responseConvertError) }
+      let realm = try! Realm()
+
+      try realm.write {
+        realm.add(laundry, update: true)
+      }
+
+      return Observable.just(laundry)
+    }
   }
 
 }
