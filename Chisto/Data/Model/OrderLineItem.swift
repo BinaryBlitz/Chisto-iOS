@@ -56,7 +56,12 @@ class OrderLaundryTreatment: Mappable {
 
 class OrderLineItem: Mappable {
   var orderLaundryTreatment: OrderLaundryTreatment?
-  var quantity: Int = 0
+  var quantity: Int = 1
+  var totalPrice: Double = 0
+
+  var itemPrice: Double {
+    return totalPrice / Double(quantity)
+  }
   
   var item: Item? {
     let realm = try! Realm()
@@ -67,23 +72,12 @@ class OrderLineItem: Mappable {
     return LineItemInfo(item: item, quantity: quantity)
   }
 
-  func price(amount: Int? = nil) -> Double {
-    guard let orderLaundryTreatmentPrice = orderLaundryTreatment?.price else { return 0 }
-    guard let amount = amount else { return orderLaundryTreatmentPrice * Double(quantity) }
-    return Double(amount) * orderLaundryTreatmentPrice
-  }
-
   required init?(map: Map) { }
-  
-  func priceString(amount: Int? = nil) -> String {
-    let price = self.price(amount: amount)
-    
-    return price.currencyString
-  }
   
   func mapping(map: Map) {
     orderLaundryTreatment <- map["laundry_treatment"]
     quantity <- map["quantity"]
+    totalPrice <- map["total_price"]
   }
   
 }

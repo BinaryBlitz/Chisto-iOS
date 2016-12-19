@@ -16,6 +16,7 @@ class Profile: Object, Mappable {
   dynamic var isCreated: Bool = false
   dynamic var id: Int = UUID().hashValue
   dynamic var deviceToken: String? = nil
+  dynamic var order: Order? = nil
   dynamic var firstName: String = ""
   dynamic var lastName: String = ""
   dynamic var phone: String = ""

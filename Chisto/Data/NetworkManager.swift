@@ -16,6 +16,7 @@ enum APIPath {
   case fetchCities
   case fetchCategories
   case fetchCityLaundries(cityId: Int)
+  case showLaundry(laundryId: Int)
   case fetchCategoryClothes(categoryId: Int)
   case fetchClothesTreatments(itemId: Int)
   case createVerificationToken
@@ -44,6 +45,8 @@ enum APIPath {
       return "verification_token"
     case .createOrder(let laundryId):
       return "laundries/\(laundryId)/orders"
+    case .showLaundry(let laundryId):
+      return "laundries/\(laundryId)"
     case .fetchRatings(let laundryId):
       return "laundries/\(laundryId)/ratings"
     case .fetchOrders:

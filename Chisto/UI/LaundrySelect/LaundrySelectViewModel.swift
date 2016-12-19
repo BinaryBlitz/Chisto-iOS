@@ -43,15 +43,20 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
 
   // Output
   var sections: Driver<[LaundrySelectSectionModel]>
-  var presentOrderConfirmSection: Driver<OrderConfirmViewModel>
+  var presentOrderConfirmSection: PublishSubject<OrderConfirmViewModel>
   var presentSortSelectSection: Driver<Void>
   var presentErrorAlert: PublishSubject<Error>
+  var presentLastTimeOrderPopup: Driver<LastTimePopupViewModel>
+  var didFinishPushingViewController = PublishSubject<Void>()
 
   // Data
   var sortedLaundries: Variable<[Laundry]>
   var sortType: Variable<LaundrySortType>
 
   init() {
+    let presentOrderConfirmSection = PublishSubject<OrderConfirmViewModel>()
+    self.presentOrderConfirmSection = presentOrderConfirmSection
+
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
 
@@ -63,7 +68,25 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     let sortedLaundries = Variable<[Laundry]>([])
     self.sortedLaundries = sortedLaundries
 
-    DataManager.instance.getLaundries().bindTo(laundries).addDisposableTo(disposeBag)
+    let getLaundries = DataManager.instance.getLaundries()
+
+    getLaundries.bindTo(laundries).addDisposableTo(disposeBag)
+
+    let lastOrderLaundry = Observable.combineLatest(getLaundries, didFinishPushingViewController.asObservable()) { laundries, _ -> Laundry? in
+      guard let lastOrderLaundry = ProfileManager.instance.userProfile.value.order?.laundry else { return nil }
+      return laundries.first { $0.id == lastOrderLaundry.id }
+    }
+
+    self.presentLastTimeOrderPopup = lastOrderLaundry
+      .filter { $0 != nil }
+      .map {
+        let viewModel = LastTimePopupViewModel(laundry: $0!)
+        viewModel.didChooseLaundry.map(OrderConfirmViewModel.init)
+          .bindTo(presentOrderConfirmSection).addDisposableTo(viewModel.disposeBag)
+        
+        return viewModel
+      }
+      .asDriver(onErrorDriveWith: .empty())
 
     self.sections = sortedLaundries.asDriver().map { laundries in
       let orderManager = OrderManager.instance
@@ -84,10 +107,10 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
 
     self.presentSortSelectSection = sortButtonDidTap.asDriver(onErrorDriveWith: .empty())
 
-    self.presentOrderConfirmSection = itemDidSelect.map { indexPath in
+    itemDidSelect.map { indexPath in
       let viewModel = OrderConfirmViewModel(laundry: sortedLaundries.value[indexPath.row])
       return viewModel
-    }.asDriver(onErrorDriveWith: .empty())
+    }.bindTo(presentOrderConfirmSection).addDisposableTo(disposeBag)
     
     let currentOrderItemsObservable = OrderManager.instance.currentOrderItems.asObservable()
 

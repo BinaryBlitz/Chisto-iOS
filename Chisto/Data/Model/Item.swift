@@ -29,16 +29,4 @@ class Item: ServerObject {
     icon <- map["icon_url"]
     useArea <- map["use_area"]
   }
-  
-  func price(lineItems: [OrderLineItem], quantity: Int? = nil) -> Double {
-    let orderLineItems = lineItems.filter { lineItem in
-      return lineItem.orderLaundryTreatment?.orderTreatment?.itemId == self.id
-    }
-    return orderLineItems.map { $0.price(amount: quantity) }.reduce(0, +)
-  }
-  
-  func priceString(lineItems: [OrderLineItem], quantity: Int? = nil) -> String {
-    let price = self.price(lineItems: lineItems, quantity: quantity)
-    return price.currencyString
-  }
 }

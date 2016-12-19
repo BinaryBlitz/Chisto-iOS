@@ -93,8 +93,8 @@ class OrderInfoViewModel {
     }.asDriver(onErrorDriveWith: .empty())
     
     observableOrder.map { $0.deliveryPriceString }.bindTo(deliveryPrice).addDisposableTo(disposeBag)
-    observableOrder.map { $0.price.currencyString }.bindTo(orderPrice).addDisposableTo(disposeBag)
-    observableOrder.map { ($0.price + $0.deliveryPrice).currencyString }.bindTo(totalCost).addDisposableTo(disposeBag)
+    observableOrder.map { $0.orderPrice.currencyString }.bindTo(orderPrice).addDisposableTo(disposeBag)
+    observableOrder.map { $0.totalPrice.currencyString }.bindTo(totalCost).addDisposableTo(disposeBag)
 
     let observableOrderLaundry = observableOrder.map { uiRealm.object(ofType: Laundry.self, forPrimaryKey: $0.laundryId ) }
     observableOrderLaundry.map { $0?.name }.bindTo(laundryTitle).addDisposableTo(disposeBag)
