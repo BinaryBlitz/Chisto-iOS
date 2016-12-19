@@ -336,4 +336,10 @@ extension DataManager: FetchItemsManagerType {
     }
   }
 
+  func createRating(laundryId: Int, rating: Rating) -> Observable<Void> {
+    let json = rating.toJSON()
+
+    return networkRequest(method: .post, .createRating(laundryId: laundryId), ["rating": json]).map { _ in }
+  }
+
 }

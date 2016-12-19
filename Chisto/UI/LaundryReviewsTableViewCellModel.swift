@@ -24,7 +24,7 @@ class LaundryReviewsViewTableViewCellModel: LaundryReviewsViewTableViewCellModel
   init(rating: Rating) {
     self.rating = Float(rating.value)
     self.content = rating.content
-    self.date = rating.createdAt.shortDate
+    self.date = rating.createdAt?.shortDate ?? ""
 
     guard let user = rating.user else { return }
     self.authorName = user.firstName + " " + user.lastName

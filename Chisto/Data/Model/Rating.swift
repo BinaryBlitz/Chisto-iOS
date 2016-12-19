@@ -23,26 +23,22 @@ class User: Mappable {
   required init(map: Map) { }
 }
 
-class Rating: Mappable {
+class Rating: ServerObject {
 
-  var id: Int!
   var value: Int = 0
   var user: User? = nil
   var content: String = ""
-  var createdAt: Date = Date()
+  var createdAt: Date? = nil
   
-  func mapping(map: Map) {
-    id <- map["id"]
+  override func mapping(map: Map) {
     value <- map["value"]
     content <- map["content"]
-    user <- map["user"]
-    createdAt <- (map["created_at"], StringToDateTransform())
-  }
-    
-  required init?(map: Map) { }
-  
-  init() {
-    id = UUID().hashValue
+
+    if map.mappingType == .fromJSON {
+      user <- map["user"]
+      id <- map["id"]
+      createdAt <- (map["created_at"], StringToDateTransform())
+    }
   }
   
 }

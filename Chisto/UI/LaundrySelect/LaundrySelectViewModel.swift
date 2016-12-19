@@ -77,16 +77,23 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
       return laundries.first { $0.id == lastOrderLaundry.id }
     }
 
-    self.presentLastTimeOrderPopup = lastOrderLaundry
-      .filter { $0 != nil }
-      .map {
-        let viewModel = LastTimePopupViewModel(laundry: $0!)
-        viewModel.didChooseLaundry.map(OrderConfirmViewModel.init)
-          .bindTo(presentOrderConfirmSection).addDisposableTo(viewModel.disposeBag)
-        
-        return viewModel
-      }
-      .asDriver(onErrorDriveWith: .empty())
+    let currentOrderItemsObservable = OrderManager.instance.currentOrderItems.asObservable()
+
+    let filteredLastOrderLaundry = lastOrderLaundry.withLatestFrom(currentOrderItemsObservable) { laundry, currentOrderItems -> Laundry? in
+      guard let laundry = laundry else { return nil }
+      let laundryTreatments = Set(laundry.treatments)
+      let orderTreatments = Set(currentOrderItems.map { $0.treatments }.reduce([], +))
+      guard orderTreatments.subtracting(laundryTreatments).isEmpty else { return nil }
+      return laundry
+    }.filter { $0 != nil }.map { $0! }
+
+    self.presentLastTimeOrderPopup = filteredLastOrderLaundry.map { laundry in
+      let viewModel = LastTimePopupViewModel(laundry: laundry)
+      viewModel.didChooseLaundry.map(OrderConfirmViewModel.init)
+        .bindTo(presentOrderConfirmSection).addDisposableTo(viewModel.disposeBag)
+
+      return viewModel
+    }.asDriver(onErrorDriveWith: .empty())
 
     self.sections = sortedLaundries.asDriver().map { laundries in
       let orderManager = OrderManager.instance
@@ -111,8 +118,6 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
       let viewModel = OrderConfirmViewModel(laundry: sortedLaundries.value[indexPath.row])
       return viewModel
     }.bindTo(presentOrderConfirmSection).addDisposableTo(disposeBag)
-    
-    let currentOrderItemsObservable = OrderManager.instance.currentOrderItems.asObservable()
 
     let filteredLaundriesObservable = Observable
       .combineLatest(laundries.asObservable(), currentOrderItemsObservable) { [weak self] laundries, currentOrderItems -> [Laundry] in

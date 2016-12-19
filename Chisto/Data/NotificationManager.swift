@@ -10,13 +10,17 @@ import Foundation
 import UIKit
 import RxCocoa
 import RxSwift
-import UserNotifications
+import SwiftyJSON
 
 class NotificationManager {
   static let instance = NotificationManager()
   let disposeBag = DisposeBag()
-  private init() { }
+  private init() {  }
 
+  func resetNotificationsCount() {
+    UIApplication.shared.applicationIconBadgeNumber = 0
+  }
+  
   func enable() {
     guard ProfileManager.instance.userProfile.value.deviceToken == nil else { return }
     let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
@@ -32,6 +36,7 @@ class NotificationManager {
   }
 
   func didReceiveNotification(userInfo: [AnyHashable : Any]) {
+    print(JSON(userInfo).rawString(options: .prettyPrinted) ?? "")
     guard let notificationData = userInfo["custom_data"] as? [String: Any] else { return }
     guard let orderId = notificationData["order_id"] as? Int else { return }
     guard let visibleViewController = RootViewController.instance?.visibleViewController else { return }

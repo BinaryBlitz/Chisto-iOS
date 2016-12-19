@@ -63,7 +63,7 @@ enum OrderStatus {
 }
 
 class Order: ServerObject {
-  
+
   dynamic var streetName: String = ""
   dynamic var laundryId: Int = UUID().hashValue
   dynamic var laundry: Laundry? = nil
@@ -80,10 +80,24 @@ class Order: ServerObject {
   dynamic var updatedAt: Date = Date()
   dynamic var totalPrice: Double = 0
   dynamic var payment: Payment? = nil
+  dynamic var rating: Rating? = nil
   var lineItems: [OrderLineItem] = []
+
+  var ratingRequiredKey: String {
+    return "ratingRequired\(laundryId)"
+  }
 
   var orderPrice: Double {
     return totalPrice - deliveryPrice
+  }
+
+  var ratingRequired: Bool  {
+    set {
+      UserDefaults.standard.set(newValue, forKey: ratingRequiredKey)
+    }
+    get {
+      return UserDefaults.standard.value(forKey: ratingRequiredKey) as? Bool ?? true
+    }
   }
 
   var deliveryPriceString: String {
