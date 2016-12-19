@@ -22,10 +22,11 @@ class OrderConfirmServiceTableViewCell: UITableViewCell {
     }
 
     configureHeader(viewModel: viewModel)
+    configureDecoration(viewModel: viewModel)
     for service in viewModel.clothesServices {
       let view = OrderConfirmServiceItemView.nibInstance()!
       view.leftLabel.text = service.name
-      view.rightLabel.text = service.priceString(laundry: viewModel.laundry)
+      view.rightLabel.text = service.price(laundry: viewModel.laundry, hasDecoration: false).currencyString
       stackView.addArrangedSubview(view)
     }
   }
@@ -37,6 +38,15 @@ class OrderConfirmServiceTableViewCell: UITableViewCell {
     headerItemView.font = UIFont.chsLabelFont
     headerItemView.textColor = UIColor.black
     stackView.addArrangedSubview(headerItemView)
+  }
+
+  private func configureDecoration(viewModel: OrderConfirmServiceTableViewCellModelType) {
+    if viewModel.hasDecoration {
+      let decorationServiceView = OrderConfirmServiceItemView.nibInstance()!
+      decorationServiceView.leftLabel.text = viewModel.decorationTitle
+      decorationServiceView.rightLabel.text = viewModel.decorationPrice
+      stackView.addArrangedSubview(decorationServiceView)
+    }
   }
 
   override func prepareForReuse() {

@@ -31,17 +31,16 @@ class OrderItem {
     let area = ceil(Double(size.length * size.width) / squareCentimetersInMeter)
     return Int(area)
   }
-  
-  func price(laundry: Laundry, _ count: Int? = nil) -> Double {
+
+  func price(laundry: Laundry, _ count: Int? = nil, includeDecoration: Bool = true) -> Double {
     let amount = count ?? self.amount
 
-    let price = treatments.map { $0.price(laundry: laundry, hasDecoration: hasDecoration) }.reduce(0, +) * Double(amount)
+    let price = treatments.map { $0.price(laundry: laundry, hasDecoration: (hasDecoration && includeDecoration)) }.reduce(0, +) * Double(amount)
     guard area != 0 else { return price }
     return price * Double(area)
   }
 
-  func priceString(laundry: Laundry, _ count: Int? = nil) -> String {
-    let price = self.price(laundry: laundry, count)
-    return price.currencyString
+  func decorationPrice(laundry: Laundry) -> Double {
+    return price(laundry: laundry, includeDecoration: true) - price(laundry: laundry, includeDecoration: false)
   }
 }

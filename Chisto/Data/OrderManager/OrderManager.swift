@@ -65,9 +65,7 @@ class OrderManager {
   
   func priceForCurrentLaundry(includeCollection: Bool = false) -> Double {
     guard let laundry = currentLaundry else { return 0 }
-    let price = self.price(laundry: laundry)
-    guard includeCollection else { return price }
-    return price + laundry.collectionPrice(amount: price)
+    return self.price(laundry: laundry, includeCollection: includeCollection)
   }
   
   func clearOrderItems() {

@@ -29,10 +29,4 @@ class Treatment: ServerObject {
     return laundryTreatment.price * laundryItem.decorationMultiplier
   }
 
-  func priceString(laundry: Laundry, hasDecoration: Bool = false) -> String {
-    let price = self.price(laundry: laundry)
-
-    return price.currencyString
-  }
-
 }
