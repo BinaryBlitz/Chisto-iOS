@@ -16,6 +16,9 @@ protocol OrderConfirmServiceTableViewCellModelType {
   var clothesPrice: String { get }
   var clothesServices: [Treatment] { get }
   var laundry: Laundry { get }
+  var hasDecoration: Bool { get }
+  var decorationPrice: String { get }
+  var decorationTitle: String { get }
 }
 
 class OrderConfirmServiceTableViewCellModel: OrderConfirmServiceTableViewCellModelType {
@@ -26,6 +29,9 @@ class OrderConfirmServiceTableViewCellModel: OrderConfirmServiceTableViewCellMod
   let clothesPrice: String
   let clothesServices: [Treatment]
   let laundry: Laundry
+  let hasDecoration: Bool
+  var decorationPrice: String = "0 ₽"
+  let decorationTitle = "Декор"
 
   init(orderItem: OrderItem, laundry: Laundry) {
     self.laundry = laundry
@@ -35,10 +41,13 @@ class OrderConfirmServiceTableViewCellModel: OrderConfirmServiceTableViewCellMod
     if orderItem.area != 0 {
       clothesTitle +=  " \(orderItem.area) м² "
     }
-    clothesTitle += " " + orderItem.priceString(laundry: laundry, 1) + " × \(orderItem.amount)"
+    clothesTitle += " " + orderItem.price(laundry: laundry, 1).currencyString + " × \(orderItem.amount)"
     self.clothesTitle = clothesTitle
-    self.clothesPrice = orderItem.priceString(laundry: laundry)
+    self.clothesPrice = orderItem.price(laundry: laundry).currencyString
     self.clothesServices = orderItem.treatments
+
+    self.hasDecoration = orderItem.hasDecoration
+    self.decorationPrice = orderItem.decorationPrice(laundry: laundry).currencyString
   }
 
 }
