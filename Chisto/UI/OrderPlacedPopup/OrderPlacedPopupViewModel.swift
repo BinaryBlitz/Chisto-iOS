@@ -20,7 +20,7 @@ class OrderPlacedPopupViewModel {
 
   init(orderNumber: String) {
     self.orderNumber = "№ " + orderNumber
-    self.dismissViewController = continueButtonDidTap.asDriver(onErrorDriveWith: .empty())
+    self.dismissViewController = continueButtonDidTap.asDriver(onErrorDriveWith: .empty()).map { NotificationManager.instance.enable() }
   }
 
 }

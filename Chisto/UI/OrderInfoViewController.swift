@@ -56,14 +56,35 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
   }
   
   func configureHeader() {
-    laundryLogoView.kf.setImage(with: viewModel?.laundryIcon)
-    laundryTitleLabel.text = viewModel?.laundryTitle
-    laundryDescriptionLabel.text = viewModel?.laundryDescriprion
-    orderStatusText.text = viewModel?.orderStatus
-    orderStatusIconView.image = viewModel?.orderStatusIcon
-    orderDateLabel.text = viewModel?.orderDate
     orderNumberLabel.text = viewModel?.orderNumber
-    orderStatusText.textColor = viewModel?.orderStatusColor
+
+    bindLaundryData()
+    bindLaundryStatusData()
+  }
+
+
+  func bindLaundryData() {
+    guard let viewModel = viewModel else { return }
+    viewModel.laundryIcon.asObservable().subscribe(onNext: { [weak self] icon in
+      self?.laundryLogoView.kf.setImage(with: icon)
+    }).addDisposableTo(disposeBag)
+
+    viewModel.laundryTitle.asObservable().bindTo(laundryTitleLabel.rx.text).addDisposableTo(disposeBag)
+    viewModel.laundryDescriprion.asObservable().bindTo(laundryDescriptionLabel.rx.text).addDisposableTo(disposeBag)
+  }
+
+  func bindLaundryStatusData() {
+    guard let viewModel = viewModel else { return }
+    viewModel.orderStatus.asObservable().bindTo(orderStatusText.rx.text).addDisposableTo(disposeBag)
+    viewModel.orderDate.asObservable().bindTo(orderDateLabel.rx.text).addDisposableTo(disposeBag)
+
+    viewModel.orderStatusIcon.asObservable().filter { $0 != nil }.map { $0! }
+      .bindTo(orderStatusIconView.rx.image).addDisposableTo(disposeBag)
+
+    viewModel.orderStatusColor.asObservable().subscribe(onNext: { [weak self] color in
+      self?.orderStatusText.textColor = color
+    }).addDisposableTo(disposeBag)
+
   }
   
   func configureFooter() {
