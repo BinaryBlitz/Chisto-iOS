@@ -66,6 +66,7 @@ class Order: ServerObject {
   
   dynamic var streetName: String = ""
   dynamic var laundryId: Int = UUID().hashValue
+  dynamic var laundry: Laundry? = nil
   dynamic var houseNumber: String = ""
   dynamic var apartmentNumber: String = ""
   dynamic var contactNumber: String = ""
@@ -123,6 +124,7 @@ class Order: ServerObject {
     createdAt <- (map["created_at"], StringToDateTransform())
     statusString <- map["status"]
     laundryId <- map["laundry_id"]
+    laundry <- map["laundry"]
     deliveryPrice <- map["delivery_price"]
     updatedAt <- (map["updated_at"], StringToDateTransform())
     payment <- map["payment"]

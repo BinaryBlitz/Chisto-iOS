@@ -58,6 +58,7 @@
 		8814C0651DB03CBC005B4967 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0641DB03CBC005B4967 /* Fonts.swift */; };
 		8814C0671DB04AFB005B4967 /* RussianEnumEndings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */; };
 		8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */; };
+		881F4FA81E080302009C5B17 /* Data+hexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881F4FA71E080302009C5B17 /* Data+hexString.swift */; };
 		882288141DB6D11C000642E0 /* RootViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882288131DB6D11C000642E0 /* RootViewController.storyboard */; };
 		882288161DB6D12C000642E0 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882288151DB6D12C000642E0 /* RootViewController.swift */; };
 		882ECDAF1DE215FF00EE3507 /* OrderInfoTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDAE1DE215FF00EE3507 /* OrderInfoTableViewCellModel.swift */; };
@@ -126,6 +127,7 @@
 		88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */; };
 		88B0B5501DB1825500C7D0F7 /* OnBoardingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */; };
 		88B0B5521DB19C6E00C7D0F7 /* DescriptionListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B5511DB19C6E00C7D0F7 /* DescriptionListItemView.xib */; };
+		88BFAE6C1E07D532009CA8A0 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BFAE6B1E07D532009CA8A0 /* NotificationManager.swift */; };
 		88C9F6DD1DCD03010046DDD7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9F6DC1DCD03010046DDD7 /* Item.swift */; };
 		88C9F6DF1DCD2B320046DDD7 /* RealmString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9F6DE1DCD2B320046DDD7 /* RealmString.swift */; };
 		88C9F6E11DCDE36F0046DDD7 /* Date+toString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9F6E01DCDE36F0046DDD7 /* Date+toString.swift */; };
@@ -245,6 +247,7 @@
 		8814C0641DB03CBC005B4967 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RussianEnumEndings.swift; sourceTree = "<group>"; };
 		8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHideOutside.swift; sourceTree = "<group>"; };
+		881F4FA71E080302009C5B17 /* Data+hexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+hexString.swift"; sourceTree = "<group>"; };
 		882288131DB6D11C000642E0 /* RootViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootViewController.storyboard; sourceTree = "<group>"; };
 		882288151DB6D12C000642E0 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		882ECDAE1DE215FF00EE3507 /* OrderInfoTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoTableViewCellModel.swift; sourceTree = "<group>"; };
@@ -314,6 +317,8 @@
 		88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSearchBarTextColor.swift; sourceTree = "<group>"; };
 		88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoardingViewController.storyboard; sourceTree = "<group>"; };
 		88B0B5511DB19C6E00C7D0F7 /* DescriptionListItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionListItemView.xib; sourceTree = "<group>"; };
+		88BFAE681E075EFE009CA8A0 /* Chisto.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chisto.entitlements; sourceTree = "<group>"; };
+		88BFAE6B1E07D532009CA8A0 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationManager.swift; path = ../Data/NotificationManager.swift; sourceTree = "<group>"; };
 		88C9F6DC1DCD03010046DDD7 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		88C9F6DE1DCD2B320046DDD7 /* RealmString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmString.swift; sourceTree = "<group>"; };
 		88C9F6E01DCDE36F0046DDD7 /* Date+toString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+toString.swift"; sourceTree = "<group>"; };
@@ -462,6 +467,7 @@
 		88073ED71DABE1E0000696A3 /* Chisto */ = {
 			isa = PBXGroup;
 			children = (
+				88BFAE681E075EFE009CA8A0 /* Chisto.entitlements */,
 				88073EF11DAC1B3E000696A3 /* Data */,
 				8814C03A1DAEBCD7005B4967 /* RxUtils */,
 				8814C0311DAD8112005B4967 /* Style */,
@@ -599,6 +605,7 @@
 		8814C0371DAE8F4B005B4967 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				88BFAE6B1E07D532009CA8A0 /* NotificationManager.swift */,
 				88C9F6E01DCDE36F0046DDD7 /* Date+toString.swift */,
 				8814C0381DAE8F7F005B4967 /* LocationManager.swift */,
 				88CDDE461DD922DC002BCC5E /* NSURL+QueryParams.swift */,
@@ -606,6 +613,7 @@
 				889923A01DDD2A0200D73905 /* String+localized.swift */,
 				882ECDB71DE5899600EE3507 /* Sequence+categorize.swift */,
 				88E831321DFC7177005E35D9 /* Double+currencyString.swift */,
+				881F4FA71E080302009C5B17 /* Data+hexString.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1065,6 +1073,14 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 4WGG8V34K4;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1222,6 +1238,7 @@
 				88E705641DCCC2FB007F779E /* Category.swift in Sources */,
 				880E03E11DE8F7FF00311721 /* Payment.swift in Sources */,
 				889D87C71DC0A752003E8DAC /* LaundrySelectViewController.swift in Sources */,
+				881F4FA81E080302009C5B17 /* Data+hexString.swift in Sources */,
 				889A84171DCA56CB00E3926D /* OrderConfirmViewModel.swift in Sources */,
 				880E03E81DE8F81A00311721 /* PaymentViewController.swift in Sources */,
 				88004FB81DDF49F300A8632A /* Rating.swift in Sources */,
@@ -1318,6 +1335,7 @@
 				88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */,
 				8814C0561DAFA7B5005B4967 /* BottomBorderedTextField.swift in Sources */,
 				88DB938F1DCC188600DAC651 /* Treatment.swift in Sources */,
+				88BFAE6C1E07D532009CA8A0 /* NotificationManager.swift in Sources */,
 				889923A11DDD2A0200D73905 /* String+localized.swift in Sources */,
 				8872F0BE1DD8D67100E8D9EE /* RequestOrder.swift in Sources */,
 				8872F0B11DD7B2E100E8D9EE /* LocationSelectViewModel.swift in Sources */,
@@ -1470,6 +1488,7 @@
 			baseConfigurationReference = 40CC6F844478737C97DE22A8 /* Pods-Chisto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Chisto/Chisto.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 26;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1491,6 +1510,7 @@
 			baseConfigurationReference = EA8A37CB3EB7F2EEDB9E26D5 /* Pods-Chisto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Chisto/Chisto.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = 4WGG8V34K4;

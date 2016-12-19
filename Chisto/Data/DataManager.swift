@@ -295,8 +295,8 @@ extension DataManager: FetchItemsManagerType {
     }
   }
   
-  func getOrderInfo(order: Order) -> Observable<Order> {
-    return networkRequest(method: .get, .fetchOrder(orderId: order.id)).flatMap { result -> Observable<Order> in
+  func getOrderInfo(orderId: Int) -> Observable<Order> {
+    return networkRequest(method: .get, .fetchOrder(orderId: orderId)).flatMap { result -> Observable<Order> in
       guard let order = Mapper<Order>().map(JSONObject: result) else { return Observable.error(DataError.responseConvertError) }
       let realm = try! Realm()
       
@@ -306,6 +306,12 @@ extension DataManager: FetchItemsManagerType {
       
       return Observable.just(order)
     }
+  }
+
+  func sendNotificationToken(tokenString: String) -> Observable<Void> {
+    let userData : Dictionary = ["user": ["device_token": tokenString, "platform": "ios"]]
+
+    return networkRequest(method: .patch, .updateUser, userData).map{ _ in }
   }
 
 }

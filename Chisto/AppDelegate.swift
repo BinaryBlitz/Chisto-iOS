@@ -57,4 +57,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationWillTerminate(_ application: UIApplication) {
   }
 
+  func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+    NotificationManager.instance.didReceiveNotification(userInfo: userInfo)
+  }
+
+  func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    NotificationManager.instance.didRegisterForNotifications(token: deviceToken)
+  }
+
 }

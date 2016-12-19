@@ -63,7 +63,7 @@ class MyOrdersViewModel: MyOrdersViewModelType {
     
     self.presentOrderInfoSection = itemDidSelect.map { indexPath in
       let order = orders.value[indexPath.row]
-      return OrderInfoViewModel(order: order)
+      return OrderInfoViewModel(orderId: order.id)
     }.asDriver(onErrorDriveWith: .empty())
     
   }
