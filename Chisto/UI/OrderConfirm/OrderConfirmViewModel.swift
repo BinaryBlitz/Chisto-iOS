@@ -98,8 +98,8 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
     
     let didFinishRegistation = PublishSubject<Void>()
 
-    let shouldPresentOrderContactDataSection = confirmOrderButtonDidTap.asObservable().filter { ProfileManager.instance.userProfile.value.apiToken != nil }
-    let shouldPresentRegistrationSection = confirmOrderButtonDidTap.asObservable().filter { ProfileManager.instance.userProfile.value.apiToken == nil }
+    let shouldPresentOrderContactDataSection = confirmOrderButtonDidTap.asObservable().filter { ProfileManager.instance.userProfile.value.isVerified }
+    let shouldPresentRegistrationSection = confirmOrderButtonDidTap.asObservable().filter { !ProfileManager.instance.userProfile.value.isVerified }
 
     self.presentOrderContactDataSection = Driver.of(shouldPresentOrderContactDataSection.asDriver(onErrorDriveWith: .empty()), didFinishRegistation.asDriver(onErrorDriveWith: .empty()))
       .merge().flatMap {

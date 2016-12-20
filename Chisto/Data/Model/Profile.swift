@@ -14,6 +14,7 @@ import ObjectMapper
 class Profile: Object, Mappable {
   let dateFormat = "yyyy-MM-dd"
   dynamic var isCreated: Bool = false
+  dynamic var isVerified: Bool = false
   dynamic var id: Int = UUID().hashValue
   dynamic var deviceToken: String? = nil
   dynamic var order: Order? = nil

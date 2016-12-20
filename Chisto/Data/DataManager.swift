@@ -181,8 +181,10 @@ extension DataManager: TokenManagerType {
       )
       .flatMap { response -> Observable<Void> in
         let json = JSON(object: response)
+        print(json)
         ProfileManager.instance.updateProfile { profile in
           profile.apiToken = json["api_token"].string
+          profile.isVerified = true
         }
         return Observable.just()
     }

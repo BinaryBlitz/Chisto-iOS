@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxCocoa
 import RxSwift
+import UserNotifications
 
 class NotificationManager {
   static let instance = NotificationManager()
@@ -31,7 +32,8 @@ class NotificationManager {
   }
 
   func didReceiveNotification(userInfo: [AnyHashable : Any]) {
-    guard let orderId = userInfo["order_id"] as? Int else { return }
+    guard let notificationData = userInfo["custom_data"] as? [String: Any] else { return }
+    guard let orderId = notificationData["order_id"] as? Int else { return }
     guard let visibleViewController = RootViewController.instance?.visibleViewController else { return }
     let profileViewController = ProfileViewController.storyboardInstance()!
     profileViewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)

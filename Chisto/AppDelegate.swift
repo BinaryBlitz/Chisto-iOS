@@ -39,6 +39,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // IQKeyboardManager
     IQKeyboardManager.sharedManager().enable = true
 
+    if let remoteNotification = launchOptions?[.remoteNotification] as? [AnyHashable : Any] {
+      NotificationManager.instance.didReceiveNotification(userInfo: remoteNotification)
+    }
+
     return true
   }
 
