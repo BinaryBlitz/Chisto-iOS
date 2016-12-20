@@ -37,18 +37,38 @@ class NotificationManager {
 
   func didReceiveNotification(userInfo: [AnyHashable : Any]) {
     print(JSON(userInfo).rawString(options: .prettyPrinted) ?? "")
+
     guard let notificationData = userInfo["custom_data"] as? [String: Any] else { return }
     guard let orderId = notificationData["order_id"] as? Int else { return }
     guard let visibleViewController = RootViewController.instance?.visibleViewController else { return }
+
     let profileViewController = ProfileViewController.storyboardInstance()!
-    profileViewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    profileViewController.navigationItem.backBarButtonItem = UIBarButtonItem(
+      title: "",
+      style: .plain,
+      target: nil,
+      action: nil
+    )
+
     let myOrdersViewController = MyOrdersViewController.storyboardInstance()!
-    myOrdersViewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    myOrdersViewController.navigationItem.backBarButtonItem = UIBarButtonItem(
+      title: "",
+      style: .plain,
+      target: nil,
+      action: nil
+    )
+
     let orderViewController = OrderInfoViewController.storyboardInstance()!
     orderViewController.viewModel = OrderInfoViewModel(orderId: orderId)
 
     let navigationViewController = ChistoNavigationController()
-    navigationViewController.viewControllers = [profileViewController, myOrdersViewController, orderViewController]
+
+    navigationViewController.viewControllers = [
+      profileViewController,
+      myOrdersViewController,
+      orderViewController
+    ]
+
     visibleViewController.present(navigationViewController, animated: true, completion: nil)
   }
 }
