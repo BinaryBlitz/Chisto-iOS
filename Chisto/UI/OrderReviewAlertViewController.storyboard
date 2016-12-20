@@ -65,13 +65,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ваш отзыв" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zhr-Xe-dWw" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="15" y="248.5" width="283" height="60"/>
+                                        <rect key="frame" x="5" y="248.5" width="303" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Hsg-HZ-0Gd"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                                 <color key="value" red="0.75686275960000005" green="0.78039217000000005" blue="0.80392158030000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -140,9 +140,9 @@
                                     <constraint firstItem="V9f-tv-MYO" firstAttribute="centerX" secondItem="q6f-N6-cT5" secondAttribute="centerX" id="BXM-7T-XA4"/>
                                     <constraint firstItem="JoX-cA-NBK" firstAttribute="leading" secondItem="q6f-N6-cT5" secondAttribute="leading" constant="22" id="ICJ-Rp-w8T"/>
                                     <constraint firstAttribute="trailing" secondItem="JoX-cA-NBK" secondAttribute="trailing" constant="22" id="SHC-Lm-zpG"/>
-                                    <constraint firstAttribute="trailing" secondItem="Zhr-Xe-dWw" secondAttribute="trailing" constant="15" id="U75-uH-R0L"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zhr-Xe-dWw" secondAttribute="trailing" constant="5" id="U75-uH-R0L"/>
                                     <constraint firstItem="Lnd-DR-TQz" firstAttribute="top" secondItem="q6f-N6-cT5" secondAttribute="top" constant="30" id="XIF-wq-yyO"/>
-                                    <constraint firstItem="Zhr-Xe-dWw" firstAttribute="leading" secondItem="q6f-N6-cT5" secondAttribute="leading" constant="15" id="Xgd-HS-L8e"/>
+                                    <constraint firstItem="Zhr-Xe-dWw" firstAttribute="leading" secondItem="q6f-N6-cT5" secondAttribute="leading" constant="5" id="Xgd-HS-L8e"/>
                                     <constraint firstItem="Uxb-Su-cjJ" firstAttribute="leading" secondItem="q6f-N6-cT5" secondAttribute="leading" id="Y64-fF-vvS"/>
                                     <constraint firstAttribute="bottom" secondItem="Uxb-Su-cjJ" secondAttribute="bottom" id="ZnK-Bx-08K"/>
                                     <constraint firstAttribute="trailing" secondItem="Uxb-Su-cjJ" secondAttribute="trailing" id="aX2-Zk-8md"/>

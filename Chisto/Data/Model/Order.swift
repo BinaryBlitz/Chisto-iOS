@@ -22,12 +22,20 @@ enum OrderStatus {
   
   var image: UIImage {
     switch self {
-    case .completed, .canceled:
-     return #imageLiteral(resourceName: "iconIndicatorExecuted")
+    case .completed:
+     return #imageLiteral(resourceName: "iconIndicatorCompleted")
     case .errored:
-      return #imageLiteral(resourceName: "iconIndicatorError")
-    default:
-      return #imageLiteral(resourceName: "iconIndicatorDuring")
+      return #imageLiteral(resourceName: "iconIndicatorCanceled")
+    case .cleaning:
+      return #imageLiteral(resourceName: "iconIndicatorCleaning")
+    case .processing:
+      return #imageLiteral(resourceName: "iconIndicatorProcessing")
+    case .dispatched:
+      return #imageLiteral(resourceName: "iconIndicatorDispatched")
+    case .canceled:
+      return #imageLiteral(resourceName: "iconIndicatorCanceled")
+    case .confirmed:
+      return #imageLiteral(resourceName: "iconIndicatorConfirmed")
     }
   }
   
@@ -54,10 +62,16 @@ enum OrderStatus {
     switch self {
     case .completed:
       return UIColor.chsJadeGreen
-    case .errored:
+    case .errored, .canceled:
       return UIColor.chsWatermelon
-    default:
+    case .processing:
       return UIColor.chsSkyBlue
+    case .confirmed:
+      return UIColor.chsLightSkyBlue
+    case .dispatched:
+      return UIColor.chsDarkYellow
+    case .cleaning:
+      return UIColor.chsLightBlue
     }
   }
 }

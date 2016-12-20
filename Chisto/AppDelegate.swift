@@ -59,6 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func applicationDidBecomeActive(_ application: UIApplication) {
+    NotificationManager.instance.resetNotificationsCount()
   }
 
   func applicationWillTerminate(_ application: UIApplication) {
