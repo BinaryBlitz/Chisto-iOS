@@ -131,6 +131,7 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
 
   func filterLaundries(laundries: [Laundry], currentOrderItems: [OrderItem]) -> [Laundry] {
     return laundries.filter { laundry in
+      guard OrderManager.instance.price(laundry: laundry, includeCollection: false) >= laundry.minOrderPrice else { return false }
       let laundryTreatments = Set(laundry.treatments)
       let orderTreatments = Set(currentOrderItems.map { $0.treatments }.reduce([], +))
       return orderTreatments.subtracting(laundryTreatments).isEmpty
