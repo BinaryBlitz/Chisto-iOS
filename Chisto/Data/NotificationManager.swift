@@ -11,11 +11,17 @@ import UIKit
 import RxCocoa
 import RxSwift
 import SwiftyJSON
+import UserNotifications
 
-class NotificationManager {
+class NotificationManager: NSObject {
   static let instance = NotificationManager()
   let disposeBag = DisposeBag()
-  private init() {  }
+  private override init() {
+    super.init()
+    if #available(iOS 10.0, *) {
+      UNUserNotificationCenter.current().delegate = self
+    }
+  }
 
   func resetNotificationsCount() {
     UIApplication.shared.applicationIconBadgeNumber = 0
@@ -23,9 +29,16 @@ class NotificationManager {
   
   func enable() {
     guard ProfileManager.instance.userProfile.value.deviceToken == nil else { return }
-    let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-    UIApplication.shared.registerUserNotificationSettings(settings)
-    UIApplication.shared.registerForRemoteNotifications()
+
+    if #available(iOS 10.0, *) {
+      UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+        if granted { UIApplication.shared.registerForRemoteNotifications() }
+      }
+    } else {
+      let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+      UIApplication.shared.registerUserNotificationSettings(settings)
+      UIApplication.shared.registerForRemoteNotifications()
+    }
   }
 
   func didRegisterForNotifications(token: Data) {
@@ -70,5 +83,14 @@ class NotificationManager {
     ]
 
     visibleViewController.present(navigationViewController, animated: true, completion: nil)
+  }
+}
+
+@available(iOS 10.0, *)
+extension NotificationManager: UNUserNotificationCenterDelegate {
+  func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    let userInfo = response.notification.request.content.userInfo
+    self.didReceiveNotification(userInfo: userInfo)
+
   }
 }
