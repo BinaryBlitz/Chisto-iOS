@@ -473,7 +473,6 @@
 		88073ED71DABE1E0000696A3 /* Chisto */ = {
 			isa = PBXGroup;
 			children = (
-				88BFAE681E075EFE009CA8A0 /* Chisto.entitlements */,
 				88073EF11DAC1B3E000696A3 /* Data */,
 				8814C03A1DAEBCD7005B4967 /* RxUtils */,
 				8814C0311DAD8112005B4967 /* Style */,
@@ -482,6 +481,7 @@
 				889923991DDD27AB00D73905 /* Supporting */,
 				88073ED81DABE1E0000696A3 /* AppDelegate.swift */,
 				88073EDF1DABE1E0000696A3 /* Assets.xcassets */,
+				88BFAE681E075EFE009CA8A0 /* Chisto.entitlements */,
 				88073EE11DABE1E0000696A3 /* LaunchScreen.storyboard */,
 			);
 			path = Chisto;

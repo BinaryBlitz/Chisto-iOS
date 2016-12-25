@@ -60,7 +60,7 @@ enum APIPath {
       return "user"
     }
   }
-  
+
   var encoding: ParameterEncoding {
     switch self {
     case .createOrder, .createVerificationToken, .verifyToken, .createUser, .updateUser:
@@ -101,10 +101,10 @@ enum NetworkError: Error, CustomStringConvertible {
       return "Неизвестный формат ответа сервера"
     }
   }
-  
+
   func parseErrorDictionary(_ dictionary: [String: JSON]) -> String {
     var errorString = ""
-    
+
     for (errorKey, errorValues) in dictionary {
       errorString += errorKey.localized("Errors")
       if let valuesArray = errorValues.array {
@@ -115,7 +115,7 @@ enum NetworkError: Error, CustomStringConvertible {
       }
       errorString += "\n"
     }
-    
+
     return errorString
   }
 
@@ -123,41 +123,43 @@ enum NetworkError: Error, CustomStringConvertible {
 
 class NetworkManager {
 
-  var apiPrefix = "https://chisto-staging.herokuapp.com"
+  let baseURL = "https://chis.to"
 
-  func doRequest(method: HTTPMethod, _ path: APIPath, _ params: Parameters = [:], _ headers: HTTPHeaders? = nil) -> Observable<Data> {
+  func doRequest(method: HTTPMethod, _ path: APIPath,
+                 _ params: Parameters = [:],
+                 _ headers: HTTPHeaders? = nil) -> Observable<Data> {
+
     let requestObservable: Observable<Data> = Observable.create { observer in
-        let url = URL(string: self.apiPrefix + "/api/" + path.endpoint)!
-        let request = Alamofire.request(url, method: method, parameters: params, encoding: path.encoding, headers: headers)
-          .responseData { response in
-            debugPrint(response)
-            if let result = response.result.value {
-              
-              let statusCode = response.response?.statusCode
-              if statusCode != path.successCode {
-                observer.onError(self.getError(statusCode, response: result))
-              }
-              
-              observer.onNext(result)
-              observer.onCompleted()
-            } else {
-              
-              if let error = response.result.error {
-                observer.onError(error)
-              } else {
-                observer.onError(NetworkError.unexpectedResponseFormat)
-              }
-              
-            }
-        }
+      let url = URL(string: self.baseURL + "/api/" + path.endpoint)!
 
-        return Disposables.create {
-          request.cancel()
-        }
+      let request = Alamofire
+        .request(url, method: method, parameters: params, encoding: path.encoding, headers: headers)
+        .responseData { response in
+          debugPrint(response)
+
+          if let result = response.result.value {
+            let statusCode = response.response?.statusCode
+            if statusCode != path.successCode {
+              observer.onError(self.getError(statusCode, response: result))
+            }
+
+            observer.onNext(result)
+            observer.onCompleted()
+          } else {
+            if let error = response.result.error {
+              observer.onError(error)
+            } else {
+              observer.onError(NetworkError.unexpectedResponseFormat)
+            }
+          }
+      }
+
+      return Disposables.create { request.cancel() }
     }
+
     return requestObservable.do(
-    onError: { _ in
-      UIApplication.shared.isNetworkActivityIndicatorVisible = false
+      onError: { _ in
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }, onCompleted: { _ in
       UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }, onSubscribe: { _ in
@@ -166,19 +168,15 @@ class NetworkManager {
       UIApplication.shared.isNetworkActivityIndicatorVisible = false
     })
   }
-  
+
   func getError(_ statusCode: Int?, response: Data) -> NetworkError {
     guard let statusCode = statusCode else { return .unknown }
-    
-    switch statusCode {
-    case 422:
-      return .unprocessableData(response: response)
-    case 503, 500:
-      return .serverUnavaliable
-    default:
-      return .unknown
-    }
-    
-  }
 
+    switch statusCode {
+    case 422: return .unprocessableData(response: response)
+    case 503, 500: return .serverUnavaliable
+    default: return .unknown
+    }
+  }
+  
 }
