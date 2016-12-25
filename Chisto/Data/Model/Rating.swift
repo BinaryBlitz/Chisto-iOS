@@ -9,25 +9,36 @@
 import Foundation
 import ObjectMapper
 
-class Rating: Mappable {
-
+class User: Mappable {
   var id: Int!
-  var value: Int = 0
-  var author: String = ""
-  var content: String = ""
-  var createdAt: Date = Date()
-  
+  var firstName: String = ""
+  var lastName: String = ""
+
   func mapping(map: Map) {
     id <- map["id"]
+    firstName <- map["first_name"]
+    lastName <- map["last_name"]
+  }
+
+  required init(map: Map) { }
+}
+
+class Rating: ServerObject {
+
+  var value: Int = 0
+  var user: User? = nil
+  var content: String = ""
+  var createdAt: Date? = nil
+  
+  override func mapping(map: Map) {
     value <- map["value"]
     content <- map["content"]
-    createdAt <- (map["created_at"], StringToDateTransform())
-  }
-    
-  required init?(map: Map) { }
-  
-  init() {
-    id = UUID().hashValue
+
+    if map.mappingType == .fromJSON {
+      user <- map["user"]
+      id <- map["id"]
+      createdAt <- (map["created_at"], StringToDateTransform())
+    }
   }
   
 }

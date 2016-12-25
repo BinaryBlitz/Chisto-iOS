@@ -34,13 +34,17 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
     configureTableView()
     configureFooter()
 
-    viewModel?.returnToSection.drive(onNext: { [weak self] section in
+    viewModel?.showNewSection.asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] section in
+      guard let `self` = self else { return }
       switch section {
       case .order:
-        self?.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
       case .orderItem:
-        _ = self?.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
+      case .areaAlert(let viewModel):
+        self.presentAreaAlert(viewModel: viewModel)
       }
+
     }).addDisposableTo(disposeBag)
   }
 
@@ -95,14 +99,15 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
     headerView.backgroundColor = viewModel.color
   }
 
-  func presentAreaAlertIfNeeded() {
-    guard let viewModel = viewModel else { return }
-    guard viewModel.needPresentAreaAlert else { return }
-
+  func presentAreaAlert(viewModel: ItemSizeAlertViewModel) {
     let viewController = ItemSizeAlertViewController.storyboardInstance()!
-    viewController.viewModel = viewModel.itemSizeAlertViewModel
+    viewController.viewModel = viewModel
     viewController.modalPresentationStyle = .overFullScreen
     present(viewController, animated: false, completion: nil)
+  }
+
+  func navigate(section: ServiceSelectViewModel.NewSection) {
+
   }
 
 }

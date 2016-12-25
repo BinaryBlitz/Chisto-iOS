@@ -36,16 +36,26 @@ class OrderManager {
       guard let laundry = self?.currentLaundry else { return Observable.empty() }
       
       let order = RequestOrder(profile: profile)
-      guard let items = try! self?.currentOrderItems.value() else { return Observable.empty() }
+      guard let orderItems = try! self?.currentOrderItems.value() else { return Observable.empty() }
       
-      for item in items {
-        for treatment in item.treatments {
-          let lineItemAttribute = LineItemAttribute(
-            laundryTreatmentId: treatment.id,
-            quantity: item.amount
-          )
+      for orderItem in orderItems {
+        for treatment in orderItem.treatments {
+
+          guard let laundryTreatment = laundry.laundryTreatments.first(where: {
+            $0.treatmentId == treatment.id }) else { return Observable.error(DataError.requestConvertError) }
+
+          if orderItem.area == 0 {
+            let lineItemAttribute = LineItemAttribute(
+              laundryTreatment.id,
+              quantity: orderItem.amount
+            )
+            order.lineItemsArttributes.append(lineItemAttribute)
+          } else {
+            let lineItemAtributes = [LineItemAttribute](repeating: LineItemAttribute(laundryTreatment.id, quantity: orderItem.area),
+              count: orderItem.amount)
+            order.lineItemsArttributes += lineItemAtributes
+          }
           
-          order.lineItemsArttributes.append(lineItemAttribute)
         }
       }
       
@@ -55,9 +65,7 @@ class OrderManager {
   
   func priceForCurrentLaundry(includeCollection: Bool = false) -> Double {
     guard let laundry = currentLaundry else { return 0 }
-    let price = self.price(laundry: laundry)
-    guard includeCollection else { return price }
-    return price + laundry.collectionPrice(amount: price)
+    return self.price(laundry: laundry, includeCollection: includeCollection)
   }
   
   func clearOrderItems() {

@@ -22,12 +22,20 @@ enum OrderStatus {
   
   var image: UIImage {
     switch self {
-    case .completed, .canceled:
-     return #imageLiteral(resourceName: "iconIndicatorExecuted")
+    case .completed:
+     return #imageLiteral(resourceName: "iconIndicatorCompleted")
     case .errored:
-      return #imageLiteral(resourceName: "iconIndicatorError")
-    default:
-      return #imageLiteral(resourceName: "iconIndicatorDuring")
+      return #imageLiteral(resourceName: "iconIndicatorCanceled")
+    case .cleaning:
+      return #imageLiteral(resourceName: "iconIndicatorCleaning")
+    case .processing:
+      return #imageLiteral(resourceName: "iconIndicatorProcessing")
+    case .dispatched:
+      return #imageLiteral(resourceName: "iconIndicatorDispatched")
+    case .canceled:
+      return #imageLiteral(resourceName: "iconIndicatorCanceled")
+    case .confirmed:
+      return #imageLiteral(resourceName: "iconIndicatorConfirmed")
     }
   }
   
@@ -54,18 +62,25 @@ enum OrderStatus {
     switch self {
     case .completed:
       return UIColor.chsJadeGreen
-    case .errored:
+    case .errored, .canceled:
       return UIColor.chsWatermelon
-    default:
+    case .processing:
       return UIColor.chsSkyBlue
+    case .confirmed:
+      return UIColor.chsLightSkyBlue
+    case .dispatched:
+      return UIColor.chsDarkYellow
+    case .cleaning:
+      return UIColor.chsLightBlue
     }
   }
 }
 
 class Order: ServerObject {
-  
+
   dynamic var streetName: String = ""
   dynamic var laundryId: Int = UUID().hashValue
+  dynamic var laundry: Laundry? = nil
   dynamic var houseNumber: String = ""
   dynamic var apartmentNumber: String = ""
   dynamic var contactNumber: String = ""
@@ -73,18 +88,32 @@ class Order: ServerObject {
   dynamic var paid: Bool = false
   dynamic var statusString: String = ""
   dynamic var paymentUrl: String = ""
-  dynamic var amount: Double = 0
   dynamic var email: String? = nil
   dynamic var deliveryPrice: Double = 0
   dynamic var createdAt: Date = Date()
   dynamic var updatedAt: Date = Date()
+  dynamic var totalPrice: Double = 0
   dynamic var payment: Payment? = nil
+  dynamic var rating: Rating? = nil
   var lineItems: [OrderLineItem] = []
-  
-  var price: Double {
-    return lineItems.map { $0.price() }.reduce(0, +)
+
+  var ratingRequiredKey: String {
+    return "ratingRequired\(laundryId)"
   }
-  
+
+  var orderPrice: Double {
+    return totalPrice - deliveryPrice
+  }
+
+  var ratingRequired: Bool  {
+    set {
+      UserDefaults.standard.set(newValue, forKey: ratingRequiredKey)
+    }
+    get {
+      return UserDefaults.standard.value(forKey: ratingRequiredKey) as? Bool ?? true
+    }
+  }
+
   var deliveryPriceString: String {
     return deliveryPrice == 0 ? "Бесплатно": deliveryPrice.currencyString
   }
@@ -123,7 +152,9 @@ class Order: ServerObject {
     createdAt <- (map["created_at"], StringToDateTransform())
     statusString <- map["status"]
     laundryId <- map["laundry_id"]
-    deliveryPrice <- map["delivery_price"]
+    laundry <- map["laundry"]
+    totalPrice <- map["total_price"]
+    deliveryPrice <- map["delivery_fee"]
     updatedAt <- (map["updated_at"], StringToDateTransform())
     payment <- map["payment"]
   }

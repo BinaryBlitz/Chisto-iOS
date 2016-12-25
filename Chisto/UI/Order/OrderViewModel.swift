@@ -29,6 +29,7 @@ protocol OrderViewModelType {
   var presentLastTimeOrderPopup: PublishSubject<LastTimePopupViewModel> { get }
   var presentLaundrySelectSection: PublishSubject<Void> { get }
   var sections: Driver<[OrderSectionModel]> { get }
+  var continueButtonEnabled: Variable<Bool> { get }
 }
 
 class OrderViewModel: OrderViewModelType {
@@ -38,6 +39,7 @@ class OrderViewModel: OrderViewModelType {
   var itemDidSelect = PublishSubject<IndexPath>()
   var continueButtonDidTap = PublishSubject<Void>()
   var showAllLaundriesModalButtonDidTap = PublishSubject<Void>()
+  var orderButtonDidTap = PublishSubject<Void>()
   var profileButtonDidTap = PublishSubject<Void>()
   let tableItemDeleted = PublishSubject<IndexPath>()
 
@@ -46,8 +48,11 @@ class OrderViewModel: OrderViewModelType {
   var presentCategoriesViewController: Driver<Void>
   var presentItemInfoViewController: Driver<ItemInfoViewModel>
   var presentLastTimeOrderPopup = PublishSubject<LastTimePopupViewModel>()
+  var presentOrderConfirmSection = PublishSubject<OrderConfirmViewModel>()
   var presentLaundrySelectSection = PublishSubject<Void>()
   var presentProfileSection: Driver<Void>
+  var presentRatingSection: Driver<OrderReviewAlertViewModel>
+  var continueButtonEnabled: Variable<Bool>
 
   // Constants
   let navigationBarTitle = "Заказ"
@@ -60,6 +65,19 @@ class OrderViewModel: OrderViewModelType {
   let disposeBag = DisposeBag()
 
   init() {
+    let continueButtonEnabled = Variable(true)
+    self.continueButtonEnabled = continueButtonEnabled
+
+    let fetchLastOrder = DataManager.instance.showUser().map { ProfileManager.instance.userProfile.value.order }
+
+    self.presentRatingSection = fetchLastOrder
+      .filter { order in
+        guard let order = order else { return false }
+        return order.rating == nil && order.ratingRequired
+      }.map { order in
+      return OrderReviewAlertViewModel(order: order!)
+    }.asDriver(onErrorDriveWith: .empty())
+    
     let currentOrderItems = Variable<[OrderItem]>([])
     OrderManager.instance.currentOrderItems.bindTo(currentOrderItems).addDisposableTo(disposeBag)
     self.currentOrderItems = currentOrderItems
@@ -76,6 +94,11 @@ class OrderViewModel: OrderViewModelType {
     showAllLaundriesModalButtonDidTap.bindTo(presentLaundrySelectSection)
       .addDisposableTo(disposeBag)
 
+    let didChooseLaundry = PublishSubject<Laundry>()
+
+    didChooseLaundry.map { OrderConfirmViewModel(laundry: $0) }.bindTo(presentOrderConfirmSection)
+      .addDisposableTo(disposeBag)
+
     self.presentItemInfoViewController = itemDidSelect.asObservable().map { indexPath in
       let orderItem = currentOrderItems.value[indexPath.row]
       return ItemInfoViewModel(orderItem: orderItem)
@@ -83,13 +106,17 @@ class OrderViewModel: OrderViewModelType {
     
     self.presentProfileSection = profileButtonDidTap.asDriver(onErrorDriveWith: .empty())
 
-    continueButtonDidTap.asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] in
-      if let laundry = self?.lastOrderLaundry {
-        let viewModel = LastTimePopupViewModel(laundry: laundry)
-        self?.presentLastTimeOrderPopup.onNext(viewModel)
-      } else {
-        self?.presentLaundrySelectSection.onNext()
-      }
+    let fetchLastOrderDriver = continueButtonDidTap.asDriver(onErrorDriveWith: .empty()).flatMap { _ -> Driver<Void> in
+      return DataManager.instance.showUser()
+        .asDriver(onErrorDriveWith: .just()).do(onCompleted: {
+          continueButtonEnabled.value = true
+        }, onSubscribe: {
+          continueButtonEnabled.value = false
+        })
+    }
+
+    fetchLastOrderDriver.drive(onNext: { [weak self] in
+      self?.presentLaundrySelectSection.onNext()
     }).addDisposableTo(disposeBag)
     
     tableItemDeleted.asObservable().subscribe(onNext: { indexPath in
@@ -98,13 +125,5 @@ class OrderViewModel: OrderViewModelType {
       OrderManager.instance.currentOrderItems.onNext(items)
     }).addDisposableTo(disposeBag)
 
-  }
-  
-  var lastOrderLaundry: Laundry? {
-    guard let lastOrder = uiRealm.objects(Order.self).sorted(byProperty: "updatedAt", ascending: false).first else { return nil }
-    guard let laundry = uiRealm.object(ofType: Laundry.self, forPrimaryKey: lastOrder.laundryId), laundry.isDeleted == false else { return nil }
-    let orderTreatments = Set(currentOrderItems.value.map { $0.treatments }.reduce([], +))
-    guard orderTreatments.subtracting(laundry.treatments).isEmpty else { return nil }
-    return laundry
   }
 }

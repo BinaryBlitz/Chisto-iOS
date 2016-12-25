@@ -52,19 +52,6 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
     let price = OrderManager.instance.price(laundry: laundry, includeCollection: true)
     let costString = price.currencyString
     self.costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: costString)
-
-    if let type = type {
-      switch type {
-      case .cheap:
-        tagName = "Дешевая"
-        tagBgColor = UIColor.chsAquaMarine
-      case .fast:
-        tagName = "Быстрая"
-        tagBgColor = UIColor.chsMaize
-      }
-    } else {
-      self.tagIsHidden = false
-    }
   }
 
 }

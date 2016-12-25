@@ -18,7 +18,8 @@ class LaundryReviewsViewController: UIViewController {
   var viewModel: LaundryReviewsViewModel? = nil
   
   var dataSource = RxTableViewSectionedReloadDataSource<LaundryReviewsSectionModel>()
-  
+
+  let emptyTableBackgroundView = EmptyTableBackgroundView.nibInstance()!
   @IBOutlet weak var laundryLogoView: UIImageView!
   @IBOutlet weak var laundryRatingView: FloatRatingView!
   @IBOutlet weak var laundryTitleLabel: UILabel!
@@ -47,6 +48,10 @@ class LaundryReviewsViewController: UIViewController {
   }
   
   func configureTableView() {
+    emptyTableBackgroundView.title = "Нет отзывов"
+    tableView.separatorStyle = .none
+    tableView.backgroundView = emptyTableBackgroundView
+    tableView.backgroundView?.isHidden = true
     dataSource.configureCell = { _, tableView, indexPath, cellViewModel in
       let cell = tableView.dequeueReusableCell(withIdentifier: "LaundryReviewsTableViewCell", for: indexPath) as! LaundryReviewsTableViewCell
       cell.configure(viewModel: cellViewModel)
@@ -58,6 +63,11 @@ class LaundryReviewsViewController: UIViewController {
     viewModel.sections
       .drive(self.tableView.rx.items(dataSource: self.dataSource))
       .addDisposableTo(self.disposeBag)
+
+    viewModel.tableIsEmpty.asDriver().drive(onNext: { [weak self] tableIsEmpty in
+      self?.tableView.separatorStyle =  tableIsEmpty ? .none : .singleLine
+      self?.tableView.backgroundView?.isHidden = tableIsEmpty ? false : true
+    }).addDisposableTo(disposeBag)
   }
   
   override func viewDidAppear(_ animated: Bool) {

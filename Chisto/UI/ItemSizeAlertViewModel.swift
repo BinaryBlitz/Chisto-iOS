@@ -19,7 +19,8 @@ class ItemSizeAlertViewModel {
   let continueButtonIsEnabled = Variable<Bool>(false)
   let continueButtonDidTap = PublishSubject<Void>()
   let cancelButtonDidTap = PublishSubject<Void>()
-  let dismissViewController: Driver<Void>
+  let didFinishAlertSuccess = PublishSubject<Void>()
+  let dismissViewController: Driver<Bool>
   let maxNumberLength = 10
   let squareCentimetersInMeter: Double = 10000
   
@@ -30,7 +31,7 @@ class ItemSizeAlertViewModel {
     self.widthText = widthText
     self.areaText = Variable<String?>("0 м²")
 
-    if let area = orderItem.area {
+    if let area = orderItem.size {
       lengthText.value = String(area.length)
       widthText.value = String(area.width)
     }
@@ -42,15 +43,21 @@ class ItemSizeAlertViewModel {
 
 
     let cancelButtonDriver = cancelButtonDidTap.asDriver(onErrorDriveWith: .empty())
-    let continueButtonDriver = continueButtonDidTap.asDriver(onErrorDriveWith: .empty()).do(onNext: {_ in
-      guard let lengthText = lengthText.value, let widthText = widthText.value else { return }
-      guard let length = Int(lengthText.onlyDigits), let width = Int(widthText.onlyDigits) else { return }
-      OrderManager.instance.updateOrderItem(orderItem) {
-        orderItem.area = (width, length)
-      }
-    })
+    let continueButtonObservable = continueButtonDidTap.asObservable().map { _ -> (width: Int, length: Int) in
+      guard let lengthText = lengthText.value, let widthText = widthText.value else { return ( 0, 0 ) }
+      guard let length = Int(lengthText.onlyDigits), let width = Int(widthText.onlyDigits) else { return ( 0, 0 ) }
+      return (width: width,length: length)
+    }
 
-    self.dismissViewController = Driver.of(cancelButtonDriver, continueButtonDriver).merge()
+    let continueButtonDriver = continueButtonObservable.filter { area in
+      return area.width * area.length != 0
+      }.map { area in
+        OrderManager.instance.updateOrderItem(orderItem) {
+          orderItem.size = area
+        }
+    }.asDriver(onErrorDriveWith: .empty())
+
+    self.dismissViewController = Driver.of(cancelButtonDriver.map { false }, continueButtonDriver.map { true } ).merge()
 
     Observable.combineLatest(lengthText.asObservable(), widthText.asObservable()) { [weak self] lengthText, widthText -> String? in
       self?.area(lengthText: lengthText, widthText: widthText)
@@ -60,11 +67,7 @@ class ItemSizeAlertViewModel {
   func area(lengthText: String?, widthText: String?) -> String? {
     guard let lengthText = lengthText, let widthText = widthText else { return "0 м²" }
     guard let length = Double(lengthText.onlyDigits), let width = Double(widthText.onlyDigits) else { return "0 м²" }
-    let area = Double(length * width / squareCentimetersInMeter) as NSNumber
-    let numberFormatter = NumberFormatter()
-    numberFormatter.minimumIntegerDigits = 1
-    numberFormatter.maximumFractionDigits = 5
-    guard let areaString = numberFormatter.string(from: area) else { return "0 м²" }
-    return "\(areaString) м²"
+    let area = ceil(Double(length * width / squareCentimetersInMeter))
+    return "\(Int(area)) м²"
   }
 }

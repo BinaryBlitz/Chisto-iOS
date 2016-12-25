@@ -32,17 +32,17 @@ class OrderInfoTableViewCellModel: OrderInfoTableViewCellModelType {
     self.clothesIconColor = item.category?.color ?? UIColor.chsSkyBlue
     
     let quantity = itemInfo.quantity
-    self.clothesTitle = item.name + " " + self.priceString(lineItems: orderLineItems, quantity: 1) + " × \(quantity)"
+    self.clothesTitle = item.name + " " + self.priceString(lineItems: orderLineItems, singleItem: true) + " × \(quantity)"
     self.clothesPrice = self.priceString(lineItems: orderLineItems)
     self.orderLineItems = orderLineItems
   }
   
-  func price(orderLineItems: [OrderLineItem], quantity: Int? = nil) -> Double {
-    return orderLineItems.map { $0.price(amount: quantity) }.reduce(0, +)
+  func price(orderLineItems: [OrderLineItem], singleItem: Bool = false) -> Double {
+    return orderLineItems.map { singleItem ? $0.itemPrice : $0.totalPrice }.reduce(0, +)
   }
 
-  func priceString(lineItems: [OrderLineItem], quantity: Int? = nil) -> String {
-    let price = self.price(orderLineItems: lineItems, quantity: quantity)
+  func priceString(lineItems: [OrderLineItem], singleItem: Bool = false) -> String {
+    let price = self.price(orderLineItems: lineItems, singleItem: singleItem)
     return price == 0 ? "Бесплатно" : price.currencyString
   }
   

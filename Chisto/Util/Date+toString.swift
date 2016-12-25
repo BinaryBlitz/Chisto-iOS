@@ -27,7 +27,9 @@ extension Date {
   }
 
   var shortDate: String {
-    return Formatter.shortDate.string(from: self)
+    let formatter = DateFormatter()
+    formatter.dateFormat = "dd.MM.YYYY"
+    return formatter.string(from: self)
   }
 
   var longDate: String {

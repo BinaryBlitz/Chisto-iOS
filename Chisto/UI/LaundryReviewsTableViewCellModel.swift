@@ -17,14 +17,16 @@ protocol LaundryReviewsViewTableViewCellModelType {
 
 class LaundryReviewsViewTableViewCellModel: LaundryReviewsViewTableViewCellModelType {
   let rating: Float
-  let authorName: String
+  var authorName: String = ""
   let content: String
   var date: String
   
   init(rating: Rating) {
     self.rating = Float(rating.value)
-    self.authorName = rating.author
     self.content = rating.content
-    self.date = rating.createdAt.shortDate
+    self.date = rating.createdAt?.shortDate ?? ""
+
+    guard let user = rating.user else { return }
+    self.authorName = user.firstName + " " + user.lastName
   }
 }

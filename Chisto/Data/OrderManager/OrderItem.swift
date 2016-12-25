@@ -14,8 +14,10 @@ class OrderItem {
   var clothesItem: Item
   var hasDecoration: Bool
   var treatments: [Treatment]
-  var area: (width: Int, length: Int)? = nil
+  var size: (width: Int, length: Int)? = nil
   var amount: Int
+
+  let squareCentimetersInMeter: Double = 10000
 
   init (clothesItem: Item, treatments: [Treatment] = [], amount: Int = 1, hasDecoration: Bool = false) {
     self.clothesItem = clothesItem
@@ -24,13 +26,21 @@ class OrderItem {
     self.hasDecoration = hasDecoration
   }
 
-  func price(laundry: Laundry, _ count: Int? = nil) -> Double {
-    let amount = count ?? self.amount
-    return treatments.map { $0.price(laundry: laundry, hasDecoration: hasDecoration) }.reduce(0, +) * Double(amount)
+  var area: Int {
+    guard let size = size else { return 0 }
+    let area = ceil(Double(size.length * size.width) / squareCentimetersInMeter)
+    return Int(area)
   }
 
-  func priceString(laundry: Laundry, _ count: Int? = nil) -> String {
-    let price = self.price(laundry: laundry, count)
-    return price.currencyString
+  func price(laundry: Laundry, _ count: Int? = nil, includeDecoration: Bool = true) -> Double {
+    let amount = count ?? self.amount
+
+    let price = treatments.map { $0.price(laundry: laundry, hasDecoration: (hasDecoration && includeDecoration)) }.reduce(0, +) * Double(amount)
+    guard area != 0 else { return price }
+    return price * Double(area)
+  }
+
+  func decorationPrice(laundry: Laundry) -> Double {
+    return price(laundry: laundry, includeDecoration: true) - price(laundry: laundry, includeDecoration: false)
   }
 }

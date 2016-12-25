@@ -80,7 +80,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
     self.collectionDate = laundry.collectionDate.shortDate
     let price = OrderManager.instance.price(laundry: laundry)
     let collectionPrice = laundry.collectionPrice(amount: price)
-    self.collectionPrice = collectionPrice > 0 ? price.currencyString : "Бесплатно"
+    self.collectionPrice = collectionPrice > 0 ? collectionPrice.currencyString : "Бесплатно"
     self.deliveryDate = laundry.deliveryDate.shortDate
     self.orderPrice = price.currencyString
 
@@ -97,11 +97,9 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
       }
     
     let didFinishRegistation = PublishSubject<Void>()
-    
-    let tokenIsValid = ProfileManager.instance.userProfile.value.apiToken != nil ? true : false
-    
-    let shouldPresentOrderContactDataSection = confirmOrderButtonDidTap.asObservable().filter { tokenIsValid }
-    let shouldPresentRegistrationSection = confirmOrderButtonDidTap.asObservable().filter { !tokenIsValid }
+
+    let shouldPresentOrderContactDataSection = confirmOrderButtonDidTap.asObservable().filter { ProfileManager.instance.userProfile.value.isVerified }
+    let shouldPresentRegistrationSection = confirmOrderButtonDidTap.asObservable().filter { !ProfileManager.instance.userProfile.value.isVerified }
 
     self.presentOrderContactDataSection = Driver.of(shouldPresentOrderContactDataSection.asDriver(onErrorDriveWith: .empty()), didFinishRegistation.asDriver(onErrorDriveWith: .empty()))
       .merge().flatMap {

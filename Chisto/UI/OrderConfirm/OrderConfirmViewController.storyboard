@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="crq-3N-4JC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="crq-3N-4JC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -83,10 +83,10 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vrC-1D-4UH">
-                                <rect key="frame" x="0.0" y="149" width="375" height="90"/>
+                                <rect key="frame" x="0.0" y="149" width="375" height="87"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dS6-q6-ndz">
-                                        <rect key="frame" x="0.0" y="0.0" width="188" height="90"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="188" height="87"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Курьер" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tnv-S6-4ey">
                                                 <rect key="frame" x="0.0" y="28" width="188" height="16"/>
@@ -107,9 +107,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Время" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJD-qV-dEZ">
-                                                <rect key="frame" x="0.0" y="76" width="188" height="14"/>
+                                                <rect key="frame" x="0.0" y="73" width="188" height="14"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -124,13 +124,13 @@
                                             <constraint firstAttribute="bottom" secondItem="OJD-qV-dEZ" secondAttribute="bottom" id="dDg-gx-epJ"/>
                                             <constraint firstAttribute="trailing" secondItem="gvW-kG-hXn" secondAttribute="trailing" id="iaD-xH-EPJ"/>
                                             <constraint firstItem="Tnv-S6-4ey" firstAttribute="top" secondItem="oUi-nd-x6D" secondAttribute="bottom" constant="8" id="kut-66-WdW"/>
-                                            <constraint firstItem="OJD-qV-dEZ" firstAttribute="top" secondItem="gvW-kG-hXn" secondAttribute="bottom" constant="8" id="pdy-YE-cAE"/>
+                                            <constraint firstItem="OJD-qV-dEZ" firstAttribute="top" secondItem="gvW-kG-hXn" secondAttribute="bottom" constant="5" id="pdy-YE-cAE"/>
                                             <constraint firstItem="Tnv-S6-4ey" firstAttribute="leading" secondItem="dS6-q6-ndz" secondAttribute="leading" id="qXZ-Of-3ah"/>
                                             <constraint firstAttribute="trailing" secondItem="Tnv-S6-4ey" secondAttribute="trailing" id="zaU-NQ-51L"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DPu-Ch-xhR">
-                                        <rect key="frame" x="188" y="0.0" width="187" height="90"/>
+                                        <rect key="frame" x="188" y="0.0" width="187" height="87"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Доставка вещей" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTY-pf-fKa">
                                                 <rect key="frame" x="0.0" y="28" width="187" height="16"/>
@@ -151,9 +151,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Время" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxR-6q-Vpw">
-                                                <rect key="frame" x="0.0" y="76" width="187" height="14"/>
+                                                <rect key="frame" x="0.0" y="73" width="187" height="14"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -166,7 +166,7 @@
                                             <constraint firstItem="UTY-pf-fKa" firstAttribute="top" secondItem="wp9-nh-Efb" secondAttribute="bottom" constant="8" id="O1y-Qb-KTp"/>
                                             <constraint firstItem="dco-mo-Uyk" firstAttribute="top" secondItem="UTY-pf-fKa" secondAttribute="bottom" constant="10" id="Shx-PV-EIK"/>
                                             <constraint firstAttribute="bottom" secondItem="kxR-6q-Vpw" secondAttribute="bottom" id="UHd-NL-aSU"/>
-                                            <constraint firstItem="kxR-6q-Vpw" firstAttribute="top" secondItem="dco-mo-Uyk" secondAttribute="bottom" constant="8" id="dO0-4Y-1MZ"/>
+                                            <constraint firstItem="kxR-6q-Vpw" firstAttribute="top" secondItem="dco-mo-Uyk" secondAttribute="bottom" constant="5" id="dO0-4Y-1MZ"/>
                                             <constraint firstAttribute="trailing" secondItem="kxR-6q-Vpw" secondAttribute="trailing" id="fQQ-s3-jsG"/>
                                             <constraint firstItem="wp9-nh-Efb" firstAttribute="centerX" secondItem="DPu-Ch-xhR" secondAttribute="centerX" id="jiV-no-pza"/>
                                             <constraint firstItem="kxR-6q-Vpw" firstAttribute="leading" secondItem="DPu-Ch-xhR" secondAttribute="leading" id="t5x-tT-6fi"/>
@@ -214,13 +214,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="deliveryTimeBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Qyw-oL-pcX">
-                                <rect key="frame" x="0.0" y="242" width="375" height="55"/>
+                                <rect key="frame" x="0.0" y="239" width="375" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="FXQ-JZ-nyt"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Указаны ближайшие даты. Точное время вы сможете согласовать с сотрудником химчистки." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGS-r3-OMq">
-                                <rect key="frame" x="16" y="247" width="343" height="50"/>
+                                <rect key="frame" x="16" y="244" width="343" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -318,7 +318,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="108" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FUR-IH-ibP">
-                                <rect key="frame" x="0.0" y="297" width="375" height="252"/>
+                                <rect key="frame" x="0.0" y="294" width="375" height="255"/>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>

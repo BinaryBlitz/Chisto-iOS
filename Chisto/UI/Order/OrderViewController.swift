@@ -43,6 +43,8 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
     continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap)
       .addDisposableTo(disposeBag)
 
+    viewModel.continueButtonEnabled.asObservable().bindTo(continueButton.rx.isEnabled).addDisposableTo(disposeBag)
+
     configureTableView()
     configureNavigations()
 
@@ -63,10 +65,12 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
     viewModel.currentOrderItems.asDriver().drive(onNext: { [weak self] items in
       if items.count > 0 {
         self?.continueButton.isEnabled = true
+        self?.continueButton.titleLabel?.text = "Продолжить"
         self?.tableView.separatorStyle = .singleLine
         self?.tableView.backgroundView?.isHidden = true
       } else {
         self?.continueButton.isEnabled = false
+        self?.continueButton.titleLabel?.text = "Ничего не выбрано"
         self?.tableView.separatorStyle = .none
         self?.tableView.backgroundView?.isHidden = false
       }
@@ -116,29 +120,25 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
       self?.navigationController?.present(navigationItemInfoViewController, animated: true)
     }).addDisposableTo(disposeBag)
 
-    viewModel.presentLastTimeOrderPopup.asDriver(onErrorDriveWith: .empty())
-      .drive(onNext: { [weak self] popupViewModel in
-        guard let viewModel = self?.viewModel else { return }
-
-        popupViewModel.showAllLaundriesButtonDidTap.bindTo(viewModel.showAllLaundriesModalButtonDidTap)
-          .addDisposableTo(popupViewModel.disposeBag)
-
-        let viewController = LastTimePopupViewController.storyboardInstance()!
-
-        viewController.viewModel = popupViewModel
-        viewController.modalPresentationStyle = .overFullScreen
-        self?.present(viewController, animated: false, completion: nil)
-      }).addDisposableTo(disposeBag)
-
     viewModel.presentLaundrySelectSection.asDriver(onErrorDriveWith: .empty())
       .drive(onNext: { [weak self] in
         let viewController = LaundrySelectViewController.storyboardInstance()!
-        self?.navigationController?.pushViewController(viewController, animated: true)
+        self?.navigationController?.pushViewController(viewController, animated: true) {
+          viewController.viewModel.didFinishPushingViewController.onNext()
+        }
     }).addDisposableTo(disposeBag)
 
     viewModel.presentProfileSection.drive(onNext: { [weak self] in
       let viewController = ProfileNavigationController.storyboardInstance()!
       self?.present(viewController, animated: true, completion: nil)
+    }).addDisposableTo(disposeBag)
+
+    viewModel.presentRatingSection.drive(onNext: { [weak self] viewModel in
+      let viewController = OrderReviewAlertViewController.storyboardInstance()!
+      viewController.modalPresentationStyle = .overFullScreen
+      
+      viewController.viewModel = viewModel
+      self?.present(viewController, animated: false, completion: nil)
     }).addDisposableTo(disposeBag)
 
   }

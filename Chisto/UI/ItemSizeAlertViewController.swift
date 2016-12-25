@@ -45,11 +45,11 @@ class ItemSizeAlertViewController: UIViewController {
     сontinueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
     cancelButton.rx.tap.bindTo(viewModel.cancelButtonDidTap).addDisposableTo(disposeBag)
 
-    viewModel.dismissViewController.drive(onNext: { [weak self] in
+    viewModel.dismissViewController.drive(onNext: { [weak self] success in
       UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {
         self?.view.alpha = 0
       }, completion: { _ in
-        self?.dismiss(animated: false, completion: nil)
+        self?.dismiss(animated: false, completion: { _ in success ? viewModel.didFinishAlertSuccess.onNext() : () })
       })
     }).addDisposableTo(disposeBag)
   }

@@ -12,7 +12,7 @@ import RxSwift
 import RxRealm
 
 class RootViewController: ChistoNavigationController {
-
+  private(set) static var instance: RootViewController? = nil
   let disposeBag = DisposeBag()
 
   override func viewDidAppear(_ animated: Bool) {
@@ -23,6 +23,7 @@ class RootViewController: ChistoNavigationController {
   }
 
   override func loadView() {
+    RootViewController.instance = self
     super.loadView()
   }
 

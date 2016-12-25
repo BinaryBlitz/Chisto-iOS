@@ -34,6 +34,7 @@ class LaundryReviewsViewModel: LaundryReviewsViewModelType {
   let laundryRating: Float
   let laundryReviewsCountText: String
   let ratingCountLabels = ["отзыв", "отзыва", "отзывов"]
+  let tableIsEmpty: Driver<Bool>
 
   init(laundry: Laundry) {
     
@@ -43,7 +44,9 @@ class LaundryReviewsViewModel: LaundryReviewsViewModelType {
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
 
-    DataManager.instance.fetchRatings(laundry: laundry).do(onError: { error in
+    let fetchRatingsObservable = DataManager.instance.fetchRatings(laundry: laundry)
+
+    fetchRatingsObservable.do(onError: { error in
       presentErrorAlert.onNext(error)
     }).bindTo(ratings).addDisposableTo(disposeBag)
     
@@ -60,6 +63,8 @@ class LaundryReviewsViewModel: LaundryReviewsViewModelType {
       let section = LaundryReviewsSectionModel(model: "", items: cellModels)
       return [section]
     }
+
+    self.tableIsEmpty = fetchRatingsObservable.asDriver(onErrorDriveWith: .empty()).map { $0.isEmpty }
 
   }
 }

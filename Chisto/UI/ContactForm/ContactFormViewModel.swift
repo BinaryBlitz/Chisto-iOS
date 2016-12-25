@@ -85,7 +85,7 @@ class ContactFormViewModel {
       ProfileManager.instance.updateProfile { profile in
         profile.firstName = self.firstName.value ?? ""
         profile.lastName = self.lastName.value ?? ""
-        profile.phone = self.phone.value?.onlyDigits ?? ""
+        profile.phone = "+" + (self.phone.value?.onlyDigits ?? "")
         profile.email = self.email.value ?? ""
         profile.street = self.street.value ?? ""
         profile.building = self.building.value ?? ""

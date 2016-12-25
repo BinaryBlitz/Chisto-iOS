@@ -14,7 +14,10 @@ import ObjectMapper
 class Profile: Object, Mappable {
   let dateFormat = "yyyy-MM-dd"
   dynamic var isCreated: Bool = false
+  dynamic var isVerified: Bool = false
   dynamic var id: Int = UUID().hashValue
+  dynamic var deviceToken: String? = nil
+  dynamic var order: Order? = nil
   dynamic var firstName: String = ""
   dynamic var lastName: String = ""
   dynamic var phone: String = ""
@@ -28,6 +31,10 @@ class Profile: Object, Mappable {
   dynamic var verificationToken: String? = nil
   dynamic var ordersCount: Int = 0
   dynamic var notes: String = ""
+
+  private var cityId: Int? {
+    return city?.id
+  }
   
   required init?(map: Map) {
     super.init()
@@ -58,6 +65,7 @@ class Profile: Object, Mappable {
     verificationToken <- map["verification_token"]
     notes <- map["notes"]
     ordersCount <- map["orders_count"]
+    cityId >>> map["city_id"]
   }
   
   override static func primaryKey() -> String? {

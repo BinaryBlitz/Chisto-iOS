@@ -16,6 +16,7 @@ enum APIPath {
   case fetchCities
   case fetchCategories
   case fetchCityLaundries(cityId: Int)
+  case showLaundry(laundryId: Int)
   case fetchCategoryClothes(categoryId: Int)
   case fetchClothesTreatments(itemId: Int)
   case createVerificationToken
@@ -27,6 +28,7 @@ enum APIPath {
   case createUser
   case showUser
   case updateUser
+  case createRating(laundryId: Int)
 
   var endpoint: String {
     switch self {
@@ -44,12 +46,16 @@ enum APIPath {
       return "verification_token"
     case .createOrder(let laundryId):
       return "laundries/\(laundryId)/orders"
+    case .showLaundry(let laundryId):
+      return "laundries/\(laundryId)"
     case .fetchRatings(let laundryId):
       return "laundries/\(laundryId)/ratings"
     case .fetchOrders:
       return "orders"
     case .fetchOrder(let orderId):
       return "orders/\(orderId)"
+    case .createRating(let laundryId):
+      return "laundries/\(laundryId)/ratings"
     case .createUser, .showUser, .updateUser:
       return "user"
     }
@@ -66,7 +72,7 @@ enum APIPath {
 
   var successCode: Int {
     switch self {
-    case .createOrder, .createVerificationToken:
+    case .createOrder, .createVerificationToken, .createUser, .createRating:
       return 201
     default:
       return 200

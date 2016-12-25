@@ -39,6 +39,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // IQKeyboardManager
     IQKeyboardManager.sharedManager().enable = true
 
+    // NotificationManager
+    NotificationManager.instance.resetNotificationsCount()
+
+    if let remoteNotification = launchOptions?[.remoteNotification] as? [AnyHashable : Any] {
+      NotificationManager.instance.didReceiveNotification(userInfo: remoteNotification)
+    }
+
     return true
   }
 
@@ -52,9 +59,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func applicationDidBecomeActive(_ application: UIApplication) {
+    NotificationManager.instance.resetNotificationsCount()
   }
 
   func applicationWillTerminate(_ application: UIApplication) {
+  }
+
+  func application(_ application: UIApplication,
+                   didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+                   fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+
+    NotificationManager.instance.didReceiveNotification(userInfo: userInfo)
+  }
+
+  func application(_ application: UIApplication,
+                   didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+
+    NotificationManager.instance.didRegisterForNotifications(token: deviceToken)
   }
 
 }

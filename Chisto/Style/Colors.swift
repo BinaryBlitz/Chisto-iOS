@@ -35,6 +35,18 @@ extension UIColor {
     }
   }
 
+  class var chsLightBlue: UIColor {
+    return UIColor(red: 25.0 / 255.0, green: 222.0 / 255.0, blue: 233 / 255.0, alpha: 1.0)
+  }
+
+  class var chsDarkYellow: UIColor {
+    return UIColor(red: 255.0 / 255.0, green: 194.0 / 255.0, blue: 49.0 / 255.0, alpha: 1.0)
+  }
+
+  class var chsLightSkyBlue: UIColor {
+    return UIColor(red: 163.0 / 255.0, green: 194.0 / 255.0, blue: 251.0 / 255.0, alpha: 1.0)
+  }
+
   class var chsSkyBlue: UIColor {
     return UIColor(red: 72.0 / 255.0, green: 194.0 / 255.0, blue: 248.0 / 255.0, alpha: 1.0)
   }

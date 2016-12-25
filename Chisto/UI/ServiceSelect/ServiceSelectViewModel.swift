@@ -42,8 +42,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
   var navigationItemTitle = "Выбор услуг"
   var itemTitle: String
   var sections: Driver<[ServiceSelectSectionModel]>
-  var returnToSection: Driver<NewSection>
-  let itemSizeAlertViewModel: ItemSizeAlertViewModel
+  var showNewSection: PublishSubject<NewSection>
 
   // Data
   var saveNeeded: Bool
@@ -51,6 +50,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
   enum NewSection {
     case orderItem
     case order
+    case areaAlert(viewModel: ItemSizeAlertViewModel)
   }
 
   enum Section: Int {
@@ -80,20 +80,14 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
         "Декор", "Декоративная отделка", item.category?.color, isSelected: hasDecoration
       )
     )
-
-    self.itemSizeAlertViewModel = ItemSizeAlertViewModel(orderItem: orderItem)
-
     self.decorationCellModel = decorationCellModel
 
     DataManager.instance.fetchClothesTreatments(item: item).subscribe().addDisposableTo(disposeBag)
-
     let treatments = Variable<[Treatment]>([])
-
     Observable.from(item.treatments.filter("isDeleted == %@", false).sorted(byProperty: "name"))
       .map { Array($0) }
       .bindTo(treatments)
       .addDisposableTo(disposeBag)
-
     self.treatments = treatments
 
     self.itemTitle = item.name
@@ -121,9 +115,19 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
       return [decorationSection, servicesSection]
     }
 
-    self.returnToSection = readyButtonTapped.asDriver(onErrorDriveWith: .empty()).map {
-      return saveNeeded ? .order : .orderItem
-    }
+    let showNewSection = PublishSubject<NewSection>()
+    self.showNewSection = showNewSection
+
+    let returnSection: NewSection = saveNeeded ? .order : .orderItem
+
+    readyButtonTapped.asObservable().map { [weak self] in
+      guard let needPresentAreaAlert = self?.needPresentAreaAlert else { return returnSection }
+      guard needPresentAreaAlert else { return returnSection }
+      let viewModel = ItemSizeAlertViewModel(orderItem: orderItem)
+      viewModel.didFinishAlertSuccess.asObservable().map { returnSection }
+        .bindTo(showNewSection).addDisposableTo(viewModel.disposeBag)
+      return .areaAlert(viewModel: viewModel)
+    }.bindTo(showNewSection).addDisposableTo(disposeBag)
 
     readyButtonTapped.asObservable()
       .map {
