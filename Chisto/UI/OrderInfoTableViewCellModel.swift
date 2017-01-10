@@ -13,8 +13,10 @@ protocol OrderInfoTableViewCellModelType {
   var clothesIconUrl: URL? { get }
   var clothesTitle: String? { get }
   var clothesPrice: String? { get }
+  var hasDecoration: Bool { get }
+  var decorationPrice: String { get }
   var clothesIconColor: UIColor { get }
-  var orderLineItems: [OrderLineItem] { get }
+  var orderTreatments: [OrderItemTreatment] { get }
 }
 
 class OrderInfoTableViewCellModel: OrderInfoTableViewCellModelType {
@@ -23,27 +25,29 @@ class OrderInfoTableViewCellModel: OrderInfoTableViewCellModelType {
   var clothesIconColor: UIColor = UIColor.chsSkyBlue
   var clothesTitle: String? = nil
   var clothesPrice: String? = nil
-  var orderLineItems: [OrderLineItem] = []
+  var orderTreatments: [OrderItemTreatment] = []
+  var hasDecoration: Bool = false
+  var decorationPrice: String = ""
   
-  init(itemInfo: LineItemInfo, orderLineItems: [OrderLineItem]) {
-    guard let item = itemInfo.item else { return }
+  init(orderLineItem: OrderLineItem) {
+    guard let item = orderLineItem.item else { return }
     
     self.clothesIconUrl = URL(string: item.icon)
     self.clothesIconColor = item.category?.color ?? UIColor.chsSkyBlue
-    
-    let quantity = itemInfo.quantity
-    self.clothesTitle = item.name + " " + self.priceString(lineItems: orderLineItems, singleItem: true) + " × \(quantity)"
-    self.clothesPrice = self.priceString(lineItems: orderLineItems)
-    self.orderLineItems = orderLineItems
-  }
-  
-  func price(orderLineItems: [OrderLineItem], singleItem: Bool = false) -> Double {
-    return orderLineItems.map { singleItem ? $0.itemPrice : $0.totalPrice }.reduce(0, +)
-  }
 
-  func priceString(lineItems: [OrderLineItem], singleItem: Bool = false) -> String {
-    let price = self.price(orderLineItems: lineItems, singleItem: singleItem)
-    return price == 0 ? "Бесплатно" : price.currencyString
+    self.orderTreatments = orderLineItem.orderItemTreatments
+
+    var clothesTitle = item.name
+    if item.useArea {
+      clothesTitle +=  " \(orderLineItem.area) м² "
+    }
+    let price = orderLineItem.price(singleItem: true)
+    clothesTitle += " " + price.currencyString + " × \(orderLineItem.quantity)"
+    self.clothesTitle = clothesTitle
+    
+    self.clothesPrice = (price * Double(orderLineItem.quantity)).currencyString
+
+    self.hasDecoration = orderLineItem.hasDecoration
+    self.decorationPrice = orderLineItem.decorationPrice.currencyString
   }
-  
 }

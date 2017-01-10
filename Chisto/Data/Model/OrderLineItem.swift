@@ -14,70 +14,71 @@ import RealmSwift
 import Realm
 import ObjectMapper_Realm
 
-struct LineItemInfo: Hashable {
-  let item: Item?
-  let quantity: Int
-  
-  var hashValue: Int {
-    guard let item = item else { return quantity.hashValue }
-    return item.hashValue + quantity.hashValue
-  }
-  
-  static func == (lhs: LineItemInfo, rhs: LineItemInfo) -> Bool {
-    return lhs.hashValue == rhs.hashValue
-  }
-}
+class OrderItemTreatment: Mappable {
+  var orderItemId: Int? = nil
+  var orderLaundryTreatment: OrderLaundryTreatment? = nil
 
-class OrderTreatment: Mappable {
-  var name: String = ""
-  var descriptionText: String = ""
-  var itemId: Int = UUID().hashValue
+  var price: Double {
+    guard let orderLaundryTreatment = self.orderLaundryTreatment else { return 0 }
+    return orderLaundryTreatment.price
+  }
 
   required init?(map: Map) { }
 
   func mapping(map: Map) {
-    name <- map["name"]
-    descriptionText <- map["description"]
-    itemId <- map["item_id"]
+    orderItemId <- map["order_item_id"]
+    orderLaundryTreatment <- map["laundry_treatment"]
   }
 }
 
 class OrderLaundryTreatment: Mappable {
-  var orderTreatment: OrderTreatment?
+  var treatment: Treatment? = nil
   var price: Double = 0
 
   required init?(map: Map) { }
   
   func mapping(map: Map) {
-    orderTreatment <- map["treatment"]
+    treatment <- map["treatment"]
     price <- map["price"]
   }
 }
 
 class OrderLineItem: Mappable {
-  var orderLaundryTreatment: OrderLaundryTreatment?
+  var id: Int = UUID().hashValue
+  var orderItemTreatments: [OrderItemTreatment] = []
+  var itemId: Int? = nil
   var quantity: Int = 1
-  var totalPrice: Double = 0
+  var area: Double = 1
+  var multiplier: Double = 1
+  var hasDecoration: Bool = false
+  var laundryItemId: Int? = nil
 
-  var itemPrice: Double {
-    return totalPrice / Double(quantity)
+  var decorationPrice: Double {
+    let price = self.price(singleItem: true, includeDecoration: false)
+    return price * multiplier - price
   }
   
   var item: Item? {
+    guard let itemId = itemId else { return nil }
     let realm = try! Realm()
-    return realm.object(ofType: Item.self, forPrimaryKey: orderLaundryTreatment?.orderTreatment?.itemId)
-  }
-  
-  var lineItemInfo: LineItemInfo {
-    return LineItemInfo(item: item, quantity: quantity)
+    return realm.object(ofType: Item.self, forPrimaryKey: itemId)
   }
 
   required init?(map: Map) { }
   
   func mapping(map: Map) {
-    orderLaundryTreatment <- map["laundry_treatment"]
+    orderItemTreatments <- map["order_treatments"]
     quantity <- map["quantity"]
-    totalPrice <- map["total_price"]
+    itemId <- map["item_id"]
+    area <- map["area"]
+    laundryItemId <- map["laundry_treatment_id"]
+    hasDecoration <- map["has_decoration"]
+    multiplier <- map["multiplier"]
   }
-  
+
+  func price(singleItem: Bool = false, includeDecoration: Bool = true) -> Double {
+    let price = orderItemTreatments.map { (singleItem ? $0.price : $0.price * Double(quantity)) * area }.reduce(0, +)
+    guard hasDecoration, includeDecoration else { return price }
+    return price * multiplier
+  }
 }

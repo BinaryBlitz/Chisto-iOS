@@ -38,8 +38,8 @@ class OrderConfirmServiceTableViewCellModel: OrderConfirmServiceTableViewCellMod
     self.clothesIconUrl = URL(string: orderItem.clothesItem.icon)
     self.clothesIconColor = orderItem.clothesItem.category?.color ?? UIColor.chsSkyBlue
     var clothesTitle = orderItem.clothesItem.name
-    if orderItem.area != 0 {
-      clothesTitle +=  " \(orderItem.area) м² "
+    if let area = orderItem.area {
+      clothesTitle +=  " \(area) м² "
     }
     clothesTitle += " " + orderItem.price(laundry: laundry, 1).currencyString + " × \(orderItem.amount)"
     self.clothesTitle = clothesTitle
