@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import PhoneNumberKit
 
 extension String {
   var onlyDigits: String {
@@ -18,32 +19,44 @@ extension String {
 }
 
 class MaskedInput {
-  var formattingPattern: String = ""
+  enum FormattingType {
+    case phoneNumber
+    case pattern(String)
+  }
+
+  var type: FormattingType
   var replacementChar: String = "*"
 
   var isValid = Variable(false)
 
-  init(formattingPattern: String = "", replacementChar: String = "*") {
-    self.formattingPattern = formattingPattern
-    self.replacementChar = replacementChar
+  init(formattingType: FormattingType) {
+    self.type = formattingType
   }
 
   func configure(textField: UITextField) {
     _ = textField.rx.text
       .takeUntil(textField.rx.deallocated).subscribe(onNext: { [weak self] text in
-      guard let formattingPattern = self?.formattingPattern else { return }
+      guard let formattingType = self?.type, let text = text else { return }
+        switch formattingType {
+        case .phoneNumber:
+          let formattedPhone = PartialFormatter().formatPartial(text)
+          textField.rx.text.onNext(formattedPhone)
+          _ = try? PhoneNumberKit().parse(formattedPhone)
+          self?.isValid.value = true
+        case .pattern(let formattingPattern):
+          if text.characters.count > 0, formattingPattern.characters.count > 0 {
+            let formattedText = self?.format(text: text, formattingPattern: formattingPattern)
 
-      if var text = text, text.characters.count > 0, formattingPattern.characters.count > 0 {
-        let formattedText = self?.format(text: text)
+            textField.rx.text.onNext(formattedText)
 
-        textField.rx.text.onNext(formattedText)
+            self?.isValid.value = formattedText?.characters.count == formattingPattern.characters.count
+          }
+        }
 
-        self?.isValid.value = formattedText?.characters.count == formattingPattern.characters.count
-      }
     })
   }
 
-  private func format(text: String) -> String {
+  private func format(text: String, formattingPattern: String) -> String {
     let onlyDigitsString = text.onlyDigits
 
     var finalText = ""

@@ -22,7 +22,7 @@ class CityNotFoundViewController: UIViewController {
   // Fields
   @IBOutlet weak var cityField: UITextField!
   @IBOutlet weak var phoneField: UITextField!
-  let maskedPhoneField = MaskedInput(formattingPattern: "+* *** ***-**-**", replacementChar: "*")
+  let maskedPhoneField = MaskedInput(formattingType: .phoneNumber)
 
   // Footer
   let footerView = UIView()
