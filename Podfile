@@ -15,7 +15,7 @@ target 'Chisto' do
   pod 'IQKeyboardManagerSwift'
   pod 'ObjectMapper', '~> 2.2'
   pod 'ObjectMapper+Realm', '~> 0.2'
-  pod 'RealmSwift', '~> 2.0.3'
+  pod 'RealmSwift', '~> 2.0'
   pod 'RxRealm', '~> 0.3'
   pod 'Kingfisher', '~> 3.0'
   pod 'TextFieldEffects'

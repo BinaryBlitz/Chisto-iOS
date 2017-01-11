@@ -26,8 +26,8 @@ class OrderItem {
     self.hasDecoration = hasDecoration
   }
 
-  var area: Int {
-    guard let size = size else { return 0 }
+  var area: Int? {
+    guard let size = size else { return nil }
     let area = ceil(Double(size.length * size.width) / squareCentimetersInMeter)
     return Int(area)
   }
@@ -36,7 +36,7 @@ class OrderItem {
     let amount = count ?? self.amount
 
     let price = treatments.map { $0.price(laundry: laundry, hasDecoration: (hasDecoration && includeDecoration)) }.reduce(0, +) * Double(amount)
-    guard area != 0 else { return price }
+    guard let area = area else { return price }
     return price * Double(area)
   }
 
