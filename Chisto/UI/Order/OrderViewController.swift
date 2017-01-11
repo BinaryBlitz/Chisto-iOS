@@ -101,6 +101,12 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
   }
 
   override func viewWillAppear(_ animated: Bool) {
+    let viewController = OrderReviewAlertViewController.storyboardInstance()!
+    viewController.modalPresentationStyle = .overFullScreen
+
+    viewController.viewModel = OrderReviewAlertViewModel(order: Order())
+    present(viewController, animated: false, completion: nil)
+
     if let indexPath = tableView.indexPathForSelectedRow {
       tableView.deselectRow(at: indexPath, animated: true)
     }

@@ -36,7 +36,6 @@ class OrderReviewAlertViewModel {
     self.uiEnabled = uiEnabled
 
     let continueButtonDriver = continueButtonDidTap.asDriver(onErrorDriveWith: .empty())
-    let cancelButtonDriver = cancelButtonDidTap.asDriver(onErrorDriveWith: .empty())
 
     let didCreateReview = continueButtonDriver.flatMap { _ -> Driver<Void> in
       let rating = Rating()
@@ -50,7 +49,7 @@ class OrderReviewAlertViewModel {
       })
     }
 
-    self.dismissViewController = Driver.of(didCreateReview, cancelButtonDriver).merge().map {
+    self.dismissViewController = didCreateReview.map {
       guard let order = ProfileManager.instance.userProfile.value.order else { return }
       let realm = try! Realm()
       try! realm.write {
