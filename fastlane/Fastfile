@@ -32,8 +32,8 @@ platform :ios do
     ensure_git_status_clean
     # Increment the build number (not the version number)
     increment_build_number
-    # match(type: 'appstore') # more information: https://codesigning.guide
-    gym(scheme: 'Chisto', use_legacy_build_api: true) # Build your app - more options available
+    # Build your app - more options available
+    gym(scheme: 'Chisto')
     # Upload to Crashlytics
     crashlytics
   end
