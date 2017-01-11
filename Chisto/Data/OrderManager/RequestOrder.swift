@@ -18,7 +18,7 @@ class RequestOrder: Mappable {
   var contactNumber: String = ""
   var notes: String? = nil
   var email: String? = nil
-  var lineItemsArttributes: [LineItemAttribute] = []
+  var orderItemsAttributes: [OrderItemAttribute] = []
 
   init(profile: Profile) {
     apartmentNumber = profile.apartment
@@ -39,7 +39,7 @@ class RequestOrder: Mappable {
     contactNumber <- map["contact_number"]
     notes <- map["notes"]
     email <- map["email"]
-    lineItemsArttributes <- map["line_items_attributes"]
+    orderItemsAttributes <- map["order_items_attributes"]
   }
 
 }

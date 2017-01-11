@@ -28,12 +28,23 @@ class OrderInfoTableViewCell: UITableViewCell {
     headerItemView.font = UIFont.chsLabelFont
     headerItemView.textColor = UIColor.black
     stackView.addArrangedSubview(headerItemView)
+
+    configureDecoration(viewModel: viewModel)
     
-    for lineItem in viewModel.orderLineItems {
+    for orderTreatment in viewModel.orderTreatments {
       let view = OrderConfirmServiceItemView.nibInstance()!
-      view.leftLabel.text = lineItem.orderLaundryTreatment?.orderTreatment?.name
-      view.rightLabel.text = lineItem.totalPrice.currencyString
+      view.leftLabel.text = orderTreatment.orderLaundryTreatment?.treatment?.name
+      view.rightLabel.text = orderTreatment.price.currencyString
       stackView.addArrangedSubview(view)
+    }
+  }
+
+  private func configureDecoration(viewModel: OrderInfoTableViewCellModelType) {
+    if viewModel.hasDecoration {
+      let decorationServiceView = OrderConfirmServiceItemView.nibInstance()!
+      decorationServiceView.leftLabel.text = "Декор"
+      decorationServiceView.rightLabel.text = viewModel.decorationPrice
+      stackView.addArrangedSubview(decorationServiceView)
     }
   }
   

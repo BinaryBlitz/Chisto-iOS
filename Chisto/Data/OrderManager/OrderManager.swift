@@ -34,30 +34,11 @@ class OrderManager {
     return Observable.deferred { [weak self] in
       let profile = ProfileManager.instance.userProfile.value
       guard let laundry = self?.currentLaundry else { return Observable.empty() }
-      
-      let order = RequestOrder(profile: profile)
       guard let orderItems = try! self?.currentOrderItems.value() else { return Observable.empty() }
-      
-      for orderItem in orderItems {
-        for treatment in orderItem.treatments {
 
-          guard let laundryTreatment = laundry.laundryTreatments.first(where: {
-            $0.treatmentId == treatment.id }) else { return Observable.error(DataError.requestConvertError) }
+      let order = RequestOrder(profile: profile)
 
-          if orderItem.area == 0 {
-            let lineItemAttribute = LineItemAttribute(
-              laundryTreatment.id,
-              quantity: orderItem.amount
-            )
-            order.lineItemsArttributes.append(lineItemAttribute)
-          } else {
-            let lineItemAtributes = [LineItemAttribute](repeating: LineItemAttribute(laundryTreatment.id, quantity: orderItem.area),
-              count: orderItem.amount)
-            order.lineItemsArttributes += lineItemAtributes
-          }
-          
-        }
-      }
+      order.orderItemsAttributes = orderItems.map { OrderItemAttribute(orderItem: $0, laundry: laundry) }
       
       return DataManager.instance.createOrder(order: order, laundry: laundry)
     }

@@ -147,7 +147,7 @@ class Order: ServerObject {
     contactNumber <- map["contact_number"]
     notes <- map["notes"]
     email <- map["email"]
-    lineItems <- map["line_items"]
+    lineItems <- map["order_items"]
     paid <- map["paid"]
     createdAt <- (map["created_at"], StringToDateTransform())
     statusString <- map["status"]

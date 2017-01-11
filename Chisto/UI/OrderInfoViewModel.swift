@@ -83,12 +83,8 @@ class OrderInfoViewModel {
 
     let orderLineItemsObservable = observableOrder.map { $0.lineItems }
     
-    let groupedLineItemsObservable = orderLineItemsObservable.map { items in
-      items.categorize { $0.lineItemInfo }
-    }
-    
-    self.sections = groupedLineItemsObservable.map { lineItemDictionary in
-      let cellModels = lineItemDictionary.map(OrderInfoTableViewCellModel.init) as [OrderInfoTableViewCellModelType]
+    self.sections = orderLineItemsObservable.map { orderLineItems in
+      let cellModels = orderLineItems.map(OrderInfoTableViewCellModel.init) as [OrderInfoTableViewCellModelType]
       return [OrderInfoSectionModel(model: "", items: cellModels)]
     }.asDriver(onErrorDriveWith: .empty())
     
