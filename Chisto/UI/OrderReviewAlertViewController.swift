@@ -21,7 +21,6 @@ class OrderReviewAlertViewController: UIViewController {
   @IBOutlet weak var ratingView: FloatRatingView!
   @IBOutlet weak var reviewContentField: HoshiTextField!
   @IBOutlet weak var continueButton: GoButton!
-  @IBOutlet weak var cancelButton: GoButton!
 
   // Constants
   let animationDuration = 0.2
@@ -34,10 +33,8 @@ class OrderReviewAlertViewController: UIViewController {
 
     titleLabel.text = viewModel.title
     continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
-    cancelButton.rx.tap.bindTo(viewModel.cancelButtonDidTap).addDisposableTo(disposeBag)
 
     viewModel.uiEnabled.asObservable().bindTo(continueButton.rx.isEnabled).addDisposableTo(disposeBag)
-    viewModel.uiEnabled.asObservable().bindTo(cancelButton.rx.isEnabled).addDisposableTo(disposeBag)
 
     viewModel.dismissViewController.drive(onNext: { [weak self] in
       UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {
