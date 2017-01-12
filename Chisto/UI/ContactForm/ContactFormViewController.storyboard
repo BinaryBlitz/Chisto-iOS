@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Pxf-2t-tYQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Pxf-2t-tYQ">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -220,7 +220,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Улица" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acm-lZ-3Xp" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Улица" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acm-lZ-3Xp" customClass="HoshiTextField" customModule="TextFieldEffects">
                                                     <rect key="frame" x="46" y="0.0" width="353" height="50"/>
                                                     <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="textColor"/>
@@ -237,12 +237,26 @@
                                                             <real key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="didTouchStreetName:" destination="Pxf-2t-tYQ" eventType="touchUpInside" id="c5A-ye-twj"/>
+                                                        <action selector="didTouchStreetNameField:" destination="Pxf-2t-tYQ" eventType="touchDown" id="RFq-co-eRY"/>
+                                                    </connections>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peE-3h-iGq">
+                                                    <rect key="frame" x="46" y="0.0" width="353" height="50"/>
+                                                    <connections>
+                                                        <action selector="streetFieldDidTap:" destination="Pxf-2t-tYQ" eventType="touchUpInside" id="8Hy-eq-e81"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
+                                                <constraint firstItem="peE-3h-iGq" firstAttribute="top" secondItem="acm-lZ-3Xp" secondAttribute="top" id="7tF-v4-Ul0"/>
                                                 <constraint firstAttribute="bottom" secondItem="acm-lZ-3Xp" secondAttribute="bottom" constant="5" id="CUc-0L-tjE"/>
+                                                <constraint firstItem="acm-lZ-3Xp" firstAttribute="leading" secondItem="peE-3h-iGq" secondAttribute="leading" id="Epl-OT-ii2"/>
+                                                <constraint firstItem="peE-3h-iGq" firstAttribute="width" secondItem="acm-lZ-3Xp" secondAttribute="width" id="IwM-zZ-5cb"/>
                                                 <constraint firstItem="acm-lZ-3Xp" firstAttribute="leading" secondItem="z0r-c3-I4n" secondAttribute="leading" constant="46" id="X0h-Zg-tqC"/>
+                                                <constraint firstItem="peE-3h-iGq" firstAttribute="bottom" secondItem="acm-lZ-3Xp" secondAttribute="bottom" id="eOD-Fy-sWA"/>
                                                 <constraint firstItem="acm-lZ-3Xp" firstAttribute="top" secondItem="z0r-c3-I4n" secondAttribute="top" id="gqn-Qm-fD9"/>
                                                 <constraint firstAttribute="trailing" secondItem="acm-lZ-3Xp" secondAttribute="trailing" constant="15" id="zbT-jX-LlM"/>
                                             </constraints>
