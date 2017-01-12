@@ -40,7 +40,7 @@ class CategoriesViewModel: CategoriesViewModelType {
   var categories: Variable<[Category]>
 
   init() {
-    self.navigationBarTitle = "Выбор вещи"
+    self.navigationBarTitle = "Выбрать вещь"
 
     // Data
     let presentErrorAlert = PublishSubject<Error>()

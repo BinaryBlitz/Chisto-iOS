@@ -44,13 +44,13 @@ enum OrderStatus {
     case .processing:
       return "Обрабатывается"
     case .confirmed:
-      return "Согласован забор вещей"
+      return "Согласован"
     case .cleaning:
       return "В чистке"
     case .dispatched:
-      return "Вещи едут к вам"
+      return "Доставка"
     case .completed:
-      return "Исполнен"
+      return "Выполнен"
     case .errored:
       return "Ошибка"
     case .canceled:
