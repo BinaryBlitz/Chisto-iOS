@@ -53,6 +53,7 @@ class MyOrdersViewController: UITableViewController, DefaultBarColoredViewContro
     viewModel.tableIsEmpty.asDriver().drive(onNext: { [weak self] tableIsEmpty in
       self?.tableView.separatorStyle =  tableIsEmpty ? .none : .singleLine
       self?.tableView.backgroundView?.isHidden = tableIsEmpty ? false : true
+      self?.tableView.reloadData()
     }).addDisposableTo(disposeBag)
   }
   
