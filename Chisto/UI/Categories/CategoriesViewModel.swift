@@ -54,8 +54,8 @@ class CategoriesViewModel: CategoriesViewModelType {
 
     Observable.from(uiRealm.objects(Category.self)
       .filter("isDeleted == %@", false)
-      .sorted(byProperty: "name", ascending: true)
-      .sorted(byProperty: "featured", ascending: false))
+      .sorted(byKeyPath: "name", ascending: true)
+      .sorted(byKeyPath: "featured", ascending: false))
       .map { Array($0) }.bindTo(categories)
       .addDisposableTo(disposeBag)
 
