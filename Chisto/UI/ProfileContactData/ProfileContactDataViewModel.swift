@@ -71,7 +71,7 @@ class ProfileContactDataViewModel: ProfileContactDataViewModelType {
 
     self.popViewController = Driver.of(cityDidSelect.asDriver(onErrorDriveWith: .empty()), saveProfileDriver).merge()
 
-    self.presentLocationSelectSection = formViewModel.locationHeaderButtonDidTap.map {
+    self.presentLocationSelectSection = formViewModel.streetNameFieldDidTap.map {
       let viewModel = LocationSelectViewModel()
       viewModel.streetName.bindTo(formViewModel.street).addDisposableTo(viewModel.disposeBag)
       viewModel.streetNumber.bindTo(formViewModel.building).addDisposableTo(viewModel.disposeBag)

@@ -46,7 +46,7 @@ class ContactFormViewModel {
   var isValid = Variable<Bool>(false)
 
   var cityFieldDidTap = PublishSubject<Void>()
-  var locationHeaderButtonDidTap = PublishSubject<Void>()
+  var streetNameFieldDidTap = PublishSubject<Void>()
 
   init() {
     let profile = ProfileManager.instance.userProfile.value
@@ -75,7 +75,6 @@ class ContactFormViewModel {
 
     Observable.combineLatest(contactInfoIsValid, adressIsValid) { $0 && $1 }.bindTo(isValid).addDisposableTo(disposeBag)
 
-    adressHeaderModel.buttonDidTap.asObservable().bindTo(locationHeaderButtonDidTap).addDisposableTo(disposeBag)
   }
 
   func saveUserProfile() -> Observable<Void> {

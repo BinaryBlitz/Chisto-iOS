@@ -87,6 +87,10 @@ class ContactFormViewController: UITableViewController {
     }
   }
   
+  @IBAction func streetFieldDidTap(_ sender: Any) {
+    viewModel?.streetNameFieldDidTap.onNext()
+  }
+
   override func viewWillDisappear(_ animated: Bool) {
     tableView.endEditing(true)
   }
