@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import PhoneNumberKit
 
 class RegistrationPhoneInputViewModel {
   let disposeBag: DisposeBag
@@ -31,7 +32,9 @@ class RegistrationPhoneInputViewModel {
 
     self.presentCodeInputSection = sendButtonDidTap.asObservable().flatMap { _ -> Observable<RegistrationCodeInputViewModel> in
       guard let phoneText = phoneText.value else { return Observable.error(DataError.unknown) }
-      return DataManager.instance.createVerificationToken(phone: "+7" + phoneText.onlyDigits).map {
+      let phoneNumberKit = PhoneNumberKit()
+      guard let phoneNumber = try? phoneNumberKit.parse(phoneText) else { return Observable.error(DataError.unknown) }
+      return DataManager.instance.createVerificationToken(phone: phoneNumberKit.format(phoneNumber, toType: .e164)).map {
         let viewModel = RegistrationCodeInputViewModel(phoneNumberString: phoneText)
         viewModel.didFinishRegistration.bindTo(didFinishRegistration).addDisposableTo(disposeBag)
         return viewModel

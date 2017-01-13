@@ -27,14 +27,14 @@ class OrderTreatmentAttribute: Mappable {
 
 class OrderItemAttribute: Mappable {
   var quantity: Int = 0
-  var area: Int = 1
+  var area: Int? = nil
   var itemId: Int!
   var hasDecoration: Bool = false
   var orderTreatmentsAttributes: [OrderTreatmentAttribute] = []
 
   init(orderItem: OrderItem, laundry: Laundry) {
     self.itemId = orderItem.clothesItem.id
-    self.area = orderItem.area ?? 1
+    self.area = orderItem.area
     self.quantity = orderItem.amount
     self.hasDecoration = orderItem.hasDecoration
 

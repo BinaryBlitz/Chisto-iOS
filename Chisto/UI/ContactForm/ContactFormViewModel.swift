@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import PhoneNumberKit
 
 protocol ContactFormViewModelType {
   var contactInfoHeaderModel: ContactFormTableHeaderViewModel { get }
@@ -79,12 +80,16 @@ class ContactFormViewModel {
 
   func saveUserProfile() -> Observable<Void> {
     return Observable.deferred { [weak self] in
+      let phoneNumberKit = PhoneNumberKit()
+      let phoneNumber = try? phoneNumberKit.parse(self?.phone.value ?? "")
       guard let `self` = self else { return Observable.error(DataError.unknown) }
       let profile = ProfileManager.instance.userProfile.value
       ProfileManager.instance.updateProfile { profile in
         profile.firstName = self.firstName.value ?? ""
         profile.lastName = self.lastName.value ?? ""
-        profile.phone = "+" + (self.phone.value?.onlyDigits ?? "")
+        if let phoneNumber = phoneNumber {
+          profile.phone = phoneNumberKit.format(phoneNumber, toType: .e164)
+        }
         profile.email = self.email.value ?? ""
         profile.street = self.street.value ?? ""
         profile.building = self.building.value ?? ""

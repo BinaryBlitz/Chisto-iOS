@@ -41,8 +41,8 @@ class MaskedInput {
         case .phoneNumber:
           let formattedPhone = PartialFormatter().formatPartial(text)
           textField.rx.text.onNext(formattedPhone)
-          _ = try? PhoneNumberKit().parse(formattedPhone)
-          self?.isValid.value = true
+          let parsedNumber = try? PhoneNumberKit().parse(formattedPhone)
+          self?.isValid.value = parsedNumber != nil
         case .pattern(let formattingPattern):
           if text.characters.count > 0, formattingPattern.characters.count > 0 {
             let formattedText = self?.format(text: text, formattingPattern: formattingPattern)
