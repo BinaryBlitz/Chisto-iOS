@@ -16,7 +16,7 @@ class RegistrationPhoneInputViewController: UIViewController {
   let disposeBag = DisposeBag()
   var viewModel: RegistrationPhoneInputViewModel? = nil
 
-  let maskedPhoneInput = MaskedInput(formattingPattern: "*** ***-**-**", replacementChar: "*")
+  let maskedPhoneInput = MaskedInput(formattingType: .phoneNumber)
 
   @IBOutlet weak var phoneInputField: UITextField!
   @IBOutlet weak var sendButton: GoButton!

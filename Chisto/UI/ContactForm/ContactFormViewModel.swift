@@ -52,7 +52,7 @@ class ContactFormViewModel {
     let profile = ProfileManager.instance.userProfile.value
     self.firstName = Variable(profile.firstName)
     self.lastName = Variable(profile.lastName)
-    self.phone = Variable(profile.phone.onlyDigits)
+    self.phone = Variable(profile.phone)
     self.email = Variable(profile.email)
     self.city = Variable(profile.city?.name)
     self.street = Variable(profile.street)

@@ -23,6 +23,7 @@ target 'Chisto' do
   pod 'GooglePlaces'
   pod 'SwiftyJSON'
   pod 'UIColor_Hex_Swift', '~> 3.0'
+  pod 'PhoneNumberKit', '~> 1.2'
 
   pod 'Crashlytics'
 

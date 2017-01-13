@@ -27,12 +27,14 @@ class OrderReviewAlertViewController: UIViewController {
 
   override func viewDidLoad() {
     reviewContentField.inputAccessoryView = UIView()
+    ratingView.delegate = self
     hideKeyboardWhenTappedAround()
     view.backgroundColor = UIColor(white: 0, alpha: 0.5)
 
     guard let viewModel = viewModel else { return }
 
     titleLabel.text = viewModel.title
+    reviewContentField.rx.text.bindTo(viewModel.reviewContent).addDisposableTo(disposeBag)
     continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
 
     viewModel.uiEnabled.asObservable().bindTo(continueButton.rx.isEnabled).addDisposableTo(disposeBag)
@@ -53,4 +55,10 @@ class OrderReviewAlertViewController: UIViewController {
     }
   }
   
+}
+
+extension OrderReviewAlertViewController: FloatRatingViewDelegate {
+  func floatRatingView(_ ratingView: FloatRatingView, didUpdate rating: Float) {
+    viewModel?.ratingStarsCount.value = Int(rating)
+  }
 }

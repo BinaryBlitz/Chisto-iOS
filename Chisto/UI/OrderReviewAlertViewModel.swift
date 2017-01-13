@@ -13,6 +13,7 @@ import RxCocoa
 import RealmSwift
 
 class OrderReviewAlertViewModel {
+  let disposeBag = DisposeBag()
   let title: String
   let ratingStarsCount: Variable<Int>
 
@@ -35,6 +36,13 @@ class OrderReviewAlertViewModel {
     let uiEnabled = Variable(true)
     self.uiEnabled = uiEnabled
 
+    let didSetRating = ratingStarsCount.asObservable().map { $0 > 0 }
+    let didEnterReview = reviewContent.asObservable().map { text -> Bool in
+      guard let text = text else { return false }
+      return text.characters.count > 0
+    }
+    
+    Observable.combineLatest(didSetRating.asObservable(), didEnterReview.asObservable()) { $0 || $1 }.bindTo(uiEnabled).addDisposableTo(disposeBag)
     let continueButtonDriver = continueButtonDidTap.asDriver(onErrorDriveWith: .empty())
 
     let didCreateReview = continueButtonDriver.flatMap { _ -> Driver<Void> in
