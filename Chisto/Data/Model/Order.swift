@@ -153,6 +153,7 @@ class Order: ServerObject {
     statusString <- map["status"]
     laundryId <- map["laundry_id"]
     laundry <- map["laundry"]
+    rating <- map["rating"]
     totalPrice <- map["total_price"]
     deliveryPrice <- map["delivery_fee"]
     updatedAt <- (map["updated_at"], StringToDateTransform())
