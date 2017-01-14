@@ -49,6 +49,8 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
   }
 
   func configureTableView() {
+    tableView.estimatedRowHeight = 102
+    tableView.rowHeight = UITableViewAutomaticDimension
     dataSource.configureCell = { _, tableView, indexPath, cellViewModel in
       let cell = tableView.dequeueReusableCell(withIdentifier: "ServiceSelectTableViewCell", for: indexPath) as! ServiceSelectTableViewCell
       cell.configure(viewModel: cellViewModel)
