@@ -29,6 +29,7 @@ enum APIPath {
   case showUser
   case updateUser
   case createRating(laundryId: Int)
+  case subscribe
 
   var endpoint: String {
     switch self {
@@ -58,6 +59,8 @@ enum APIPath {
       return "laundries/\(laundryId)/ratings"
     case .createUser, .showUser, .updateUser:
       return "user"
+    case .subscribe:
+      return "subscriptions"
     }
   }
 
@@ -72,7 +75,7 @@ enum APIPath {
 
   var successCode: Int {
     switch self {
-    case .createOrder, .createVerificationToken, .createUser, .createRating:
+    case .createOrder, .createVerificationToken, .createUser, .createRating, .subscribe:
       return 201
     default:
       return 200

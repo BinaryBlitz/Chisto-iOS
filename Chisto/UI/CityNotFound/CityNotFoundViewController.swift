@@ -38,7 +38,13 @@ class CityNotFoundViewController: UIViewController {
     cityField.delegate = self
     phoneField.delegate = self
 
+    (cityField.rx.text <-> viewModel.cityTitle).addDisposableTo(disposeBag)
+    (phoneField.rx.text <-> viewModel.phoneTitle).addDisposableTo(disposeBag)
+
     maskedPhoneField.configure(textField: phoneField)
+    maskedPhoneField.isValid.asObservable().bindTo(viewModel.phoneIsValid).addDisposableTo(disposeBag)
+
+    viewModel.continueButtonEnabled.asObservable().bindTo(continueButton.rx.isEnabled).addDisposableTo(disposeBag)
 
     view.backgroundColor = UIColor(white: 0, alpha: 0.5)
 
@@ -48,13 +54,19 @@ class CityNotFoundViewController: UIViewController {
     continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
     cancelButton.rx.tap.bindTo(viewModel.cancelButtonDidTap).addDisposableTo(disposeBag)
 
-    viewModel.dismissViewController.drive(onNext: { [weak self] in
+    viewModel.dismissViewController.catchErrorAndContinue { error in
+      guard let error = error as? DataError else { return }
+      let alertController = UIAlertController(title: "Ошибка", message: error.description, preferredStyle: .alert)
+      let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+      alertController.addAction(defaultAction)
+      self.present(alertController, animated: true, completion: nil)
+    }.subscribe(onNext: { [weak self] in
       UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {
         self?.view.alpha = 0
         }, completion: { _ in
           self?.dismiss(animated: false, completion: nil)
       })
-      }).addDisposableTo(disposeBag)
+    }).addDisposableTo(disposeBag)
   }
 
   override func viewWillAppear(_ animated: Bool) {
