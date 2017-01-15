@@ -17,6 +17,8 @@ class ContactFormViewController: UITableViewController {
 
   var viewModel: ContactFormViewModel? = nil
 
+  var fields: [UITextField] = []
+
   @IBOutlet weak var firstNameField: HoshiTextField!
   @IBOutlet weak var lastNameField: HoshiTextField!
   @IBOutlet weak var phoneField: HoshiTextField!
@@ -62,6 +64,15 @@ class ContactFormViewController: UITableViewController {
     maskedPhoneInput.configure(textField: phoneField)
     maskedPhoneInput.isValid.asObservable().bindTo(viewModel.phoneIsValid).addDisposableTo(disposeBag)
 
+    fields = [firstNameField, lastNameField, phoneField, emailField,
+              cityField, streetField, buildingField, apartmentField, commentField]
+
+    for field in fields {
+      field.delegate = self
+      field.returnKeyType = .continue
+    }
+    commentField.returnKeyType = .done
+
     cityButton.rx.tap.bindTo(viewModel.cityFieldDidTap).addDisposableTo(disposeBag)
 
   }
@@ -99,4 +110,22 @@ class ContactFormViewController: UITableViewController {
     return 40
   }
 
+}
+
+extension ContactFormViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    for (index, field) in fields.enumerated() {
+      if field == textField {
+        guard index < fields.count - 1 else { return true }
+        selectNextField(currentIndex: index)
+      }
+    }
+    return false
+  }
+
+  func selectNextField(currentIndex: Int) {
+    let nextField = fields[currentIndex + 1]
+    if !nextField.isEnabled { return selectNextField(currentIndex: currentIndex + 1) }
+    nextField.becomeFirstResponder()
+  }
 }
