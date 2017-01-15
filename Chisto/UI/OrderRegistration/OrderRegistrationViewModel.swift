@@ -57,20 +57,23 @@ class OrderRegistrationViewModel {
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
     
-    let placeOrderDriver = formViewModel.saveUserProfile().flatMap {
-      return OrderManager.instance.createOrder()
-    }.do(onError: { error in
-        presentErrorAlert.onNext(error)
-    }).asDriver(onErrorDriveWith: .empty())
+    let placeOrder: (PaymentMethod) -> Driver<Order>
+    placeOrder = { method in
+      formViewModel.saveUserProfile().flatMap {
+        return OrderManager.instance.createOrder(paymentMethod: method)
+        }.do(onError: { error in
+          presentErrorAlert.onNext(error)
+        }).asDriver(onErrorDriveWith: .empty())
+    }
     
     let payInCashDriver = payInCashButtonDidTap
       .asDriver(onErrorDriveWith: .empty()).flatMap {
-        return placeOrderDriver
+        return placeOrder(.cash)
       }
   
     self.presentPaymentSection = payWithCreditCardButtonDidTap
       .asDriver(onErrorDriveWith: .empty()).flatMap {
-        return placeOrderDriver.map { order in
+        return placeOrder(.card).map { order in
           let viewModel = PaymentViewModel(order: order)
           viewModel.didFinishPayment.bindTo(paymentCompleted).addDisposableTo(disposeBag)
           return viewModel

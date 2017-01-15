@@ -77,7 +77,6 @@ enum OrderStatus {
 }
 
 class Order: ServerObject {
-
   dynamic var streetName: String = ""
   dynamic var laundryId: Int = UUID().hashValue
   dynamic var laundry: Laundry? = nil

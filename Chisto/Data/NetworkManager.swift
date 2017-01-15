@@ -90,7 +90,6 @@ enum NetworkError: Error, CustomStringConvertible {
     switch self {
     case .unprocessableData(let response):
       let json = JSON(data: response)
-      print(response)
       guard let errorDictionary = json.dictionary else { return json.rawString() ?? "" }
       return parseErrorDictionary(errorDictionary)
     case .unknown:
@@ -138,6 +137,8 @@ class NetworkManager {
           debugPrint(response)
 
           if let result = response.result.value {
+            let json = JSON(data: response.result.value ?? Data())
+            debugPrint(json)
             let statusCode = response.response?.statusCode
             if statusCode != path.successCode {
               observer.onError(self.getError(statusCode, response: result))
