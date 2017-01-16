@@ -101,7 +101,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O55-Ig-3rP">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O55-Ig-3rP">
                                                             <rect key="frame" x="8" y="28.5" width="299" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" red="0.3960784375667572" green="0.42352941632270813" blue="0.45098039507865906" alpha="1" colorSpace="calibratedRGB"/>
@@ -121,9 +121,11 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="DQP-wg-EZ7" secondAttribute="bottom" constant="20" id="AST-tJ-BJS"/>
                                                 <constraint firstItem="hFO-t1-lhw" firstAttribute="centerY" secondItem="63f-ki-jFe" secondAttribute="centerY" id="OkR-qo-1Up"/>
                                                 <constraint firstItem="hFO-t1-lhw" firstAttribute="leading" secondItem="DQP-wg-EZ7" secondAttribute="trailing" id="dbz-iR-FGO"/>
                                                 <constraint firstItem="DQP-wg-EZ7" firstAttribute="leading" secondItem="63f-ki-jFe" secondAttribute="leading" constant="15" id="ehj-6L-mCO"/>
+                                                <constraint firstItem="DQP-wg-EZ7" firstAttribute="top" secondItem="63f-ki-jFe" secondAttribute="topMargin" constant="20.5" id="g2w-vt-AC5"/>
                                                 <constraint firstItem="DQP-wg-EZ7" firstAttribute="centerY" secondItem="63f-ki-jFe" secondAttribute="centerY" id="qFl-7B-nfl"/>
                                                 <constraint firstItem="hFO-t1-lhw" firstAttribute="trailing" secondItem="63f-ki-jFe" secondAttribute="trailingMargin" constant="-15" id="w8A-A6-JeM"/>
                                             </constraints>

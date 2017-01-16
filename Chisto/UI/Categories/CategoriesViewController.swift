@@ -17,6 +17,8 @@ class CategoriesViewController: UITableViewController, DefaultBarColoredViewCont
   let disposeBag = DisposeBag()
 
   override func viewDidLoad() {
+    tableView.estimatedRowHeight = 80
+    tableView.rowHeight = UITableViewAutomaticDimension
     super.viewDidLoad()
     navigationItem.title = viewModel.navigationBarTitle
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
