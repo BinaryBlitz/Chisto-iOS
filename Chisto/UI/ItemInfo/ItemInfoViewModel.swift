@@ -75,8 +75,6 @@ class ItemInfoViewModel: ItemInfoViewModelType {
     self.currentAmount = currentAmount
     
     let hasDecoration = Variable(orderItem.hasDecoration)
-    
-    let decorationCellModel = ItemInfoTableViewCellModel("Декор", "Декоративная отделка") as ItemInfoTableViewCellModelType
 
     // Subtitle
     self.itemDescription = clothesItem.descriptionText
@@ -87,16 +85,16 @@ class ItemInfoViewModel: ItemInfoViewModelType {
 
     self.sections = Driver.combineLatest(treatments.asDriver(), hasDecoration.asDriver()) { treatments, hasDecoration in
       let treatmentsCellModels = treatments.enumerated().map { (index, service) in
-        var count = index + 1
-        if hasDecoration { count += 1 }
-        return ItemInfoTableViewCellModel(treatment: service, count: count)
+        return ItemInfoTableViewCellModel(treatment: service, count: index + 1)
       } as [ItemInfoTableViewCellModelType]
       var sections = [ItemInfoSectionModel(model: "", items: treatmentsCellModels)]
-      
+
+      let decorationCellModel = ItemInfoTableViewCellModel("Декор", "Декоративная отделка", treatments.count) as ItemInfoTableViewCellModelType
+
       var decorationCellModels: [ItemInfoTableViewCellModelType] = []
       if hasDecoration { decorationCellModels.append(decorationCellModel) }
       let decorationItemInfoSection = ItemInfoSectionModel(model: "", items: decorationCellModels)
-      sections.insert(decorationItemInfoSection, at: 0)
+      sections.append(decorationItemInfoSection)
 
       return sections
     }
