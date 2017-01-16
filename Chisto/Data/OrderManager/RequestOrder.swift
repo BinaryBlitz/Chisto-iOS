@@ -19,8 +19,9 @@ class RequestOrder: Mappable {
   var notes: String? = nil
   var email: String? = nil
   var orderItemsAttributes: [OrderItemAttribute] = []
+  var paymentMethod: PaymentMethod = .cash
 
-  init(profile: Profile) {
+  init(profile: Profile, method: PaymentMethod) {
     apartmentNumber = profile.apartment
     houseNumber = profile.building
     apartmentNumber = profile.apartment
@@ -28,6 +29,7 @@ class RequestOrder: Mappable {
     streetName = profile.street
     email = profile.email
     notes = profile.notes
+    paymentMethod = method
   }
   
   required init(map: Map) { }
@@ -39,6 +41,7 @@ class RequestOrder: Mappable {
     contactNumber <- map["contact_number"]
     notes <- map["notes"]
     email <- map["email"]
+    paymentMethod <- (map["payment_method"], EnumTransform<PaymentMethod>())
     orderItemsAttributes <- map["order_items_attributes"]
   }
 

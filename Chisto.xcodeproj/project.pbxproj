@@ -125,6 +125,7 @@
 		88A221681DCE013100CAD2B0 /* LaundryTreatment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A221671DCE013100CAD2B0 /* LaundryTreatment.swift */; };
 		88A2CFC11DEB2CA2000762DE /* StringToDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2CFC01DEB2CA2000762DE /* StringToDateTransform.swift */; };
 		88AF5B2F1E2BF60F00A78ABD /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AF5B2E1E2BF60F00A78ABD /* Subscription.swift */; };
+		88AF5B2D1E2BC61C00A78ABD /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AF5B2C1E2BC61C00A78ABD /* PaymentMethod.swift */; };
 		88B0B54E1DB1026400C7D0F7 /* SetSearchBarTextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */; };
 		88B0B5501DB1825500C7D0F7 /* OnBoardingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */; };
 		88B0B5521DB19C6E00C7D0F7 /* DescriptionListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88B0B5511DB19C6E00C7D0F7 /* DescriptionListItemView.xib */; };
@@ -319,6 +320,7 @@
 		88A221671DCE013100CAD2B0 /* LaundryTreatment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryTreatment.swift; sourceTree = "<group>"; };
 		88A2CFC01DEB2CA2000762DE /* StringToDateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringToDateTransform.swift; sourceTree = "<group>"; };
 		88AF5B2E1E2BF60F00A78ABD /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		88AF5B2C1E2BC61C00A78ABD /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSearchBarTextColor.swift; sourceTree = "<group>"; };
 		88B0B54F1DB1825500C7D0F7 /* OnBoardingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoardingViewController.storyboard; sourceTree = "<group>"; };
 		88B0B5511DB19C6E00C7D0F7 /* DescriptionListItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionListItemView.xib; sourceTree = "<group>"; };
@@ -727,6 +729,7 @@
 			children = (
 				88FE7B061DE0CA1400A16289 /* Order.swift */,
 				882ECDB51DE2C46200EE3507 /* OrderLineItem.swift */,
+				88AF5B2C1E2BC61C00A78ABD /* PaymentMethod.swift */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -1256,6 +1259,7 @@
 				88DB938D1DCC187C00DAC651 /* Laundry.swift in Sources */,
 				88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */,
 				88DB937F1DCBE88700DAC651 /* RegistrationPhoneInputViewModel.swift in Sources */,
+				88AF5B2D1E2BC61C00A78ABD /* PaymentMethod.swift in Sources */,
 				88E705641DCCC2FB007F779E /* Category.swift in Sources */,
 				880E03E11DE8F7FF00311721 /* Payment.swift in Sources */,
 				889D87C71DC0A752003E8DAC /* LaundrySelectViewController.swift in Sources */,
