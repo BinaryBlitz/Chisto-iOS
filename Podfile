@@ -5,26 +5,25 @@ target 'Chisto' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for BinaryBlitzTest
   pod 'Alamofire', '~> 4.0'
   pod 'RxSwift', '~> 3.0'
   pod 'RxCocoa', '~> 3.0'
   pod 'RxDataSources', '~> 1.0'
-  pod 'Fabric'
   pod 'FloatRatingView', '~> 2.0'
-  pod 'IQKeyboardManagerSwift'
+  pod 'IQKeyboardManagerSwift', '~> 4.0'
   pod 'ObjectMapper', '~> 2.2'
   pod 'ObjectMapper+Realm', '~> 0.2'
   pod 'RealmSwift', '~> 2.0'
   pod 'RxRealm', '~> 0.3'
   pod 'Kingfisher', '~> 3.0'
-  pod 'TextFieldEffects'
-  pod 'GoogleMaps'
-  pod 'GooglePlaces'
-  pod 'SwiftyJSON'
+  pod 'TextFieldEffects', '~> 1.3'
+  pod 'GoogleMaps', '~> 2.1'
+  pod 'GooglePlaces', '~> 2.1'
+  pod 'SwiftyJSON', '~> 3.1'
   pod 'UIColor_Hex_Swift', '~> 3.0'
   pod 'PhoneNumberKit', '~> 1.2'
 
+  pod 'Fabric'
   pod 'Crashlytics'
 
   post_install do |installer|
