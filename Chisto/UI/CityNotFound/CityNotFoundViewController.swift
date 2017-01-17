@@ -87,4 +87,9 @@ extension CityNotFoundViewController: UITextFieldDelegate {
       return true
     }
   }
+
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    guard let text = textField.text, textField == phoneField else { return true }
+    return maskedPhoneField.shouldContinueEditing(text: text, range: range, replacementStirng: string)
+  }
 }

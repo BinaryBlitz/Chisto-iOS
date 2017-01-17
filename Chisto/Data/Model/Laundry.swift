@@ -19,7 +19,7 @@ enum LaundryType {
 
 // TODO: remove test data and change properties
 class Laundry: ServerObject {
-  let dateFormat = "yyyy-MM-dd"
+  let dateFormatType = Date.DateStringFormatType.fullDate
   dynamic var city: City? = nil
   dynamic var name: String = ""
   dynamic var descriptionText: String = ""
@@ -62,8 +62,8 @@ class Laundry: ServerObject {
     backgroundImageUrl <- map["background_image_url"]
     laundryTreatments <- map["laundry_treatments"]
     laundryItems <- map["laundry_items"]
-    deliveryDate <- (map["delivery_date"], StringToDateTransform(format: dateFormat))
-    collectionDate <- (map["collection_date"], StringToDateTransform(format: dateFormat))
+    deliveryDate <- (map["delivery_date"], StringToDateTransform(type: dateFormatType))
+    collectionDate <- (map["collection_date"], StringToDateTransform(type: dateFormatType))
     deliveryDateOpensAt <- map["delivery_date_opens_at"]
     deliveryDateClosesAt <- map["delivery_date_closes_at"]
     deliveryFee <- map["delivery_fee"]

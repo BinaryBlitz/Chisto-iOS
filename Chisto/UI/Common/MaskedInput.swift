@@ -18,7 +18,7 @@ extension String {
   }
 }
 
-class MaskedInput {
+class MaskedInput: NSObject {
   enum FormattingType {
     case phoneNumber
     case pattern(String)
@@ -26,6 +26,7 @@ class MaskedInput {
 
   var type: FormattingType
   var replacementChar: String = "*"
+  let maximumPhoneLength = 15
 
   var isValid = Variable(false)
 
@@ -34,6 +35,7 @@ class MaskedInput {
   }
 
   func configure(textField: UITextField) {
+    textField.delegate = self
     _ = textField.rx.text
       .takeUntil(textField.rx.deallocated).subscribe(onNext: { [weak self] text in
       guard let formattingType = self?.type, let text = text else { return }
@@ -54,6 +56,16 @@ class MaskedInput {
         }
 
     })
+  }
+
+  func shouldContinueEditing(text: String, range: NSRange, replacementStirng string: String) -> Bool {
+    switch type {
+    case .phoneNumber:
+      let newLength = text.onlyDigits.characters.count + string.characters.count - range.length
+      return newLength <= maximumPhoneLength
+    default:
+      return true
+    }
   }
 
   private func format(text: String, formattingPattern: String) -> String {
@@ -80,4 +92,11 @@ class MaskedInput {
     return finalText
   }
 
+}
+
+extension MaskedInput: UITextFieldDelegate {
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    guard let text = textField.text else { return true }
+    return shouldContinueEditing(text: text, range: range, replacementStirng: string)
+  }
 }

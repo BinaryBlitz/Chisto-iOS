@@ -12,7 +12,7 @@ import Realm
 import ObjectMapper
 
 class Profile: Object, Mappable {
-  let dateFormat = "yyyy-MM-dd"
+  let dateFormatType = Date.DateStringFormatType.fullDate
   dynamic var isCreated: Bool = false
   dynamic var isVerified: Bool = false
   dynamic var id: Int = UUID().hashValue
@@ -57,7 +57,7 @@ class Profile: Object, Mappable {
     lastName <- map["last_name"]
     email <- map["email"]
     phone <- map["phone_number"]
-    birthdayDate <- (map["birthdate"], StringToDateTransform(format: dateFormat))
+    birthdayDate <- (map["birthdate"], StringToDateTransform(type: dateFormatType))
     street <- map["street_name"]
     building <- map["house_number"]
     apartment <- map["apartment_number"]

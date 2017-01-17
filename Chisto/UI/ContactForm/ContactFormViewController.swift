@@ -123,6 +123,12 @@ extension ContactFormViewController: UITextFieldDelegate {
     return false
   }
 
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    guard let text = textField.text, textField == phoneField else { return true }
+    return maskedPhoneInput.shouldContinueEditing(text: text, range: range, replacementStirng: string)
+
+  }
+
   func selectNextField(currentIndex: Int) {
     let nextField = fields[currentIndex + 1]
     if !nextField.isEnabled { return selectNextField(currentIndex: currentIndex + 1) }
