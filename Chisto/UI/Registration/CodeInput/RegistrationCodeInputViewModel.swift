@@ -28,7 +28,7 @@ class RegistrationCodeInputViewModel {
     let codeIsValid = Variable(true)
     self.codeIsValid = codeIsValid
 
-    self.subTitleText = "На номер +7 \(phoneNumberString) был отправлен код"
+    self.subTitleText = "На номер \(phoneNumberString) был отправлен код"
     self.resendLabelText = NSAttributedString(string: "Выслать повторно", attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
 
     let validationConfirmed: Driver<Bool> = code.asDriver()

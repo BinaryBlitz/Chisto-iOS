@@ -29,6 +29,7 @@ enum APIPath {
   case showUser
   case updateUser
   case createRating(laundryId: Int)
+  case subscribe
 
   var endpoint: String {
     switch self {
@@ -58,6 +59,8 @@ enum APIPath {
       return "laundries/\(laundryId)/ratings"
     case .createUser, .showUser, .updateUser:
       return "user"
+    case .subscribe:
+      return "subscriptions"
     }
   }
 
@@ -72,7 +75,7 @@ enum APIPath {
 
   var successCode: Int {
     switch self {
-    case .createOrder, .createVerificationToken, .createUser, .createRating:
+    case .createOrder, .createVerificationToken, .createUser, .createRating, .subscribe:
       return 201
     default:
       return 200
@@ -90,7 +93,6 @@ enum NetworkError: Error, CustomStringConvertible {
     switch self {
     case .unprocessableData(let response):
       let json = JSON(data: response)
-      print(response)
       guard let errorDictionary = json.dictionary else { return json.rawString() ?? "" }
       return parseErrorDictionary(errorDictionary)
     case .unknown:
@@ -123,7 +125,7 @@ enum NetworkError: Error, CustomStringConvertible {
 
 class NetworkManager {
 
-  let baseURL = "https://chis.to"
+  let baseURL = "https://chisto.xyz"
 
   func doRequest(method: HTTPMethod, _ path: APIPath,
                  _ params: Parameters = [:],
@@ -138,6 +140,8 @@ class NetworkManager {
           debugPrint(response)
 
           if let result = response.result.value {
+            let json = JSON(data: response.result.value ?? Data())
+            debugPrint(json)
             let statusCode = response.response?.statusCode
             if statusCode != path.successCode {
               observer.onError(self.getError(statusCode, response: result))

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import PhoneNumberKit
 
 extension String {
   var onlyDigits: String {
@@ -17,33 +18,57 @@ extension String {
   }
 }
 
-class MaskedInput {
-  var formattingPattern: String = ""
+class MaskedInput: NSObject {
+  enum FormattingType {
+    case phoneNumber
+    case pattern(String)
+  }
+
+  var type: FormattingType
   var replacementChar: String = "*"
+  let maximumPhoneLength = 15
 
   var isValid = Variable(false)
 
-  init(formattingPattern: String = "", replacementChar: String = "*") {
-    self.formattingPattern = formattingPattern
-    self.replacementChar = replacementChar
+  init(formattingType: FormattingType) {
+    self.type = formattingType
   }
 
   func configure(textField: UITextField) {
+    textField.delegate = self
     _ = textField.rx.text
       .takeUntil(textField.rx.deallocated).subscribe(onNext: { [weak self] text in
-      guard let formattingPattern = self?.formattingPattern else { return }
+      guard let formattingType = self?.type, let text = text else { return }
+        switch formattingType {
+        case .phoneNumber:
+          let formattedPhone = PartialFormatter().formatPartial(text)
+          textField.rx.text.onNext(formattedPhone)
+          let parsedNumber = try? PhoneNumberKit().parse(formattedPhone)
+          self?.isValid.value = parsedNumber != nil
+        case .pattern(let formattingPattern):
+          if text.characters.count > 0, formattingPattern.characters.count > 0 {
+            let formattedText = self?.format(text: text, formattingPattern: formattingPattern)
 
-      if var text = text, text.characters.count > 0, formattingPattern.characters.count > 0 {
-        let formattedText = self?.format(text: text)
+            textField.rx.text.onNext(formattedText)
 
-        textField.rx.text.onNext(formattedText)
+            self?.isValid.value = formattedText?.characters.count == formattingPattern.characters.count
+          }
+        }
 
-        self?.isValid.value = formattedText?.characters.count == formattingPattern.characters.count
-      }
     })
   }
 
-  private func format(text: String) -> String {
+  func shouldContinueEditing(text: String, range: NSRange, replacementStirng string: String) -> Bool {
+    switch type {
+    case .phoneNumber:
+      let newLength = text.onlyDigits.characters.count + string.characters.count - range.length
+      return newLength <= maximumPhoneLength
+    default:
+      return true
+    }
+  }
+
+  private func format(text: String, formattingPattern: String) -> String {
     let onlyDigitsString = text.onlyDigits
 
     var finalText = ""
@@ -67,4 +92,11 @@ class MaskedInput {
     return finalText
   }
 
+}
+
+extension MaskedInput: UITextFieldDelegate {
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    guard let text = textField.text else { return true }
+    return shouldContinueEditing(text: text, range: range, replacementStirng: string)
+  }
 }

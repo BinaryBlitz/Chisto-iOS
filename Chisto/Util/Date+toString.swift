@@ -26,6 +26,11 @@ extension Date {
 
   }
 
+  enum DateStringFormatType: String {
+    case fullTime = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    case fullDate = "dd.MM.YYYYs"
+  }
+
   var shortDate: String {
     let formatter = DateFormatter()
     formatter.dateFormat = "dd.MM.YYYY"
@@ -40,9 +45,20 @@ extension Date {
     return Formatter.mediumDate.string(from: self)
   }
 
-  static func from(string: String, format: String = "yyyy-MM-dd'T'HH:mm:ss.SSSZ") -> Date? {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = format
-    return dateFormatter.date(from: string)
+  static func fromISO8601String(string: String, type: DateStringFormatType = .fullTime) -> Date? {
+    if #available(iOS 10.0, *) {
+      let dateFormatter = ISO8601DateFormatter()
+      switch type {
+      case .fullDate:
+        dateFormatter.formatOptions = .withFullDate
+      default:
+        dateFormatter.formatOptions = .withFullTime
+      }
+      return dateFormatter.date(from: string)
+    } else {
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = type.rawValue
+      return dateFormatter.date(from: string)
+    }
   }
 }

@@ -36,7 +36,7 @@ class MyOrdersViewModel: MyOrdersViewModelType {
   init() {
     let realmOrders = uiRealm.objects(Order.self)
       .filter("isDeleted == %@", false)
-      .sorted(byProperty: "updatedAt", ascending: false)
+      .sorted(byKeyPath: "updatedAt", ascending: false)
     
     let orders = Variable<[Order]>(realmOrders.toArray())
     self.orders = orders
@@ -48,7 +48,7 @@ class MyOrdersViewModel: MyOrdersViewModelType {
     
     let fetchOrdersObservable = DataManager.instance.fetchOrders()
     
-    self.tableIsEmpty = Driver.combineLatest(orders.asDriver(), fetchOrdersObservable.asDriver(onErrorDriveWith: .empty())) { orders, _ in
+    self.tableIsEmpty = Driver.combineLatest(orders.asDriver(), fetchOrdersObservable.asDriver(onErrorDriveWith: Driver.just())) { orders, _ in
       return orders.isEmpty
     }
 

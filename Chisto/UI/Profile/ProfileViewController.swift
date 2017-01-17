@@ -31,35 +31,47 @@ class ProfileViewController: UITableViewController {
     tableView.rx.itemSelected.bindTo(viewModel.itemDidSelect)
       .addDisposableTo(disposeBag)
 
-    viewModel.dismissViewController.drive(onNext: { [weak self] in
-      self?.dismiss(animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
+    viewModel.ordersCount.asObservable().bindTo(ordersCountLabel.rx.text).addDisposableTo(disposeBag)
 
-    viewModel.presentAboutSection.drive(onNext: { [weak self] in
-      let viewController = AboutViewController.storyboardInstance()!
-      self?.navigationController?.pushViewController(viewController, animated: true)
-    }).addDisposableTo(disposeBag)
+    configureNavigations()
+  }
 
-    viewModel.presentContactDataSection.drive(onNext: { [weak self] in
-      let viewController = ProfileContactDataViewController.storyboardInstance()!
-      self?.navigationController?.pushViewController(viewController, animated: true)
-    }).addDisposableTo(disposeBag)
-    
-    viewModel.presentMyOrdersSection.drive(onNext: { [weak self] in
-      let viewController = MyOrdersViewController.storyboardInstance()!
-      self?.navigationController?.pushViewController(viewController, animated: true)
-    }).addDisposableTo(disposeBag)
-    
-    viewModel.presentTermsOfServiceSection.drive(onNext: { [weak self] _ in
-      guard let url = self?.viewModel.termsOfServiceURL else { return }
-      let viewController = SFSafariViewController(url: url)
-      viewController.delegate = self
-      self?.present(viewController, animated: true, completion: {
+  func configureNavigations() {
+    viewModel.presentNextScreen.asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] newScreen in
+      guard let `self` = self else { return }
+      let viewController: UIViewController
+      switch newScreen {
+      case .contactData:
+        viewController = ProfileContactDataViewController.storyboardInstance()!
+      case .aboutApp:
+        viewController = AboutViewController.storyboardInstance()!
+      case .myOrders:
+        viewController = MyOrdersViewController.storyboardInstance()!
+      case .terms:
+        let url = self.viewModel.termsOfServiceURL
+        let safariViewController = SFSafariViewController(url: url)
+        safariViewController.delegate = self
+        viewController = safariViewController
+      }
+      guard newScreen == .terms else {
+        self.navigationController?.pushViewController(viewController, animated: true)
+        return
+      }
+      self.present(viewController, animated: true, completion: {
         UIApplication.shared.statusBarStyle = .default
       })
     }).addDisposableTo(disposeBag)
-    
-    viewModel.ordersCount.asObservable().bindTo(ordersCountLabel.rx.text).addDisposableTo(disposeBag)
+
+    viewModel.presentRegistrationSection.drive(onNext: { viewModel in
+      let registrationNavigationController = RegistrationNavigationController.storyboardInstance()!
+      guard let registrationPhoneInputViewController = registrationNavigationController.viewControllers.first as? RegistrationPhoneInputViewController else { return }
+      registrationPhoneInputViewController.viewModel = viewModel
+      self.present(registrationNavigationController, animated: true, completion: nil)
+    }).addDisposableTo(disposeBag)
+
+    viewModel.dismissViewController.drive(onNext: { [weak self] in
+      self?.dismiss(animated: true, completion: nil)
+    }).addDisposableTo(disposeBag)
   }
 
   override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

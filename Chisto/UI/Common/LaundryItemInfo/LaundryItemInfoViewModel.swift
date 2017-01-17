@@ -28,7 +28,7 @@ class LaundryItemInfoViewModel {
     switch type {
     case .collection:
       self.icon = #imageLiteral(resourceName: "iconSmallCourier")
-      self.headerText = "Курьер"
+      self.headerText = "Сбор вещей"
     case .delivery:
       self.icon = #imageLiteral(resourceName: "iconSmallDelivery")
       self.headerText = "Доставка"

@@ -11,19 +11,20 @@ import RxSwift
 import RxDataSources
 import RxCocoa
 import UIKit
-import CoreLocation
+import PhoneNumberKit
 
 protocol CityNotFoundViewModelType {
 
   // Input
   var continueButtonDidTap: PublishSubject<Void> { get }
   var cancelButtonDidTap: PublishSubject<Void> { get }
-  var cityTitle: ReplaySubject<String> { get }
-  var phoneTitle: ReplaySubject<String> { get }
+  var cityTitle: Variable<String?> { get }
+  var phoneTitle: Variable<String?> { get }
 
   // Output
-  var dismissViewController: Driver<Void> { get }
-  var sendData: Driver<Void> { get }
+  var dismissViewController: Observable<Void> { get }
+  var continueButtonEnabled: Variable<Bool> { get }
+  var sendData: Observable<Void> { get }
 
 }
 
@@ -32,20 +33,43 @@ class CityNotFoundViewModel: CityNotFoundViewModelType {
   private let disposeBag = DisposeBag()
 
   // Input
-  var continueButtonDidTap = PublishSubject<Void>()
-  var cancelButtonDidTap = PublishSubject<Void>()
-  var cityTitle = ReplaySubject<String>.create(bufferSize: 1)
-  var phoneTitle = ReplaySubject<String>.create(bufferSize: 1)
+  let continueButtonDidTap = PublishSubject<Void>()
+  let cancelButtonDidTap = PublishSubject<Void>()
+  let cityTitle: Variable<String?>
+  let phoneTitle: Variable<String?>
 
   // Output
-  var dismissViewController: Driver<Void>
-  var sendData: Driver<Void>
+  let continueButtonEnabled: Variable<Bool>
+  let dismissViewController: Observable<Void>
+  let phoneIsValid = Variable<Bool>(false)
+  let sendData: Observable<Void>
 
   init() {
-    dismissViewController = cancelButtonDidTap.asDriver(onErrorDriveWith: .empty())
+    let cityTitle = Variable<String?>(nil)
+    self.cityTitle = cityTitle
+    let phoneTitle = Variable<String?>(ProfileManager.instance.userProfile.value.phone)
+    self.phoneTitle = phoneTitle
 
-    // @TODO send actual data to server
-    sendData = cancelButtonDidTap.asDriver(onErrorDriveWith: .empty())
+    let continueButtonEnabled = Variable(false)
+    self.continueButtonEnabled = continueButtonEnabled
+
+    Observable.combineLatest(cityTitle.asObservable(), phoneIsValid.asObservable()) { cityTitle, phoneIsValid -> Bool in
+      guard let cityTitle = cityTitle else { return false }
+      return cityTitle.characters.count > 0 && phoneIsValid
+    }.bindTo(continueButtonEnabled).addDisposableTo(disposeBag)
+
+    sendData = continueButtonDidTap.flatMap { _ -> Observable<Void> in
+      guard let phoneText = phoneTitle.value else { return Observable.error(DataError.unknown) }
+      let phoneNumberKit = PhoneNumberKit()
+      guard let phoneNumber = try? phoneNumberKit.parse(phoneText) else { return Observable.error(DataError.unknown) }
+      return DataManager.instance.subscribe(cityName: cityTitle.value ?? "", phone: phoneNumberKit.format(phoneNumber, toType: .e164) )
+    }.do(onNext: {
+      continueButtonEnabled.value = true
+    }, onSubscribe: {
+      continueButtonEnabled.value = false
+    })
+
+    dismissViewController = Observable.of(sendData, cancelButtonDidTap.asObservable()).merge()
 
   }
 

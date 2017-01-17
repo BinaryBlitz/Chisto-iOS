@@ -342,4 +342,10 @@ extension DataManager: FetchItemsManagerType {
     return networkRequest(method: .post, .createRating(laundryId: laundryId), ["rating": json]).map { _ in }
   }
 
+  func subscribe(cityName: String, phone: String) -> Observable<Void> {
+    let subscription = Subscription(phoneNumber: phone, content: cityName)
+    return networkRequest(method: .post, .subscribe, ["subscription": subscription.toJSON()]).map { _ in }
+
+  }
+
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gBg-h4-tPf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gBg-h4-tPf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,33 +34,21 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLH-ZH-Ug1">
-                                                <rect key="frame" x="59" y="54" width="185" height="24"/>
+                                                <rect key="frame" x="61" y="54" width="181" height="24"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCU-e6-OkY">
-                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="24"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="25" id="WlM-5b-jjF"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="900 000-00-00" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="yep-yD-h8j">
-                                                        <rect key="frame" x="33" y="0.0" width="152" height="24"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="+7 900 000-00-00" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="yep-yD-h8j" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
+                                                        <rect key="frame" x="0.0" y="0.0" width="181" height="24"/>
                                                         <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstItem="yep-yD-h8j" firstAttribute="leading" secondItem="WCU-e6-OkY" secondAttribute="trailing" constant="8" id="14H-uX-gG1"/>
                                                     <constraint firstItem="yep-yD-h8j" firstAttribute="top" secondItem="WLH-ZH-Ug1" secondAttribute="top" id="Eog-o9-NdG"/>
-                                                    <constraint firstAttribute="bottom" secondItem="WCU-e6-OkY" secondAttribute="bottom" id="YLE-37-HNN"/>
                                                     <constraint firstAttribute="trailing" secondItem="yep-yD-h8j" secondAttribute="trailing" id="bbR-mn-MrM"/>
                                                     <constraint firstAttribute="bottom" secondItem="yep-yD-h8j" secondAttribute="bottom" id="bj5-ja-1mE"/>
-                                                    <constraint firstItem="WCU-e6-OkY" firstAttribute="leading" secondItem="WLH-ZH-Ug1" secondAttribute="leading" id="ihD-jU-sY7"/>
-                                                    <constraint firstItem="WCU-e6-OkY" firstAttribute="top" secondItem="WLH-ZH-Ug1" secondAttribute="top" id="rxf-NV-brD"/>
+                                                    <constraint firstItem="yep-yD-h8j" firstAttribute="leading" secondItem="WLH-ZH-Ug1" secondAttribute="leading" id="hHv-K3-bWO"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="На этот номер будет отправлен 5-значный код" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUz-4N-F8O">

@@ -21,23 +21,23 @@ class OrderReviewAlertViewController: UIViewController {
   @IBOutlet weak var ratingView: FloatRatingView!
   @IBOutlet weak var reviewContentField: HoshiTextField!
   @IBOutlet weak var continueButton: GoButton!
-  @IBOutlet weak var cancelButton: GoButton!
 
   // Constants
   let animationDuration = 0.2
 
   override func viewDidLoad() {
+    reviewContentField.inputAccessoryView = UIView()
+    ratingView.delegate = self
     hideKeyboardWhenTappedAround()
     view.backgroundColor = UIColor(white: 0, alpha: 0.5)
 
     guard let viewModel = viewModel else { return }
 
     titleLabel.text = viewModel.title
+    reviewContentField.rx.text.bindTo(viewModel.reviewContent).addDisposableTo(disposeBag)
     continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
-    cancelButton.rx.tap.bindTo(viewModel.cancelButtonDidTap).addDisposableTo(disposeBag)
 
     viewModel.uiEnabled.asObservable().bindTo(continueButton.rx.isEnabled).addDisposableTo(disposeBag)
-    viewModel.uiEnabled.asObservable().bindTo(cancelButton.rx.isEnabled).addDisposableTo(disposeBag)
 
     viewModel.dismissViewController.drive(onNext: { [weak self] in
       UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {
@@ -55,4 +55,10 @@ class OrderReviewAlertViewController: UIViewController {
     }
   }
   
+}
+
+extension OrderReviewAlertViewController: FloatRatingViewDelegate {
+  func floatRatingView(_ ratingView: FloatRatingView, didUpdate rating: Float) {
+    viewModel?.ratingStarsCount.value = Int(rating)
+  }
 }

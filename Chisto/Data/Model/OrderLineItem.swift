@@ -18,16 +18,14 @@ class OrderItemTreatment: Mappable {
   var orderItemId: Int? = nil
   var orderLaundryTreatment: OrderLaundryTreatment? = nil
 
-  var price: Double {
-    guard let orderLaundryTreatment = self.orderLaundryTreatment else { return 0 }
-    return orderLaundryTreatment.price
-  }
+  var price: Double = 0
 
   required init?(map: Map) { }
 
   func mapping(map: Map) {
     orderItemId <- map["order_item_id"]
     orderLaundryTreatment <- map["laundry_treatment"]
+    price <- map["price"]
   }
 }
 

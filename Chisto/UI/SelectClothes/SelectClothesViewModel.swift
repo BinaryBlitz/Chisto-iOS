@@ -62,7 +62,7 @@ class SelectClothesViewModel: SelectClothesViewModelType {
     let items = Variable<[Item]>([])
 
     Observable.from(category.clothes.filter("isDeleted == %@", false)
-      .sorted(byProperty: "name", ascending: true))
+      .sorted(byKeyPath: "name", ascending: true))
       .map { Array($0) }
       .bindTo(items)
       .addDisposableTo(disposeBag)

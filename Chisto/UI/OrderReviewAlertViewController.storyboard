@@ -31,15 +31,16 @@
                                         <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мы надеемся, что вы остались довольны. Оставьте пожалуйста отзыв, чтобы помочь другим пользователям" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoX-cA-NBK">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мы надеемся, что вы остались довольны. Оставьте, пожалуйста, отзыв, чтобы помочь другим пользователям" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoX-cA-NBK">
                                         <rect key="frame" x="22" y="87" width="269" height="76.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="V9f-tv-MYO" customClass="FloatRatingView" customModule="FloatRatingView">
+                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="V9f-tv-MYO" customClass="ControlledRatingView" customModule="Chisto">
                                         <rect key="frame" x="66.5" y="198.5" width="180" height="20"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="man-17-BTx"/>
                                             <constraint firstAttribute="height" constant="20" id="zzS-mG-0BT"/>
@@ -71,7 +72,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                                 <color key="value" red="0.75686275960000005" green="0.78039217000000005" blue="0.80392158030000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -88,7 +89,7 @@
                                         <rect key="frame" x="0.0" y="338" width="313" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBk-5F-XAK" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="156" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="313" height="50"/>
                                                 <state key="normal" title="Продолжить">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -98,38 +99,13 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08w-6m-q6I" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
-                                                <rect key="frame" x="157" y="0.0" width="156" height="50"/>
-                                                <state key="normal" title="Нет, спасибо">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
-                                                        <color key="value" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJb-lY-8Vk">
-                                                <rect key="frame" x="156" y="10" width="1" height="30"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49515086209999998" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="1" id="Gf3-wR-rto"/>
-                                                </constraints>
-                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="08w-6m-q6I" firstAttribute="top" secondItem="Uxb-Su-cjJ" secondAttribute="top" id="G47-9H-Owc"/>
+                                            <constraint firstAttribute="trailing" secondItem="IBk-5F-XAK" secondAttribute="trailing" id="5zM-Cy-w55"/>
                                             <constraint firstAttribute="bottom" secondItem="IBk-5F-XAK" secondAttribute="bottom" id="IEv-mQ-dfa"/>
                                             <constraint firstAttribute="height" constant="50" id="IaN-aQ-erO"/>
-                                            <constraint firstAttribute="trailing" secondItem="08w-6m-q6I" secondAttribute="trailing" id="KAf-sk-tu2"/>
                                             <constraint firstItem="IBk-5F-XAK" firstAttribute="leading" secondItem="Uxb-Su-cjJ" secondAttribute="leading" id="MfZ-ht-OaV"/>
-                                            <constraint firstItem="SJb-lY-8Vk" firstAttribute="top" secondItem="Uxb-Su-cjJ" secondAttribute="top" constant="10" id="S8X-Gh-nIu"/>
-                                            <constraint firstItem="SJb-lY-8Vk" firstAttribute="leading" secondItem="IBk-5F-XAK" secondAttribute="trailing" id="TCK-y1-QCG"/>
-                                            <constraint firstItem="08w-6m-q6I" firstAttribute="leading" secondItem="SJb-lY-8Vk" secondAttribute="trailing" id="XC2-qO-cs5"/>
-                                            <constraint firstAttribute="bottom" secondItem="SJb-lY-8Vk" secondAttribute="bottom" constant="10" id="jrT-t6-Yv4"/>
-                                            <constraint firstAttribute="bottom" secondItem="08w-6m-q6I" secondAttribute="bottom" id="oNt-qe-PaI"/>
-                                            <constraint firstItem="SJb-lY-8Vk" firstAttribute="centerX" secondItem="Uxb-Su-cjJ" secondAttribute="centerX" id="ohl-mx-d6C"/>
                                             <constraint firstItem="IBk-5F-XAK" firstAttribute="top" secondItem="Uxb-Su-cjJ" secondAttribute="top" id="ruf-zs-oOy"/>
                                         </constraints>
                                     </view>
@@ -167,7 +143,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cancelButton" destination="08w-6m-q6I" id="ULQ-Ls-O6D"/>
                         <outlet property="continueButton" destination="IBk-5F-XAK" id="e2L-Uk-EMa"/>
                         <outlet property="ratingView" destination="V9f-tv-MYO" id="EyR-z5-8Wo"/>
                         <outlet property="reviewContentField" destination="Zhr-Xe-dWw" id="WWh-PW-G71"/>

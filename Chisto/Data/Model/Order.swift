@@ -44,13 +44,13 @@ enum OrderStatus {
     case .processing:
       return "Обрабатывается"
     case .confirmed:
-      return "Согласован забор вещей"
+      return "Согласован"
     case .cleaning:
       return "В чистке"
     case .dispatched:
-      return "Вещи едут к вам"
+      return "Доставка"
     case .completed:
-      return "Исполнен"
+      return "Выполнен"
     case .errored:
       return "Ошибка"
     case .canceled:
@@ -77,7 +77,6 @@ enum OrderStatus {
 }
 
 class Order: ServerObject {
-
   dynamic var streetName: String = ""
   dynamic var laundryId: Int = UUID().hashValue
   dynamic var laundry: Laundry? = nil
@@ -153,6 +152,7 @@ class Order: ServerObject {
     statusString <- map["status"]
     laundryId <- map["laundry_id"]
     laundry <- map["laundry"]
+    rating <- map["rating"]
     totalPrice <- map["total_price"]
     deliveryPrice <- map["delivery_fee"]
     updatedAt <- (map["updated_at"], StringToDateTransform())

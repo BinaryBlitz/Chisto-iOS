@@ -10,10 +10,10 @@ import Foundation
 import ObjectMapper
 
 struct StringToDateTransform: TransformType {
-  let format: String
+  let type: Date.DateStringFormatType
   
-  init(format: String = "yyyy-MM-dd'T'HH:mm:ss.SSSZ") {
-    self.format = format
+  init(type: Date.DateStringFormatType = .fullTime) {
+    self.type = type
   }
   
   typealias Object = Date
@@ -21,7 +21,7 @@ struct StringToDateTransform: TransformType {
   
   public func transformFromJSON(_ value: Any?) -> Object? {
     guard let value = value as? String else { return nil }
-    return Date.from(string: value, format: format)
+    return Date.fromISO8601String(string: value, type: type)
     
   }
   

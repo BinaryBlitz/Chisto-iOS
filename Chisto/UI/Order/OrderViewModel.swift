@@ -73,7 +73,7 @@ class OrderViewModel: OrderViewModelType {
     self.presentRatingSection = fetchLastOrder
       .filter { order in
         guard let order = order else { return false }
-        return order.rating == nil && order.ratingRequired
+        return order.status == .completed && order.rating == nil && order.ratingRequired
       }.map { order in
       return OrderReviewAlertViewModel(order: order!)
     }.asDriver(onErrorDriveWith: .empty())
