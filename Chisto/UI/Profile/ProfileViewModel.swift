@@ -57,7 +57,9 @@ class ProfileViewModel {
 
     self.presentRegistrationSection = shouldPresentRegistrationSection.map { nextSection in
       let viewModel = RegistrationPhoneInputViewModel()
-      viewModel.didFinishRegistration.map { _ in nextSection }.bindTo(presentNextScreen).addDisposableTo(viewModel.disposeBag)
+      viewModel.didFinishRegistration.flatMap { _ -> Observable<ProfileSection> in
+        return DataManager.instance.showUser().map { nextSection }
+      }.bindTo(presentNextScreen).addDisposableTo(viewModel.disposeBag)
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
 

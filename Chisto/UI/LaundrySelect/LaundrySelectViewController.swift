@@ -40,10 +40,10 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
       })
       
       let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
-      
+
+      alertController.addAction(byRatingAction)
       alertController.addAction(byPriceAction)
       alertController.addAction(bySpeedAction)
-      alertController.addAction(byRatingAction)
       alertController.addAction(cancelAction)
       
       self?.present(alertController, animated: true)
