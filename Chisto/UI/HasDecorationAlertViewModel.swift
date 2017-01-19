@@ -19,7 +19,7 @@ class HasDecorationAlertViewModel {
   let orderItem: OrderItem
 
   let decorationAlertTitle = "Есть ли у вещи декоративная отделка?"
-  let decorationAlertMessage = "К декоративной отделке относятся стразы, бисер, пайетки, сложные кружевные композиции и прочие украшения одежды, нуждающиеся в особом уходе и внимании со стороны химчистки."
+  let decorationAlertMessage = "К декоративной отделке относятся стразы, бисер, пайетки, кружева и прочие украшения, требующие особого внимания."
 
   init(orderItem: OrderItem) {
     self.orderItem = orderItem

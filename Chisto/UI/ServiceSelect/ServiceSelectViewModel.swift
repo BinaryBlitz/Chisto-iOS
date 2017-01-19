@@ -77,7 +77,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
 
     let decorationCellModel = Variable(
       ServiceSelectTableViewCellModel(
-        "Декор", "Декоративная отделка", item.category?.color, isSelected: hasDecoration
+        "Декор", "Стразы, бисер, пайетки, кружева и прочие украшения, требующие особого внимания", item.category?.color, isSelected: hasDecoration
       )
     )
     self.decorationCellModel = decorationCellModel
