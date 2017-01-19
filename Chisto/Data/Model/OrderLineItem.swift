@@ -16,7 +16,7 @@ import ObjectMapper_Realm
 
 class OrderItemTreatment: Mappable {
   var orderItemId: Int? = nil
-  var orderLaundryTreatment: OrderLaundryTreatment? = nil
+  var treatment: Treatment? = nil
 
   var price: Double = 0
 
@@ -24,20 +24,8 @@ class OrderItemTreatment: Mappable {
 
   func mapping(map: Map) {
     orderItemId <- map["order_item_id"]
-    orderLaundryTreatment <- map["laundry_treatment"]
     price <- map["price"]
-  }
-}
-
-class OrderLaundryTreatment: Mappable {
-  var treatment: Treatment? = nil
-  var price: Double = 0
-
-  required init?(map: Map) { }
-  
-  func mapping(map: Map) {
     treatment <- map["treatment"]
-    price <- map["price"]
   }
 }
 

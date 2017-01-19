@@ -33,7 +33,7 @@ class OrderInfoTableViewCell: UITableViewCell {
     
     for orderTreatment in viewModel.orderTreatments {
       let view = OrderConfirmServiceItemView.nibInstance()!
-      view.leftLabel.text = orderTreatment.orderLaundryTreatment?.treatment?.name
+      view.leftLabel.text = orderTreatment.treatment?.name
       view.rightLabel.text = orderTreatment.price.currencyString
       stackView.addArrangedSubview(view)
     }
