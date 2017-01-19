@@ -19,6 +19,9 @@ class Treatment: ServerObject {
     super.mapping(map: map)
     name <- map["name"]
     descriptionText <- map["description"]
+    if item == nil {
+      item <- map["item"]
+    }
   }
 
   func price(laundry: Laundry, hasDecoration: Bool = false) -> Double {
