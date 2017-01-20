@@ -51,6 +51,10 @@ class Laundry: ServerObject {
       .filter { $0.treatment != nil }
       .map { $0.treatment! }
   }
+
+  var isDisabled: Bool {
+    return OrderManager.instance.price(laundry: self, includeCollection: false) < minOrderPrice
+  }
   
   override func mapping(map: Map) {
     super.mapping(map: map)
