@@ -27,6 +27,20 @@ class ProfileManager {
     try! realm.write {
       closure(profile)
     }
+    userProfile.value = profile
+  }
+
+  func logout() {
+    let profile = userProfile.value
+    let realm = try! Realm()
+    let newProfile = Profile()
+    try! realm.write {
+      newProfile.city = profile.city
+      realm.delete(profile)
+      realm.add(newProfile)
+      userProfile.value = newProfile
+    }
+    UserDefaults.standard.set(newProfile.id, forKey: profileKey)
   }
   
   init() {
@@ -44,11 +58,5 @@ class ProfileManager {
     }
 
     self.userProfile = Variable(profile)
-    
-    let observableProfile = uiRealm.observableObject(type: Profile.self, primaryKey: profile.id)
-    observableProfile.filter { $0 != nil}
-      .map { $0! }
-      .bindTo(userProfile)
-      .addDisposableTo(disposeBag)
   }
 }

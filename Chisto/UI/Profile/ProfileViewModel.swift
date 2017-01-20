@@ -65,15 +65,10 @@ class ProfileViewModel {
 
     self.dismissViewController = closeButtonDidTap.asDriver(onErrorDriveWith: .empty())
     
-    let profile = ProfileManager.instance.userProfile.value
-    
-    self.ordersCount = Variable<String>(String(profile.ordersCount))
-    
-    uiRealm.observableObject(type: Profile.self, primaryKey: profile.id).asObservable()
-      .filter { $0 != nil }
-      .map { String($0!.ordersCount) }
-      .bindTo(ordersCount)
-      .addDisposableTo(disposeBag)
+    let profile = ProfileManager.instance.userProfile
+
+    self.ordersCount = Variable<String>(String(profile.value.ordersCount))
+    ProfileManager.instance.userProfile.asObservable().map { String($0.ordersCount) }.bindTo(ordersCount).addDisposableTo(disposeBag)
   }
 
 }

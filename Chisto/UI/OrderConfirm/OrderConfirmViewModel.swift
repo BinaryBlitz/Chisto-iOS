@@ -98,13 +98,14 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
     
     let didFinishRegistation = PublishSubject<Void>()
 
-    let shouldPresentOrderContactDataSection = confirmOrderButtonDidTap.asObservable().filter { ProfileManager.instance.userProfile.value.isVerified }
+    let shouldPresentOrderContactDataSection = confirmOrderButtonDidTap.asObservable().filter { ProfileManager.instance.userProfile.value.isVerified }.flatMap {
+      return DataManager.instance.showUser().asDriver(onErrorDriveWith: .just())
+    }
+
     let shouldPresentRegistrationSection = confirmOrderButtonDidTap.asObservable().filter { !ProfileManager.instance.userProfile.value.isVerified }
 
     self.presentOrderContactDataSection = Driver.of(shouldPresentOrderContactDataSection.asDriver(onErrorDriveWith: .empty()), didFinishRegistation.asDriver(onErrorDriveWith: .empty()))
-      .merge().flatMap {
-        return DataManager.instance.showUser().asDriver(onErrorDriveWith: .just())
-    }
+      .merge()
     
     self.presentRegistrationSection = shouldPresentRegistrationSection.map {
       let viewModel = RegistrationPhoneInputViewModel()

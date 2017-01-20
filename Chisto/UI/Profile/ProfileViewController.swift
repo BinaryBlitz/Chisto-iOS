@@ -23,8 +23,6 @@ class ProfileViewController: UITableViewController {
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconNavbarClose"), style: .plain, target: nil, action: nil)
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
-    tableView.tableFooterView = UIView()
-
     navigationItem.leftBarButtonItem?.rx.tap.bindTo(viewModel.closeButtonDidTap)
       .addDisposableTo(disposeBag)
 

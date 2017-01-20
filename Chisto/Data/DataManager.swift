@@ -127,6 +127,7 @@ extension DataManager: UserManagerType {
   }
   
   func showUser() -> Observable<Void> {
+    guard ProfileManager.instance.userProfile.value.apiToken != nil else { return Observable.just(()) }
     return networkRequest(method: .get, .showUser).map { json in
       guard let jsonMap = json as? [String: Any] else { throw DataError.responseConvertError }
       let realm = try! Realm()

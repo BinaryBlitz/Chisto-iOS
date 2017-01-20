@@ -92,6 +92,9 @@
 		8862E6CB1DC8E2C800DDFB00 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862E6CA1DC8E2C800DDFB00 /* OrderItem.swift */; };
 		8862E6CE1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862E6CD1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift */; };
 		8862E6D01DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8862E6CF1DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard */; };
+		886662DB1E3263A3004D9A80 /* ProfileContainerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 886662DA1E3263A3004D9A80 /* ProfileContainerViewController.storyboard */; };
+		886662DD1E326497004D9A80 /* ProfileContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886662DC1E326497004D9A80 /* ProfileContainerViewController.swift */; };
+		886662DF1E32856F004D9A80 /* ProfileContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886662DE1E32856F004D9A80 /* ProfileContainerViewModel.swift */; };
 		8869D1231DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8869D1221DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift */; };
 		8872F0B11DD7B2E100E8D9EE /* LocationSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8872F0B01DD7B2E100E8D9EE /* LocationSelectViewModel.swift */; };
 		8872F0B81DD8932C00E8D9EE /* OrderPlacedPopupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8872F0B71DD8932C00E8D9EE /* OrderPlacedPopupViewController.storyboard */; };
@@ -287,6 +290,9 @@
 		8862E6CA1DC8E2C800DDFB00 /* OrderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		8862E6CD1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmViewController.swift; sourceTree = "<group>"; };
 		8862E6CF1DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderConfirmViewController.storyboard; sourceTree = "<group>"; };
+		886662DA1E3263A3004D9A80 /* ProfileContainerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileContainerViewController.storyboard; sourceTree = "<group>"; };
+		886662DC1E326497004D9A80 /* ProfileContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileContainerViewController.swift; sourceTree = "<group>"; };
+		886662DE1E32856F004D9A80 /* ProfileContainerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileContainerViewModel.swift; sourceTree = "<group>"; };
 		8869D1221DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceItemView.swift; sourceTree = "<group>"; };
 		8872F0B01DD7B2E100E8D9EE /* LocationSelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSelectViewModel.swift; sourceTree = "<group>"; };
 		8872F0B71DD8932C00E8D9EE /* OrderPlacedPopupViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderPlacedPopupViewController.storyboard; sourceTree = "<group>"; };
@@ -593,6 +599,9 @@
 				8811FE0B1DC2DB0500610712 /* ProfileViewController.storyboard */,
 				8811FE121DC2DBBE00610712 /* ProfileViewController.swift */,
 				8811FE141DC2DCA600610712 /* ProfileViewModel.swift */,
+				886662DA1E3263A3004D9A80 /* ProfileContainerViewController.storyboard */,
+				886662DC1E326497004D9A80 /* ProfileContainerViewController.swift */,
+				886662DE1E32856F004D9A80 /* ProfileContainerViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1138,6 +1147,7 @@
 				885409B61DB23DEC00219C00 /* CitySelectViewController.storyboard in Resources */,
 				88923E161DD369F400BC3AC0 /* ProfileContactDataViewController.storyboard in Resources */,
 				88FE7AFC1DE0AC4A00A16289 /* MyOrdersViewController.storyboard in Resources */,
+				886662DB1E3263A3004D9A80 /* ProfileContainerViewController.storyboard in Resources */,
 				88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */,
 				880E03EA1DE8F81A00311721 /* PaymentNavigationController.storyboard in Resources */,
 				88004FB61DDF3DF200A8632A /* LaundryReviewsViewController.storyboard in Resources */,
@@ -1304,6 +1314,7 @@
 				8814C0631DB03AD7005B4967 /* CategoryTableViewCellModel.swift in Sources */,
 				88D8ABC21DB587CF009D515B /* SelectClothesTableViewCell.swift in Sources */,
 				88CD68401DD2090A004B7726 /* OrderRegistrationViewModel.swift in Sources */,
+				886662DD1E326497004D9A80 /* ProfileContainerViewController.swift in Sources */,
 				88DB937D1DCBE0F400DAC651 /* RegistrationNavigationController.swift in Sources */,
 				8872F0C01DD8DD3400E8D9EE /* OrderPlacedPopupViewModel.swift in Sources */,
 				881928651E24E4F800405597 /* OrderItemAttribute.swift in Sources */,
@@ -1334,6 +1345,7 @@
 				88CD68451DD2155F004B7726 /* ContactFormTableHeaderView.swift in Sources */,
 				88C9F6DF1DCD2B320046DDD7 /* RealmString.swift in Sources */,
 				889D87D01DC1F3DE003E8DAC /* LaundrySelectTableViewCellModel.swift in Sources */,
+				886662DF1E32856F004D9A80 /* ProfileContainerViewModel.swift in Sources */,
 				8814C03E1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift in Sources */,
 				88E86DB71DB91BBA002A7024 /* OrderTableViewCellModel.swift in Sources */,
 				88FE7B141DE20FC200A16289 /* OrderInfoViewController.swift in Sources */,

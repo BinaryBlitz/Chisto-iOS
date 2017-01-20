@@ -38,7 +38,9 @@ class RegistrationCodeInputViewModel {
       return DataManager.instance.verifyToken(code: code.onlyDigits).map { true }.asDriver(onErrorDriveWith: Driver.just(false))
     }
 
-    self.dismissViewController = validationConfirmed.filter { $0 == true }.map { _ in }
+    self.dismissViewController = validationConfirmed.filter { $0 == true }.flatMap { _ -> Driver<Void> in
+      return DataManager.instance.showUser().asDriver(onErrorDriveWith: .empty())
+    }.map { _ in }
   }
 
 }
