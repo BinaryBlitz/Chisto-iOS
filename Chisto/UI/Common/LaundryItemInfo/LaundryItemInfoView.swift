@@ -21,11 +21,17 @@ class LaundryItemInfoView: UIView {
     titleLabel.text = viewModel.titleText
     subTitleLabel.text = viewModel.subTitleText
 
-    if viewModel.type == .cost {
-      titleLabel.font = UIFont.chsLaundryItemFont
-      titleLabel.textColor = UIColor.chsJadeGreen
+    headerLabel.textColor = viewModel.headerColor
+    titleLabel.textColor = viewModel.titleColor
+    subTitleLabel.textColor = viewModel.subTitleColor
+
+    if let headerFont = viewModel.headerLabelFont {
+      headerLabel.font = headerFont
     }
 
+    if let titleFont = viewModel.titleLabelFont {
+      titleLabel.font = titleFont
+    }
   }
 
 }

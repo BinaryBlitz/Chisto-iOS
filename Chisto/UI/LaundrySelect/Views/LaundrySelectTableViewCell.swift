@@ -30,7 +30,18 @@ class LaundrySelectTableViewCell: UITableViewCell {
     laundrySubTitleLabel.text = viewModel.laundryDescription
     ratingView.rating = viewModel.rating
 
-    laundryLogoImageView.kf.setImage(with: viewModel.logoUrl)
+    if viewModel.isDisabled {
+      laundryTitleLabel.textColor = viewModel.disabledColor
+      laundrySubTitleLabel.textColor = viewModel.disabledColor
+      ratingView.fullImage = #imageLiteral(resourceName: "iconStarblueGrayFull")
+      ratingView.emptyImage = #imageLiteral(resourceName: "iconStarblueGrayStroke")
+    }
+
+    laundryLogoImageView.kf.setImage(with: viewModel.logoUrl) { [weak self] image, _, _, _ in
+      guard let image = image?.withRenderingMode(.alwaysTemplate), viewModel.isDisabled else { return }
+      self?.laundryLogoImageView.image = image
+      self?.laundryLogoImageView.tintColor = viewModel.disabledColor
+    }
 
     laundryTagLabel.isHidden = viewModel.tagIsHidden
     laundryTagLabel.backgroundColor = viewModel.tagBgColor

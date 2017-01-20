@@ -101,6 +101,10 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
       .addDisposableTo(self.disposeBag)
   }
 
+  override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+    return !viewModel.sortedLaundries.value[indexPath.row].isDisabled
+  }
+
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     if let indexPath = tableView.indexPathForSelectedRow {
