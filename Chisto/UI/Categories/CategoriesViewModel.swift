@@ -52,11 +52,13 @@ class CategoriesViewModel: CategoriesViewModelType {
     }).addDisposableTo(disposeBag)
     
     let categories = Variable<[Category]>([])
-    debugPrint(uiRealm.objects(Category.self).sorted(byKeyPath: "name", ascending: true))
+    debugPrint(RealmManager.instance.uiRealm.objects(Category.self).sorted(byKeyPath: "name", ascending: true))
 
     let sortProperties = [SortDescriptor(keyPath: "featured", ascending: false), SortDescriptor(keyPath: "name", ascending: true)]
 
-    Observable.from(uiRealm.objects(Category.self)
+    let realm = RealmManager.instance.uiRealm
+
+    Observable.from(realm.objects(Category.self)
       .filter("isDeleted == %@", false)
       .sorted(by: sortProperties))
       .map { Array($0) }

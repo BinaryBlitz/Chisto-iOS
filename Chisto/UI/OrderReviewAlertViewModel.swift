@@ -59,7 +59,7 @@ class OrderReviewAlertViewModel {
 
     self.dismissViewController = didCreateReview.map {
       guard let order = ProfileManager.instance.userProfile.value.order else { return }
-      let realm = try! Realm()
+      let realm = RealmManager.instance.uiRealm
       try! realm.write {
         order.ratingRequired = false
       }

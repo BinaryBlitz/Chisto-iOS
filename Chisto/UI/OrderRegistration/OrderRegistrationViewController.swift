@@ -18,10 +18,8 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
 
   @IBOutlet weak var bottomLayoutGuideConstraint: NSLayoutConstraint!
   @IBOutlet weak var dataView: UIView!
-  @IBOutlet weak var payWithCardButton: GoButton!
-  @IBOutlet weak var payInCashButton: GoButton!
+  @IBOutlet weak var payButton: GoButton!
   @IBOutlet weak var orderCostLabel: UILabel!
-  @IBOutlet weak var buttonSeparatorView: UIView!
   @IBOutlet weak var buttonsView: UIView!
   
   let contactFormViewController = ContactFormViewController.storyboardInstance()!
@@ -32,13 +30,8 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     
     orderCostLabel.text = viewModel.orderCost
-    viewModel.buttonsAreEnabled.asObservable().bindTo(payInCashButton.rx.isEnabled).addDisposableTo(disposeBag)
-    viewModel.buttonsAreEnabled.asObservable().bindTo(payWithCardButton.rx.isEnabled).addDisposableTo(disposeBag)
-    viewModel.buttonsAreEnabled.asObservable().subscribe(onNext: { [weak self] isEnabled in
-     self?.buttonSeparatorView.backgroundColor = isEnabled ? UIColor.chsWhite20 : UIColor.white
-    }).addDisposableTo(disposeBag)
-    payInCashButton.rx.tap.bindTo(viewModel.payInCashButtonDidTap).addDisposableTo(disposeBag)
-    payWithCardButton.rx.tap.bindTo(viewModel.payWithCreditCardButtonDidTap).addDisposableTo(disposeBag)
+    viewModel.buttonsAreEnabled.asObservable().bindTo(payButton.rx.isEnabled).addDisposableTo(disposeBag)
+    payButton.rx.tap.bindTo(viewModel.payButtonDidTap).addDisposableTo(disposeBag)
 
     viewModel.presentLocationSelectSection.drive(onNext: { [weak self] viewModel in
       let viewController = LocationSelectViewController.storyboardInstance()!
