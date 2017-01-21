@@ -64,10 +64,8 @@ class ProfileViewModel {
     }.asDriver(onErrorDriveWith: .empty())
 
     self.dismissViewController = closeButtonDidTap.asDriver(onErrorDriveWith: .empty())
-    
-    let profile = ProfileManager.instance.userProfile
 
-    self.ordersCount = Variable<String>(String(profile.value.ordersCount))
+    self.ordersCount = Variable<String>(String(ProfileManager.instance.userProfile.value.ordersCount))
     ProfileManager.instance.userProfile.asObservable().map { String($0.ordersCount) }.bindTo(ordersCount).addDisposableTo(disposeBag)
   }
 
