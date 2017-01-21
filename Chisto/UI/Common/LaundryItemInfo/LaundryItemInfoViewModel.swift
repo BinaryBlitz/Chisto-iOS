@@ -20,8 +20,8 @@ class LaundryItemInfoViewModel {
   var titleColor: UIColor = .black
   var subTitleColor: UIColor = .black
   var headerColor: UIColor = .chsSkyBlue
-  var headerLabelFont: UIFont? = nil
-  var titleLabelFont: UIFont? = nil
+  var headerLabelFont: UIFont? = .systemFont(ofSize: 13)
+  var titleLabelFont: UIFont? = .systemFont(ofSize: 11)
   let icon: UIImage
   let headerText: String
   let titleText: String

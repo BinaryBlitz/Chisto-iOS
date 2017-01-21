@@ -19,7 +19,7 @@ class ProfileContainerViewController: UIViewController {
 
   override func viewDidLoad() {
 
-    viewModel.buttonIsEnabled.asObservable().bindTo(logoutButton.rx.isEnabled).addDisposableTo(disposeBag)
+    viewModel.buttonIsHidden.asObservable().bindTo(logoutButton.rx.isHidden).addDisposableTo(disposeBag)
     viewModel.dismissViewController.drive(onNext: { [weak self] in
       self?.dismiss(animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
@@ -27,12 +27,5 @@ class ProfileContainerViewController: UIViewController {
     navigationItem.leftBarButtonItem?.rx.tap.bindTo(viewModel.navigationCloseButtonDidTap).addDisposableTo(disposeBag)
 
     logoutButton.rx.tap.bindTo(viewModel.logoutButtonDidTap).addDisposableTo(disposeBag)
-
-    viewModel.presentRegistrationScreen.drive(onNext: { viewModel in
-      let registrationNavigationController = RegistrationNavigationController.storyboardInstance()!
-      guard let registrationPhoneInputViewController = registrationNavigationController.viewControllers.first as? RegistrationPhoneInputViewController else { return }
-      registrationPhoneInputViewController.viewModel = viewModel
-      self.present(registrationNavigationController, animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
   }
 }

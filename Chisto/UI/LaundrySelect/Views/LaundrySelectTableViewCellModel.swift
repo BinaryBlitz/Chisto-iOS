@@ -19,6 +19,10 @@ protocol LaundrySelectTableViewCellModelType {
   var tagName: String? { get }
   var tagIsHidden: Bool { get }
   var isDisabled: Bool { get }
+  var starRatingFullImage: UIImage { get }
+  var starRatingEmptyImage: UIImage { get }
+  var titleColor: UIColor { get }
+  var descriptionColor: UIColor { get }
   var logoUrl: URL? { get }
   var disabledColor: UIColor { get }
   var collectionItemViewModel: LaundryItemInfoViewModel { get }
@@ -30,10 +34,14 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
 
   let laundryTitle: String
   let laundryDescription: String
+  var titleColor: UIColor = .black
+  var descriptionColor: UIColor = .chsSlateGrey
   let rating: Float
   var tagBgColor: UIColor? = nil
   var tagName: String? = nil
   var disabledColor: UIColor = UIColor.chsCoolGrey
+  var starRatingFullImage: UIImage = #imageLiteral(resourceName: "iconStarblueBigFull")
+  var starRatingEmptyImage: UIImage = #imageLiteral(resourceName: "iconStarblueStroke")
   var tagIsHidden: Bool = false
   var isDisabled: Bool = true
   var logoUrl: URL?
@@ -45,6 +53,12 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
     var price = OrderManager.instance.price(laundry: laundry, includeCollection: false)
     let isDisabled = price < laundry.minOrderPrice
     self.isDisabled = isDisabled
+    if isDisabled {
+      self.starRatingFullImage = #imageLiteral(resourceName: "iconStarblueGrayFull")
+      self.starRatingEmptyImage = #imageLiteral(resourceName: "iconStarblueGrayStroke")
+      self.titleColor = disabledColor
+      self.descriptionColor = disabledColor
+    }
     self.laundryTitle = laundry.name
     self.laundryDescription = laundry.descriptionText
     self.rating = laundry.rating

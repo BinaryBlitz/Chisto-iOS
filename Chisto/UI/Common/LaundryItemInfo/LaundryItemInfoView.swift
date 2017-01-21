@@ -24,14 +24,8 @@ class LaundryItemInfoView: UIView {
     headerLabel.textColor = viewModel.headerColor
     titleLabel.textColor = viewModel.titleColor
     subTitleLabel.textColor = viewModel.subTitleColor
-
-    if let headerFont = viewModel.headerLabelFont {
-      headerLabel.font = headerFont
-    }
-
-    if let titleFont = viewModel.titleLabelFont {
-      titleLabel.font = titleFont
-    }
+    headerLabel.font = viewModel.headerLabelFont
+    titleLabel.font = viewModel.titleLabelFont
   }
 
 }
