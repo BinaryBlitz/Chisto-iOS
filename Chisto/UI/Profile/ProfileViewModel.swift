@@ -39,7 +39,7 @@ class ProfileViewModel {
   let presentNextScreen: PublishSubject<ProfileSection>
   var ordersCount = Variable<String>("0")
 
-  let termsOfServiceURL = URL(string: "https://chis.to/legal/terms-of-service.pdf")!
+  let termsOfServiceURL = NetworkManager.termsOfServiceURL
   
   init() {
     DataManager.instance.showUser().subscribe().addDisposableTo(disposeBag)

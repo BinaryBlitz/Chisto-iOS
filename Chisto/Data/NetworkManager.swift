@@ -127,6 +127,8 @@ class NetworkManager {
 
   let baseURL = "https://chisto.xyz"
 
+  static let termsOfServiceURL = URL(string: "https://chis.to/legal/terms-of-service.pdf")!
+
   func doRequest(method: HTTPMethod, _ path: APIPath,
                  _ params: Parameters = [:],
                  _ headers: HTTPHeaders? = nil) -> Observable<Data> {
