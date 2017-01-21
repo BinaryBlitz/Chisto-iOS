@@ -55,7 +55,6 @@ class ContactFormViewModel {
   var paymentMethod: Variable<PaymentMethod>
 
   var currentScreen: CurrentScreen
-
   var cityFieldDidTap = PublishSubject<Void>()
   var streetNameFieldDidTap = PublishSubject<Void>()
 

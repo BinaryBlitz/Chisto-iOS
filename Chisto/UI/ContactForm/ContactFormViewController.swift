@@ -155,6 +155,10 @@ class ContactFormViewController: UITableViewController {
     viewModel?.paymentMethod.value = .card
   }
   
+<<<<<<< HEAD
+=======
+  
+>>>>>>> Add payment type select section to the contact form
 
 }
 
