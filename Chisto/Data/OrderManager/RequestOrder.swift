@@ -21,7 +21,7 @@ class RequestOrder: Mappable {
   var orderItemsAttributes: [OrderItemAttribute] = []
   var paymentMethod: PaymentMethod = .cash
 
-  init(profile: Profile, method: PaymentMethod) {
+  init(profile: Profile) {
     apartmentNumber = profile.apartment
     houseNumber = profile.building
     apartmentNumber = profile.apartment
@@ -29,7 +29,7 @@ class RequestOrder: Mappable {
     streetName = profile.street
     email = profile.email
     notes = profile.notes
-    paymentMethod = method
+    paymentMethod = profile.paymentMethod
   }
   
   required init(map: Map) { }

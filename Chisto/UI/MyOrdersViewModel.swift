@@ -34,7 +34,7 @@ class MyOrdersViewModel: MyOrdersViewModelType {
   let presentOrderInfoSection: Driver<OrderInfoViewModel>
   
   init() {
-    let realmOrders = uiRealm.objects(Order.self)
+    let realmOrders = RealmManager.instance.uiRealm.objects(Order.self)
       .filter("isDeleted == %@", false)
       .sorted(byKeyPath: "updatedAt", ascending: false)
     

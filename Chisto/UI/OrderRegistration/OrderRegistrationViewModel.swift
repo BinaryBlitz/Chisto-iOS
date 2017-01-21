@@ -20,8 +20,7 @@ class OrderRegistrationViewModel {
   let orderCost: String
   let returnToOrderViewController: PublishSubject<Void>
   let presentLocationSelectSection: Driver<LocationSelectViewModel>
-  let payInCashButtonDidTap = PublishSubject<Void>()
-  let payWithCreditCardButtonDidTap = PublishSubject<Void>()
+  let payButtonDidTap = PublishSubject<Void>()
   let presentOrderPlacedPopup: Driver<OrderPlacedPopupViewModel>
   let presentPaymentSection: Driver<PaymentViewModel>
   let paymentCompleted: PublishSubject<Order>
@@ -39,7 +38,7 @@ class OrderRegistrationViewModel {
     let returnToOrderViewController = PublishSubject<Void>()
     self.returnToOrderViewController = returnToOrderViewController
 
-    let formViewModel = ContactFormViewModel()
+    let formViewModel = ContactFormViewModel(currentScreen: .orderRegistration)
     self.formViewModel = formViewModel
 
     self.orderCost = OrderManager.instance.priceForCurrentLaundry(includeCollection: true).currencyString
@@ -57,23 +56,24 @@ class OrderRegistrationViewModel {
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
     
-    let placeOrder: (PaymentMethod) -> Driver<Order>
+    let placeOrder: () -> Driver<Order>
     placeOrder = { method in
       formViewModel.saveUserProfile().flatMap {
-        return OrderManager.instance.createOrder(paymentMethod: method)
+        return OrderManager.instance.createOrder()
         }.do(onError: { error in
           presentErrorAlert.onNext(error)
         }).asDriver(onErrorDriveWith: .empty())
     }
     
-    let payInCashDriver = payInCashButtonDidTap
+    let payInCashDriver = payButtonDidTap.filter { formViewModel.paymentMethod.value == .cash }
       .asDriver(onErrorDriveWith: .empty()).flatMap {
-        return placeOrder(.cash)
+        return placeOrder()
       }
   
-    self.presentPaymentSection = payWithCreditCardButtonDidTap
+    self.presentPaymentSection = payButtonDidTap
+      .filter { formViewModel.paymentMethod.value == .card }
       .asDriver(onErrorDriveWith: .empty()).flatMap {
-        return placeOrder(.card).map { order in
+        return placeOrder().map { order in
           let viewModel = PaymentViewModel(order: order)
           viewModel.didFinishPayment.bindTo(paymentCompleted).addDisposableTo(disposeBag)
           return viewModel

@@ -45,14 +45,16 @@ class ProfileManager {
   
   init() {
     var profile: Profile
+
+    let realm = RealmManager.instance.uiRealm
     
     if let profileId = UserDefaults.standard.value(forKey: profileKey),
-      let savedProfile = uiRealm.object(ofType: Profile.self, forPrimaryKey: profileId) {
+      let savedProfile = realm.object(ofType: Profile.self, forPrimaryKey: profileId) {
       profile = savedProfile
     } else {
       profile = Profile()
-      try! uiRealm.write {
-        uiRealm.add(profile)
+      try! realm.write {
+        realm.add(profile)
       }
       UserDefaults.standard.set(profile.id, forKey: profileKey)
     }

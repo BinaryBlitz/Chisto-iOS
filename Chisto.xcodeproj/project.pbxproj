@@ -62,6 +62,7 @@
 		881B34821E338E2000BCB9D3 /* PromoCodeAlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 881B34811E338E2000BCB9D3 /* PromoCodeAlertViewController.storyboard */; };
 		881B34841E338FF200BCB9D3 /* PromoCodeAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B34831E338FF200BCB9D3 /* PromoCodeAlertViewController.swift */; };
 		881B34861E33900000BCB9D3 /* PromoCodeAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B34851E33900000BCB9D3 /* PromoCodeAlertViewModel.swift */; };
+		881B34881E33E88200BCB9D3 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B34871E33E88200BCB9D3 /* RealmManager.swift */; };
 		881F4FA81E080302009C5B17 /* Data+hexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881F4FA71E080302009C5B17 /* Data+hexString.swift */; };
 		882288141DB6D11C000642E0 /* RootViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882288131DB6D11C000642E0 /* RootViewController.storyboard */; };
 		882288161DB6D12C000642E0 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882288151DB6D12C000642E0 /* RootViewController.swift */; };
@@ -266,6 +267,7 @@
 		881B34811E338E2000BCB9D3 /* PromoCodeAlertViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PromoCodeAlertViewController.storyboard; sourceTree = "<group>"; };
 		881B34831E338FF200BCB9D3 /* PromoCodeAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoCodeAlertViewController.swift; sourceTree = "<group>"; };
 		881B34851E33900000BCB9D3 /* PromoCodeAlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoCodeAlertViewModel.swift; sourceTree = "<group>"; };
+		881B34871E33E88200BCB9D3 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		881F4FA71E080302009C5B17 /* Data+hexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+hexString.swift"; sourceTree = "<group>"; };
 		882288131DB6D11C000642E0 /* RootViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootViewController.storyboard; sourceTree = "<group>"; };
 		882288151DB6D12C000642E0 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -649,6 +651,7 @@
 				882ECDB71DE5899600EE3507 /* Sequence+categorize.swift */,
 				88E831321DFC7177005E35D9 /* Double+currencyString.swift */,
 				881F4FA71E080302009C5B17 /* Data+hexString.swift */,
+				881B34871E33E88200BCB9D3 /* RealmManager.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1407,6 +1410,7 @@
 				8862E6CB1DC8E2C800DDFB00 /* OrderItem.swift in Sources */,
 				88DB938B1DCC169A00DAC651 /* NetworkManager.swift in Sources */,
 				889D87CB1DC0B45C003E8DAC /* RotatingUILabel.swift in Sources */,
+				881B34881E33E88200BCB9D3 /* RealmManager.swift in Sources */,
 				88FA1DF61DD23F3A00431822 /* ContactFormViewModel.swift in Sources */,
 				88004FBD1DDF579300A8632A /* LaundryReviewsTableViewCellModel.swift in Sources */,
 				88FE7B071DE0CA1400A16289 /* Order.swift in Sources */,

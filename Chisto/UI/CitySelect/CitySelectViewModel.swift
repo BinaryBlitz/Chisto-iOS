@@ -12,6 +12,7 @@ import RxDataSources
 import RxCocoa
 import UIKit
 import CoreLocation
+import RealmSwift
 
 typealias CitySelectSectionModel = SectionModel<String, City>
 
@@ -71,9 +72,11 @@ class CitySelectViewModel: CitySelectViewModelType {
     DataManager.instance.fetchCities().subscribe(onError: { error in
       presentErrorAlert.onNext(error)
     }).addDisposableTo(disposeBag)
+
+    let realm = RealmManager.instance.uiRealm
     
     let cities = Variable<[City]>([])
-    Observable.from(uiRealm.objects(City.self).filter("isDeleted == %@", false))
+    Observable.from(realm.objects(City.self).filter("isDeleted == %@", false))
       .map { Array($0) }
       .bindTo(cities)
       .addDisposableTo(disposeBag)
