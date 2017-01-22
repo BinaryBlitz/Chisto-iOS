@@ -80,7 +80,7 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     let currentOrderItemsObservable = OrderManager.instance.currentOrderItems.asObservable()
 
     let filteredLastOrderLaundry = lastOrderLaundry.withLatestFrom(currentOrderItemsObservable) { laundry, currentOrderItems -> Laundry? in
-      guard let laundry = laundry else { return nil }
+      guard let laundry = laundry, !laundry.isDisabled else { return nil }
       let laundryTreatments = Set(laundry.treatments)
       let orderTreatments = Set(currentOrderItems.map { $0.treatments }.reduce([], +))
       guard orderTreatments.subtracting(laundryTreatments).isEmpty else { return nil }
