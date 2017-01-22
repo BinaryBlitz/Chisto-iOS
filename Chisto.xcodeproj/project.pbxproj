@@ -155,6 +155,11 @@
 		88D8ABBF1DB56EB8009D515B /* SelectClothesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D8ABBE1DB56EB8009D515B /* SelectClothesViewController.storyboard */; };
 		88D8ABC21DB587CF009D515B /* SelectClothesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */; };
 		88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */; };
+		88D90A811E350B6300F0DB8A /* OrderInfoTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D90A7C1E350B6300F0DB8A /* OrderInfoTableFooterView.swift */; };
+		88D90A821E350B6300F0DB8A /* OrderInfoTableFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88D90A7D1E350B6300F0DB8A /* OrderInfoTableFooterView.xib */; };
+		88D90A831E350B6300F0DB8A /* OrderInfoTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D90A7E1E350B6300F0DB8A /* OrderInfoTableHeaderView.swift */; };
+		88D90A841E350B6300F0DB8A /* OrderInfoTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88D90A7F1E350B6300F0DB8A /* OrderInfoTableHeaderView.xib */; };
+		88D90A851E350B6300F0DB8A /* OrderInfoTableHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D90A801E350B6300F0DB8A /* OrderInfoTableHeaderViewModel.swift */; };
 		88DB32ED1DB4C86A00F9E000 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0491DAF12FE005B4967 /* OrderViewController.swift */; };
 		88DB93791DCBD11100DAC651 /* MaskedInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93781DCBD11100DAC651 /* MaskedInput.swift */; };
 		88DB937B1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DB937A1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard */; };
@@ -357,6 +362,11 @@
 		88D8ABBE1DB56EB8009D515B /* SelectClothesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectClothesViewController.storyboard; sourceTree = "<group>"; };
 		88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClothesTableViewCell.swift; sourceTree = "<group>"; };
 		88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClothesTableViewCellModel.swift; sourceTree = "<group>"; };
+		88D90A7C1E350B6300F0DB8A /* OrderInfoTableFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoTableFooterView.swift; sourceTree = "<group>"; };
+		88D90A7D1E350B6300F0DB8A /* OrderInfoTableFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderInfoTableFooterView.xib; sourceTree = "<group>"; };
+		88D90A7E1E350B6300F0DB8A /* OrderInfoTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoTableHeaderView.swift; sourceTree = "<group>"; };
+		88D90A7F1E350B6300F0DB8A /* OrderInfoTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderInfoTableHeaderView.xib; sourceTree = "<group>"; };
+		88D90A801E350B6300F0DB8A /* OrderInfoTableHeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoTableHeaderViewModel.swift; sourceTree = "<group>"; };
 		88DB93781DCBD11100DAC651 /* MaskedInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskedInput.swift; sourceTree = "<group>"; };
 		88DB937A1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationNavigationController.storyboard; sourceTree = "<group>"; };
 		88DB937C1DCBE0F400DAC651 /* RegistrationNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationNavigationController.swift; sourceTree = "<group>"; };
@@ -733,6 +743,11 @@
 		882ECDAD1DE215EF00EE3507 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				88D90A7C1E350B6300F0DB8A /* OrderInfoTableFooterView.swift */,
+				88D90A7D1E350B6300F0DB8A /* OrderInfoTableFooterView.xib */,
+				88D90A7E1E350B6300F0DB8A /* OrderInfoTableHeaderView.swift */,
+				88D90A7F1E350B6300F0DB8A /* OrderInfoTableHeaderView.xib */,
+				88D90A801E350B6300F0DB8A /* OrderInfoTableHeaderViewModel.swift */,
 				882ECDAE1DE215FF00EE3507 /* OrderInfoTableViewCellModel.swift */,
 				882ECDB01DE2160C00EE3507 /* OrderInfoTableViewCell.swift */,
 			);
@@ -1169,6 +1184,7 @@
 				88E6B59D1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard in Resources */,
 				88072D4E1DB967EF00B47D23 /* ItemInfoViewController.storyboard in Resources */,
 				88CBB1411E087AAA00C5F987 /* OrderReviewAlertViewController.storyboard in Resources */,
+				88D90A821E350B6300F0DB8A /* OrderInfoTableFooterView.xib in Resources */,
 				8833B52A1DBE6E38004D44CE /* LastTimePopupViewController.storyboard in Resources */,
 				88CD68431DD212F1004B7726 /* ContactFormTableHeaderView.xib in Resources */,
 				88B0B5501DB1825500C7D0F7 /* OnBoardingViewController.storyboard in Resources */,
@@ -1189,6 +1205,7 @@
 				88073EE01DABE1E0000696A3 /* Assets.xcassets in Resources */,
 				882288141DB6D11C000642E0 /* RootViewController.storyboard in Resources */,
 				88CD683A1DD1D665004B7726 /* ContactFormViewController.storyboard in Resources */,
+				88D90A841E350B6300F0DB8A /* OrderInfoTableHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1260,8 +1277,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88D90A831E350B6300F0DB8A /* OrderInfoTableHeaderView.swift in Sources */,
 				88FE7B091DE0CA4F00A16289 /* LineItem.swift in Sources */,
 				88D8ABBB1DB56E53009D515B /* SelectClothesViewController.swift in Sources */,
+				88D90A851E350B6300F0DB8A /* OrderInfoTableHeaderViewModel.swift in Sources */,
 				88E86DB01DB90BD1002A7024 /* UIView+nibInstance.swift in Sources */,
 				88073EEF1DAC1A23000696A3 /* OnBoardingViewController.swift in Sources */,
 				88923E1C1DD3852A00BC3AC0 /* OnBoardingViewModel.swift in Sources */,
@@ -1379,6 +1398,7 @@
 				8833B5281DBE6E2B004D44CE /* LastTimePopupViewController.swift in Sources */,
 				88923E131DD35F7600BC3AC0 /* ProfileManager.swift in Sources */,
 				88E6B59F1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift in Sources */,
+				88D90A811E350B6300F0DB8A /* OrderInfoTableFooterView.swift in Sources */,
 				88FE7AFE1DE0AF8000A16289 /* MyOrdersViewController.swift in Sources */,
 				88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */,
 				8814C0561DAFA7B5005B4967 /* BottomBorderedTextField.swift in Sources */,

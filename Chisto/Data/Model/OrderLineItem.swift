@@ -45,9 +45,7 @@ class OrderLineItem: Mappable {
   }
   
   var item: Item? {
-    guard let itemId = itemId else { return nil }
-    let realm = try! Realm()
-    return realm.object(ofType: Item.self, forPrimaryKey: itemId)
+    return orderItemTreatments.first?.treatment?.item
   }
 
   required init?(map: Map) { }

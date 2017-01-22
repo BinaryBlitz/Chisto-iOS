@@ -12,4 +12,15 @@ enum PaymentMethod: String {
   case card = "card"
   case cash = "cash"
   case applePay = "apple_pay"
+
+  var description: String {
+    switch self {
+    case .card:
+      return "Карта"
+    case .cash:
+      return "Наличные"
+    case .applePay:
+      return "Apple Pay"
+    }
+  }
 }

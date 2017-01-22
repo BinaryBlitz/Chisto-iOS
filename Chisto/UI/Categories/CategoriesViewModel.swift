@@ -52,8 +52,6 @@ class CategoriesViewModel: CategoriesViewModelType {
     }).addDisposableTo(disposeBag)
     
     let categories = Variable<[Category]>([])
-    debugPrint(RealmManager.instance.uiRealm.objects(Category.self).sorted(byKeyPath: "name", ascending: true))
-
     let sortProperties = [SortDescriptor(keyPath: "featured", ascending: false), SortDescriptor(keyPath: "name", ascending: true)]
 
     let realm = RealmManager.instance.uiRealm

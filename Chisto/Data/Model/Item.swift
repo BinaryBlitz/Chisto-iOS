@@ -28,5 +28,10 @@ class Item: ServerObject {
     descriptionText <- map["description"]
     icon <- map["icon_url"]
     useArea <- map["use_area"]
+
+    guard category == nil else { return }
+    var categoryId: Int? = nil
+    categoryId <- map["category_id"]
+    category = realm?.object(ofType: Category.self, forPrimaryKey: categoryId)
   }
 }

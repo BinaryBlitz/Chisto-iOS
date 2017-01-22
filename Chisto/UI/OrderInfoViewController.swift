@@ -18,30 +18,27 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
   
   let disposeBag = DisposeBag()
   
-  @IBOutlet weak var laundryLogoView: UIImageView!
-  @IBOutlet weak var laundryTitleLabel: UILabel!
-  @IBOutlet weak var laundryDescriptionLabel: UILabel!
-  @IBOutlet weak var orderNumberLabel: UILabel!
-  @IBOutlet weak var orderDateLabel: UILabel!
-  @IBOutlet weak var orderStatusText: UILabel!
-  @IBOutlet weak var orderStatusIconView: UIImageView!
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var orderPriceLabel: UILabel!
-  @IBOutlet weak var deliveryPriceLabel: UILabel!
-  @IBOutlet weak var orderTotalCostLabel: UILabel!
-  
-  @IBOutlet weak var supportButton: GoButton!
+  let headerView = OrderInfoTableHeaderView.nibInstance()!
+  let footerView = OrderInfoTableFooterView.nibInstance()!
+
+  @IBOutlet weak var ratingButton: GoButton!
   var viewModel : OrderInfoViewModel? = nil
   var dataSource = RxTableViewSectionedReloadDataSource<OrderInfoSectionModel>()
   
   override func viewDidLoad() {
-    navigationItem.title = viewModel?.navigationBarTitle
-    configureHeader()
-    configureFooter()
+    tableView.tableHeaderView = headerView
+
+    guard let viewModel = self.viewModel else { return }
+    navigationItem.title = viewModel.navigationBarTitle
+    headerView.configure(viewModel: viewModel.orderInfoTableHeaderViewModel)
+    footerView.configure(phone: viewModel.phoneNumber)
+
+    ratingButton.rx.tap.bindTo(viewModel.ratingButtonDidTap).addDisposableTo(disposeBag)
     configureTableView()
     
-    guard let viewModel = viewModel else { return }
-    viewModel.presentCallSupportAlert.drive(onNext: { [weak self] in
+    footerView.phoneLabelDidTap
+      .asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] in
       let alertController = UIAlertController(title: nil, message: viewModel.phoneNumber, preferredStyle: .alert)
       let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
       let callAction = UIAlertAction(title: "Позвонить", style: .default, handler: { [weak self] _ in
@@ -53,48 +50,16 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
       alertController.addAction(callAction)
       self?.present(alertController, animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
-  }
-  
-  func configureHeader() {
-    orderNumberLabel.text = viewModel?.orderNumber
 
-    bindLaundryData()
-    bindLaundryStatusData()
-  }
+    viewModel.presentRatingAlert.drive(onNext: { [weak self] viewModel in
+      let viewController = OrderReviewAlertViewController.storyboardInstance()!
+      viewController.modalPresentationStyle = .overFullScreen
 
-
-  func bindLaundryData() {
-    guard let viewModel = viewModel else { return }
-    viewModel.laundryIcon.asObservable().subscribe(onNext: { [weak self] icon in
-      self?.laundryLogoView.kf.setImage(with: icon)
+      viewController.viewModel = viewModel
+      self?.present(viewController, animated: false, completion: nil)
     }).addDisposableTo(disposeBag)
-
-    viewModel.laundryTitle.asObservable().bindTo(laundryTitleLabel.rx.text).addDisposableTo(disposeBag)
-    viewModel.laundryDescriprion.asObservable().bindTo(laundryDescriptionLabel.rx.text).addDisposableTo(disposeBag)
   }
 
-  func bindLaundryStatusData() {
-    guard let viewModel = viewModel else { return }
-    viewModel.orderStatus.asObservable().bindTo(orderStatusText.rx.text).addDisposableTo(disposeBag)
-    viewModel.orderDate.asObservable().bindTo(orderDateLabel.rx.text).addDisposableTo(disposeBag)
-
-    viewModel.orderStatusIcon.asObservable().filter { $0 != nil }.map { $0! }
-      .bindTo(orderStatusIconView.rx.image).addDisposableTo(disposeBag)
-
-    viewModel.orderStatusColor.asObservable().subscribe(onNext: { [weak self] color in
-      self?.orderStatusText.textColor = color
-    }).addDisposableTo(disposeBag)
-
-  }
-  
-  func configureFooter() {
-    guard let viewModel = viewModel else { return }
-    viewModel.orderPrice.asObservable().bindTo(orderPriceLabel.rx.text).addDisposableTo(disposeBag)
-    viewModel.deliveryPrice.asObservable().bindTo(deliveryPriceLabel.rx.text).addDisposableTo(disposeBag)
-    viewModel.totalCost.asObservable().bindTo(orderTotalCostLabel.rx.text).addDisposableTo(disposeBag)
-    supportButton.rx.tap.bindTo(viewModel.supportButtonDidTap).addDisposableTo(disposeBag)
-  }
-  
   func configureTableView() {
     dataSource.configureCell = { _, tableView, indexPath, cellViewModel in
       let cell = tableView.dequeueReusableCell(withIdentifier: "OrderInfoTableViewCell", for: indexPath) as! OrderInfoTableViewCell
@@ -118,6 +83,14 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
     
     tableView.estimatedRowHeight = 100
     tableView.rowHeight = UITableViewAutomaticDimension
+  }
+
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    return footerView
+  }
+
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return 83
   }
   
 }
