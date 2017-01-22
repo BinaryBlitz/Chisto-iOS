@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxDataSources
 import RxCocoa
+import RealmSwift
 
 typealias CategoriesSectionModel = SectionModel<String, CategoryTableViewCellModelType>
 
@@ -51,12 +52,15 @@ class CategoriesViewModel: CategoriesViewModelType {
     }).addDisposableTo(disposeBag)
     
     let categories = Variable<[Category]>([])
+    debugPrint(uiRealm.objects(Category.self).sorted(byKeyPath: "name", ascending: true))
+
+    let sortProperties = [SortDescriptor(keyPath: "featured", ascending: false), SortDescriptor(keyPath: "name", ascending: true)]
 
     Observable.from(uiRealm.objects(Category.self)
       .filter("isDeleted == %@", false)
-      .sorted(byKeyPath: "name", ascending: true)
-      .sorted(byKeyPath: "featured", ascending: false))
-      .map { Array($0) }.bindTo(categories)
+      .sorted(by: sortProperties))
+      .map { Array($0) }
+      .bindTo(categories)
       .addDisposableTo(disposeBag)
 
     self.categories = categories
