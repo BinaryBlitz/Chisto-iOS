@@ -18,7 +18,6 @@ class PromoCodeAlertViewController: UIViewController {
   let animationDuration = 0.2
 
   @IBOutlet weak var promoCodeField: UITextField!
-  @IBOutlet weak var discountLabel: UILabel!
   @IBOutlet weak var continueButton: GoButton!
   
   override func viewDidLoad() {

@@ -47,7 +47,8 @@ class OrderConfirmTableHeaderView: UIView {
     promoCodeButton.rx.tap.bindTo(viewModel.promoCodeButtonDidTap).addDisposableTo(disposeBag)
     viewModel.promoCode.asObservable().filter { $0 != nil }.subscribe(onNext: { [weak self] code in
       guard let code = code, code.characters.count > 0 else { return }
-      self?.promoCodeButton.setTitle(code, for: .normal)
+      self?.promoCodeButton.setTitle("-760 ₽", for: .normal)
+      self?.promoCodeButton.titleLabel?.font = .systemFont(ofSize: 16)
       self?.promoCodeButton.isEnabled = false
       self?.promoCodeButton.contentHorizontalAlignment = .right
     }).addDisposableTo(disposeBag)
