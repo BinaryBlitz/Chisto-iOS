@@ -26,17 +26,25 @@ class OrderInfoTableHeaderView: UIView {
   @IBOutlet weak var orderPriceLabel: UILabel!
   @IBOutlet weak var deliveryPriceLabel: UILabel!
   @IBOutlet weak var orderTotalCostLabel: UILabel!
+  @IBOutlet weak var stackView: UIStackView!
+
+
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
+
   
   func configure(viewModel: OrderInfoTableHeaderViewModel) {
     viewModel.orderPrice.asObservable().bindTo(orderPriceLabel.rx.text).addDisposableTo(disposeBag)
     viewModel.deliveryPrice.asObservable().bindTo(deliveryPriceLabel.rx.text).addDisposableTo(disposeBag)
     viewModel.totalCost.asObservable().bindTo(orderTotalCostLabel.rx.text).addDisposableTo(disposeBag)
     viewModel.promoCode.asObservable().bindTo(orderPromoCodeLabel.rx.text).addDisposableTo(disposeBag)
-    viewModel.promoCodeDiscount.asObservable().bindTo(orderPromoCodeDiscountLabel.rx.text).addDisposableTo(disposeBag)
+    viewModel.paymentMethodImage.asObservable().bindTo(paymentMethodImageView.rx.image).addDisposableTo(disposeBag)
     viewModel.paymentType.asObservable().bindTo(paymentMethodLabel.rx.text).addDisposableTo(disposeBag)
 
     bindLaundryData(viewModel: viewModel)
     bindLaundryStatusData(viewModel: viewModel)
+
   }
 
   func bindLaundryData(viewModel: OrderInfoTableHeaderViewModel) {
