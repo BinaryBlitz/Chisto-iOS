@@ -17,7 +17,7 @@ class MyOrdersTableViewCell: UITableViewCell {
   
   func configure(viewModel: MyOrdersTableViewCellModelType) {
     orderNumberLabel.text = viewModel.orderNumberTitle
-    orderDateStatusLabel.attributedText = viewModel.dateStatusTitle
+    orderDateStatusLabel.text = viewModel.dateStatusTitle
     orderStatusImageView.image = viewModel.icon
     priceLabel.text = viewModel.priceTitle
   }
