@@ -22,7 +22,7 @@ class RegistrationCodeInputViewModel {
   let dismissViewController: Driver<Void>
   let didFinishRegistration = PublishSubject<Void>()
 
-  let termsOfServiceURL = NetworkManager.termsOfServiceURL
+  let termsOfServiceURL = DataManager.instance.termsOfServiceURL
 
   init(phoneNumberString: String) {
     let code = Variable<String?>(nil)

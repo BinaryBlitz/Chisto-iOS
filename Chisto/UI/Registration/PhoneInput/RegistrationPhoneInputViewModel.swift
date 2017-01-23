@@ -21,7 +21,7 @@ class RegistrationPhoneInputViewModel {
   let phoneText: Variable<String?>
   let navigationBarTitle = "Регистрация"
 
-  let termsOfServiceURL = NetworkManager.termsOfServiceURL
+  let termsOfServiceURL = DataManager.instance.termsOfServiceURL
 
   init() {
     let disposeBag = DisposeBag()

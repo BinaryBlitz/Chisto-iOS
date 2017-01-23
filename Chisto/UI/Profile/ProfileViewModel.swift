@@ -39,7 +39,7 @@ class ProfileViewModel {
   let presentNextScreen: PublishSubject<ProfileSection>
   var ordersCount = Variable<String>("0")
 
-  let termsOfServiceURL = NetworkManager.termsOfServiceURL
+  let termsOfServiceURL = DataManager.instance.termsOfServiceURL
   
   init() {
     DataManager.instance.showUser().subscribe().addDisposableTo(disposeBag)
