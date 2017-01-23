@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wIM-b5-N7G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wIM-b5-N7G">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -57,21 +57,30 @@
                                                 <constraint firstItem="gco-sH-CeR" firstAttribute="top" secondItem="eey-JS-ElJ" secondAttribute="bottom" constant="2" id="eBN-vA-XR1"/>
                                             </constraints>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vn4-e5-Dcf">
+                                            <rect key="frame" x="324.5" y="21" width="35.5" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="APm-WA-9jj" firstAttribute="leading" secondItem="VKL-Lk-jb1" secondAttribute="leadingMargin" id="4ei-bq-MLg"/>
                                         <constraint firstItem="5rY-t2-XWx" firstAttribute="leading" secondItem="APm-WA-9jj" secondAttribute="trailing" constant="15" id="6fT-oW-Hu9"/>
                                         <constraint firstItem="5rY-t2-XWx" firstAttribute="centerY" secondItem="VKL-Lk-jb1" secondAttribute="centerY" id="JHF-xw-lD8"/>
                                         <constraint firstItem="APm-WA-9jj" firstAttribute="centerY" secondItem="VKL-Lk-jb1" secondAttribute="centerY" id="dM9-h5-k2f"/>
+                                        <constraint firstItem="vn4-e5-Dcf" firstAttribute="centerY" secondItem="VKL-Lk-jb1" secondAttribute="centerY" id="eL8-wE-1jF"/>
                                         <constraint firstAttribute="trailing" secondItem="5rY-t2-XWx" secondAttribute="trailing" id="jnG-Mz-FRO"/>
+                                        <constraint firstItem="vn4-e5-Dcf" firstAttribute="trailing" secondItem="VKL-Lk-jb1" secondAttribute="trailingMargin" id="kI9-UH-R6V"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <edgeInsets key="layoutMargins" top="15" left="15" bottom="15" right="15"/>
                                 <connections>
-                                    <outlet property="orderDateLabel" destination="gco-sH-CeR" id="47c-Em-WZ3"/>
+                                    <outlet property="orderDateStatusLabel" destination="gco-sH-CeR" id="YyU-sW-oVz"/>
                                     <outlet property="orderNumberLabel" destination="eey-JS-ElJ" id="Ldh-qc-mUF"/>
                                     <outlet property="orderStatusImageView" destination="APm-WA-9jj" id="A4w-Au-ZQH"/>
+                                    <outlet property="priceLabel" destination="vn4-e5-Dcf" id="O8T-zc-glu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
