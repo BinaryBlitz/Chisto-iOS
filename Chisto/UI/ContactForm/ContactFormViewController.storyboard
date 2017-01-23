@@ -373,16 +373,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Картой онлайн" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2O-sw-1sU">
-                                                    <rect key="frame" x="46" y="23.666666666666664" width="107" height="17.999999999999993"/>
+                                                    <rect key="frame" x="46" y="24" width="107" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconVisaActive" translatesAutoresizingMaskIntoConstraints="NO" id="S4R-Oh-4jz">
-                                                    <rect key="frame" x="166" y="22.666666666666664" width="31" height="19.999999999999993"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconVisaNoactive" highlightedImage="iconVisaActive" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S4R-Oh-4jz">
+                                                    <rect key="frame" x="166" y="23" width="31" height="20"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconMastercardActtive" translatesAutoresizingMaskIntoConstraints="NO" id="iLC-2U-ntd">
-                                                    <rect key="frame" x="202" y="22.666666666666664" width="31" height="19.999999999999993"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconMastercardNoactive" highlightedImage="iconMastercardActtive" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iLC-2U-ntd">
+                                                    <rect key="frame" x="202" y="23" width="31" height="20"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckOn" translatesAutoresizingMaskIntoConstraints="NO" id="D1G-rA-v9y">
                                                     <rect key="frame" x="372" y="19" width="27" height="27"/>
@@ -426,13 +426,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Наличными" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TtB-pB-2Xh">
-                                                    <rect key="frame" x="46" y="23.666666666666664" width="84" height="17.999999999999993"/>
+                                                    <rect key="frame" x="46" y="24" width="84" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckOff" translatesAutoresizingMaskIntoConstraints="NO" id="1X6-oG-rzb">
-                                                    <rect key="frame" x="372" y="18.666666666666664" width="27" height="27.999999999999993"/>
+                                                    <rect key="frame" x="372" y="19" width="27" height="28"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYh-jJ-vgu">
                                                     <rect key="frame" x="46" y="65" width="353" height="0.0"/>
@@ -484,6 +484,8 @@
                         <outlet property="payWithCardLabel" destination="y2O-sw-1sU" id="G1I-nh-cTv"/>
                         <outlet property="phoneField" destination="czl-MC-Kzf" id="Pwg-wV-3Tc"/>
                         <outlet property="streetField" destination="acm-lZ-3Xp" id="ycK-lU-aYD"/>
+                        <outletCollection property="paymentTypeCardIconViews" destination="iLC-2U-ntd" collectionClass="NSMutableArray" id="YMa-tP-cVp"/>
+                        <outletCollection property="paymentTypeCardIconViews" destination="S4R-Oh-4jz" collectionClass="NSMutableArray" id="1Nz-fS-flE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxW-D9-oEQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -505,6 +507,8 @@
         <image name="iconCheckOff" width="27" height="28"/>
         <image name="iconCheckOn" width="27" height="27"/>
         <image name="iconMastercardActtive" width="31" height="20"/>
+        <image name="iconMastercardNoactive" width="31" height="20"/>
         <image name="iconVisaActive" width="31" height="20"/>
+        <image name="iconVisaNoactive" width="31" height="20"/>
     </resources>
 </document>

@@ -34,6 +34,7 @@ class ContactFormViewController: UITableViewController {
   @IBOutlet weak var payByCashLabel: UILabel!
   @IBOutlet weak var payWithCardCheckImageView: UIImageView!
   @IBOutlet weak var payByCashCheckImageView: UIImageView!
+  @IBOutlet var paymentTypeCardIconViews: [UIImageView]!
   
   let contactInfoHeaderView = ContactFormTableHeaderView.nibInstance()!
   let adressHeaderView = ContactFormTableHeaderView.nibInstance()!
@@ -91,11 +92,13 @@ class ContactFormViewController: UITableViewController {
         self?.payWithCardCheckImageView.image = #imageLiteral(resourceName: "iconCheckOn")
         self?.payByCashLabel.textColor = .chsCoolGrey
         self?.payByCashCheckImageView.image = #imageLiteral(resourceName: "iconCheckOff")
+        self?.paymentTypeCardIconViews.forEach { $0.isHighlighted = true }
       case .cash:
         self?.payByCashLabel.textColor = .black
         self?.payByCashCheckImageView.image = #imageLiteral(resourceName: "iconCheckOn")
         self?.payWithCardLabel.textColor = .chsCoolGrey
         self?.payWithCardCheckImageView.image = #imageLiteral(resourceName: "iconCheckOff")
+        self?.paymentTypeCardIconViews.forEach { $0.isHighlighted = false }
       default:
         break
       }
