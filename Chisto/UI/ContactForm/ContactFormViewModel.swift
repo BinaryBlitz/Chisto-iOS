@@ -24,7 +24,7 @@ protocol ContactFormViewModelType {
   var building: Variable<String?> { get }
   var apartment: Variable<String?> { get }
   var comment: Variable<String?> { get }
-  var paymentType: Variable<PaymentMethod> { get }
+  var paymentMethod: Variable<PaymentMethod> { get }
 }
 
 class ContactFormViewModel {

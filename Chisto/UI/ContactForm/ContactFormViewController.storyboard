@@ -484,8 +484,8 @@
                         <outlet property="payWithCardLabel" destination="y2O-sw-1sU" id="G1I-nh-cTv"/>
                         <outlet property="phoneField" destination="czl-MC-Kzf" id="Pwg-wV-3Tc"/>
                         <outlet property="streetField" destination="acm-lZ-3Xp" id="ycK-lU-aYD"/>
-                        <outletCollection property="paymentTypeCardIconViews" destination="iLC-2U-ntd" collectionClass="NSMutableArray" id="YMa-tP-cVp"/>
-                        <outletCollection property="paymentTypeCardIconViews" destination="S4R-Oh-4jz" collectionClass="NSMutableArray" id="1Nz-fS-flE"/>
+                        <outletCollection property="paymentMethodCardIconViews" destination="iLC-2U-ntd" collectionClass="NSMutableArray" id="vWv-8H-bfD"/>
+                        <outletCollection property="paymentMethodCardIconViews" destination="S4R-Oh-4jz" collectionClass="NSMutableArray" id="t1Z-BT-bxE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxW-D9-oEQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
