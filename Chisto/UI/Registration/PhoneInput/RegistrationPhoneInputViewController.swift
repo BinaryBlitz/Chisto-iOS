@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import IQKeyboardManagerSwift
+import SafariServices
 
 class RegistrationPhoneInputViewController: UIViewController {
 
@@ -23,7 +24,10 @@ class RegistrationPhoneInputViewController: UIViewController {
   @IBOutlet weak var contentView: UIView!
   @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
   
+  @IBOutlet weak var licenseAgreementLabel: UILabel!
+
   override func viewDidLoad() {
+    licenseAgreementLabel.attributedText = viewModel?.licenseAgreementText
     IQKeyboardManager.sharedManager().disabledDistanceHandlingClasses.append(RegistrationPhoneInputViewController.self)
     bottomLayoutConstraint.updateWithKeyboard()
     
@@ -65,4 +69,10 @@ class RegistrationPhoneInputViewController: UIViewController {
     phoneInputField.becomeFirstResponder()
   }
 
+  @IBAction func licenseAgreementDidTap(_ sender: Any) {
+    guard let url = viewModel?.termsOfServiceURL else { return }
+    let safariViewController = SFSafariViewController(url: url)
+    present(safariViewController, animated: true, completion: nil)
+  }
+  
 }

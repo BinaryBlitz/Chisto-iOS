@@ -15,11 +15,14 @@ class RegistrationCodeInputViewModel {
 
   let subTitleText: String
   let resendLabelText: NSAttributedString
+  let licenseAgreementText: NSAttributedString
   let codeIsValid: Variable<Bool>
   let code: Variable<String?>
   let navigationBarTitle = "Регистрация"
   let dismissViewController: Driver<Void>
   let didFinishRegistration = PublishSubject<Void>()
+
+  let termsOfServiceURL = DataManager.instance.termsOfServiceURL
 
   init(phoneNumberString: String) {
     let code = Variable<String?>(nil)
@@ -30,6 +33,11 @@ class RegistrationCodeInputViewModel {
 
     self.subTitleText = "На номер \(phoneNumberString) был отправлен код"
     self.resendLabelText = NSAttributedString(string: "Выслать повторно", attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
+
+    let licenseAgreementString = NSMutableAttributedString()
+    licenseAgreementString.append(NSAttributedString(string: "Регистрируясь в приложении, вы принимаете условия "))
+    licenseAgreementString.append(NSAttributedString(string: "Пользовательского соглашения", attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue]))
+    self.licenseAgreementText = licenseAgreementString
 
     let validationConfirmed: Driver<Bool> = code.asDriver()
       .filter { _ in codeIsValid.value == true }

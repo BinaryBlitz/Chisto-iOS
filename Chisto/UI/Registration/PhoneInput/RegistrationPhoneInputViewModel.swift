@@ -17,8 +17,11 @@ class RegistrationPhoneInputViewModel {
   let presentCodeInputSection: Observable<RegistrationCodeInputViewModel>
   let didFinishRegistration: PublishSubject<Void>
   let sendButtonDidTap = PublishSubject<Void>()
+  let licenseAgreementText: NSAttributedString
   let phoneText: Variable<String?>
   let navigationBarTitle = "Регистрация"
+
+  let termsOfServiceURL = DataManager.instance.termsOfServiceURL
 
   init() {
     let disposeBag = DisposeBag()
@@ -29,6 +32,11 @@ class RegistrationPhoneInputViewModel {
     
     let didFinishRegistration = PublishSubject<Void>()
     self.didFinishRegistration = didFinishRegistration
+
+    let licenseAgreementString = NSMutableAttributedString()
+    licenseAgreementString.append(NSAttributedString(string: "Регистрируясь в приложении, вы принимаете условия "))
+    licenseAgreementString.append(NSAttributedString(string: "Пользовательского соглашения", attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue]))
+    self.licenseAgreementText = licenseAgreementString
 
     self.presentCodeInputSection = sendButtonDidTap.asObservable().flatMap { _ -> Observable<RegistrationCodeInputViewModel> in
       guard let phoneText = phoneText.value else { return Observable.error(DataError.unknown) }

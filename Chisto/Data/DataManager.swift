@@ -60,6 +60,11 @@ protocol UserManagerType {
 class DataManager {
 
   static let instance = DataManager()
+
+  var termsOfServiceURL: URL {
+    return URL(string: networkManager.baseURL + "/legal/terms-of-service.pdf")!
+  }
+
   private var verificationToken: String? = nil
   private let networkManager = NetworkManager()
   
