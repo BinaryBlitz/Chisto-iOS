@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxSwift
 import IQKeyboardManagerSwift
+import SafariServices
 
 class RegistrationCodeInputViewController: UIViewController {
   let disposeBag = DisposeBag()
@@ -20,9 +21,12 @@ class RegistrationCodeInputViewController: UIViewController {
   @IBOutlet weak var codeField: UITextField!
   @IBOutlet weak var repeatButton: UIButton!
   @IBOutlet weak var subTitleLabel: UILabel!
+  @IBOutlet weak var licenseAgreementLabel: UILabel!
+
   @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
 
   override func viewDidLoad() {
+    licenseAgreementLabel.attributedText = viewModel?.licenseAgreementText
     IQKeyboardManager.sharedManager().disabledDistanceHandlingClasses.append(RegistrationCodeInputViewController.self)
     navigationItem.title = viewModel?.navigationBarTitle
     bottomLayoutConstraint.updateWithKeyboard()
@@ -51,4 +55,12 @@ class RegistrationCodeInputViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     codeField.becomeFirstResponder()
   }
+  
+  @IBAction func licenseAgreementDidTap(_ sender: Any) {
+    guard let url = viewModel?.termsOfServiceURL else { return }
+    let safariViewController = SFSafariViewController(url: url)
+    present(safariViewController, animated: true, completion: nil)
+
+  }
+
 }
