@@ -52,7 +52,7 @@ extension Date {
       case .fullDate:
         dateFormatter.formatOptions = .withFullDate
       default:
-        dateFormatter.formatOptions = .withFullTime
+        dateFormatter.formatOptions.insert(.withTimeZone)
       }
       return dateFormatter.date(from: string)
     } else {
