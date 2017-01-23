@@ -30,13 +30,13 @@ class OrderManager {
     currentOrderItems.onNext(items)
   }
 
-  func createOrder(paymentMethod: PaymentMethod) -> Observable<Order> {
+  func createOrder() -> Observable<Order> {
     return Observable.deferred { [weak self] in
       let profile = ProfileManager.instance.userProfile.value
       guard let laundry = self?.currentLaundry else { return Observable.empty() }
       guard let orderItems = try! self?.currentOrderItems.value() else { return Observable.empty() }
 
-      let order = RequestOrder(profile: profile, method: paymentMethod)
+      let order = RequestOrder(profile: profile)
 
       order.orderItemsAttributes = orderItems.map { OrderItemAttribute(orderItem: $0, laundry: laundry) }
       

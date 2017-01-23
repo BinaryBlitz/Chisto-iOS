@@ -24,15 +24,22 @@ protocol ContactFormViewModelType {
   var building: Variable<String?> { get }
   var apartment: Variable<String?> { get }
   var comment: Variable<String?> { get }
+  var paymentMethod: Variable<PaymentMethod> { get }
 }
 
 class ContactFormViewModel {
 
   let disposeBag = DisposeBag()
 
+  enum CurrentScreen {
+    case profile
+    case orderRegistration
+  }
+
   let contactInfoHeaderModel = ContactFormTableHeaderViewModel(title: "Контактная информация", icon: #imageLiteral(resourceName: "iconSmallUser"))
   let adressHeaderModel = ContactFormTableHeaderViewModel(title: "Адрес доставки", icon: #imageLiteral(resourceName: "iconSmallAddress"), isEnabledButton: true)
   let commentHeaderModel = ContactFormTableHeaderViewModel(title: "Комментарии к заказу", icon: #imageLiteral(resourceName: "iconSmallComment"))
+  let paymentHeaderModel = ContactFormTableHeaderViewModel(title: "Способ оплаты", icon: #imageLiteral(resourceName: "iconSmollGrayWallet"))
 
   var city: Variable<String?>
   var firstName: Variable<String?>
@@ -45,11 +52,15 @@ class ContactFormViewModel {
   var comment: Variable<String?>
   var phoneIsValid = Variable<Bool>(false)
   var isValid = Variable<Bool>(false)
+  var paymentMethod: Variable<PaymentMethod>
+
+  var currentScreen: CurrentScreen
 
   var cityFieldDidTap = PublishSubject<Void>()
   var streetNameFieldDidTap = PublishSubject<Void>()
 
-  init() {
+  init(currentScreen: CurrentScreen) {
+    self.currentScreen = currentScreen
     let profile = ProfileManager.instance.userProfile.value
     self.firstName = Variable(profile.firstName)
     self.lastName = Variable(profile.lastName)
@@ -60,6 +71,7 @@ class ContactFormViewModel {
     self.building = Variable(profile.building)
     self.apartment = Variable(profile.apartment)
     self.comment = Variable(profile.notes)
+    self.paymentMethod = Variable(profile.paymentMethod)
 
     let contactInfoIsValid = Observable.combineLatest(firstName.asObservable(), lastName.asObservable(), phoneIsValid.asObservable(), email.asObservable()) { firstName, lastName, phoneIsValid, email -> Bool in
       guard let firstName = firstName, let lastName = lastName, let email = email else { return false }
@@ -95,6 +107,7 @@ class ContactFormViewModel {
         profile.building = self.building.value ?? ""
         profile.apartment = self.apartment.value ?? ""
         profile.notes = self.comment.value ?? ""
+        profile.paymentMethod = self.paymentMethod.value
       }
       if profile.isCreated {
         return DataManager.instance.updateUser()

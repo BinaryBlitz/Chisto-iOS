@@ -14,8 +14,6 @@ import GooglePlaces
 import IQKeyboardManagerSwift
 import RealmSwift
 
-let uiRealm = try! Realm()
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
@@ -45,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     if let remoteNotification = launchOptions?[.remoteNotification] as? [AnyHashable : Any] {
       NotificationManager.instance.didReceiveNotification(userInfo: remoteNotification)
     }
-
+    
     return true
   }
 

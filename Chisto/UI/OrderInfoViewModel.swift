@@ -11,6 +11,7 @@ import RxSwift
 import RxDataSources
 import RxCocoa
 import UIKit
+import RealmSwift
 
 typealias OrderInfoSectionModel = SectionModel<String, OrderInfoTableViewCellModelType>
 
@@ -66,7 +67,8 @@ class OrderInfoViewModel {
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
     let order = Variable<Order?>(nil)
-    if let orderObject = uiRealm.object(ofType: Order.self, forPrimaryKey: orderId) { order.value = orderObject }
+    let realm = RealmManager.instance.uiRealm
+    if let orderObject = realm.object(ofType: Order.self, forPrimaryKey: orderId) { order.value = orderObject }
     self.presentCallSupportAlert = supportButtonDidTap.asDriver(onErrorDriveWith: .empty())
 
     self.navigationBarTitle = "Заказ № \(orderId)"
@@ -92,7 +94,7 @@ class OrderInfoViewModel {
     observableOrder.map { $0.orderPrice.currencyString }.bindTo(orderPrice).addDisposableTo(disposeBag)
     observableOrder.map { $0.totalPrice.currencyString }.bindTo(totalCost).addDisposableTo(disposeBag)
 
-    let observableOrderLaundry = observableOrder.map { uiRealm.object(ofType: Laundry.self, forPrimaryKey: $0.laundryId ) }
+    let observableOrderLaundry = observableOrder.map { realm.object(ofType: Laundry.self, forPrimaryKey: $0.laundryId ) }
     observableOrderLaundry.map { $0?.name }.bindTo(laundryTitle).addDisposableTo(disposeBag)
     observableOrderLaundry.map { $0?.descriptionText }.bindTo(laundryDescriprion).addDisposableTo(disposeBag)
     observableOrderLaundry.map { URL(string: $0?.logoUrl ?? "") }.bindTo(laundryIcon).addDisposableTo(disposeBag)
