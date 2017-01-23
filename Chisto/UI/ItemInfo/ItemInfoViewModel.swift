@@ -63,8 +63,8 @@ class ItemInfoViewModel: ItemInfoViewModelType {
   let treatments: Variable<[Treatment]>
   
   enum Section: Int {
-    case decoration = 0
-    case treatments
+    case treatments = 0
+    case decoration
   }
   
   init(orderItem: OrderItem) {
@@ -89,7 +89,7 @@ class ItemInfoViewModel: ItemInfoViewModelType {
       } as [ItemInfoTableViewCellModelType]
       var sections = [ItemInfoSectionModel(model: "", items: treatmentsCellModels)]
 
-      let decorationCellModel = ItemInfoTableViewCellModel("Декор", "Декоративная отделка", treatments.count) as ItemInfoTableViewCellModelType
+      let decorationCellModel = ItemInfoTableViewCellModel("Декор", "Декоративная отделка", treatments.count + 1) as ItemInfoTableViewCellModelType
 
       var decorationCellModels: [ItemInfoTableViewCellModelType] = []
       if hasDecoration { decorationCellModels.append(decorationCellModel) }

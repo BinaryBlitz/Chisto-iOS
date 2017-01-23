@@ -59,6 +59,9 @@
 		8814C0671DB04AFB005B4967 /* RussianEnumEndings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */; };
 		8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */; };
 		881928651E24E4F800405597 /* OrderItemAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881928641E24E4F800405597 /* OrderItemAttribute.swift */; };
+		881B34821E338E2000BCB9D3 /* PromoCodeAlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 881B34811E338E2000BCB9D3 /* PromoCodeAlertViewController.storyboard */; };
+		881B34841E338FF200BCB9D3 /* PromoCodeAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B34831E338FF200BCB9D3 /* PromoCodeAlertViewController.swift */; };
+		881B34861E33900000BCB9D3 /* PromoCodeAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B34851E33900000BCB9D3 /* PromoCodeAlertViewModel.swift */; };
 		881F4FA81E080302009C5B17 /* Data+hexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881F4FA71E080302009C5B17 /* Data+hexString.swift */; };
 		882288141DB6D11C000642E0 /* RootViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882288131DB6D11C000642E0 /* RootViewController.storyboard */; };
 		882288161DB6D12C000642E0 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882288151DB6D12C000642E0 /* RootViewController.swift */; };
@@ -102,6 +105,9 @@
 		8872F0BC1DD8AE0F00E8D9EE /* ReverseGeocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8872F0BB1DD8AE0F00E8D9EE /* ReverseGeocoder.swift */; };
 		8872F0BE1DD8D67100E8D9EE /* RequestOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8872F0BD1DD8D67100E8D9EE /* RequestOrder.swift */; };
 		8872F0C01DD8DD3400E8D9EE /* OrderPlacedPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8872F0BF1DD8DD3400E8D9EE /* OrderPlacedPopupViewModel.swift */; };
+		887D5EC51E3363B00052CC37 /* OrderConfirmTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 887D5A921E3363AF0052CC37 /* OrderConfirmTableHeaderView.xib */; };
+		887D62591E3363B20052CC37 /* OrderConfirmTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887D5EBF1E3363B00052CC37 /* OrderConfirmTableHeaderView.swift */; };
+		887D625B1E3369230052CC37 /* OrderConfirmTableHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887D625A1E3369230052CC37 /* OrderConfirmTableHeaderViewModel.swift */; };
 		88923E111DD340C500BC3AC0 /* twoWayBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E101DD340C500BC3AC0 /* twoWayBinding.swift */; };
 		88923E131DD35F7600BC3AC0 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E121DD35F7600BC3AC0 /* ProfileManager.swift */; };
 		88923E161DD369F400BC3AC0 /* ProfileContactDataViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88923E151DD369F400BC3AC0 /* ProfileContactDataViewController.storyboard */; };
@@ -257,6 +263,9 @@
 		8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RussianEnumEndings.swift; sourceTree = "<group>"; };
 		8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHideOutside.swift; sourceTree = "<group>"; };
 		881928641E24E4F800405597 /* OrderItemAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItemAttribute.swift; sourceTree = "<group>"; };
+		881B34811E338E2000BCB9D3 /* PromoCodeAlertViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PromoCodeAlertViewController.storyboard; sourceTree = "<group>"; };
+		881B34831E338FF200BCB9D3 /* PromoCodeAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoCodeAlertViewController.swift; sourceTree = "<group>"; };
+		881B34851E33900000BCB9D3 /* PromoCodeAlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoCodeAlertViewModel.swift; sourceTree = "<group>"; };
 		881F4FA71E080302009C5B17 /* Data+hexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+hexString.swift"; sourceTree = "<group>"; };
 		882288131DB6D11C000642E0 /* RootViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootViewController.storyboard; sourceTree = "<group>"; };
 		882288151DB6D12C000642E0 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -300,6 +309,9 @@
 		8872F0BB1DD8AE0F00E8D9EE /* ReverseGeocoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseGeocoder.swift; sourceTree = "<group>"; };
 		8872F0BD1DD8D67100E8D9EE /* RequestOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestOrder.swift; sourceTree = "<group>"; };
 		8872F0BF1DD8DD3400E8D9EE /* OrderPlacedPopupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderPlacedPopupViewModel.swift; sourceTree = "<group>"; };
+		887D5A921E3363AF0052CC37 /* OrderConfirmTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderConfirmTableHeaderView.xib; path = Views/Views/OrderConfirmTableHeaderView.xib; sourceTree = "<group>"; };
+		887D5EBF1E3363B00052CC37 /* OrderConfirmTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderConfirmTableHeaderView.swift; path = Views/OrderConfirmTableHeaderView.swift; sourceTree = "<group>"; };
+		887D625A1E3369230052CC37 /* OrderConfirmTableHeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmTableHeaderViewModel.swift; sourceTree = "<group>"; };
 		88923E101DD340C500BC3AC0 /* twoWayBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = twoWayBinding.swift; path = ../Util/twoWayBinding.swift; sourceTree = "<group>"; };
 		88923E121DD35F7600BC3AC0 /* ProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		88923E151DD369F400BC3AC0 /* ProfileContactDataViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileContactDataViewController.storyboard; sourceTree = "<group>"; };
@@ -502,6 +514,7 @@
 		88073EEC1DAC19E1000696A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				881B34801E338E0D00BCB9D3 /* PromoCodeAlert */,
 				88F674B61DF3F1FA0001AC16 /* ItemSizeAlert */,
 				88CBB13F1E087A9400C5F987 /* OrderReviewAlert */,
 				880E03E21DE8F80400311721 /* Payment */,
@@ -718,6 +731,26 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		881B347F1E338C0500BCB9D3 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				887D5A921E3363AF0052CC37 /* OrderConfirmTableHeaderView.xib */,
+				887D625A1E3369230052CC37 /* OrderConfirmTableHeaderViewModel.swift */,
+				887D5EBF1E3363B00052CC37 /* OrderConfirmTableHeaderView.swift */,
+			);
+			name = Header;
+			sourceTree = "<group>";
+		};
+		881B34801E338E0D00BCB9D3 /* PromoCodeAlert */ = {
+			isa = PBXGroup;
+			children = (
+				881B34811E338E2000BCB9D3 /* PromoCodeAlertViewController.storyboard */,
+				881B34831E338FF200BCB9D3 /* PromoCodeAlertViewController.swift */,
+				881B34851E33900000BCB9D3 /* PromoCodeAlertViewModel.swift */,
+			);
+			name = PromoCodeAlert;
+			sourceTree = "<group>";
+		};
 		882288121DB6D0FA000642E0 /* Root */ = {
 			isa = PBXGroup;
 			children = (
@@ -778,6 +811,7 @@
 		88373C961DC9E53E00DE4D13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				881B347F1E338C0500BCB9D3 /* Header */,
 				8869D1221DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift */,
 				88373C971DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib */,
 				889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */,
@@ -1160,8 +1194,10 @@
 				880E03F01DE9976000311721 /* CategoriesNavigationController.storyboard in Resources */,
 				883760D51DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard in Resources */,
 				8862E6D01DC8ECBD00DDFB00 /* OrderConfirmViewController.storyboard in Resources */,
+				887D5EC51E3363B00052CC37 /* OrderConfirmTableHeaderView.xib in Resources */,
 				88B0B5521DB19C6E00C7D0F7 /* DescriptionListItemView.xib in Resources */,
 				889D87C91DC0A760003E8DAC /* LaundrySelectViewController.storyboard in Resources */,
+				881B34821E338E2000BCB9D3 /* PromoCodeAlertViewController.storyboard in Resources */,
 				8811FE101DC2DB0500610712 /* ProfileNavigationController.storyboard in Resources */,
 				88E6B59D1DCB7F710024FA1A /* RegistrationPhoneInputViewController.storyboard in Resources */,
 				88072D4E1DB967EF00B47D23 /* ItemInfoViewController.storyboard in Resources */,
@@ -1268,6 +1304,7 @@
 				88FE7B051DE0AFF300A16289 /* MyOrdersTableViewCellModel.swift in Sources */,
 				8814C0331DAD8123005B4967 /* Colors.swift in Sources */,
 				88E86DAA1DB8E800002A7024 /* ServiceSelectViewModel.swift in Sources */,
+				887D62591E3363B20052CC37 /* OrderConfirmTableHeaderView.swift in Sources */,
 				8814C0611DAFEE7C005B4967 /* CategoriesViewModel.swift in Sources */,
 				88DB938D1DCC187C00DAC651 /* Laundry.swift in Sources */,
 				88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */,
@@ -1282,12 +1319,14 @@
 				88004FB81DDF49F300A8632A /* Rating.swift in Sources */,
 				889923A71DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift in Sources */,
 				88072D571DB9698600B47D23 /* ItemInfoTableViewCell.swift in Sources */,
+				881B34861E33900000BCB9D3 /* PromoCodeAlertViewModel.swift in Sources */,
 				88004FBF1DDF77DF00A8632A /* LaundryReviewsViewModel.swift in Sources */,
 				8814C05A1DAFC96D005B4967 /* CategoriesViewController.swift in Sources */,
 				88CBB1451E08806300C5F987 /* OrderReviewAlertViewModel.swift in Sources */,
 				889A841B1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift in Sources */,
 				88F674BC1DF477E50001AC16 /* ItemSizeAlertViewModel.swift in Sources */,
 				88072D551DB9697700B47D23 /* ItemInfoTableViewCellModel.swift in Sources */,
+				887D625B1E3369230052CC37 /* OrderConfirmTableHeaderViewModel.swift in Sources */,
 				88AF5B2F1E2BF60F00A78ABD /* Subscription.swift in Sources */,
 				88CD683E1DD208E2004B7726 /* OrderRegistrationViewController.swift in Sources */,
 				88073EFC1DAC4661000696A3 /* CitySelectViewController.swift in Sources */,
@@ -1335,6 +1374,7 @@
 				882ECDCD1DE7CC4600EE3507 /* EmptyTableBackgroundView.swift in Sources */,
 				889A84151DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift in Sources */,
 				8814C0581DAFB0F2005B4967 /* CityNotFoundViewModel.swift in Sources */,
+				881B34841E338FF200BCB9D3 /* PromoCodeAlertViewController.swift in Sources */,
 				88DB32ED1DB4C86A00F9E000 /* OrderViewController.swift in Sources */,
 				88073ED91DABE1E0000696A3 /* AppDelegate.swift in Sources */,
 				88FA1DFA1DD2944400431822 /* Profile.swift in Sources */,

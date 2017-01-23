@@ -21,40 +21,14 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
   var viewModel: OrderConfirmViewModel? = nil
   var dataSource = RxTableViewSectionedReloadDataSource<OrderConfirmSectionModel>()
 
-  @IBOutlet weak var backgroundImageView: UIImageView!
-
-  @IBOutlet weak var laundryDescriptionLabel: UILabel!
-  @IBOutlet weak var laundryIconView: UIImageView!
-  @IBOutlet weak var laundryRatingView: FloatRatingView!
-  @IBOutlet weak var collectionDateLabel: UILabel!
-  @IBOutlet weak var laundryReviewsCountLabel: UILabel!
-  @IBOutlet weak var deliveryDateLabel: UILabel!
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var orderPriceLabel: UILabel!
-  @IBOutlet weak var deliveryPriceLabel: UILabel!
   @IBOutlet weak var confirmButton: GoButton!
-  @IBOutlet weak var collectionHoursLabel: UILabel!
-  @IBOutlet weak var deliveryHoursLabel: UILabel!
+
+  let headerView = OrderConfirmTableHeaderView.nibInstance()!
 
   override func viewDidLoad() {
     navigationItem.title = viewModel?.navigationBarTitle
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    laundryDescriptionLabel.text = viewModel?.laundryDescriprionTitle
-    laundryIconView.kf.setImage(with: viewModel?.laundryIcon)
-    collectionHoursLabel.text = viewModel?.hoursTitle
-    deliveryHoursLabel.text = viewModel?.hoursTitle
-
-    confirmButton.setTitle(viewModel?.confirmOrderButtonTitle, for: .normal)
-    
-    laundryRatingView.rating = viewModel?.laundryRating ?? 0
-    laundryReviewsCountLabel.text = viewModel?.ratingsCountText
-    collectionDateLabel.text = viewModel?.collectionDate
-    orderPriceLabel.text = viewModel?.orderPrice
-    deliveryDateLabel.text = viewModel?.deliveryDate
-    deliveryPriceLabel.text = viewModel?.collectionPrice
-    
-    let backgroundProcessor = OverlayImageProcessor(overlay: .black, fraction: 0.7)
-    backgroundImageView.kf.setImage(with: viewModel?.laundryBackground, options: [.processor(backgroundProcessor)])
 
     configureNavigations()
     configureFooter()
@@ -78,10 +52,18 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
       viewController.viewModel = viewModel
       self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
+
+    viewModel?.presentPromoCodeAlert.drive(onNext: { [weak self] viewModel in
+      let viewController = PromoCodeAlertViewController.storyboardInstance()!
+      viewController.modalPresentationStyle = .overFullScreen
+      viewController.viewModel = viewModel
+      self?.present(viewController, animated: false, completion: nil)
+    }).addDisposableTo(disposeBag)
   }
 
   func configureFooter() {
     guard let viewModel = self.viewModel else { return }
+    confirmButton.setTitle(viewModel.confirmOrderButtonTitle, for: .normal)
     confirmButton.rx.tap.bindTo(viewModel.confirmOrderButtonDidTap).addDisposableTo(disposeBag)
   }
 
@@ -92,13 +74,14 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
       cell.configure(viewModel: cellViewModel)
       return cell
     }
-
     tableView.delegate = nil
     tableView.rx
       .setDelegate(self)
       .addDisposableTo(disposeBag)
 
     guard let viewModel = viewModel else { return }
+    headerView.configure(viewModel: viewModel.orderConfirmTableHeaderViewModel)
+    tableView.tableHeaderView = headerView
 
     tableView.rx.itemSelected
       .bindTo(viewModel.itemDidSelect)
@@ -121,10 +104,6 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
   
   override func viewDidDisappear(_ animated: Bool) {
     navigationController?.navigationBar.isTranslucent = false
-  }
-  
-  @IBAction func headerViewDidTap(_ sender: Any) {
-    viewModel?.headerViewDidTap.onNext()
   }
   
 }
