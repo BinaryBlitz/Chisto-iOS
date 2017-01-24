@@ -87,6 +87,8 @@ class Order: ServerObject {
   dynamic var paid: Bool = false
   dynamic var statusString: String = ""
   dynamic var paymentUrl: String = ""
+  dynamic var promoCode: String = ""
+  dynamic var promoCodeDiscount: Double = 0
   dynamic var email: String? = nil
   dynamic var deliveryPrice: Double = 0
   dynamic var createdAt: Date = Date()
@@ -102,6 +104,11 @@ class Order: ServerObject {
 
   var orderPrice: Double {
     return totalPrice - deliveryPrice
+  }
+
+  var paymentMethod: PaymentMethod {
+    guard payment != nil else { return .cash }
+    return .card
   }
 
   var ratingRequired: Bool  {
