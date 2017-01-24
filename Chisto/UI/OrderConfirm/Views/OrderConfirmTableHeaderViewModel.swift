@@ -19,10 +19,11 @@ class OrderConfirmTableHeaderViewModel {
   var laundryRating: Float
   var ratingsCountText: String
   var collectionDate: String
+  var collectionTime: String
   var collectionPrice: String
   var orderPrice: String
   var deliveryDate: String
-  let hoursTitle: String
+  let deliveryTime: String
   let headerViewDidTap = PublishSubject<Void>()
   let promoCodeButtonDidTap = PublishSubject<Void>()
 
@@ -40,7 +41,8 @@ class OrderConfirmTableHeaderViewModel {
     self.collectionPrice = collectionPrice > 0 ? collectionPrice.currencyString : "Бесплатно"
     self.deliveryDate = laundry.deliveryDate.shortDate
     self.orderPrice = price.currencyString
-    self.hoursTitle = laundry.deliveryTimeInterval
+    self.deliveryTime = laundry.deliveryTimeInterval
+    self.collectionTime = laundry.collectionTimeInterval
 
   }
 

@@ -33,8 +33,8 @@ class OrderConfirmTableHeaderView: UIView {
     self.viewModel = viewModel
     laundryDecriptionLabel.text = viewModel.laundryDescriprionTitle
     laundryLogoImageView.kf.setImage(with: viewModel.laundryIcon)
-    collectionTimeLabel.text = viewModel.hoursTitle
-    deliveryTimeLabel.text = viewModel.hoursTitle
+    collectionTimeLabel.text = viewModel.collectionTime
+    deliveryTimeLabel.text = viewModel.deliveryTime
     laundryRatingView.rating = viewModel.laundryRating 
     laundryRatingsCountLabel.text = viewModel.ratingsCountText
     collectionDateLabel.text = viewModel.collectionDate
