@@ -24,7 +24,7 @@ class MyOrdersTableViewCellModel: MyOrdersTableViewCellModelType {
   
   init(order: Order) {
     self.orderNumberTitle = "Заказ № \(order.id)"
-    self.dateStatusTitle = order.status.description + " ･ " + order.createdAt.mediumDate
+    self.dateStatusTitle = order.createdAt.mediumDate  + " ･ " + order.status.description
     self.priceTitle = order.totalPrice.currencyString
     self.icon = order.status.image
   }
