@@ -51,7 +51,7 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
       self?.present(alertController, animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
 
-    viewModel.presentRatingAlert.drive(onNext: { [weak self] viewModel in
+    viewModel.presentRatingAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] viewModel in
       let viewController = OrderReviewAlertViewController.storyboardInstance()!
       viewController.modalPresentationStyle = .overFullScreen
 

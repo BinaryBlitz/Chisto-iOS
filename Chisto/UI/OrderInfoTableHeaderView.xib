@@ -82,8 +82,12 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1C4-04-J0z">
                                             <rect key="frame" x="0.0" y="0.0" width="366" height="43.5"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="260" verticalHuggingPriority="251" image="iconIndicatorProcessing" translatesAutoresizingMaskIntoConstraints="NO" id="nk5-E7-Fzm">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="260" verticalHuggingPriority="251" image="iconIndicatorProcessing" translatesAutoresizingMaskIntoConstraints="NO" id="nk5-E7-Fzm">
                                                     <rect key="frame" x="335" y="13" width="16" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="20" id="F3M-0v-sWr"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="20" id="wD0-eA-hwO"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Дата" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imN-BE-cju">
                                                     <rect key="frame" x="0.0" y="14" width="272.5" height="16"/>

@@ -35,7 +35,7 @@ class OrderInfoViewModel {
   var navigationBarTitle: String
   var sections: Driver<[OrderInfoSectionModel]>
   let presentErrorAlert: PublishSubject<Error>
-  let presentRatingAlert: Driver<OrderReviewAlertViewModel>
+  let presentRatingAlert = PublishSubject<OrderReviewAlertViewModel>()
   let orderInfoTableHeaderViewModel: OrderInfoTableHeaderViewModel
   
   // Data
@@ -48,9 +48,6 @@ class OrderInfoViewModel {
     let order = Variable<Order?>(nil)
     let realm = RealmManager.instance.uiRealm
     if let orderObject = realm.object(ofType: Order.self, forPrimaryKey: orderId) { order.value = orderObject }
-    self.presentRatingAlert = ratingButtonDidTap
-      .asDriver(onErrorDriveWith: .empty())
-      .filter { order.value != nil }.map { OrderReviewAlertViewModel(order: order.value!) }
 
     self.navigationBarTitle = "Заказ № \(orderId)"
     let observableOrder = order.asObservable().filter { $0 != nil }.map { $0! }
@@ -67,6 +64,20 @@ class OrderInfoViewModel {
       let cellModels = orderLineItems.map(OrderInfoTableViewCellModel.init) as [OrderInfoTableViewCellModelType]
       return [OrderInfoSectionModel(model: "", items: cellModels)]
     }.asDriver(onErrorDriveWith: .empty())
+
+    let shouldRateOrderObservable = DataManager.instance.showUser()
+      .map { ProfileManager.instance.userProfile.value.order }.filter { order in
+        guard let order = order else { return false }
+        return order.id == orderId && order.rating == nil
+    }
+
+    shouldRateOrderObservable.map { OrderReviewAlertViewModel(order: $0!) }
+      .bindTo(presentRatingAlert).addDisposableTo(disposeBag)
+
+    ratingButtonDidTap
+      .filter { order.value != nil }.map { OrderReviewAlertViewModel(order: order.value!) }
+      .bindTo(presentRatingAlert).addDisposableTo(disposeBag)
+
   }
   
 }
