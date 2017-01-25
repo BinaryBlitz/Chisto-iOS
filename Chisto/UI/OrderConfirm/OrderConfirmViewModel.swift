@@ -25,6 +25,16 @@ protocol OrderConfirmViewModelType {
   var presentRegistrationSection: Driver<RegistrationPhoneInputViewModel> { get }
   var presentOrderContactDataSection: Driver<Void> { get }
   var presentLaundryReviewsSection: Driver<LaundryReviewsViewModel> { get }
+
+  var laundryDescriprionTitle: String { get }
+  var laundryIcon: URL? { get }
+  var laundryBackground: URL? { get }
+  var laundryRating: Float { get }
+  var ratingsCountText: String { get }
+  var collectionDate: String { get }
+  var collectionTime: String { get }
+  var deliveryDate: String { get }
+  var deliveryTime: String { get }
 }
 
 class OrderConfirmViewModel: OrderConfirmViewModelType {
@@ -45,6 +55,16 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   let presentPromoCodeAlert: Driver<PromoCodeAlertViewModel>
   let orderConfirmTableHeaderViewModel: OrderConfirmTableHeaderViewModel
 
+  var laundryDescriprionTitle: String
+  var laundryIcon: URL?  = nil
+  var laundryBackground: URL? = nil
+  var laundryRating: Float
+  var ratingsCountText: String
+  var collectionDate: String
+  var collectionTime: String
+  var deliveryDate: String
+  let deliveryTime: String
+
   let ratingCountLabels = ["отзыв", "отзыва", "отзывов"]
   
   enum NextScreen {
@@ -56,6 +76,15 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
     let price = OrderManager.instance.price(laundry: laundry, includeCollection: true)
     self.navigationBarTitle = laundry.name
     self.confirmOrderButtonTitle = "Оформить заказ: " + price.currencyString
+    self.laundryDescriprionTitle = laundry.descriptionText
+    self.laundryRating = laundry.rating
+    self.ratingsCountText = "\(laundry.ratingsCount) " + getRussianNumEnding(number: laundry.ratingsCount, endings: ratingCountLabels)
+    self.laundryIcon = URL(string: laundry.logoUrl)
+    self.laundryBackground = URL(string: laundry.backgroundImageUrl)
+    self.collectionDate = laundry.collectionDate.shortDate
+    self.deliveryDate = laundry.deliveryDate.shortDate
+    self.deliveryTime = laundry.deliveryTimeInterval
+    self.collectionTime = laundry.collectionTimeInterval
 
     let orderConfirmTableHeaderViewModel = OrderConfirmTableHeaderViewModel(laundry: laundry)
     self.orderConfirmTableHeaderViewModel = orderConfirmTableHeaderViewModel

@@ -372,17 +372,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Картой онлайн" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2O-sw-1sU">
-                                                    <rect key="frame" x="46" y="24" width="107" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Банковской картой" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2O-sw-1sU">
+                                                    <rect key="frame" x="46" y="24" width="137" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconVisaNoactive" highlightedImage="iconVisaActive" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S4R-Oh-4jz">
-                                                    <rect key="frame" x="166" y="23" width="31" height="20"/>
+                                                    <rect key="frame" x="196" y="23" width="31" height="20"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconMastercardNoactive" highlightedImage="iconMastercardActtive" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iLC-2U-ntd">
-                                                    <rect key="frame" x="202" y="23" width="31" height="20"/>
+                                                    <rect key="frame" x="232" y="23" width="31" height="20"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckOn" translatesAutoresizingMaskIntoConstraints="NO" id="D1G-rA-v9y">
                                                     <rect key="frame" x="372" y="19" width="27" height="27"/>

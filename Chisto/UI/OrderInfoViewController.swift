@@ -85,6 +85,18 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
     tableView.rowHeight = UITableViewAutomaticDimension
   }
 
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    let headerView = tableView.tableHeaderView!
+    headerView.setNeedsLayout()
+    headerView.layoutIfNeeded()
+    let height = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+    var frame = headerView.frame
+    frame.size.height = height
+    headerView.frame = frame
+    tableView.tableHeaderView = headerView
+  }
+
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
     return footerView
   }
