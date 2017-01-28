@@ -33,7 +33,7 @@ class LaundryReviewsViewModel: LaundryReviewsViewModelType {
   let laundryTitle: String
   let laundryRating: Float
   let laundryReviewsCountText: String
-  let ratingCountLabels = ["отзыв", "отзыва", "отзывов"]
+  let ratingCountLabels = ["ratingNominitive".localized, "ratingGenitive".localized, "ratingsNominitive".localized]
   let tableIsEmpty: Driver<Bool>
 
   init(laundry: Laundry) {

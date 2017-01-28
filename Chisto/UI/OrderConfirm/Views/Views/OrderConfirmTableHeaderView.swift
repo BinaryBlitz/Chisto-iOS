@@ -35,9 +35,4 @@ class OrderConfirmTableHeaderView: UIView {
   }
 
 
-  @IBAction func headerViewDidTap(_ sender: Any) {
-    viewModel?.headerViewDidTap.onNext()
-  }
-
-
 }

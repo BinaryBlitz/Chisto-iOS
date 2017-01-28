@@ -96,11 +96,11 @@ enum NetworkError: Error, CustomStringConvertible {
       guard let errorDictionary = json.dictionary else { return json.rawString() ?? "" }
       return parseErrorDictionary(errorDictionary)
     case .unknown:
-      return "Неизвестная ошибка"
+      return "unknownError".localized
     case .serverUnavaliable:
-      return "Ошибка на сервере"
+      return "serverError".localized
     case .unexpectedResponseFormat:
-      return "Неизвестный формат ответа сервера"
+      return "unexpectedResponse".localized
     }
   }
 

@@ -13,8 +13,8 @@ import RxCocoa
 
 class OrderInfoTableHeaderViewModel {
   let disposeBag = DisposeBag()
-  var laundryTitle = Variable<String?>("Химчистка")
-  var laundryDescriprion = Variable<String?>("Описание химчистки")
+  var laundryTitle = Variable<String?>("")
+  var laundryDescriprion = Variable<String?>("")
   var laundryIcon = Variable<URL?>(nil)
   var orderNumber: String = ""
   var orderDate = Variable<String>("")
@@ -33,9 +33,9 @@ class OrderInfoTableHeaderViewModel {
 
   init(order: Observable<Order>) {
     order.map { $0.createdAt.mediumDate }.bindTo(self.orderDate).addDisposableTo(disposeBag)
-    order.map { $0.status.description }.bindTo(self.orderStatus).addDisposableTo(disposeBag)
-    order.map { $0.status.image }.bindTo(self.orderStatusIcon).addDisposableTo(disposeBag)
-    order.map { $0.status.color }.bindTo(self.orderStatusColor).addDisposableTo(disposeBag)
+    order.map { $0.status?.description ?? "" }.bindTo(self.orderStatus).addDisposableTo(disposeBag)
+    order.map { $0.status?.image }.bindTo(self.orderStatusIcon).addDisposableTo(disposeBag)
+    order.map { $0.status?.color ?? .chsSkyBlue }.bindTo(self.orderStatusColor).addDisposableTo(disposeBag)
 
     order.map { $0.deliveryPriceString }.bindTo(deliveryPrice).addDisposableTo(disposeBag)
     order.map { $0.orderPrice.currencyString }.bindTo(orderPrice).addDisposableTo(disposeBag)

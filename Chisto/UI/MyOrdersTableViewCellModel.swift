@@ -18,15 +18,16 @@ protocol MyOrdersTableViewCellModelType {
 
 class MyOrdersTableViewCellModel: MyOrdersTableViewCellModelType {
   var icon: UIImage? = nil
-  let orderNumberTitle: String
-  let dateStatusTitle: String
-  var priceTitle: String
+  var orderNumberTitle: String = ""
+  var dateStatusTitle: String = ""
+  var priceTitle: String = ""
   
   init(order: Order) {
-    self.orderNumberTitle = "Заказ № \(order.id)"
-    self.dateStatusTitle = order.createdAt.mediumDate  + " ･ " + order.status.description
+    self.orderNumberTitle = String(format: "orderNumber".localized, String(order.id))
     self.priceTitle = order.totalPrice.currencyString
-    self.icon = order.status.image
+    guard let status = order.status else { return }
+    self.dateStatusTitle = order.createdAt.mediumDate  + " ･ " + status.description
+    self.icon = status.image
   }
   
 }

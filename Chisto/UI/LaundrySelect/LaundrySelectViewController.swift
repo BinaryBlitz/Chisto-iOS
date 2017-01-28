@@ -25,21 +25,21 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
       .addDisposableTo(disposeBag)
 
     viewModel.presentSortSelectSection.drive(onNext: { [weak self] _ in
-      let alertController = UIAlertController(title: "Сортировка химчисток:", message: nil, preferredStyle: .alert)
+      let alertController = UIAlertController(title: "laundrySorting", message: nil, preferredStyle: .alert)
       
-      let byPriceAction = UIAlertAction(title: "По цене", style: .default, handler: { _ in
+      let byPriceAction = UIAlertAction(title: "byPrice".localized, style: .default, handler: { _ in
         self?.viewModel.sortType.value = .byPrice
       })
       
-      let bySpeedAction = UIAlertAction(title: "По скорости", style: .default, handler: { _ in
+      let bySpeedAction = UIAlertAction(title: "bySpeed".localized, style: .default, handler: { _ in
         self?.viewModel.sortType.value = .bySpeed
       })
       
-      let byRatingAction = UIAlertAction(title: "По рейтингу", style: .default, handler: { _ in
+      let byRatingAction = UIAlertAction(title: "byRating".localized, style: .default, handler: { _ in
         self?.viewModel.sortType.value = .byRating
       })
       
-      let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+      let cancelAction = UIAlertAction(title: "cancel".localized, style: .cancel, handler: nil)
 
       alertController.addAction(byRatingAction)
       alertController.addAction(byPriceAction)

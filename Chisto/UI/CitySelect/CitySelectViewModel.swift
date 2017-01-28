@@ -50,7 +50,7 @@ class CitySelectViewModel: CitySelectViewModelType {
   let searchBarDidBeginEditing = PublishSubject<Void>()
 
   // Output
-  let navigationBarTitle = "Выбор города"
+  let navigationBarTitle = "chooseCity".localized
   let sections: Driver<[CitySelectSectionModel]>
   let presentCityNotFoundController: Driver<Void>
   let hideKeyboard: Driver<Void>

@@ -13,4 +13,9 @@ extension String {
     return NSLocalizedString(self,
                              tableName: tableName, bundle: Bundle.main, value: "", comment: "")
   }
+
+  var localized: String {
+    return NSLocalizedString(self,
+                             tableName: "Localizable", bundle: Bundle.main, value: "", comment: "")
+  }
 }

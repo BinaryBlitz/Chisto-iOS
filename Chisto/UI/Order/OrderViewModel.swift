@@ -55,9 +55,9 @@ class OrderViewModel: OrderViewModelType {
   var continueButtonEnabled: Variable<Bool>
 
   // Constants
-  let navigationBarTitle = "Заказ"
-  let deleteButtonTitle = "Удалить"
-  let footerButtonTitle = "Ничего не выбрано"
+  let navigationBarTitle = "order".localized
+  let deleteButtonTitle = "delete".localized
+  let footerButtonTitle = "nothingIsChosen".localized
 
   // Data
   let currentOrderItems: Variable<[OrderItem]>

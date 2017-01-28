@@ -106,13 +106,13 @@ class RegistrationPhoneInputViewController: UIViewController {
 
   private func alertController(forError error: DataError) -> UIAlertController {
     let alertController = UIAlertController(
-      title: "Ошибка",
+      title: "error".localized,
       message: error.description,
       preferredStyle: .alert
     )
 
     let defaultAction = UIAlertAction(
-      title: "OK",
+      title: "OK".localized,
       style: .default,
       handler: nil
     )

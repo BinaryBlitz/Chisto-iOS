@@ -264,6 +264,9 @@
                                     <constraint firstItem="ZTu-hY-IMI" firstAttribute="leading" secondItem="f1v-OG-pMf" secondAttribute="leading" constant="15" id="lUS-bZ-DfI"/>
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="FYm-os-EDt" appends="YES" id="76N-Vo-Wt7"/>
+                                </connections>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="deliveryTimeBackground" translatesAutoresizingMaskIntoConstraints="NO" id="HaW-uY-uQ1">
                                 <rect key="frame" x="0.0" y="238" width="375" height="55"/>
@@ -329,6 +332,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCt-iz-XFY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="FYm-os-EDt">
+                    <connections>
+                        <action selector="headerViewDidTap:" destination="crq-3N-4JC" id="UrO-98-nhG"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1631.2" y="-2683.8080959520244"/>
         </scene>

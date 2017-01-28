@@ -1,0 +1,133 @@
+/* 
+  Localizable.strings
+  Chisto
+
+  Created by Алексей on 28.01.17.
+  Copyright © 2017 Binary Blitz. All rights reserved.
+*/
+
+"orderNumber" = "Заказ № %@";
+
+"orderCompleted" = "Заказ № %@ исполнен!";
+
+"registration" = "Регистрация";
+
+"codeSent" = "На номер %@ был отправлен код";
+
+"sendAgain" = "Выслать повторно";
+
+"licenseAgreementDescription1" = "Регистрируясь в приложении, вы принимаете условия";
+
+"licenseAgreementDescription2" = "Пользовательского соглашения";
+
+"decoration" = "Декор";
+
+"cancel" = "Отмена";
+
+"call" = "Позвонить";
+
+"error" = "Ошибка";
+
+"OK" = "ОК";
+
+"order" = "Заказ";
+
+"noOrders" = "Нет заказов";
+
+"myOrders" = "Мои заказы";
+
+"ratingNominitive" = "отзыв";
+
+"ratingGenitive" = "отзыва";
+
+"ratingsGenitive" = "отзывов";
+
+"noRatings" = "Нет отзывов";
+
+"chooseItem" = "Выбрать вещь";
+
+"itemNominitive" = "вещь";
+
+"itemGenitive" = "вещи";
+
+"itemssGenitive" = "вещей";
+
+"chooseCity" = "Выбор города";
+
+"itemsCollection" = "Сбор вещей";
+
+"delivery" = "Доставка";
+
+"cost" = "Стоимость";
+
+"contactInfo" = "Контактная информация";
+
+"deliveryAdress" = "Адрес доставки";
+
+"orderComments" = "Комментарии к заказу";
+
+"paymentMethod" = "Способ оплаты";
+
+"decorationLong" = "Декоративная отделка";
+
+"delete" = "Удалить";
+
+"lastTimeOrder" = "В прошлый раз вы заказывали в химчистке %@";
+
+"free" = "Бесплатно";
+
+"laundrySorting" = "Сортировка химчисток:";
+
+"byPrice" = "По цене";
+
+"bySpeed" = "По скорости";
+
+"byRating" = "По рейтингу";
+
+"onboardingStep1" = "Добавьте в список вещи, которые хотите сдать в чистку";
+
+"onboardingStep2" = "Ознакомьтесь с ценой и сроками выполнения вашего заказа";
+
+"onboardingStep3" = "Выберите подходящего вам исполнителя";
+
+"onboardingStep4" = "Ожидайте звонка. Оператор согласует время забора и доставки вещей";
+
+"onboardingStep5" = "Выберите подходящего вам исполнителя";
+
+"nothingIsChosen" = "Ничего не выбрано";
+
+"continue" = "Продолжить";
+
+"confirmOrder" = "Оформить заказ: ";
+
+"hasDecorationRequest" = "Есть ли у вещи декоративная отделка?";
+
+"decorationDescription" = "К декоративной отделке относятся стразы, бисер, пайетки, кружева и прочие украшения, требующие особого внимания";
+
+"decorationDescriptionShort" = "Стразы, бисер, пайетки, кружева и прочие украшения, требующие особого внимания";
+
+"unknownError" = "Неизвестная ошибка";
+
+"serverError" = "Ошибка на сервере";
+
+"unexpectedResponse" = "Неизвестный формат ответа сервера";
+
+"processing" = "Обрабатывается";
+
+"cleaning" = "В чистке";
+
+"dispatched" = "Доставка";
+
+"completed" = "Выполнен";
+
+"errored" = "Ошибка";
+
+"canceled" = "Отменён";
+
+"card" = "Карта";
+
+"cash" = "Наличные";
+
+"apple_pay" = "Apple Pay";
+
+"timeInterval" = "с %@ до %@";

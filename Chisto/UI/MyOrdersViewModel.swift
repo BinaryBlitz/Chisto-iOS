@@ -28,7 +28,7 @@ class MyOrdersViewModel: MyOrdersViewModelType {
   
   let itemDidSelect = PublishSubject<IndexPath>()
   let sections: Driver<[MyOrdersSectionModel]>
-  let navigationBarTitle = "Мои заказы"
+  let navigationBarTitle = "myOrders".localized
   let orders: Variable<[Order]>
   let tableIsEmpty: Driver<Bool>
   let presentOrderInfoSection: Driver<OrderInfoViewModel>

@@ -36,10 +36,10 @@ class ContactFormViewModel {
     case orderRegistration
   }
 
-  let contactInfoHeaderModel = ContactFormTableHeaderViewModel(title: "Контактная информация", icon: #imageLiteral(resourceName: "iconSmallUser"))
-  let adressHeaderModel = ContactFormTableHeaderViewModel(title: "Адрес доставки", icon: #imageLiteral(resourceName: "iconSmallAddress"), isEnabledButton: true)
-  let commentHeaderModel = ContactFormTableHeaderViewModel(title: "Комментарии к заказу", icon: #imageLiteral(resourceName: "iconSmallComment"))
-  let paymentHeaderModel = ContactFormTableHeaderViewModel(title: "Способ оплаты", icon: #imageLiteral(resourceName: "iconSmollGrayWallet"))
+  let contactInfoHeaderModel = ContactFormTableHeaderViewModel(title: "contactInfo".localized, icon: #imageLiteral(resourceName: "iconSmallUser"))
+  let adressHeaderModel = ContactFormTableHeaderViewModel(title: "deliveryAdress".localized, icon: #imageLiteral(resourceName: "iconSmallAddress"), isEnabledButton: true)
+  let commentHeaderModel = ContactFormTableHeaderViewModel(title: "orderComments".localized, icon: #imageLiteral(resourceName: "iconSmallComment"))
+  let paymentHeaderModel = ContactFormTableHeaderViewModel(title: "paymentMethod".localized, icon: #imageLiteral(resourceName: "iconSmollGrayWallet"))
 
   var city: Variable<String?>
   var firstName: Variable<String?>

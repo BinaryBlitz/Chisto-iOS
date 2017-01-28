@@ -32,7 +32,7 @@ class MyOrdersViewController: UITableViewController, DefaultBarColoredViewContro
   }
   
   func configureTableView() {
-    emptyTableBackgroundView.title = "Нет заказов"
+    emptyTableBackgroundView.title = "noOrders".localized
     tableView.backgroundView = emptyTableBackgroundView
     tableView.backgroundView?.isHidden = true
 

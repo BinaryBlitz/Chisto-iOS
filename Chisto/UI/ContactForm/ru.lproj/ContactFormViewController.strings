@@ -1,0 +1,48 @@
+
+/* Class = "UITextField"; placeholder = "Фамилия"; ObjectID = "0fM-cp-xT4"; */
+"0fM-cp-xT4.placeholder" = "Фамилия";
+
+/* Class = "UITableViewSection"; headerTitle = "Адрес доставки"; ObjectID = "4zs-ib-ahR"; */
+"4zs-ib-ahR.headerTitle" = "Адрес доставки";
+
+/* Class = "UITextField"; placeholder = "Имя"; ObjectID = "7Lr-Mh-tXP"; */
+"7Lr-Mh-tXP.placeholder" = "Имя";
+
+/* Class = "UITextField"; placeholder = "Почта"; ObjectID = "80I-v4-6N6"; */
+"80I-v4-6N6.placeholder" = "Почта";
+
+/* Class = "UITextField"; placeholder = "Дом"; ObjectID = "EoK-sS-Wyh"; */
+"EoK-sS-Wyh.placeholder" = "Дом";
+
+/* Class = "UITextField"; placeholder = "Квартира"; ObjectID = "Ffi-Cd-Wuq"; */
+"Ffi-Cd-Wuq.placeholder" = "Квартира";
+
+/* Class = "UITextField"; placeholder = "Город"; ObjectID = "Q4U-Kd-ebp"; */
+"Q4U-Kd-ebp.placeholder" = "Город";
+
+/* Class = "UITableViewSection"; headerTitle = "Контактная информация"; ObjectID = "R3Q-JO-MEf"; */
+"R3Q-JO-MEf.headerTitle" = "Контактная информация";
+
+/* Class = "UILabel"; text = "Наличными"; ObjectID = "TtB-pB-2Xh"; */
+"TtB-pB-2Xh.text" = "Наличными";
+
+/* Class = "UITableViewSection"; headerTitle = "Способы оплаты"; ObjectID = "WJY-oz-4ar"; */
+"WJY-oz-4ar.headerTitle" = "Способы оплаты";
+
+/* Class = "UITableViewSection"; headerTitle = "Комментарии к заказу"; ObjectID = "WfX-vb-qBc"; */
+"WfX-vb-qBc.headerTitle" = "Комментарии к заказу";
+
+/* Class = "UITextField"; placeholder = "Улица"; ObjectID = "acm-lZ-3Xp"; */
+"acm-lZ-3Xp.placeholder" = "Улица";
+
+/* Class = "UITextField"; placeholder = "Телефон"; ObjectID = "czl-MC-Kzf"; */
+"czl-MC-Kzf.placeholder" = "Телефон";
+
+/* Class = "UITextField"; text = "+7"; ObjectID = "czl-MC-Kzf"; */
+"czl-MC-Kzf.text" = "+7";
+
+/* Class = "UITextField"; placeholder = "Ваш комментарий"; ObjectID = "mm6-XM-pfY"; */
+"mm6-XM-pfY.placeholder" = "Ваш комментарий";
+
+/* Class = "UILabel"; text = "Банковской картой"; ObjectID = "y2O-sw-1sU"; */
+"y2O-sw-1sU.text" = "Банковской картой";

@@ -26,7 +26,7 @@ class OrderReviewAlertViewModel {
   let uiEnabled: Variable<Bool>
 
   init(order: Order) {
-    self.title = "Заказ № \(order.id) исполнен!"
+    self.title = String(format: "orderCompleted".localized, String(order.id))
     let ratingStarsCount = Variable(0)
     self.ratingStarsCount = ratingStarsCount
 

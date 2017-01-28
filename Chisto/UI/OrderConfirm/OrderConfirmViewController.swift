@@ -33,6 +33,9 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
   @IBOutlet weak var deliveryDateLabel: UILabel!
   @IBOutlet weak var deliveryTimeLabel: UILabel!
 
+  @IBAction func headerViewDidTap(_ sender: Any) {
+    viewModel?.headerViewDidTap.onNext()
+  }
 
   let tableHeaderView = OrderConfirmTableHeaderView.nibInstance()!
 

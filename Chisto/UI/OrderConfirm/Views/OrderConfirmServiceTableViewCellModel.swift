@@ -30,8 +30,8 @@ class OrderConfirmServiceTableViewCellModel: OrderConfirmServiceTableViewCellMod
   let clothesServices: [Treatment]
   let laundry: Laundry
   let hasDecoration: Bool
-  var decorationPrice: String = "0 ₽"
-  let decorationTitle = "Декор"
+  var decorationPrice: String = "0"
+  let decorationTitle = "decoration".localized
 
   init(orderItem: OrderItem, laundry: Laundry) {
     self.laundry = laundry

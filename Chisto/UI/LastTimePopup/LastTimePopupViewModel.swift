@@ -41,14 +41,14 @@ class LastTimePopupViewModel: LastTimePopupViewModelType {
   var dismissViewController: Driver<Void>
 
   init(laundry: Laundry) {
-    self.title = "В прошлый раз вы заказывали в химчистке \(laundry.name)"
+    self.title = String(format: "lastTimeOrder".localized, laundry.name)
     self.laundryDescription = laundry.descriptionText
     self.laundryLogoUrl = URL(string: laundry.logoUrl)
     self.laundryBackgroundUrl = URL(string: laundry.backgroundImageUrl)
 
     let collectionDateString = laundry.collectionDate.shortDate
     let collectionPrice = OrderManager.instance.collectionPrice(laundry: laundry)
-    let collectionPriceString = collectionPrice > 0 ? collectionPrice.currencyString : "Бесплатно"
+    let collectionPriceString = collectionPrice > 0 ? collectionPrice.currencyString : "free".localized
     let collectionItemViewModel = LaundryItemInfoViewModel(type: .collection, titleText: collectionDateString, subTitleText: collectionPriceString)
 
     let deliveryDateString = laundry.deliveryDate.shortDate

@@ -25,7 +25,7 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
   let contactFormViewController = ContactFormViewController.storyboardInstance()!
 
   override func viewDidLoad() {
-    navigationItem.title = "Регистрация"
+    navigationItem.title = "registration".localized
     
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     
@@ -41,8 +41,8 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
     
     viewModel.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] error in
       guard let error = error as? DataError else { return }
-      let alertController = UIAlertController(title: "Ошибка", message: error.description, preferredStyle: .alert)
-      let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+      let alertController = UIAlertController(title: "error".localized, message: error.description, preferredStyle: .alert)
+      let defaultAction = UIAlertAction(title: "OK".localized, style: .default, handler: nil)
       alertController.addAction(defaultAction)
       self?.present(alertController, animated: true, completion: nil)
     }).addDisposableTo(disposeBag)

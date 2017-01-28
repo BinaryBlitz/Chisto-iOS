@@ -18,7 +18,7 @@ class RegistrationCodeInputViewModel {
   let licenseAgreementText: NSAttributedString
   let codeIsValid: Variable<Bool>
   let code: Variable<String?>
-  let navigationBarTitle = "Регистрация"
+  let navigationBarTitle = "registration".localized
   let dismissViewController: Driver<Void>
   let didFinishRegistration = PublishSubject<Void>()
 
@@ -31,12 +31,12 @@ class RegistrationCodeInputViewModel {
     let codeIsValid = Variable(true)
     self.codeIsValid = codeIsValid
 
-    self.subTitleText = "На номер \(phoneNumberString) был отправлен код"
-    self.resendLabelText = NSAttributedString(string: "Выслать повторно", attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
+    self.subTitleText = String(format: "codeSent".localized, phoneNumberString)
+    self.resendLabelText = NSAttributedString(string: "sendAgain".localized, attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
 
     let licenseAgreementString = NSMutableAttributedString()
-    licenseAgreementString.append(NSAttributedString(string: "Регистрируясь в приложении, вы принимаете условия "))
-    licenseAgreementString.append(NSAttributedString(string: "Пользовательского соглашения", attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue]))
+    licenseAgreementString.append(NSAttributedString(string: "licenseAgreementDescription1".localized))
+    licenseAgreementString.append(NSAttributedString(string: "licenseAgreementDescription2".localized, attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue]))
     self.licenseAgreementText = licenseAgreementString
 
     let validationConfirmed: Driver<Bool> = code.asDriver()
