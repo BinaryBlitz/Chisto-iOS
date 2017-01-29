@@ -31,7 +31,7 @@ class OrderRegistrationViewModel {
     case payment(viewModel: PaymentViewModel)
   }
 
-  init() {
+  init(promoCode: PromoCode? = nil) {
     let disposeBag =  DisposeBag()
     self.disposeBag = disposeBag
     
@@ -41,7 +41,7 @@ class OrderRegistrationViewModel {
     let formViewModel = ContactFormViewModel(currentScreen: .orderRegistration)
     self.formViewModel = formViewModel
 
-    self.orderCost = OrderManager.instance.priceForCurrentLaundry(includeCollection: true).currencyString
+    self.orderCost = OrderManager.instance.priceForCurrentLaundry(includeCollection: true, promoCode: promoCode).currencyString
 
     self.presentLocationSelectSection = formViewModel.streetNameFieldDidTap.map {
       let viewModel = LocationSelectViewModel()
@@ -59,7 +59,7 @@ class OrderRegistrationViewModel {
     let placeOrder: () -> Driver<Order>
     placeOrder = { method in
       formViewModel.saveUserProfile().flatMap {
-        return OrderManager.instance.createOrder()
+        return OrderManager.instance.createOrder(promoCode: promoCode)
         }.do(onError: { error in
           presentErrorAlert.onNext(error)
         }).asDriver(onErrorDriveWith: .empty())

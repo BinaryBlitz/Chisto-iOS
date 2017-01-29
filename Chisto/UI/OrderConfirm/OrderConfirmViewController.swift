@@ -73,8 +73,10 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
       self.present(registrationNavigationController, animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
     
-    viewModel?.presentOrderContactDataSection.drive (onNext: { [weak self] in
-      self?.navigationController?.pushViewController(OrderRegistrationViewController.storyboardInstance()!, animated: true)
+    viewModel?.presentOrderContactDataSection.drive (onNext: { [weak self] viewModel in
+      let viewController = OrderRegistrationViewController.storyboardInstance()!
+      viewController.viewModel = viewModel
+      self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
     
     viewModel?.presentLaundryReviewsSection.drive (onNext: { [weak self] viewModel in
@@ -93,7 +95,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
 
   func configureFooter() {
     guard let viewModel = self.viewModel else { return }
-    confirmButton.setTitle(viewModel.confirmOrderButtonTitle, for: .normal)
+    viewModel.confirmOrderButtonTitle.asObservable().bindTo(confirmButton.rx.title(for: .normal)).addDisposableTo(disposeBag)
     confirmButton.rx.tap.bindTo(viewModel.confirmOrderButtonDidTap).addDisposableTo(disposeBag)
   }
 

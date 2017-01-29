@@ -30,6 +30,7 @@ enum APIPath {
   case updateUser
   case createRating(laundryId: Int)
   case subscribe
+  case showPromoCode(promoCode: String)
 
   var endpoint: String {
     switch self {
@@ -61,6 +62,8 @@ enum APIPath {
       return "user"
     case .subscribe:
       return "subscriptions"
+    case .showPromoCode(let promoCode):
+      return "promo_codes/\(promoCode)"
     }
   }
 

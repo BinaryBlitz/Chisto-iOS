@@ -342,6 +342,13 @@ extension DataManager: FetchItemsManagerType {
     }
   }
 
+  func showPromoCode(code: String) -> Observable<PromoCode?> {
+    return networkRequest(method: .get, .showPromoCode(promoCode: code)).flatMap { result -> Observable<PromoCode?> in
+      guard let promoCode = Mapper<PromoCode>().map(JSONObject: result) else { return Observable.error(DataError.responseConvertError) }
+      return Observable.just(promoCode)
+    }.catchErrorJustReturn(nil)
+  }
+
   func createRating(laundryId: Int, rating: Rating) -> Observable<Void> {
     let json = rating.toJSON()
 

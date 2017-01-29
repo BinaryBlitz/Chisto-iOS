@@ -11,7 +11,6 @@ import ObjectMapper
 
 class RequestOrder: Mappable {
 
-  // TODO: remove test email
   var streetName: String = ""
   var houseNumber: String = ""
   var apartmentNumber: String = ""
@@ -20,6 +19,7 @@ class RequestOrder: Mappable {
   var email: String? = nil
   var orderItemsAttributes: [OrderItemAttribute] = []
   var paymentMethod: PaymentMethod = .cash
+  var promoCodeId: Int? = nil
 
   init(profile: Profile) {
     apartmentNumber = profile.apartment
@@ -43,6 +43,7 @@ class RequestOrder: Mappable {
     email <- map["email"]
     paymentMethod <- (map["payment_method"], EnumTransform<PaymentMethod>())
     orderItemsAttributes <- map["order_items_attributes"]
+    promoCodeId <- map["promo_code_id"]
   }
 
 }
