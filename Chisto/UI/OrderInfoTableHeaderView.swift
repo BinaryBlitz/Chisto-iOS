@@ -39,6 +39,7 @@ class OrderInfoTableHeaderView: UIView {
     viewModel.deliveryPrice.asObservable().bindTo(deliveryPriceLabel.rx.text).addDisposableTo(disposeBag)
     viewModel.totalCost.asObservable().bindTo(orderTotalCostLabel.rx.text).addDisposableTo(disposeBag)
     viewModel.promoCode.asObservable().bindTo(orderPromoCodeLabel.rx.text).addDisposableTo(disposeBag)
+    viewModel.promoCodeDiscount.asObservable().bindTo(orderPromoCodeDiscountLabel.rx.text).addDisposableTo(disposeBag)
     viewModel.paymentMethodImage.asObservable().bindTo(paymentMethodImageView.rx.image).addDisposableTo(disposeBag)
     viewModel.paymentType.asObservable().bindTo(paymentMethodLabel.rx.text).addDisposableTo(disposeBag)
 

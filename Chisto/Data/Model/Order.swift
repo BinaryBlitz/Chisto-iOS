@@ -72,8 +72,6 @@ class Order: ServerObject {
   dynamic var paid: Bool = false
   dynamic var statusString: String = ""
   dynamic var paymentUrl: String = ""
-  dynamic var promoCode: String = ""
-  dynamic var promoCodeDiscount: Double = 0
   dynamic var email: String? = nil
   dynamic var deliveryPrice: Double = 0
   dynamic var createdAt: Date = Date()
@@ -82,13 +80,18 @@ class Order: ServerObject {
   dynamic var payment: Payment? = nil
   dynamic var rating: Rating? = nil
   var lineItems: [OrderLineItem] = []
+  var promoCode: PromoCode? = nil
 
   var ratingRequiredKey: String {
     return "ratingRequired\(laundryId)"
   }
-
   var orderPrice: Double {
-    return totalPrice - deliveryPrice
+    guard let promoCode = promoCode else { return totalPrice - deliveryPrice }
+    return (totalPrice - deliveryPrice)/(1 - Double(promoCode.discount) / 100)
+  }
+
+  var promoCodeDiscount: Double {
+    return totalPrice - deliveryPrice - orderPrice
   }
 
   var paymentMethod: PaymentMethod {
@@ -123,6 +126,7 @@ class Order: ServerObject {
     email <- map["email"]
     lineItems <- map["order_items"]
     paid <- map["paid"]
+    promoCode <- map["promo_code"]
     createdAt <- (map["created_at"], StringToDateTransform())
     statusString <- map["status"]
     laundryId <- map["laundry_id"]
