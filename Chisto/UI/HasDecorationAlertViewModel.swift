@@ -18,8 +18,8 @@ class HasDecorationAlertViewModel {
 
   let orderItem: OrderItem
 
-  let decorationAlertTitle = "hasDecorationRequest".localized
-  let decorationAlertMessage = "decorationDescription".localized
+  let decorationAlertTitle = NSLocalizedString("hasDecorationRequest", comment: "Decoration alert")
+  let decorationAlertMessage = NSLocalizedString("decorationDescription", comment: "Decoration alert")
 
   init(orderItem: OrderItem) {
     self.orderItem = orderItem

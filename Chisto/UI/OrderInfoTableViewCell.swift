@@ -42,7 +42,7 @@ class OrderInfoTableViewCell: UITableViewCell {
   private func configureDecoration(viewModel: OrderInfoTableViewCellModelType) {
     if viewModel.hasDecoration {
       let decorationServiceView = OrderConfirmServiceItemView.nibInstance()!
-      decorationServiceView.leftLabel.text = "decoration".localized
+      decorationServiceView.leftLabel.text = NSLocalizedString("decoration", comment: "Decoration service")
       decorationServiceView.rightLabel.text = viewModel.decorationPrice
       stackView.addArrangedSubview(decorationServiceView)
     }

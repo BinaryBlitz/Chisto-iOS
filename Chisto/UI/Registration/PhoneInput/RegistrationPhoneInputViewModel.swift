@@ -19,7 +19,7 @@ class RegistrationPhoneInputViewModel {
   let sendButtonDidTap = PublishSubject<Void>()
   let licenseAgreementText: NSAttributedString
   let phoneText: Variable<String?>
-  let navigationBarTitle = "registration".localized
+  let navigationBarTitle = NSLocalizedString("registration", comment: "Phone input screen title")
 
   let termsOfServiceURL = DataManager.instance.termsOfServiceURL
 
@@ -34,8 +34,8 @@ class RegistrationPhoneInputViewModel {
     self.didFinishRegistration = didFinishRegistration
 
     let licenseAgreementString = NSMutableAttributedString()
-    licenseAgreementString.append(NSAttributedString(string: "licenseAgreementDescription1".localized))
-    licenseAgreementString.append(NSAttributedString(string: "licenseAgreementDescription2".localized, attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue]))
+    licenseAgreementString.append(NSAttributedString(string: NSLocalizedString("licenseAgreementDescription1", comment: "License agreement")))
+    licenseAgreementString.append(NSAttributedString(string: NSLocalizedString("licenseAgreementDescription2", comment: "License agreement"), attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue]))
     self.licenseAgreementText = licenseAgreementString
 
     self.presentCodeInputSection = sendButtonDidTap.asObservable().flatMap { _ -> Observable<RegistrationCodeInputViewModel> in

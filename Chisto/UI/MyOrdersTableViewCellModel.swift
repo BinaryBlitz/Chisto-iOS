@@ -23,7 +23,7 @@ class MyOrdersTableViewCellModel: MyOrdersTableViewCellModelType {
   var priceTitle: String = ""
   
   init(order: Order) {
-    self.orderNumberTitle = String(format: "orderNumber".localized, String(order.id))
+    self.orderNumberTitle = String(format: NSLocalizedString("orderNumber", comment: "My orders table item"), String(order.id))
     self.priceTitle = order.totalPrice.currencyString
     guard let status = order.status else { return }
     self.dateStatusTitle = order.createdAt.mediumDate  + " ･ " + status.description

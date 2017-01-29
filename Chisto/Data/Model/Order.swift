@@ -40,7 +40,7 @@ enum OrderStatus: String {
   }
   
   var description: String {
-    return self.rawValue.localized
+    return NSLocalizedString(self.rawValue, comment: "order status")
   }
   
   var color: UIColor {
@@ -106,7 +106,7 @@ class Order: ServerObject {
   }
 
   var deliveryPriceString: String {
-    return deliveryPrice == 0 ? "free".localized : deliveryPrice.currencyString
+    return deliveryPrice == 0 ? NSLocalizedString("free", comment: "Delivery price") : deliveryPrice.currencyString
   }
   
   var status: OrderStatus? {

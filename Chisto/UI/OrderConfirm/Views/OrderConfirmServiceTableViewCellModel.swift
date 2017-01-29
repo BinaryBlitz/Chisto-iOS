@@ -31,7 +31,7 @@ class OrderConfirmServiceTableViewCellModel: OrderConfirmServiceTableViewCellMod
   let laundry: Laundry
   let hasDecoration: Bool
   var decorationPrice: String = "0"
-  let decorationTitle = "decoration".localized
+  let decorationTitle = NSLocalizedString("decoration", comment: "Decoration service")
 
   init(orderItem: OrderItem, laundry: Laundry) {
     self.laundry = laundry

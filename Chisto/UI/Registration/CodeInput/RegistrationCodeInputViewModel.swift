@@ -18,7 +18,7 @@ class RegistrationCodeInputViewModel {
   let licenseAgreementText: NSAttributedString
   let codeIsValid: Variable<Bool>
   let code: Variable<String?>
-  let navigationBarTitle = "registration".localized
+  let navigationBarTitle = NSLocalizedString("registration", comment: "Registration code input screen title")
   let dismissViewController: Driver<Void>
   let didFinishRegistration = PublishSubject<Void>()
 
@@ -31,12 +31,12 @@ class RegistrationCodeInputViewModel {
     let codeIsValid = Variable(true)
     self.codeIsValid = codeIsValid
 
-    self.subTitleText = String(format: "codeSent".localized, phoneNumberString)
-    self.resendLabelText = NSAttributedString(string: "sendAgain".localized, attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
+    self.subTitleText = String(format: NSLocalizedString("codeSent", comment: "Code input screen"), phoneNumberString)
+    self.resendLabelText = NSAttributedString(string: NSLocalizedString("sendAgain", comment: "Code input screen"), attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
 
     let licenseAgreementString = NSMutableAttributedString()
-    licenseAgreementString.append(NSAttributedString(string: "licenseAgreementDescription1".localized))
-    licenseAgreementString.append(NSAttributedString(string: "licenseAgreementDescription2".localized, attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue]))
+    licenseAgreementString.append(NSAttributedString(string: NSLocalizedString("licenseAgreementDescription1", comment: "License agreement")))
+    licenseAgreementString.append(NSAttributedString(string: NSLocalizedString("licenseAgreementDescription2", comment: "License agreement"), attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue]))
     self.licenseAgreementText = licenseAgreementString
 
     let validationConfirmed: Driver<Bool> = code.asDriver()

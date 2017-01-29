@@ -17,13 +17,13 @@ class OrderConfirmTableHeaderViewModel {
   var promoCode = Variable<String?>(nil)
   let promoCodeButtonDidTap = PublishSubject<Void>()
 
-  let ratingCountLabels = ["ratingNominitive".localized, "ratingGenitive".localized, "ratingsGenitive".localized]
+  let ratingCountLabels = [NSLocalizedString("ratingNominitive", comment: "Ratings count"), NSLocalizedString("ratingGenitive", comment: "Ratings count"), NSLocalizedString("ratingsNominitive", comment: "Ratings count")]
 
   init(laundry: Laundry) {
     let price = OrderManager.instance.price(laundry: laundry)
     self.orderPrice = price.currencyString
     let collectionPrice = laundry.collectionPrice(amount: price)
-    self.collectionPrice = collectionPrice > 0 ? collectionPrice.currencyString : "free".localized
+    self.collectionPrice = collectionPrice > 0 ? collectionPrice.currencyString : NSLocalizedString("free", comment: "Collection price")
   }
 
 }

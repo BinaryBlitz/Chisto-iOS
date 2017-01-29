@@ -38,8 +38,8 @@ class LaundryReviewsViewController: UIViewController {
     
     viewModel.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { error in
       guard let error = error as? DataError else { return }
-      let alertController = UIAlertController(title: "error".localized, message: error.description, preferredStyle: .alert)
-      let defaultAction = UIAlertAction(title: "OK".localized, style: .default, handler: nil)
+      let alertController = UIAlertController(title: NSLocalizedString("error", comment: "Error alert"), message: error.description, preferredStyle: .alert)
+      let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: "Error alert"), style: .default, handler: nil)
       alertController.addAction(defaultAction)
       self.present(alertController, animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
@@ -48,7 +48,7 @@ class LaundryReviewsViewController: UIViewController {
   }
   
   func configureTableView() {
-    emptyTableBackgroundView.title = "noRatings".localized
+    emptyTableBackgroundView.title = NSLocalizedString("noRatings", comment: "Empty ratings placeholder")
     tableView.separatorStyle = .none
     tableView.backgroundView = emptyTableBackgroundView
     tableView.backgroundView?.isHidden = true

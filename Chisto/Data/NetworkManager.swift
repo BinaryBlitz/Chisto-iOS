@@ -96,11 +96,11 @@ enum NetworkError: Error, CustomStringConvertible {
       guard let errorDictionary = json.dictionary else { return json.rawString() ?? "" }
       return parseErrorDictionary(errorDictionary)
     case .unknown:
-      return "unknownError".localized
+      return NSLocalizedString("unknownError", comment: "Network error")
     case .serverUnavaliable:
-      return "serverError".localized
+      return NSLocalizedString("serverError", comment: "Network error")
     case .unexpectedResponseFormat:
-      return "unexpectedResponse".localized
+      return NSLocalizedString("unexpectedResponse", comment: "Network error")
     }
   }
 
@@ -108,11 +108,11 @@ enum NetworkError: Error, CustomStringConvertible {
     var errorString = ""
 
     for (errorKey, errorValues) in dictionary {
-      errorString += errorKey.localized("Errors")
+      errorString += NSLocalizedString(errorKey, tableName: "Errors", comment: "Server error")
       if let valuesArray = errorValues.array {
         errorString += ":"
         for value in valuesArray {
-          errorString += " " + value.stringValue.localized("Errors")
+          errorString += NSLocalizedString(value.stringValue, tableName: "Errors", comment: "Server error")
         }
       }
       errorString += "\n"

@@ -54,7 +54,7 @@ class ItemInfoViewModel: ItemInfoViewModelType {
   var color: UIColor
 
   // Constants
-  let deleteButtonTitle = "delete".localized
+  let deleteButtonTitle = NSLocalizedString("delete", comment: "Delete button")
 
   // Table view
   var sections: Driver<[ItemInfoSectionModel]>
@@ -89,7 +89,7 @@ class ItemInfoViewModel: ItemInfoViewModelType {
       } as [ItemInfoTableViewCellModelType]
       var sections = [ItemInfoSectionModel(model: "", items: treatmentsCellModels)]
 
-      let decorationCellModel = ItemInfoTableViewCellModel("decoration".localized, "decorationLong".localized, treatments.count + 1) as ItemInfoTableViewCellModelType
+      let decorationCellModel = ItemInfoTableViewCellModel(NSLocalizedString("decoration", comment: "Decoration service"), NSLocalizedString("decorationLong", comment: "Decoration service"), treatments.count + 1) as ItemInfoTableViewCellModelType
 
       var decorationCellModels: [ItemInfoTableViewCellModelType] = []
       if hasDecoration { decorationCellModels.append(decorationCellModel) }

@@ -55,9 +55,9 @@ class OrderViewModel: OrderViewModelType {
   var continueButtonEnabled: Variable<Bool>
 
   // Constants
-  let navigationBarTitle = "order".localized
-  let deleteButtonTitle = "delete".localized
-  let footerButtonTitle = "nothingIsChosen".localized
+  let navigationBarTitle = NSLocalizedString("order", comment: "Order screen title")
+  let deleteButtonTitle = NSLocalizedString("delete", comment: "Order item delete button title")
+  let footerButtonTitle = NSLocalizedString("nothingIsChosen", comment: "No orders placeholder")
 
   // Data
   let currentOrderItems: Variable<[OrderItem]>

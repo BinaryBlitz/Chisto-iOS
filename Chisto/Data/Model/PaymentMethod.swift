@@ -26,6 +26,6 @@ enum PaymentMethod: String {
   }
   
   var description: String {
-    return self.rawValue.localized
+    return NSLocalizedString(self.rawValue, comment: "Payment method")
   }
 }

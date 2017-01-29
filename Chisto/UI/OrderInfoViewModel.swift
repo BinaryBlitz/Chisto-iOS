@@ -49,7 +49,7 @@ class OrderInfoViewModel {
     let realm = RealmManager.instance.uiRealm
     if let orderObject = realm.object(ofType: Order.self, forPrimaryKey: orderId) { order.value = orderObject }
 
-    self.navigationBarTitle = String(format: "orderNumber".localized, String(orderId))
+    self.navigationBarTitle = String(format: NSLocalizedString("orderNumber", comment: "Order info screen title"), String(orderId))
     let observableOrder = order.asObservable().filter { $0 != nil }.map { $0! }
 
     self.orderInfoTableHeaderViewModel = OrderInfoTableHeaderViewModel(order: observableOrder)

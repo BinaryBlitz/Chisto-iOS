@@ -106,13 +106,13 @@ class RegistrationPhoneInputViewController: UIViewController {
 
   private func alertController(forError error: DataError) -> UIAlertController {
     let alertController = UIAlertController(
-      title: "error".localized,
+      title: NSLocalizedString("error", comment: "Error alert"),
       message: error.description,
       preferredStyle: .alert
     )
 
     let defaultAction = UIAlertAction(
-      title: "OK".localized,
+      title: NSLocalizedString("OK", comment: "Error alert"),
       style: .default,
       handler: nil
     )

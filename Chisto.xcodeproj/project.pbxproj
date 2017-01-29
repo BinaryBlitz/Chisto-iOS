@@ -125,7 +125,6 @@
 		889923941DDCAF8200D73905 /* ItemInfoNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889923931DDCAF8200D73905 /* ItemInfoNavigationController.storyboard */; };
 		889923961DDCAF9400D73905 /* ItemInfoNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923951DDCAF9400D73905 /* ItemInfoNavigationController.swift */; };
 		8899239C1DDD288200D73905 /* Errors.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8899239E1DDD288200D73905 /* Errors.strings */; };
-		889923A11DDD2A0200D73905 /* String+localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923A01DDD2A0200D73905 /* String+localized.swift */; };
 		889923A31DDDFC1000D73905 /* flatMapLatest+continueWithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923A21DDDFC1000D73905 /* flatMapLatest+continueWithError.swift */; };
 		889923A71DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923A61DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift */; };
 		889A84151DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */; };
@@ -337,7 +336,6 @@
 		889923951DDCAF9400D73905 /* ItemInfoNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoNavigationController.swift; sourceTree = "<group>"; };
 		8899239D1DDD288200D73905 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Errors.strings; sourceTree = "<group>"; };
 		8899239F1DDD289400D73905 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Errors.strings; sourceTree = "<group>"; };
-		889923A01DDD2A0200D73905 /* String+localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+localized.swift"; sourceTree = "<group>"; };
 		889923A21DDDFC1000D73905 /* flatMapLatest+continueWithError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "flatMapLatest+continueWithError.swift"; sourceTree = "<group>"; };
 		889923A61DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxRealm+ObjectForPrimaryKey.swift"; sourceTree = "<group>"; };
 		889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceTableViewCell.swift; sourceTree = "<group>"; };
@@ -659,7 +657,6 @@
 				8814C0381DAE8F7F005B4967 /* LocationManager.swift */,
 				88CDDE461DD922DC002BCC5E /* NSURL+QueryParams.swift */,
 				8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */,
-				889923A01DDD2A0200D73905 /* String+localized.swift */,
 				882ECDB71DE5899600EE3507 /* Sequence+categorize.swift */,
 				88E831321DFC7177005E35D9 /* Double+currencyString.swift */,
 				881F4FA71E080302009C5B17 /* Data+hexString.swift */,
@@ -1448,7 +1445,6 @@
 				8814C0561DAFA7B5005B4967 /* BottomBorderedTextField.swift in Sources */,
 				88DB938F1DCC188600DAC651 /* Treatment.swift in Sources */,
 				88BFAE6C1E07D532009CA8A0 /* NotificationManager.swift in Sources */,
-				889923A11DDD2A0200D73905 /* String+localized.swift in Sources */,
 				8872F0BE1DD8D67100E8D9EE /* RequestOrder.swift in Sources */,
 				8872F0B11DD7B2E100E8D9EE /* LocationSelectViewModel.swift in Sources */,
 				885409C31DB2E43300219C00 /* EmptyOrderView.swift in Sources */,

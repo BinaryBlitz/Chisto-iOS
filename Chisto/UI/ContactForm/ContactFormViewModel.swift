@@ -36,10 +36,10 @@ class ContactFormViewModel {
     case orderRegistration
   }
 
-  let contactInfoHeaderModel = ContactFormTableHeaderViewModel(title: "contactInfo".localized, icon: #imageLiteral(resourceName: "iconSmallUser"))
-  let adressHeaderModel = ContactFormTableHeaderViewModel(title: "deliveryAdress".localized, icon: #imageLiteral(resourceName: "iconSmallAddress"), isEnabledButton: true)
-  let commentHeaderModel = ContactFormTableHeaderViewModel(title: "orderComments".localized, icon: #imageLiteral(resourceName: "iconSmallComment"))
-  let paymentHeaderModel = ContactFormTableHeaderViewModel(title: "paymentMethod".localized, icon: #imageLiteral(resourceName: "iconSmollGrayWallet"))
+  let contactInfoHeaderModel = ContactFormTableHeaderViewModel(title: NSLocalizedString("contactInfo", comment: "Contact form header"), icon: #imageLiteral(resourceName: "iconSmallUser"))
+  let adressHeaderModel = ContactFormTableHeaderViewModel(title: NSLocalizedString("deliveryAdress", comment: "Contact form header"), icon: #imageLiteral(resourceName: "iconSmallAddress"), isEnabledButton: true)
+  let commentHeaderModel = ContactFormTableHeaderViewModel(title: NSLocalizedString("orderComments", comment: "Contact form header"), icon: #imageLiteral(resourceName: "iconSmallComment"))
+  let paymentHeaderModel = ContactFormTableHeaderViewModel(title: NSLocalizedString("paymentMethod", comment: "Contact form header"), icon: #imageLiteral(resourceName: "iconSmollGrayWallet"))
 
   var city: Variable<String?>
   var firstName: Variable<String?>

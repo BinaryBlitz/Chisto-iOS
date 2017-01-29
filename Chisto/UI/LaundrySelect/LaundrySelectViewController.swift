@@ -25,21 +25,21 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
       .addDisposableTo(disposeBag)
 
     viewModel.presentSortSelectSection.drive(onNext: { [weak self] _ in
-      let alertController = UIAlertController(title: "laundrySorting", message: nil, preferredStyle: .alert)
+      let alertController = UIAlertController(title: NSLocalizedString("laundrySorting", comment: "Laundry sorting alert"), message: nil, preferredStyle: .alert)
       
-      let byPriceAction = UIAlertAction(title: "byPrice".localized, style: .default, handler: { _ in
+      let byPriceAction = UIAlertAction(title: NSLocalizedString("byPrice", comment: "Laundry sorting alert"), style: .default, handler: { _ in
         self?.viewModel.sortType.value = .byPrice
       })
       
-      let bySpeedAction = UIAlertAction(title: "bySpeed".localized, style: .default, handler: { _ in
+      let bySpeedAction = UIAlertAction(title: NSLocalizedString("bySpeed", comment: "Laundry sorting alert"), style: .default, handler: { _ in
         self?.viewModel.sortType.value = .bySpeed
       })
       
-      let byRatingAction = UIAlertAction(title: "byRating".localized, style: .default, handler: { _ in
+      let byRatingAction = UIAlertAction(title: NSLocalizedString("byRating", comment: "Laundry sorting alert"), style: .default, handler: { _ in
         self?.viewModel.sortType.value = .byRating
       })
       
-      let cancelAction = UIAlertAction(title: "cancel".localized, style: .cancel, handler: nil)
+      let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: "Laundry sorting alert"), style: .cancel, handler: nil)
 
       alertController.addAction(byRatingAction)
       alertController.addAction(byPriceAction)

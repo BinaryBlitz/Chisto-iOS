@@ -66,7 +66,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   var deliveryDate: String
   let deliveryTime: String
 
-  let ratingCountLabels = ["ratingNominitive".localized, "ratingGenitive".localized, "ratingsGenitive".localized]
+  let ratingCountLabels = [NSLocalizedString("ratingNominitive", comment: "Ratings count"), NSLocalizedString("ratingGenitive", comment: "Ratings count"), NSLocalizedString("ratingsNominitive", comment: "Ratings count")]
   
   enum NextScreen {
     case phoneRegistration(viewModel: RegistrationPhoneInputViewModel)
@@ -76,7 +76,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   init(laundry: Laundry) {
     let price = OrderManager.instance.price(laundry: laundry, includeCollection: true)
     self.navigationBarTitle = laundry.name
-    self.confirmOrderButtonTitle = "confirmOrder".localized + price.currencyString
+    self.confirmOrderButtonTitle = NSLocalizedString("confirmOrder", comment: "Order confirm button") + price.currencyString
     self.laundryDescriprionTitle = laundry.descriptionText
     self.laundryRating = laundry.rating
     self.ratingsCountText = "\(laundry.ratingsCount) " + getRussianNumEnding(number: laundry.ratingsCount, endings: ratingCountLabels)
