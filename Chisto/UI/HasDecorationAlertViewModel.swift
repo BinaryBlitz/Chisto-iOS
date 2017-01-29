@@ -18,8 +18,8 @@ class HasDecorationAlertViewModel {
 
   let orderItem: OrderItem
 
-  let decorationAlertTitle = "Есть ли у вещи декоративная отделка?"
-  let decorationAlertMessage = "К декоративной отделке относятся стразы, бисер, пайетки, кружева и прочие украшения, требующие особого внимания."
+  let decorationAlertTitle = NSLocalizedString("hasDecorationRequest", comment: "Decoration alert")
+  let decorationAlertMessage = NSLocalizedString("decorationDescription", comment: "Decoration alert")
 
   init(orderItem: OrderItem) {
     self.orderItem = orderItem

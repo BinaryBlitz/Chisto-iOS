@@ -77,7 +77,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
 
     let decorationCellModel = Variable(
       ServiceSelectTableViewCellModel(
-        "Декор", "Стразы, бисер, пайетки, кружева и прочие украшения, требующие особого внимания", item.category?.color, isSelected: hasDecoration
+        NSLocalizedString("decoration", comment: "Decoration service"), NSLocalizedString("decorationDescriptionShort", comment: "Decoration service"), item.category?.color, isSelected: hasDecoration
       )
     )
     self.decorationCellModel = decorationCellModel

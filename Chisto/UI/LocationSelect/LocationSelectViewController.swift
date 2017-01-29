@@ -117,8 +117,8 @@ extension LocationSelectViewController: GMSAutocompleteResultsViewControllerDele
 
   func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                          didFailAutocompleteWithError error: Error){
-    let alertController = UIAlertController(title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert)
-    let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+    let alertController = UIAlertController(title: NSLocalizedString("error", comment: "Error alert"), message: error.localizedDescription, preferredStyle: .alert)
+    let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: "Error alert"), style: .default, handler: nil)
     alertController.addAction(defaultAction)
     self.present(alertController, animated: true, completion: nil)
 

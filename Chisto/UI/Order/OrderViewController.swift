@@ -65,12 +65,12 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
     viewModel.currentOrderItems.asDriver().drive(onNext: { [weak self] items in
       if items.count > 0 {
         self?.continueButton.isEnabled = true
-        self?.continueButton.titleLabel?.text = "Продолжить"
+        self?.continueButton.titleLabel?.text = NSLocalizedString("continue", comment: "Order continue button title")
         self?.tableView.separatorStyle = .singleLine
         self?.tableView.backgroundView?.isHidden = true
       } else {
         self?.continueButton.isEnabled = false
-        self?.continueButton.titleLabel?.text = "Ничего не выбрано"
+        self?.continueButton.titleLabel?.text = NSLocalizedString("nothingIsChosen", comment: "No order items placeholder")
         self?.tableView.separatorStyle = .none
         self?.tableView.backgroundView?.isHidden = false
       }

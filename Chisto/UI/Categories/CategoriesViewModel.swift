@@ -41,7 +41,7 @@ class CategoriesViewModel: CategoriesViewModelType {
   var categories: Variable<[Category]>
 
   init() {
-    self.navigationBarTitle = "Выбрать вещь"
+    self.navigationBarTitle = NSLocalizedString("chooseItem", comment: "Choose item screen title")
 
     // Data
     let presentErrorAlert = PublishSubject<Error>()

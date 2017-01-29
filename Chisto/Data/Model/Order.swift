@@ -11,14 +11,14 @@ import ObjectMapper
 import ObjectMapper_Realm
 import RealmSwift
 
-enum OrderStatus {
-  case processing
-  case confirmed
-  case cleaning
-  case dispatched
-  case completed
-  case canceled
-  case errored
+enum OrderStatus: String {
+  case processing = "processing"
+  case confirmed = "confirmed"
+  case cleaning = "cleaning"
+  case dispatched = "dispatched"
+  case completed = "completed"
+  case canceled = "canceled"
+  case errored = "errored"
   
   var image: UIImage {
     switch self {
@@ -40,22 +40,7 @@ enum OrderStatus {
   }
   
   var description: String {
-    switch self {
-    case .processing:
-      return "Обрабатывается"
-    case .confirmed:
-      return "Согласован"
-    case .cleaning:
-      return "В чистке"
-    case .dispatched:
-      return "Доставка"
-    case .completed:
-      return "Выполнен"
-    case .errored:
-      return "Ошибка"
-    case .canceled:
-      return "Отменён"
-    }
+    return NSLocalizedString(self.rawValue, comment: "order status")
   }
   
   var color: UIColor {
@@ -121,28 +106,11 @@ class Order: ServerObject {
   }
 
   var deliveryPriceString: String {
-    return deliveryPrice == 0 ? "Бесплатно": deliveryPrice.currencyString
+    return deliveryPrice == 0 ? NSLocalizedString("free", comment: "Delivery price") : deliveryPrice.currencyString
   }
   
-  var status: OrderStatus {
-    switch statusString {
-    case "processing":
-      return .processing
-    case "confirmed":
-      return .confirmed
-    case "cleaning":
-      return .cleaning
-    case "dispatched":
-      return .dispatched
-    case "canceled":
-      return .canceled
-    case "completed":
-      return .completed
-    case "errored":
-      return .errored
-    default:
-      return .processing
-    }
+  var status: OrderStatus? {
+    return OrderStatus(rawValue: statusString)
   }
   
   override func mapping(map: Map) {

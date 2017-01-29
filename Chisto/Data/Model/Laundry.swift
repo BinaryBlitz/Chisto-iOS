@@ -40,11 +40,11 @@ class Laundry: ServerObject {
   var laundryItems: [LaundryItem] = []
 
   var collectionTimeInterval: String  {
-    return "с \(collectionDateOpensAt) до \(collectionDateClosesAt)"
+    return String(format: NSLocalizedString("timeInterval", comment: "Time interval"), collectionDateOpensAt, collectionDateClosesAt)
   }
 
   var deliveryTimeInterval: String  {
-    return "с \(deliveryDateOpensAt) до \(deliveryDateClosesAt)"
+    return String(format: NSLocalizedString("timeInterval", comment: "Time interval"), deliveryDateOpensAt, deliveryDateClosesAt)
   }
 
   func collectionPrice(amount: Double) -> Double {

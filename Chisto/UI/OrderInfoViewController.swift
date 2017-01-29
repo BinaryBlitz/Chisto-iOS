@@ -40,8 +40,8 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
     footerView.phoneLabelDidTap
       .asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] in
       let alertController = UIAlertController(title: nil, message: viewModel.phoneNumber, preferredStyle: .alert)
-      let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
-      let callAction = UIAlertAction(title: "Позвонить", style: .default, handler: { [weak self] _ in
+        let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: "Call alert"), style: .cancel, handler: nil)
+        let callAction = UIAlertAction(title: NSLocalizedString("call", comment: "Call alert"), style: .default, handler: { [weak self] _ in
         guard let phoneNumber = self?.viewModel?.phoneNumber.onlyDigits else { return }
         guard let url = URL(string: "tel://+\(phoneNumber)") else { return }
         UIApplication.shared.openURL(url)

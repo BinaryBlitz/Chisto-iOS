@@ -42,13 +42,13 @@ class LaundryItemInfoViewModel {
     switch type {
     case .collection:
       self.icon = #imageLiteral(resourceName: "iconSmallCourier")
-      self.headerText = "Сбор вещей"
+      self.headerText = NSLocalizedString("itemsCollection", comment: "Order items collection")
     case .delivery:
       self.icon = #imageLiteral(resourceName: "iconSmallDelivery")
-      self.headerText = "Доставка"
+      self.headerText = NSLocalizedString("delivery", comment: "Order items delivery")
     case .cost:
       self.icon = #imageLiteral(resourceName: "iconSmallCost")
-      self.headerText = "Стоимость"
+      self.headerText = NSLocalizedString("cost", comment: "Order cost")
       if !isDisabled {
         titleColor = UIColor.chsJadeGreen
         titleLabelFont = .chsLaundryItemFont
@@ -56,7 +56,7 @@ class LaundryItemInfoViewModel {
     case .unavaliableCost(let price):
       self.icon = #imageLiteral(resourceName: "iconSmallCost")
       self.headerLabelFont = UIFont.systemFont(ofSize: 10)
-      self.headerText = "Стоимость \(price.currencyString)"
+      self.headerText = NSLocalizedString("cost", comment: "Order cost") + " " + String(price.currencyString)
       self.headerColor = UIColor.chsCoolGrey
       self.titleColor = UIColor.chsSlateGrey
       self.subTitleColor = UIColor.chsSlateGrey

@@ -50,7 +50,7 @@ class CitySelectViewModel: CitySelectViewModelType {
   let searchBarDidBeginEditing = PublishSubject<Void>()
 
   // Output
-  let navigationBarTitle = "Выбор города"
+  let navigationBarTitle = NSLocalizedString("chooseCity", comment: "City select screen title")
   let sections: Driver<[CitySelectSectionModel]>
   let presentCityNotFoundController: Driver<Void>
   let hideKeyboard: Driver<Void>
