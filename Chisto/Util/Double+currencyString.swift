@@ -15,9 +15,8 @@ extension Double {
     let localeIdentifier = "ru_RU"
     currencyFormatter.numberStyle = NumberFormatter.Style.currency
     currencyFormatter.locale = Locale(identifier: localeIdentifier)
-    let fraction = self - Double(Int(self))
-    currencyFormatter.minimumFractionDigits = Int(fraction * 100) == 0 ? 0 : 2
-    currencyFormatter.maximumFractionDigits = 2
+    currencyFormatter.minimumFractionDigits = 0
+    currencyFormatter.maximumFractionDigits = 0
     return currencyFormatter.string(from: self as NSNumber) ?? ""
   }
 

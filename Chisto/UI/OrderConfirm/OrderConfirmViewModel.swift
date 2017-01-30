@@ -66,7 +66,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   var deliveryDate: String
   let deliveryTime: String
 
-  let ratingCountLabels = [NSLocalizedString("ratingNominitive", comment: "Ratings count"), NSLocalizedString("ratingGenitive", comment: "Ratings count"), NSLocalizedString("ratingsNominitive", comment: "Ratings count")]
+  let ratingCountLabels = [NSLocalizedString("ratingNominitive", comment: "Ratings count"), NSLocalizedString("ratingGenitive", comment: "Ratings count"), NSLocalizedString("ratingsGenitive", comment: "Ratings count")]
   let promoCode: Variable<PromoCode?>
 
   enum NextScreen {

@@ -19,7 +19,7 @@ class OrderConfirmTableHeaderViewModel {
   let headerViewDidTap = PublishSubject<Void>()
   let promoCodeButtonDidTap = PublishSubject<Void>()
 
-  let ratingCountLabels = [NSLocalizedString("ratingNominitive", comment: "Ratings count"), NSLocalizedString("ratingGenitive", comment: "Ratings count"), NSLocalizedString("ratingsNominitive", comment: "Ratings count")]
+  let ratingCountLabels = [NSLocalizedString("ratingNominitive", comment: "Ratings count"), NSLocalizedString("ratingGenitive", comment: "Ratings count"), NSLocalizedString("ratingsGenitive", comment: "Ratings count")]
 
   init(laundry: Laundry) {
     let price = OrderManager.instance.price(laundry: laundry)

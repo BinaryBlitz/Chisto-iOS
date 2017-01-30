@@ -33,7 +33,7 @@ class LaundryReviewsViewModel: LaundryReviewsViewModelType {
   let laundryTitle: String
   let laundryRating: Float
   let laundryReviewsCountText: String
-  let ratingCountLabels = [NSLocalizedString("ratingNominitive", comment: "Ratings count"), NSLocalizedString("ratingGenitive", comment: "Ratings count"), NSLocalizedString("ratingsNominitive", comment: "Ratings count")]
+  let ratingCountLabels = [NSLocalizedString("ratingNominitive", comment: "Ratings count"), NSLocalizedString("ratingGenitive", comment: "Ratings count"), NSLocalizedString("ratingsGenitive", comment: "Ratings count")]
   let tableIsEmpty: Driver<Bool>
 
   init(laundry: Laundry) {

@@ -40,7 +40,7 @@ class OrderItem {
     return price * Double(area)
   }
 
-  func decorationPrice(laundry: Laundry) -> Double {
-    return price(laundry: laundry, includeDecoration: true) - price(laundry: laundry, includeDecoration: false)
+  func decorationPrice(laundry: Laundry, count: Int = 1) -> Double {
+    return price(laundry: laundry, count, includeDecoration: true) - price(laundry: laundry, count, includeDecoration: false)
   }
 }
