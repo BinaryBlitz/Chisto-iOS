@@ -113,7 +113,7 @@ enum NetworkError: Error, CustomStringConvertible {
     for (errorKey, errorValues) in dictionary {
       errorString += NSLocalizedString(errorKey, tableName: "Errors", comment: "Server error")
       if let valuesArray = errorValues.array {
-        errorString += ":"
+        errorString += " "
         for value in valuesArray {
           errorString += NSLocalizedString(value.stringValue, tableName: "Errors", comment: "Server error")
         }
