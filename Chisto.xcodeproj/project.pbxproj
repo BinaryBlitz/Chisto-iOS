@@ -294,6 +294,7 @@
 		883760D01DB8D97500C9F506 /* OnBoardingNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingNavigationController.swift; sourceTree = "<group>"; };
 		883760D21DB8DA1400C9F506 /* UIViewController+StoryboardInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+StoryboardInstance.swift"; sourceTree = "<group>"; };
 		883760D41DB8DB9F00C9F506 /* OnBoardingNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoardingNavigationController.storyboard; sourceTree = "<group>"; };
+		883887FD1E3F6AB900A5C502 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		88456DF11E37AF12003D433E /* OrderInfoTableFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoTableFooterView.swift; sourceTree = "<group>"; };
 		88456DF21E37AF12003D433E /* OrderInfoTableFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderInfoTableFooterView.xib; sourceTree = "<group>"; };
 		88456DF31E37AF12003D433E /* OrderInfoTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoTableHeaderView.swift; sourceTree = "<group>"; };
@@ -1495,6 +1496,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				88C74B971E3D0A3100F4DBCF /* ru */,
+				883887FD1E3F6AB900A5C502 /* Base */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
