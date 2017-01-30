@@ -27,7 +27,7 @@ class OrderTreatmentAttribute: Mappable {
 
 class OrderItemAttribute: Mappable {
   var quantity: Int = 0
-  var area: Int? = nil
+  var area: Double? = nil
   var itemId: Int!
   var hasDecoration: Bool = false
   var orderTreatmentsAttributes: [OrderTreatmentAttribute] = []

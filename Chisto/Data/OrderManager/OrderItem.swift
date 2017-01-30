@@ -26,10 +26,10 @@ class OrderItem {
     self.hasDecoration = hasDecoration
   }
 
-  var area: Int? {
+  var area: Double? {
     guard let size = size else { return nil }
-    let area = ceil(Double(size.length * size.width) / squareCentimetersInMeter)
-    return Int(area)
+    let area = Double(size.length * size.width) / squareCentimetersInMeter
+    return area
   }
 
   func price(laundry: Laundry, _ count: Int? = nil, includeDecoration: Bool = true) -> Double {
