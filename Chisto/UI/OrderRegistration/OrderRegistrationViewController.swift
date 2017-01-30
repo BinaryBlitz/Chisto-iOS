@@ -14,7 +14,7 @@ import RxCocoa
 class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewController {
 
   let disposeBag = DisposeBag()
-  let viewModel = OrderRegistrationViewModel()
+  var viewModel: OrderRegistrationViewModel? = nil
 
   @IBOutlet weak var bottomLayoutGuideConstraint: NSLayoutConstraint!
   @IBOutlet weak var dataView: UIView!
@@ -28,6 +28,8 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
     navigationItem.title = NSLocalizedString("registration", comment: "Order registration screen title")
     
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
+    guard let viewModel = viewModel else { return }
     
     orderCostLabel.text = viewModel.orderCost
     viewModel.buttonsAreEnabled.asObservable().bindTo(payButton.rx.isEnabled).addDisposableTo(disposeBag)
@@ -68,6 +70,7 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
   }
 
   func configureForm() {
+    guard let viewModel = viewModel else { return }
     contactFormViewController.viewModel = viewModel.formViewModel
     addChildViewController(contactFormViewController)
     contactFormViewController.didMove(toParentViewController: self)

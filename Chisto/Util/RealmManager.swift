@@ -15,7 +15,7 @@ class RealmManager {
 
   init() {
     let config = Realm.Configuration(
-      schemaVersion: 2,
+      schemaVersion: 3,
       migrationBlock: { migration, oldSchemaVersion in
 
     })

@@ -146,6 +146,7 @@
 		88BFAE6C1E07D532009CA8A0 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BFAE6B1E07D532009CA8A0 /* NotificationManager.swift */; };
 		88C497311E2E2913001AE561 /* ControlledRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C497301E2E2913001AE561 /* ControlledRatingView.swift */; };
 		88C74B961E3D0A3100F4DBCF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88C74B981E3D0A3100F4DBCF /* Localizable.strings */; };
+		88C74BAD1E3E3B4500F4DBCF /* PromoCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C74BAC1E3E3B4500F4DBCF /* PromoCode.swift */; };
 		88C9F6DD1DCD03010046DDD7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9F6DC1DCD03010046DDD7 /* Item.swift */; };
 		88C9F6DF1DCD2B320046DDD7 /* RealmString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9F6DE1DCD2B320046DDD7 /* RealmString.swift */; };
 		88C9F6E11DCDE36F0046DDD7 /* Date+toString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9F6E01DCDE36F0046DDD7 /* Date+toString.swift */; };
@@ -359,6 +360,7 @@
 		88BFAE6B1E07D532009CA8A0 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationManager.swift; path = ../Data/NotificationManager.swift; sourceTree = "<group>"; };
 		88C497301E2E2913001AE561 /* ControlledRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlledRatingView.swift; sourceTree = "<group>"; };
 		88C74B971E3D0A3100F4DBCF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		88C74BAC1E3E3B4500F4DBCF /* PromoCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoCode.swift; sourceTree = "<group>"; };
 		88C9F6DC1DCD03010046DDD7 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		88C9F6DE1DCD2B320046DDD7 /* RealmString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmString.swift; sourceTree = "<group>"; };
 		88C9F6E01DCDE36F0046DDD7 /* Date+toString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+toString.swift"; sourceTree = "<group>"; };
@@ -865,6 +867,7 @@
 				88FE7B081DE0CA4F00A16289 /* LineItem.swift */,
 				885C00951DFEE57900506961 /* LaundryItem.swift */,
 				88AF5B2E1E2BF60F00A78ABD /* Subscription.swift */,
+				88C74BAC1E3E3B4500F4DBCF /* PromoCode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1371,6 +1374,7 @@
 				880E03E91DE8F81A00311721 /* PaymentNavigationController.swift in Sources */,
 				88FE7B031DE0AFE600A16289 /* MyOrdersTableViewCell.swift in Sources */,
 				8811FE0F1DC2DB0500610712 /* ProfileNavigationController.swift in Sources */,
+				88C74BAD1E3E3B4500F4DBCF /* PromoCode.swift in Sources */,
 				8814C0401DAED9AC005B4967 /* CityNotFoundViewController.swift in Sources */,
 				88DB93891DCC115D00DAC651 /* City.swift in Sources */,
 				8814C0631DB03AD7005B4967 /* CategoryTableViewCellModel.swift in Sources */,
