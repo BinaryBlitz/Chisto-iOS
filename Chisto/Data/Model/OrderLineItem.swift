@@ -55,7 +55,9 @@ class OrderLineItem: Mappable {
     orderItemTreatments <- map["order_treatments"]
     quantity <- map["quantity"]
     itemId <- map["item_id"]
-    area <- map["area"]
+    var areaString = ""
+    areaString <- map["area"]
+    area = Double(areaString) ?? 1
     laundryItemId <- map["laundry_treatment_id"]
     hasDecoration <- map["has_decoration"]
     multiplier <- map["multiplier"]
