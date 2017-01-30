@@ -29,7 +29,7 @@ class OrderItem {
   var area: Double? {
     guard let size = size else { return nil }
     let area = Double(size.length * size.width) / squareCentimetersInMeter
-    return area
+    return area.roundTo(places: 1)
   }
 
   func price(laundry: Laundry, _ count: Int? = nil, includeDecoration: Bool = true) -> Double {

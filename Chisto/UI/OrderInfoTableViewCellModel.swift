@@ -39,7 +39,7 @@ class OrderInfoTableViewCellModel: OrderInfoTableViewCellModelType {
 
     var clothesTitle = item.name
     if item.useArea {
-      clothesTitle +=  " \(orderLineItem.area) м² "
+      clothesTitle +=  " \(orderLineItem.area.roundTo(places: 1)) м² "
     }
     let price = orderLineItem.price(singleItem: true)
     clothesTitle += " " + price.currencyString + " × \(orderLineItem.quantity)"

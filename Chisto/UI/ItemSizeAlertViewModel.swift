@@ -67,7 +67,7 @@ class ItemSizeAlertViewModel {
   func area(lengthText: String?, widthText: String?) -> String? {
     guard let lengthText = lengthText, let widthText = widthText else { return "0 м²" }
     guard let length = Double(lengthText.onlyDigits), let width = Double(widthText.onlyDigits) else { return "0 м²" }
-    let area = Double(length * width / squareCentimetersInMeter)
+    let area = Double(length * width / squareCentimetersInMeter).roundTo(places: 1)
     return "\(area) м²"
   }
 }
