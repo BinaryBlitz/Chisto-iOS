@@ -87,11 +87,11 @@ class Order: ServerObject {
   }
   var orderPrice: Double {
     guard let promoCode = promoCode else { return totalPrice - deliveryPrice }
-    return (totalPrice - deliveryPrice)/(1 - Double(promoCode.discount) / 100)
+    return totalPrice/(1 - Double(promoCode.discount) / 100) - deliveryPrice
   }
 
   var promoCodeDiscount: Double {
-    return totalPrice - deliveryPrice - orderPrice
+    return totalPrice - (orderPrice + deliveryPrice)
   }
 
   var paymentMethod: PaymentMethod {

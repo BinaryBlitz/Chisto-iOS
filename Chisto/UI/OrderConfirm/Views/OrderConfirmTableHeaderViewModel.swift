@@ -27,7 +27,7 @@ class OrderConfirmTableHeaderViewModel {
     let collectionPrice = laundry.collectionPrice(amount: price)
     self.collectionPrice = collectionPrice > 0 ? collectionPrice.currencyString : NSLocalizedString("free", comment: "Collection price")
     self.promoCodePriceDiscount = promoCode.asObservable().filter { $0 != nil }.map { promoCode in
-      let discount = OrderManager.instance.price(laundry: laundry, promoCode: promoCode) - OrderManager.instance.price(laundry: laundry)
+      let discount = OrderManager.instance.price(laundry: laundry, includeCollection: true, promoCode: promoCode) - OrderManager.instance.price(laundry: laundry, includeCollection: true)
       return discount.currencyString
     }
   }

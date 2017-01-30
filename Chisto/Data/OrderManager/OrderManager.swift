@@ -57,11 +57,13 @@ class OrderManager {
   func price(laundry: Laundry, includeCollection: Bool = false, promoCode: PromoCode? = nil) -> Double {
     let items = try! currentOrderItems.value()
     var price = items.map { $0.price(laundry: laundry) }.reduce(0, +)
+    if includeCollection {
+      price += laundry.collectionPrice(amount: price)
+    }
     if let promoCode = promoCode {
       price = price - price * Double(promoCode.discount) / 100
     }
-    guard includeCollection else { return price }
-    return price + laundry.collectionPrice(amount: price)
+    return price
   }
 
   func collectionPrice(laundry: Laundry) -> Double {
