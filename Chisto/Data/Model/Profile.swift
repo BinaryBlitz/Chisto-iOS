@@ -31,6 +31,15 @@ class Profile: Object, Mappable {
   dynamic var verificationToken: String? = nil
   dynamic var ordersCount: Int = 0
   dynamic var notes: String = ""
+  dynamic var paymentMethodRaw = PaymentMethod.card.rawValue
+  var paymentMethod: PaymentMethod {
+    get {
+      return PaymentMethod(rawValue: paymentMethodRaw) ?? .card
+    }
+    set {
+      paymentMethodRaw = newValue.rawValue
+    }
+  }
 
   private var cityId: Int? {
     return city?.id

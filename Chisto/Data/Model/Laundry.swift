@@ -27,6 +27,8 @@ class Laundry: ServerObject {
   dynamic var rating: Float = 0
   dynamic var backgroundImageUrl: String = ""
   dynamic var logoUrl: String = ""
+  dynamic var collectionDateOpensAt: String = "00:00"
+  dynamic var collectionDateClosesAt: String = "23:59"
   dynamic var deliveryDateOpensAt: String = "00:00"
   dynamic var deliveryDateClosesAt: String = "23:59"
   dynamic var deliveryFee: Double = 0
@@ -37,8 +39,12 @@ class Laundry: ServerObject {
   var laundryTreatments: [LaundryTreatment] = []
   var laundryItems: [LaundryItem] = []
 
+  var collectionTimeInterval: String  {
+    return String(format: NSLocalizedString("timeInterval", comment: "Time interval"), collectionDateOpensAt, collectionDateClosesAt)
+  }
+
   var deliveryTimeInterval: String  {
-    return "с \(deliveryDateOpensAt) до \(deliveryDateClosesAt)"
+    return String(format: NSLocalizedString("timeInterval", comment: "Time interval"), deliveryDateOpensAt, deliveryDateClosesAt)
   }
 
   func collectionPrice(amount: Double) -> Double {
@@ -50,6 +56,10 @@ class Laundry: ServerObject {
     return laundryTreatments
       .filter { $0.treatment != nil }
       .map { $0.treatment! }
+  }
+
+  var isDisabled: Bool {
+    return OrderManager.instance.price(laundry: self, includeCollection: false) < minOrderPrice
   }
   
   override func mapping(map: Map) {
@@ -66,6 +76,8 @@ class Laundry: ServerObject {
     collectionDate <- (map["collection_date"], StringToDateTransform(type: dateFormatType))
     deliveryDateOpensAt <- map["delivery_date_opens_at"]
     deliveryDateClosesAt <- map["delivery_date_closes_at"]
+    collectionDateOpensAt <- map["collection_date_opens_at"]
+    collectionDateClosesAt <- map["collection_date_closes_at"]
     deliveryFee <- map["delivery_fee"]
     freeDeliveryFrom <- map["free_delivery_from"]
     minOrderPrice <- map["minimum_order_price"]

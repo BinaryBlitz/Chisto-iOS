@@ -30,6 +30,7 @@ enum APIPath {
   case updateUser
   case createRating(laundryId: Int)
   case subscribe
+  case showPromoCode(promoCode: String)
 
   var endpoint: String {
     switch self {
@@ -61,6 +62,8 @@ enum APIPath {
       return "user"
     case .subscribe:
       return "subscriptions"
+    case .showPromoCode(let promoCode):
+      return "promo_codes/\(promoCode)"
     }
   }
 
@@ -96,11 +99,11 @@ enum NetworkError: Error, CustomStringConvertible {
       guard let errorDictionary = json.dictionary else { return json.rawString() ?? "" }
       return parseErrorDictionary(errorDictionary)
     case .unknown:
-      return "Неизвестная ошибка"
+      return NSLocalizedString("unknownError", comment: "Network error")
     case .serverUnavaliable:
-      return "Ошибка на сервере"
+      return NSLocalizedString("serverError", comment: "Network error")
     case .unexpectedResponseFormat:
-      return "Неизвестный формат ответа сервера"
+      return NSLocalizedString("unexpectedResponse", comment: "Network error")
     }
   }
 
@@ -108,11 +111,11 @@ enum NetworkError: Error, CustomStringConvertible {
     var errorString = ""
 
     for (errorKey, errorValues) in dictionary {
-      errorString += errorKey.localized("Errors")
+      errorString += NSLocalizedString(errorKey, tableName: "Errors", comment: "Server error")
       if let valuesArray = errorValues.array {
-        errorString += ":"
+        errorString += " "
         for value in valuesArray {
-          errorString += " " + value.stringValue.localized("Errors")
+          errorString += NSLocalizedString(value.stringValue, tableName: "Errors", comment: "Server error")
         }
       }
       errorString += "\n"
@@ -125,7 +128,7 @@ enum NetworkError: Error, CustomStringConvertible {
 
 class NetworkManager {
 
-  let baseURL = "https://chis.to"
+  let baseURL = "https://chisto.xyz"
 
   func doRequest(method: HTTPMethod, _ path: APIPath,
                  _ params: Parameters = [:],

@@ -13,11 +13,11 @@ class OnBoardingViewController: UIViewController {
   let viewModel = OnBoardingViewModel()
 
   let descriptionSteps: [(String, UIImage)] = [
-    (title: "Добавьте в список вещи, которые хотите сдать в чистку", icon: #imageLiteral(resourceName: "iconNum1")),
-    (title: "Ознакомьтесь с ценой и сроками выполнения вашего заказа", icon: #imageLiteral(resourceName: "iconNum2")),
-    (title: "Выберите подходящего вам исполнителя", icon: #imageLiteral(resourceName: "iconNum3")),
-    (title: "Оплатите заказ удобным для вас способом", icon: #imageLiteral(resourceName: "iconNum4")),
-    (title: "Ожидайте звонка. Оператор согласует время забора и доставки вещей", icon: #imageLiteral(resourceName: "iconNum5"))
+    (title: NSLocalizedString("onboardingStep1", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "iconNum1")),
+    (title: NSLocalizedString("onboardingStep2", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "iconNum2")),
+    (title: NSLocalizedString("onboardingStep3", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "iconNum3")),
+    (title: NSLocalizedString("onboardingStep4", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "iconNum4")),
+    (title: NSLocalizedString("onboardingStep5", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "iconNum5"))
   ]
 
   @IBOutlet weak var stackView: UIStackView!

@@ -15,11 +15,14 @@ class RegistrationCodeInputViewModel {
 
   let subTitleText: String
   let resendLabelText: NSAttributedString
+  let licenseAgreementText: NSAttributedString
   let codeIsValid: Variable<Bool>
   let code: Variable<String?>
-  let navigationBarTitle = "Регистрация"
+  let navigationBarTitle = NSLocalizedString("registration", comment: "Registration code input screen title")
   let dismissViewController: Driver<Void>
   let didFinishRegistration = PublishSubject<Void>()
+
+  let termsOfServiceURL = DataManager.instance.termsOfServiceURL
 
   init(phoneNumberString: String) {
     let code = Variable<String?>(nil)
@@ -28,8 +31,13 @@ class RegistrationCodeInputViewModel {
     let codeIsValid = Variable(true)
     self.codeIsValid = codeIsValid
 
-    self.subTitleText = "На номер \(phoneNumberString) был отправлен код"
-    self.resendLabelText = NSAttributedString(string: "Выслать повторно", attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
+    self.subTitleText = String(format: NSLocalizedString("codeSent", comment: "Code input screen"), phoneNumberString)
+    self.resendLabelText = NSAttributedString(string: NSLocalizedString("sendAgain", comment: "Code input screen"), attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
+
+    let licenseAgreementString = NSMutableAttributedString()
+    licenseAgreementString.append(NSAttributedString(string: NSLocalizedString("licenseAgreementDescription1", comment: "License agreement")))
+    licenseAgreementString.append(NSAttributedString(string: NSLocalizedString("licenseAgreementDescription2", comment: "License agreement"), attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue]))
+    self.licenseAgreementText = licenseAgreementString
 
     let validationConfirmed: Driver<Bool> = code.asDriver()
       .filter { _ in codeIsValid.value == true }
@@ -38,7 +46,9 @@ class RegistrationCodeInputViewModel {
       return DataManager.instance.verifyToken(code: code.onlyDigits).map { true }.asDriver(onErrorDriveWith: Driver.just(false))
     }
 
-    self.dismissViewController = validationConfirmed.filter { $0 == true }.map { _ in }
+    self.dismissViewController = validationConfirmed.filter { $0 == true }.flatMap { _ -> Driver<Void> in
+      return DataManager.instance.showUser().asDriver(onErrorDriveWith: .empty())
+    }.map { _ in }
   }
 
 }

@@ -80,7 +80,7 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     let currentOrderItemsObservable = OrderManager.instance.currentOrderItems.asObservable()
 
     let filteredLastOrderLaundry = lastOrderLaundry.withLatestFrom(currentOrderItemsObservable) { laundry, currentOrderItems -> Laundry? in
-      guard let laundry = laundry else { return nil }
+      guard let laundry = laundry, !laundry.isDisabled else { return nil }
       let laundryTreatments = Set(laundry.treatments)
       let orderTreatments = Set(currentOrderItems.map { $0.treatments }.reduce([], +))
       guard orderTreatments.subtracting(laundryTreatments).isEmpty else { return nil }
@@ -131,7 +131,6 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
 
   func filterLaundries(laundries: [Laundry], currentOrderItems: [OrderItem]) -> [Laundry] {
     return laundries.filter { laundry in
-      guard OrderManager.instance.price(laundry: laundry, includeCollection: false) >= laundry.minOrderPrice else { return false }
       let laundryTreatments = Set(laundry.treatments)
       let orderTreatments = Set(currentOrderItems.map { $0.treatments }.reduce([], +))
       return orderTreatments.subtracting(laundryTreatments).isEmpty
@@ -140,14 +139,17 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
 
   func sortLaundries(laundries: [Laundry], sortType: LaundrySortType) -> [Laundry] {
     let orderManager = OrderManager.instance
+    let sortedLaundries: [Laundry]
     switch sortType {
     case .byPrice:
-      return laundries.sorted { orderManager.price(laundry: $0, includeCollection: true) < orderManager.price(laundry: $1, includeCollection: true) }
+      sortedLaundries = laundries.sorted { orderManager.price(laundry: $0, includeCollection: true) < orderManager.price(laundry: $1, includeCollection: true) }
     case .byRating:
-      return laundries.sorted { $0.rating > $1.rating }
+      sortedLaundries = laundries.sorted { $0.rating > $1.rating }
     case .bySpeed:
-      return laundries.sorted { $0.deliveryDate < $1.deliveryDate }
+      sortedLaundries = laundries.sorted { $0.deliveryDate < $1.deliveryDate }
     }
+
+    return sortedLaundries.sorted { !$0.isDisabled && $1.isDisabled }
   }
 
 }

@@ -27,28 +27,38 @@ class ProfileManager {
     try! realm.write {
       closure(profile)
     }
+    userProfile.value = profile
+  }
+
+  func logout() {
+    let profile = userProfile.value
+    let realm = try! Realm()
+    let newProfile = Profile()
+    try! realm.write {
+      newProfile.city = profile.city
+      realm.delete(profile)
+      realm.add(newProfile)
+      userProfile.value = newProfile
+    }
+    UserDefaults.standard.set(newProfile.id, forKey: profileKey)
   }
   
   init() {
     var profile: Profile
+
+    let realm = RealmManager.instance.uiRealm
     
     if let profileId = UserDefaults.standard.value(forKey: profileKey),
-      let savedProfile = uiRealm.object(ofType: Profile.self, forPrimaryKey: profileId) {
+      let savedProfile = realm.object(ofType: Profile.self, forPrimaryKey: profileId) {
       profile = savedProfile
     } else {
       profile = Profile()
-      try! uiRealm.write {
-        uiRealm.add(profile)
+      try! realm.write {
+        realm.add(profile)
       }
       UserDefaults.standard.set(profile.id, forKey: profileKey)
     }
 
     self.userProfile = Variable(profile)
-    
-    let observableProfile = uiRealm.observableObject(type: Profile.self, primaryKey: profile.id)
-    observableProfile.filter { $0 != nil}
-      .map { $0! }
-      .bindTo(userProfile)
-      .addDisposableTo(disposeBag)
   }
 }

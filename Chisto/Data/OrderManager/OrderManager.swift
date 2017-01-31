@@ -30,13 +30,14 @@ class OrderManager {
     currentOrderItems.onNext(items)
   }
 
-  func createOrder(paymentMethod: PaymentMethod) -> Observable<Order> {
+  func createOrder(promoCode: PromoCode? = nil) -> Observable<Order> {
     return Observable.deferred { [weak self] in
       let profile = ProfileManager.instance.userProfile.value
       guard let laundry = self?.currentLaundry else { return Observable.empty() }
       guard let orderItems = try! self?.currentOrderItems.value() else { return Observable.empty() }
 
-      let order = RequestOrder(profile: profile, method: paymentMethod)
+      let order = RequestOrder(profile: profile)
+      order.promoCodeId = promoCode?.id
 
       order.orderItemsAttributes = orderItems.map { OrderItemAttribute(orderItem: $0, laundry: laundry) }
       
@@ -44,20 +45,25 @@ class OrderManager {
     }
   }
   
-  func priceForCurrentLaundry(includeCollection: Bool = false) -> Double {
+  func priceForCurrentLaundry(includeCollection: Bool = false, promoCode: PromoCode? = nil) -> Double {
     guard let laundry = currentLaundry else { return 0 }
-    return self.price(laundry: laundry, includeCollection: includeCollection)
+    return self.price(laundry: laundry, includeCollection: includeCollection, promoCode: promoCode)
   }
   
   func clearOrderItems() {
     currentOrderItems.onNext([])
   }
 
-  func price(laundry: Laundry, includeCollection: Bool = false) -> Double {
+  func price(laundry: Laundry, includeCollection: Bool = false, promoCode: PromoCode? = nil) -> Double {
     let items = try! currentOrderItems.value()
-    let price = items.map { $0.price(laundry: laundry) }.reduce(0, +)
-    guard includeCollection else { return price }
-    return price + laundry.collectionPrice(amount: price)
+    var price = items.map { $0.price(laundry: laundry) }.reduce(0, +)
+    if includeCollection {
+      price += laundry.collectionPrice(amount: price)
+    }
+    if let promoCode = promoCode {
+      price -= price * Double(promoCode.discount) / 100
+    }
+    return price
   }
 
   func collectionPrice(laundry: Laundry) -> Double {

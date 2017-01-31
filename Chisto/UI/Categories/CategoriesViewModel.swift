@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxDataSources
 import RxCocoa
+import RealmSwift
 
 typealias CategoriesSectionModel = SectionModel<String, CategoryTableViewCellModelType>
 
@@ -40,7 +41,7 @@ class CategoriesViewModel: CategoriesViewModelType {
   var categories: Variable<[Category]>
 
   init() {
-    self.navigationBarTitle = "Выбрать вещь"
+    self.navigationBarTitle = NSLocalizedString("chooseItem", comment: "Choose item screen title")
 
     // Data
     let presentErrorAlert = PublishSubject<Error>()
@@ -51,12 +52,17 @@ class CategoriesViewModel: CategoriesViewModelType {
     }).addDisposableTo(disposeBag)
     
     let categories = Variable<[Category]>([])
+    debugPrint(RealmManager.instance.uiRealm.objects(Category.self).sorted(byKeyPath: "name", ascending: true))
 
-    Observable.from(uiRealm.objects(Category.self)
+    let sortProperties = [SortDescriptor(keyPath: "featured", ascending: false), SortDescriptor(keyPath: "name", ascending: true)]
+
+    let realm = RealmManager.instance.uiRealm
+
+    Observable.from(realm.objects(Category.self)
       .filter("isDeleted == %@", false)
-      .sorted(byKeyPath: "name", ascending: true)
-      .sorted(byKeyPath: "featured", ascending: false))
-      .map { Array($0) }.bindTo(categories)
+      .sorted(by: sortProperties))
+      .map { Array($0) }
+      .bindTo(categories)
       .addDisposableTo(disposeBag)
 
     self.categories = categories

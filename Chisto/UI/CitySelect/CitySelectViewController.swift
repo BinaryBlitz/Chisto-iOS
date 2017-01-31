@@ -39,8 +39,8 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate, UISearch
     
     viewModel?.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { error in
       guard let error = error as? DataError else { return }
-      let alertController = UIAlertController(title: "Ошибка", message: error.description, preferredStyle: .alert)
-      let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+      let alertController = UIAlertController(title: NSLocalizedString("error", comment: "Error alert button"), message: error.description, preferredStyle: .alert)
+      let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: "OK alert button"), style: .default, handler: nil)
       alertController.addAction(defaultAction)
       self.present(alertController, animated: true, completion: nil)
     }).addDisposableTo(disposeBag)

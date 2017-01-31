@@ -21,44 +21,48 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
   var viewModel: OrderConfirmViewModel? = nil
   var dataSource = RxTableViewSectionedReloadDataSource<OrderConfirmSectionModel>()
 
-  @IBOutlet weak var backgroundImageView: UIImageView!
-
-  @IBOutlet weak var laundryDescriptionLabel: UILabel!
-  @IBOutlet weak var laundryIconView: UIImageView!
+  @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var confirmButton: GoButton!
+  @IBOutlet weak var laundryBackgroundImageView: UIImageView!
+  @IBOutlet weak var laundryLogoImageView: UIImageView!
+  @IBOutlet weak var laundryDecriptionLabel: UILabel!
+  @IBOutlet weak var laundryRatingsCountLabel: UILabel!
   @IBOutlet weak var laundryRatingView: FloatRatingView!
   @IBOutlet weak var collectionDateLabel: UILabel!
-  @IBOutlet weak var laundryReviewsCountLabel: UILabel!
+  @IBOutlet weak var collectionTimeLabel: UILabel!
   @IBOutlet weak var deliveryDateLabel: UILabel!
-  @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var orderPriceLabel: UILabel!
-  @IBOutlet weak var deliveryPriceLabel: UILabel!
-  @IBOutlet weak var confirmButton: GoButton!
-  @IBOutlet weak var collectionHoursLabel: UILabel!
-  @IBOutlet weak var deliveryHoursLabel: UILabel!
+  @IBOutlet weak var deliveryTimeLabel: UILabel!
+
+  @IBAction func headerViewDidTap(_ sender: Any) {
+    viewModel?.headerViewDidTap.onNext()
+  }
+
+  let tableHeaderView = OrderConfirmTableHeaderView.nibInstance()!
 
   override func viewDidLoad() {
     navigationItem.title = viewModel?.navigationBarTitle
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    laundryDescriptionLabel.text = viewModel?.laundryDescriprionTitle
-    laundryIconView.kf.setImage(with: viewModel?.laundryIcon)
-    collectionHoursLabel.text = viewModel?.hoursTitle
-    deliveryHoursLabel.text = viewModel?.hoursTitle
-
-    confirmButton.setTitle(viewModel?.confirmOrderButtonTitle, for: .normal)
     
-    laundryRatingView.rating = viewModel?.laundryRating ?? 0
-    laundryReviewsCountLabel.text = viewModel?.ratingsCountText
-    collectionDateLabel.text = viewModel?.collectionDate
-    orderPriceLabel.text = viewModel?.orderPrice
-    deliveryDateLabel.text = viewModel?.deliveryDate
-    deliveryPriceLabel.text = viewModel?.collectionPrice
-    
-    let backgroundProcessor = OverlayImageProcessor(overlay: .black, fraction: 0.7)
-    backgroundImageView.kf.setImage(with: viewModel?.laundryBackground, options: [.processor(backgroundProcessor)])
-
+    configureHeader()
     configureNavigations()
     configureFooter()
     configureTableView()
+  }
+
+  func configureHeader() {
+    guard let viewModel = viewModel else { return }
+    laundryDecriptionLabel.text = viewModel.laundryDescriprionTitle
+    laundryLogoImageView.kf.setImage(with: viewModel.laundryIcon)
+    collectionTimeLabel.text = viewModel.collectionTime
+    deliveryTimeLabel.text = viewModel.deliveryTime
+    laundryRatingView.rating = viewModel.laundryRating
+    laundryRatingsCountLabel.text = viewModel.ratingsCountText
+    collectionDateLabel.text = viewModel.collectionDate
+    deliveryDateLabel.text = viewModel.deliveryDate
+
+    let backgroundProcessor = OverlayImageProcessor(overlay: .black, fraction: 0.7)
+    laundryBackgroundImageView.kf.setImage(with: viewModel.laundryBackground, options: [.processor(backgroundProcessor)])
+
   }
   
   func configureNavigations() {
@@ -69,8 +73,10 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
       self.present(registrationNavigationController, animated: true, completion: nil)
     }).addDisposableTo(disposeBag)
     
-    viewModel?.presentOrderContactDataSection.drive (onNext: { [weak self] in
-      self?.navigationController?.pushViewController(OrderRegistrationViewController.storyboardInstance()!, animated: true)
+    viewModel?.presentOrderContactDataSection.drive (onNext: { [weak self] viewModel in
+      let viewController = OrderRegistrationViewController.storyboardInstance()!
+      viewController.viewModel = viewModel
+      self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
     
     viewModel?.presentLaundryReviewsSection.drive (onNext: { [weak self] viewModel in
@@ -78,10 +84,26 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
       viewController.viewModel = viewModel
       self?.navigationController?.pushViewController(viewController, animated: true)
     }).addDisposableTo(disposeBag)
+
+    viewModel?.presentPromoCodeAlert.drive(onNext: { [weak self] viewModel in
+      let viewController = PromoCodeAlertViewController.storyboardInstance()!
+      viewController.modalPresentationStyle = .overFullScreen
+      viewController.viewModel = viewModel
+      self?.present(viewController, animated: false, completion: nil)
+    }).addDisposableTo(disposeBag)
+
+    viewModel?.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { message in
+      let alertController = UIAlertController(title: NSLocalizedString("error", comment: "Error alert button"), message: message, preferredStyle: .alert)
+      let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: "OK alert button"), style: .default, handler: nil)
+      alertController.addAction(defaultAction)
+      self.present(alertController, animated: true, completion: nil)
+    }).addDisposableTo(disposeBag)
+
   }
 
   func configureFooter() {
     guard let viewModel = self.viewModel else { return }
+    viewModel.confirmOrderButtonTitle.asObservable().bindTo(confirmButton.rx.title(for: .normal)).addDisposableTo(disposeBag)
     confirmButton.rx.tap.bindTo(viewModel.confirmOrderButtonDidTap).addDisposableTo(disposeBag)
   }
 
@@ -92,14 +114,14 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
       cell.configure(viewModel: cellViewModel)
       return cell
     }
-
     tableView.delegate = nil
     tableView.rx
       .setDelegate(self)
       .addDisposableTo(disposeBag)
 
     guard let viewModel = viewModel else { return }
-
+    tableHeaderView.configure(viewModel: viewModel.orderConfirmTableHeaderViewModel)
+    tableView.tableHeaderView = tableHeaderView
     tableView.rx.itemSelected
       .bindTo(viewModel.itemDidSelect)
       .addDisposableTo(disposeBag)
@@ -122,9 +144,17 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
   override func viewDidDisappear(_ animated: Bool) {
     navigationController?.navigationBar.isTranslucent = false
   }
-  
-  @IBAction func headerViewDidTap(_ sender: Any) {
-    viewModel?.headerViewDidTap.onNext()
+
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    let headerView = tableView.tableHeaderView!
+    headerView.setNeedsLayout()
+    headerView.layoutIfNeeded()
+    let height = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+    var frame = headerView.frame
+    frame.size.height = height
+    headerView.frame = frame
+    tableView.tableHeaderView = headerView
   }
   
 }

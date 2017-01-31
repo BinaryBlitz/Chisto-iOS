@@ -40,7 +40,7 @@ class ProfileContactDataViewModel: ProfileContactDataViewModelType {
     let cityDidSelect = PublishSubject<Void>()
     self.cityDidSelect = cityDidSelect
 
-    let formViewModel = ContactFormViewModel()
+    let formViewModel = ContactFormViewModel(currentScreen: .profile)
     self.formViewModel = formViewModel
     
     let presentErrorAlert = PublishSubject<Error>()

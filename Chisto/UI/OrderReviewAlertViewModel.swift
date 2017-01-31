@@ -26,7 +26,7 @@ class OrderReviewAlertViewModel {
   let uiEnabled: Variable<Bool>
 
   init(order: Order) {
-    self.title = "Заказ № \(order.id) исполнен!"
+    self.title = String(format: NSLocalizedString("orderCompleted", comment: "Order review alert title"), String(order.id))
     let ratingStarsCount = Variable(0)
     self.ratingStarsCount = ratingStarsCount
 
@@ -59,7 +59,7 @@ class OrderReviewAlertViewModel {
 
     self.dismissViewController = didCreateReview.map {
       guard let order = ProfileManager.instance.userProfile.value.order else { return }
-      let realm = try! Realm()
+      let realm = RealmManager.instance.uiRealm
       try! realm.write {
         order.ratingRequired = false
       }

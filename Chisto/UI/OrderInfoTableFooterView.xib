@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" id="iN0-l3-epB" customClass="OrderInfoTableFooterView" customModule="Chisto" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="384" height="90"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Есть вопросы по заказу? Звоните" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="utk-LC-QaL">
+                    <rect key="frame" x="0.0" y="20" width="384" height="13.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.75686274509999996" green="0.78039215689999997" blue="0.80392156859999997" alpha="0.5045173504601228" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Номер" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOL-G0-n1M">
+                    <rect key="frame" x="0.0" y="53.5" width="384" height="16.5"/>
+                    <gestureRecognizers/>
+                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="11"/>
+                    <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="EIO-Xd-nBs" appends="YES" id="tkl-EO-h7Z"/>
+                    </connections>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K3y-vN-opG">
+                    <rect key="frame" x="0.0" y="0.0" width="384" height="0.0"/>
+                    <color key="backgroundColor" red="0.75686274509999996" green="0.78039215689999997" blue="0.80392156859999997" alpha="0.50222871932515334" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="vzI-C3-1ra"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.96078431610000004" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="K3y-vN-opG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="582-GQ-Te9"/>
+                <constraint firstItem="utk-LC-QaL" firstAttribute="top" secondItem="K3y-vN-opG" secondAttribute="bottom" constant="20" id="EzB-4K-78f"/>
+                <constraint firstItem="K3y-vN-opG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="H2O-Of-1uD"/>
+                <constraint firstAttribute="trailing" secondItem="K3y-vN-opG" secondAttribute="trailing" id="QlV-v7-k2g"/>
+                <constraint firstAttribute="trailing" secondItem="utk-LC-QaL" secondAttribute="trailing" id="Slu-D4-Eom"/>
+                <constraint firstItem="OOL-G0-n1M" firstAttribute="top" secondItem="utk-LC-QaL" secondAttribute="bottom" constant="20" id="ZSE-sA-qIm"/>
+                <constraint firstItem="utk-LC-QaL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bCS-fB-agf"/>
+                <constraint firstItem="OOL-G0-n1M" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="iNx-X5-Zbw"/>
+                <constraint firstAttribute="bottom" secondItem="OOL-G0-n1M" secondAttribute="bottom" constant="20" id="lsS-4M-eTI"/>
+                <constraint firstAttribute="trailing" secondItem="OOL-G0-n1M" secondAttribute="trailing" id="sc0-dK-VzK"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                    <real key="value" value="0.0"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                    <color key="value" red="0.75686275960000005" green="0.78039217000000005" blue="0.80392158030000005" alpha="0.50051524160000005" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="phoneLabel" destination="OOL-G0-n1M" id="97D-Ye-mXp"/>
+            </connections>
+            <point key="canvasLocation" x="59" y="132"/>
+        </view>
+        <tapGestureRecognizer id="EIO-Xd-nBs">
+            <connections>
+                <action selector="phoneDidTap:" destination="iN0-l3-epB" id="nQS-UD-taW"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+</document>

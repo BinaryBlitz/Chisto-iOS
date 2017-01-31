@@ -7,9 +7,25 @@
 //
 
 import Foundation
+import UIKit
 
 enum PaymentMethod: String {
   case card = "card"
   case cash = "cash"
   case applePay = "apple_pay"
+
+  var image: UIImage {
+    switch self {
+    case .card:
+      return #imageLiteral(resourceName: "IconIndicatorCard")
+    case .cash:
+      return #imageLiteral(resourceName: "iconIndicatorMonye")
+    case .applePay:
+      return #imageLiteral(resourceName: "IconIndicatorApplepay")
+    }
+  }
+  
+  var description: String {
+    return NSLocalizedString(self.rawValue, comment: "Payment method")
+  }
 }

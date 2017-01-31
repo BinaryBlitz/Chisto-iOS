@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IW5-D6-Ncp">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Order Confirm Container View Controller-->
+        <scene sceneID="oG7-Pr-lTo">
+            <objects>
+                <viewController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" id="IW5-D6-Ncp" customClass="OrderConfirmContainerViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cqq-2L-9jT"/>
+                        <viewControllerLayoutGuide type="bottom" id="9bG-xR-Xg5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qFj-1z-HOQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tn6-yB-OTv" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Vla-ya-TLB"/>
+                                </constraints>
+                                <state key="normal" title="Оформить заказ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                        <color key="value" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wmj-u8-qeY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                                <connections>
+                                    <segue destination="Z6w-ca-xXy" kind="embed" identifier="segueContainer" id="Nzb-WH-9Mt"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="tn6-yB-OTv" firstAttribute="leading" secondItem="qFj-1z-HOQ" secondAttribute="leading" id="6Sc-pQ-enm"/>
+                            <constraint firstAttribute="trailing" secondItem="tn6-yB-OTv" secondAttribute="trailing" id="7AI-ma-cvR"/>
+                            <constraint firstItem="Wmj-u8-qeY" firstAttribute="leading" secondItem="qFj-1z-HOQ" secondAttribute="leading" id="ETm-dM-xze"/>
+                            <constraint firstItem="9bG-xR-Xg5" firstAttribute="top" secondItem="tn6-yB-OTv" secondAttribute="bottom" id="P10-O8-Ige"/>
+                            <constraint firstAttribute="trailing" secondItem="Wmj-u8-qeY" secondAttribute="trailing" id="rdm-ZD-RHi"/>
+                            <constraint firstItem="Wmj-u8-qeY" firstAttribute="top" secondItem="cqq-2L-9jT" secondAttribute="bottom" id="uyP-rk-6hV"/>
+                            <constraint firstItem="tn6-yB-OTv" firstAttribute="top" secondItem="Wmj-u8-qeY" secondAttribute="bottom" id="ynT-xW-rWC"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4hC-4R-4U5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="29.600000000000001" y="132.68365817091455"/>
+        </scene>
+        <!--OrderConfirmViewController-->
+        <scene sceneID="JF4-YB-gle">
+            <objects>
+                <viewControllerPlaceholder storyboardName="OrderConfirmViewController" id="Z6w-ca-xXy" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C9k-G9-QCP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="766" y="94"/>
+        </scene>
+    </scenes>
+</document>

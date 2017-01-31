@@ -28,13 +28,13 @@ class MyOrdersViewModel: MyOrdersViewModelType {
   
   let itemDidSelect = PublishSubject<IndexPath>()
   let sections: Driver<[MyOrdersSectionModel]>
-  let navigationBarTitle = "Мои заказы"
+  let navigationBarTitle = NSLocalizedString("myOrders", comment: "My orders screen")
   let orders: Variable<[Order]>
   let tableIsEmpty: Driver<Bool>
   let presentOrderInfoSection: Driver<OrderInfoViewModel>
   
   init() {
-    let realmOrders = uiRealm.objects(Order.self)
+    let realmOrders = RealmManager.instance.uiRealm.objects(Order.self)
       .filter("isDeleted == %@", false)
       .sorted(byKeyPath: "updatedAt", ascending: false)
     

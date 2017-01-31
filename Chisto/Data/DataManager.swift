@@ -60,6 +60,11 @@ protocol UserManagerType {
 class DataManager {
 
   static let instance = DataManager()
+
+  var termsOfServiceURL: URL {
+    return URL(string: networkManager.baseURL + "/legal/terms-of-service.pdf")!
+  }
+
   private var verificationToken: String? = nil
   private let networkManager = NetworkManager()
   
@@ -127,6 +132,7 @@ extension DataManager: UserManagerType {
   }
   
   func showUser() -> Observable<Void> {
+    guard ProfileManager.instance.userProfile.value.apiToken != nil else { return Observable.just(()) }
     return networkRequest(method: .get, .showUser).map { json in
       guard let jsonMap = json as? [String: Any] else { throw DataError.responseConvertError }
       let realm = try! Realm()
@@ -334,6 +340,13 @@ extension DataManager: FetchItemsManagerType {
 
       return Observable.just(laundry)
     }
+  }
+
+  func showPromoCode(code: String) -> Observable<PromoCode?> {
+    return networkRequest(method: .get, .showPromoCode(promoCode: code)).flatMap { result -> Observable<PromoCode?> in
+      guard let promoCode = Mapper<PromoCode>().map(JSONObject: result) else { return Observable.error(DataError.responseConvertError) }
+      return Observable.just(promoCode)
+    }.catchErrorJustReturn(nil)
   }
 
   func createRating(laundryId: Int, rating: Rating) -> Observable<Void> {

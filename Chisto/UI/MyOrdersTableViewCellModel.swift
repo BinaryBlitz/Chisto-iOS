@@ -12,20 +12,22 @@ import UIKit
 protocol MyOrdersTableViewCellModelType {
   var icon: UIImage? { get }
   var orderNumberTitle: String { get }
-  var dateTitle: String { get }
-  var priceTitle: String? { get }
+  var dateStatusTitle: String { get }
+  var priceTitle: String { get }
 }
 
 class MyOrdersTableViewCellModel: MyOrdersTableViewCellModelType {
   var icon: UIImage? = nil
-  let orderNumberTitle: String
-  let dateTitle: String
-  var priceTitle: String? = ""
+  var orderNumberTitle: String = ""
+  var dateStatusTitle: String = ""
+  var priceTitle: String = ""
   
   init(order: Order) {
-    self.orderNumberTitle = "Заказ № \(order.id)"
-    self.dateTitle = order.createdAt.mediumDate
-    self.icon = order.status.image
+    self.orderNumberTitle = String(format: NSLocalizedString("orderNumber", comment: "My orders table item"), String(order.id))
+    self.priceTitle = order.totalPrice.currencyString
+    guard let status = order.status else { return }
+    self.dateStatusTitle = order.createdAt.mediumDate  + " ･ " + status.description
+    self.icon = status.image
   }
   
 }

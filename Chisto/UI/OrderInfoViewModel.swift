@@ -11,6 +11,7 @@ import RxSwift
 import RxDataSources
 import RxCocoa
 import UIKit
+import RealmSwift
 
 typealias OrderInfoSectionModel = SectionModel<String, OrderInfoTableViewCellModelType>
 
@@ -20,17 +21,6 @@ protocol OrderInfoViewModelType {
   
   // Output
   var navigationBarTitle: String { get }
-  var laundryTitle: String { get }
-  var laundryDescriprion: String { get }
-  var laundryIcon: URL? { get }
-  var orderNumber: String { get }
-  var orderPrice: Variable<String> { get }
-  var deliveryPrice: Variable<String>  { get }
-  var totalCost: Variable<String>  { get }
-  var orderDate: String { get }
-  var orderStatus: String { get }
-  var orderStatusIcon: UIImage { get }
-  var orderStatusColor: UIColor { get }
   var sections: Driver<[OrderInfoSectionModel]> { get }
 }
 
@@ -39,24 +29,14 @@ class OrderInfoViewModel {
   let disposeBag = DisposeBag()
   
   // Input
-  let supportButtonDidTap = PublishSubject<Void>()
+  let ratingButtonDidTap = PublishSubject<Void>()
   
   // Output
   var navigationBarTitle: String
-  var laundryTitle = Variable<String?>("Химчистка")
-  var laundryDescriprion = Variable<String?>("Описание химчистки")
-  var laundryIcon = Variable<URL?>(nil)
-  var orderNumber: String = ""
-  var orderDate = Variable<String>("")
-  var orderPrice = Variable<String>("...")
-  var deliveryPrice = Variable<String>("...")
-  var totalCost = Variable<String>("...")
-  var orderStatus = Variable<String>("")
-  var orderStatusIcon = Variable<UIImage?>(nil)
-  var orderStatusColor = Variable<UIColor>(.chsSkyBlue)
   var sections: Driver<[OrderInfoSectionModel]>
   let presentErrorAlert: PublishSubject<Error>
-  let presentCallSupportAlert: Driver<Void>
+  let presentRatingAlert = PublishSubject<OrderReviewAlertViewModel>()
+  let orderInfoTableHeaderViewModel: OrderInfoTableHeaderViewModel
   
   // Data
   let order: Variable<Order?>
@@ -66,17 +46,14 @@ class OrderInfoViewModel {
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
     let order = Variable<Order?>(nil)
-    if let orderObject = uiRealm.object(ofType: Order.self, forPrimaryKey: orderId) { order.value = orderObject }
-    self.presentCallSupportAlert = supportButtonDidTap.asDriver(onErrorDriveWith: .empty())
+    let realm = RealmManager.instance.uiRealm
+    if let orderObject = realm.object(ofType: Order.self, forPrimaryKey: orderId) { order.value = orderObject }
 
-    self.navigationBarTitle = "Заказ № \(orderId)"
-    self.orderNumber = "№ \(orderId)"
+    self.navigationBarTitle = String(format: NSLocalizedString("orderNumber", comment: "Order info screen title"), String(orderId))
     let observableOrder = order.asObservable().filter { $0 != nil }.map { $0! }
-    observableOrder.map { $0.createdAt.mediumDate }.bindTo(self.orderDate).addDisposableTo(disposeBag)
-    observableOrder.map { $0.status.description }.bindTo(self.orderStatus).addDisposableTo(disposeBag)
-    observableOrder.map { $0.status.image }.bindTo(self.orderStatusIcon).addDisposableTo(disposeBag)
-    observableOrder.map { $0.status.color }.bindTo(self.orderStatusColor).addDisposableTo(disposeBag)
-    
+
+    self.orderInfoTableHeaderViewModel = OrderInfoTableHeaderViewModel(order: observableOrder)
+
     self.order = order
 
     DataManager.instance.getOrderInfo(orderId: orderId).bindTo(order).addDisposableTo(disposeBag)
@@ -87,15 +64,20 @@ class OrderInfoViewModel {
       let cellModels = orderLineItems.map(OrderInfoTableViewCellModel.init) as [OrderInfoTableViewCellModelType]
       return [OrderInfoSectionModel(model: "", items: cellModels)]
     }.asDriver(onErrorDriveWith: .empty())
-    
-    observableOrder.map { $0.deliveryPriceString }.bindTo(deliveryPrice).addDisposableTo(disposeBag)
-    observableOrder.map { $0.orderPrice.currencyString }.bindTo(orderPrice).addDisposableTo(disposeBag)
-    observableOrder.map { $0.totalPrice.currencyString }.bindTo(totalCost).addDisposableTo(disposeBag)
 
-    let observableOrderLaundry = observableOrder.map { uiRealm.object(ofType: Laundry.self, forPrimaryKey: $0.laundryId ) }
-    observableOrderLaundry.map { $0?.name }.bindTo(laundryTitle).addDisposableTo(disposeBag)
-    observableOrderLaundry.map { $0?.descriptionText }.bindTo(laundryDescriprion).addDisposableTo(disposeBag)
-    observableOrderLaundry.map { URL(string: $0?.logoUrl ?? "") }.bindTo(laundryIcon).addDisposableTo(disposeBag)
+    let shouldRateOrderObservable = DataManager.instance.showUser()
+      .map { ProfileManager.instance.userProfile.value.order }.filter { order in
+        guard let order = order else { return false }
+        return order.id == orderId && order.rating == nil
+    }
+
+    shouldRateOrderObservable.map { OrderReviewAlertViewModel(order: $0!) }
+      .bindTo(presentRatingAlert).addDisposableTo(disposeBag)
+
+    ratingButtonDidTap
+      .filter { order.value != nil }.map { OrderReviewAlertViewModel(order: order.value!) }
+      .bindTo(presentRatingAlert).addDisposableTo(disposeBag)
+
   }
   
 }

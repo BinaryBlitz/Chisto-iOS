@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RCz-E4-xce">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Promo Code Alert View Controller-->
+        <scene sceneID="9Xz-Hj-MH5">
+            <objects>
+                <viewController id="RCz-E4-xce" customClass="PromoCodeAlertViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qYr-RB-bwm"/>
+                        <viewControllerLayoutGuide type="bottom" id="J00-im-oaK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fNX-1r-4xd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SbR-Za-TG9">
+                                <rect key="frame" x="56" y="191.5" width="263" height="285"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconBigRedPromocode" translatesAutoresizingMaskIntoConstraints="NO" id="Woy-TV-Spo">
+                                        <rect key="frame" x="115.5" y="35" width="32" height="28"/>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Промокод" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s2R-fC-HfQ">
+                                        <rect key="frame" x="0.0" y="98" width="263" height="22"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNd-xQ-sKH">
+                                        <rect key="frame" x="15" y="128" width="233" height="1"/>
+                                        <color key="backgroundColor" red="0.75686275960000005" green="0.78039217000000005" blue="0.80392158030000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="ztm-1S-XxF"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Распространяется на все услуги" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNO-bx-No0">
+                                        <rect key="frame" x="15" y="164" width="233" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aty-Ot-6R5" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="235" width="263" height="50"/>
+                                        <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="NPN-yb-ylq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Отправить">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="FNd-xQ-sKH" firstAttribute="leading" secondItem="SbR-Za-TG9" secondAttribute="leading" constant="15" id="98a-qP-KYe"/>
+                                    <constraint firstAttribute="bottom" secondItem="Aty-Ot-6R5" secondAttribute="bottom" id="AeQ-KH-AyE"/>
+                                    <constraint firstAttribute="trailing" secondItem="FNd-xQ-sKH" secondAttribute="trailing" constant="15" id="J7C-zk-H0S"/>
+                                    <constraint firstItem="s2R-fC-HfQ" firstAttribute="top" secondItem="Woy-TV-Spo" secondAttribute="bottom" constant="35" id="NNR-Uv-XSK"/>
+                                    <constraint firstItem="Woy-TV-Spo" firstAttribute="top" secondItem="SbR-Za-TG9" secondAttribute="top" constant="35" id="ShL-GQ-gwn"/>
+                                    <constraint firstAttribute="trailing" secondItem="Aty-Ot-6R5" secondAttribute="trailing" id="biN-64-XLI"/>
+                                    <constraint firstItem="Aty-Ot-6R5" firstAttribute="top" secondItem="gNO-bx-No0" secondAttribute="bottom" constant="35" id="cLi-WL-f2z"/>
+                                    <constraint firstItem="Woy-TV-Spo" firstAttribute="centerX" secondItem="SbR-Za-TG9" secondAttribute="centerX" id="e1d-7a-c6A"/>
+                                    <constraint firstAttribute="trailing" secondItem="s2R-fC-HfQ" secondAttribute="trailing" id="hBr-rd-svI"/>
+                                    <constraint firstItem="gNO-bx-No0" firstAttribute="leading" secondItem="SbR-Za-TG9" secondAttribute="leading" constant="15" id="i2E-DM-0kU"/>
+                                    <constraint firstItem="s2R-fC-HfQ" firstAttribute="leading" secondItem="SbR-Za-TG9" secondAttribute="leading" id="nXa-fL-iI8"/>
+                                    <constraint firstItem="Aty-Ot-6R5" firstAttribute="leading" secondItem="SbR-Za-TG9" secondAttribute="leading" id="rFm-Q0-v8k"/>
+                                    <constraint firstItem="gNO-bx-No0" firstAttribute="top" secondItem="FNd-xQ-sKH" secondAttribute="bottom" constant="35" id="rjn-JQ-51a"/>
+                                    <constraint firstItem="FNd-xQ-sKH" firstAttribute="top" secondItem="s2R-fC-HfQ" secondAttribute="bottom" constant="8" id="sXU-rt-VQW"/>
+                                    <constraint firstAttribute="trailing" secondItem="gNO-bx-No0" secondAttribute="trailing" constant="15" id="tHN-3I-HCG"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SbR-Za-TG9" firstAttribute="centerY" secondItem="fNX-1r-4xd" secondAttribute="centerY" id="IFp-KV-FLD"/>
+                            <constraint firstItem="SbR-Za-TG9" firstAttribute="leading" secondItem="fNX-1r-4xd" secondAttribute="leadingMargin" constant="40" id="POe-kp-Yb7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SbR-Za-TG9" secondAttribute="trailing" constant="40" id="SVI-6a-NIq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="continueButton" destination="Aty-Ot-6R5" id="9No-W0-oeM"/>
+                        <outlet property="promoCodeField" destination="s2R-fC-HfQ" id="VxI-He-vol"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bhp-XK-bmw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="983.20000000000005" y="233.43328335832086"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="iconBigRedPromocode" width="32" height="28"/>
+    </resources>
+</document>

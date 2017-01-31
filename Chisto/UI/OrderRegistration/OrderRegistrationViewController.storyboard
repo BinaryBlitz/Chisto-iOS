@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Juc-FJ-aqo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Juc-FJ-aqo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,18 +24,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYG-l4-uzm">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJp-Dy-zmo">
-                                        <rect key="frame" x="187" y="0.0" width="1" height="50"/>
-                                        <color key="backgroundColor" white="1" alpha="0.20352041794478529" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="1" id="Nj7-cV-sOP"/>
-                                        </constraints>
-                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXQ-FP-OSl" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="Оплата картой">
+                                        <state key="normal" title="Продолжить">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -44,28 +37,14 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aJ-4D-70l" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
-                                        <rect key="frame" x="188" y="0.0" width="187" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="Наличными курьеру">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="7aJ-4D-70l" firstAttribute="leading" secondItem="oJp-Dy-zmo" secondAttribute="trailing" id="EnW-vW-9IF"/>
                                     <constraint firstItem="XXQ-FP-OSl" firstAttribute="leading" secondItem="TYG-l4-uzm" secondAttribute="leading" id="GlV-Zd-mWX"/>
-                                    <constraint firstItem="oJp-Dy-zmo" firstAttribute="top" secondItem="TYG-l4-uzm" secondAttribute="top" id="Gmj-l5-K3m"/>
-                                    <constraint firstAttribute="trailing" secondItem="7aJ-4D-70l" secondAttribute="trailing" id="KaM-om-0F5"/>
-                                    <constraint firstItem="oJp-Dy-zmo" firstAttribute="centerX" secondItem="TYG-l4-uzm" secondAttribute="centerX" id="NMu-5f-a6Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="XXQ-FP-OSl" secondAttribute="trailing" id="LXt-l0-Zn7"/>
                                     <constraint firstItem="XXQ-FP-OSl" firstAttribute="top" secondItem="TYG-l4-uzm" secondAttribute="top" id="UYI-Fy-yI3"/>
-                                    <constraint firstItem="oJp-Dy-zmo" firstAttribute="leading" secondItem="XXQ-FP-OSl" secondAttribute="trailing" id="WWX-6l-coz"/>
                                     <constraint firstAttribute="height" constant="50" id="Yku-Fx-EDs"/>
                                     <constraint firstAttribute="bottom" secondItem="XXQ-FP-OSl" secondAttribute="bottom" id="bJq-EP-ogX"/>
-                                    <constraint firstAttribute="bottom" secondItem="oJp-Dy-zmo" secondAttribute="bottom" id="enk-XV-Xo0"/>
-                                    <constraint firstAttribute="bottom" secondItem="7aJ-4D-70l" secondAttribute="bottom" id="nLE-hY-Wt1"/>
-                                    <constraint firstItem="7aJ-4D-70l" firstAttribute="top" secondItem="TYG-l4-uzm" secondAttribute="top" id="tA9-YS-tTC"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIQ-E0-bp1">
@@ -118,12 +97,10 @@
                     </view>
                     <connections>
                         <outlet property="bottomLayoutGuideConstraint" destination="DLl-tS-A4Q" id="LOd-9f-MRm"/>
-                        <outlet property="buttonSeparatorView" destination="oJp-Dy-zmo" id="PI4-0K-Tbh"/>
                         <outlet property="buttonsView" destination="TYG-l4-uzm" id="6wB-KI-B5N"/>
                         <outlet property="dataView" destination="pSa-TL-Sfz" id="pMS-Qe-sGI"/>
                         <outlet property="orderCostLabel" destination="4hY-Ln-EBY" id="uwV-1B-Qmi"/>
-                        <outlet property="payInCashButton" destination="7aJ-4D-70l" id="MhB-g1-PEy"/>
-                        <outlet property="payWithCardButton" destination="XXQ-FP-OSl" id="Wx3-78-fqQ"/>
+                        <outlet property="payButton" destination="XXQ-FP-OSl" id="HMn-zu-sSr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n7M-Oy-YkT" userLabel="First Responder" sceneMemberID="firstResponder"/>

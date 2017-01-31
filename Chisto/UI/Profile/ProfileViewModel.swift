@@ -39,7 +39,7 @@ class ProfileViewModel {
   let presentNextScreen: PublishSubject<ProfileSection>
   var ordersCount = Variable<String>("0")
 
-  let termsOfServiceURL = URL(string: "https://chis.to/legal/terms-of-service.pdf")!
+  let termsOfServiceURL = DataManager.instance.termsOfServiceURL
   
   init() {
     DataManager.instance.showUser().subscribe().addDisposableTo(disposeBag)
@@ -64,16 +64,9 @@ class ProfileViewModel {
     }.asDriver(onErrorDriveWith: .empty())
 
     self.dismissViewController = closeButtonDidTap.asDriver(onErrorDriveWith: .empty())
-    
-    let profile = ProfileManager.instance.userProfile.value
-    
-    self.ordersCount = Variable<String>(String(profile.ordersCount))
-    
-    uiRealm.observableObject(type: Profile.self, primaryKey: profile.id).asObservable()
-      .filter { $0 != nil }
-      .map { String($0!.ordersCount) }
-      .bindTo(ordersCount)
-      .addDisposableTo(disposeBag)
+
+    self.ordersCount = Variable<String>(String(ProfileManager.instance.userProfile.value.ordersCount))
+    ProfileManager.instance.userProfile.asObservable().map { String($0.ordersCount) }.bindTo(ordersCount).addDisposableTo(disposeBag)
   }
 
 }
