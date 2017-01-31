@@ -91,6 +91,14 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
       viewController.viewModel = viewModel
       self?.present(viewController, animated: false, completion: nil)
     }).addDisposableTo(disposeBag)
+
+    viewModel?.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { message in
+      let alertController = UIAlertController(title: NSLocalizedString("error", comment: "Error alert button"), message: message, preferredStyle: .alert)
+      let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: "OK alert button"), style: .default, handler: nil)
+      alertController.addAction(defaultAction)
+      self.present(alertController, animated: true, completion: nil)
+    }).addDisposableTo(disposeBag)
+
   }
 
   func configureFooter() {

@@ -55,6 +55,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   let presentPromoCodeAlert: Driver<PromoCodeAlertViewModel>
   let orderConfirmTableHeaderViewModel: OrderConfirmTableHeaderViewModel
   let headerViewDidTap = PublishSubject<Void>()
+  let presentErrorAlert: PublishSubject<String>
 
   var laundryDescriprionTitle: String
   var laundryIcon: URL?  = nil
@@ -75,6 +76,9 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   }
   
   init(laundry: Laundry) {
+    let presentErrorAlert = PublishSubject<String>()
+    self.presentErrorAlert = presentErrorAlert
+
     self.navigationBarTitle = laundry.name
     let promoCode = Variable<PromoCode?>(nil)
     self.promoCode = promoCode
@@ -98,7 +102,16 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
 
     self.presentPromoCodeAlert = orderConfirmTableHeaderViewModel.promoCodeButtonDidTap.map {
       let viewModel = PromoCodeAlertViewModel()
-      viewModel.promoCodeDidEntered.asObservable().flatMap { DataManager.instance.showPromoCode(code: $0 ?? "") }.bindTo(promoCode).addDisposableTo(viewModel.disposeBag)
+      viewModel.promoCodeDidEntered.asObservable()
+        .filter { $0 != nil }
+        .map { $0! }
+        .bindTo(promoCode).addDisposableTo(viewModel.disposeBag)
+
+      viewModel.promoCodeDidEntered.asObservable()
+        .filter { $0 == nil }
+        .map { _ in NSLocalizedString("promocodeNotFound", comment: "Error alert")}
+        .bindTo(presentErrorAlert)
+        .addDisposableTo(viewModel.disposeBag)
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
 

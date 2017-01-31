@@ -35,7 +35,9 @@ class PromoCodeAlertViewController: UIViewController {
       UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {
         self?.view.alpha = 0
       }, completion: { _ in
-        self?.dismiss(animated: false, completion: nil)
+        self?.dismiss(animated: false, completion: { _ in
+          self?.viewModel?.didFinishEnteringCode.onNext()
+        })
       })
     }).addDisposableTo(disposeBag)
   }

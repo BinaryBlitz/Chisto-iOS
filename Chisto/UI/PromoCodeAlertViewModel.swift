@@ -12,15 +12,18 @@ import RxCocoa
 
 class PromoCodeAlertViewModel {
   let disposeBag = DisposeBag()
-  let promoCodeDidEntered: Observable<String?>
+  let promoCodeDidEntered: Driver<PromoCode?>
   let continueButtonDidTap = PublishSubject<Void>()
+  let didFinishEnteringCode = PublishSubject<Void>()
   let dismissViewController: Driver<Void>
   let promoCodeText: Variable<String?>
 
   init() {
     let promoCodeText = Variable<String?>("")
     self.promoCodeText = promoCodeText
-    self.promoCodeDidEntered = continueButtonDidTap.map { promoCodeText.value }
+    self.promoCodeDidEntered = didFinishEnteringCode
+      .asDriver(onErrorDriveWith: .empty())
+      .flatMap { DataManager.instance.showPromoCode(code: promoCodeText.value ?? "").asDriver(onErrorDriveWith: .just(nil)) }
     self.dismissViewController = continueButtonDidTap.asDriver(onErrorDriveWith: .empty())
   }
 

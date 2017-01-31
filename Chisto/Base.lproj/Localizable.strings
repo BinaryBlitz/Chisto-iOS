@@ -131,3 +131,5 @@
 "apple_pay" = "Apple Pay";
 
 "timeInterval" = "с %@ до %@";
+
+"promocodeNotFound" = "Промокод не действителен или уже использован";
