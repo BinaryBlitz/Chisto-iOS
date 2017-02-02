@@ -22,11 +22,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zNS-O3-n4F">
-                                <rect key="frame" x="40" y="136.5" width="295" height="395.5"/>
+                                <rect key="frame" x="40" y="132" width="295" height="403"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Не нашли свой город?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJR-xQ-1at">
-                                        <rect key="frame" x="0.0" y="30" width="295" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <rect key="frame" x="0.0" y="30" width="295" height="26.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <color key="textColor" red="0.23921568691730499" green="0.70588237047195435" blue="0.96470588445663452" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -36,13 +36,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Оставьте контактные данные, и мы оповестим вас, когда наш сервис станет доступен в вашем городе" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1J-1X-1h8">
-                                        <rect key="frame" x="10" y="74" width="275" height="81.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="10" y="76.5" width="275" height="86.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Город" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bnp-FJ-Z5Z" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="15" y="185.5" width="265" height="50"/>
+                                        <rect key="frame" x="15" y="193" width="265" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="VGo-AA-oQZ"/>
                                         </constraints>
@@ -62,10 +62,11 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V80-Vu-pdb">
-                                        <rect key="frame" x="0.0" y="345.5" width="295" height="50"/>
+                                        <rect key="frame" x="0.0" y="353" width="295" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WF7-1O-18C" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="147" height="50"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                 <state key="normal" title="Продолжить">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -77,6 +78,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNi-yu-lX8" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
                                                 <rect key="frame" x="148" y="0.0" width="147" height="50"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                 <state key="normal" title="Нет, спасибо">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -111,7 +113,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Телефон" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wJY-Rq-sTS" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="15" y="265.5" width="265" height="50"/>
+                                        <rect key="frame" x="15" y="273" width="265" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="t1Q-Hn-57b"/>
                                         </constraints>

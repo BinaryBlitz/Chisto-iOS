@@ -27,6 +27,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9Tt-hh-2sp"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                 <state key="normal" title="Сохранить">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
