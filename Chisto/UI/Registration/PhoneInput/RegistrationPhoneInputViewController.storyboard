@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gBg-h4-tPf">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,23 +18,23 @@
                         <viewControllerLayoutGuide type="bottom" id="Pdv-Jb-T5S"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aov-dM-ir9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QT7-os-HKj">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vM4-5d-zaK">
-                                        <rect key="frame" x="36" y="207" width="303" height="231.5"/>
+                                        <rect key="frame" x="36" y="249.66666666666669" width="342" height="215"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите номер телефона" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbd-Mb-6l0">
-                                                <rect key="frame" x="0.0" y="0.0" width="303" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="342" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLH-ZH-Ug1">
-                                                <rect key="frame" x="61" y="54" width="181" height="24"/>
+                                                <rect key="frame" x="80.666666666666686" y="54" width="181" height="24"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="+7 900 000-00-00" adjustsFontSizeToFit="NO" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="yep-yD-h8j">
                                                         <rect key="frame" x="0.0" y="0.0" width="181" height="24"/>
@@ -52,13 +52,13 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="На этот номер будет отправлен 5-значный код" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUz-4N-F8O">
-                                                <rect key="frame" x="0.0" y="108" width="303" height="33.5"/>
+                                                <rect key="frame" x="0.0" y="108" width="342" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfF-j1-wvn" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
-                                                <rect key="frame" x="72" y="181.5" width="160" height="50"/>
+                                                <rect key="frame" x="91.666666666666686" y="165" width="160" height="50"/>
                                                 <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="160" id="NqR-41-l4t"/>
@@ -81,10 +81,11 @@
                                             <constraint firstItem="BUz-4N-F8O" firstAttribute="leading" secondItem="vM4-5d-zaK" secondAttribute="leading" id="0zy-hJ-cde"/>
                                             <constraint firstItem="WLH-ZH-Ug1" firstAttribute="centerX" secondItem="vM4-5d-zaK" secondAttribute="centerX" id="8Tq-TX-hJt"/>
                                             <constraint firstItem="WLH-ZH-Ug1" firstAttribute="top" secondItem="nbd-Mb-6l0" secondAttribute="bottom" constant="30" id="BuI-Pd-0oX"/>
+                                            <constraint firstItem="sfF-j1-wvn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="BUz-4N-F8O" secondAttribute="bottom" constant="5" id="Haj-cS-UqX"/>
                                             <constraint firstAttribute="trailing" secondItem="BUz-4N-F8O" secondAttribute="trailing" id="NjO-Aq-ntG"/>
                                             <constraint firstItem="nbd-Mb-6l0" firstAttribute="leading" secondItem="vM4-5d-zaK" secondAttribute="leading" id="NsM-HK-L3k"/>
                                             <constraint firstAttribute="trailing" secondItem="nbd-Mb-6l0" secondAttribute="trailing" id="QSx-m3-ryE"/>
-                                            <constraint firstItem="sfF-j1-wvn" firstAttribute="top" secondItem="BUz-4N-F8O" secondAttribute="bottom" constant="40" id="avk-yf-hK5"/>
+                                            <constraint firstItem="sfF-j1-wvn" firstAttribute="top" secondItem="BUz-4N-F8O" secondAttribute="bottom" priority="250" constant="40" id="avk-yf-hK5"/>
                                             <constraint firstItem="sfF-j1-wvn" firstAttribute="centerX" secondItem="vM4-5d-zaK" secondAttribute="centerX" id="cOu-gQ-Gif"/>
                                             <constraint firstAttribute="bottom" secondItem="sfF-j1-wvn" secondAttribute="bottom" id="i57-VF-ehy"/>
                                             <constraint firstItem="BUz-4N-F8O" firstAttribute="top" secondItem="WLH-ZH-Ug1" secondAttribute="bottom" constant="30" id="moG-7f-xaa"/>
@@ -92,7 +93,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Регистрируясь в приложении, вы принимаете условия Пользовательского соглашения" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="McC-SW-wB9">
-                                        <rect key="frame" x="15" y="590.5" width="345" height="26.5"/>
+                                        <rect key="frame" x="15" y="659.66666666666652" width="384" height="26.333333333333371"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="11"/>
                                         <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -105,7 +106,9 @@
                                 <color key="backgroundColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.96078431610000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="McC-SW-wB9" firstAttribute="leading" secondItem="QT7-os-HKj" secondAttribute="leading" constant="15" id="K1r-8s-qbZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="McC-SW-wB9" secondAttribute="bottom" constant="30" id="ZYp-aQ-G22"/>
+                                    <constraint firstItem="McC-SW-wB9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vM4-5d-zaK" secondAttribute="bottom" constant="10" id="Vwh-PB-e1A"/>
+                                    <constraint firstAttribute="bottom" secondItem="McC-SW-wB9" secondAttribute="bottom" priority="250" constant="30" id="ZYp-aQ-G22"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="McC-SW-wB9" secondAttribute="bottom" constant="5" id="bkc-kU-nlS"/>
                                     <constraint firstItem="vM4-5d-zaK" firstAttribute="leading" secondItem="QT7-os-HKj" secondAttribute="leading" constant="36" id="kGl-Hd-VdR"/>
                                     <constraint firstItem="vM4-5d-zaK" firstAttribute="centerY" secondItem="QT7-os-HKj" secondAttribute="centerY" id="ljK-5Y-dkz"/>
                                     <constraint firstAttribute="trailing" secondItem="vM4-5d-zaK" secondAttribute="trailing" constant="36" id="tZI-5Y-Qd3"/>

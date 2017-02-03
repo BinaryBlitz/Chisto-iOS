@@ -90,11 +90,15 @@ class ContactFormViewModel {
 
   }
 
+
   func saveUserProfile() -> Observable<Void> {
     return Observable.deferred { [weak self] in
       let phoneNumberKit = PhoneNumberKit()
       let phoneNumber = try? phoneNumberKit.parse(self?.phone.value ?? "")
-      guard let `self` = self else { return Observable.error(DataError.unknown) }
+      let phoneError = DataError.unknown(description: NSLocalizedString("invalidPhone", comment: "Profile screen"))
+
+      guard let `self` = self else { return Observable.error(phoneError) }
+
       let profile = ProfileManager.instance.userProfile.value
       ProfileManager.instance.updateProfile { profile in
         profile.firstName = self.firstName.value ?? ""

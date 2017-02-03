@@ -36,6 +36,7 @@ class MaskedInput: NSObject {
 
   func configure(textField: UITextField) {
     textField.delegate = self
+
     _ = textField.rx.text
       .takeUntil(textField.rx.deallocated).subscribe(onNext: { [weak self] text in
       guard let formattingType = self?.type, let text = text else { return }
@@ -43,8 +44,6 @@ class MaskedInput: NSObject {
         case .phoneNumber:
           let formattedPhone = PartialFormatter().formatPartial(text)
           textField.rx.text.onNext(formattedPhone)
-          let parsedNumber = try? PhoneNumberKit().parse(formattedPhone)
-          self?.isValid.value = parsedNumber != nil
         case .pattern(let formattingPattern):
           if text.characters.count > 0, formattingPattern.characters.count > 0 {
             let formattedText = self?.format(text: text, formattingPattern: formattingPattern)
