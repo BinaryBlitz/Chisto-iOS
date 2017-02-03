@@ -27,7 +27,8 @@ class OrderInfoTableHeaderView: UIView {
   @IBOutlet weak var deliveryPriceLabel: UILabel!
   @IBOutlet weak var orderTotalCostLabel: UILabel!
   @IBOutlet weak var stackView: UIStackView!
-
+  @IBOutlet weak var promoCodeView: UIView!
+  @IBOutlet weak var promoCodeDiscountView: UIView!
 
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -38,10 +39,17 @@ class OrderInfoTableHeaderView: UIView {
     viewModel.orderPrice.asObservable().bindTo(orderPriceLabel.rx.text).addDisposableTo(disposeBag)
     viewModel.deliveryPrice.asObservable().bindTo(deliveryPriceLabel.rx.text).addDisposableTo(disposeBag)
     viewModel.totalCost.asObservable().bindTo(orderTotalCostLabel.rx.text).addDisposableTo(disposeBag)
-    viewModel.promoCode.asObservable().bindTo(orderPromoCodeLabel.rx.text).addDisposableTo(disposeBag)
+    viewModel.promoCodeText.asObservable().bindTo(orderPromoCodeLabel.rx.text).addDisposableTo(disposeBag)
     viewModel.promoCodeDiscount.asObservable().bindTo(orderPromoCodeDiscountLabel.rx.text).addDisposableTo(disposeBag)
     viewModel.paymentMethodImage.asObservable().bindTo(paymentMethodImageView.rx.image).addDisposableTo(disposeBag)
     viewModel.paymentType.asObservable().bindTo(paymentMethodLabel.rx.text).addDisposableTo(disposeBag)
+
+    viewModel.promoCode.asObservable().subscribe(onNext: { [weak self] promoCode in
+      self?.promoCodeView.isHidden = promoCode == nil
+      self?.promoCodeDiscountView.isHidden = promoCode == nil
+      self?.viewController()?.view.layoutIfNeeded()
+    }).addDisposableTo(disposeBag)
+
 
     bindLaundryData(viewModel: viewModel)
     bindLaundryStatusData(viewModel: viewModel)
@@ -55,6 +63,10 @@ class OrderInfoTableHeaderView: UIView {
 
     viewModel.laundryTitle.asObservable().bindTo(laundryTitleLabel.rx.text).addDisposableTo(disposeBag)
     viewModel.laundryDescriprion.asObservable().bindTo(laundryDescriptionLabel.rx.text).addDisposableTo(disposeBag)
+
+    viewModel.laundryDescriprion.asObservable().subscribe(onNext: { [weak self] _ in
+      self?.viewController()?.view.layoutIfNeeded()
+    }).addDisposableTo(disposeBag)
 
   }
   
