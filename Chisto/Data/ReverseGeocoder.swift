@@ -67,7 +67,7 @@ class ReverseGeocoder {
       let request = Alamofire.request(url, parameters: params, encoding: URLEncoding.default)
         .responseJSON { response in
           guard let result = response.result.value else {
-            observer.onError(DataError.unknown)
+            observer.onError(DataError.responseConvertError)
             return
           }
 

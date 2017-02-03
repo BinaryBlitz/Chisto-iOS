@@ -61,11 +61,6 @@ class RegistrationPhoneInputViewController: UIViewController {
 
     guard let viewModel = viewModel else { return }
 
-    maskedPhoneInput.isValid
-      .asObservable()
-      .bindTo(sendButton.rx.isEnabled)
-      .addDisposableTo(disposeBag)
-
     phoneInputField.rx
       .text
       .bindTo(viewModel.phoneText)

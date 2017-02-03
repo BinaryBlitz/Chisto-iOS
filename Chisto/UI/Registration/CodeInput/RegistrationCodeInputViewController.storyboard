@@ -108,11 +108,13 @@
                                 <color key="backgroundColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.96078431610000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="qML-Mp-4S5" firstAttribute="leading" secondItem="WTf-EU-ZAs" secondAttribute="leading" constant="15" id="5PT-7J-O1K"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="qML-Mp-4S5" secondAttribute="bottom" constant="5" id="8nS-B6-Iws"/>
                                     <constraint firstAttribute="trailing" secondItem="qML-Mp-4S5" secondAttribute="trailing" constant="15" id="Ip6-NS-7cX"/>
-                                    <constraint firstAttribute="bottom" secondItem="qML-Mp-4S5" secondAttribute="bottom" constant="30" id="M3T-B8-iBH"/>
+                                    <constraint firstAttribute="bottom" secondItem="qML-Mp-4S5" secondAttribute="bottom" priority="250" constant="30" id="M3T-B8-iBH"/>
                                     <constraint firstAttribute="trailing" secondItem="hGb-pa-nZa" secondAttribute="trailing" constant="20" id="grj-BF-oja"/>
                                     <constraint firstItem="hGb-pa-nZa" firstAttribute="leading" secondItem="WTf-EU-ZAs" secondAttribute="leading" constant="20" id="h0L-zZ-fVP"/>
                                     <constraint firstItem="hGb-pa-nZa" firstAttribute="centerY" secondItem="WTf-EU-ZAs" secondAttribute="centerY" id="nME-iC-oQt"/>
+                                    <constraint firstItem="qML-Mp-4S5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hGb-pa-nZa" secondAttribute="bottom" id="ux6-wU-kqe"/>
                                 </constraints>
                             </view>
                         </subviews>

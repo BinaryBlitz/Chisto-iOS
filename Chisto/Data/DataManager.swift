@@ -19,7 +19,7 @@ enum DataError: Error, CustomStringConvertible {
   case responseConvertError
   case requestConvertError
   case unknownApiPath
-  case unknown
+  case unknown(description: String)
   
   var description: String {
     switch self {
@@ -27,6 +27,8 @@ enum DataError: Error, CustomStringConvertible {
       return error.description
     case .responseConvertError:
       return "Response is not a valid JSON"
+    case .unknown(let description):
+      return description
     case .unknownApiPath:
       return "API path for request was not set"
     default:
@@ -177,7 +179,7 @@ extension DataManager: TokenManagerType {
   }
   
   func verifyToken(code: String) -> Observable<Void> {
-    guard let verificationToken = ProfileManager.instance.userProfile.value.verificationToken else { return Observable.error(DataError.unknown) }
+    guard let verificationToken = ProfileManager.instance.userProfile.value.verificationToken else { return Observable.error(DataError.unknown(description: "")) }
     
     return networkRequest(
       method: .patch,
@@ -258,7 +260,7 @@ extension DataManager: FetchItemsManagerType {
   }
 
   func getLaundries() -> Observable<[Laundry]> {
-    guard let city = ProfileManager.instance.userProfile.value.city else { return Observable.error(DataError.unknown) }
+    guard let city = ProfileManager.instance.userProfile.value.city else { return Observable.error(DataError.unknown(description: "")) }
     return fetchItems(type: Laundry.self, apiPath: .fetchCityLaundries(cityId: city.id)) { laundry in
         laundry.city = city
       }.map { newLaundries in
