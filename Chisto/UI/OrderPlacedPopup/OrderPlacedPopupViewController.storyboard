@@ -24,8 +24,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="747-Hf-tGk">
                                 <rect key="frame" x="30" y="175.5" width="315" height="317"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Заказ успешно оформлен" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7T-IP-qyk">
-                                        <rect key="frame" x="24" y="30" width="268" height="26.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Заказ успешно оформлен" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="A7T-IP-qyk">
+                                        <rect key="frame" x="23.5" y="30" width="268" height="26.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -87,6 +87,8 @@
                                     <constraint firstItem="zop-3u-1bL" firstAttribute="centerX" secondItem="747-Hf-tGk" secondAttribute="centerX" id="Guc-tm-zgY"/>
                                     <constraint firstItem="A7T-IP-qyk" firstAttribute="top" secondItem="747-Hf-tGk" secondAttribute="top" constant="30" id="TXE-kL-Uei"/>
                                     <constraint firstAttribute="trailing" secondItem="ZKW-bs-pCJ" secondAttribute="trailing" constant="15" id="Txh-TI-1cr"/>
+                                    <constraint firstItem="A7T-IP-qyk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="747-Hf-tGk" secondAttribute="leading" constant="5" id="Vcf-27-qwk"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="A7T-IP-qyk" secondAttribute="trailing" constant="5" id="ZB4-Vc-ahB"/>
                                     <constraint firstItem="A7T-IP-qyk" firstAttribute="centerX" secondItem="747-Hf-tGk" secondAttribute="centerX" id="cLy-it-k9q"/>
                                     <constraint firstItem="X1y-vD-qkg" firstAttribute="leading" secondItem="747-Hf-tGk" secondAttribute="leading" id="gSs-dQ-hgi"/>
                                     <constraint firstItem="X1y-vD-qkg" firstAttribute="top" secondItem="ZKW-bs-pCJ" secondAttribute="bottom" constant="20" id="ieD-oc-NKb"/>

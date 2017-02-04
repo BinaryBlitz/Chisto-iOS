@@ -23,10 +23,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SbR-Za-TG9">
-                                <rect key="frame" x="56" y="190.5" width="263" height="287"/>
+                                <rect key="frame" x="56" y="190" width="263" height="287"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconBigRedPromocode" translatesAutoresizingMaskIntoConstraints="NO" id="Woy-TV-Spo">
-                                        <rect key="frame" x="115.5" y="35" width="32" height="28"/>
+                                        <rect key="frame" x="116" y="35" width="32" height="28"/>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Промокод" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s2R-fC-HfQ">
                                         <rect key="frame" x="0.0" y="98" width="263" height="22"/>

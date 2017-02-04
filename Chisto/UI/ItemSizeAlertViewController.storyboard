@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rke-lU-JT2">
-                                <rect key="frame" x="56" y="187" width="263" height="293.5"/>
+                                <rect key="frame" x="56" y="182" width="263" height="304"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Укажите размер вещи" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShZ-1G-tJP">
                                         <rect key="frame" x="18" y="30" width="227" height="24"/>
@@ -73,10 +73,10 @@
                                             <constraint firstAttribute="height" constant="50" id="WZY-E5-hv7"/>
                                         </constraints>
                                     </stackView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0 см" placeholder="Площадь" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3vg-3X-Sgx" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="95" y="163.5" width="73.5" height="50"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0 см" placeholder="Площадь" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3vg-3X-Sgx" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                        <rect key="frame" x="95.5" y="164" width="73.5" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="pYM-jM-1V1"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="pYM-jM-1V1"/>
                                         </constraints>
                                         <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
@@ -91,7 +91,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Esk-WO-6Ln">
-                                        <rect key="frame" x="0.0" y="243.5" width="263" height="50"/>
+                                        <rect key="frame" x="0.0" y="254" width="263" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mng-kQ-HBE" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="131" height="50"/>

@@ -147,7 +147,7 @@
                                                     <rect key="frame" x="15" y="24" width="16" height="16"/>
                                                     <color key="tintColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пользовательское соглашение" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJO-8T-PuT">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пользовательское соглашение" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJO-8T-PuT">
                                                     <rect key="frame" x="46" y="22" width="236" height="19.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <nil key="textColor"/>
@@ -155,6 +155,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="BJO-8T-PuT" secondAttribute="trailing" id="0nK-eG-7Bc"/>
                                                 <constraint firstItem="Dm0-un-CLZ" firstAttribute="centerY" secondItem="uRr-F0-fDW" secondAttribute="centerY" id="Eo2-Ba-5lH"/>
                                                 <constraint firstItem="BJO-8T-PuT" firstAttribute="leading" secondItem="Dm0-un-CLZ" secondAttribute="trailing" constant="15" id="Hdc-gf-wJy"/>
                                                 <constraint firstItem="BJO-8T-PuT" firstAttribute="centerY" secondItem="Dm0-un-CLZ" secondAttribute="centerY" id="L9L-kZ-l1l"/>

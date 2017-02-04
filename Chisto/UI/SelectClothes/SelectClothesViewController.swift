@@ -61,6 +61,8 @@ class SelectClothesViewController: UITableViewController {
   }
 
   func configureTableView() {
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 103
     dataSource.configureCell = { _, tableView, indexPath, cellViewModel in
       let cell = tableView.dequeueReusableCell(withIdentifier: "SelectClothesTableViewCell", for: indexPath) as! SelectClothesTableViewCell
 
