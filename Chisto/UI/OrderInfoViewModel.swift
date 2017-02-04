@@ -35,7 +35,7 @@ class OrderInfoViewModel {
   var navigationBarTitle: String
   var sections: Driver<[OrderInfoSectionModel]>
   let presentErrorAlert: PublishSubject<Error>
-  let presentRatingAlert = PublishSubject<OrderReviewAlertViewModel>()
+  let presentRatingAlert: Driver<OrderReviewAlertViewModel>
   let orderInfoTableHeaderViewModel: OrderInfoTableHeaderViewModel
   
   // Data
@@ -71,12 +71,11 @@ class OrderInfoViewModel {
         return order.id == orderId && order.rating == nil
     }
 
-    shouldRateOrderObservable.map { OrderReviewAlertViewModel(order: $0!) }
-      .bindTo(presentRatingAlert).addDisposableTo(disposeBag)
+    let ratingButtonTappedDriver = ratingButtonDidTap
+      .asDriver(onErrorDriveWith: .empty())
+      .filter { order.value != nil }.map { order.value }
 
-    ratingButtonDidTap
-      .filter { order.value != nil }.map { OrderReviewAlertViewModel(order: order.value!) }
-      .bindTo(presentRatingAlert).addDisposableTo(disposeBag)
+    presentRatingAlert = Driver.of(shouldRateOrderObservable.asDriver(onErrorDriveWith: .empty()), ratingButtonTappedDriver).merge().map { OrderReviewAlertViewModel(order: $0!) }
 
   }
   
