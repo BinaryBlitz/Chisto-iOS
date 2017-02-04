@@ -47,6 +47,7 @@ class RegistrationCodeInputViewModel {
     }
 
     self.dismissViewController = validationConfirmed.filter { $0 == true }.flatMap { _ -> Driver<Void> in
+      NotificationManager.instance.enable()
       return DataManager.instance.showUser().asDriver(onErrorDriveWith: .empty())
     }.map { _ in }
   }
