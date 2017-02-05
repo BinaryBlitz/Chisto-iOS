@@ -37,6 +37,7 @@ class OrderInfoViewModel {
   let presentErrorAlert: PublishSubject<Error>
   let presentRatingAlert: Driver<OrderReviewAlertViewModel>
   let orderInfoTableHeaderViewModel: OrderInfoTableHeaderViewModel
+  let ratingButtonEnabled = Variable<Bool>(false)
   
   // Data
   let order: Variable<Order?>
@@ -59,6 +60,8 @@ class OrderInfoViewModel {
     DataManager.instance.getOrderInfo(orderId: orderId).bindTo(order).addDisposableTo(disposeBag)
 
     let orderLineItemsObservable = observableOrder.map { $0.lineItems }
+
+    observableOrder.map { $0.status == .completed }.bindTo(ratingButtonEnabled).addDisposableTo(disposeBag)
     
     self.sections = orderLineItemsObservable.map { orderLineItems in
       let cellModels = orderLineItems.map(OrderInfoTableViewCellModel.init) as [OrderInfoTableViewCellModelType]

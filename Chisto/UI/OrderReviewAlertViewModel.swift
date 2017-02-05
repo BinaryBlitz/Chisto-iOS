@@ -26,11 +26,7 @@ class OrderReviewAlertViewModel {
   let uiEnabled: Variable<Bool>
 
   init(order: Order) {
-    if let status = order.status, status == .completed {
-      self.title = String(format: NSLocalizedString("orderCompleted", comment: "Order review alert title"), String(order.id))
-    } else {
-      self.title = String(format: NSLocalizedString("orderNumber", comment: "Order review alert title"), String(order.id))
-    }
+    self.title = String(format: NSLocalizedString("orderCompleted", comment: "Order review alert title"), String(order.id))
 
     let ratingStarsCount = Variable(0)
     self.ratingStarsCount = ratingStarsCount
