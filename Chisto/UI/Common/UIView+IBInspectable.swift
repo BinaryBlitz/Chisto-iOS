@@ -33,3 +33,13 @@ extension UIView {
   }
 
 }
+
+@IBDesignable class RotatingUIView: UIView {
+
+  @IBInspectable var angle: Double = M_PI_4
+
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    self.transform = CGAffineTransform(rotationAngle: CGFloat(angle))
+  }
+}
