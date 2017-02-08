@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dez-cr-F80">
-                                <rect key="frame" x="26" y="125" width="323" height="417"/>
+                                <rect key="frame" x="26" y="124" width="323" height="419"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clothesAlert" translatesAutoresizingMaskIntoConstraints="NO" id="1Ro-qb-qAO">
                                         <rect key="frame" x="0.0" y="0.0" width="323" height="110"/>
@@ -60,18 +60,18 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Химчистка премиум класса №1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPy-yC-wIa">
-                                        <rect key="frame" x="8" y="155" width="307" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <rect key="frame" x="8" y="155" width="307" height="18"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZE-3M-xOy" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="367" width="323" height="50"/>
+                                        <rect key="frame" x="0.0" y="369" width="323" height="50"/>
                                         <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="bWl-AM-u60"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <state key="normal" title="Посмотреть все предложения">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -82,11 +82,12 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XkK-zO-r5M">
-                                        <rect key="frame" x="82" y="311" width="159" height="36"/>
+                                        <rect key="frame" x="82" y="313" width="159" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="159" id="FV0-85-Dv3"/>
                                             <constraint firstAttribute="height" constant="36" id="Ydj-Kd-Dki"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                         <state key="normal" title="Заказать">
                                             <color key="titleColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -103,13 +104,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="В прошлый раз вы заказывали в химчистке" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yg-mr-KDz">
-                                        <rect key="frame" x="15" y="24" width="293" height="41"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="15" y="17" width="293" height="48"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYv-mm-yzU">
-                                        <rect key="frame" x="0.0" y="191" width="323" height="100"/>
+                                        <rect key="frame" x="0.0" y="193" width="323" height="100"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="center" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="9gj-VK-KKh">
                                                 <rect key="frame" x="0.0" y="0.0" width="323" height="100"/>

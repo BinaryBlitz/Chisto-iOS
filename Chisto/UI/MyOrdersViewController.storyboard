@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wIM-b5-N7G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wIM-b5-N7G">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="fKM-yK-83q" id="VKL-Lk-jb1">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="APm-WA-9jj">
@@ -34,7 +34,7 @@
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5rY-t2-XWx">
-                                            <rect key="frame" x="46" y="12" width="274" height="36.5"/>
+                                            <rect key="frame" x="46" y="12.5" width="274" height="35.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Заказ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eey-JS-ElJ">
                                                     <rect key="frame" x="0.0" y="0.0" width="44" height="20"/>
@@ -42,9 +42,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gco-sH-CeR">
-                                                    <rect key="frame" x="0.0" y="22" width="28.5" height="14.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="400" verticalCompressionResistancePriority="400" text="Дата" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gco-sH-CeR">
+                                                    <rect key="frame" x="0.0" y="22" width="221.5" height="13.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                     <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -68,6 +68,7 @@
                                         <constraint firstItem="APm-WA-9jj" firstAttribute="leading" secondItem="VKL-Lk-jb1" secondAttribute="leadingMargin" id="4ei-bq-MLg"/>
                                         <constraint firstItem="5rY-t2-XWx" firstAttribute="leading" secondItem="APm-WA-9jj" secondAttribute="trailing" constant="15" id="6fT-oW-Hu9"/>
                                         <constraint firstItem="5rY-t2-XWx" firstAttribute="centerY" secondItem="VKL-Lk-jb1" secondAttribute="centerY" id="JHF-xw-lD8"/>
+                                        <constraint firstItem="gco-sH-CeR" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vn4-e5-Dcf" secondAttribute="leading" id="azC-cb-hVj"/>
                                         <constraint firstItem="APm-WA-9jj" firstAttribute="centerY" secondItem="VKL-Lk-jb1" secondAttribute="centerY" id="dM9-h5-k2f"/>
                                         <constraint firstItem="vn4-e5-Dcf" firstAttribute="centerY" secondItem="VKL-Lk-jb1" secondAttribute="centerY" id="eL8-wE-1jF"/>
                                         <constraint firstAttribute="trailing" secondItem="5rY-t2-XWx" secondAttribute="trailing" id="jnG-Mz-FRO"/>

@@ -60,7 +60,6 @@ class OrderInfoTableHeaderView: UIView {
     viewModel.laundryIcon.asObservable().subscribe(onNext: { [weak self] icon in
       self?.laundryLogoView.kf.setImage(with: icon)
     }).addDisposableTo(disposeBag)
-
     viewModel.laundryTitle.asObservable().bindTo(laundryTitleLabel.rx.text).addDisposableTo(disposeBag)
     viewModel.laundryDescriprion.asObservable().bindTo(laundryDescriptionLabel.rx.text).addDisposableTo(disposeBag)
 

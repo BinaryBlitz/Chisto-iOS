@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="190"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tgx-Lv-wUc" id="PGg-l5-hmz">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="189.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="189"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ffw-aw-1p4">
@@ -53,19 +53,19 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название химчистки" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aij-3K-dQo">
-                                            <rect key="frame" x="81" y="12" width="150" height="18"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <rect key="frame" x="81" y="12" width="159" height="19.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAm-T4-HPc">
-                                            <rect key="frame" x="81" y="34" width="286" height="14"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <rect key="frame" x="81" y="35.5" width="286" height="14"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                             <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bcl-Sr-7aI" customClass="FloatRatingView" customModule="FloatRatingView">
-                                            <rect key="frame" x="81" y="55" width="75" height="11"/>
+                                            <rect key="frame" x="81" y="56.5" width="75" height="11"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="11" id="2bK-YO-GGA"/>
                                                 <constraint firstAttribute="width" constant="75" id="QKN-0l-G1X"/>
@@ -85,11 +85,14 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NdT-KW-8gH">
-                                            <rect key="frame" x="8" y="86" width="359" height="95"/>
+                                            <rect key="frame" x="8" y="87.5" width="359" height="93.5"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="center" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="9tZ-5t-JsK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="95"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="93.5"/>
                                                     <color key="backgroundColor" red="0.75686275960000005" green="0.78039217000000005" blue="0.80392158030000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="93" id="Kdd-TL-Wx6"/>
+                                                    </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                             <color key="value" red="0.75686275960000005" green="0.78039217000000005" blue="0.80392158030000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -112,7 +115,7 @@
                                                 <constraint firstAttribute="width" constant="125" id="1Wg-Yw-bQ9"/>
                                                 <constraint firstAttribute="height" constant="26" id="Bmf-A8-Eg5"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>

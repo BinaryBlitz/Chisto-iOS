@@ -33,6 +33,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="pHi-LZ-bgn"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="Выйти">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>

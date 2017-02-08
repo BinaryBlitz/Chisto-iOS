@@ -104,7 +104,7 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    return 83
+    return 100
   }
   
 }
