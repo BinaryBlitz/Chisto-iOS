@@ -1617,7 +1617,7 @@
 				CODE_SIGN_ENTITLEMENTS = Chisto/Chisto.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gapbaev Boris (NP6L3K9A4S)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gapbaev Boris (NP6L3K9A4S)";
-				CURRENT_PROJECT_VERSION = 43;
+				CURRENT_PROJECT_VERSION = 44;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 4WGG8V34K4;
 				INFOPLIST_FILE = Chisto/Info.plist;
@@ -1640,7 +1640,7 @@
 				CODE_SIGN_ENTITLEMENTS = Chisto/Chisto.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Binary Blitz OOO (4WGG8V34K4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Binary Blitz OOO (4WGG8V34K4)";
-				CURRENT_PROJECT_VERSION = 43;
+				CURRENT_PROJECT_VERSION = 44;
 				DEVELOPMENT_TEAM = 4WGG8V34K4;
 				INFOPLIST_FILE = Chisto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
