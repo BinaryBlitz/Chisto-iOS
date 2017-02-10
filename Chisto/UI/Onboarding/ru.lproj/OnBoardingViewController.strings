@@ -1,0 +1,12 @@
+
+/* Class = "UIButton"; normalTitle = "Начать"; ObjectID = "018-W6-wbK"; */
+"018-W6-wbK.normalTitle" = "Начать";
+
+/* Class = "UILabel"; text = "С Chisto вам больше не нужно тратить время на походы в химчистку."; ObjectID = "0Ga-vJ-HIb"; */
+"0Ga-vJ-HIb.text" = "С Chisto вам больше не нужно тратить время на походы в химчистку.";
+
+/* Class = "UILabel"; text = "Все очень просто:"; ObjectID = "hNs-hU-jV4"; */
+"hNs-hU-jV4.text" = "Все очень просто:";
+
+/* Class = "UIViewController"; title = "OnBoardingViewController"; ObjectID = "p78-OF-pBj"; */
+"p78-OF-pBj.title" = "OnBoardingViewController";

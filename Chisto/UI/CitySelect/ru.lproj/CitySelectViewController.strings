@@ -1,0 +1,12 @@
+
+/* Class = "UIButton"; normalTitle = "Не нашли свой город?"; ObjectID = "EWY-UK-oam"; */
+"EWY-UK-oam.normalTitle" = "Не нашли свой город?";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "fLD-Yf-b8T"; */
+"fLD-Yf-b8T.text" = "Title";
+
+/* Class = "UISearchBar"; placeholder = "Поиск"; ObjectID = "s5D-ou-WjX"; */
+"s5D-ou-WjX.placeholder" = "Поиск";
+
+/* Class = "UIViewController"; title = "CitySelectViewController"; ObjectID = "t13-DR-Xz8"; */
+"t13-DR-Xz8.title" = "CitySelectViewController";

@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "В прошлый раз вы заказывали в химчистке"; ObjectID = "1Yg-mr-KDz"; */
+"1Yg-mr-KDz.text" = "В прошлый раз вы заказывали в химчистке";
+
+/* Class = "UIButton"; normalTitle = "Заказать"; ObjectID = "XkK-zO-r5M"; */
+"XkK-zO-r5M.normalTitle" = "Заказать";
+
+/* Class = "UILabel"; text = "Химчистка премиум класса №1"; ObjectID = "mPy-yC-wIa"; */
+"mPy-yC-wIa.text" = "Химчистка премиум класса №1";
+
+/* Class = "UIButton"; normalTitle = "Посмотреть все предложения"; ObjectID = "yZE-3M-xOy"; */
+"yZE-3M-xOy.normalTitle" = "Посмотреть все предложения";

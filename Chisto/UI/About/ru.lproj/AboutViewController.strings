@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "Мы в социальных сетях"; ObjectID = "8dR-XR-WRY"; */
+"8dR-XR-WRY.text" = "Мы в социальных сетях";
+
+/* Class = "UIButton"; normalTitle = "Оставить отзыв"; ObjectID = "NOD-P5-oUd"; */
+"NOD-P5-oUd.normalTitle" = "Оставить отзыв";
+
+/* Class = "UILabel"; text = "Напишите нам для сотрудичества"; ObjectID = "ZfC-LZ-nZx"; */
+"ZfC-LZ-nZx.text" = "Напишите нам для сотрудичества";
+
+/* Class = "UILabel"; text = "Как с нами связаться?"; ObjectID = "hBd-VQ-Kgb"; */
+"hBd-VQ-Kgb.text" = "Как с нами связаться?";
+
+/* Class = "UILabel"; text = "Вы представитель химчистки?"; ObjectID = "k22-nY-yNG"; */
+"k22-nY-yNG.text" = "Вы представитель химчистки?";
+
+/* Class = "UILabel"; text = "Позвонить нам"; ObjectID = "kqN-3g-yBP"; */
+"kqN-3g-yBP.text" = "Позвонить нам";
+
+/* Class = "UILabel"; text = "Написать письмо"; ObjectID = "tpr-id-Zaf"; */
+"tpr-id-Zaf.text" = "Написать письмо";
