@@ -17,8 +17,6 @@ class RegistrationPhoneInputViewController: UIViewController {
   let disposeBag = DisposeBag()
   var viewModel: RegistrationPhoneInputViewModel? = nil
 
-  let maskedPhoneInput = MaskedInput(formattingType: .phoneNumber)
-
   @IBOutlet weak var phoneInputField: UITextField!
   @IBOutlet weak var sendButton: GoButton!
   @IBOutlet weak var contentView: UIView!
@@ -56,8 +54,6 @@ class RegistrationPhoneInputViewController: UIViewController {
       .drive(onNext: {[weak self] in
         self?.dismiss(animated: true, completion: {})
       }).addDisposableTo(disposeBag)
-
-    maskedPhoneInput.configure(textField: phoneInputField)
 
     guard let viewModel = viewModel else { return }
 

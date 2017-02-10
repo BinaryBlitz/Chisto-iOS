@@ -73,6 +73,11 @@ class ContactFormViewModel {
     self.comment = Variable(profile.notes)
     self.paymentMethod = Variable(profile.paymentMethod)
 
+    phone.asObservable().map { phone in
+      let phoneNumber = try? PhoneNumberKit().parse(phone ?? "")
+      return phoneNumber != nil
+    }.bindTo(phoneIsValid).addDisposableTo(disposeBag)
+
     let contactInfoIsValid = Observable.combineLatest(firstName.asObservable(), lastName.asObservable(), phoneIsValid.asObservable(), email.asObservable()) { firstName, lastName, phoneIsValid, email -> Bool in
       guard let firstName = firstName, let lastName = lastName, let email = email else { return false }
 
