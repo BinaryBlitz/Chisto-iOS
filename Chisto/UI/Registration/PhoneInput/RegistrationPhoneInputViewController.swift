@@ -25,6 +25,7 @@ class RegistrationPhoneInputViewController: UIViewController {
   @IBOutlet weak var licenseAgreementLabel: UILabel!
 
   override func viewDidLoad() {
+    hideKeyboardWhenTappedAround()
     licenseAgreementLabel.attributedText = viewModel?.licenseAgreementText
 
     IQKeyboardManager.sharedManager()
