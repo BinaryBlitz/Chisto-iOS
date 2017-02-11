@@ -39,7 +39,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
 
   // Output
   var color: UIColor
-  var navigationItemTitle = "Выбор услуг"
+  var navigationItemTitle = NSLocalizedString("serviceSelect", comment: "Service select screen")
   var itemTitle: String
   var sections: Driver<[ServiceSelectSectionModel]>
   var showNewSection: PublishSubject<NewSection>

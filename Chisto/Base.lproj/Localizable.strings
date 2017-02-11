@@ -58,7 +58,7 @@
 
 "delivery" = "Delivery";
 
-"cost" = "Price";
+"price" = "Price";
 
 "contactInfo" = "Contact information";
 
