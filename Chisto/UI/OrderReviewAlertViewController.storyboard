@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="esD-D7-29u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="esD-D7-29u">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,8 +25,8 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q6f-N6-cT5">
                                 <rect key="frame" x="31" y="158" width="313" height="352"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The order was completed!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lnd-DR-TQz">
-                                        <rect key="frame" x="39.5" y="30" width="234" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The order was completed!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lnd-DR-TQz">
+                                        <rect key="frame" x="10" y="30" width="293" height="24"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -114,8 +114,10 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="JoX-cA-NBK" firstAttribute="centerX" secondItem="q6f-N6-cT5" secondAttribute="centerX" id="1xA-Yr-KbX"/>
+                                    <constraint firstItem="Lnd-DR-TQz" firstAttribute="leading" secondItem="q6f-N6-cT5" secondAttribute="leading" constant="10" id="BAJ-Vl-Wxp"/>
                                     <constraint firstItem="V9f-tv-MYO" firstAttribute="centerX" secondItem="q6f-N6-cT5" secondAttribute="centerX" id="BXM-7T-XA4"/>
                                     <constraint firstItem="JoX-cA-NBK" firstAttribute="leading" secondItem="q6f-N6-cT5" secondAttribute="leading" constant="22" id="ICJ-Rp-w8T"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lnd-DR-TQz" secondAttribute="trailing" constant="10" id="My5-IG-Vh7"/>
                                     <constraint firstAttribute="trailing" secondItem="JoX-cA-NBK" secondAttribute="trailing" constant="22" id="SHC-Lm-zpG"/>
                                     <constraint firstAttribute="trailing" secondItem="Zhr-Xe-dWw" secondAttribute="trailing" constant="25" id="U75-uH-R0L"/>
                                     <constraint firstItem="Lnd-DR-TQz" firstAttribute="top" secondItem="q6f-N6-cT5" secondAttribute="top" constant="30" id="XIF-wq-yyO"/>
