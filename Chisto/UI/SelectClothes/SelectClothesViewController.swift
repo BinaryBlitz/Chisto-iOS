@@ -52,13 +52,13 @@ class SelectClothesViewController: UITableViewController {
         )
 
         let yesAction = UIAlertAction(
-          title: "Да",
+          title: NSLocalizedString("yes", comment: "Decoration alert"),
           style: .default,
           handler: { _ in viewModel.yesButtonDidTap.onNext() }
         )
 
         let noAction = UIAlertAction(
-          title: "Нет",
+          title: NSLocalizedString("no", comment: "Decoration alert"),
           style: .default,
           handler: { _ in viewModel.noButtonDidTap.onNext() }
         )
