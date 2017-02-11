@@ -48,7 +48,7 @@ class LaundryItemInfoViewModel {
       self.headerText = NSLocalizedString("delivery", comment: "Order items delivery")
     case .cost:
       self.icon = #imageLiteral(resourceName: "iconSmallCost")
-      self.headerText = NSLocalizedString("cost", comment: "Order cost")
+      self.headerText = NSLocalizedString("price", comment: "Order price")
       if !isDisabled {
         titleColor = UIColor.chsJadeGreen
         titleLabelFont = UIFont.preferredFont(forTextStyle: .callout)
@@ -56,7 +56,7 @@ class LaundryItemInfoViewModel {
     case .unavaliableCost(let price):
       self.icon = #imageLiteral(resourceName: "iconSmallCost")
       self.headerLabelFont = UIFont.preferredFont(forTextStyle: .caption2)
-      self.headerText = NSLocalizedString("cost", comment: "Order cost") + " " + String(price.currencyString)
+      self.headerText = NSLocalizedString("price", comment: "Order price") + " " + String(price.currencyString)
       self.headerColor = UIColor.chsCoolGrey
       self.titleColor = UIColor.chsSlateGrey
       self.subTitleColor = UIColor.chsSlateGrey
