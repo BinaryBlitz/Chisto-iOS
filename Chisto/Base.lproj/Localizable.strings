@@ -44,7 +44,7 @@
 
 "noRatings" = "No reviews";
 
-"chooseItem" = "Choose an item";
+"chooseItem" = "Choose an Item";
 
 "itemNominitive" = "вещь";
 
@@ -76,7 +76,7 @@
 
 "free" = "Free";
 
-"laundrySorting" = "Sort laundries:";
+"laundrySorting" = "Sort offers:";
 
 "byPrice" = "By price";
 
@@ -102,9 +102,9 @@
 
 "hasDecorationRequest" = "Does your item have any decorations?";
 
-"decorationDescription" = "К декоративной отделке относятся стразы, бисер, пайетки, кружева и прочие украшения, требующие особого внимания";
+"decorationDescription" = "Rhinestones, beads, sequins, lace or any other decorations that require special treatment";
 
-"decorationDescriptionShort" = "Стразы, бисер, пайетки, кружева и прочие украшения, требующие особого внимания";
+"decorationDescriptionShort" = "Rhinestones, beads, sequins, lace or any other decorations that require special treatment";
 
 "unknownError" = "Unknown error";
 
