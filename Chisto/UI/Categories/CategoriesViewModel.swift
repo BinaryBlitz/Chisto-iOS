@@ -19,7 +19,6 @@ protocol CategoriesViewModelType {
   var itemDidSelect: PublishSubject<IndexPath> { get }
 
   // Output
-  var navigationBarTitle: String { get }
   var sections: Driver<[CategoriesSectionModel]> { get }
   var presentItemsSection: Driver<SelectClothesViewModel> { get }
 }
@@ -32,7 +31,6 @@ class CategoriesViewModel: CategoriesViewModelType {
   var itemDidSelect = PublishSubject<IndexPath>()
 
   // Output
-  var navigationBarTitle: String
   var sections: Driver<[CategoriesSectionModel]>
   var presentItemsSection: Driver<SelectClothesViewModel>
   var presentErrorAlert: PublishSubject<Error>
@@ -41,8 +39,6 @@ class CategoriesViewModel: CategoriesViewModelType {
   var categories: Variable<[Category]>
 
   init() {
-    self.navigationBarTitle = NSLocalizedString("chooseItem", comment: "Choose item screen title")
-
     // Data
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
