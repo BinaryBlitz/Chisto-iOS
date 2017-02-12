@@ -58,7 +58,7 @@ class CategoriesViewModel: CategoriesViewModelType {
 
     let realm = RealmManager.instance.uiRealm
 
-    Observable.from(realm.objects(Category.self)
+    Observable.collection(from: realm.objects(Category.self)
       .filter("isDeleted == %@", false)
       .sorted(by: sortProperties))
       .map { Array($0) }
