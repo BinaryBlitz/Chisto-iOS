@@ -210,6 +210,7 @@
 		88FE7B0E1DE0E02200A16289 /* OrderInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88FE7B0D1DE0E02200A16289 /* OrderInfoViewController.storyboard */; };
 		88FE7B101DE0E0C100A16289 /* MyOrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE7B0F1DE0E0C100A16289 /* MyOrdersViewModel.swift */; };
 		88FE7B141DE20FC200A16289 /* OrderInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FE7B131DE20FC200A16289 /* OrderInfoViewController.swift */; };
+		88FE8BB01E50F9EB00A9A4BC /* OnBoardingNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88FE8BAF1E50F9EB00A9A4BC /* OnBoardingNavigationController.storyboard */; };
 		CC63F0EA174EB55F7C1DD247 /* Pods_Chisto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D4403E4AD2DF4A42F5C8FA /* Pods_Chisto.framework */; };
 /* End PBXBuildFile section */
 
@@ -445,6 +446,7 @@
 		88FE7B0D1DE0E02200A16289 /* OrderInfoViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderInfoViewController.storyboard; sourceTree = "<group>"; };
 		88FE7B0F1DE0E0C100A16289 /* MyOrdersViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersViewModel.swift; sourceTree = "<group>"; };
 		88FE7B131DE20FC200A16289 /* OrderInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoViewController.swift; sourceTree = "<group>"; };
+		88FE8BAF1E50F9EB00A9A4BC /* OnBoardingNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoardingNavigationController.storyboard; sourceTree = "<group>"; };
 		EA8A37CB3EB7F2EEDB9E26D5 /* Pods-Chisto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chisto.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chisto/Pods-Chisto.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -599,6 +601,7 @@
 		88073EF31DAC1CBE000696A3 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				88FE8BAF1E50F9EB00A9A4BC /* OnBoardingNavigationController.storyboard */,
 				88073EF61DAC26E2000696A3 /* Views */,
 				883760D01DB8D97500C9F506 /* OnBoardingNavigationController.swift */,
 				37530F461E4E31560039AAB0 /* OnBoardingViewController.storyboard */,
@@ -1266,6 +1269,7 @@
 				88073EE31DABE1E0000696A3 /* LaunchScreen.storyboard in Resources */,
 				88073EE01DABE1E0000696A3 /* Assets.xcassets in Resources */,
 				882288141DB6D11C000642E0 /* RootViewController.storyboard in Resources */,
+				88FE8BB01E50F9EB00A9A4BC /* OnBoardingNavigationController.storyboard in Resources */,
 				37530F7D1E4E33820039AAB0 /* ContactFormViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
