@@ -26,6 +26,13 @@ enum PaymentMethod: String {
   }
   
   var description: String {
-    return NSLocalizedString(self.rawValue, comment: "Payment method")
+    switch self {
+    case .card:
+      return NSLocalizedString("card", comment: "Payment method")
+    case .cash:
+      return NSLocalizedString("cash", comment: "Payment method")
+    case .applePay:
+      return NSLocalizedString("apple_pay", comment: "Payment method")
+    }
   }
 }

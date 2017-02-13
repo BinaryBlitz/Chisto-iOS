@@ -54,7 +54,7 @@ class ItemInfoViewModel: ItemInfoViewModelType {
   var color: UIColor
 
   // Constants
-  let deleteButtonTitle = NSLocalizedString("delete", comment: "Delete button")
+  let deleteButtonTitle = NSLocalizedString("deleteItemFromOrder", comment: "Item Info Screen")
 
   // Table view
   var sections: Driver<[ItemInfoSectionModel]>

@@ -41,7 +41,7 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
         self?.viewModel.sortType.value = .byRating
       })
       
-      let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: "Laundry sorting alert"), style: .cancel, handler: nil)
+      let cancelAction = UIAlertAction(title: NSLocalizedString("cancelLaudrySortingAlert", comment: "Laundry sorting alert"), style: .cancel, handler: nil)
 
       alertController.addAction(byRatingAction)
       alertController.addAction(byPriceAction)

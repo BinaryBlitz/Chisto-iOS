@@ -43,8 +43,8 @@ class AboutViewController: UIViewController {
   
   @IBAction func callUsViewDidTap(_ sender: Any) {
     let alertController = UIAlertController(title: nil, message: URLs.phoneNumber, preferredStyle: .alert)
-    let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel button"), style: .cancel, handler: nil)
-    let callAction = UIAlertAction(title: NSLocalizedString("call", comment: "Call us alert button"), style: .default, handler: { [weak self] _ in
+    let cancelAction = UIAlertAction(title: NSLocalizedString("cancelCall", comment: "Call alert button"), style: .cancel, handler: nil)
+    let callAction = UIAlertAction(title: NSLocalizedString("call", comment: "Call alert button"), style: .default, handler: { [weak self] _ in
       self?.openURL("tel://+\(URLs.phoneNumber.onlyDigits)")
     })
     alertController.addAction(cancelAction)

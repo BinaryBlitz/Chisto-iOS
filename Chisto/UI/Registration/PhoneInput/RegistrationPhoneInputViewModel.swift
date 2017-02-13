@@ -19,7 +19,7 @@ class RegistrationPhoneInputViewModel {
   let sendButtonDidTap = PublishSubject<Void>()
   let licenseAgreementText: NSAttributedString
   let phoneText: Variable<String?>
-  let navigationBarTitle = NSLocalizedString("registration", comment: "Phone input screen title")
+  let navigationBarTitle = NSLocalizedString("registrationPhoneInputScreen", comment: "Phone input screen title")
 
   let termsOfServiceURL = DataManager.instance.termsOfServiceURL
 
@@ -41,7 +41,7 @@ class RegistrationPhoneInputViewModel {
     self.presentCodeInputSection = sendButtonDidTap.asObservable().flatMap { _ -> Observable<RegistrationCodeInputViewModel> in
       guard let phoneText = phoneText.value else { return Observable.error(DataError.unknown(description: "")) }
       let phoneNumberKit = PhoneNumberKit()
-      guard let phoneNumber = try? phoneNumberKit.parse(phoneText) else { return Observable.error(DataError.unknown(description: NSLocalizedString("invalidPhone", comment: "Phone input screen"))) }
+      guard let phoneNumber = try? phoneNumberKit.parse(phoneText) else { return Observable.error(DataError.unknown(description: NSLocalizedString("invalidPhone", comment: "Error alert"))) }
       return DataManager.instance.createVerificationToken(phone: phoneNumberKit.format(phoneNumber, toType: .e164)).map {
         let viewModel = RegistrationCodeInputViewModel(phoneNumberString: phoneText)
         viewModel.didFinishRegistration.bindTo(didFinishRegistration).addDisposableTo(disposeBag)
