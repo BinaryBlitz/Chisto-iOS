@@ -6,9 +6,9 @@
   Copyright © 2017 Binary Blitz. All rights reserved.
 */
 
-"orderNumber" = "Order № %@";
+"orderNumber" = "Order #%@";
 
-"orderCompleted" = "Order № %@ was successfully completed!";
+"orderCompleted" = "Order #%@ was successfully completed!";
 
 "registration" = "Registration";
 
@@ -131,3 +131,9 @@
 "timeInterval" = "%@ to %@";
 
 "promocodeNotFound" = "Promo code is invalid or has been already used";
+
+"serviceSelect" = "Treatments";
+
+"yes" = "Yes";
+
+"no" = "No";
