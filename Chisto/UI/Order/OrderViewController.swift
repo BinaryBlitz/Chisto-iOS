@@ -70,7 +70,7 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
         self?.tableView.backgroundView?.isHidden = true
       } else {
         self?.continueButton.isEnabled = false
-        self?.continueButton.titleLabel?.text = NSLocalizedString("nothingIsChosen", comment: "No order items placeholder")
+        self?.continueButton.titleLabel?.text = NSLocalizedString("nothingIsChosenOrderScreen", comment: "No order items placeholder")
         self?.tableView.separatorStyle = .none
         self?.tableView.backgroundView?.isHidden = false
       }

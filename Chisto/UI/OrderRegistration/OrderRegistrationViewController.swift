@@ -25,7 +25,7 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
   let contactFormViewController = ContactFormViewController.storyboardInstance()!
 
   override func viewDidLoad() {
-    navigationItem.title = NSLocalizedString("registration", comment: "Order registration screen title")
+    navigationItem.title = NSLocalizedString("registrationOrderRegistrationScreen", comment: "Order registration screen title")
     
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 

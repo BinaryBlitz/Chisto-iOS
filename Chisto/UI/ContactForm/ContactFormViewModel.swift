@@ -100,7 +100,7 @@ class ContactFormViewModel {
     return Observable.deferred { [weak self] in
       let phoneNumberKit = PhoneNumberKit()
       let phoneNumber = try? phoneNumberKit.parse(self?.phone.value ?? "")
-      let phoneError = DataError.unknown(description: NSLocalizedString("invalidPhone", comment: "Profile screen"))
+      let phoneError = DataError.unknown(description: NSLocalizedString("invalidPhone", comment: "Error alert"))
 
       guard let `self` = self else { return Observable.error(phoneError) }
 

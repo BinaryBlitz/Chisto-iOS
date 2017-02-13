@@ -137,3 +137,27 @@
 "yes" = "Да";
 
 "no" = "Нет";
+
+"freeDeliveryPrice" = "Бесплатно";
+
+"orderNumberOrderAlert" = "№ %@";
+
+"orderNumberMyOrders" = "Заказ № %@";
+
+"orderNumberOrderInfo" = "Заказ № %@";
+
+"cancelCall" = "Отмена";
+
+"cancelLaudrySortingAlert" = "Отмена";
+
+"deleteItemFromOrder" = "Удалить";
+
+"nothingIsChosenOrderScreen" = "Ничего не выбрано";
+
+"freeCollectionPrice" = "Бесплатно";
+
+"registrationOrderRegistrationScreen" = "Регистрация";
+
+"registrationCodeInputScreen" = "Регистрация";
+
+"registrationPhoneInputScreen" = "Регистрация";

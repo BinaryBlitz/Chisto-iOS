@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pUj-Cc-OFU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pUj-Cc-OFU">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,8 +24,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="747-Hf-tGk">
                                 <rect key="frame" x="30" y="185" width="315" height="297"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The order was successfully created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="A7T-IP-qyk">
-                                        <rect key="frame" x="5" y="30" width="305" height="27"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The order was successfully created" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7T-IP-qyk">
+                                        <rect key="frame" x="20" y="30" width="275" height="27"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -87,8 +87,8 @@
                                     <constraint firstItem="zop-3u-1bL" firstAttribute="centerX" secondItem="747-Hf-tGk" secondAttribute="centerX" id="Guc-tm-zgY"/>
                                     <constraint firstItem="A7T-IP-qyk" firstAttribute="top" secondItem="747-Hf-tGk" secondAttribute="top" constant="30" id="TXE-kL-Uei"/>
                                     <constraint firstAttribute="trailing" secondItem="ZKW-bs-pCJ" secondAttribute="trailing" constant="15" id="Txh-TI-1cr"/>
-                                    <constraint firstItem="A7T-IP-qyk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="747-Hf-tGk" secondAttribute="leading" constant="5" id="Vcf-27-qwk"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="A7T-IP-qyk" secondAttribute="trailing" constant="5" id="ZB4-Vc-ahB"/>
+                                    <constraint firstItem="A7T-IP-qyk" firstAttribute="leading" secondItem="747-Hf-tGk" secondAttribute="leading" constant="20" id="Vcf-27-qwk"/>
+                                    <constraint firstAttribute="trailing" secondItem="A7T-IP-qyk" secondAttribute="trailing" constant="20" id="ZB4-Vc-ahB"/>
                                     <constraint firstItem="A7T-IP-qyk" firstAttribute="centerX" secondItem="747-Hf-tGk" secondAttribute="centerX" id="cLy-it-k9q"/>
                                     <constraint firstItem="X1y-vD-qkg" firstAttribute="leading" secondItem="747-Hf-tGk" secondAttribute="leading" id="gSs-dQ-hgi"/>
                                     <constraint firstItem="X1y-vD-qkg" firstAttribute="top" secondItem="ZKW-bs-pCJ" secondAttribute="bottom" constant="20" id="ieD-oc-NKb"/>

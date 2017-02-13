@@ -137,3 +137,27 @@
 "yes" = "Yes";
 
 "no" = "No";
+
+"freeDeliveryPrice" = "Free";
+
+"orderNumberOrderAlert" = "#%@";
+
+"orderNumberMyOrders" = "Order #%@";
+
+"orderNumberOrderInfo" = "Order #%@";
+
+"cancelCall" = "Cancel";
+
+"cancelLaudrySortingAlert" = "Cancel";
+
+"deleteItemFromOrder" = "Delete";
+
+"nothingIsChosenOrderScreen" = "Nothing is chosen";
+
+"freeCollectionPrice" = "Free";
+
+"registrationOrderRegistrationScreen" = "Registration";
+
+"registrationCodeInputScreen" = "Registration";
+
+"registrationPhoneInputScreen" = "Registration";

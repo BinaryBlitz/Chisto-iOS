@@ -40,7 +40,22 @@ enum OrderStatus: String {
   }
   
   var description: String {
-    return NSLocalizedString(self.rawValue, comment: "order status")
+    switch self {
+    case .completed:
+      return NSLocalizedString("completed", comment: "Order status")
+    case .errored:
+      return NSLocalizedString("errored", comment: "Order status")
+    case .cleaning:
+      return NSLocalizedString("cleaning", comment: "Order status")
+    case .processing:
+      return NSLocalizedString("processing", comment: "Order status")
+    case .dispatched:
+      return NSLocalizedString("dispatched", comment: "Order status")
+    case .canceled:
+      return NSLocalizedString("canceled", comment: "Order status")
+    case .confirmed:
+      return NSLocalizedString("confirmed", comment: "Order status")
+    }
   }
   
   var color: UIColor {
@@ -109,7 +124,7 @@ class Order: ServerObject {
   }
 
   var deliveryPriceString: String {
-    return deliveryPrice == 0 ? NSLocalizedString("free", comment: "Delivery price") : deliveryPrice.currencyString
+    return deliveryPrice == 0 ? NSLocalizedString("freeDeliveryPrice", comment: "Delivery price") : deliveryPrice.currencyString
   }
   
   var status: OrderStatus? {
