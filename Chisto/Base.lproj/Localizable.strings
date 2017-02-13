@@ -6,35 +6,35 @@
   Copyright © 2017 Binary Blitz. All rights reserved.
 */
 
-"orderNumber" = "Заказ № %@";
+"orderNumber" = "Order #%@";
 
-"orderCompleted" = "Заказ № %@ исполнен!";
+"orderCompleted" = "Order #%@ was successfully completed!";
 
-"registration" = "Регистрация";
+"registration" = "Registration";
 
-"codeSent" = "На номер %@ был отправлен код";
+"codeSent" = "A code has been sent to %@";
 
-"sendAgain" = "Выслать повторно";
+"sendAgain" = "Send again";
 
-"licenseAgreementDescription1" = "Регистрируясь в приложении, вы принимаете условия";
+"licenseAgreementDescription1" = "By signing up, you accept our";
 
-"licenseAgreementDescription2" = "Пользовательского соглашения";
+"licenseAgreementDescription2" = "Terms of Use";
 
-"decoration" = "Декор";
+"decoration" = "Decoration";
 
 "cancel" = "Отмена";
 
-"call" = "Позвонить";
+"call" = "Call";
 
-"error" = "Ошибка";
+"error" = "Error";
 
-"OK" = "ОК";
+"OK" = "OK";
 
-"order" = "Заказ";
+"order" = "Order";
 
-"noOrders" = "Нет заказов";
+"noOrders" = "No orders";
 
-"myOrders" = "Мои заказы";
+"myOrders" = "My orders";
 
 "ratingNominitive" = "отзыв";
 
@@ -42,9 +42,9 @@
 
 "ratingsGenitive" = "отзывов";
 
-"noRatings" = "Нет отзывов";
+"noRatings" = "No reviews";
 
-"chooseItem" = "Выбрать вещь";
+"chooseItem" = "Choose an Item";
 
 "itemNominitive" = "вещь";
 
@@ -52,84 +52,88 @@
 
 "itemssGenitive" = "вещей";
 
-"chooseCity" = "Выбор города";
+"chooseCity" = "Choose Your City";
 
-"itemsCollection" = "Сбор вещей";
+"itemsCollection" = "Collection";
 
-"delivery" = "Доставка";
+"delivery" = "Delivery";
 
-"cost" = "Стоимость";
+"price" = "Price";
 
-"contactInfo" = "Контактная информация";
+"contactInfo" = "Contact information";
 
-"deliveryAdress" = "Адрес доставки";
+"deliveryAdress" = "Delivery address";
 
-"orderComments" = "Комментарии к заказу";
+"orderComments" = "Extra information";
 
-"paymentMethod" = "Способ оплаты";
+"paymentMethod" = "Payment method";
 
-"decorationLong" = "Декоративная отделка";
+"decorationLong" = "Decoration";
 
-"delete" = "Удалить";
+"delete" = "Delete";
 
-"lastTimeOrder" = "В прошлый раз вы заказывали в химчистке %@";
+"lastTimeOrder" = "Last time you ordered in %@";
 
-"free" = "Бесплатно";
+"free" = "Free";
 
-"laundrySorting" = "Сортировка химчисток:";
+"laundrySorting" = "Sort offers:";
 
-"byPrice" = "По цене";
+"byPrice" = "By price";
 
-"bySpeed" = "По скорости";
+"bySpeed" = "By speed";
 
-"byRating" = "По рейтингу";
+"byRating" = "By rating";
 
-"onboardingStep1" = "Добавьте в список вещи, которые хотите сдать в чистку";
+"onboardingStep1" = "Add items for cleaning";
 
-"onboardingStep2" = "Ознакомьтесь с ценой и сроками выполнения вашего заказа";
+"onboardingStep2" = "Choose a cleaning service from our list of offers by price and speed";
 
-"onboardingStep3" = "Выберите подходящего вам исполнителя";
+"onboardingStep3" = "Pay with credit card in the app or in cash";
 
-"onboardingStep4" = "Ожидайте звонка. Оператор согласует время забора и доставки вещей";
+"onboardingStep4" = "A courier will collect your things at the agreed time and will then return them clean";
 
-"onboardingStep5" = "Выберите подходящего вам исполнителя";
+"nothingIsChosen" = "Nothing is chosen";
 
-"nothingIsChosen" = "Ничего не выбрано";
+"continue" = "Next";
 
-"continue" = "Продолжить";
+"confirmOrder" = "Create an Order: ";
 
-"confirmOrder" = "Оформить заказ: ";
+"hasDecorationRequest" = "Does your item have any decorations?";
 
-"hasDecorationRequest" = "Есть ли у вещи декоративная отделка?";
+"decorationDescription" = "Rhinestones, beads, sequins, lace or any other decorations that require special treatment";
 
-"decorationDescription" = "К декоративной отделке относятся стразы, бисер, пайетки, кружева и прочие украшения, требующие особого внимания";
+"decorationDescriptionShort" = "Rhinestones, beads, sequins, lace or any other decorations that require special treatment";
 
-"decorationDescriptionShort" = "Стразы, бисер, пайетки, кружева и прочие украшения, требующие особого внимания";
+"unknownError" = "Unknown error";
 
-"unknownError" = "Неизвестная ошибка";
+"serverError" = "Server error";
 
-"serverError" = "Ошибка на сервере";
+"unexpectedResponse" = "Unexpected response from the server";
 
-"unexpectedResponse" = "Неизвестный формат ответа сервера";
+"processing" = "Processing";
 
-"processing" = "Обрабатывается";
+"cleaning" = "Cleaning";
 
-"cleaning" = "В чистке";
+"dispatched" = "Dispatched";
 
-"dispatched" = "Доставка";
-
-"completed" = "Выполнен";
+"completed" = "Completed";
 
 "errored" = "Ошибка";
 
-"canceled" = "Отменён";
+"canceled" = "Canceled";
 
-"card" = "Карта";
+"card" = "Payment card";
 
-"cash" = "Наличные";
+"cash" = "Cash";
 
 "apple_pay" = "Apple Pay";
 
-"timeInterval" = "с %@ до %@";
+"timeInterval" = "%@ to %@";
 
-"promocodeNotFound" = "Промокод не действителен или уже использован";
+"promocodeNotFound" = "Promo code is invalid or has been already used";
+
+"serviceSelect" = "Treatments";
+
+"yes" = "Yes";
+
+"no" = "No";

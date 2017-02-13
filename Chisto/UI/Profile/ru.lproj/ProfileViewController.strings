@@ -1,0 +1,30 @@
+
+/* Class = "UILabel"; text = "Пользовательское соглашение"; ObjectID = "BJO-8T-PuT"; */
+"BJO-8T-PuT.text" = "Пользовательское соглашение";
+
+/* Class = "UILabel"; text = "Контактные данные"; ObjectID = "BdH-nK-hDe"; */
+"BdH-nK-hDe.text" = "Контактные данные";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "CFm-y1-OKp"; */
+"CFm-y1-OKp.text" = "0";
+
+/* Class = "UITableViewSection"; headerTitle = " "; ObjectID = "DRa-E1-k3S"; */
+"DRa-E1-k3S.headerTitle" = " ";
+
+/* Class = "UITableViewSection"; headerTitle = " "; ObjectID = "FHj-ld-K0F"; */
+"FHj-ld-K0F.headerTitle" = " ";
+
+/* Class = "UILabel"; text = "О приложении"; ObjectID = "JR6-Mi-ECg"; */
+"JR6-Mi-ECg.text" = "О приложении";
+
+/* Class = "UITableViewController"; title = "Профиль"; ObjectID = "dVO-oZ-huf"; */
+"dVO-oZ-huf.title" = "Профиль";
+
+/* Class = "UITableViewSection"; headerTitle = " "; ObjectID = "kso-p2-Pxb"; */
+"kso-p2-Pxb.headerTitle" = " ";
+
+/* Class = "UITableViewSection"; headerTitle = " "; ObjectID = "s8r-Co-mVc"; */
+"s8r-Co-mVc.headerTitle" = " ";
+
+/* Class = "UILabel"; text = "Мои заказы"; ObjectID = "xvz-cj-IuP"; */
+"xvz-cj-IuP.text" = "Мои заказы";

@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Заказ"; ObjectID = "eey-JS-ElJ"; */
+"eey-JS-ElJ.text" = "Заказ";
+
+/* Class = "UILabel"; text = "Дата"; ObjectID = "gco-sH-CeR"; */
+"gco-sH-CeR.text" = "Дата";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "vn4-e5-Dcf"; */
+"vn4-e5-Dcf.text" = "Label";
+
+/* Class = "UITableViewController"; title = "Мои заказы"; ObjectID = "wIM-b5-N7G"; */
+"wIM-b5-N7G.title" = "Мои заказы";

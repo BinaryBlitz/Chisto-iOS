@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Название химчистки"; ObjectID = "Aij-3K-dQo"; */
+"Aij-3K-dQo.text" = "Название химчистки";
+
+/* Class = "UILabel"; text = "Описание"; ObjectID = "IAm-T4-HPc"; */
+"IAm-T4-HPc.text" = "Описание";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "INL-4j-h4b"; */
+"INL-4j-h4b.text" = "Label";
+
+/* Class = "UITableViewController"; title = "Химчистки"; ObjectID = "qbC-8X-BcN"; */
+"qbC-8X-BcN.title" = "Химчистки";

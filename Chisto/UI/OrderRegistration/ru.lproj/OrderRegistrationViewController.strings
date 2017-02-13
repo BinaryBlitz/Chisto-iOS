@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "Стоимость заказа"; ObjectID = "0HV-gq-TIf"; */
+"0HV-gq-TIf.text" = "Стоимость заказа";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "4hY-Ln-EBY"; */
+"4hY-Ln-EBY.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "Продолжить"; ObjectID = "XXQ-FP-OSl"; */
+"XXQ-FP-OSl.normalTitle" = "Продолжить";
