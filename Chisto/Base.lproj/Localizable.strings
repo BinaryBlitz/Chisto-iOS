@@ -52,7 +52,7 @@
 
 "itemssGenitive" = "вещей";
 
-"chooseCity" = "Choose your city";
+"chooseCity" = "Choose Your City";
 
 "itemsCollection" = "Collection";
 
@@ -84,15 +84,15 @@
 
 "byRating" = "By rating";
 
-"onboardingStep1" = "Добавьте вещи для чистки";
+"onboardingStep1" = "Add items for cleaning";
 
-"onboardingStep2" = "Выберите подходящего исполнителя по цене и срокам выполнения заказа";
+"onboardingStep2" = "Choose a cleaning service from our list of offers by price and speed";
 
-"onboardingStep3" = "Оплатите заказ банковской картой в приложении или наличными курьеру";
+"onboardingStep3" = "Pay with credit card in the app or in cash";
 
-"onboardingStep4" = "Курьер заберёт вещи в согласованное время и вернёт их чистыми";
+"onboardingStep4" = "A courier will collect your things at the agreed time and will then return them clean";
 
-"nothingIsChosen" = "Ничего не выбрано";
+"nothingIsChosen" = "Nothing is chosen";
 
 "continue" = "Next";
 
