@@ -21,43 +21,77 @@ class SelectClothesViewController: UITableViewController {
     super.viewDidLoad()
 
     navigationItem.title = viewModel?.navigationBarTitle
-    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    navigationItem.backBarButtonItem = UIBarButtonItem(
+      title: "",
+      style: .plain,
+      target: nil,
+      action: nil
+    )
 
-    viewModel?.presentSelectServiceSection.drive(onNext: { [weak self] viewModel in
-      let viewController = ServiceSelectViewController.storyboardInstance()!
-      viewController.viewModel = viewModel
-      self?.navigationController?.pushViewController(viewController, animated: true)
-    }).addDisposableTo(disposeBag)
+    viewModel?.presentSelectServiceSection
+      .drive(onNext: { [weak self] viewModel in
+        let viewController = ServiceSelectViewController.storyboardInstance()!
+        viewController.viewModel = viewModel
+
+        self?.navigationController?.pushViewController(viewController, animated: true)
+      })
+      .addDisposableTo(disposeBag)
 
     configureAlerts()
     configureTableView()
   }
 
   func configureAlerts() {
-    viewModel?.presentHasDecorationAlert.drive(onNext: { [weak self] viewModel in
-      let viewController = UIAlertController(title: viewModel.decorationAlertTitle, message: viewModel.decorationAlertMessage, preferredStyle: .alert)
+    viewModel?
+      .presentHasDecorationAlert
+      .drive(onNext: { [weak self] viewModel in
+        let viewController = UIAlertController(
+          title: viewModel.decorationAlertTitle,
+          message: viewModel.decorationAlertMessage,
+          preferredStyle: .alert
+        )
 
-      let yesAction = UIAlertAction(title: "Да", style: .default, handler: { _ in
-        viewModel.yesButtonDidTap.onNext()
+        let yesAction = UIAlertAction(
+          title: "Да",
+          style: .default,
+          handler: { _ in viewModel.yesButtonDidTap.onNext() }
+        )
+
+        let noAction = UIAlertAction(
+          title: "Нет",
+          style: .default,
+          handler: { _ in viewModel.noButtonDidTap.onNext() }
+        )
+
+        viewController.addAction(yesAction)
+        viewController.addAction(noAction)
+
+        self?.present(viewController, animated: true, completion: nil)
       })
+      .addDisposableTo(disposeBag)
 
-      let noAction = UIAlertAction(title: "Нет", style: .default, handler: { _ in
-        viewModel.noButtonDidTap.onNext()
+    viewModel?
+      .presentErrorAlert
+      .asDriver(onErrorDriveWith: .empty())
+      .drive(onNext: { error in
+        guard let error = error as? DataError else { return }
+
+        let alertController = UIAlertController(
+          title: "Ошибка",
+          message: error.description,
+          preferredStyle: .alert
+        )
+
+        let defaultAction = UIAlertAction(
+          title: "OK",
+          style: .default,
+          handler: nil
+        )
+
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
       })
-
-      viewController.addAction(yesAction)
-      viewController.addAction(noAction)
-      self?.present(viewController, animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
-
-    viewModel?.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { error in
-      guard let error = error as? DataError else { return }
-      let alertController = UIAlertController(title: "Ошибка", message: error.description, preferredStyle: .alert)
-      let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-      alertController.addAction(defaultAction)
-      self.present(alertController, animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
-
+      .addDisposableTo(disposeBag)
   }
 
   func configureTableView() {

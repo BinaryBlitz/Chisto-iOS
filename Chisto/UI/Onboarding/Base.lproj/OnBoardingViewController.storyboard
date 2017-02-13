@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="p78-OF-pBj">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--OnBoardingViewController-->
+        <scene sceneID="Ag2-Ve-4PQ">
+            <objects>
+                <viewController storyboardIdentifier="OnBoardingViewController" title="OnBoardingViewController" id="p78-OF-pBj" customClass="OnBoardingViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FdL-Fh-122"/>
+                        <viewControllerLayoutGuide type="bottom" id="ArA-Gx-6V4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JIj-C4-xtU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zht-kg-WRE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="156.5"/>
+                                <subviews>
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="1XC-Ug-df6">
+                                        <rect key="frame" x="128.5" y="40" width="118" height="30"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="No need to waste time going to dry cleaners." textAlignment="center" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ga-vJ-HIb">
+                                        <rect key="frame" x="20" y="90" width="335" height="26.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.23921568630000001" green="0.70588235290000001" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="0Ga-vJ-HIb" firstAttribute="leading" secondItem="zht-kg-WRE" secondAttribute="leadingMargin" id="2Kd-6W-1bs"/>
+                                    <constraint firstItem="1XC-Ug-df6" firstAttribute="centerX" secondItem="zht-kg-WRE" secondAttribute="centerX" id="DY3-yx-xy1"/>
+                                    <constraint firstItem="0Ga-vJ-HIb" firstAttribute="trailing" secondItem="zht-kg-WRE" secondAttribute="trailingMargin" id="Igj-jb-rlh"/>
+                                    <constraint firstItem="1XC-Ug-df6" firstAttribute="top" secondItem="zht-kg-WRE" secondAttribute="top" constant="40" id="Ljq-of-pDo"/>
+                                    <constraint firstItem="0Ga-vJ-HIb" firstAttribute="bottom" secondItem="zht-kg-WRE" secondAttribute="bottomMargin" id="gto-aZ-fnS"/>
+                                    <constraint firstItem="0Ga-vJ-HIb" firstAttribute="top" secondItem="1XC-Ug-df6" secondAttribute="bottom" constant="20" id="vGK-pm-QaN"/>
+                                </constraints>
+                                <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="40" right="20"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It is simple:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNs-hU-jV4">
+                                <rect key="frame" x="0.0" y="176.5" width="375" height="27"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" layoutMarginsFollowReadableWidth="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="8vf-fD-DLA">
+                                <rect key="frame" x="15" y="223.5" width="340" height="370.5"/>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="018-W6-wbK" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="614" width="375" height="53"/>
+                                <color key="backgroundColor" red="0.23921568630000001" green="0.70588235290000001" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="VF3-if-2ca"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <state key="normal" title="Начать">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                        <color key="value" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8vf-fD-DLA" secondAttribute="trailing" constant="20" id="4vu-ly-OlO"/>
+                            <constraint firstItem="018-W6-wbK" firstAttribute="leading" secondItem="JIj-C4-xtU" secondAttribute="leading" id="5Gh-bT-wDK"/>
+                            <constraint firstAttribute="trailing" secondItem="018-W6-wbK" secondAttribute="trailing" id="HMK-5i-XeC"/>
+                            <constraint firstItem="hNs-hU-jV4" firstAttribute="leading" secondItem="JIj-C4-xtU" secondAttribute="leading" id="P4G-uy-HvS"/>
+                            <constraint firstItem="zht-kg-WRE" firstAttribute="leading" secondItem="JIj-C4-xtU" secondAttribute="leading" id="RBS-aO-gFZ"/>
+                            <constraint firstItem="8vf-fD-DLA" firstAttribute="leading" secondItem="JIj-C4-xtU" secondAttribute="leading" constant="15" id="Tca-Ym-2OS"/>
+                            <constraint firstAttribute="trailing" secondItem="hNs-hU-jV4" secondAttribute="trailing" id="dPd-yR-eNK"/>
+                            <constraint firstItem="zht-kg-WRE" firstAttribute="top" secondItem="JIj-C4-xtU" secondAttribute="top" id="g2T-Hk-wS0"/>
+                            <constraint firstItem="hNs-hU-jV4" firstAttribute="top" secondItem="zht-kg-WRE" secondAttribute="bottom" constant="20" id="g4O-Bo-Ozb"/>
+                            <constraint firstItem="8vf-fD-DLA" firstAttribute="top" secondItem="hNs-hU-jV4" secondAttribute="bottom" constant="20" id="hBj-bm-zhd"/>
+                            <constraint firstItem="018-W6-wbK" firstAttribute="top" secondItem="8vf-fD-DLA" secondAttribute="bottom" constant="20" id="hNr-pm-D7y"/>
+                            <constraint firstAttribute="trailing" secondItem="zht-kg-WRE" secondAttribute="trailing" id="oDi-r9-frF"/>
+                            <constraint firstItem="ArA-Gx-6V4" firstAttribute="top" secondItem="018-W6-wbK" secondAttribute="bottom" id="vHC-x8-nxJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Pfv-91-B4o"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="goButton" destination="018-W6-wbK" id="G6s-f2-NOy"/>
+                        <outlet property="stackView" destination="8vf-fD-DLA" id="wmp-2n-CaL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nKo-jQ-Jgu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="389.85507246376812" y="495.6521739130435"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logoWhite" width="118" height="30"/>
+    </resources>
+</document>

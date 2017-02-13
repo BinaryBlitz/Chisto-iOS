@@ -1,0 +1,21 @@
+
+/* Class = "UITextField"; placeholder = "Город"; ObjectID = "Bnp-FJ-Z5Z"; */
+"Bnp-FJ-Z5Z.placeholder" = "Город";
+
+/* Class = "UILabel"; text = "Оставьте контактные данные, и мы оповестим вас, когда наш сервис станет доступен в вашем городе"; ObjectID = "E1J-1X-1h8"; */
+"E1J-1X-1h8.text" = "Оставьте контактные данные, и мы оповестим вас, когда наш сервис станет доступен в вашем городе";
+
+/* Class = "UILabel"; text = "Не нашли свой город?"; ObjectID = "FJR-xQ-1at"; */
+"FJR-xQ-1at.text" = "Не нашли свой город?";
+
+/* Class = "UIButton"; normalTitle = "Нет, спасибо"; ObjectID = "QNi-yu-lX8"; */
+"QNi-yu-lX8.normalTitle" = "Нет, спасибо";
+
+/* Class = "UIButton"; normalTitle = "Продолжить"; ObjectID = "WF7-1O-18C"; */
+"WF7-1O-18C.normalTitle" = "Продолжить";
+
+/* Class = "UIViewController"; title = "City Not Found"; ObjectID = "ePL-nS-edy"; */
+"ePL-nS-edy.title" = "City Not Found";
+
+/* Class = "UITextField"; placeholder = "Телефон"; ObjectID = "wJY-Rq-sTS"; */
+"wJY-Rq-sTS.placeholder" = "Телефон";

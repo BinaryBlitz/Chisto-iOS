@@ -120,27 +120,32 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
       self?.navigationController?.present(navigationItemInfoViewController, animated: true)
     }).addDisposableTo(disposeBag)
 
-    viewModel.presentLaundrySelectSection.asDriver(onErrorDriveWith: .empty())
+    viewModel.presentLaundrySelectSection
+      .asDriver(onErrorDriveWith: .empty())
       .drive(onNext: { [weak self] in
         let viewController = LaundrySelectViewController.storyboardInstance()!
         self?.navigationController?.pushViewController(viewController, animated: true) {
           viewController.viewModel.didFinishPushingViewController.onNext()
         }
-    }).addDisposableTo(disposeBag)
+      })
+      .addDisposableTo(disposeBag)
 
-    viewModel.presentProfileSection.drive(onNext: { [weak self] in
-      let viewController = ProfileNavigationController.storyboardInstance()!
-      self?.present(viewController, animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
+    viewModel.presentProfileSection
+      .drive(onNext: { [weak self] in
+        let viewController = ProfileNavigationController.storyboardInstance()!
+        self?.present(viewController, animated: true, completion: nil)
+      })
+      .addDisposableTo(disposeBag)
 
-    viewModel.presentRatingSection.drive(onNext: { [weak self] viewModel in
-      let viewController = OrderReviewAlertViewController.storyboardInstance()!
-      viewController.modalPresentationStyle = .overFullScreen
-      
-      viewController.viewModel = viewModel
-      self?.present(viewController, animated: false, completion: nil)
-    }).addDisposableTo(disposeBag)
-
+    viewModel.presentRatingSection
+      .drive(onNext: { [weak self] viewModel in
+        let viewController = OrderReviewAlertViewController.storyboardInstance()!
+        viewController.modalPresentationStyle = .overFullScreen
+        
+        viewController.viewModel = viewModel
+        self?.present(viewController, animated: false, completion: nil)
+      })
+      .addDisposableTo(disposeBag)
   }
 
 }
