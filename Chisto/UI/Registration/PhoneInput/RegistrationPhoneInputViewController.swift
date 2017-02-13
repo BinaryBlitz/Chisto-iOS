@@ -36,7 +36,6 @@ class RegistrationPhoneInputViewController: UIViewController {
 
     phoneInputField.inputAccessoryView = UIView()
     phoneInputField.tintColor = UIColor.chsSkyBlue
-    navigationItem.title = viewModel?.navigationBarTitle
 
     navigationItem.backBarButtonItem = UIBarButtonItem(
       title: "",

@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "We will send a 5-digit verification code"; ObjectID = "BUz-4N-F8O"; */
+"BUz-4N-F8O.text" = "На этот номер будет отправлен 5-значный код";
+
+/* Class = "UILabel"; text = "By signing up, you accept our Terms of Use"; ObjectID = "McC-SW-wB9"; */
+"McC-SW-wB9.text" = "Регистрируясь в приложении, вы принимаете условия Пользовательского соглашения";
+
+/* Class = "UIViewController"; title = "Registration"; ObjectID = "gBg-h4-tPf"; */
+"gBg-h4-tPf.title" = "Регистрация";
+
+/* Class = "UILabel"; text = "Enter your phone number"; ObjectID = "nbd-Mb-6l0"; */
+"nbd-Mb-6l0.text" = "Введите номер вашего телефона";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "sfF-j1-wvn"; */
+"sfF-j1-wvn.normalTitle" = "Далее";
+
+/* Class = "UITextField"; placeholder = "+7 900 000-00-00"; ObjectID = "yep-yD-h8j"; */
+"yep-yD-h8j.placeholder" = "+7 900 000-00-00";

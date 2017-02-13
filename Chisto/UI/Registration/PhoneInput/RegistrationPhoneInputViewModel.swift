@@ -19,7 +19,6 @@ class RegistrationPhoneInputViewModel {
   let sendButtonDidTap = PublishSubject<Void>()
   let licenseAgreementText: NSAttributedString
   let phoneText: Variable<String?>
-  let navigationBarTitle = NSLocalizedString("registrationPhoneInputScreen", comment: "Phone input screen title")
 
   let termsOfServiceURL = DataManager.instance.termsOfServiceURL
 

@@ -18,7 +18,6 @@ class RegistrationCodeInputViewModel {
   let licenseAgreementText: NSAttributedString
   let codeIsValid: Variable<Bool>
   let code: Variable<String?>
-  let navigationBarTitle = NSLocalizedString("registrationCodeInputScreen", comment: "Registration code input screen title")
   let dismissViewController: Driver<Void>
   let didFinishRegistration = PublishSubject<Void>()
 
