@@ -127,7 +127,6 @@
 		88923E1F1DD3D5F900BC3AC0 /* LocationSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E1E1DD3D5F900BC3AC0 /* LocationSelectViewController.swift */; };
 		889923941DDCAF8200D73905 /* ItemInfoNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889923931DDCAF8200D73905 /* ItemInfoNavigationController.storyboard */; };
 		889923961DDCAF9400D73905 /* ItemInfoNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923951DDCAF9400D73905 /* ItemInfoNavigationController.swift */; };
-		8899239C1DDD288200D73905 /* Errors.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8899239E1DDD288200D73905 /* Errors.strings */; };
 		889923A31DDDFC1000D73905 /* flatMapLatest+continueWithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923A21DDDFC1000D73905 /* flatMapLatest+continueWithError.swift */; };
 		889923A71DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923A61DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift */; };
 		889A84151DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */; };
@@ -216,7 +215,6 @@
 
 /* Begin PBXFileReference section */
 		37530F331E4E0EEA0039AAB0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		37530F341E4E0EEA0039AAB0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Errors.strings; sourceTree = "<group>"; };
 		37530F351E4E0EEA0039AAB0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		37530F371E4E2FA20039AAB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OrderViewController.storyboard; sourceTree = "<group>"; };
 		37530F3A1E4E2FC20039AAB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OrderConfirmViewController.storyboard; sourceTree = "<group>"; };
@@ -363,7 +361,6 @@
 		88923E1E1DD3D5F900BC3AC0 /* LocationSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSelectViewController.swift; sourceTree = "<group>"; };
 		889923931DDCAF8200D73905 /* ItemInfoNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ItemInfoNavigationController.storyboard; sourceTree = "<group>"; };
 		889923951DDCAF9400D73905 /* ItemInfoNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoNavigationController.swift; sourceTree = "<group>"; };
-		8899239D1DDD288200D73905 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Errors.strings; sourceTree = "<group>"; };
 		889923A21DDDFC1000D73905 /* flatMapLatest+continueWithError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "flatMapLatest+continueWithError.swift"; sourceTree = "<group>"; };
 		889923A61DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxRealm+ObjectForPrimaryKey.swift"; sourceTree = "<group>"; };
 		889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceTableViewCell.swift; sourceTree = "<group>"; };
@@ -949,7 +946,6 @@
 			isa = PBXGroup;
 			children = (
 				88073EE41DABE1E0000696A3 /* Info.plist */,
-				8899239E1DDD288200D73905 /* Errors.strings */,
 				88C74B981E3D0A3100F4DBCF /* Localizable.strings */,
 			);
 			name = Supporting;
@@ -1244,7 +1240,6 @@
 				88DB937B1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard in Resources */,
 				88373C981DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib in Resources */,
 				889923941DDCAF8200D73905 /* ItemInfoNavigationController.storyboard in Resources */,
-				8899239C1DDD288200D73905 /* Errors.strings in Resources */,
 				37530F501E4E328F0039AAB0 /* OrderRegistrationViewController.storyboard in Resources */,
 				880E03F01DE9976000311721 /* CategoriesNavigationController.storyboard in Resources */,
 				88BD82431E5275F3001375AF /* OrderInfoTableHeaderView.xib in Resources */,
@@ -1700,15 +1695,6 @@
 			);
 			name = LaunchScreen.storyboard;
 			path = .;
-			sourceTree = "<group>";
-		};
-		8899239E1DDD288200D73905 /* Errors.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8899239D1DDD288200D73905 /* Base */,
-				37530F341E4E0EEA0039AAB0 /* ru */,
-			);
-			name = Errors.strings;
 			sourceTree = "<group>";
 		};
 		88BD82271E527282001375AF /* CategoriesViewController.storyboard */ = {
