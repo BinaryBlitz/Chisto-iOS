@@ -24,6 +24,7 @@ protocol LaundryReviewsViewModelType {
 }
 
 class LaundryReviewsViewModel: LaundryReviewsViewModelType {
+
   let disposeBag = DisposeBag()
   let sections: Driver<[LaundryReviewsSectionModel]>
   let presentErrorAlert: PublishSubject<Error>
@@ -33,11 +34,15 @@ class LaundryReviewsViewModel: LaundryReviewsViewModelType {
   let laundryTitle: String
   let laundryRating: Float
   let laundryReviewsCountText: String
-  let ratingCountLabels = [NSLocalizedString("ratingNominitive", comment: "Ratings count"), NSLocalizedString("ratingGenitive", comment: "Ratings count"), NSLocalizedString("ratingsGenitive", comment: "Ratings count")]
   let tableIsEmpty: Driver<Bool>
 
+  let ratingCountLabels = [
+    NSLocalizedString("ratingNominitive", comment: "Ratings count"),
+    NSLocalizedString("ratingGenitive", comment: "Ratings count"),
+    NSLocalizedString("ratingsGenitive", comment: "Ratings count")
+  ]
+
   init(laundry: Laundry) {
-    
     let ratings = Variable<[Rating]>([])
     self.ratings = ratings
     
@@ -65,6 +70,6 @@ class LaundryReviewsViewModel: LaundryReviewsViewModelType {
     }
 
     self.tableIsEmpty = fetchRatingsObservable.asDriver(onErrorDriveWith: .empty()).map { $0.isEmpty }
-
   }
+
 }
