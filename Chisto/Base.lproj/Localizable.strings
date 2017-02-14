@@ -22,7 +22,7 @@
 
 "decoration" = "Decoration";
 
-"cancel" = "Отмена";
+"cancel" = "Cancel";
 
 "call" = "Call";
 
@@ -118,7 +118,7 @@
 
 "completed" = "Completed";
 
-"errored" = "Ошибка";
+"errored" = "Error";
 
 "canceled" = "Canceled";
 
@@ -157,3 +157,5 @@
 "freeCollectionPrice" = "Free";
 
 "registrationOrderRegistrationScreen" = "Registration";
+
+"minimumOrderPrice" = "Minimum order price";
