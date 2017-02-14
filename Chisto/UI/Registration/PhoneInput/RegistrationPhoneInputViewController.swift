@@ -17,8 +17,6 @@ class RegistrationPhoneInputViewController: UIViewController {
   let disposeBag = DisposeBag()
   var viewModel: RegistrationPhoneInputViewModel? = nil
 
-  let maskedPhoneInput = MaskedInput(formattingType: .phoneNumber)
-
   @IBOutlet weak var phoneInputField: UITextField!
   @IBOutlet weak var sendButton: GoButton!
   @IBOutlet weak var contentView: UIView!
@@ -27,6 +25,7 @@ class RegistrationPhoneInputViewController: UIViewController {
   @IBOutlet weak var licenseAgreementLabel: UILabel!
 
   override func viewDidLoad() {
+    hideKeyboardWhenTappedAround()
     licenseAgreementLabel.attributedText = viewModel?.licenseAgreementText
 
     IQKeyboardManager.sharedManager()
@@ -37,7 +36,6 @@ class RegistrationPhoneInputViewController: UIViewController {
 
     phoneInputField.inputAccessoryView = UIView()
     phoneInputField.tintColor = UIColor.chsSkyBlue
-    navigationItem.title = viewModel?.navigationBarTitle
 
     navigationItem.backBarButtonItem = UIBarButtonItem(
       title: "",
@@ -57,14 +55,7 @@ class RegistrationPhoneInputViewController: UIViewController {
         self?.dismiss(animated: true, completion: {})
       }).addDisposableTo(disposeBag)
 
-    maskedPhoneInput.configure(textField: phoneInputField)
-
     guard let viewModel = viewModel else { return }
-
-    maskedPhoneInput.isValid
-      .asObservable()
-      .bindTo(sendButton.rx.isEnabled)
-      .addDisposableTo(disposeBag)
 
     phoneInputField.rx
       .text

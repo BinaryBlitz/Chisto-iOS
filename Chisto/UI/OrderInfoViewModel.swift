@@ -35,8 +35,9 @@ class OrderInfoViewModel {
   var navigationBarTitle: String
   var sections: Driver<[OrderInfoSectionModel]>
   let presentErrorAlert: PublishSubject<Error>
-  let presentRatingAlert = PublishSubject<OrderReviewAlertViewModel>()
+  let presentRatingAlert: Driver<OrderReviewAlertViewModel>
   let orderInfoTableHeaderViewModel: OrderInfoTableHeaderViewModel
+  let ratingButtonEnabled = Variable<Bool>(false)
   
   // Data
   let order: Variable<Order?>
@@ -49,7 +50,7 @@ class OrderInfoViewModel {
     let realm = RealmManager.instance.uiRealm
     if let orderObject = realm.object(ofType: Order.self, forPrimaryKey: orderId) { order.value = orderObject }
 
-    self.navigationBarTitle = String(format: NSLocalizedString("orderNumber", comment: "Order info screen title"), String(orderId))
+    self.navigationBarTitle = String(format: NSLocalizedString("orderNumberOrderInfo", comment: "Order info screen title"), String(orderId))
     let observableOrder = order.asObservable().filter { $0 != nil }.map { $0! }
 
     self.orderInfoTableHeaderViewModel = OrderInfoTableHeaderViewModel(order: observableOrder)
@@ -59,6 +60,8 @@ class OrderInfoViewModel {
     DataManager.instance.getOrderInfo(orderId: orderId).bindTo(order).addDisposableTo(disposeBag)
 
     let orderLineItemsObservable = observableOrder.map { $0.lineItems }
+
+    observableOrder.map { $0.status == .completed }.bindTo(ratingButtonEnabled).addDisposableTo(disposeBag)
     
     self.sections = orderLineItemsObservable.map { orderLineItems in
       let cellModels = orderLineItems.map(OrderInfoTableViewCellModel.init) as [OrderInfoTableViewCellModelType]
@@ -71,12 +74,11 @@ class OrderInfoViewModel {
         return order.id == orderId && order.rating == nil
     }
 
-    shouldRateOrderObservable.map { OrderReviewAlertViewModel(order: $0!) }
-      .bindTo(presentRatingAlert).addDisposableTo(disposeBag)
+    let ratingButtonTappedDriver = ratingButtonDidTap
+      .asDriver(onErrorDriveWith: .empty())
+      .filter { order.value != nil }.map { order.value }
 
-    ratingButtonDidTap
-      .filter { order.value != nil }.map { OrderReviewAlertViewModel(order: order.value!) }
-      .bindTo(presentRatingAlert).addDisposableTo(disposeBag)
+    presentRatingAlert = Driver.of(shouldRateOrderObservable.asDriver(onErrorDriveWith: .empty()), ratingButtonTappedDriver).merge().map { OrderReviewAlertViewModel(order: $0!) }
 
   }
   

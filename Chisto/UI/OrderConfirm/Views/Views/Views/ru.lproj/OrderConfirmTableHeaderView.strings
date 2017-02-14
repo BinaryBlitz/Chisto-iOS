@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Доставка"; ObjectID = "7qW-5h-3qM"; */
+"7qW-5h-3qM.text" = "Доставка";
+
+/* Class = "UILabel"; text = "Стоимость заказа"; ObjectID = "KNz-rB-qu2"; */
+"KNz-rB-qu2.text" = "Стоимость заказа";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "MZF-v0-qAx"; */
+"MZF-v0-qAx.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "NR1-v2-EIH"; */
+"NR1-v2-EIH.text" = "Label";
+
+/* Class = "UILabel"; text = "Промокод"; ObjectID = "XbM-oq-rUD"; */
+"XbM-oq-rUD.text" = "Промокод";
+
+/* Class = "UIButton"; normalTitle = "Добавить"; ObjectID = "rwR-IM-ea0"; */
+"rwR-IM-ea0.normalTitle" = "Добавить";

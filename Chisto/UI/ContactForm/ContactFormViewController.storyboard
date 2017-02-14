@@ -378,10 +378,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconVisaNoactive" highlightedImage="iconVisaActive" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S4R-Oh-4jz">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconVisaNoactive" highlightedImage="iconVisaActive" translatesAutoresizingMaskIntoConstraints="NO" id="S4R-Oh-4jz">
                                                     <rect key="frame" x="196" y="23" width="31" height="20"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconMastercardNoactive" highlightedImage="iconMastercardActtive" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iLC-2U-ntd">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconMastercardNoactive" highlightedImage="iconMastercardActtive" translatesAutoresizingMaskIntoConstraints="NO" id="iLC-2U-ntd">
                                                     <rect key="frame" x="232" y="23" width="31" height="20"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckOn" translatesAutoresizingMaskIntoConstraints="NO" id="D1G-rA-v9y">

@@ -56,8 +56,8 @@ class CityNotFoundViewController: UIViewController {
 
     viewModel.dismissViewController.catchErrorAndContinue { error in
       guard let error = error as? DataError else { return }
-      let alertController = UIAlertController(title: NSLocalizedString("cancel", comment: "Cancel button"), message: error.description, preferredStyle: .alert)
-      let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: "OK alert button"), style: .default, handler: nil)
+      let alertController = UIAlertController(title: NSLocalizedString("error", comment: "Error alert"), message: error.description, preferredStyle: .alert)
+      let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: "Error alert"), style: .default, handler: nil)
       alertController.addAction(defaultAction)
       self.present(alertController, animated: true, completion: nil)
     }.subscribe(onNext: { [weak self] in

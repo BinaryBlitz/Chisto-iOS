@@ -76,7 +76,7 @@ class CitySelectViewModel: CitySelectViewModelType {
     let realm = RealmManager.instance.uiRealm
     
     let cities = Variable<[City]>([])
-    Observable.from(realm.objects(City.self).filter("isDeleted == %@", false))
+    Observable.collection(from: realm.objects(City.self).filter("isDeleted == %@", false))
       .map { Array($0) }
       .bindTo(cities)
       .addDisposableTo(disposeBag)

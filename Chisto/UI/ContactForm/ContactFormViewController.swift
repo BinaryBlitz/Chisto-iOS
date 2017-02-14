@@ -72,7 +72,6 @@ class ContactFormViewController: UITableViewController {
     (commentField.rx.text <-> viewModel.comment).addDisposableTo(disposeBag)
 
     maskedPhoneInput.configure(textField: phoneField)
-    maskedPhoneInput.isValid.asObservable().bindTo(viewModel.phoneIsValid).addDisposableTo(disposeBag)
 
     fields = [firstNameField, lastNameField, phoneField, emailField,
               cityField, streetField, buildingField, apartmentField, commentField]

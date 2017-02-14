@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pUj-Cc-OFU">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Order Placed Popup View Controller-->
+        <scene sceneID="6Q9-u5-Jt2">
+            <objects>
+                <viewController id="pUj-Cc-OFU" customClass="OrderPlacedPopupViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SFN-z2-ljJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="hEu-sA-csi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="C0T-Nk-TW2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="747-Hf-tGk">
+                                <rect key="frame" x="30" y="185" width="315" height="297"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The order was successfully created" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7T-IP-qyk">
+                                        <rect key="frame" x="20" y="30" width="275" height="27"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDl-hq-FL2">
+                                        <rect key="frame" x="77.5" y="87" width="160" height="50"/>
+                                        <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="6uA-rX-kuQ"/>
+                                            <constraint firstAttribute="width" constant="160" id="wRh-lY-6yA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expect to be contacted by an operator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zop-3u-1bL">
+                                        <rect key="frame" x="18" y="167" width="279" height="20"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1y-vD-qkg" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="247" width="315" height="50"/>
+                                        <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="0Oq-dB-qb3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <state key="normal" title="OK">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                                <color key="value" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order information is available in your profile" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKW-bs-pCJ">
+                                        <rect key="frame" x="15" y="207" width="285" height="20"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                        <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="X1y-vD-qkg" secondAttribute="bottom" id="4Cd-9N-3XG"/>
+                                    <constraint firstItem="LDl-hq-FL2" firstAttribute="centerX" secondItem="747-Hf-tGk" secondAttribute="centerX" id="5C3-Zq-CJM"/>
+                                    <constraint firstItem="ZKW-bs-pCJ" firstAttribute="top" secondItem="zop-3u-1bL" secondAttribute="bottom" constant="20" id="8R1-Lb-Pwe"/>
+                                    <constraint firstItem="ZKW-bs-pCJ" firstAttribute="centerX" secondItem="747-Hf-tGk" secondAttribute="centerX" id="E6k-HX-hYN"/>
+                                    <constraint firstItem="zop-3u-1bL" firstAttribute="top" secondItem="LDl-hq-FL2" secondAttribute="bottom" constant="30" id="FWm-2p-mzg"/>
+                                    <constraint firstAttribute="trailing" secondItem="X1y-vD-qkg" secondAttribute="trailing" id="GHO-bC-9n9"/>
+                                    <constraint firstItem="ZKW-bs-pCJ" firstAttribute="leading" secondItem="747-Hf-tGk" secondAttribute="leading" constant="15" id="GJQ-Pk-PvP"/>
+                                    <constraint firstItem="zop-3u-1bL" firstAttribute="centerX" secondItem="747-Hf-tGk" secondAttribute="centerX" id="Guc-tm-zgY"/>
+                                    <constraint firstItem="A7T-IP-qyk" firstAttribute="top" secondItem="747-Hf-tGk" secondAttribute="top" constant="30" id="TXE-kL-Uei"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZKW-bs-pCJ" secondAttribute="trailing" constant="15" id="Txh-TI-1cr"/>
+                                    <constraint firstItem="A7T-IP-qyk" firstAttribute="leading" secondItem="747-Hf-tGk" secondAttribute="leading" constant="20" id="Vcf-27-qwk"/>
+                                    <constraint firstAttribute="trailing" secondItem="A7T-IP-qyk" secondAttribute="trailing" constant="20" id="ZB4-Vc-ahB"/>
+                                    <constraint firstItem="A7T-IP-qyk" firstAttribute="centerX" secondItem="747-Hf-tGk" secondAttribute="centerX" id="cLy-it-k9q"/>
+                                    <constraint firstItem="X1y-vD-qkg" firstAttribute="leading" secondItem="747-Hf-tGk" secondAttribute="leading" id="gSs-dQ-hgi"/>
+                                    <constraint firstItem="X1y-vD-qkg" firstAttribute="top" secondItem="ZKW-bs-pCJ" secondAttribute="bottom" constant="20" id="ieD-oc-NKb"/>
+                                    <constraint firstItem="LDl-hq-FL2" firstAttribute="top" secondItem="A7T-IP-qyk" secondAttribute="bottom" constant="30" id="o9j-zG-6f3"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="747-Hf-tGk" secondAttribute="trailing" constant="30" id="UxS-F3-Tmy"/>
+                            <constraint firstItem="747-Hf-tGk" firstAttribute="centerY" secondItem="C0T-Nk-TW2" secondAttribute="centerY" id="Vxk-oO-n0b"/>
+                            <constraint firstItem="747-Hf-tGk" firstAttribute="leading" secondItem="C0T-Nk-TW2" secondAttribute="leading" constant="30" id="eFI-er-pRl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="747-Hf-tGk" id="ymU-mo-YJA"/>
+                        <outlet property="continueButton" destination="X1y-vD-qkg" id="GNT-Oi-ASX"/>
+                        <outlet property="orderNumberLabel" destination="LDl-hq-FL2" id="KC5-1v-1wP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BKU-Y7-R9t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-180" y="154.27286356821591"/>
+        </scene>
+    </scenes>
+</document>

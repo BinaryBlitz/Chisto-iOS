@@ -1,0 +1,12 @@
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "IBk-5F-XAK"; */
+"IBk-5F-XAK.normalTitle" = "Отправить";
+
+/* Class = "UILabel"; text = "We hope that you are satisfied. Please write a review to help other users."; ObjectID = "JoX-cA-NBK"; */
+"JoX-cA-NBK.text" = "Мы надеемся, что вы остались довольны. Оставьте пожалуйста отзыв, чтобы помочь другим пользователям";
+
+/* Class = "UILabel"; text = "The order was completed!"; ObjectID = "Lnd-DR-TQz"; */
+"Lnd-DR-TQz.text" = "Заказ исполнен!";
+
+/* Class = "UITextField"; placeholder = "Review"; ObjectID = "Zhr-Xe-dWw"; */
+"Zhr-Xe-dWw.placeholder" = "Ваш отзыв";

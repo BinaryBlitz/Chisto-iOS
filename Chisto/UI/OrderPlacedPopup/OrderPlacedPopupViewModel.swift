@@ -19,7 +19,7 @@ class OrderPlacedPopupViewModel {
   let orderNumber: String
 
   init(orderNumber: String) {
-    self.orderNumber = "№ " + orderNumber
+    self.orderNumber = String(format: NSLocalizedString("orderNumberOrderAlert", comment: "Order placed popup"), orderNumber)
     self.dismissViewController = continueButtonDidTap.asDriver(onErrorDriveWith: .empty()).map { NotificationManager.instance.enable() }
   }
 

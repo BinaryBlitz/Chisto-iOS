@@ -16,8 +16,7 @@ class OnBoardingViewController: UIViewController {
     (title: NSLocalizedString("onboardingStep1", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "iconNum1")),
     (title: NSLocalizedString("onboardingStep2", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "iconNum2")),
     (title: NSLocalizedString("onboardingStep3", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "iconNum3")),
-    (title: NSLocalizedString("onboardingStep4", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "iconNum4")),
-    (title: NSLocalizedString("onboardingStep5", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "iconNum5"))
+    (title: NSLocalizedString("onboardingStep4", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "iconNum4"))
   ]
 
   @IBOutlet weak var stackView: UIStackView!

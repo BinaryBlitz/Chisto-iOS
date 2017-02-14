@@ -19,4 +19,8 @@
 
 "phone_number" = "Номер телефона";
 
-"has already been taken" = "Уже используется другим пользователем";
+"has already been taken" = "уже используется другим пользователем";
+
+"promo_code" = "Промокод";
+
+"is already redeemed" = "уже активирован";

@@ -20,7 +20,9 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
   override func viewDidLoad() {
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconSortNavbar"), style: .plain, target: self, action: nil)
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    
+
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 190
     navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.sortButtonDidTap)
       .addDisposableTo(disposeBag)
 
@@ -39,7 +41,7 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
         self?.viewModel.sortType.value = .byRating
       })
       
-      let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: "Laundry sorting alert"), style: .cancel, handler: nil)
+      let cancelAction = UIAlertAction(title: NSLocalizedString("cancelLaudrySortingAlert", comment: "Laundry sorting alert"), style: .cancel, handler: nil)
 
       alertController.addAction(byRatingAction)
       alertController.addAction(byPriceAction)

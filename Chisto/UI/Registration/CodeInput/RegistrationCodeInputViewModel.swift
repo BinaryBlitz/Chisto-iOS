@@ -18,7 +18,6 @@ class RegistrationCodeInputViewModel {
   let licenseAgreementText: NSAttributedString
   let codeIsValid: Variable<Bool>
   let code: Variable<String?>
-  let navigationBarTitle = NSLocalizedString("registration", comment: "Registration code input screen title")
   let dismissViewController: Driver<Void>
   let didFinishRegistration = PublishSubject<Void>()
 
@@ -35,7 +34,7 @@ class RegistrationCodeInputViewModel {
     self.resendLabelText = NSAttributedString(string: NSLocalizedString("sendAgain", comment: "Code input screen"), attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
 
     let licenseAgreementString = NSMutableAttributedString()
-    licenseAgreementString.append(NSAttributedString(string: NSLocalizedString("licenseAgreementDescription1", comment: "License agreement")))
+    licenseAgreementString.append(NSAttributedString(string: NSLocalizedString("licenseAgreementDescription1", comment: "License agreement") + " "))
     licenseAgreementString.append(NSAttributedString(string: NSLocalizedString("licenseAgreementDescription2", comment: "License agreement"), attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue]))
     self.licenseAgreementText = licenseAgreementString
 
@@ -47,6 +46,7 @@ class RegistrationCodeInputViewModel {
     }
 
     self.dismissViewController = validationConfirmed.filter { $0 == true }.flatMap { _ -> Driver<Void> in
+      NotificationManager.instance.enable()
       return DataManager.instance.showUser().asDriver(onErrorDriveWith: .empty())
     }.map { _ in }
   }

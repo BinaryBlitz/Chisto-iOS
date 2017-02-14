@@ -73,6 +73,11 @@ class ContactFormViewModel {
     self.comment = Variable(profile.notes)
     self.paymentMethod = Variable(profile.paymentMethod)
 
+    phone.asObservable().map { phone in
+      let phoneNumber = try? PhoneNumberKit().parse(phone ?? "")
+      return phoneNumber != nil
+    }.bindTo(phoneIsValid).addDisposableTo(disposeBag)
+
     let contactInfoIsValid = Observable.combineLatest(firstName.asObservable(), lastName.asObservable(), phoneIsValid.asObservable(), email.asObservable()) { firstName, lastName, phoneIsValid, email -> Bool in
       guard let firstName = firstName, let lastName = lastName, let email = email else { return false }
 
@@ -90,11 +95,15 @@ class ContactFormViewModel {
 
   }
 
+
   func saveUserProfile() -> Observable<Void> {
     return Observable.deferred { [weak self] in
       let phoneNumberKit = PhoneNumberKit()
       let phoneNumber = try? phoneNumberKit.parse(self?.phone.value ?? "")
-      guard let `self` = self else { return Observable.error(DataError.unknown) }
+      let phoneError = DataError.unknown(description: NSLocalizedString("invalidPhone", comment: "Error alert"))
+
+      guard let `self` = self else { return Observable.error(phoneError) }
+
       let profile = ProfileManager.instance.userProfile.value
       ProfileManager.instance.updateProfile { profile in
         profile.firstName = self.firstName.value ?? ""

@@ -59,16 +59,29 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
       self.titleColor = disabledColor
       self.descriptionColor = disabledColor
     }
+
     self.laundryTitle = laundry.name
     self.laundryDescription = laundry.descriptionText
     self.rating = laundry.rating
     self.logoUrl = URL(string: laundry.logoUrl)
 
     let collectionDateString = laundry.collectionDate.shortDate
-    self.collectionItemViewModel = LaundryItemInfoViewModel(type: .collection, titleText: collectionDateString, subTitleText: laundry.collectionTimeInterval, isDisabled: isDisabled)
+
+    self.collectionItemViewModel = LaundryItemInfoViewModel(
+      type: .collection,
+      titleText: collectionDateString,
+      subTitleText: laundry.collectionTimeInterval,
+      isDisabled: isDisabled
+    )
 
     let deliveryDateString = laundry.deliveryDate.shortDate
-    self.deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: deliveryDateString, subTitleText: laundry.deliveryTimeInterval, isDisabled: isDisabled)
+
+    self.deliveryItemViewModel = LaundryItemInfoViewModel(
+      type: .delivery,
+      titleText: deliveryDateString,
+      subTitleText: laundry.deliveryTimeInterval,
+      isDisabled: isDisabled
+    )
 
     let collectionPrice = OrderManager.instance.collectionPrice(laundry: laundry)
     price += collectionPrice
@@ -77,9 +90,14 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
     if !isDisabled {
       self.costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: costString)
     } else {
-      let titleText = "Минимальная сумма заказа"
+      let titleText = NSLocalizedString("minimumOrderPrice", comment: "List of offers")
       let subTitleText = "\((laundry.minOrderPrice + collectionPrice).currencyString)"
-      self.costItemViewModel = LaundryItemInfoViewModel(type: .unavaliableCost(price: price), titleText: titleText, subTitleText: subTitleText)
+
+      self.costItemViewModel = LaundryItemInfoViewModel(
+        type: .unavaliableCost(price: price),
+        titleText: titleText,
+        subTitleText: subTitleText
+      )
     }
   }
 

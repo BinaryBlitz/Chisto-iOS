@@ -1,0 +1,18 @@
+
+/* Class = "UIViewController"; title = "Registration"; ObjectID = "2pG-Dw-Hom"; */
+"2pG-Dw-Hom.title" = "Регистрация";
+
+/* Class = "UIButton"; normalTitle = "Send again"; ObjectID = "AtH-vf-0x7"; */
+"AtH-vf-0x7.normalTitle" = "Отправить еще раз";
+
+/* Class = "UILabel"; text = "A code was sent to your phone number"; ObjectID = "FDK-Zh-Zfi"; */
+"FDK-Zh-Zfi.text" = "На ваш номер был отправлен код";
+
+/* Class = "UILabel"; text = "Enter code"; ObjectID = "KUa-pg-0d3"; */
+"KUa-pg-0d3.text" = "Введите код";
+
+/* Class = "UITextField"; placeholder = "∙ ∙ ∙ ∙ ∙"; ObjectID = "Ru4-c8-PMA"; */
+"Ru4-c8-PMA.placeholder" = "∙ ∙ ∙ ∙ ∙";
+
+/* Class = "UILabel"; text = "By signing up, you accept our Terms of Use"; ObjectID = "qML-Mp-4S5"; */
+"qML-Mp-4S5.text" = "Регистрируясь в приложении, вы принимаете условия Пользовательского соглашения";

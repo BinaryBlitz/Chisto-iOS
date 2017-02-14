@@ -59,9 +59,10 @@ class CityNotFoundViewModel: CityNotFoundViewModelType {
     }.bindTo(continueButtonEnabled).addDisposableTo(disposeBag)
 
     sendData = continueButtonDidTap.flatMap { _ -> Observable<Void> in
-      guard let phoneText = phoneTitle.value else { return Observable.error(DataError.unknown) }
+      let phoneError = DataError.unknown(description: NSLocalizedString("invalidPhone", comment: "Error alert"))
+      guard let phoneText = phoneTitle.value else { return Observable.error(phoneError) }
       let phoneNumberKit = PhoneNumberKit()
-      guard let phoneNumber = try? phoneNumberKit.parse(phoneText) else { return Observable.error(DataError.unknown) }
+      guard let phoneNumber = try? phoneNumberKit.parse(phoneText) else { return Observable.error(phoneError) }
       return DataManager.instance.subscribe(cityName: cityTitle.value ?? "", phone: phoneNumberKit.format(phoneNumber, toType: .e164) )
     }.do(onNext: {
       continueButtonEnabled.value = true

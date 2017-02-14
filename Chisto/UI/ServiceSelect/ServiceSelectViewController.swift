@@ -27,7 +27,6 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
     super.viewDidLoad()
 
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    navigationItem.title = viewModel?.navigationItemTitle
 
     itemTitle.text = viewModel?.itemTitle
 

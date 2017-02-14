@@ -19,8 +19,6 @@ protocol OrderTableViewCellModelType {
   var iconUrl: URL? { get }
   var iconColor: UIColor { get }
   var amountText: NSAttributedString { get }
-
-  // Input
 }
 
 

@@ -1,135 +1,210 @@
-/* 
-  Localizable.strings
-  Chisto
 
-  Created by Алексей on 28.01.17.
-  Copyright © 2017 Binary Blitz. All rights reserved.
-*/
+/* Order review alert title */
+"orderCompleted" = "Order #%@ was successfully completed!";
 
-"orderNumber" = "Заказ № %@";
+/* Code input screen */
+"codeSent" = "A code has been sent to %@";
 
-"orderCompleted" = "Заказ № %@ исполнен!";
+/* Code input screen */
+"sendAgain" = "Send again";
 
-"registration" = "Регистрация";
+/* License agreement */
+"licenseAgreementDescription1" = "By signing up, you accept our";
 
-"codeSent" = "На номер %@ был отправлен код";
+/* License agreement */
+"licenseAgreementDescription2" = "Terms of Use";
 
-"sendAgain" = "Выслать повторно";
+/* Decoration service */
+"decoration" = "Decoration";
 
-"licenseAgreementDescription1" = "Регистрируясь в приложении, вы принимаете условия";
+/* Call alert button */
+"call" = "Call";
 
-"licenseAgreementDescription2" = "Пользовательского соглашения";
+/* Error alert */
+"error" = "Error";
 
-"decoration" = "Декор";
+/* Error alert */
+"OK" = "OK";
 
-"cancel" = "Отмена";
+/* Order screen title */
+"order" = "Order";
 
-"call" = "Позвонить";
+/* No orders placeholder */
+"noOrders" = "No orders";
 
-"error" = "Ошибка";
+/* My orders screen */
+"myOrders" = "My orders";
 
-"OK" = "ОК";
-
-"order" = "Заказ";
-
-"noOrders" = "Нет заказов";
-
-"myOrders" = "Мои заказы";
-
+/* Ratings count */
 "ratingNominitive" = "отзыв";
 
+/* Ratings count */
 "ratingGenitive" = "отзыва";
 
+/* Ratings count */
 "ratingsGenitive" = "отзывов";
 
-"noRatings" = "Нет отзывов";
+/* Empty ratings placeholder */
+"noRatings" = "No reviews";
 
-"chooseItem" = "Выбрать вещь";
+/* City select screen title */
+"chooseCity" = "Choose Your City";
 
-"itemNominitive" = "вещь";
+/* Order items collection */
+"itemsCollection" = "Collection";
 
-"itemGenitive" = "вещи";
+/* Order items delivery */
+"delivery" = "Delivery";
 
-"itemssGenitive" = "вещей";
+/* Order price */
+"price" = "Price";
 
-"chooseCity" = "Выбор города";
+/* Contact form header */
+"contactInfo" = "Contact information";
 
-"itemsCollection" = "Сбор вещей";
+/* Contact form header */
+"deliveryAdress" = "Delivery address";
 
-"delivery" = "Доставка";
+/* Contact form header */
+"orderComments" = "Extra information";
 
-"cost" = "Стоимость";
+/* Contact form header */
+"paymentMethod" = "Payment method";
 
-"contactInfo" = "Контактная информация";
+/* Decoration service */
+"decorationLong" = "Decoration";
 
-"deliveryAdress" = "Адрес доставки";
+/* Order item delete button title */
+"delete" = "Delete";
 
-"orderComments" = "Комментарии к заказу";
+/* Last time alert title */
+"lastTimeOrder" = "Last time you ordered in %@";
 
-"paymentMethod" = "Способ оплаты";
+/* Price */
+"free" = "Free";
 
-"decorationLong" = "Декоративная отделка";
+/* Laundry sorting alert */
+"laundrySorting" = "Sort offers:";
 
-"delete" = "Удалить";
+/* Laundry sorting alert */
+"byPrice" = "By price";
 
-"lastTimeOrder" = "В прошлый раз вы заказывали в химчистке %@";
+/* Laundry sorting alert */
+"bySpeed" = "By speed";
 
-"free" = "Бесплатно";
+/* Laundry sorting alert */
+"byRating" = "By rating";
 
-"laundrySorting" = "Сортировка химчисток:";
+/* Onboarding step */
+"onboardingStep1" = "Add items for cleaning";
 
-"byPrice" = "По цене";
+/* Onboarding step */
+"onboardingStep2" = "Choose a cleaning service from our list of offers by price and speed";
 
-"bySpeed" = "По скорости";
+/* Onboarding step */
+"onboardingStep3" = "Pay with credit card in the app or in cash";
 
-"byRating" = "По рейтингу";
+/* Onboarding step */
+"onboardingStep4" = "A courier will collect your things at the agreed time and will then return them clean";
 
-"onboardingStep1" = "Добавьте в список вещи, которые хотите сдать в чистку";
+/* Order continue button title */
+"continue" = "Next";
 
-"onboardingStep2" = "Ознакомьтесь с ценой и сроками выполнения вашего заказа";
+/* Order confirm button */
+"confirmOrder" = "Create an Order: ";
 
-"onboardingStep3" = "Выберите подходящего вам исполнителя";
+/* Decoration alert */
+"hasDecorationRequest" = "Does your item have any decorations?";
 
-"onboardingStep4" = "Ожидайте звонка. Оператор согласует время забора и доставки вещей";
+/* Decoration alert */
+"decorationDescription" = "Rhinestones, beads, sequins, lace or any other decorations that require special treatment";
 
-"onboardingStep5" = "Выберите подходящего вам исполнителя";
+/* Decoration service */
+"decorationDescriptionShort" = "Rhinestones, beads, sequins, lace or any other decorations that require special treatment";
 
-"nothingIsChosen" = "Ничего не выбрано";
+/* Network error */
+"unknownError" = "Unknown error";
 
-"continue" = "Продолжить";
+/* Network error */
+"serverError" = "Server error";
 
-"confirmOrder" = "Оформить заказ: ";
+/* Network error */
+"unexpectedResponse" = "Unexpected response from the server";
 
-"hasDecorationRequest" = "Есть ли у вещи декоративная отделка?";
+/* Order status */
+"processing" = "Processing";
 
-"decorationDescription" = "К декоративной отделке относятся стразы, бисер, пайетки, кружева и прочие украшения, требующие особого внимания";
+/* Order status */
+"cleaning" = "Cleaning";
 
-"decorationDescriptionShort" = "Стразы, бисер, пайетки, кружева и прочие украшения, требующие особого внимания";
+/* Order status */
+"dispatched" = "Dispatched";
 
-"unknownError" = "Неизвестная ошибка";
+/* Order status */
+"completed" = "Completed";
 
-"serverError" = "Ошибка на сервере";
+/* Order status */
+"errored" = "Error";
 
-"unexpectedResponse" = "Неизвестный формат ответа сервера";
+/* Order status */
+"canceled" = "Canceled";
 
-"processing" = "Обрабатывается";
+/* Payment method */
+"card" = "Payment card";
 
-"cleaning" = "В чистке";
+/* Payment method */
+"cash" = "Cash";
 
-"dispatched" = "Доставка";
-
-"completed" = "Выполнен";
-
-"errored" = "Ошибка";
-
-"canceled" = "Отменён";
-
-"card" = "Карта";
-
-"cash" = "Наличные";
-
+/* Payment method */
 "apple_pay" = "Apple Pay";
 
-"timeInterval" = "с %@ до %@";
+/* Time interval */
+"timeInterval" = "%@ to %@";
 
-"promocodeNotFound" = "Промокод не действителен или уже использован";
+/* Error alert */
+"promocodeNotFound" = "Promo code is invalid or has been already used";
+
+/* Decoration alert */
+"yes" = "Yes";
+
+/* Decoration alert */
+"no" = "No";
+
+/* Delivery price */
+"freeDeliveryPrice" = "Free";
+
+/* Order placed popup */
+"orderNumberOrderAlert" = "#%@";
+
+/* My orders table item */
+"orderNumberMyOrders" = "Order #%@";
+
+/* Order info screen title */
+"orderNumberOrderInfo" = "Order #%@";
+
+/* Call alert button */
+"cancelCall" = "Cancel";
+
+/* Laundry sorting alert */
+"cancelLaudrySortingAlert" = "Cancel";
+
+/* Item Info Screen */
+"deleteItemFromOrder" = "Delete";
+
+/* No order items placeholder */
+"nothingIsChosenOrderScreen" = "Nothing is chosen";
+
+/* Order confirm screen */
+"freeCollectionPrice" = "Free";
+
+/* Order registration screen title */
+"registrationOrderRegistrationScreen" = "Registration";
+
+/* List of offers */
+"minimumOrderPrice" = "Minimum order price";
+
+/* Order status */
+"confirmed" = "";
+
+/* Error alert */
+"invalidPhone" = "";

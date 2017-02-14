@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "Заказ успешно оформлен"; ObjectID = "A7T-IP-qyk"; */
+"A7T-IP-qyk.text" = "Заказ успешно оформлен";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "LDl-hq-FL2"; */
+"LDl-hq-FL2.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Продолжить"; ObjectID = "X1y-vD-qkg"; */
+"X1y-vD-qkg.normalTitle" = "Продолжить";
+
+/* Class = "UILabel"; text = "Информация о заказе доступна в профиле"; ObjectID = "ZKW-bs-pCJ"; */
+"ZKW-bs-pCJ.text" = "Информация о заказе доступна в профиле";
+
+/* Class = "UILabel"; text = "Ожидайте звонка оператора"; ObjectID = "zop-3u-1bL"; */
+"zop-3u-1bL.text" = "Ожидайте звонка оператора";

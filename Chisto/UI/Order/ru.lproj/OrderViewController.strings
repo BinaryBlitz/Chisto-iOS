@@ -1,0 +1,15 @@
+
+/* Class = "UIButton"; normalTitle = "Продолжить"; ObjectID = "0gy-0u-Iwx"; */
+"0gy-0u-Iwx.normalTitle" = "Продолжить";
+
+/* Class = "UILabel"; text = "×2 шт"; ObjectID = "FJ2-NI-DR5"; */
+"FJ2-NI-DR5.text" = "×2 шт";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Tyz-bh-Gy8"; */
+"Tyz-bh-Gy8.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "YJA-76-BLG"; */
+"YJA-76-BLG.text" = "Label";
+
+/* Class = "UIViewController"; title = "OrderViewController"; ObjectID = "YtB-Lr-HGi"; */
+"YtB-Lr-HGi.title" = "OrderViewController";

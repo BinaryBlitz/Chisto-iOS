@@ -1,0 +1,48 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1qA-PY-8fc"; */
+"1qA-PY-8fc.text" = "Label";
+
+/* Class = "UILabel"; text = "Способ оплаты"; ObjectID = "9vW-YP-WjC"; */
+"9vW-YP-WjC.text" = "Способ оплаты";
+
+/* Class = "UILabel"; text = "Наличные"; ObjectID = "9vq-lP-Hi4"; */
+"9vq-lP-Hi4.text" = "Наличные";
+
+/* Class = "UILabel"; text = "Итого к оплате"; ObjectID = "BaG-6E-Y1K"; */
+"BaG-6E-Y1K.text" = "Итого к оплате";
+
+/* Class = "UILabel"; text = "Статус"; ObjectID = "FRr-FO-IkJ"; */
+"FRr-FO-IkJ.text" = "Статус";
+
+/* Class = "UILabel"; text = "Название"; ObjectID = "G4C-8k-OZQ"; */
+"G4C-8k-OZQ.text" = "Название";
+
+/* Class = "UILabel"; text = "Доставка"; ObjectID = "Jmf-11-vfw"; */
+"Jmf-11-vfw.text" = "Доставка";
+
+/* Class = "UILabel"; text = "Описание"; ObjectID = "P9w-KN-jQa"; */
+"P9w-KN-jQa.text" = "Описание";
+
+/* Class = "UILabel"; text = "Промокод"; ObjectID = "auj-wc-0Uk"; */
+"auj-wc-0Uk.text" = "Промокод";
+
+/* Class = "UILabel"; text = "rwre"; ObjectID = "dvm-V9-JAw"; */
+"dvm-V9-JAw.text" = "rwre";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "fhF-lh-lwl"; */
+"fhF-lh-lwl.text" = "Label";
+
+/* Class = "UILabel"; text = "Дата"; ObjectID = "imN-BE-cju"; */
+"imN-BE-cju.text" = "Дата";
+
+/* Class = "UILabel"; text = "Промокод"; ObjectID = "l6x-tV-C9v"; */
+"l6x-tV-C9v.text" = "Промокод";
+
+/* Class = "UILabel"; text = "Стоимость заказа"; ObjectID = "tmt-SY-xQk"; */
+"tmt-SY-xQk.text" = "Стоимость заказа";
+
+/* Class = "UILabel"; text = "Промокод"; ObjectID = "vh3-Wz-Him"; */
+"vh3-Wz-Him.text" = "Промокод";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "wqH-Nd-3Zr"; */
+"wqH-Nd-3Zr.text" = "Label";

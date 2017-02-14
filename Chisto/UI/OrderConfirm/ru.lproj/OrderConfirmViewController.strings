@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "Сбор вещей"; ObjectID = "7mv-fA-lzw"; */
+"7mv-fA-lzw.text" = "Сбор вещей";
+
+/* Class = "UILabel"; text = "Доставка вещей"; ObjectID = "Eme-sV-Rpi"; */
+"Eme-sV-Rpi.text" = "Доставка вещей";
+
+/* Class = "UIButton"; normalTitle = "Оформить заказ"; ObjectID = "IVP-Bi-tmz"; */
+"IVP-Bi-tmz.normalTitle" = "Оформить заказ";
+
+/* Class = "UILabel"; text = "Дата"; ObjectID = "PBc-K1-7M9"; */
+"PBc-K1-7M9.text" = "Дата";
+
+/* Class = "UILabel"; text = "Химчистка премиум-класса №1"; ObjectID = "SWK-e6-6R4"; */
+"SWK-e6-6R4.text" = "Химчистка премиум-класса №1";
+
+/* Class = "UILabel"; text = "0 отзывов"; ObjectID = "YMV-wl-aAx"; */
+"YMV-wl-aAx.text" = "0 отзывов";
+
+/* Class = "UIViewController"; title = "OrderConfirmViewController"; ObjectID = "crq-3N-4JC"; */
+"crq-3N-4JC.title" = "OrderConfirmViewController";
+
+/* Class = "UILabel"; text = "Время"; ObjectID = "f8m-PY-DXB"; */
+"f8m-PY-DXB.text" = "Время";
+
+/* Class = "UILabel"; text = "Указаны ближайшие даты. Точное время вы сможете согласовать с сотрудником химчистки."; ObjectID = "lNI-Ug-rhp"; */
+"lNI-Ug-rhp.text" = "Указаны ближайшие даты. Точное время вы сможете согласовать с сотрудником химчистки.";
+
+/* Class = "UILabel"; text = "Дата"; ObjectID = "pdf-iP-JVv"; */
+"pdf-iP-JVv.text" = "Дата";
+
+/* Class = "UILabel"; text = "Время"; ObjectID = "xfy-2M-oOO"; */
+"xfy-2M-oOO.text" = "Время";

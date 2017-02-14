@@ -26,8 +26,9 @@ class OrderInfoTableHeaderViewModel {
   var paymentType = Variable<String>("")
   var paymentMethodImage = Variable<UIImage?>(nil)
   var orderStatusColor = Variable<UIColor>(.chsSkyBlue)
-  var promoCode = Variable<String?>("")
+  var promoCodeText = Variable<String?>("")
   var promoCodeDiscount = Variable<String>("")
+  var promoCode = Variable<PromoCode?>(nil)
 
   let phoneNumber = "+7 495 766-78-49"
 
@@ -42,7 +43,8 @@ class OrderInfoTableHeaderViewModel {
     order.map { $0.totalPrice.currencyString }.bindTo(totalCost).addDisposableTo(disposeBag)
     order.map { $0.paymentMethod.description }.bindTo(paymentType).addDisposableTo(disposeBag)
     order.map { $0.paymentMethod.image }.bindTo(paymentMethodImage).addDisposableTo(disposeBag)
-    order.map { $0.promoCode?.code }.bindTo(promoCode).addDisposableTo(disposeBag)
+    order.map { $0.promoCode?.code }.bindTo(promoCodeText).addDisposableTo(disposeBag)
+    order.map { $0.promoCode }.bindTo(promoCode).addDisposableTo(disposeBag)
     order.map { $0.promoCodeDiscount.currencyString }.bindTo(promoCodeDiscount).addDisposableTo(disposeBag)
 
     let realm = RealmManager.instance.uiRealm

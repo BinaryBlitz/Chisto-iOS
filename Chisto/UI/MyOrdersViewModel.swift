@@ -41,7 +41,7 @@ class MyOrdersViewModel: MyOrdersViewModelType {
     let orders = Variable<[Order]>(realmOrders.toArray())
     self.orders = orders
     
-    Observable.from(realmOrders)
+    Observable.collection(from: realmOrders)
       .map { Array($0) }
       .bindTo(orders)
       .addDisposableTo(disposeBag)

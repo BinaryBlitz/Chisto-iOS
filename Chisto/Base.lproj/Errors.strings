@@ -5,22 +5,22 @@
   Created by Алексей on 17.11.16.
   Copyright © 2016 Binary Blitz. All rights reserved.
 */
-"email" = "Почта";
+"email" = "Email";
 
-"is invalid" = "неправильный формат";
+"is invalid" = "is invalid";
 
-"line_items.laundry_treatment" = "Услуга химчистки";
+"line_items.laundry_treatment" = "Laundry treatment";
 
-"must exist" = "должна существовать";
+"must exist" = "must exist";
 
-"line_items.price" = "Цена";
+"line_items.price" = "price";
 
-"is not a number" = "не является числом";
+"is not a number" = "is invalid";
 
-"phone_number" = "Номер телефона";
+"phone_number" = "Phone number";
 
-"has already been taken" = "уже используется другим пользователем";
+"has already been taken" = "has already been taken";
 
-"promo_code" = "Промокод";
+"promo_code" = "Promo code";
 
-"is already redeemed" = "уже активирован";
+"is already redeemed" = "is invalid";
