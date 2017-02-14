@@ -1,161 +1,210 @@
-/* 
-  Localizable.strings
-  Chisto
 
-  Created by Алексей on 28.01.17.
-  Copyright © 2017 Binary Blitz. All rights reserved.
-*/
-
-"orderNumber" = "Order #%@";
-
+/* Order review alert title */
 "orderCompleted" = "Order #%@ was successfully completed!";
 
-"registration" = "Registration";
-
+/* Code input screen */
 "codeSent" = "A code has been sent to %@";
 
+/* Code input screen */
 "sendAgain" = "Send again";
 
+/* License agreement */
 "licenseAgreementDescription1" = "By signing up, you accept our";
 
+/* License agreement */
 "licenseAgreementDescription2" = "Terms of Use";
 
+/* Decoration service */
 "decoration" = "Decoration";
 
-"cancel" = "Cancel";
-
+/* Call alert button */
 "call" = "Call";
 
+/* Error alert */
 "error" = "Error";
 
+/* Error alert */
 "OK" = "OK";
 
+/* Order screen title */
 "order" = "Order";
 
+/* No orders placeholder */
 "noOrders" = "No orders";
 
+/* My orders screen */
 "myOrders" = "My orders";
 
+/* Ratings count */
 "ratingNominitive" = "отзыв";
 
+/* Ratings count */
 "ratingGenitive" = "отзыва";
 
+/* Ratings count */
 "ratingsGenitive" = "отзывов";
 
+/* Empty ratings placeholder */
 "noRatings" = "No reviews";
 
-"chooseItem" = "Choose an Item";
-
-"itemNominitive" = "вещь";
-
-"itemGenitive" = "вещи";
-
-"itemssGenitive" = "вещей";
-
+/* City select screen title */
 "chooseCity" = "Choose Your City";
 
+/* Order items collection */
 "itemsCollection" = "Collection";
 
+/* Order items delivery */
 "delivery" = "Delivery";
 
+/* Order price */
 "price" = "Price";
 
+/* Contact form header */
 "contactInfo" = "Contact information";
 
+/* Contact form header */
 "deliveryAdress" = "Delivery address";
 
+/* Contact form header */
 "orderComments" = "Extra information";
 
+/* Contact form header */
 "paymentMethod" = "Payment method";
 
+/* Decoration service */
 "decorationLong" = "Decoration";
 
+/* Order item delete button title */
 "delete" = "Delete";
 
+/* Last time alert title */
 "lastTimeOrder" = "Last time you ordered in %@";
 
+/* Price */
 "free" = "Free";
 
+/* Laundry sorting alert */
 "laundrySorting" = "Sort offers:";
 
+/* Laundry sorting alert */
 "byPrice" = "By price";
 
+/* Laundry sorting alert */
 "bySpeed" = "By speed";
 
+/* Laundry sorting alert */
 "byRating" = "By rating";
 
+/* Onboarding step */
 "onboardingStep1" = "Add items for cleaning";
 
+/* Onboarding step */
 "onboardingStep2" = "Choose a cleaning service from our list of offers by price and speed";
 
+/* Onboarding step */
 "onboardingStep3" = "Pay with credit card in the app or in cash";
 
+/* Onboarding step */
 "onboardingStep4" = "A courier will collect your things at the agreed time and will then return them clean";
 
-"nothingIsChosen" = "Nothing is chosen";
-
+/* Order continue button title */
 "continue" = "Next";
 
+/* Order confirm button */
 "confirmOrder" = "Create an Order: ";
 
+/* Decoration alert */
 "hasDecorationRequest" = "Does your item have any decorations?";
 
+/* Decoration alert */
 "decorationDescription" = "Rhinestones, beads, sequins, lace or any other decorations that require special treatment";
 
+/* Decoration service */
 "decorationDescriptionShort" = "Rhinestones, beads, sequins, lace or any other decorations that require special treatment";
 
+/* Network error */
 "unknownError" = "Unknown error";
 
+/* Network error */
 "serverError" = "Server error";
 
+/* Network error */
 "unexpectedResponse" = "Unexpected response from the server";
 
+/* Order status */
 "processing" = "Processing";
 
+/* Order status */
 "cleaning" = "Cleaning";
 
+/* Order status */
 "dispatched" = "Dispatched";
 
+/* Order status */
 "completed" = "Completed";
 
+/* Order status */
 "errored" = "Error";
 
+/* Order status */
 "canceled" = "Canceled";
 
+/* Payment method */
 "card" = "Payment card";
 
+/* Payment method */
 "cash" = "Cash";
 
+/* Payment method */
 "apple_pay" = "Apple Pay";
 
+/* Time interval */
 "timeInterval" = "%@ to %@";
 
+/* Error alert */
 "promocodeNotFound" = "Promo code is invalid or has been already used";
 
-"serviceSelect" = "Treatments";
-
+/* Decoration alert */
 "yes" = "Yes";
 
+/* Decoration alert */
 "no" = "No";
 
+/* Delivery price */
 "freeDeliveryPrice" = "Free";
 
+/* Order placed popup */
 "orderNumberOrderAlert" = "#%@";
 
+/* My orders table item */
 "orderNumberMyOrders" = "Order #%@";
 
+/* Order info screen title */
 "orderNumberOrderInfo" = "Order #%@";
 
+/* Call alert button */
 "cancelCall" = "Cancel";
 
+/* Laundry sorting alert */
 "cancelLaudrySortingAlert" = "Cancel";
 
+/* Item Info Screen */
 "deleteItemFromOrder" = "Delete";
 
+/* No order items placeholder */
 "nothingIsChosenOrderScreen" = "Nothing is chosen";
 
+/* Order confirm screen */
 "freeCollectionPrice" = "Free";
 
+/* Order registration screen title */
 "registrationOrderRegistrationScreen" = "Registration";
 
+/* List of offers */
 "minimumOrderPrice" = "Minimum order price";
+
+/* Order status */
+"confirmed" = "";
+
+/* Error alert */
+"invalidPhone" = "";
