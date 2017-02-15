@@ -3,7 +3,7 @@
 "2pG-Dw-Hom.title" = "Регистрация";
 
 /* Class = "UIButton"; normalTitle = "Send again"; ObjectID = "AtH-vf-0x7"; */
-"AtH-vf-0x7.normalTitle" = "Отправить еще раз";
+"AtH-vf-0x7.normalTitle" = "Отправить ещё раз";
 
 /* Class = "UILabel"; text = "A code was sent to your phone number"; ObjectID = "FDK-Zh-Zfi"; */
 "FDK-Zh-Zfi.text" = "На ваш номер был отправлен код";

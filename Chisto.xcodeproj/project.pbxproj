@@ -27,6 +27,7 @@
 		37530F911E4E33F00039AAB0 /* AboutViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37530F931E4E33F00039AAB0 /* AboutViewController.storyboard */; };
 		37530F961E4E61CF0039AAB0 /* MyOrdersViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37530F981E4E61CF0039AAB0 /* MyOrdersViewController.storyboard */; };
 		37530F9B1E4E65BD0039AAB0 /* OrderConfirmTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37530F9D1E4E65BD0039AAB0 /* OrderConfirmTableHeaderView.xib */; };
+		378C00061E549C68002AE521 /* ItemSizeAlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 378C00081E549C68002AE521 /* ItemSizeAlertViewController.storyboard */; };
 		88004FB41DDF3DE300A8632A /* LaundryReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88004FB31DDF3DE300A8632A /* LaundryReviewsViewController.swift */; };
 		88004FB61DDF3DF200A8632A /* LaundryReviewsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88004FB51DDF3DF200A8632A /* LaundryReviewsViewController.storyboard */; };
 		88004FB81DDF49F300A8632A /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88004FB71DDF49F300A8632A /* Rating.swift */; };
@@ -196,7 +197,6 @@
 		88E86DB31DB916B3002A7024 /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB21DB916B3002A7024 /* OrderManager.swift */; };
 		88E86DB51DB91BAE002A7024 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB41DB91BAE002A7024 /* OrderTableViewCell.swift */; };
 		88E86DB71DB91BBA002A7024 /* OrderTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB61DB91BBA002A7024 /* OrderTableViewCellModel.swift */; };
-		88F674B81DF3F2140001AC16 /* ItemSizeAlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88F674B71DF3F2140001AC16 /* ItemSizeAlertViewController.storyboard */; };
 		88F674BA1DF475460001AC16 /* ItemSizeAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F674B91DF475460001AC16 /* ItemSizeAlertViewController.swift */; };
 		88F674BC1DF477E50001AC16 /* ItemSizeAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F674BB1DF477E50001AC16 /* ItemSizeAlertViewModel.swift */; };
 		88F746D01E3FAB86004EF765 /* Double+round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F746CF1E3FAB86004EF765 /* Double+round.swift */; };
@@ -256,6 +256,8 @@
 		37530F9A1E4E61D20039AAB0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MyOrdersViewController.strings; sourceTree = "<group>"; };
 		37530F9C1E4E65BD0039AAB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OrderConfirmTableHeaderView.xib; sourceTree = "<group>"; };
 		37530F9F1E4E65C00039AAB0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OrderConfirmTableHeaderView.strings; sourceTree = "<group>"; };
+		378C00071E549C68002AE521 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ItemSizeAlertViewController.storyboard; sourceTree = "<group>"; };
+		378C000A1E549C75002AE521 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemSizeAlertViewController.strings; sourceTree = "<group>"; };
 		40CC6F844478737C97DE22A8 /* Pods-Chisto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chisto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chisto/Pods-Chisto.debug.xcconfig"; sourceTree = "<group>"; };
 		88004FB31DDF3DE300A8632A /* LaundryReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryReviewsViewController.swift; sourceTree = "<group>"; };
 		88004FB51DDF3DF200A8632A /* LaundryReviewsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaundryReviewsViewController.storyboard; sourceTree = "<group>"; };
@@ -438,7 +440,6 @@
 		88E86DB21DB916B3002A7024 /* OrderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderManager.swift; sourceTree = "<group>"; };
 		88E86DB41DB91BAE002A7024 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		88E86DB61DB91BBA002A7024 /* OrderTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewCellModel.swift; sourceTree = "<group>"; };
-		88F674B71DF3F2140001AC16 /* ItemSizeAlertViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ItemSizeAlertViewController.storyboard; sourceTree = "<group>"; };
 		88F674B91DF475460001AC16 /* ItemSizeAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSizeAlertViewController.swift; sourceTree = "<group>"; };
 		88F674BB1DF477E50001AC16 /* ItemSizeAlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSizeAlertViewModel.swift; sourceTree = "<group>"; };
 		88F746CF1E3FAB86004EF765 /* Double+round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+round.swift"; sourceTree = "<group>"; };
@@ -1108,7 +1109,7 @@
 		88F674B61DF3F1FA0001AC16 /* ItemSizeAlert */ = {
 			isa = PBXGroup;
 			children = (
-				88F674B71DF3F2140001AC16 /* ItemSizeAlertViewController.storyboard */,
+				378C00081E549C68002AE521 /* ItemSizeAlertViewController.storyboard */,
 				88F674B91DF475460001AC16 /* ItemSizeAlertViewController.swift */,
 				88F674BB1DF477E50001AC16 /* ItemSizeAlertViewModel.swift */,
 			);
@@ -1262,7 +1263,7 @@
 				37530F361E4E2FA20039AAB0 /* OrderViewController.storyboard in Resources */,
 				88BD82341E5274BF001375AF /* ServiceSelectViewController.storyboard in Resources */,
 				882ECDCB1DE7CB4B00EE3507 /* EmptyTableBackgroundView.xib in Resources */,
-				88F674B81DF3F2140001AC16 /* ItemSizeAlertViewController.storyboard in Resources */,
+				378C00061E549C68002AE521 /* ItemSizeAlertViewController.storyboard in Resources */,
 				37530F551E4E329E0039AAB0 /* OrderPlacedPopupViewController.storyboard in Resources */,
 				88D8ABBF1DB56EB8009D515B /* SelectClothesViewController.storyboard in Resources */,
 				880E03EC1DE8F81A00311721 /* PaymentViewController.storyboard in Resources */,
@@ -1685,6 +1686,15 @@
 			);
 			name = OrderConfirmTableHeaderView.xib;
 			path = Views/Views;
+			sourceTree = "<group>";
+		};
+		378C00081E549C68002AE521 /* ItemSizeAlertViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				378C00071E549C68002AE521 /* Base */,
+				378C000A1E549C75002AE521 /* ru */,
+			);
+			name = ItemSizeAlertViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		88073EE11DABE1E0000696A3 /* LaunchScreen.storyboard */ = {
