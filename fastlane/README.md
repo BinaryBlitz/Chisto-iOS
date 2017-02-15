@@ -39,16 +39,11 @@ Runs all the tests
 fastlane ios beta
 ```
 Submit a new Beta Build to Crashlytics
-### ios testflight
-```
-fastlane ios testflight
-```
-Submit a new Beta Build to Apple TestFlight
 ### ios release
 ```
 fastlane ios release
 ```
-Deploy a new version to the App Store
+Submit a new Beta Build to TestFlight
 
 ----
 

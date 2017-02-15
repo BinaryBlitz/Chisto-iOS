@@ -11,7 +11,7 @@
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version '1.105.2'
+fastlane_version '2.16.0'
 
 default_platform :ios
 
@@ -39,40 +39,28 @@ platform :ios do
     crashlytics
   end
 
-  desc 'Submit a new Beta Build to Apple TestFlight'
-  lane :testflight do
+  desc 'Submit a new Beta Build to TestFlight'
+  lane :release do
     # Ensure that there that your git status is not dirty
     ensure_git_status_clean
     # Increment the build number (not the version number)
     increment_build_number
-    # match(type: 'appstore') # more information: https://codesigning.guide
-    gym(scheme: 'Chisto')
+    # Manage code signing
+    match(type: 'appstore')
+    # Build your app - more options available
+    gym(scheme: 'Chisto', include_bitcode: true)
     # Upload to Testflight
     pilot(skip_waiting_for_build_processing: true)
-  end
-
-  desc 'Deploy a new version to the App Store'
-  lane :release do
-    # match(type: 'appstore')
-    # snapshot
-    gym # Build your app - more options available
-    deliver(force: true)
-    # frameit
   end
 
   after_all do |lane|
     # This block is called, only if the executed lane was successful
 
-    # slack(
-    #   message: 'Successfully deployed new App Update.'
-    # )
+    # slack(message: 'Successfully deployed new App Update.')
   end
 
   error do |lane, exception|
-    # slack(
-    #   message: exception.message,
-    #   success: false
-    # )
+    # slack(message: exception.message, success: false)
   end
 end
 
