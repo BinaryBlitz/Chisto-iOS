@@ -26,14 +26,14 @@ class NotificationManager: NSObject {
   func resetNotificationsCount() {
     UIApplication.shared.applicationIconBadgeNumber = 0
   }
-  
+
   func enable() {
     guard ProfileManager.instance.userProfile.value.deviceToken == nil else { return }
 
     if #available(iOS 10.0, *) {
       UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
-        if granted { UIApplication.shared.registerForRemoteNotifications() }
-      }
+          if granted { UIApplication.shared.registerForRemoteNotifications() }
+        }
     } else {
       let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
       UIApplication.shared.registerUserNotificationSettings(settings)
@@ -44,11 +44,11 @@ class NotificationManager: NSObject {
   func didRegisterForNotifications(token: Data) {
     let tokenString = token.hexadecimalString
     DataManager.instance.sendNotificationToken(tokenString: tokenString).subscribe(onNext: {
-      ProfileManager.instance.updateProfile { $0.deviceToken = tokenString }
-    }).addDisposableTo(disposeBag)
+        ProfileManager.instance.updateProfile { $0.deviceToken = tokenString }
+      }).addDisposableTo(disposeBag)
   }
 
-  func didReceiveNotification(userInfo: [AnyHashable : Any]) {
+  func didReceiveNotification(userInfo: [AnyHashable: Any]) {
     print(JSON(userInfo).rawString(options: .prettyPrinted) ?? "")
 
     guard let notificationData = userInfo["custom_data"] as? [String: Any] else { return }

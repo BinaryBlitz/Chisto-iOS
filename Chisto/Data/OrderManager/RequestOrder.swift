@@ -31,8 +31,8 @@ class RequestOrder: Mappable {
     notes = profile.notes
     paymentMethod = profile.paymentMethod
   }
-  
-  required init(map: Map) { }
+
+  required init(map: Map) {}
 
   func mapping(map: Map) {
     streetName <- map["street_name"]

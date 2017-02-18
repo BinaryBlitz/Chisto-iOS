@@ -18,6 +18,7 @@ enum LaundryType {
 }
 
 // TODO: remove test data and change properties
+
 class Laundry: ServerObject {
   let dateFormatType = Date.DateStringFormatType.fullDate
   dynamic var city: City? = nil
@@ -39,11 +40,11 @@ class Laundry: ServerObject {
   var laundryTreatments: [LaundryTreatment] = []
   var laundryItems: [LaundryItem] = []
 
-  var collectionTimeInterval: String  {
+  var collectionTimeInterval: String {
     return String(format: NSLocalizedString("timeInterval", comment: "Time interval"), collectionDateOpensAt, collectionDateClosesAt)
   }
 
-  var deliveryTimeInterval: String  {
+  var deliveryTimeInterval: String {
     return String(format: NSLocalizedString("timeInterval", comment: "Time interval"), deliveryDateOpensAt, deliveryDateClosesAt)
   }
 
@@ -51,7 +52,7 @@ class Laundry: ServerObject {
     guard amount < freeDeliveryFrom else { return 0 }
     return deliveryFee
   }
-  
+
   var treatments: [Treatment] {
     return laundryTreatments
       .filter { $0.treatment != nil }
@@ -61,7 +62,7 @@ class Laundry: ServerObject {
   var isDisabled: Bool {
     return OrderManager.instance.price(laundry: self, includeCollection: false) < minOrderPrice
   }
-  
+
   override func mapping(map: Map) {
     super.mapping(map: map)
     name <- map["name"]

@@ -44,23 +44,23 @@ class Profile: Object, Mappable {
   private var cityId: Int? {
     return city?.id
   }
-  
+
   required init?(map: Map) {
     super.init()
   }
-  
+
   required init(value: Any, schema: RLMSchema) {
     super.init(value: value, schema: schema)
   }
-  
+
   required init(realm: RLMRealm, schema: RLMObjectSchema) {
     super.init(realm: realm, schema: schema)
   }
-  
+
   required init() {
     super.init()
   }
-  
+
   func mapping(map: Map) {
     firstName <- map["first_name"]
     lastName <- map["last_name"]
@@ -76,7 +76,7 @@ class Profile: Object, Mappable {
     ordersCount <- map["orders_count"]
     cityId >>> map["city_id"]
   }
-  
+
   override static func primaryKey() -> String? {
     return "id"
   }

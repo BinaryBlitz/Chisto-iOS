@@ -13,14 +13,14 @@ import RealmSwift
 import ObjectMapper
 
 class ProfileManager {
-  
+
   let disposeBag = DisposeBag()
 
   static let instance = ProfileManager()
   private let profileKey = "profileId"
 
   let userProfile: Variable<Profile>
-  
+
   func updateProfile(closure: ((Profile) -> Void)) {
     let profile = userProfile.value
     let realm = try! Realm()
@@ -42,14 +42,14 @@ class ProfileManager {
     }
     UserDefaults.standard.set(newProfile.id, forKey: profileKey)
   }
-  
+
   init() {
     var profile: Profile
 
     let realm = RealmManager.instance.uiRealm
-    
+
     if let profileId = UserDefaults.standard.value(forKey: profileKey),
-      let savedProfile = realm.object(ofType: Profile.self, forPrimaryKey: profileId) {
+       let savedProfile = realm.object(ofType: Profile.self, forPrimaryKey: profileId) {
       profile = savedProfile
     } else {
       profile = Profile()
