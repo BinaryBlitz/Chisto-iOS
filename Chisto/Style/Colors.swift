@@ -14,19 +14,19 @@ import UIKit
 
 extension UIColor {
 
-  func lighter(percentage:CGFloat = 0.1) -> UIColor {
+  func lighter(percentage: CGFloat = 0.1) -> UIColor {
     return self.colorWithBrightness(factor: 1 + abs(percentage))
   }
 
-  func darker(percentage:CGFloat = 0.1) -> UIColor {
+  func darker(percentage: CGFloat = 0.1) -> UIColor {
     return self.colorWithBrightness(factor: 1 - abs(percentage))
   }
 
   func colorWithBrightness(factor: CGFloat) -> UIColor {
-    var hue : CGFloat = 0
-    var saturation : CGFloat = 0
-    var brightness : CGFloat = 0
-    var alpha : CGFloat = 0
+    var hue: CGFloat = 0
+    var saturation: CGFloat = 0
+    var brightness: CGFloat = 0
+    var alpha: CGFloat = 0
 
     if getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
       return UIColor(hue: hue, saturation: saturation, brightness: brightness * factor, alpha: alpha)
@@ -98,11 +98,11 @@ extension UIColor {
   class var chsMaize: UIColor {
     return UIColor(red: 247.0 / 255.0, green: 183.0 / 255.0, blue: 91.0 / 255.0, alpha: 1.0)
   }
-  
+
   class var chsWhite20: UIColor {
     return UIColor(white: 255.0 / 255.0, alpha: 0.2)
   }
-  
+
   class var chsWatermelon: UIColor {
     return UIColor(red: 254.0 / 255.0, green: 79.0 / 255.0, blue: 101.0 / 255.0, alpha: 1.0)
   }
