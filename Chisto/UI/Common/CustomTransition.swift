@@ -39,22 +39,21 @@ class CustomPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
       containerView.transform = CGAffineTransform(translationX: -direction * containerView.frame.size.width / 2.0, y: 0)
       fromView?.layer.transform = viewFromTransform
       toView?.layer.transform = CATransform3DIdentity
-      }, completion: {
-        finished in
-        containerView.transform = CGAffineTransform.identity
-        fromView?.layer.transform = CATransform3DIdentity
-        toView?.layer.transform = CATransform3DIdentity
-        fromView?.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        toView?.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+    }, completion: {
+      finished in
+      containerView.transform = CGAffineTransform.identity
+      fromView?.layer.transform = CATransform3DIdentity
+      toView?.layer.transform = CATransform3DIdentity
+      fromView?.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+      toView?.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
 
-        if (transitionContext.transitionWasCancelled) {
-          toView?.removeFromSuperview()
-        } else {
-          fromView?.removeFromSuperview()
-        }
-        transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+      if (transitionContext.transitionWasCancelled) {
+        toView?.removeFromSuperview()
+      } else {
+        fromView?.removeFromSuperview()
+      }
+      transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
     })
   }
-
 
 }

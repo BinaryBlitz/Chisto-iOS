@@ -42,7 +42,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
   override func viewDidLoad() {
     navigationItem.title = viewModel?.navigationBarTitle
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    
+
     configureHeader()
     configureNavigations()
     configureFooter()
@@ -64,40 +64,40 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
     laundryBackgroundImageView.kf.setImage(with: viewModel.laundryBackground, options: [.processor(backgroundProcessor)])
 
   }
-  
+
   func configureNavigations() {
     viewModel?.presentRegistrationSection.drive(onNext: { viewModel in
-      let registrationNavigationController = RegistrationNavigationController.storyboardInstance()!
-      guard let registrationPhoneInputViewController = registrationNavigationController.viewControllers.first as? RegistrationPhoneInputViewController else { return }
-      registrationPhoneInputViewController.viewModel = viewModel
-      self.present(registrationNavigationController, animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
-    
-    viewModel?.presentOrderContactDataSection.drive (onNext: { [weak self] viewModel in
-      let viewController = OrderRegistrationViewController.storyboardInstance()!
-      viewController.viewModel = viewModel
-      self?.navigationController?.pushViewController(viewController, animated: true)
-    }).addDisposableTo(disposeBag)
-    
-    viewModel?.presentLaundryReviewsSection.drive (onNext: { [weak self] viewModel in
-      let viewController = LaundryReviewsViewController.storyboardInstance()!
-      viewController.viewModel = viewModel
-      self?.navigationController?.pushViewController(viewController, animated: true)
-    }).addDisposableTo(disposeBag)
+        let registrationNavigationController = RegistrationNavigationController.storyboardInstance()!
+        guard let registrationPhoneInputViewController = registrationNavigationController.viewControllers.first as? RegistrationPhoneInputViewController else { return }
+        registrationPhoneInputViewController.viewModel = viewModel
+        self.present(registrationNavigationController, animated: true, completion: nil)
+      }).addDisposableTo(disposeBag)
+
+    viewModel?.presentOrderContactDataSection.drive(onNext: { [weak self] viewModel in
+        let viewController = OrderRegistrationViewController.storyboardInstance()!
+        viewController.viewModel = viewModel
+        self?.navigationController?.pushViewController(viewController, animated: true)
+      }).addDisposableTo(disposeBag)
+
+    viewModel?.presentLaundryReviewsSection.drive(onNext: { [weak self] viewModel in
+        let viewController = LaundryReviewsViewController.storyboardInstance()!
+        viewController.viewModel = viewModel
+        self?.navigationController?.pushViewController(viewController, animated: true)
+      }).addDisposableTo(disposeBag)
 
     viewModel?.presentPromoCodeAlert.drive(onNext: { [weak self] viewModel in
-      let viewController = PromoCodeAlertViewController.storyboardInstance()!
-      viewController.modalPresentationStyle = .overFullScreen
-      viewController.viewModel = viewModel
-      self?.present(viewController, animated: false, completion: nil)
-    }).addDisposableTo(disposeBag)
+        let viewController = PromoCodeAlertViewController.storyboardInstance()!
+        viewController.modalPresentationStyle = .overFullScreen
+        viewController.viewModel = viewModel
+        self?.present(viewController, animated: false, completion: nil)
+      }).addDisposableTo(disposeBag)
 
     viewModel?.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { message in
-      let alertController = UIAlertController(title: NSLocalizedString("error", comment: "Error alert"), message: message, preferredStyle: .alert)
-      let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: "Error alert"), style: .default, handler: nil)
-      alertController.addAction(defaultAction)
-      self.present(alertController, animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
+        let alertController = UIAlertController(title: NSLocalizedString("error", comment: "Error alert"), message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: "Error alert"), style: .default, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+      }).addDisposableTo(disposeBag)
 
   }
 
@@ -140,7 +140,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
     navigationController?.navigationBar.isTranslucent = true
     navigationController?.navigationBar.backgroundColor = nil
   }
-  
+
   override func viewDidDisappear(_ animated: Bool) {
     navigationController?.navigationBar.isTranslucent = false
   }
@@ -156,5 +156,5 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
     headerView.frame = frame
     tableView.tableHeaderView = headerView
   }
-  
+
 }

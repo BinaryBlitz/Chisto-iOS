@@ -19,7 +19,6 @@ protocol SelectClothesTableViewCellModelType {
   var iconColor: UIColor { get }
 }
 
-
 class SelectClothesTableViewCellModel: SelectClothesTableViewCellModelType {
 
   // Input

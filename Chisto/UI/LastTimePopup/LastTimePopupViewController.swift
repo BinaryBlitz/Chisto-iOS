@@ -39,12 +39,12 @@ class LastTimePopupViewController: UIViewController {
     backgroundLaundryImageView.kf.setImage(with: viewModel.laundryBackgroundUrl, options: [.processor(backgroundProcessor)])
 
     viewModel.dismissViewController.drive(onNext: { [weak self] in
-      UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {
-        self?.view.alpha = 0
+        UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {
+          self?.view.alpha = 0
         }, completion: { _ in
           self?.dismiss(animated: false, completion: nil)
-      })
-    }).addDisposableTo(disposeBag)
+        })
+      }).addDisposableTo(disposeBag)
 
     for viewModel in viewModel.laundryDescriptionViewModels {
       let laundryItemView = LaundryItemInfoView.nibInstance()!

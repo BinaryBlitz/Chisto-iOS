@@ -44,14 +44,14 @@ class RegistrationPhoneInputViewController: UIViewController {
     )
 
     navigationItem.leftBarButtonItem = UIBarButtonItem(
-      image: #imageLiteral(resourceName: "iconNavbarClose"),
+      image: #imageLiteral(resourceName:"iconNavbarClose"),
       style: .plain,
       target: nil, action: nil
     )
 
     navigationItem.leftBarButtonItem?.rx
       .tap.asDriver()
-      .drive(onNext: {[weak self] in
+      .drive(onNext: { [weak self] in
         self?.dismiss(animated: true, completion: {})
       }).addDisposableTo(disposeBag)
 
@@ -109,8 +109,8 @@ class RegistrationPhoneInputViewController: UIViewController {
     )
 
     alertController.addAction(defaultAction)
-    
+
     return alertController
   }
-  
+
 }

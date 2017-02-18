@@ -22,5 +22,5 @@ class OrderInfoTableFooterView: UIView {
   func configure(phone: String) {
     phoneLabel.attributedText = NSAttributedString(string: phone, attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
   }
-  
+
 }

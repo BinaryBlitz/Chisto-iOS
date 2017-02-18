@@ -15,7 +15,7 @@ class LaundryReviewsTableViewCell: UITableViewCell {
   @IBOutlet weak var reviewContentLabel: UILabel!
   @IBOutlet weak var reviewRatingView: FloatRatingView!
   @IBOutlet weak var reviewDateLabel: UILabel!
-  
+
   func configure(viewModel: LaundryReviewsViewTableViewCellModelType) {
     authorNameLabel.text = viewModel.authorName
     reviewContentLabel.text = viewModel.content

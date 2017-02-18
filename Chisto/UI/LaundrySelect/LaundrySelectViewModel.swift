@@ -115,18 +115,18 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     self.presentSortSelectSection = sortButtonDidTap.asDriver(onErrorDriveWith: .empty())
 
     itemDidSelect.map { indexPath in
-      let viewModel = OrderConfirmViewModel(laundry: sortedLaundries.value[indexPath.row])
-      return viewModel
-    }.bindTo(presentOrderConfirmSection).addDisposableTo(disposeBag)
+        let viewModel = OrderConfirmViewModel(laundry: sortedLaundries.value[indexPath.row])
+        return viewModel
+      }.bindTo(presentOrderConfirmSection).addDisposableTo(disposeBag)
 
     let filteredLaundriesObservable = Observable
       .combineLatest(laundries.asObservable(), currentOrderItemsObservable) { [weak self] laundries, currentOrderItems -> [Laundry] in
-        self?.filterLaundries(laundries: laundries, currentOrderItems: currentOrderItems) ?? []
-      }
+      self?.filterLaundries(laundries: laundries, currentOrderItems: currentOrderItems) ?? []
+    }
 
     Observable.combineLatest(filteredLaundriesObservable.asObservable(), sortType.asObservable()) { laundries, sortType -> [Laundry] in
-      return self.sortLaundries(laundries: laundries, sortType: sortType)
-    }.bindTo(sortedLaundries).addDisposableTo(disposeBag)
+        return self.sortLaundries(laundries: laundries, sortType: sortType)
+      }.bindTo(sortedLaundries).addDisposableTo(disposeBag)
   }
 
   func filterLaundries(laundries: [Laundry], currentOrderItems: [OrderItem]) -> [Laundry] {

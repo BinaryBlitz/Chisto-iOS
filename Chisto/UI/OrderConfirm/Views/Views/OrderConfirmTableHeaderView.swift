@@ -26,12 +26,11 @@ class OrderConfirmTableHeaderView: UIView {
     deliveryPriceLabel.text = viewModel.collectionPrice
     promoCodeButton.rx.tap.bindTo(viewModel.promoCodeButtonDidTap).addDisposableTo(disposeBag)
     viewModel.promoCodePriceDiscount.asObservable().subscribe(onNext: { [weak self] discount in
-      self?.promoCodeButton.setTitle(discount, for: .normal)
-      self?.promoCodeButton.titleLabel?.font = .preferredFont(forTextStyle: .callout)
-      self?.promoCodeButton.isEnabled = false
-      self?.promoCodeButton.contentHorizontalAlignment = .right
-    }).addDisposableTo(disposeBag)
+        self?.promoCodeButton.setTitle(discount, for: .normal)
+        self?.promoCodeButton.titleLabel?.font = .preferredFont(forTextStyle: .callout)
+        self?.promoCodeButton.isEnabled = false
+        self?.promoCodeButton.contentHorizontalAlignment = .right
+      }).addDisposableTo(disposeBag)
   }
-
 
 }

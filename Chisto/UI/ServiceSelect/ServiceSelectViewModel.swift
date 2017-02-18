@@ -46,6 +46,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
   // Data
   var saveNeeded: Bool
   var orderItem: OrderItem
+
   enum NewSection {
     case orderItem
     case order
@@ -107,7 +108,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
       } as [ServiceSelectTableViewCellModelType]
 
       let decorationSection = ServiceSelectSectionModel(model: "", items: [decorationCellModel]
-        as [ServiceSelectTableViewCellModelType])
+      as [ServiceSelectTableViewCellModelType])
 
       let servicesSection = ServiceSelectSectionModel(model: "", items: cellModels)
 
@@ -120,13 +121,13 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
     let returnSection: NewSection = saveNeeded ? .order : .orderItem
 
     readyButtonTapped.asObservable().map { [weak self] in
-      guard let needPresentAreaAlert = self?.needPresentAreaAlert else { return returnSection }
-      guard needPresentAreaAlert else { return returnSection }
-      let viewModel = ItemSizeAlertViewModel(orderItem: orderItem)
-      viewModel.didFinishAlertSuccess.asObservable().map { returnSection }
-        .bindTo(showNewSection).addDisposableTo(viewModel.disposeBag)
-      return .areaAlert(viewModel: viewModel)
-    }.bindTo(showNewSection).addDisposableTo(disposeBag)
+        guard let needPresentAreaAlert = self?.needPresentAreaAlert else { return returnSection }
+        guard needPresentAreaAlert else { return returnSection }
+        let viewModel = ItemSizeAlertViewModel(orderItem: orderItem)
+        viewModel.didFinishAlertSuccess.asObservable().map { returnSection }
+          .bindTo(showNewSection).addDisposableTo(viewModel.disposeBag)
+        return .areaAlert(viewModel: viewModel)
+      }.bindTo(showNewSection).addDisposableTo(disposeBag)
 
     readyButtonTapped.asObservable()
       .map {

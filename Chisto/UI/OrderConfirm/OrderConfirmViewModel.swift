@@ -58,7 +58,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   let presentErrorAlert: PublishSubject<String>
 
   var laundryDescriprionTitle: String
-  var laundryIcon: URL?  = nil
+  var laundryIcon: URL? = nil
   var laundryBackground: URL? = nil
   var laundryRating: Float
   var ratingsCountText: String
@@ -74,7 +74,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
     case phoneRegistration(viewModel: RegistrationPhoneInputViewModel)
     case orderRegistration
   }
-  
+
   init(laundry: Laundry) {
     let presentErrorAlert = PublishSubject<String>()
     self.presentErrorAlert = presentErrorAlert
@@ -109,7 +109,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
 
       viewModel.promoCodeDidEntered.asObservable()
         .filter { $0 == nil }
-        .map { _ in NSLocalizedString("promocodeNotFound", comment: "Error alert")}
+        .map { _ in NSLocalizedString("promocodeNotFound", comment: "Error alert") }
         .bindTo(presentErrorAlert)
         .addDisposableTo(viewModel.disposeBag)
       return viewModel
@@ -122,7 +122,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
         let section = OrderConfirmSectionModel(model: "", items: cellModels)
         return [section]
       }
-    
+
     let didFinishRegistation = PublishSubject<Void>()
 
     let shouldPresentOrderContactDataSection = confirmOrderButtonDidTap.asObservable().filter { ProfileManager.instance.userProfile.value.isVerified }.flatMap {
@@ -133,20 +133,20 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
 
     self.presentOrderContactDataSection = Driver.of(shouldPresentOrderContactDataSection.asDriver(onErrorDriveWith: .empty()), didFinishRegistation.asDriver(onErrorDriveWith: .empty()))
       .merge().map { OrderRegistrationViewModel(promoCode: promoCode.value) }
-    
+
     self.presentRegistrationSection = shouldPresentRegistrationSection.map {
       let viewModel = RegistrationPhoneInputViewModel()
       viewModel.didFinishRegistration.bindTo(didFinishRegistation).addDisposableTo(viewModel.disposeBag)
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
-    
+
     self.presentLaundryReviewsSection = headerViewDidTap
       .map { LaundryReviewsViewModel(laundry: laundry) }
       .asDriver(onErrorDriveWith: .empty())
 
     confirmOrderButtonDidTap.asDriver(onErrorDriveWith: .empty()).drive(onNext: {
-      OrderManager.instance.currentLaundry = laundry
-    }).addDisposableTo(disposeBag)
+        OrderManager.instance.currentLaundry = laundry
+      }).addDisposableTo(disposeBag)
   }
 
 }

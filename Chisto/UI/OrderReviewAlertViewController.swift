@@ -40,12 +40,12 @@ class OrderReviewAlertViewController: UIViewController {
     viewModel.uiEnabled.asObservable().bindTo(continueButton.rx.isEnabled).addDisposableTo(disposeBag)
 
     viewModel.dismissViewController.drive(onNext: { [weak self] in
-      UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {
-        self?.view.alpha = 0
-      }, completion: { _ in
-        self?.dismiss(animated: false, completion: nil)
-      })
-    }).addDisposableTo(disposeBag)
+        UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {
+          self?.view.alpha = 0
+        }, completion: { _ in
+          self?.dismiss(animated: false, completion: nil)
+        })
+      }).addDisposableTo(disposeBag)
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -54,7 +54,7 @@ class OrderReviewAlertViewController: UIViewController {
       self?.view.alpha = 1
     }
   }
-  
+
 }
 
 extension OrderReviewAlertViewController: FloatRatingViewDelegate {

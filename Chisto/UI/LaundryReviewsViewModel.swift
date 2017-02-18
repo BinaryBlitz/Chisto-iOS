@@ -45,26 +45,26 @@ class LaundryReviewsViewModel: LaundryReviewsViewModelType {
   init(laundry: Laundry) {
     let ratings = Variable<[Rating]>([])
     self.ratings = ratings
-    
+
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
 
     let fetchRatingsObservable = DataManager.instance.fetchRatings(laundry: laundry)
 
     fetchRatingsObservable.do(onError: { error in
-      presentErrorAlert.onNext(error)
-    }).bindTo(ratings).addDisposableTo(disposeBag)
-    
+        presentErrorAlert.onNext(error)
+      }).bindTo(ratings).addDisposableTo(disposeBag)
+
     self.laundryTitle = laundry.name
     self.laundryRating = laundry.rating
     self.laundryLogoUrl = URL(string: laundry.logoUrl)
     self.laundryBackgroundUrl = URL(string: laundry.backgroundImageUrl)
-    
+
     self.laundryReviewsCountText = "\(laundry.ratingsCount) " + getRussianNumEnding(number: laundry.ratingsCount, endings: ratingCountLabels)
-    
+
     self.sections = ratings.asDriver().map { ratings in
       let cellModels = ratings.map(LaundryReviewsViewTableViewCellModel.init) as [LaundryReviewsViewTableViewCellModelType]
-      
+
       let section = LaundryReviewsSectionModel(model: "", items: cellModels)
       return [section]
     }

@@ -32,30 +32,50 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate, UISearch
     configureFooter()
 
     viewModel?.presentCityNotFoundController.drive(onNext: { [weak self] in
-      let viewController = CityNotFoundViewController.storyboardInstance()!
-      viewController.modalPresentationStyle = .overFullScreen
-      self?.present(viewController, animated: false, completion: nil)
-    }).addDisposableTo(disposeBag)
-    
+        let viewController = CityNotFoundViewController.storyboardInstance()!
+        viewController.modalPresentationStyle = .overFullScreen
+        self?.present(viewController, animated: false, completion: nil)
+      }).addDisposableTo(disposeBag)
+
     viewModel?.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { error in
-      guard let error = error as? DataError else { return }
-      let alertController = UIAlertController(title: NSLocalizedString("error", comment: "Error alert"), message: error.description, preferredStyle: .alert)
-      let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: "Error alert"), style: .default, handler: nil)
-      alertController.addAction(defaultAction)
-      self.present(alertController, animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
+        guard let error = error as? DataError else { return }
 
-    viewModel?.showCancelButtonAnimated.drive(onNext: { [weak self] in
-      self?.searchBar.setShowsCancelButton(true, animated: true)
-    }).addDisposableTo(disposeBag)
+        let alertController = UIAlertController(
+          title: NSLocalizedString("error", comment: "Error alert"),
+          message: error.description,
+          preferredStyle: .alert
+        )
 
-    viewModel?.hideCancelButtonAnimated.drive(onNext: { [weak self] in
-      self?.searchBar.setShowsCancelButton(false, animated: true)
-    }).addDisposableTo(disposeBag)
+        let defaultAction = UIAlertAction(
+          title: NSLocalizedString("OK", comment: "Error alert"),
+          style: .default,
+          handler: nil
+        )
 
-    viewModel?.hideKeyboard.drive(onNext: { [weak self] in
-      self?.view.endEditing(true)
-    }).addDisposableTo(disposeBag)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+      }).addDisposableTo(disposeBag)
+
+    viewModel?
+      .showCancelButtonAnimated
+      .drive(onNext: { [weak self] in
+        self?.searchBar.setShowsCancelButton(true, animated: true)
+      })
+      .addDisposableTo(disposeBag)
+
+    viewModel?
+      .hideCancelButtonAnimated
+      .drive(onNext: { [weak self] in
+        self?.searchBar.setShowsCancelButton(false, animated: true)
+      })
+      .addDisposableTo(disposeBag)
+
+    viewModel?
+      .hideKeyboard
+      .drive(onNext: { [weak self] in
+        self?.view.endEditing(true)
+      })
+      .addDisposableTo(disposeBag)
 
     definesPresentationContext = true
   }
@@ -64,12 +84,22 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate, UISearch
     // UI
     navigationController?.navigationBar.backItem?.title = ""
     navigationController?.navigationBar.backItem?.backBarButtonItem?.tintColor = UIColor.white
-    navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconLocation"), style: .plain, target: self, action: nil)
+
+    navigationItem.rightBarButtonItem = UIBarButtonItem(
+      image: #imageLiteral(resourceName:"iconLocation"),
+      style: .plain,
+      target: self,
+      action: nil
+    )
+
     navigationItem.title = viewModel?.navigationBarTitle
 
     // Bindings
     guard let viewModel = viewModel else { return }
-    navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.locationButtonDidTap).addDisposableTo(disposeBag)
+    navigationItem.rightBarButtonItem?.rx
+      .tap
+      .bindTo(viewModel.locationButtonDidTap)
+      .addDisposableTo(disposeBag)
 
   }
 
@@ -80,16 +110,16 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate, UISearch
     searchBar.delegate = self
     searchBar.backgroundColor = UIColor.chsSkyBlue
     searchBar.backgroundImage = UIImage()
-    searchBar.setSearchFieldBackgroundImage(#imageLiteral(resourceName: "searchBarTextBack"), for: .normal)
-    searchBar.setImage(#imageLiteral(resourceName: "iconSearch"), for: .search, state: .normal)
+    searchBar.setSearchFieldBackgroundImage(#imageLiteral(resourceName:"searchBarTextBack"), for: .normal)
+    searchBar.setImage(#imageLiteral(resourceName:"iconSearch"), for: .search, state: .normal)
     searchBar.setTextColor(color: UIColor.white)
     searchBar.searchTextPositionAdjustment = UIOffsetMake(5.0, 0.0)
 
     // Bindings
     guard let viewModel = viewModel else { return }
     searchBar.rx.searchButtonClicked.asDriver().drive(onNext: { [weak self] in
-      self?.searchBar.resignFirstResponder()
-    }).addDisposableTo(disposeBag)
+        self?.searchBar.resignFirstResponder()
+      }).addDisposableTo(disposeBag)
     searchBar.rx.cancelButtonClicked.bindTo(viewModel.cancelSearchButtonDidTap).addDisposableTo(disposeBag)
     searchBar.rx.textDidBeginEditing.bindTo(viewModel.searchBarDidBeginEditing).addDisposableTo(disposeBag)
     searchBar.rx.textDidEndEditing.bindTo(viewModel.searchBarDidEndEditing).addDisposableTo(disposeBag)
@@ -111,7 +141,7 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate, UISearch
       let cell = tableView.dequeueReusableCell(withIdentifier: "CitySelectTableViewCell", for: indexPath)
       cell.textLabel?.text = city.name
       if viewModel.cityClosedToUser.value == city {
-        cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "iconMap"))
+        cell.accessoryView = UIImageView(image: #imageLiteral(resourceName:"iconMap"))
       }
       return cell
     }

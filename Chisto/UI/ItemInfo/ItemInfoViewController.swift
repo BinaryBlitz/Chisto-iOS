@@ -32,7 +32,7 @@ class ItemInfoViewController: UIViewController {
     super.viewDidLoad()
 
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconNavbarClose"), style: .plain, target: nil, action: nil)
+    navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName:"iconNavbarClose"), style: .plain, target: nil, action: nil)
 
     clothesItemTitleLabel.text = viewModel?.itemTitle
     clothesItemRelatedLabel.text = viewModel?.itemDescription
@@ -45,14 +45,14 @@ class ItemInfoViewController: UIViewController {
     configureButtons()
 
     viewModel?.presentServiceSelectSection.drive(onNext: { [weak self] viewModel in
-      let viewController = ServiceSelectViewController.storyboardInstance()!
-      viewController.viewModel = viewModel
-      self?.navigationController?.pushViewController(viewController, animated: true)
-    }).addDisposableTo(disposeBag)
+        let viewController = ServiceSelectViewController.storyboardInstance()!
+        viewController.viewModel = viewModel
+        self?.navigationController?.pushViewController(viewController, animated: true)
+      }).addDisposableTo(disposeBag)
 
     viewModel?.returnToOrderList.drive(onNext: { [weak self] in
-      self?.dismiss(animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
+        self?.dismiss(animated: true, completion: nil)
+      }).addDisposableTo(disposeBag)
 
   }
 
@@ -78,7 +78,7 @@ class ItemInfoViewController: UIViewController {
     viewModel.sections
       .drive(tableView.rx.items(dataSource: dataSource))
       .addDisposableTo(disposeBag)
-    
+
     dataSource.canEditRowAtIndexPath = { _, indexPath in
       viewModel.canDeleteItem(at: indexPath)
     }
@@ -87,7 +87,7 @@ class ItemInfoViewController: UIViewController {
 
   func configureButtons() {
     guard let viewModel = viewModel else { return }
-    
+
     navigationItem.leftBarButtonItem?.rx.tap.bindTo(viewModel.navigationCloseButtonDidTap).addDisposableTo(viewModel.disposeBag)
     addServiceButton.rx.tap.bindTo(viewModel.addServiceButtonDidTap).addDisposableTo(disposeBag)
     continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)

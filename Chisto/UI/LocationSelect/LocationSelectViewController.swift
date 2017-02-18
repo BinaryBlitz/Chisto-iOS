@@ -29,7 +29,7 @@ class LocationSelectViewController: UIViewController {
   override func viewDidLoad() {
     saveButton.isEnabled = false
 
-    navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconLocation"), style: .plain, target: nil, action: nil)
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName:"iconLocation"), style: .plain, target: nil, action: nil)
 
     configureNavigation()
     configureMap()
@@ -42,12 +42,12 @@ class LocationSelectViewController: UIViewController {
 
     navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.locationButtonDidTap).addDisposableTo(disposeBag)
     navigationItem.rightBarButtonItem?.rx.tap.asDriver().drive(onNext: { [weak self] in
-      self?.mapView.isMyLocationEnabled = true
-    }).addDisposableTo(disposeBag)
+        self?.mapView.isMyLocationEnabled = true
+      }).addDisposableTo(disposeBag)
 
     viewModel.popViewContoller.drive(onNext: { [weak self] in
-      _ = self?.navigationController?.popViewController(animated: true)
-    }).addDisposableTo(disposeBag)
+        _ = self?.navigationController?.popViewController(animated: true)
+      }).addDisposableTo(disposeBag)
 
   }
 
@@ -58,16 +58,16 @@ class LocationSelectViewController: UIViewController {
 
     mapView.camera = GMSCameraPosition.camera(withLatitude: viewModel.cityLocation.latitude, longitude: viewModel.cityLocation.longitude, zoom: viewModel.cityZoom)
 
-    marker.icon = #imageLiteral(resourceName: "iconPoint")
+    marker.icon = #imageLiteral(resourceName:"iconPoint")
     marker.isDraggable = true
     marker.map = mapView
 
     viewModel.markerLocation.asObservable().subscribe(onNext: { [weak self] location in
-      self?.saveButton.isEnabled = true
-      self?.marker.position = location
-      let cameraUpdate = GMSCameraUpdate.setTarget(location, zoom: viewModel.markerZoom)
-      self?.mapView.animate(with: cameraUpdate)
-    }).addDisposableTo(disposeBag)
+        self?.saveButton.isEnabled = true
+        self?.marker.position = location
+        let cameraUpdate = GMSCameraUpdate.setTarget(location, zoom: viewModel.markerZoom)
+        self?.mapView.animate(with: cameraUpdate)
+      }).addDisposableTo(disposeBag)
 
     saveButton.rx.tap.asObservable()
       .bindTo(viewModel.saveButtonDidTap)
@@ -77,18 +77,18 @@ class LocationSelectViewController: UIViewController {
 
   func configureSearch() {
     guard let viewModel = viewModel else { return }
-    
+
     resultsViewController.delegate = self
     searchController = UISearchController(searchResultsController: resultsViewController)
     searchController?.searchResultsUpdater = resultsViewController
-    
+
     definesPresentationContext = true
     resultsViewController.extendedLayoutIncludesOpaqueBars = true
     searchController?.dimsBackgroundDuringPresentation = false
     resultsViewController.edgesForExtendedLayout = UIRectEdge([])
-    
+
     guard let searchBar = searchController?.searchBar else { return }
-        
+
     _ = searchBar.rx.text <-> viewModel.searchBarText
 
     searchBar.barTintColor = UIColor.chsSkyBlue
@@ -97,8 +97,8 @@ class LocationSelectViewController: UIViewController {
     searchBar.backgroundColor = UIColor.chsSkyBlue
     searchBar.backgroundImage = UIImage()
     searchBar.searchBarStyle = .minimal
-    searchBar.setSearchFieldBackgroundImage(#imageLiteral(resourceName: "searchBarTextBack"), for: .normal)
-    searchBar.setImage(#imageLiteral(resourceName: "iconSearch"), for: .search, state: .normal)
+    searchBar.setSearchFieldBackgroundImage(#imageLiteral(resourceName:"searchBarTextBack"), for: .normal)
+    searchBar.setImage(#imageLiteral(resourceName:"iconSearch"), for: .search, state: .normal)
     searchBar.setTextColor(color: UIColor.white)
     searchBar.searchTextPositionAdjustment = UIOffsetMake(5.0, 0.0)
 
@@ -116,7 +116,7 @@ extension LocationSelectViewController: GMSAutocompleteResultsViewControllerDele
   }
 
   func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
-                         didFailAutocompleteWithError error: Error){
+                         didFailAutocompleteWithError error: Error) {
     let alertController = UIAlertController(title: NSLocalizedString("error", comment: "Error alert"), message: error.localizedDescription, preferredStyle: .alert)
     let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: "Error alert"), style: .default, handler: nil)
     alertController.addAction(defaultAction)

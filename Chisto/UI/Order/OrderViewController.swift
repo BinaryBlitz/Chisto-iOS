@@ -21,14 +21,13 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
   private let disposeBag = DisposeBag()
   var dataSource = RxTableViewSectionedReloadDataSource<OrderSectionModel>()
 
-
   override func viewDidLoad() {
     super.viewDidLoad()
 
     navigationItem.title = viewModel.navigationBarTitle
 
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
-    navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconUser"), style: .plain, target: nil, action: nil)
+    navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName:"iconUser"), style: .plain, target: nil, action: nil)
 
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
@@ -63,18 +62,18 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
     }
 
     viewModel.currentOrderItems.asDriver().drive(onNext: { [weak self] items in
-      if items.count > 0 {
-        self?.continueButton.isEnabled = true
-        self?.continueButton.titleLabel?.text = NSLocalizedString("continue", comment: "Order continue button title")
-        self?.tableView.separatorStyle = .singleLine
-        self?.tableView.backgroundView?.isHidden = true
-      } else {
-        self?.continueButton.isEnabled = false
-        self?.continueButton.titleLabel?.text = NSLocalizedString("nothingIsChosenOrderScreen", comment: "No order items placeholder")
-        self?.tableView.separatorStyle = .none
-        self?.tableView.backgroundView?.isHidden = false
-      }
-    }).addDisposableTo(disposeBag)
+        if items.count > 0 {
+          self?.continueButton.isEnabled = true
+          self?.continueButton.titleLabel?.text = NSLocalizedString("continue", comment: "Order continue button title")
+          self?.tableView.separatorStyle = .singleLine
+          self?.tableView.backgroundView?.isHidden = true
+        } else {
+          self?.continueButton.isEnabled = false
+          self?.continueButton.titleLabel?.text = NSLocalizedString("nothingIsChosenOrderScreen", comment: "No order items placeholder")
+          self?.tableView.separatorStyle = .none
+          self?.tableView.backgroundView?.isHidden = false
+        }
+      }).addDisposableTo(disposeBag)
 
     tableView.delegate = nil
     tableView.rx
@@ -84,11 +83,11 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
     tableView.rx.itemSelected
       .bindTo(viewModel.itemDidSelect)
       .addDisposableTo(disposeBag)
-    
+
     dataSource.canEditRowAtIndexPath = { _ in
       return true
     }
-    
+
     tableView.rx.itemDeleted.bindTo(viewModel.tableItemDeleted)
       .addDisposableTo(disposeBag)
 
@@ -109,16 +108,16 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
   func configureNavigations() {
 
     viewModel.presentCategoriesViewController.drive(onNext: { [weak self] in
-      let viewController = CategoriesNavigationController.storyboardInstance()!
-      self?.present(viewController, animated: true)
-    }).addDisposableTo(disposeBag)
+        let viewController = CategoriesNavigationController.storyboardInstance()!
+        self?.present(viewController, animated: true)
+      }).addDisposableTo(disposeBag)
 
     viewModel.presentItemInfoViewController.drive(onNext: { [weak self] viewModel in
-      let navigationItemInfoViewController = ItemInfoNavigationController.storyboardInstance()!
-      let itemInfoViewController = navigationItemInfoViewController.viewControllers.first as! ItemInfoViewController
-      itemInfoViewController.viewModel = viewModel
-      self?.navigationController?.present(navigationItemInfoViewController, animated: true)
-    }).addDisposableTo(disposeBag)
+        let navigationItemInfoViewController = ItemInfoNavigationController.storyboardInstance()!
+        let itemInfoViewController = navigationItemInfoViewController.viewControllers.first as! ItemInfoViewController
+        itemInfoViewController.viewModel = viewModel
+        self?.navigationController?.present(navigationItemInfoViewController, animated: true)
+      }).addDisposableTo(disposeBag)
 
     viewModel.presentLaundrySelectSection
       .asDriver(onErrorDriveWith: .empty())
@@ -141,7 +140,7 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
       .drive(onNext: { [weak self] viewModel in
         let viewController = OrderReviewAlertViewController.storyboardInstance()!
         viewController.modalPresentationStyle = .overFullScreen
-        
+
         viewController.viewModel = viewModel
         self?.present(viewController, animated: false, completion: nil)
       })

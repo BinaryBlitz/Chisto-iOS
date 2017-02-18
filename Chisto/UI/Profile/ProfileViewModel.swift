@@ -40,7 +40,7 @@ class ProfileViewModel {
   var ordersCount = Variable<String>("0")
 
   let termsOfServiceURL = DataManager.instance.termsOfServiceURL
-  
+
   init() {
     DataManager.instance.showUser().subscribe().addDisposableTo(disposeBag)
     let presentNextScreen = PublishSubject<ProfileSection>()
@@ -58,8 +58,8 @@ class ProfileViewModel {
     self.presentRegistrationSection = shouldPresentRegistrationSection.map { nextSection in
       let viewModel = RegistrationPhoneInputViewModel()
       viewModel.didFinishRegistration.flatMap { _ -> Observable<ProfileSection> in
-        return DataManager.instance.showUser().map { nextSection }
-      }.bindTo(presentNextScreen).addDisposableTo(viewModel.disposeBag)
+          return DataManager.instance.showUser().map { nextSection }
+        }.bindTo(presentNextScreen).addDisposableTo(viewModel.disposeBag)
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
 

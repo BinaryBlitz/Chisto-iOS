@@ -17,20 +17,20 @@ class MyOrdersViewController: UITableViewController, DefaultBarColoredViewContro
   let dataSource = RxTableViewSectionedReloadDataSource<MyOrdersSectionModel>()
   let emptyTableBackgroundView = EmptyTableBackgroundView.nibInstance()!
   var viewModel = MyOrdersViewModel()
-  
+
   override func viewDidLoad() {
     navigationItem.title = viewModel.navigationBarTitle
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
     configureTableView()
-    
+
     viewModel.presentOrderInfoSection.drive(onNext: { [weak self] viewModel in
-      let viewController = OrderInfoViewController.storyboardInstance()!
-      viewController.viewModel = viewModel
-      self?.navigationController?.pushViewController(viewController, animated: true)
-    }).addDisposableTo(disposeBag)
+        let viewController = OrderInfoViewController.storyboardInstance()!
+        viewController.viewModel = viewModel
+        self?.navigationController?.pushViewController(viewController, animated: true)
+      }).addDisposableTo(disposeBag)
   }
-  
+
   func configureTableView() {
     emptyTableBackgroundView.title = NSLocalizedString("noOrders", comment: "No orders placeholder")
     tableView.backgroundView = emptyTableBackgroundView
@@ -41,26 +41,26 @@ class MyOrdersViewController: UITableViewController, DefaultBarColoredViewContro
       cell.configure(viewModel: cellViewModel)
       return cell
     }
-    
+
     tableView.rx.itemSelected.bindTo(viewModel.itemDidSelect).addDisposableTo(disposeBag)
-    
+
     tableView.dataSource = nil
     viewModel.sections
       .drive(self.tableView.rx.items(dataSource: self.dataSource))
       .addDisposableTo(self.disposeBag)
-    
-    
+
+
     viewModel.tableIsEmpty.asDriver().drive(onNext: { [weak self] tableIsEmpty in
-      self?.tableView.separatorStyle =  tableIsEmpty ? .none : .singleLine
-      self?.tableView.backgroundView?.isHidden = tableIsEmpty ? false : true
-      self?.tableView.reloadData()
-    }).addDisposableTo(disposeBag)
+        self?.tableView.separatorStyle = tableIsEmpty ? .none : .singleLine
+        self?.tableView.backgroundView?.isHidden = tableIsEmpty ? false : true
+        self?.tableView.reloadData()
+      }).addDisposableTo(disposeBag)
   }
-  
+
   override func viewWillAppear(_ animated: Bool) {
     if let indexPath = tableView.indexPathForSelectedRow {
       tableView.deselectRow(at: indexPath, animated: true)
     }
   }
-  
+
 }

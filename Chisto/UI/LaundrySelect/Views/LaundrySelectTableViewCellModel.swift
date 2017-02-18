@@ -40,8 +40,8 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
   var tagBgColor: UIColor? = nil
   var tagName: String? = nil
   var disabledColor: UIColor = UIColor.chsCoolGrey
-  var starRatingFullImage: UIImage = #imageLiteral(resourceName: "iconStarblueBigFull")
-  var starRatingEmptyImage: UIImage = #imageLiteral(resourceName: "iconStarblueStroke")
+  var starRatingFullImage: UIImage = #imageLiteral(resourceName:"iconStarblueBigFull")
+  var starRatingEmptyImage: UIImage = #imageLiteral(resourceName:"iconStarblueStroke")
   var tagIsHidden: Bool = false
   var isDisabled: Bool = true
   var logoUrl: URL?
@@ -54,8 +54,8 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
     let isDisabled = price < laundry.minOrderPrice
     self.isDisabled = isDisabled
     if isDisabled {
-      self.starRatingFullImage = #imageLiteral(resourceName: "iconStarblueGrayFull")
-      self.starRatingEmptyImage = #imageLiteral(resourceName: "iconStarblueGrayStroke")
+      self.starRatingFullImage = #imageLiteral(resourceName:"iconStarblueGrayFull")
+      self.starRatingEmptyImage = #imageLiteral(resourceName:"iconStarblueGrayStroke")
       self.titleColor = disabledColor
       self.descriptionColor = disabledColor
     }
