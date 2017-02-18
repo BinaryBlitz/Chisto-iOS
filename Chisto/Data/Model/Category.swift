@@ -22,7 +22,7 @@ class Category: ServerObject {
   var itemsPreview = List<RealmString>()
   dynamic var itemsCount: Int = 0
   dynamic var featured: Bool = false
-  
+
   var color: UIColor {
     return UIColor(colorString)
   }

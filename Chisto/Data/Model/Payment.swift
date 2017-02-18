@@ -14,7 +14,7 @@ class Payment: ServerObject {
   dynamic var isPaid: Bool = false
   dynamic var paymentUrl: String = ""
   dynamic var createdAt: String = ""
-  
+
   override func mapping(map: Map) {
     super.mapping(map: map)
     amount <- map["amount"]
@@ -23,5 +23,5 @@ class Payment: ServerObject {
     createdAt <- map["created_at"]
 
   }
-  
+
 }

@@ -25,8 +25,8 @@ class Treatment: ServerObject {
   }
 
   func price(laundry: Laundry, hasDecoration: Bool = false) -> Double {
-    
-    guard let laundryTreatment = laundry.laundryTreatments.first (where: { $0.treatment?.id == self.id }) else { return 0 }
+
+    guard let laundryTreatment = laundry.laundryTreatments.first(where: { $0.treatment?.id == self.id }) else { return 0 }
     guard hasDecoration == true else { return laundryTreatment.price }
     guard let laundryItem = laundry.laundryItems.first(where: { $0.itemId == self.item?.id }) else { return laundryTreatment.price }
     return laundryTreatment.price * laundryItem.decorationMultiplier

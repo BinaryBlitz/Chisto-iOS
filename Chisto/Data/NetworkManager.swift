@@ -159,7 +159,7 @@ class NetworkManager {
               observer.onError(NetworkError.unexpectedResponseFormat)
             }
           }
-      }
+        }
 
       return Disposables.create { request.cancel() }
     }
@@ -167,7 +167,7 @@ class NetworkManager {
     return requestObservable.do(
       onError: { _ in
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }, onCompleted: { _ in
+      }, onCompleted: { _ in
       UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }, onSubscribe: { _ in
       UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -185,5 +185,5 @@ class NetworkManager {
     default: return .unknown
     }
   }
-  
+
 }

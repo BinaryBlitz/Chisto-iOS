@@ -19,7 +19,7 @@ class OrderItem {
 
   let squareCentimetersInMeter: Double = 10000
 
-  init (clothesItem: Item, treatments: [Treatment] = [], amount: Int = 1, hasDecoration: Bool = false) {
+  init(clothesItem: Item, treatments: [Treatment] = [], amount: Int = 1, hasDecoration: Bool = false) {
     self.clothesItem = clothesItem
     self.treatments = treatments
     self.amount = amount

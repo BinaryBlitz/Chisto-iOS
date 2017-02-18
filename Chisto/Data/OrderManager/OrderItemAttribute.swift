@@ -22,7 +22,7 @@ class OrderTreatmentAttribute: Mappable {
   func mapping(map: Map) {
     laundryTreatmentId <- map["laundry_treatment_id"]
   }
-  
+
 }
 
 class OrderItemAttribute: Mappable {
@@ -40,7 +40,8 @@ class OrderItemAttribute: Mappable {
 
     for treatment in orderItem.treatments {
       guard let laundryTreatment = laundry.laundryTreatments.first(where: {
-        $0.treatmentId == treatment.id }) else { return }
+        $0.treatmentId == treatment.id
+      }) else { return }
       orderTreatmentsAttributes.append(OrderTreatmentAttribute(laundryTreatment.id))
     }
   }
