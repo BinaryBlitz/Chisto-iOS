@@ -14,7 +14,7 @@ extension URL {
     guard
       let parameters = parameters,
       let urlComponents = NSURLComponents(url: self, resolvingAgainstBaseURL: true) else {
-        return self
+      return self
     }
 
     var mutableQueryItems: [URLQueryItem] = urlComponents.queryItems ?? []

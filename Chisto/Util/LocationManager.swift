@@ -39,7 +39,7 @@ class LocationManager {
     if requestPermission {
       locationManager.requestWhenInUseAuthorization()
     }
-    
+
     locationManager.startUpdatingLocation()
 
     return location
