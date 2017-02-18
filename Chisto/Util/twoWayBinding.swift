@@ -12,15 +12,15 @@ import RxCocoa
 
 infix operator <->
 
-func <-> <T>(property: ControlProperty<T>, variable: Variable<T>) -> Disposable {
+func <-><T>(property: ControlProperty<T>, variable: Variable<T>) -> Disposable {
   let bindToUIDisposable = variable.asObservable()
     .bindTo(property)
   let bindToVariable = property
     .subscribe(onNext: { nextValue in
-      variable.value = nextValue
-    }, onCompleted: {
-      bindToUIDisposable.dispose()
-    })
+    variable.value = nextValue
+  }, onCompleted: {
+    bindToUIDisposable.dispose()
+  })
 
   return Disposables.create(bindToUIDisposable, bindToVariable)
 }

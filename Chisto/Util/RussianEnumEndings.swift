@@ -22,7 +22,7 @@ func getRussianNumEnding(number: Int, endings: [String]) -> String {
     switch number % 10 {
     case 1:
       return endings[0]
-    case 2...4:
+    case 2 ... 4:
       return endings[1]
     default:
       return endings[2]

@@ -18,7 +18,7 @@ class RealmManager {
       schemaVersion: 3,
       migrationBlock: { migration, oldSchemaVersion in
 
-    })
+      })
     Realm.Configuration.defaultConfiguration = config
     uiRealm = try! Realm()
   }
