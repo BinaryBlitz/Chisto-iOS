@@ -11,17 +11,17 @@ import UIKit
 import Kingfisher
 
 class OrderInfoTableViewCell: UITableViewCell {
-  
+
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var iconView: UIImageView!
-  
+
   func configure(viewModel: OrderInfoTableViewCellModelType) {
-    self.iconView.kf.setImage(with: viewModel.clothesIconUrl)  { [weak self] image, _, _, _ in
+    self.iconView.kf.setImage(with: viewModel.clothesIconUrl) { [weak self] image, _, _, _ in
       guard let image = image?.withRenderingMode(.alwaysTemplate) else { return }
       self?.iconView.image = image
       self?.iconView.tintColor = viewModel.clothesIconColor
     }
-    
+
     let headerItemView = OrderConfirmServiceItemView.nibInstance()!
     headerItemView.leftLabel.text = viewModel.clothesTitle
     headerItemView.rightLabel.text = viewModel.clothesPrice
@@ -30,7 +30,7 @@ class OrderInfoTableViewCell: UITableViewCell {
     stackView.addArrangedSubview(headerItemView)
 
     configureDecoration(viewModel: viewModel)
-    
+
     for orderTreatment in viewModel.orderTreatments {
       let view = OrderConfirmServiceItemView.nibInstance()!
       view.leftLabel.text = orderTreatment.treatment?.name
@@ -47,7 +47,7 @@ class OrderInfoTableViewCell: UITableViewCell {
       stackView.addArrangedSubview(decorationServiceView)
     }
   }
-  
+
   override func prepareForReuse() {
     super.prepareForReuse()
     for view in stackView.arrangedSubviews {
@@ -55,5 +55,5 @@ class OrderInfoTableViewCell: UITableViewCell {
       view.removeFromSuperview()
     }
   }
-  
+
 }

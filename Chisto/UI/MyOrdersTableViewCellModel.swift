@@ -21,13 +21,13 @@ class MyOrdersTableViewCellModel: MyOrdersTableViewCellModelType {
   var orderNumberTitle: String = ""
   var dateStatusTitle: String = ""
   var priceTitle: String = ""
-  
+
   init(order: Order) {
     self.orderNumberTitle = String(format: NSLocalizedString("orderNumberMyOrders", comment: "My orders table item"), String(order.id))
     self.priceTitle = order.totalPrice.currencyString
     guard let status = order.status else { return }
-    self.dateStatusTitle = order.createdAt.mediumDate  + " ･ " + status.description
+    self.dateStatusTitle = order.createdAt.mediumDate + " ･ " + status.description
     self.icon = status.image
   }
-  
+
 }

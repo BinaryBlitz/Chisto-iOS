@@ -6,10 +6,10 @@
 //  Copyright © 2016 Binary Blitz. All rights reserved.
 //
 
-
 import UIKit
 
-protocol DefaultBarColoredViewController {}
+protocol DefaultBarColoredViewController {
+}
 
 class ChistoNavigationController: UINavigationController, UINavigationControllerDelegate {
 

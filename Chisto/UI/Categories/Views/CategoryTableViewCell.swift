@@ -19,7 +19,7 @@ class CategoryTableViewCell: UITableViewCell {
   @IBOutlet weak var descriptionLabel: UILabel!
 
   func configure(viewModel: CategoryTableViewCellModelType) {
-    
+
     categoryIconImageView.kf.setImage(with: viewModel.iconUrl) { [weak self] image, _, _, _ in
       guard let image = image?.withRenderingMode(.alwaysTemplate) else { return }
       self?.categoryIconImageView.image = image

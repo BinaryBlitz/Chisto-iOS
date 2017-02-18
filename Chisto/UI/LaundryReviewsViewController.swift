@@ -16,7 +16,7 @@ import FloatRatingView
 class LaundryReviewsViewController: UIViewController {
   let disposeBag = DisposeBag()
   var viewModel: LaundryReviewsViewModel? = nil
-  
+
   var dataSource = RxTableViewSectionedReloadDataSource<LaundryReviewsSectionModel>()
 
   let emptyTableBackgroundView = EmptyTableBackgroundView.nibInstance()!
@@ -26,7 +26,7 @@ class LaundryReviewsViewController: UIViewController {
   @IBOutlet weak var reviewsCountLabel: UILabel!
   @IBOutlet weak var laundryBackgroundImageView: UIImageView!
   @IBOutlet weak var tableView: UITableView!
-  
+
   override func viewDidLoad() {
     guard let viewModel = viewModel else { return }
     laundryTitleLabel.text = viewModel.laundryTitle
@@ -35,18 +35,18 @@ class LaundryReviewsViewController: UIViewController {
     laundryBackgroundImageView.kf.setImage(with: viewModel.laundryBackgroundUrl, options: [.processor(backgroundProcessor)])
     laundryRatingView.rating = viewModel.laundryRating
     reviewsCountLabel.text = viewModel.laundryReviewsCountText
-    
+
     viewModel.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { error in
-      guard let error = error as? DataError else { return }
-      let alertController = UIAlertController(title: NSLocalizedString("error", comment: "Error alert"), message: error.description, preferredStyle: .alert)
-      let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: "Error alert"), style: .default, handler: nil)
-      alertController.addAction(defaultAction)
-      self.present(alertController, animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
-    
+        guard let error = error as? DataError else { return }
+        let alertController = UIAlertController(title: NSLocalizedString("error", comment: "Error alert"), message: error.description, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: "Error alert"), style: .default, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+      }).addDisposableTo(disposeBag)
+
     configureTableView()
   }
-  
+
   func configureTableView() {
     emptyTableBackgroundView.title = NSLocalizedString("noRatings", comment: "Empty ratings placeholder")
     tableView.separatorStyle = .none
@@ -57,7 +57,7 @@ class LaundryReviewsViewController: UIViewController {
       cell.configure(viewModel: cellViewModel)
       return cell
     }
-    
+
     guard let viewModel = viewModel else { return }
     tableView.dataSource = nil
     viewModel.sections
@@ -65,16 +65,16 @@ class LaundryReviewsViewController: UIViewController {
       .addDisposableTo(self.disposeBag)
 
     viewModel.tableIsEmpty.asDriver().drive(onNext: { [weak self] tableIsEmpty in
-      self?.tableView.separatorStyle =  tableIsEmpty ? .none : .singleLine
-      self?.tableView.backgroundView?.isHidden = tableIsEmpty ? false : true
-    }).addDisposableTo(disposeBag)
+        self?.tableView.separatorStyle = tableIsEmpty ? .none : .singleLine
+        self?.tableView.backgroundView?.isHidden = tableIsEmpty ? false : true
+      }).addDisposableTo(disposeBag)
   }
-  
+
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     navigationController?.navigationBar.isTranslucent = true
     navigationController?.navigationBar.backgroundColor = nil
 
   }
-  
+
 }

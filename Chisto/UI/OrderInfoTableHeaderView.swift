@@ -34,7 +34,6 @@ class OrderInfoTableHeaderView: UIView {
     super.awakeFromNib()
   }
 
-  
   func configure(viewModel: OrderInfoTableHeaderViewModel) {
     viewModel.orderPrice.asObservable().bindTo(orderPriceLabel.rx.text).addDisposableTo(disposeBag)
     viewModel.deliveryPrice.asObservable().bindTo(deliveryPriceLabel.rx.text).addDisposableTo(disposeBag)
@@ -45,10 +44,10 @@ class OrderInfoTableHeaderView: UIView {
     viewModel.paymentType.asObservable().bindTo(paymentMethodLabel.rx.text).addDisposableTo(disposeBag)
 
     viewModel.promoCode.asObservable().subscribe(onNext: { [weak self] promoCode in
-      self?.promoCodeView.isHidden = promoCode == nil
-      self?.promoCodeDiscountView.isHidden = promoCode == nil
-      self?.viewController()?.view.layoutIfNeeded()
-    }).addDisposableTo(disposeBag)
+        self?.promoCodeView.isHidden = promoCode == nil
+        self?.promoCodeDiscountView.isHidden = promoCode == nil
+        self?.viewController()?.view.layoutIfNeeded()
+      }).addDisposableTo(disposeBag)
 
 
     bindLaundryData(viewModel: viewModel)
@@ -58,17 +57,17 @@ class OrderInfoTableHeaderView: UIView {
 
   func bindLaundryData(viewModel: OrderInfoTableHeaderViewModel) {
     viewModel.laundryIcon.asObservable().subscribe(onNext: { [weak self] icon in
-      self?.laundryLogoView.kf.setImage(with: icon)
-    }).addDisposableTo(disposeBag)
+        self?.laundryLogoView.kf.setImage(with: icon)
+      }).addDisposableTo(disposeBag)
     viewModel.laundryTitle.asObservable().bindTo(laundryTitleLabel.rx.text).addDisposableTo(disposeBag)
     viewModel.laundryDescriprion.asObservable().bindTo(laundryDescriptionLabel.rx.text).addDisposableTo(disposeBag)
 
     viewModel.laundryDescriprion.asObservable().subscribe(onNext: { [weak self] _ in
-      self?.viewController()?.view.layoutIfNeeded()
-    }).addDisposableTo(disposeBag)
+        self?.viewController()?.view.layoutIfNeeded()
+      }).addDisposableTo(disposeBag)
 
   }
-  
+
   func bindLaundryStatusData(viewModel: OrderInfoTableHeaderViewModel) {
     viewModel.orderStatus.asObservable().bindTo(orderStatusLabel.rx.text).addDisposableTo(disposeBag)
     viewModel.orderDate.asObservable().bindTo(orderDateLabel.rx.text).addDisposableTo(disposeBag)
@@ -77,10 +76,9 @@ class OrderInfoTableHeaderView: UIView {
       .bindTo(orderStatusImageView.rx.image).addDisposableTo(disposeBag)
 
     viewModel.orderStatusColor.asObservable().subscribe(onNext: { [weak self] color in
-      self?.orderStatusLabel.textColor = color
-    }).addDisposableTo(disposeBag)
-    
-  }
+        self?.orderStatusLabel.textColor = color
+      }).addDisposableTo(disposeBag)
 
+  }
 
 }

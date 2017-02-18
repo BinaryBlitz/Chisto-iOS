@@ -40,10 +40,10 @@ class RegistrationCodeInputViewModel {
 
     let validationConfirmed: Driver<Bool> = code.asDriver()
       .filter { _ in codeIsValid.value == true }
-      .flatMap {_ -> Driver<Bool> in
-      guard let code = code.value else { return Driver.just(false) }
-      return DataManager.instance.verifyToken(code: code.onlyDigits).map { true }.asDriver(onErrorDriveWith: Driver.just(false))
-    }
+      .flatMap { _ -> Driver<Bool> in
+        guard let code = code.value else { return Driver.just(false) }
+        return DataManager.instance.verifyToken(code: code.onlyDigits).map { true }.asDriver(onErrorDriveWith: Driver.just(false))
+      }
 
     self.dismissViewController = validationConfirmed.filter { $0 == true }.flatMap { _ -> Driver<Void> in
       NotificationManager.instance.enable()

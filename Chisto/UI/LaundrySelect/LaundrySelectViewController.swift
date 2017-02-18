@@ -18,7 +18,7 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
   var dataSource = RxTableViewSectionedReloadDataSource<LaundrySelectSectionModel>()
 
   override func viewDidLoad() {
-    navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconSortNavbar"), style: .plain, target: self, action: nil)
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName:"iconSortNavbar"), style: .plain, target: self, action: nil)
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
     tableView.rowHeight = UITableViewAutomaticDimension
@@ -27,35 +27,35 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
       .addDisposableTo(disposeBag)
 
     viewModel.presentSortSelectSection.drive(onNext: { [weak self] _ in
-      let alertController = UIAlertController(title: NSLocalizedString("laundrySorting", comment: "Laundry sorting alert"), message: nil, preferredStyle: .alert)
-      
-      let byPriceAction = UIAlertAction(title: NSLocalizedString("byPrice", comment: "Laundry sorting alert"), style: .default, handler: { _ in
-        self?.viewModel.sortType.value = .byPrice
-      })
-      
-      let bySpeedAction = UIAlertAction(title: NSLocalizedString("bySpeed", comment: "Laundry sorting alert"), style: .default, handler: { _ in
-        self?.viewModel.sortType.value = .bySpeed
-      })
-      
-      let byRatingAction = UIAlertAction(title: NSLocalizedString("byRating", comment: "Laundry sorting alert"), style: .default, handler: { _ in
-        self?.viewModel.sortType.value = .byRating
-      })
-      
-      let cancelAction = UIAlertAction(title: NSLocalizedString("cancelLaudrySortingAlert", comment: "Laundry sorting alert"), style: .cancel, handler: nil)
+        let alertController = UIAlertController(title: NSLocalizedString("laundrySorting", comment: "Laundry sorting alert"), message: nil, preferredStyle: .alert)
 
-      alertController.addAction(byRatingAction)
-      alertController.addAction(byPriceAction)
-      alertController.addAction(bySpeedAction)
-      alertController.addAction(cancelAction)
-      
-      self?.present(alertController, animated: true)
-    }).addDisposableTo(disposeBag)
+        let byPriceAction = UIAlertAction(title: NSLocalizedString("byPrice", comment: "Laundry sorting alert"), style: .default, handler: { _ in
+          self?.viewModel.sortType.value = .byPrice
+        })
+
+        let bySpeedAction = UIAlertAction(title: NSLocalizedString("bySpeed", comment: "Laundry sorting alert"), style: .default, handler: { _ in
+          self?.viewModel.sortType.value = .bySpeed
+        })
+
+        let byRatingAction = UIAlertAction(title: NSLocalizedString("byRating", comment: "Laundry sorting alert"), style: .default, handler: { _ in
+          self?.viewModel.sortType.value = .byRating
+        })
+
+        let cancelAction = UIAlertAction(title: NSLocalizedString("cancelLaudrySortingAlert", comment: "Laundry sorting alert"), style: .cancel, handler: nil)
+
+        alertController.addAction(byRatingAction)
+        alertController.addAction(byPriceAction)
+        alertController.addAction(bySpeedAction)
+        alertController.addAction(cancelAction)
+
+        self?.present(alertController, animated: true)
+      }).addDisposableTo(disposeBag)
 
     viewModel.presentOrderConfirmSection.asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] orderViewModel in
-      let viewController = OrderConfirmViewController.storyboardInstance()!
-      viewController.viewModel = orderViewModel
-      self?.navigationController?.pushViewController(viewController, animated: true)
-    }).addDisposableTo(disposeBag)
+        let viewController = OrderConfirmViewController.storyboardInstance()!
+        viewController.viewModel = orderViewModel
+        self?.navigationController?.pushViewController(viewController, animated: true)
+      }).addDisposableTo(disposeBag)
 
     viewModel.presentLastTimeOrderPopup.asDriver(onErrorDriveWith: .empty())
       .drive(onNext: { [weak self] popupViewModel in
@@ -64,21 +64,21 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
         viewController.viewModel = popupViewModel
         viewController.modalPresentationStyle = .overFullScreen
         self?.present(viewController, animated: false, completion: nil)
-    }).addDisposableTo(disposeBag)
+      }).addDisposableTo(disposeBag)
 
     viewModel.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] error in
-      guard let error = error as? DataError else { return }
-      let alertController = UIAlertController(title: "Ошибка", message: error.description, preferredStyle: .alert)
-      let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-      alertController.addAction(defaultAction)
-      self?.present(alertController, animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
+        guard let error = error as? DataError else { return }
+        let alertController = UIAlertController(title: "Ошибка", message: error.description, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(defaultAction)
+        self?.present(alertController, animated: true, completion: nil)
+      }).addDisposableTo(disposeBag)
 
     configureTableView()
   }
 
   func presentLastOrderPopupIfNeeded() {
-    
+
   }
 
   func configureTableView() {

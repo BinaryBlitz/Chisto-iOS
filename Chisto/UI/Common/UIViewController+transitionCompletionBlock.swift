@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+
 extension UINavigationController {
   func pushViewController(_ viewController: UIViewController, animated: Bool, completion: @escaping (Void) -> Void) {
     pushViewController(viewController, animated: animated)

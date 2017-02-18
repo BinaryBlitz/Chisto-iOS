@@ -38,12 +38,12 @@ class OrderPlacedPopupViewController: UIViewController {
     continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
 
     viewModel.dismissViewController.drive(onNext: { [weak self] in
-      UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {
-        self?.view.alpha = 0
-      }, completion: { _ in
-        self?.dismiss(animated: false)
-      })
-    }).addDisposableTo(disposeBag)
+        UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {
+          self?.view.alpha = 0
+        }, completion: { _ in
+          self?.dismiss(animated: false)
+        })
+      }).addDisposableTo(disposeBag)
   }
 
   override func viewWillAppear(_ animated: Bool) {

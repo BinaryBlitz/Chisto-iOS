@@ -10,7 +10,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-
 class OrderInfoTableHeaderViewModel {
   let disposeBag = DisposeBag()
   var laundryTitle = Variable<String?>("")
@@ -49,7 +48,7 @@ class OrderInfoTableHeaderViewModel {
 
     let realm = RealmManager.instance.uiRealm
 
-    let observableOrderLaundry = order.map { realm.object(ofType: Laundry.self, forPrimaryKey: $0.laundryId ) }
+    let observableOrderLaundry = order.map { realm.object(ofType: Laundry.self, forPrimaryKey: $0.laundryId) }
     observableOrderLaundry.map { $0?.name }.bindTo(laundryTitle).addDisposableTo(disposeBag)
     observableOrderLaundry.map { $0?.descriptionText }.bindTo(laundryDescriprion).addDisposableTo(disposeBag)
     observableOrderLaundry.map { URL(string: $0?.logoUrl ?? "") }.bindTo(laundryIcon).addDisposableTo(disposeBag)

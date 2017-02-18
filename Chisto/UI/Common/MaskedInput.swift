@@ -19,6 +19,7 @@ extension String {
 }
 
 class MaskedInput: NSObject {
+
   enum FormattingType {
     case phoneNumber
     case pattern(String)
@@ -39,7 +40,7 @@ class MaskedInput: NSObject {
 
     _ = textField.rx.text
       .takeUntil(textField.rx.deallocated).subscribe(onNext: { [weak self] text in
-      guard let formattingType = self?.type, let text = text else { return }
+        guard let formattingType = self?.type, let text = text else { return }
         switch formattingType {
         case .phoneNumber:
           let formattedPhone = PartialFormatter().formatPartial(text)
@@ -54,7 +55,7 @@ class MaskedInput: NSObject {
           }
         }
 
-    })
+      })
   }
 
   func shouldContinueEditing(text: String, range: NSRange, replacementStirng string: String) -> Bool {

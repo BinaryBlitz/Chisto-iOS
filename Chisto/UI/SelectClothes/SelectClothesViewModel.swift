@@ -46,7 +46,7 @@ class SelectClothesViewModel: SelectClothesViewModelType {
   init(category: Category) {
     self.navigationBarTitle = category.name
     self.navigationBarColor = category.color
-    
+
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
 
@@ -55,14 +55,14 @@ class SelectClothesViewModel: SelectClothesViewModelType {
 
 
     DataManager.instance.fetchCategoryClothes(category: category).subscribe(onError: { error in
-      presentErrorAlert.onNext(error)
-    }).addDisposableTo(disposeBag)
+        presentErrorAlert.onNext(error)
+      }).addDisposableTo(disposeBag)
 
 
     let items = Variable<[Item]>([])
 
     Observable.collection(from: category.clothes.filter("isDeleted == %@", false)
-      .sorted(byKeyPath: "name", ascending: true))
+        .sorted(byKeyPath: "name", ascending: true))
       .map { Array($0) }
       .bindTo(items)
       .addDisposableTo(disposeBag)
@@ -75,9 +75,9 @@ class SelectClothesViewModel: SelectClothesViewModelType {
       let section = SelectClothesSectionModel(model: "", items: cellModels)
       return [section]
     }
-    
+
     let selectedItemObservable = itemDidSelect.map { items.value[$0.row] }
-    
+
     self.presentHasDecorationAlert = selectedItemObservable.filter { $0.hasDecoration }.map { item in
       let orderItem = OrderItem(clothesItem: item)
       let viewModel = HasDecorationAlertViewModel(orderItem: orderItem)

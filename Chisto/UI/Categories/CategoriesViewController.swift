@@ -18,33 +18,68 @@ class CategoriesViewController: UITableViewController, DefaultBarColoredViewCont
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconNavbarClose"), style: .plain, target: nil, action: nil)
-    
-    navigationItem.leftBarButtonItem?.rx.tap.asDriver().drive(onNext: { [weak self] in
-      self?.dismiss(animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
-    
+    navigationItem.backBarButtonItem = UIBarButtonItem(
+      title: "",
+      style: .plain,
+      target: nil,
+      action: nil
+    )
+
+    navigationItem.leftBarButtonItem = UIBarButtonItem(
+      image: #imageLiteral(resourceName:"iconNavbarClose"),
+      style: .plain,
+      target: nil,
+      action: nil
+    )
+
+    navigationItem.leftBarButtonItem?.rx
+      .tap
+      .asDriver()
+      .drive(onNext: { [weak self] in
+        self?.dismiss(animated: true, completion: nil)
+      })
+      .addDisposableTo(disposeBag)
+
     configureTableView()
-    
-    viewModel.presentItemsSection.drive(onNext: { [weak self] viewModel in
-      let viewController = SelectClothesViewController.storyboardInstance()!
-      viewController.viewModel = viewModel
-      self?.navigationController?.pushViewController(viewController, animated: true)
-    }).addDisposableTo(disposeBag)
-    
-    viewModel.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { error in
-      guard let error = error as? DataError else { return }
-      let alertController = UIAlertController(title: NSLocalizedString("error", comment: "Error alert"), message: error.description, preferredStyle: .alert)
-      let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: "Error alert"), style: .default, handler: nil)
-      alertController.addAction(defaultAction)
-      self.present(alertController, animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
+
+    viewModel
+      .presentItemsSection
+      .drive(onNext: { [weak self] viewModel in
+        let viewController = SelectClothesViewController.storyboardInstance()!
+        viewController.viewModel = viewModel
+
+        self?.navigationController?.pushViewController(viewController, animated: true)
+      })
+      .addDisposableTo(disposeBag)
+
+    viewModel
+      .presentErrorAlert
+      .asDriver(onErrorDriveWith: .empty())
+      .drive(onNext: { error in
+        guard let error = error as? DataError else { return }
+
+        let alertController = UIAlertController(
+          title: NSLocalizedString("error", comment: "Error alert"),
+          message: error.description,
+          preferredStyle: .alert
+        )
+
+        let defaultAction = UIAlertAction(
+          title: NSLocalizedString("OK", comment: "Error alert"),
+          style: .default,
+          handler: nil
+        )
+
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+      })
+      .addDisposableTo(disposeBag)
   }
 
   func configureTableView() {
     tableView.estimatedRowHeight = 80
     tableView.rowHeight = UITableViewAutomaticDimension
+
     // Bindings
     dataSource.configureCell = { _, tableView, indexPath, cellViewModel in
       let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTableViewCell", for: indexPath) as! CategoryTableViewCell

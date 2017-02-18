@@ -42,13 +42,13 @@ class ProfileContactDataViewModel: ProfileContactDataViewModelType {
 
     let formViewModel = ContactFormViewModel(currentScreen: .profile)
     self.formViewModel = formViewModel
-    
+
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
 
     self.presentCitySelectSection = formViewModel.cityFieldDidTap
       .asObservable()
-      .map{
+      .map {
         let viewModel = CitySelectViewModel()
 
         viewModel.selectedCity.asObservable().map { $0.name }
@@ -62,9 +62,9 @@ class ProfileContactDataViewModel: ProfileContactDataViewModelType {
 
         return viewModel
       }.asDriver(onErrorDriveWith: .empty())
-    
+
     let saveProfileDriver = saveButtonDidTap.asObservable().flatMap {
-      return formViewModel.saveUserProfile().do( onError: { error in
+      return formViewModel.saveUserProfile().do(onError: { error in
         presentErrorAlert.onNext(error)
       })
     }.asDriver(onErrorDriveWith: .empty())

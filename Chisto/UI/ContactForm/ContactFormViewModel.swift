@@ -36,10 +36,10 @@ class ContactFormViewModel {
     case orderRegistration
   }
 
-  let contactInfoHeaderModel = ContactFormTableHeaderViewModel(title: NSLocalizedString("contactInfo", comment: "Contact form header"), icon: #imageLiteral(resourceName: "iconSmallUser"))
-  let adressHeaderModel = ContactFormTableHeaderViewModel(title: NSLocalizedString("deliveryAdress", comment: "Contact form header"), icon: #imageLiteral(resourceName: "iconSmallAddress"), isEnabledButton: true)
-  let commentHeaderModel = ContactFormTableHeaderViewModel(title: NSLocalizedString("orderComments", comment: "Contact form header"), icon: #imageLiteral(resourceName: "iconSmallComment"))
-  let paymentHeaderModel = ContactFormTableHeaderViewModel(title: NSLocalizedString("paymentMethod", comment: "Contact form header"), icon: #imageLiteral(resourceName: "iconSmollGrayWallet"))
+  let contactInfoHeaderModel = ContactFormTableHeaderViewModel(title: NSLocalizedString("contactInfo", comment: "Contact form header"), icon: #imageLiteral(resourceName:"iconSmallUser"))
+  let adressHeaderModel = ContactFormTableHeaderViewModel(title: NSLocalizedString("deliveryAdress", comment: "Contact form header"), icon: #imageLiteral(resourceName:"iconSmallAddress"), isEnabledButton: true)
+  let commentHeaderModel = ContactFormTableHeaderViewModel(title: NSLocalizedString("orderComments", comment: "Contact form header"), icon: #imageLiteral(resourceName:"iconSmallComment"))
+  let paymentHeaderModel = ContactFormTableHeaderViewModel(title: NSLocalizedString("paymentMethod", comment: "Contact form header"), icon: #imageLiteral(resourceName:"iconSmollGrayWallet"))
 
   var city: Variable<String?>
   var firstName: Variable<String?>
@@ -74,9 +74,9 @@ class ContactFormViewModel {
     self.paymentMethod = Variable(profile.paymentMethod)
 
     phone.asObservable().map { phone in
-      let phoneNumber = try? PhoneNumberKit().parse(phone ?? "")
-      return phoneNumber != nil
-    }.bindTo(phoneIsValid).addDisposableTo(disposeBag)
+        let phoneNumber = try? PhoneNumberKit().parse(phone ?? "")
+        return phoneNumber != nil
+      }.bindTo(phoneIsValid).addDisposableTo(disposeBag)
 
     let contactInfoIsValid = Observable.combineLatest(firstName.asObservable(), lastName.asObservable(), phoneIsValid.asObservable(), email.asObservable()) { firstName, lastName, phoneIsValid, email -> Bool in
       guard let firstName = firstName, let lastName = lastName, let email = email else { return false }
@@ -94,7 +94,6 @@ class ContactFormViewModel {
     Observable.combineLatest(contactInfoIsValid, adressIsValid) { $0 && $1 }.bindTo(isValid).addDisposableTo(disposeBag)
 
   }
-
 
   func saveUserProfile() -> Observable<Void> {
     return Observable.deferred { [weak self] in
@@ -124,7 +123,7 @@ class ContactFormViewModel {
         return DataManager.instance.createUser()
       }
     }
-    
+
   }
 
 }

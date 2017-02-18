@@ -13,10 +13,10 @@ class OnBoardingViewController: UIViewController {
   let viewModel = OnBoardingViewModel()
 
   let descriptionSteps: [(String, UIImage)] = [
-    (title: NSLocalizedString("onboardingStep1", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "iconNum1")),
-    (title: NSLocalizedString("onboardingStep2", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "iconNum2")),
-    (title: NSLocalizedString("onboardingStep3", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "iconNum3")),
-    (title: NSLocalizedString("onboardingStep4", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "iconNum4"))
+    (title: NSLocalizedString("onboardingStep1", comment: "Onboarding step"), icon: #imageLiteral(resourceName:"iconNum1")),
+    (title: NSLocalizedString("onboardingStep2", comment: "Onboarding step"), icon: #imageLiteral(resourceName:"iconNum2")),
+    (title: NSLocalizedString("onboardingStep3", comment: "Onboarding step"), icon: #imageLiteral(resourceName:"iconNum3")),
+    (title: NSLocalizedString("onboardingStep4", comment: "Onboarding step"), icon: #imageLiteral(resourceName:"iconNum4"))
   ]
 
   @IBOutlet weak var stackView: UIStackView!
@@ -29,15 +29,15 @@ class OnBoardingViewController: UIViewController {
 
     goButton.rx.tap.bindTo(viewModel.goButtonDidTap).addDisposableTo(disposeBag)
 
-    viewModel.dismissViewController.drive(onNext: {[weak self] in
-      self?.dismiss(animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
+    viewModel.dismissViewController.drive(onNext: { [weak self] in
+        self?.dismiss(animated: true, completion: nil)
+      }).addDisposableTo(disposeBag)
 
     viewModel.presentCitySelectSection.drive(onNext: { viewModel in
-      let viewController = CitySelectViewController.storyboardInstance()!
-      viewController.viewModel = viewModel
-      self.navigationController?.pushViewController(viewController, animated: true)
-    }).addDisposableTo(disposeBag)
+        let viewController = CitySelectViewController.storyboardInstance()!
+        viewController.viewModel = viewModel
+        self.navigationController?.pushViewController(viewController, animated: true)
+      }).addDisposableTo(disposeBag)
 
     for (title, icon) in descriptionSteps {
       if let descriptionListItemView = DescriptionListItemView.nibInstance() {

@@ -35,7 +35,7 @@ class ContactFormViewController: UITableViewController {
   @IBOutlet weak var payWithCardCheckImageView: UIImageView!
   @IBOutlet weak var payByCashCheckImageView: UIImageView!
   @IBOutlet var paymentMethodCardIconViews: [UIImageView]!
-  
+
   let contactInfoHeaderView = ContactFormTableHeaderView.nibInstance()!
   let adressHeaderView = ContactFormTableHeaderView.nibInstance()!
   let commentHeaderView = ContactFormTableHeaderView.nibInstance()!
@@ -51,7 +51,7 @@ class ContactFormViewController: UITableViewController {
 
     static let count = 4
   }
-  
+
   override func viewDidLoad() {
     hideKeyboardWhenTappedAround()
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -85,23 +85,23 @@ class ContactFormViewController: UITableViewController {
     cityButton.rx.tap.bindTo(viewModel.cityFieldDidTap).addDisposableTo(disposeBag)
 
     viewModel.paymentMethod.asDriver().drive(onNext: { [weak self] paymentMethod in
-      switch paymentMethod {
-      case .card:
-        self?.payWithCardLabel.textColor = .black
-        self?.payWithCardCheckImageView.image = #imageLiteral(resourceName: "iconCheckOn")
-        self?.payByCashLabel.textColor = .chsCoolGrey
-        self?.payByCashCheckImageView.image = #imageLiteral(resourceName: "iconCheckOff")
-        self?.paymentMethodCardIconViews.forEach { $0.isHighlighted = true }
-      case .cash:
-        self?.payByCashLabel.textColor = .black
-        self?.payByCashCheckImageView.image = #imageLiteral(resourceName: "iconCheckOn")
-        self?.payWithCardLabel.textColor = .chsCoolGrey
-        self?.payWithCardCheckImageView.image = #imageLiteral(resourceName: "iconCheckOff")
-        self?.paymentMethodCardIconViews.forEach { $0.isHighlighted = false }
-      default:
-        break
-      }
-    }).addDisposableTo(disposeBag)
+        switch paymentMethod {
+        case .card:
+          self?.payWithCardLabel.textColor = .black
+          self?.payWithCardCheckImageView.image = #imageLiteral(resourceName:"iconCheckOn")
+          self?.payByCashLabel.textColor = .chsCoolGrey
+          self?.payByCashCheckImageView.image = #imageLiteral(resourceName:"iconCheckOff")
+          self?.paymentMethodCardIconViews.forEach { $0.isHighlighted = true }
+        case .cash:
+          self?.payByCashLabel.textColor = .black
+          self?.payByCashCheckImageView.image = #imageLiteral(resourceName:"iconCheckOn")
+          self?.payWithCardLabel.textColor = .chsCoolGrey
+          self?.payWithCardCheckImageView.image = #imageLiteral(resourceName:"iconCheckOff")
+          self?.paymentMethodCardIconViews.forEach { $0.isHighlighted = false }
+        default:
+          break
+        }
+      }).addDisposableTo(disposeBag)
 
   }
 
@@ -133,7 +133,7 @@ class ContactFormViewController: UITableViewController {
       return nil
     }
   }
-  
+
   @IBAction func streetFieldDidTap(_ sender: Any) {
     viewModel?.streetNameFieldDidTap.onNext()
   }
@@ -153,7 +153,6 @@ class ContactFormViewController: UITableViewController {
   @IBAction func payWithCardDidTap(_ sender: Any) {
     viewModel?.paymentMethod.value = .card
   }
-  
 
 }
 

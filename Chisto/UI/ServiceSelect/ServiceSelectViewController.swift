@@ -34,17 +34,17 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
     configureFooter()
 
     viewModel?.showNewSection.asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] section in
-      guard let `self` = self else { return }
-      switch section {
-      case .order:
-        self.dismiss(animated: true, completion: nil)
-      case .orderItem:
-        _ = self.navigationController?.popViewController(animated: true)
-      case .areaAlert(let viewModel):
-        self.presentAreaAlert(viewModel: viewModel)
-      }
+        guard let `self` = self else { return }
+        switch section {
+        case .order:
+          self.dismiss(animated: true, completion: nil)
+        case .orderItem:
+          _ = self.navigationController?.popViewController(animated: true)
+        case .areaAlert(let viewModel):
+          self.presentAreaAlert(viewModel: viewModel)
+        }
 
-    }).addDisposableTo(disposeBag)
+      }).addDisposableTo(disposeBag)
   }
 
   func configureTableView() {

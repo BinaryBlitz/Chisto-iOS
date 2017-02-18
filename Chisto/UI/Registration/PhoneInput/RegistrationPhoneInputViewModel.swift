@@ -25,10 +25,10 @@ class RegistrationPhoneInputViewModel {
   init() {
     let disposeBag = DisposeBag()
     self.disposeBag = disposeBag
-    
+
     let phoneText = Variable<String?>(nil)
     self.phoneText = phoneText
-    
+
     let didFinishRegistration = PublishSubject<Void>()
     self.didFinishRegistration = didFinishRegistration
 

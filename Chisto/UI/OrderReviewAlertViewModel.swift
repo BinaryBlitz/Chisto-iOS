@@ -42,7 +42,7 @@ class OrderReviewAlertViewModel {
       guard let text = text else { return false }
       return text.characters.count > 0
     }
-    
+
     Observable.combineLatest(didSetRating.asObservable(), didEnterReview.asObservable()) { $0 || $1 }.bindTo(uiEnabled).addDisposableTo(disposeBag)
     let continueButtonDriver = continueButtonDidTap.asDriver(onErrorDriveWith: .empty())
 

@@ -14,7 +14,7 @@ class MyOrdersTableViewCell: UITableViewCell {
   @IBOutlet weak var orderDateStatusLabel: UILabel!
   @IBOutlet weak var orderStatusImageView: UIImageView!
   @IBOutlet weak var priceLabel: UILabel!
-  
+
   func configure(viewModel: MyOrdersTableViewCellModelType) {
     orderNumberLabel.text = viewModel.orderNumberTitle
     orderDateStatusLabel.text = viewModel.dateStatusTitle

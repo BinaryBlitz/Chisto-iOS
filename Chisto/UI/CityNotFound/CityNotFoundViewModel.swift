@@ -54,21 +54,27 @@ class CityNotFoundViewModel: CityNotFoundViewModelType {
     self.continueButtonEnabled = continueButtonEnabled
 
     Observable.combineLatest(cityTitle.asObservable(), phoneIsValid.asObservable()) { cityTitle, phoneIsValid -> Bool in
-      guard let cityTitle = cityTitle else { return false }
-      return cityTitle.characters.count > 0 && phoneIsValid
-    }.bindTo(continueButtonEnabled).addDisposableTo(disposeBag)
+        guard let cityTitle = cityTitle else { return false }
+        return cityTitle.characters.count > 0 && phoneIsValid
+      }.bindTo(continueButtonEnabled).addDisposableTo(disposeBag)
 
-    sendData = continueButtonDidTap.flatMap { _ -> Observable<Void> in
-      let phoneError = DataError.unknown(description: NSLocalizedString("invalidPhone", comment: "Error alert"))
-      guard let phoneText = phoneTitle.value else { return Observable.error(phoneError) }
-      let phoneNumberKit = PhoneNumberKit()
-      guard let phoneNumber = try? phoneNumberKit.parse(phoneText) else { return Observable.error(phoneError) }
-      return DataManager.instance.subscribe(cityName: cityTitle.value ?? "", phone: phoneNumberKit.format(phoneNumber, toType: .e164) )
-    }.do(onNext: {
-      continueButtonEnabled.value = true
-    }, onSubscribe: {
-      continueButtonEnabled.value = false
-    })
+    sendData = continueButtonDidTap
+      .flatMap { _ -> Observable<Void> in
+        let phoneError = DataError.unknown(description: NSLocalizedString("invalidPhone", comment: "Error alert"))
+        guard let phoneText = phoneTitle.value else { return Observable.error(phoneError) }
+
+        let phoneNumberKit = PhoneNumberKit()
+        guard let phoneNumber = try? phoneNumberKit.parse(phoneText) else { return Observable.error(phoneError) }
+
+        return DataManager
+          .instance
+          .subscribe(cityName: cityTitle.value ?? "", phone: phoneNumberKit.format(phoneNumber, toType: .e164))
+      }
+      .do(onNext: {
+        continueButtonEnabled.value = true
+      }, onSubscribe: {
+        continueButtonEnabled.value = false
+      })
 
     dismissViewController = Observable.of(sendData, cancelButtonDidTap.asObservable()).merge()
 

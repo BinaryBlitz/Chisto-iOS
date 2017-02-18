@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class AboutViewController: UIViewController {
-  
+
   struct URLs {
     static let supportEmail = "info@chis.to"
     static let instagram = "https://www.instagram.com/chistoapp/"
@@ -20,27 +20,27 @@ class AboutViewController: UIViewController {
     static let review = "https://itunes.apple.com/us/app/chisto/id1165430647?ls=1&mt=8"
     static let phoneNumber = "+7 495 766-78-49"
   }
-  
+
   @IBAction func instagramButtonDidTap(_ sender: Any) {
     openURL(URLs.instagram)
   }
-  
+
   @IBAction func facebookButtonDidTap(_ sender: Any) {
     openURL(URLs.facebook)
   }
-  
+
   @IBAction func vkButtonDidTap(_ sender: Any) {
     openURL(URLs.vk)
   }
-  
+
   @IBAction func reviewButtonDidTap(_ sender: Any) {
     openURL(URLs.review)
   }
-  
+
   @IBAction func parntershipViewDidTap(_ sender: Any) {
     openURL("mailto:\(URLs.partnershipEmail)")
   }
-  
+
   @IBAction func callUsViewDidTap(_ sender: Any) {
     let alertController = UIAlertController(title: nil, message: URLs.phoneNumber, preferredStyle: .alert)
     let cancelAction = UIAlertAction(title: NSLocalizedString("cancelCall", comment: "Call alert button"), style: .cancel, handler: nil)
@@ -55,7 +55,7 @@ class AboutViewController: UIViewController {
   @IBAction func mailViewDidTap(_ sender: Any) {
     openURL("mailto:\(URLs.supportEmail)")
   }
-  
+
   func openURL(_ string: String) {
     guard let url = URL(string: string) else { return }
     UIApplication.shared.openURL(url)
