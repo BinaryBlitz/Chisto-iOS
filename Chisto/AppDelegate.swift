@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   let googlePlacesApiKey = "AIzaSyCq77FZeOGLaYpUpuhHbD0_x_3PFlkURFo"
   let googleMapsApiKey = "AIzaSyAL0CZs1iU-NhOfNhKxaLhuCL2Dud1b1Ak"
 
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions
-    launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
     // Status bar style
     UIApplication.shared.statusBarStyle = .lightContent
@@ -33,17 +33,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Google Maps & Google Places
     GMSServices.provideAPIKey(googleMapsApiKey)
     GMSPlacesClient.provideAPIKey(googlePlacesApiKey)
-    
+
     // IQKeyboardManager
     IQKeyboardManager.sharedManager().enable = true
 
     // NotificationManager
     NotificationManager.instance.resetNotificationsCount()
 
-    if let remoteNotification = launchOptions?[.remoteNotification] as? [AnyHashable : Any] {
+    if let remoteNotification = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
       NotificationManager.instance.didReceiveNotification(userInfo: remoteNotification)
     }
-    
+
     return true
   }
 
@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func application(_ application: UIApplication,
-                   didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+                   didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                    fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 
     NotificationManager.instance.didReceiveNotification(userInfo: userInfo)
