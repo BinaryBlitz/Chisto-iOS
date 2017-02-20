@@ -29,11 +29,13 @@ class CategoriesViewModel: CategoriesViewModelType {
 
   // Input
   var itemDidSelect = PublishSubject<IndexPath>()
+  var searchBarString = Variable<String?>("")
 
   // Output
   var sections: Driver<[CategoriesSectionModel]>
   var presentItemsSection: Driver<SelectClothesViewModel>
   var presentErrorAlert: PublishSubject<Error>
+  var selectClothesViewModel: SelectClothesViewModel
 
   // Data
   var categories: Variable<[Category]>
@@ -65,6 +67,8 @@ class CategoriesViewModel: CategoriesViewModelType {
       .addDisposableTo(disposeBag)
 
     self.categories = categories
+
+    self.selectClothesViewModel = SelectClothesViewModel(category: nil, searchString: searchBarString)
 
     self.sections = categories.asDriver().map { categories in
       let cellModels = categories.map(CategoryTableViewCellModel.init) as [CategoryTableViewCellModelType]
