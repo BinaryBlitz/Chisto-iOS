@@ -52,7 +52,13 @@ class CategoriesViewModel: CategoriesViewModelType {
 
     let categories = Variable<[Category]>([])
 
-    debugPrint(RealmManager.instance.uiRealm.objects(Category.self).sorted(byKeyPath: "name", ascending: true))
+    debugPrint(
+      RealmManager
+        .instance
+        .uiRealm
+        .objects(Category.self)
+        .sorted(byKeyPath: "name", ascending: true)
+    )
 
     let sortProperties = [
       SortDescriptor(keyPath: "featured", ascending: false),

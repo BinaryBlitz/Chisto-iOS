@@ -43,14 +43,23 @@ class OrderReviewAlertViewModel {
       return text.characters.count > 0
     }
 
-    Observable.combineLatest(didSetRating.asObservable(), didEnterReview.asObservable()) { $0 || $1 }.bindTo(uiEnabled).addDisposableTo(disposeBag)
+    Observable
+      .combineLatest(didSetRating.asObservable(), didEnterReview.asObservable() ) { $0 || $1 }
+      .bindTo(uiEnabled)
+      .addDisposableTo(disposeBag)
+
     let continueButtonDriver = continueButtonDidTap.asDriver(onErrorDriveWith: .empty())
 
     let didCreateReview = continueButtonDriver.flatMap { _ -> Driver<Void> in
       let rating = Rating()
       rating.content = reviewContent.value ?? ""
       rating.value = ratingStarsCount.value
-      let createRating = DataManager.instance.createRating(laundryId: order.laundryId, rating: rating).asDriver(onErrorDriveWith: .just())
+
+      let createRating = DataManager.instance.createRating(
+        laundryId: order.laundryId,
+        rating: rating
+      ).asDriver(onErrorDriveWith: .just())
+
       return createRating.do(onNext: {
         uiEnabled.value = true
       }, onSubscribe: {
@@ -60,10 +69,9 @@ class OrderReviewAlertViewModel {
 
     self.dismissViewController = didCreateReview.map {
       guard let order = ProfileManager.instance.userProfile.value.order else { return }
+
       let realm = RealmManager.instance.uiRealm
-      try! realm.write {
-        order.ratingRequired = false
-      }
+      try! realm.write { order.ratingRequired = false }
     }
   }
 }

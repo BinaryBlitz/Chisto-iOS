@@ -94,11 +94,17 @@ class CategoriesViewController: UITableViewController, DefaultBarColoredViewCont
 
   func configureSearch() {
     searchController = UISearchController(searchResultsController: resultItemsController)
-    resultItemsController.viewModel = viewModel.selectClothesViewModel
     searchController.searchBar.sizeToFit()
     searchController.delegate = self
+
+    resultItemsController.viewModel = viewModel.selectClothesViewModel
+
     tableView.tableHeaderView = searchController.searchBar
-    searchController.searchBar.rx.text.bindTo(viewModel.searchBarString).addDisposableTo(disposeBag)
+
+    searchController.searchBar.rx
+      .text
+      .bindTo(viewModel.searchBarString)
+      .addDisposableTo(disposeBag)
 
     // UI
     definesPresentationContext = true
@@ -117,7 +123,6 @@ class CategoriesViewController: UITableViewController, DefaultBarColoredViewCont
     searchBar.setImage(#imageLiteral(resourceName:"iconSearch"), for: .search, state: .normal)
     searchBar.setTextColor(color: UIColor.white)
     searchBar.searchTextPositionAdjustment = UIOffsetMake(5.0, 0.0)
-
   }
 
   func configureTableView() {
@@ -126,18 +131,23 @@ class CategoriesViewController: UITableViewController, DefaultBarColoredViewCont
 
     // Bindings
     dataSource.configureCell = { _, tableView, indexPath, cellViewModel in
-      let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTableViewCell", for: indexPath) as! CategoryTableViewCell
+      let cell = tableView.dequeueReusableCell(
+        withIdentifier: "CategoryTableViewCell",
+        for: indexPath
+      ) as! CategoryTableViewCell
 
       cell.configure(viewModel: cellViewModel)
       return cell
     }
 
     tableView.delegate = nil
+
     tableView.rx
       .setDelegate(self)
       .addDisposableTo(disposeBag)
 
-    tableView.rx.itemSelected
+    tableView.rx
+      .itemSelected
       .bindTo(viewModel.itemDidSelect)
       .addDisposableTo(disposeBag)
 
