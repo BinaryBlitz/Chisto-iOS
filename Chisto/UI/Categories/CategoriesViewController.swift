@@ -96,6 +96,7 @@ class CategoriesViewController: UITableViewController, DefaultBarColoredViewCont
     searchController = UISearchController(searchResultsController: resultItemsController)
     resultItemsController.viewModel = viewModel.selectClothesViewModel
     searchController.searchBar.sizeToFit()
+    searchController.delegate = self
     tableView.tableHeaderView = searchController.searchBar
     searchController.searchBar.rx.text.bindTo(viewModel.searchBarString).addDisposableTo(disposeBag)
 
@@ -152,4 +153,10 @@ class CategoriesViewController: UITableViewController, DefaultBarColoredViewCont
     }
   }
 
+}
+
+extension CategoriesViewController: UISearchControllerDelegate {
+  func willPresentSearchController(_ searchController: UISearchController) {
+    viewModel.didStartSearching.onNext()
+  }
 }

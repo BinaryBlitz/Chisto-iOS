@@ -30,6 +30,7 @@ class CategoriesViewModel: CategoriesViewModelType {
   // Input
   var itemDidSelect = PublishSubject<IndexPath>()
   var searchBarString = Variable<String?>("")
+  var didStartSearching = PublishSubject<Void>()
 
   // Output
   var sections: Driver<[CategoriesSectionModel]>
@@ -83,6 +84,12 @@ class CategoriesViewModel: CategoriesViewModelType {
         return SelectClothesViewModel(category: category)
       }
       .asDriver(onErrorDriveWith: .empty())
+
+    didStartSearching.asObservable().take(1).flatMap {
+      DataManager.instance.fetchClothes().do(onError: { error in
+        presentErrorAlert.onNext(error)
+      })
+    }.subscribe().addDisposableTo(disposeBag)
   }
 
 }
