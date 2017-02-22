@@ -29,11 +29,14 @@ class CategoriesViewModel: CategoriesViewModelType {
 
   // Input
   var itemDidSelect = PublishSubject<IndexPath>()
+  var searchBarString = Variable<String?>("")
+  var didStartSearching = PublishSubject<Void>()
 
   // Output
   var sections: Driver<[CategoriesSectionModel]>
   var presentItemsSection: Driver<SelectClothesViewModel>
   var presentErrorAlert: PublishSubject<Error>
+  var selectClothesViewModel: SelectClothesViewModel
 
   // Data
   var categories: Variable<[Category]>
@@ -49,7 +52,13 @@ class CategoriesViewModel: CategoriesViewModelType {
 
     let categories = Variable<[Category]>([])
 
-    debugPrint(RealmManager.instance.uiRealm.objects(Category.self).sorted(byKeyPath: "name", ascending: true))
+    debugPrint(
+      RealmManager
+        .instance
+        .uiRealm
+        .objects(Category.self)
+        .sorted(byKeyPath: "name", ascending: true)
+    )
 
     let sortProperties = [
       SortDescriptor(keyPath: "featured", ascending: false),
@@ -66,6 +75,8 @@ class CategoriesViewModel: CategoriesViewModelType {
 
     self.categories = categories
 
+    self.selectClothesViewModel = SelectClothesViewModel(category: nil, searchString: searchBarString)
+
     self.sections = categories.asDriver().map { categories in
       let cellModels = categories.map(CategoryTableViewCellModel.init) as [CategoryTableViewCellModelType]
       let section = CategoriesSectionModel(model: "", items: cellModels)
@@ -79,6 +90,12 @@ class CategoriesViewModel: CategoriesViewModelType {
         return SelectClothesViewModel(category: category)
       }
       .asDriver(onErrorDriveWith: .empty())
+
+    didStartSearching.asObservable().take(1).flatMap {
+      DataManager.instance.fetchClothes().do(onError: { error in
+        presentErrorAlert.onNext(error)
+      })
+    }.subscribe().addDisposableTo(disposeBag)
   }
 
 }

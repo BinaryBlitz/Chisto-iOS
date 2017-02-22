@@ -226,6 +226,18 @@ extension DataManager: FetchItemsManagerType {
     }
   }
 
+  func fetchClothes() -> Observable<Void> {
+    return fetchItems(type: Item.self, apiPath: .fetchItems).map { newItems in
+      let realm = try! Realm()
+      let items = Set(realm.objects(Item.self).toArray())
+      for item in items.subtracting(Set(newItems)) {
+        try realm.write {
+          item.isDeleted = true
+        }
+      }
+    }
+  }
+
   func fetchCategoryClothes(category: Category) -> Observable<Void> {
     return fetchItems(
       type: Item.self, apiPath: .fetchCategoryClothes(categoryId: category.id)

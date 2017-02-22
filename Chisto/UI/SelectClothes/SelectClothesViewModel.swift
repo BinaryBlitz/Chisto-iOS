@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxDataSources
 import RxCocoa
+import RealmSwift
 
 typealias SelectClothesSectionModel = SectionModel<String, SelectClothesTableViewCellModelType>
 
@@ -18,7 +19,7 @@ protocol SelectClothesViewModelType {
   var itemDidSelect: PublishSubject<IndexPath> { get }
 
   // Output
-  var navigationBarTitle: String { get }
+  var navigationBarTitle: String? { get }
   var sections: Driver<[SelectClothesSectionModel]> { get }
   var presentSelectServiceSection: Driver<ServiceSelectViewModel> { get }
 }
@@ -32,7 +33,7 @@ class SelectClothesViewModel: SelectClothesViewModelType {
   let decorationViewDidClose = PublishSubject<Void>()
 
   // Output
-  var navigationBarTitle: String
+  var navigationBarTitle: String? = nil
   var navigationBarColor: UIColor?
   var sections: Driver<[SelectClothesSectionModel]>
   var presentSelectServiceSection: Driver<ServiceSelectViewModel>
@@ -43,9 +44,9 @@ class SelectClothesViewModel: SelectClothesViewModelType {
   // Data
   var items: Variable<[Item]>
 
-  init(category: Category) {
-    self.navigationBarTitle = category.name
-    self.navigationBarColor = category.color
+  init(category: Category?, searchString: Variable<String?> = Variable("")) {
+    self.navigationBarTitle = category?.name
+    self.navigationBarColor = category?.color
 
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
@@ -53,21 +54,32 @@ class SelectClothesViewModel: SelectClothesViewModelType {
     let decorationAlertDidFinish = PublishSubject<OrderItem>()
     self.decorationAlertDidFinish = decorationAlertDidFinish
 
+    let items = Variable<[Item]>([])
+    self.items = items
 
-    DataManager.instance.fetchCategoryClothes(category: category).subscribe(onError: { error in
+    let realm = try! Realm()
+    let collectionObservable = Observable.collection(from: realm.objects(Item.self)
+      .filter("isDeleted == %@", false)
+      .sorted(byKeyPath: "name", ascending: true))
+
+    let category = category
+    
+    let filteredItems = Observable.combineLatest(collectionObservable, searchString.asObservable()) { itemsCollection, searchString -> [Item] in
+      var predicates = [NSPredicate]()
+      predicates.append(NSPredicate(format: "name CONTAINS[c] %@", searchString ?? ""))
+      if let category = category {
+        predicates.append(NSPredicate(format: "category == %@", category))
+      }
+      return Array(itemsCollection.filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)))
+    }
+
+    filteredItems.bindTo(items).addDisposableTo(disposeBag)
+
+    if let category = category {
+      DataManager.instance.fetchCategoryClothes(category: category).subscribe(onError: { error in
         presentErrorAlert.onNext(error)
       }).addDisposableTo(disposeBag)
-
-
-    let items = Variable<[Item]>([])
-
-    Observable.collection(from: category.clothes.filter("isDeleted == %@", false)
-        .sorted(byKeyPath: "name", ascending: true))
-      .map { Array($0) }
-      .bindTo(items)
-      .addDisposableTo(disposeBag)
-
-    self.items = items
+    }
 
     self.sections = items.asDriver().map { items in
       let cellModels = items.map(SelectClothesTableViewCellModel.init) as [SelectClothesTableViewCellModelType]

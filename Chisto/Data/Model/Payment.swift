@@ -21,7 +21,6 @@ class Payment: ServerObject {
     isPaid <- map["paid"]
     paymentUrl <- map["payment_url"]
     createdAt <- map["created_at"]
-
   }
 
 }
