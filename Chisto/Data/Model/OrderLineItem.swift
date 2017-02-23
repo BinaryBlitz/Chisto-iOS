@@ -20,7 +20,7 @@ class OrderItemTreatment: Mappable {
 
   var price: Double = 0
 
-  required init?(map: Map) { }
+  required init?(map: Map) {}
 
   func mapping(map: Map) {
     orderItemId <- map["order_item_id"]
@@ -43,14 +43,14 @@ class OrderLineItem: Mappable {
     let price = self.price(singleItem: true, includeDecoration: false)
     return price * multiplier - price
   }
-  
+
   var item: Item? {
     guard let item = orderItemTreatments.first?.treatment?.item else { return nil }
     return item
   }
 
-  required init?(map: Map) { }
-  
+  required init?(map: Map) {}
+
   func mapping(map: Map) {
     orderItemTreatments <- map["order_treatments"]
     quantity <- map["quantity"]

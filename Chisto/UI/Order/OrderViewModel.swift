@@ -75,9 +75,9 @@ class OrderViewModel: OrderViewModelType {
         guard let order = order else { return false }
         return order.status == .completed && order.rating == nil && order.ratingRequired
       }.map { order in
-      return OrderReviewAlertViewModel(order: order!)
-    }.asDriver(onErrorDriveWith: .empty())
-    
+        return OrderReviewAlertViewModel(order: order!)
+      }.asDriver(onErrorDriveWith: .empty())
+
     let currentOrderItems = Variable<[OrderItem]>([])
     OrderManager.instance.currentOrderItems.bindTo(currentOrderItems).addDisposableTo(disposeBag)
     self.currentOrderItems = currentOrderItems
@@ -103,7 +103,7 @@ class OrderViewModel: OrderViewModelType {
       let orderItem = currentOrderItems.value[indexPath.row]
       return ItemInfoViewModel(orderItem: orderItem)
     }.asDriver(onErrorDriveWith: .empty())
-    
+
     self.presentProfileSection = profileButtonDidTap.asDriver(onErrorDriveWith: .empty())
 
     let fetchLastOrderDriver = continueButtonDidTap.asDriver(onErrorDriveWith: .empty()).flatMap { _ -> Driver<Void> in
@@ -116,14 +116,14 @@ class OrderViewModel: OrderViewModelType {
     }
 
     fetchLastOrderDriver.drive(onNext: { [weak self] in
-      self?.presentLaundrySelectSection.onNext()
-    }).addDisposableTo(disposeBag)
-    
+        self?.presentLaundrySelectSection.onNext()
+      }).addDisposableTo(disposeBag)
+
     tableItemDeleted.asObservable().subscribe(onNext: { indexPath in
-      var items = currentOrderItems.value
-      items.remove(at: indexPath.row)
-      OrderManager.instance.currentOrderItems.onNext(items)
-    }).addDisposableTo(disposeBag)
+        var items = currentOrderItems.value
+        items.remove(at: indexPath.row)
+        OrderManager.instance.currentOrderItems.onNext(items)
+      }).addDisposableTo(disposeBag)
 
   }
 }

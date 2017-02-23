@@ -19,26 +19,26 @@ enum OrderStatus: String {
   case completed = "completed"
   case canceled = "canceled"
   case errored = "errored"
-  
+
   var image: UIImage {
     switch self {
     case .completed:
-     return #imageLiteral(resourceName: "iconIndicatorCompleted")
+      return #imageLiteral(resourceName:"iconIndicatorCompleted")
     case .errored:
-      return #imageLiteral(resourceName: "iconIndicatorCanceled")
+      return #imageLiteral(resourceName:"iconIndicatorCanceled")
     case .cleaning:
-      return #imageLiteral(resourceName: "iconIndicatorCleaning")
+      return #imageLiteral(resourceName:"iconIndicatorCleaning")
     case .processing:
-      return #imageLiteral(resourceName: "iconIndicatorProcessing")
+      return #imageLiteral(resourceName:"iconIndicatorProcessing")
     case .dispatched:
-      return #imageLiteral(resourceName: "iconIndicatorDispatched")
+      return #imageLiteral(resourceName:"iconIndicatorDispatched")
     case .canceled:
-      return #imageLiteral(resourceName: "iconIndicatorCanceled")
+      return #imageLiteral(resourceName:"iconIndicatorCanceled")
     case .confirmed:
-      return #imageLiteral(resourceName: "iconIndicatorConfirmed")
+      return #imageLiteral(resourceName:"iconIndicatorConfirmed")
     }
   }
-  
+
   var description: String {
     switch self {
     case .completed:
@@ -57,7 +57,7 @@ enum OrderStatus: String {
       return NSLocalizedString("confirmed", comment: "Order status")
     }
   }
-  
+
   var color: UIColor {
     switch self {
     case .completed:
@@ -114,7 +114,7 @@ class Order: ServerObject {
     return .card
   }
 
-  var ratingRequired: Bool  {
+  var ratingRequired: Bool {
     set {
       UserDefaults.standard.set(newValue, forKey: ratingRequiredKey)
     }
@@ -126,11 +126,11 @@ class Order: ServerObject {
   var deliveryPriceString: String {
     return deliveryPrice == 0 ? NSLocalizedString("freeDeliveryPrice", comment: "Delivery price") : deliveryPrice.currencyString
   }
-  
+
   var status: OrderStatus? {
     return OrderStatus(rawValue: statusString)
   }
-  
+
   override func mapping(map: Map) {
     super.mapping(map: map)
     streetName <- map["street_name"]
@@ -152,5 +152,5 @@ class Order: ServerObject {
     updatedAt <- (map["updated_at"], StringToDateTransform())
     payment <- map["payment"]
   }
-  
+
 }

@@ -19,7 +19,7 @@ class PaymentViewModel {
   var url: URL? = nil
   let successString = "Success=true"
   let order: Order
-  
+
   init(order: Order) {
     self.order = order
     self.dismissViewController = didPressCloseButton.asDriver(onErrorDriveWith: .empty())

@@ -19,7 +19,6 @@ protocol CategoryTableViewCellModelType {
   var iconColor: UIColor { get }
 }
 
-
 class CategoryTableViewCellModel: CategoryTableViewCellModelType {
   // Constants
   let dayEndings = ["вещь", "вещи", "вещей"]

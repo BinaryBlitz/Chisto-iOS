@@ -68,19 +68,19 @@ class CitySelectViewModel: CitySelectViewModelType {
     // Data
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
-    
+
     DataManager.instance.fetchCities().subscribe(onError: { error in
-      presentErrorAlert.onNext(error)
-    }).addDisposableTo(disposeBag)
+        presentErrorAlert.onNext(error)
+      }).addDisposableTo(disposeBag)
 
     let realm = RealmManager.instance.uiRealm
-    
+
     let cities = Variable<[City]>([])
     Observable.collection(from: realm.objects(City.self).filter("isDeleted == %@", false))
       .map { Array($0) }
       .bindTo(cities)
       .addDisposableTo(disposeBag)
-    
+
     let cityClosedToUser = Variable<City?>(nil)
     self.cityClosedToUser = cityClosedToUser
 
@@ -93,9 +93,9 @@ class CitySelectViewModel: CitySelectViewModelType {
         filteredCities = cities
           .filter { $0.name.lowercased().range(of: searchString.lowercased()) != nil }
       }
-      
+
       filteredCities.sort { $0.distanceTo(location) < $1.distanceTo(location) }
-      
+
       if location != nil {
         cityClosedToUser.value = filteredCities.first
       }
@@ -122,12 +122,12 @@ class CitySelectViewModel: CitySelectViewModelType {
     self.showCancelButtonAnimated = searchBarDidBeginEditing.asDriver(onErrorDriveWith: .empty())
     self.hideCancelButtonAnimated = searchBarDidEndEditing.asDriver(onErrorDriveWith: .empty())
 
-    itemDidSelect.asObservable().subscribe(onNext: {[weak self] indexPath in
-      ProfileManager.instance.updateProfile { profile in
-        profile.city = cities.value[indexPath.row]
-      }
-      self?.selectedCity.onNext(cities.value[indexPath.row])
-    }).addDisposableTo(disposeBag)
+    itemDidSelect.asObservable().subscribe(onNext: { [weak self] indexPath in
+        ProfileManager.instance.updateProfile { profile in
+          profile.city = cities.value[indexPath.row]
+        }
+        self?.selectedCity.onNext(cities.value[indexPath.row])
+      }).addDisposableTo(disposeBag)
   }
 
 }

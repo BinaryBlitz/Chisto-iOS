@@ -23,7 +23,7 @@ class ItemSizeAlertViewModel {
   let dismissViewController: Driver<Bool>
   let maxNumberLength = 6
   let squareCentimetersInMeter: Double = 10000
-  
+
   init(orderItem: OrderItem) {
     let lengthText = Variable<String?>("")
     self.lengthText = lengthText
@@ -37,31 +37,31 @@ class ItemSizeAlertViewModel {
     }
 
     areaText.asObservable().map { areaText in
-      guard let areaText = areaText else { return false }
-      return !areaText.characters.isEmpty
-    }.bindTo(continueButtonIsEnabled).addDisposableTo(disposeBag)
+        guard let areaText = areaText else { return false }
+        return !areaText.characters.isEmpty
+      }.bindTo(continueButtonIsEnabled).addDisposableTo(disposeBag)
 
 
     let cancelButtonDriver = cancelButtonDidTap.asDriver(onErrorDriveWith: .empty())
     let continueButtonObservable = continueButtonDidTap.asObservable().map { _ -> (width: Int, length: Int) in
-      guard let lengthText = lengthText.value, let widthText = widthText.value else { return ( 0, 0 ) }
-      guard let length = Int(lengthText.onlyDigits), let width = Int(widthText.onlyDigits) else { return ( 0, 0 ) }
-      return (width: width,length: length)
+      guard let lengthText = lengthText.value, let widthText = widthText.value else { return (0, 0) }
+      guard let length = Int(lengthText.onlyDigits), let width = Int(widthText.onlyDigits) else { return (0, 0) }
+      return (width: width, length: length)
     }
 
     let continueButtonDriver = continueButtonObservable.filter { area in
       return area.width * area.length != 0
-      }.map { area in
-        OrderManager.instance.updateOrderItem(orderItem) {
-          orderItem.size = area
-        }
+    }.map { area in
+      OrderManager.instance.updateOrderItem(orderItem) {
+        orderItem.size = area
+      }
     }.asDriver(onErrorDriveWith: .empty())
 
-    self.dismissViewController = Driver.of(cancelButtonDriver.map { false }, continueButtonDriver.map { true } ).merge()
+    self.dismissViewController = Driver.of(cancelButtonDriver.map { false }, continueButtonDriver.map { true }).merge()
 
     Observable.combineLatest(lengthText.asObservable(), widthText.asObservable()) { [weak self] lengthText, widthText -> String? in
-      self?.area(lengthText: lengthText, widthText: widthText)
-    }.bindTo(areaText).addDisposableTo(disposeBag)
+        self?.area(lengthText: lengthText, widthText: widthText)
+      }.bindTo(areaText).addDisposableTo(disposeBag)
   }
 
   func area(lengthText: String?, widthText: String?) -> String? {

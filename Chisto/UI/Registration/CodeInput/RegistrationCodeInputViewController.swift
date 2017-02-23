@@ -45,17 +45,17 @@ class RegistrationCodeInputViewController: UIViewController {
     maskedCodeInput.isValid.asObservable().bindTo(viewModel.codeIsValid).addDisposableTo(disposeBag)
 
     viewModel.dismissViewController.drive(onNext: { [weak self] in
-      self?.dismiss(animated: true, completion: {
-        viewModel.didFinishRegistration.onNext()
-      })
-    }).addDisposableTo(disposeBag)
+        self?.dismiss(animated: true, completion: {
+          viewModel.didFinishRegistration.onNext()
+        })
+      }).addDisposableTo(disposeBag)
 
   }
-  
+
   override func viewWillAppear(_ animated: Bool) {
     codeField.becomeFirstResponder()
   }
-  
+
   @IBAction func licenseAgreementDidTap(_ sender: Any) {
     guard let url = viewModel?.termsOfServiceURL else { return }
     let safariViewController = SFSafariViewController(url: url)

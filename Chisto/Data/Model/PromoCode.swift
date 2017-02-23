@@ -20,6 +20,6 @@ class PromoCode: Mappable {
     discount <- map["discount"]
   }
 
-  required init(map: Map) { }
-  
+  required init(map: Map) {}
+
 }

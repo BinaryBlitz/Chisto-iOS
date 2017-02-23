@@ -19,7 +19,7 @@ class PromoCodeAlertViewController: UIViewController {
 
   @IBOutlet weak var promoCodeField: UITextField!
   @IBOutlet weak var continueButton: GoButton!
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     hideKeyboardWhenTappedAround()
@@ -32,14 +32,14 @@ class PromoCodeAlertViewController: UIViewController {
     continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
 
     viewModel.dismissViewController.drive(onNext: { [weak self] success in
-      UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {
-        self?.view.alpha = 0
-      }, completion: { _ in
-        self?.dismiss(animated: false, completion: { _ in
-          self?.viewModel?.didFinishEnteringCode.onNext()
+        UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {
+          self?.view.alpha = 0
+        }, completion: { _ in
+          self?.dismiss(animated: false, completion: { _ in
+            self?.viewModel?.didFinishEnteringCode.onNext()
+          })
         })
-      })
-    }).addDisposableTo(disposeBag)
+      }).addDisposableTo(disposeBag)
   }
 
   override func viewWillAppear(_ animated: Bool) {

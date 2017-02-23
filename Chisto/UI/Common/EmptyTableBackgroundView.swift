@@ -11,7 +11,7 @@ import UIKit
 
 class EmptyTableBackgroundView: UIView {
   @IBOutlet weak var titleLabel: UILabel!
-  
+
   var title: String? {
     get {
       return titleLabel.text

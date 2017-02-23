@@ -21,7 +21,6 @@ protocol OrderTableViewCellModelType {
   var amountText: NSAttributedString { get }
 }
 
-
 class OrderTableViewCellModel: OrderTableViewCellModelType {
   // Constants
   let itemTitleText: String
@@ -35,7 +34,7 @@ class OrderTableViewCellModel: OrderTableViewCellModelType {
     self.iconColor = item.clothesItem.category?.color ?? UIColor.chsSkyBlue
 
     let servicesAttrString = NSMutableAttributedString()
-    
+
     if item.hasDecoration {
       servicesAttrString.append(NSAttributedString(string: "Декор", attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey]))
       servicesAttrString.append(NSAttributedString(string: " • ", attributes: [NSForegroundColorAttributeName: UIColor.chsSilver]))

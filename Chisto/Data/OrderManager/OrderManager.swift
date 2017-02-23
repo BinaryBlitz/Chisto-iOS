@@ -40,16 +40,16 @@ class OrderManager {
       order.promoCodeId = promoCode?.id
 
       order.orderItemsAttributes = orderItems.map { OrderItemAttribute(orderItem: $0, laundry: laundry) }
-      
+
       return DataManager.instance.createOrder(order: order, laundry: laundry)
     }
   }
-  
+
   func priceForCurrentLaundry(includeCollection: Bool = false, promoCode: PromoCode? = nil) -> Double {
     guard let laundry = currentLaundry else { return 0 }
     return self.price(laundry: laundry, includeCollection: includeCollection, promoCode: promoCode)
   }
-  
+
   func clearOrderItems() {
     currentOrderItems.onNext([])
   }

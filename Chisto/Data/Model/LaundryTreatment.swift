@@ -18,7 +18,7 @@ class LaundryTreatment: Mappable {
   var treatmentId: Int? = nil
   var price: Double = 0
 
-  required init?(map: Map) { }
+  required init?(map: Map) {}
 
   var treatment: Treatment? {
     guard let treatmentId = treatmentId else { return nil }

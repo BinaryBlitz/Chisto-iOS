@@ -20,7 +20,7 @@ class User: Mappable {
     lastName <- map["last_name"]
   }
 
-  required init(map: Map) { }
+  required init(map: Map) {}
 }
 
 class Rating: ServerObject {
@@ -29,7 +29,7 @@ class Rating: ServerObject {
   var user: User? = nil
   var content: String = ""
   var createdAt: Date? = nil
-  
+
   override func mapping(map: Map) {
     value <- map["value"]
     content <- map["content"]
@@ -40,5 +40,5 @@ class Rating: ServerObject {
       createdAt <- (map["created_at"], StringToDateTransform())
     }
   }
-  
+
 }

@@ -29,11 +29,14 @@ class CategoriesViewModel: CategoriesViewModelType {
 
   // Input
   var itemDidSelect = PublishSubject<IndexPath>()
+  var searchBarString = Variable<String?>("")
+  var didStartSearching = PublishSubject<Void>()
 
   // Output
   var sections: Driver<[CategoriesSectionModel]>
   var presentItemsSection: Driver<SelectClothesViewModel>
   var presentErrorAlert: PublishSubject<Error>
+  var selectClothesViewModel: SelectClothesViewModel
 
   // Data
   var categories: Variable<[Category]>
@@ -44,36 +47,55 @@ class CategoriesViewModel: CategoriesViewModelType {
     self.presentErrorAlert = presentErrorAlert
 
     DataManager.instance.fetchCategories().subscribe(onError: { error in
-      presentErrorAlert.onNext(error)
-    }).addDisposableTo(disposeBag)
-    
-    let categories = Variable<[Category]>([])
-    debugPrint(RealmManager.instance.uiRealm.objects(Category.self).sorted(byKeyPath: "name", ascending: true))
+        presentErrorAlert.onNext(error)
+      }).addDisposableTo(disposeBag)
 
-    let sortProperties = [SortDescriptor(keyPath: "featured", ascending: false), SortDescriptor(keyPath: "name", ascending: true)]
+    let categories = Variable<[Category]>([])
+
+    debugPrint(
+      RealmManager
+        .instance
+        .uiRealm
+        .objects(Category.self)
+        .sorted(byKeyPath: "name", ascending: true)
+    )
+
+    let sortProperties = [
+      SortDescriptor(keyPath: "featured", ascending: false),
+      SortDescriptor(keyPath: "name", ascending: true)
+    ]
 
     let realm = RealmManager.instance.uiRealm
 
-    Observable.collection(from: realm.objects(Category.self)
-      .filter("isDeleted == %@", false)
-      .sorted(by: sortProperties))
+    Observable
+      .collection(from: realm.objects(Category.self).filter("isDeleted == %@", false).sorted(by: sortProperties))
       .map { Array($0) }
       .bindTo(categories)
       .addDisposableTo(disposeBag)
 
     self.categories = categories
 
+    self.selectClothesViewModel = SelectClothesViewModel(category: nil, searchString: searchBarString)
+
     self.sections = categories.asDriver().map { categories in
       let cellModels = categories.map(CategoryTableViewCellModel.init) as [CategoryTableViewCellModelType]
-
       let section = CategoriesSectionModel(model: "", items: cellModels)
+
       return [section]
     }
 
-    self.presentItemsSection = itemDidSelect.asObservable().map { indexPath in
-      let category = categories.value[indexPath.row]
-      return SelectClothesViewModel(category: category)
-    }.asDriver(onErrorDriveWith: .empty())
+    self.presentItemsSection = itemDidSelect.asObservable()
+      .map { indexPath in
+        let category = categories.value[indexPath.row]
+        return SelectClothesViewModel(category: category)
+      }
+      .asDriver(onErrorDriveWith: .empty())
+
+    didStartSearching.asObservable().take(1).flatMap {
+      DataManager.instance.fetchClothes().do(onError: { error in
+        presentErrorAlert.onNext(error)
+      })
+    }.subscribe().addDisposableTo(disposeBag)
   }
 
 }

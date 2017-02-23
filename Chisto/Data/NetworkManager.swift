@@ -31,6 +31,7 @@ enum APIPath {
   case createRating(laundryId: Int)
   case subscribe
   case showPromoCode(promoCode: String)
+  case fetchItems
 
   var endpoint: String {
     switch self {
@@ -64,6 +65,8 @@ enum APIPath {
       return "subscriptions"
     case .showPromoCode(let promoCode):
       return "promo_codes/\(promoCode)"
+    case .fetchItems:
+      return "items"
     }
   }
 
@@ -128,7 +131,7 @@ enum NetworkError: Error, CustomStringConvertible {
 
 class NetworkManager {
 
-  let baseURL = "https://chis.to"
+  let baseURL = "https://chisto.xyz"
 
   func doRequest(method: HTTPMethod, _ path: APIPath,
                  _ params: Parameters = [:],
@@ -159,7 +162,7 @@ class NetworkManager {
               observer.onError(NetworkError.unexpectedResponseFormat)
             }
           }
-      }
+        }
 
       return Disposables.create { request.cancel() }
     }
@@ -167,7 +170,7 @@ class NetworkManager {
     return requestObservable.do(
       onError: { _ in
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }, onCompleted: { _ in
+      }, onCompleted: { _ in
       UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }, onSubscribe: { _ in
       UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -185,5 +188,5 @@ class NetworkManager {
     default: return .unknown
     }
   }
-  
+
 }

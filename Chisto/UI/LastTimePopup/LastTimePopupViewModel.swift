@@ -63,7 +63,7 @@ class LastTimePopupViewModel: LastTimePopupViewModelType {
     let didChooseLaundry = orderButtonDidTap.map { laundry }
     self.didChooseLaundry = didChooseLaundry
 
-    self.dismissViewController = Observable.of(showAllLaundriesButtonDidTap.asObservable(), didChooseLaundry.map {_ in } ).merge()
+    self.dismissViewController = Observable.of(showAllLaundriesButtonDidTap.asObservable(), didChooseLaundry.map { _ in }).merge()
       .asDriver(onErrorDriveWith: .empty())
   }
 

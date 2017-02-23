@@ -10,11 +10,11 @@ import Foundation
 
 extension Data {
 
-  public var hexadecimalString : String {
+  public var hexadecimalString: String {
     var result = ""
     enumerateBytes { buffer, index, stop in
       for byte in buffer {
-        result.append(String(format:"%02x",byte))
+        result.append(String(format: "%02x", byte))
       }
     }
     return result

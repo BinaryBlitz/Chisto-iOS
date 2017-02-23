@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 import Foundation
 import RxSwift
 import Kingfisher
@@ -23,10 +22,10 @@ class SelectClothesTableViewCell: UITableViewCell {
   func configure(viewModel: SelectClothesTableViewCellModelType) {
     clothesIconImageView.kf
       .setImage(with: viewModel.iconUrl) { [weak self] image, _, _, _ in
-        guard let image = image?.withRenderingMode(.alwaysTemplate) else { return }
-        self?.clothesIconImageView.image = image
-        self?.clothesIconImageView.tintColor = viewModel.iconColor
-      }
+      guard let image = image?.withRenderingMode(.alwaysTemplate) else { return }
+      self?.clothesIconImageView.image = image
+      self?.clothesIconImageView.tintColor = viewModel.iconColor
+    }
 
     titleLabel.text = viewModel.titleText
     descriptionLabel.attributedText = viewModel.subTitletext

@@ -18,9 +18,9 @@ class LaundryItem: Mappable {
   var itemId: Int? = nil
   var decorationMultiplier: Double = 1.0
 
-  required init?(map: Map) { }
+  required init?(map: Map) {}
 
-  init() { }
+  init() {}
 
   var item: Item? {
     guard let itemId = itemId else { return nil }
@@ -33,5 +33,5 @@ class LaundryItem: Mappable {
     itemId <- map["item_id"]
     decorationMultiplier <- map["decoration_multiplier"]
   }
-  
+
 }

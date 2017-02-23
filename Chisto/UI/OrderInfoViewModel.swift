@@ -18,19 +18,19 @@ typealias OrderInfoSectionModel = SectionModel<String, OrderInfoTableViewCellMod
 protocol OrderInfoViewModelType {
   // Input
   var supportButtonDidTap: PublishSubject<Void> { get }
-  
+
   // Output
   var navigationBarTitle: String { get }
   var sections: Driver<[OrderInfoSectionModel]> { get }
 }
 
 class OrderInfoViewModel {
-  
+
   let disposeBag = DisposeBag()
-  
+
   // Input
   let ratingButtonDidTap = PublishSubject<Void>()
-  
+
   // Output
   var navigationBarTitle: String
   var sections: Driver<[OrderInfoSectionModel]>
@@ -38,11 +38,11 @@ class OrderInfoViewModel {
   let presentRatingAlert: Driver<OrderReviewAlertViewModel>
   let orderInfoTableHeaderViewModel: OrderInfoTableHeaderViewModel
   let ratingButtonEnabled = Variable<Bool>(false)
-  
+
   // Data
   let order: Variable<Order?>
   let phoneNumber = "+7 495 766-78-49"
-  
+
   init(orderId: Int) {
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
@@ -62,7 +62,7 @@ class OrderInfoViewModel {
     let orderLineItemsObservable = observableOrder.map { $0.lineItems }
 
     observableOrder.map { $0.status == .completed }.bindTo(ratingButtonEnabled).addDisposableTo(disposeBag)
-    
+
     self.sections = orderLineItemsObservable.map { orderLineItems in
       let cellModels = orderLineItems.map(OrderInfoTableViewCellModel.init) as [OrderInfoTableViewCellModelType]
       return [OrderInfoSectionModel(model: "", items: cellModels)]
@@ -72,7 +72,7 @@ class OrderInfoViewModel {
       .map { ProfileManager.instance.userProfile.value.order }.filter { order in
         guard let order = order else { return false }
         return order.id == orderId && order.rating == nil
-    }
+      }
 
     let ratingButtonTappedDriver = ratingButtonDidTap
       .asDriver(onErrorDriveWith: .empty())
@@ -81,5 +81,5 @@ class OrderInfoViewModel {
     presentRatingAlert = Driver.of(shouldRateOrderObservable.asDriver(onErrorDriveWith: .empty()), ratingButtonTappedDriver).merge().map { OrderReviewAlertViewModel(order: $0!) }
 
   }
-  
+
 }

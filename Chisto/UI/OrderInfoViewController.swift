@@ -15,17 +15,17 @@ import RxCocoa
 import Kingfisher
 
 class OrderInfoViewController: UIViewController, UITableViewDelegate {
-  
+
   let disposeBag = DisposeBag()
-  
+
   @IBOutlet weak var tableView: UITableView!
   let headerView = OrderInfoTableHeaderView.nibInstance()!
   let footerView = OrderInfoTableFooterView.nibInstance()!
 
   @IBOutlet weak var ratingButton: GoButton!
-  var viewModel : OrderInfoViewModel? = nil
+  var viewModel: OrderInfoViewModel? = nil
   var dataSource = RxTableViewSectionedReloadDataSource<OrderInfoSectionModel>()
-  
+
   override func viewDidLoad() {
     tableView.tableHeaderView = headerView
 
@@ -36,53 +36,53 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
 
     ratingButton.rx.tap.bindTo(viewModel.ratingButtonDidTap).addDisposableTo(disposeBag)
     configureTableView()
-    
+
     footerView.phoneLabelDidTap
       .asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] in
-      let alertController = UIAlertController(title: nil, message: viewModel.phoneNumber, preferredStyle: .alert)
+        let alertController = UIAlertController(title: nil, message: viewModel.phoneNumber, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: NSLocalizedString("cancelCall", comment: "Call alert button"), style: .cancel, handler: nil)
         let callAction = UIAlertAction(title: NSLocalizedString("call", comment: "Call alert button"), style: .default, handler: { [weak self] _ in
-        guard let phoneNumber = self?.viewModel?.phoneNumber.onlyDigits else { return }
-        guard let url = URL(string: "tel://+\(phoneNumber)") else { return }
-        UIApplication.shared.openURL(url)
-      })
-      alertController.addAction(cancelAction)
-      alertController.addAction(callAction)
-      self?.present(alertController, animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
+          guard let phoneNumber = self?.viewModel?.phoneNumber.onlyDigits else { return }
+          guard let url = URL(string: "tel://+\(phoneNumber)") else { return }
+          UIApplication.shared.openURL(url)
+        })
+        alertController.addAction(cancelAction)
+        alertController.addAction(callAction)
+        self?.present(alertController, animated: true, completion: nil)
+      }).addDisposableTo(disposeBag)
 
     viewModel.ratingButtonEnabled.asObservable().bindTo(ratingButton.rx.isEnabled).addDisposableTo(disposeBag)
 
     viewModel.presentRatingAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] viewModel in
-      let viewController = OrderReviewAlertViewController.storyboardInstance()!
-      viewController.modalPresentationStyle = .overFullScreen
+        let viewController = OrderReviewAlertViewController.storyboardInstance()!
+        viewController.modalPresentationStyle = .overFullScreen
 
-      viewController.viewModel = viewModel
-      self?.present(viewController, animated: false, completion: nil)
-    }).addDisposableTo(disposeBag)
+        viewController.viewModel = viewModel
+        self?.present(viewController, animated: false, completion: nil)
+      }).addDisposableTo(disposeBag)
   }
 
   func configureTableView() {
     dataSource.configureCell = { _, tableView, indexPath, cellViewModel in
       let cell = tableView.dequeueReusableCell(withIdentifier: "OrderInfoTableViewCell", for: indexPath) as! OrderInfoTableViewCell
-      
+
       cell.configure(viewModel: cellViewModel)
       return cell
     }
-    
+
     tableView.delegate = nil
     tableView.rx
       .setDelegate(self)
       .addDisposableTo(disposeBag)
-        
+
     tableView.dataSource = nil
-    
+
     guard let viewModel = viewModel else { return }
-    
+
     viewModel.sections
       .drive(self.tableView.rx.items(dataSource: self.dataSource))
       .addDisposableTo(self.disposeBag)
-    
+
     tableView.estimatedRowHeight = 100
     tableView.rowHeight = UITableViewAutomaticDimension
   }
@@ -106,6 +106,6 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
     return 100
   }
-  
+
 }
   

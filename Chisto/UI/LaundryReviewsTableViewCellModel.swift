@@ -20,7 +20,7 @@ class LaundryReviewsViewTableViewCellModel: LaundryReviewsViewTableViewCellModel
   var authorName: String = ""
   let content: String
   var date: String
-  
+
   init(rating: Rating) {
     self.rating = Float(rating.value)
     self.content = rating.content

@@ -31,7 +31,7 @@ class OnBoardingViewModel {
 
     self.presentCitySelectSection = goButtonDidTap.asObservable().map {
       let viewModel = CitySelectViewModel()
-      viewModel.itemDidSelect.asObservable().map{ _ in Void() }
+      viewModel.itemDidSelect.asObservable().map { _ in Void() }
         .bindTo(cityDidSelected)
         .addDisposableTo(viewModel.disposeBag)
       return viewModel

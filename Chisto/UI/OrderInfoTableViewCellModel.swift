@@ -20,7 +20,7 @@ protocol OrderInfoTableViewCellModelType {
 }
 
 class OrderInfoTableViewCellModel: OrderInfoTableViewCellModelType {
-  
+
   var clothesIconUrl: URL? = nil
   var clothesIconColor: UIColor = UIColor.chsSkyBlue
   var clothesTitle: String? = nil
@@ -28,10 +28,10 @@ class OrderInfoTableViewCellModel: OrderInfoTableViewCellModelType {
   var orderTreatments: [OrderItemTreatment] = []
   var hasDecoration: Bool = false
   var decorationPrice: String = ""
-  
+
   init(orderLineItem: OrderLineItem) {
     guard let item = orderLineItem.item else { return }
-    
+
     self.clothesIconUrl = URL(string: item.icon)
     self.clothesIconColor = item.category?.color ?? UIColor.chsSkyBlue
 
@@ -39,12 +39,12 @@ class OrderInfoTableViewCellModel: OrderInfoTableViewCellModelType {
 
     var clothesTitle = item.name
     if item.useArea {
-      clothesTitle +=  " \(orderLineItem.area.roundTo(places: 1)) м² "
+      clothesTitle += " \(orderLineItem.area.roundTo(places: 1)) м² "
     }
     let price = orderLineItem.price(singleItem: true)
     clothesTitle += " " + price.currencyString + " × \(orderLineItem.quantity)"
     self.clothesTitle = clothesTitle
-    
+
     self.clothesPrice = (price * Double(orderLineItem.quantity)).currencyString
 
     self.hasDecoration = orderLineItem.hasDecoration

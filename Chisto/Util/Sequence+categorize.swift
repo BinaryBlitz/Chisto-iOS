@@ -17,7 +17,7 @@ extension Sequence {
   /// - Returns: A dictionary [Type: [Iterator.Element]] where Type is a hashable key
   /// from the closure return value, [Iterator.Element] is a subsequence from the original
   /// one where every item has the same key as others
-  func categorize<Type: Hashable>(_ key: (Iterator.Element) -> Type) -> [Type: [Iterator.Element]] {
+  func categorize<Type:Hashable>(_ key: (Iterator.Element) -> Type) -> [Type: [Iterator.Element]] {
     var dictionary: [Type: [Iterator.Element]] = [:]
     for element in self {
       let key = key(element)

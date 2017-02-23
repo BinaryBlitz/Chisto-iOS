@@ -18,7 +18,7 @@ class Subscription: Mappable {
     phoneNumber <- map["phone_number"]
   }
 
-  required init(map: Map) { }
+  required init(map: Map) {}
 
   init(phoneNumber: String, content: String) {
     self.phoneNumber = phoneNumber

@@ -8,4 +8,5 @@
 
 import Foundation
 
-class ProfileNavigationController: ChistoNavigationController {}
+class ProfileNavigationController: ChistoNavigationController {
+}

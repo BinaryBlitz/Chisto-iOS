@@ -17,14 +17,14 @@ enum PaymentMethod: String {
   var image: UIImage {
     switch self {
     case .card:
-      return #imageLiteral(resourceName: "IconIndicatorCard")
+      return #imageLiteral(resourceName:"IconIndicatorCard")
     case .cash:
-      return #imageLiteral(resourceName: "iconIndicatorMonye")
+      return #imageLiteral(resourceName:"iconIndicatorMonye")
     case .applePay:
-      return #imageLiteral(resourceName: "IconIndicatorApplepay")
+      return #imageLiteral(resourceName:"IconIndicatorApplepay")
     }
   }
-  
+
   var description: String {
     switch self {
     case .card:

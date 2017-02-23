@@ -5,6 +5,7 @@
 //  Created by Алексей on 04.11.16.
 //  Copyright © 2016 Binary Blitz. All rights reserved.
 //
+
 import Foundation
 import RealmSwift
 import Alamofire
@@ -20,7 +21,7 @@ enum DataError: Error, CustomStringConvertible {
   case requestConvertError
   case unknownApiPath
   case unknown(description: String)
-  
+
   var description: String {
     switch self {
     case .network(let error):
@@ -35,7 +36,7 @@ enum DataError: Error, CustomStringConvertible {
       return ""
     }
   }
-  
+
   var localizedDescription: String {
     return description
   }
@@ -69,7 +70,7 @@ class DataManager {
 
   private var verificationToken: String? = nil
   private let networkManager = NetworkManager()
-  
+
   func networkRequest(method: HTTPMethod, _ path: APIPath, _ params: Parameters = [:]) -> Observable<Any> {
     var parameters = params
     if let token = ProfileManager.instance.userProfile.value.apiToken {
@@ -80,23 +81,23 @@ class DataManager {
       .map { data in JSON(data: data).rawValue }.catchError { error in
         guard let networkError = error as? NetworkError else { return Observable.error(error) }
         return Observable.error(DataError.network(networkError))
-    }
+      }
   }
-  
-  func getItems <ItemType>(type: ItemType.Type, apiPath: APIPath) -> Observable<[ItemType]> where ItemType: Mappable {
+
+  func getItems<ItemType>(type: ItemType.Type, apiPath: APIPath) -> Observable<[ItemType]> where ItemType: Mappable {
     return networkRequest(method: .get, apiPath)
       .flatMap { itemsJSON -> Observable<[ItemType]> in
         guard let items = Mapper<ItemType>().mapArray(JSONObject: itemsJSON) else {
           return Observable.error(DataError.responseConvertError)
         }
         return Observable.just(items)
-    }
+      }
 
   }
 
   func fetchItems<ItemType>(type: ItemType.Type, apiPath: APIPath,
-                  _ modifier: @escaping (ItemType) -> Void = {_ in }) -> Observable<[ItemType]> where ItemType: ServerObject {
-    
+                            _ modifier: @escaping (ItemType) -> Void = { _ in }) -> Observable<[ItemType]> where ItemType: ServerObject {
+
     return getItems(type: type, apiPath: apiPath)
       .flatMap { items -> Observable<[ItemType]> in
 
@@ -108,7 +109,7 @@ class DataManager {
             realm.add(item, update: true)
           }
         }
-                
+
         return Observable.just(items)
       }
   }
@@ -124,7 +125,7 @@ extension DataManager: UserManagerType {
     }
     return networkRequest(method: .post, .createUser, jsonProfile).map { json in
       guard let jsonMap = json as? [String: Any] else { throw DataError.responseConvertError }
-      
+
       ProfileManager.instance.updateProfile { profile in
         let map = Map(mappingType: .fromJSON, JSON: jsonMap)
         profile.mapping(map: map)
@@ -132,7 +133,7 @@ extension DataManager: UserManagerType {
       }
     }
   }
-  
+
   func showUser() -> Observable<Void> {
     guard ProfileManager.instance.userProfile.value.apiToken != nil else { return Observable.just(()) }
     return networkRequest(method: .get, .showUser).map { json in
@@ -152,7 +153,7 @@ extension DataManager: UserManagerType {
       }
     }
   }
-  
+
   func updateUser() -> Observable<Void> {
     let profile = ProfileManager.instance.userProfile.value
     let realm = try! Realm()
@@ -175,18 +176,18 @@ extension DataManager: TokenManagerType {
           profile.phone = json["phone_number"].stringValue
         }
         return Observable.just()
-    }
+      }
   }
-  
+
   func verifyToken(code: String) -> Observable<Void> {
     guard let verificationToken = ProfileManager.instance.userProfile.value.verificationToken else { return Observable.error(DataError.unknown(description: "")) }
-    
+
     return networkRequest(
       method: .patch,
       .verifyToken,
       ["code": code,
        "token": verificationToken]
-      )
+    )
       .flatMap { response -> Observable<Void> in
         let json = JSON(object: response)
         print(json)
@@ -195,7 +196,7 @@ extension DataManager: TokenManagerType {
           profile.isVerified = true
         }
         return Observable.just()
-    }
+      }
   }
 }
 
@@ -225,21 +226,33 @@ extension DataManager: FetchItemsManagerType {
     }
   }
 
+  func fetchClothes() -> Observable<Void> {
+    return fetchItems(type: Item.self, apiPath: .fetchItems).map { newItems in
+      let realm = try! Realm()
+      let items = Set(realm.objects(Item.self).toArray())
+      for item in items.subtracting(Set(newItems)) {
+        try realm.write {
+          item.isDeleted = true
+        }
+      }
+    }
+  }
+
   func fetchCategoryClothes(category: Category) -> Observable<Void> {
     return fetchItems(
-        type: Item.self, apiPath: .fetchCategoryClothes(categoryId: category.id)
-      ) { item in
-        item.category = category
-      }.map { newItems in
-        let realm = try! Realm()
-        let clothes = Set(realm.objects(Item.self)
-          .filter { $0.category == category })
-        
-        for item in clothes.subtracting(Set(newItems)) {
-          try realm.write {
-            item.isDeleted = true
-          }
+      type: Item.self, apiPath: .fetchCategoryClothes(categoryId: category.id)
+    ) { item in
+      item.category = category
+    }.map { newItems in
+      let realm = try! Realm()
+      let clothes = Set(realm.objects(Item.self)
+        .filter { $0.category == category })
+
+      for item in clothes.subtracting(Set(newItems)) {
+        try realm.write {
+          item.isDeleted = true
         }
+      }
     }
   }
 
@@ -250,7 +263,7 @@ extension DataManager: FetchItemsManagerType {
       let realm = try! Realm()
       let treatments = Set(realm.objects(Treatment.self)
         .filter { $0.item == item })
-      
+
       for treatment in treatments.subtracting(Set(newTreatments)) {
         try realm.write {
           treatment.isDeleted = true
@@ -262,10 +275,10 @@ extension DataManager: FetchItemsManagerType {
   func getLaundries() -> Observable<[Laundry]> {
     guard let city = ProfileManager.instance.userProfile.value.city else { return Observable.error(DataError.unknown(description: "")) }
     return fetchItems(type: Laundry.self, apiPath: .fetchCityLaundries(cityId: city.id)) { laundry in
-        laundry.city = city
-      }.map { newLaundries in
+      laundry.city = city
+    }.map { newLaundries in
       let realm = try! Realm()
-      let laundries = Set(realm.objects(Laundry.self).filter { $0.city == city } )
+      let laundries = Set(realm.objects(Laundry.self).filter { $0.city == city })
       for laundry in laundries.subtracting(Set(newLaundries)) {
         try realm.write {
           laundry.isDeleted = true
@@ -274,11 +287,11 @@ extension DataManager: FetchItemsManagerType {
       return newLaundries
     }
   }
-  
+
   func fetchRatings(laundry: Laundry) -> Observable<[Rating]> {
     return getItems(type: Rating.self, apiPath: .fetchRatings(laundryId: laundry.id))
   }
-  
+
   func fetchOrders() -> Observable<Void> {
     return fetchItems(type: Order.self, apiPath: .fetchOrders).map { newOrders in
       let realm = try! Realm()
@@ -288,49 +301,49 @@ extension DataManager: FetchItemsManagerType {
           order.isDeleted = true
         }
       }
-      
+
     }
   }
 
   func createOrder(order: RequestOrder, laundry: Laundry) -> Observable<Order> {
     let orderJSON = order.toJSON()
-    
+
     return networkRequest(
-        method: .post,
-        .createOrder(laundryId: laundry.id),
-        ["order": orderJSON]
-      )
+      method: .post,
+      .createOrder(laundryId: laundry.id),
+      ["order": orderJSON]
+    )
       .flatMap { result -> Observable<Order> in
         guard let order = Mapper<Order>().map(JSONObject: result) else { return Observable.error(DataError.responseConvertError) }
         let realm = try! Realm()
-        
+
         try realm.write {
           realm.add(order, update: true)
         }
-        
+
         return Observable.just(order)
-    }
+      }
   }
-  
+
   func getOrderInfo(orderId: Int) -> Observable<Order> {
     return networkRequest(method: .get, .fetchOrder(orderId: orderId)).flatMap { result -> Observable<Order> in
       guard let order = Mapper<Order>().map(JSONObject: result) else { return Observable.error(DataError.responseConvertError) }
       let realm = try! Realm()
-      
+
       try realm.write {
         realm.add(order, update: true)
       }
-      
+
       return Observable.just(order)
     }
   }
 
   func sendNotificationToken(tokenString: String) -> Observable<Void> {
-    let userData : Dictionary = ["user": ["device_token": tokenString, "platform": "ios"]]
+    let userData: Dictionary = ["user": ["device_token": tokenString, "platform": "ios"]]
 
-    return networkRequest(method: .patch, .updateUser, userData).map{ _ in }
+    return networkRequest(method: .patch, .updateUser, userData).map { _ in }
   }
-  
+
   func showLaundry(laundryId: Int) -> Observable<Laundry> {
     return networkRequest(method: .get, .showLaundry(laundryId: laundryId)).flatMap { result -> Observable<Laundry> in
       guard let laundry = Mapper<Laundry>().map(JSONObject: result) else { return Observable.error(DataError.responseConvertError) }

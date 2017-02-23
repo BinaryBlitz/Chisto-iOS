@@ -23,7 +23,7 @@ class HasDecorationAlertViewModel {
 
   init(orderItem: OrderItem) {
     self.orderItem = orderItem
-    
+
     let yesButtonDidTapObservable = yesButtonDidTap.asObservable().do(onNext: {
       orderItem.hasDecoration = true
     })

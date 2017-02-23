@@ -17,12 +17,12 @@ extension NSLayoutConstraint {
       .notification(.UIKeyboardWillShow)
       .takeUntil(self.rx.deallocating)
       .subscribe(onNext: { notification in
-      if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-        let keyboardHeight = keyboardSize.height
-        self.constant = currentConstant + keyboardHeight
-      }
-    })
-    
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+          let keyboardHeight = keyboardSize.height
+          self.constant = currentConstant + keyboardHeight
+        }
+      })
+
     _ = NotificationCenter.default.rx
       .notification(.UIKeyboardWillHide)
       .takeUntil(self.rx.deallocating)

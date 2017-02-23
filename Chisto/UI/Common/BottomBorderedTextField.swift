@@ -18,7 +18,6 @@ class BottomBorderedTextField: UITextField {
 
     addSubview(border)
 
-
   }
 
   required init?(coder aDecoder: NSCoder) {

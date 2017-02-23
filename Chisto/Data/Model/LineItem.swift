@@ -17,9 +17,9 @@ class LineItem: ServerObject {
 
   override func mapping(map: Map) {
     super.mapping(map: map)
-    
+
     laundryTreatment <- map["laundry_treatment"]
     price <- map["price"]
   }
-  
+
 }
