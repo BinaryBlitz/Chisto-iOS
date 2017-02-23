@@ -90,14 +90,14 @@ class SelectClothesViewModel: SelectClothesViewModelType {
 
     let selectedItemObservable = itemDidSelect.map { items.value[$0.row] }
 
-    self.presentHasDecorationAlert = selectedItemObservable.filter { $0.hasDecoration }.map { item in
+    self.presentHasDecorationAlert = selectedItemObservable.filter { $0.hasDecoration && !ProfileManager.instance.userProfile.value.disabledDecorationAlert }.map { item in
       let orderItem = OrderItem(clothesItem: item)
       let viewModel = HasDecorationAlertViewModel(orderItem: orderItem)
       viewModel.didFinishAlert.bindTo(decorationAlertDidFinish).addDisposableTo(viewModel.disposeBag)
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
 
-    let noDecorationItemSelectedDriver = selectedItemObservable.filter { !$0.hasDecoration }
+    let noDecorationItemSelectedDriver = selectedItemObservable.filter { !$0.hasDecoration || ProfileManager.instance.userProfile.value.disabledDecorationAlert }
       .map { OrderItem(clothesItem: $0) }
       .asDriver(onErrorDriveWith: .empty())
 

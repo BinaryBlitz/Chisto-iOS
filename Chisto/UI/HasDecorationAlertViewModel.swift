@@ -14,6 +14,7 @@ class HasDecorationAlertViewModel {
   let disposeBag = DisposeBag()
   let noButtonDidTap = PublishSubject<Void>()
   let yesButtonDidTap = PublishSubject<Void>()
+  let disableAlertButtonDidTap = PublishSubject<Void>()
   let didFinishAlert = PublishSubject<OrderItem>()
 
   let orderItem: OrderItem
@@ -32,7 +33,13 @@ class HasDecorationAlertViewModel {
       orderItem.hasDecoration = false
     })
 
-    Observable.of(yesButtonDidTapObservable, noButtonDidTapObservable).merge().map { orderItem }
+    let disableAlertButtonDidTapObservable = disableAlertButtonDidTap.asObservable().do(onNext: {
+      ProfileManager.instance.updateProfile { profile in
+        profile.disabledDecorationAlert = true
+      }
+    })
+
+    Observable.of(yesButtonDidTapObservable, noButtonDidTapObservable, disableAlertButtonDidTapObservable).merge().map { orderItem }
       .bindTo(didFinishAlert)
       .addDisposableTo(disposeBag)
   }

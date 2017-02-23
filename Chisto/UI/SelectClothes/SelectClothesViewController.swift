@@ -63,8 +63,15 @@ class SelectClothesViewController: UITableViewController {
           handler: { _ in viewModel.noButtonDidTap.onNext() }
         )
 
+        let disableAction = UIAlertAction(
+          title: NSLocalizedString("doNotShowAlertAgain", comment: "Decoration alert"),
+          style: .default,
+          handler: { _ in viewModel.disableAlertButtonDidTap.onNext() }
+        )
+
         viewController.addAction(yesAction)
         viewController.addAction(noAction)
+        viewController.addAction(disableAction)
 
         self?.present(viewController, animated: true, completion: nil)
       })
