@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import PassKit
 
 class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewController {
 
@@ -66,6 +67,12 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
         self?.present(navigationPaymentController, animated: true, completion: nil)
       }).addDisposableTo(disposeBag)
 
+    viewModel.presentApplePayScreen.drive(onNext: { [weak self] request in
+      let paymentViewController = PKPaymentAuthorizationViewController(paymentRequest: request)
+      paymentViewController.delegate = self
+      self?.present(paymentViewController, animated: true)
+    }).addDisposableTo(disposeBag)
+
     configureForm()
   }
 
@@ -80,4 +87,15 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
     contactFormViewController.cityField.textColor = UIColor.chsSilver
   }
 
+}
+
+extension OrderRegistrationViewController: PKPaymentAuthorizationViewControllerDelegate {
+  func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
+    viewModel?.applePayDidFinish.onNext()
+  }
+
+  func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+    controller.dismiss(animated: true, completion: nil)
+  }
+  
 }

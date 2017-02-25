@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import PassKit
 
 class OrderRegistrationViewModel {
 
@@ -23,8 +24,11 @@ class OrderRegistrationViewModel {
   let payButtonDidTap = PublishSubject<Void>()
   let presentOrderPlacedPopup: Driver<OrderPlacedPopupViewModel>
   let presentPaymentSection: Driver<PaymentViewModel>
+  let applePayDidFinish: PublishSubject<Void>
   let paymentCompleted: PublishSubject<Order>
   let presentErrorAlert: PublishSubject<Error>
+  let presentApplePayScreen: Driver<PKPaymentRequest>
+  let canUseApplePay: Bool = PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: [.masterCard, .visa])
 
   enum NextScreen {
     case orderPlacedPopup(viewModel: OrderPlacedPopupViewModel)
@@ -53,6 +57,9 @@ class OrderRegistrationViewModel {
     let paymentCompleted = PublishSubject<Order>()
     self.paymentCompleted = paymentCompleted
 
+    let applePayDidFinish = PublishSubject<Void>()
+    self.applePayDidFinish = applePayDidFinish
+
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
 
@@ -70,11 +77,17 @@ class OrderRegistrationViewModel {
         return placeOrder()
       }
 
+    self.presentApplePayScreen = payButtonDidTap.filter { formViewModel.paymentMethod.value == .applePay }
+      .asDriver(onErrorDriveWith: .empty()).flatMap {
+        return placeOrder().map { $0.paymentRequest }
+    }
+
     self.presentPaymentSection = payButtonDidTap
       .filter { formViewModel.paymentMethod.value == .card }
       .asDriver(onErrorDriveWith: .empty()).flatMap {
         return placeOrder().map { order in
           let viewModel = PaymentViewModel(order: order)
+          applePayDidFinish.asObservable().map { order }.bindTo(paymentCompleted).addDisposableTo(disposeBag)
           viewModel.didFinishPayment.bindTo(paymentCompleted).addDisposableTo(disposeBag)
           return viewModel
         }

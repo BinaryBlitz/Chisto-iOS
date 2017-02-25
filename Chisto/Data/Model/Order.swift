@@ -8,6 +8,7 @@
 
 import Foundation
 import ObjectMapper
+import PassKit
 import ObjectMapper_Realm
 import RealmSwift
 
@@ -88,10 +89,26 @@ class Order: ServerObject {
   dynamic var statusString: String = ""
   dynamic var paymentUrl: String = ""
   dynamic var email: String? = nil
-  dynamic var deliveryPrice: Double = 0
+  dynamic var deliveryPriceRaw: String = ""
+  var deliveryPrice: Decimal {
+    get {
+      return Decimal(string: deliveryPriceRaw) ?? 0
+    }
+    set {
+      deliveryPriceRaw = NSDecimalNumber(decimal: newValue).stringValue
+    }
+  }
   dynamic var createdAt: Date = Date()
   dynamic var updatedAt: Date = Date()
-  dynamic var totalPrice: Double = 0
+  dynamic var totalPriceRaw: String = ""
+  var totalPrice: Decimal {
+    get {
+      return Decimal(string: totalPriceRaw) ?? 0
+    }
+    set {
+      totalPriceRaw = NSDecimalNumber(decimal: newValue).stringValue
+    }
+  }
   dynamic var payment: Payment? = nil
   dynamic var rating: Rating? = nil
   var orderItems: [OrderLineItem] = []
@@ -100,12 +117,13 @@ class Order: ServerObject {
   var ratingRequiredKey: String {
     return "ratingRequired\(laundryId)"
   }
-  var orderPrice: Double {
+
+  var orderPrice: Decimal {
     guard let promoCode = promoCode else { return totalPrice - deliveryPrice }
-    return totalPrice / (1 - Double(promoCode.discount) / 100) - deliveryPrice
+    return totalPrice / (1 - promoCode.discount / 100) - deliveryPrice
   }
 
-  var promoCodeDiscount: Double {
+  var promoCodeDiscount: Decimal {
     return totalPrice - (orderPrice + deliveryPrice)
   }
 
@@ -123,6 +141,43 @@ class Order: ServerObject {
     }
   }
 
+  var paymentRequest: PKPaymentRequest {
+    let request = PKPaymentRequest()
+    request.currencyCode = "RUB"
+    request.countryCode = "RU"
+
+    var paymentItems: [PKPaymentSummaryItem] = []
+
+    for lineItem in lineItems {
+      var clothesTitle = lineItem.item?.name ?? ""
+      if let item = lineItem.item {
+        if item.useArea {
+          clothesTitle += " \(lineItem.area) м²"
+        }
+        clothesTitle += " x \(lineItem.quantity)"
+      }
+
+      paymentItems.append(PKPaymentSummaryItem(label: clothesTitle, amount: NSDecimalNumber(decimal: lineItem.price())))
+    }
+
+    if promoCode != nil {
+      let promoCodeItem = PKPaymentSummaryItem(label: NSLocalizedString("promoCode", comment: "Promo code"), amount: NSDecimalNumber(decimal: promoCodeDiscount))
+      paymentItems.append(promoCodeItem)
+    }
+
+    let deliveryItem = PKPaymentSummaryItem(label: NSLocalizedString("delivery", comment: "Delivery price"), amount: NSDecimalNumber(decimal: deliveryPrice))
+    paymentItems.append(deliveryItem)
+
+    let totalItem = PKPaymentSummaryItem(label: laundry?.name ?? "Chisto", amount: NSDecimalNumber(decimal: totalPrice), type: .final)
+    paymentItems.append(totalItem)
+
+    request.paymentSummaryItems = paymentItems
+    request.supportedNetworks = [.masterCard, .visa]
+    request.merchantCapabilities = [.capability3DS]
+    request.merchantIdentifier = "merchant.ru.binaryblitz.Chisto"
+    return request
+  }
+
   var deliveryPriceString: String {
     return deliveryPrice == 0 ? NSLocalizedString("freeDeliveryPrice", comment: "Delivery price") : deliveryPrice.currencyString
   }
@@ -133,6 +188,7 @@ class Order: ServerObject {
 
   override func mapping(map: Map) {
     super.mapping(map: map)
+    let realm = try! Realm()
     streetName <- map["street_name"]
     houseNumber <- map["house_number"]
     apartmentNumber <- map["apartment_number"]
@@ -146,11 +202,18 @@ class Order: ServerObject {
     statusString <- map["status"]
     laundryId <- map["laundry_id"]
     laundry <- map["laundry"]
+    if laundry == nil {
+      laundry = realm.object(ofType: Laundry.self, forPrimaryKey: laundryId)
+    }
     rating <- map["rating"]
-    totalPrice <- map["total_price"]
-    deliveryPrice <- map["delivery_fee"]
+    totalPrice <- (map["total_price"], DecimalTransform())
+    deliveryPrice <- (map["delivery_fee"], DecimalTransform())
     updatedAt <- (map["updated_at"], StringToDateTransform())
     payment <- map["payment"]
+  }
+
+  public override class func ignoredProperties() -> [String] {
+    return ["totalPrice", "deliveryPrice"]
   }
 
 }

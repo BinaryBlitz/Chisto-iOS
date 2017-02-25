@@ -39,13 +39,13 @@ class OrderInfoTableViewCellModel: OrderInfoTableViewCellModelType {
 
     var clothesTitle = item.name
     if item.useArea {
-      clothesTitle += " \(orderLineItem.area.roundTo(places: 1)) м² "
+      clothesTitle += " \(NSDecimalNumber(decimal: orderLineItem.area).doubleValue.roundTo(places: 1)) м² "
     }
     let price = orderLineItem.price(singleItem: true)
     clothesTitle += " " + price.currencyString + " × \(orderLineItem.quantity)"
     self.clothesTitle = clothesTitle
 
-    self.clothesPrice = (price * Double(orderLineItem.quantity)).currencyString
+    self.clothesPrice = (price * Decimal(orderLineItem.quantity)).currencyString
 
     self.hasDecoration = orderLineItem.hasDecoration
     self.decorationPrice = orderLineItem.decorationPrice.currencyString

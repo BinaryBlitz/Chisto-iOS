@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import UIKit
 import TextFieldEffects
+import PassKit
 
 class ContactFormViewController: UITableViewController {
 
@@ -29,12 +30,34 @@ class ContactFormViewController: UITableViewController {
   @IBOutlet weak var apartmentField: HoshiTextField!
   @IBOutlet weak var commentField: HoshiTextField!
   @IBOutlet weak var cityButton: UIButton!
-
+  @IBOutlet weak var payWithApplePayView: UIView!
   @IBOutlet weak var payWithCardLabel: UILabel!
   @IBOutlet weak var payByCashLabel: UILabel!
-  @IBOutlet weak var payWithCardCheckImageView: UIImageView!
-  @IBOutlet weak var payByCashCheckImageView: UIImageView!
+  @IBOutlet weak var applePayLabel: UILabel!
+  @IBOutlet var payByCashIconViews: [UIImageView]!
   @IBOutlet var paymentMethodCardIconViews: [UIImageView]!
+  @IBOutlet var payWithApplePayIconViews: [UIImageView]!
+
+  var payWithCardSelected: Bool = true {
+    didSet {
+      payWithCardLabel.isHighlighted = payWithCardSelected
+      paymentMethodCardIconViews.forEach { $0.isHighlighted = payWithCardSelected }
+    }
+  }
+
+  var payByCashSelected: Bool = false {
+    didSet {
+      payByCashLabel.isHighlighted = payByCashSelected
+      payByCashIconViews.forEach { $0.isHighlighted = payByCashSelected }
+    }
+  }
+
+  var applePaySelected: Bool = false {
+    didSet {
+      applePayLabel.isHighlighted = applePaySelected
+      payWithApplePayIconViews.forEach { $0.isHighlighted = applePaySelected }
+    }
+  }
 
   let contactInfoHeaderView = ContactFormTableHeaderView.nibInstance()!
   let adressHeaderView = ContactFormTableHeaderView.nibInstance()!
@@ -50,6 +73,14 @@ class ContactFormViewController: UITableViewController {
     case paymentMethod
 
     static let count = 4
+  }
+
+  enum PaymentRows: Int {
+    case card = 0
+    case applePay
+    case cash
+
+    static let count = 3
   }
 
   override func viewDidLoad() {
@@ -85,23 +116,10 @@ class ContactFormViewController: UITableViewController {
     cityButton.rx.tap.bindTo(viewModel.cityFieldDidTap).addDisposableTo(disposeBag)
 
     viewModel.paymentMethod.asDriver().drive(onNext: { [weak self] paymentMethod in
-        switch paymentMethod {
-        case .card:
-          self?.payWithCardLabel.textColor = .black
-          self?.payWithCardCheckImageView.image = #imageLiteral(resourceName:"iconCheckOn")
-          self?.payByCashLabel.textColor = .chsCoolGrey
-          self?.payByCashCheckImageView.image = #imageLiteral(resourceName:"iconCheckOff")
-          self?.paymentMethodCardIconViews.forEach { $0.isHighlighted = true }
-        case .cash:
-          self?.payByCashLabel.textColor = .black
-          self?.payByCashCheckImageView.image = #imageLiteral(resourceName:"iconCheckOn")
-          self?.payWithCardLabel.textColor = .chsCoolGrey
-          self?.payWithCardCheckImageView.image = #imageLiteral(resourceName:"iconCheckOff")
-          self?.paymentMethodCardIconViews.forEach { $0.isHighlighted = false }
-        default:
-          break
-        }
-      }).addDisposableTo(disposeBag)
+      self?.payWithCardSelected = paymentMethod == .card
+      self?.payByCashSelected = paymentMethod == .cash
+      self?.applePaySelected = paymentMethod == .applePay
+    }).addDisposableTo(disposeBag)
 
   }
 
@@ -146,6 +164,23 @@ class ContactFormViewController: UITableViewController {
     return 40
   }
 
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    guard indexPath.section == Sections.paymentMethod.rawValue && indexPath.row == PaymentRows.applePay.rawValue else {
+      return super.tableView(tableView, heightForRowAt: indexPath)
+    }
+    guard let viewModel = viewModel, !viewModel.canUseApplePay else {
+      return super.tableView(tableView, heightForRowAt: indexPath)
+    }
+
+    return 0
+  }
+
+  override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    guard indexPath.section == Sections.paymentMethod.rawValue && indexPath.row == PaymentRows.applePay.rawValue else { return }
+    guard let viewModel = viewModel, !viewModel.canUseApplePay else { return }
+    cell.isHidden = true
+  }
+
   @IBAction func payByCashDidTap(_ sender: Any) {
     viewModel?.paymentMethod.value = .cash
   }
@@ -154,6 +189,14 @@ class ContactFormViewController: UITableViewController {
     viewModel?.paymentMethod.value = .card
   }
 
+  @IBAction func payWithApplePayDidTap(_ sender: Any) {
+    guard let viewModel = viewModel else { return }
+    if viewModel.canPayUsingPaymentMethods {
+      viewModel.paymentMethod.value = .applePay
+    } else {
+      PKPassLibrary().openPaymentSetup()
+    }
+  }
 }
 
 extension ContactFormViewController: UITextFieldDelegate {

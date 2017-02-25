@@ -9,6 +9,8 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import PassKit
+import UIKit
 import PhoneNumberKit
 
 protocol ContactFormViewModelType {
@@ -53,6 +55,8 @@ class ContactFormViewModel {
   var phoneIsValid = Variable<Bool>(false)
   var isValid = Variable<Bool>(false)
   var paymentMethod: Variable<PaymentMethod>
+  var canUseApplePay = PKPaymentAuthorizationViewController.canMakePayments()
+  var canPayUsingPaymentMethods = PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: [.masterCard, .visa])
 
   var currentScreen: CurrentScreen
 
@@ -72,6 +76,7 @@ class ContactFormViewModel {
     self.apartment = Variable(profile.apartment)
     self.comment = Variable(profile.notes)
     self.paymentMethod = Variable(profile.paymentMethod)
+    if !canPayUsingPaymentMethods && paymentMethod.value == .applePay { paymentMethod.value = .card }
 
     phone.asObservable().map { phone in
         let phoneNumber = try? PhoneNumberKit().parse(phone ?? "")
