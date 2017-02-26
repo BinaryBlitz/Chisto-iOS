@@ -91,6 +91,7 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
 
 extension OrderRegistrationViewController: PKPaymentAuthorizationViewControllerDelegate {
   func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
+    
     viewModel?.applePayDidFinish.onNext()
   }
 

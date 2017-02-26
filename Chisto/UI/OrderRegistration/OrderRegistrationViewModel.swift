@@ -28,7 +28,7 @@ class OrderRegistrationViewModel {
   let paymentCompleted: PublishSubject<Order>
   let presentErrorAlert: PublishSubject<Error>
   let presentApplePayScreen: Driver<PKPaymentRequest>
-  let canUseApplePay: Bool = PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: [.masterCard, .visa])
+  let canUseApplePay = PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: [.masterCard, .visa])
 
   enum NextScreen {
     case orderPlacedPopup(viewModel: OrderPlacedPopupViewModel)

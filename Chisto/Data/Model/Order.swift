@@ -145,8 +145,32 @@ class Order: ServerObject {
     let request = PKPaymentRequest()
     request.currencyCode = "RUB"
     request.countryCode = "RU"
+    request.paymentSummaryItems = paymentSummaryItems
+    request.supportedNetworks = [.masterCard, .visa]
+    request.merchantCapabilities = [.capability3DS]
+    request.merchantIdentifier = "merchant.ru.binaryblitz.Chisto"
+    return request
+  }
 
-    var paymentItems: [PKPaymentSummaryItem] = []
+  private var paymentSummaryItems: [PKPaymentSummaryItem] {
+    var paymentItems = paymentSummaryLineItems
+
+    if promoCode != nil {
+      let promoCodeItem = PKPaymentSummaryItem(label: NSLocalizedString("promoCodeSummaryItem", comment: "Apple Pay summary"), amount: NSDecimalNumber(decimal: promoCodeDiscount))
+      paymentItems.append(promoCodeItem)
+    }
+
+    let deliveryItem = PKPaymentSummaryItem(label: NSLocalizedString("deliverySummaryItem", comment: "Apple Pay summary"), amount: NSDecimalNumber(decimal: deliveryPrice))
+    paymentItems.append(deliveryItem)
+
+    let totalItem = PKPaymentSummaryItem(label: laundry?.name ?? "Chisto", amount: NSDecimalNumber(decimal: totalPrice), type: .final)
+    paymentItems.append(totalItem)
+
+    return paymentItems
+  }
+
+  private var paymentSummaryLineItems: [PKPaymentSummaryItem] {
+    var paymentSummaryLineItems: [PKPaymentSummaryItem] = []
 
     for lineItem in lineItems {
       var clothesTitle = lineItem.item?.name ?? ""
@@ -157,25 +181,10 @@ class Order: ServerObject {
         clothesTitle += " x \(lineItem.quantity)"
       }
 
-      paymentItems.append(PKPaymentSummaryItem(label: clothesTitle, amount: NSDecimalNumber(decimal: lineItem.price())))
+      paymentSummaryLineItems.append(PKPaymentSummaryItem(label: clothesTitle, amount: NSDecimalNumber(decimal: lineItem.price())))
     }
 
-    if promoCode != nil {
-      let promoCodeItem = PKPaymentSummaryItem(label: NSLocalizedString("promoCode", comment: "Promo code"), amount: NSDecimalNumber(decimal: promoCodeDiscount))
-      paymentItems.append(promoCodeItem)
-    }
-
-    let deliveryItem = PKPaymentSummaryItem(label: NSLocalizedString("delivery", comment: "Delivery price"), amount: NSDecimalNumber(decimal: deliveryPrice))
-    paymentItems.append(deliveryItem)
-
-    let totalItem = PKPaymentSummaryItem(label: laundry?.name ?? "Chisto", amount: NSDecimalNumber(decimal: totalPrice), type: .final)
-    paymentItems.append(totalItem)
-
-    request.paymentSummaryItems = paymentItems
-    request.supportedNetworks = [.masterCard, .visa]
-    request.merchantCapabilities = [.capability3DS]
-    request.merchantIdentifier = "merchant.ru.binaryblitz.Chisto"
-    return request
+    return paymentSummaryLineItems
   }
 
   var deliveryPriceString: String {
