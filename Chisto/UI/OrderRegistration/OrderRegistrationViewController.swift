@@ -11,6 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import PassKit
+import SwiftyJSON
 
 class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewController {
 
@@ -91,7 +92,8 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
 
 extension OrderRegistrationViewController: PKPaymentAuthorizationViewControllerDelegate {
   func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
-    
+    debugPrint(JSON(payment.token.paymentData))
+    debugPrint(payment.token.transactionIdentifier)
     viewModel?.applePayDidFinish.onNext()
   }
 
