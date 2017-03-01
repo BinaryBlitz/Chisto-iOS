@@ -77,13 +77,13 @@
 		8814C0671DB04AFB005B4967 /* RussianEnumEndings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */; };
 		8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */; };
 		881928651E24E4F800405597 /* OrderItemAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881928641E24E4F800405597 /* OrderItemAttribute.swift */; };
-		881B34821E338E2000BCB9D3 /* PromoCodeAlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 881B34811E338E2000BCB9D3 /* PromoCodeAlertViewController.storyboard */; };
 		881B34841E338FF200BCB9D3 /* PromoCodeAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B34831E338FF200BCB9D3 /* PromoCodeAlertViewController.swift */; };
 		881B34861E33900000BCB9D3 /* PromoCodeAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B34851E33900000BCB9D3 /* PromoCodeAlertViewModel.swift */; };
 		881B34881E33E88200BCB9D3 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B34871E33E88200BCB9D3 /* RealmManager.swift */; };
 		881F4FA81E080302009C5B17 /* Data+hexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881F4FA71E080302009C5B17 /* Data+hexString.swift */; };
 		882288141DB6D11C000642E0 /* RootViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882288131DB6D11C000642E0 /* RootViewController.storyboard */; };
 		882288161DB6D12C000642E0 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882288151DB6D12C000642E0 /* RootViewController.swift */; };
+		88287EE51E67527E00D8745E /* PromoCodeAlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88287EE71E67527E00D8745E /* PromoCodeAlertViewController.storyboard */; };
 		882ECDAF1DE215FF00EE3507 /* OrderInfoTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDAE1DE215FF00EE3507 /* OrderInfoTableViewCellModel.swift */; };
 		882ECDB11DE2160C00EE3507 /* OrderInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDB01DE2160C00EE3507 /* OrderInfoTableViewCell.swift */; };
 		882ECDB31DE2211700EE3507 /* OrderInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDB21DE2211700EE3507 /* OrderInfoViewModel.swift */; };
@@ -311,13 +311,14 @@
 		8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RussianEnumEndings.swift; sourceTree = "<group>"; };
 		8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHideOutside.swift; sourceTree = "<group>"; };
 		881928641E24E4F800405597 /* OrderItemAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItemAttribute.swift; sourceTree = "<group>"; };
-		881B34811E338E2000BCB9D3 /* PromoCodeAlertViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PromoCodeAlertViewController.storyboard; sourceTree = "<group>"; };
 		881B34831E338FF200BCB9D3 /* PromoCodeAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoCodeAlertViewController.swift; sourceTree = "<group>"; };
 		881B34851E33900000BCB9D3 /* PromoCodeAlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoCodeAlertViewModel.swift; sourceTree = "<group>"; };
 		881B34871E33E88200BCB9D3 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		881F4FA71E080302009C5B17 /* Data+hexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+hexString.swift"; sourceTree = "<group>"; };
 		882288131DB6D11C000642E0 /* RootViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootViewController.storyboard; sourceTree = "<group>"; };
 		882288151DB6D12C000642E0 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		88287EE61E67527E00D8745E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PromoCodeAlertViewController.storyboard; sourceTree = "<group>"; };
+		88287EE91E67528100D8745E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PromoCodeAlertViewController.strings; sourceTree = "<group>"; };
 		882ECDAE1DE215FF00EE3507 /* OrderInfoTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoTableViewCellModel.swift; sourceTree = "<group>"; };
 		882ECDB01DE2160C00EE3507 /* OrderInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoTableViewCell.swift; sourceTree = "<group>"; };
 		882ECDB21DE2211700EE3507 /* OrderInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoViewModel.swift; sourceTree = "<group>"; };
@@ -789,7 +790,7 @@
 		881B34801E338E0D00BCB9D3 /* PromoCodeAlert */ = {
 			isa = PBXGroup;
 			children = (
-				881B34811E338E2000BCB9D3 /* PromoCodeAlertViewController.storyboard */,
+				88287EE71E67527E00D8745E /* PromoCodeAlertViewController.storyboard */,
 				881B34831E338FF200BCB9D3 /* PromoCodeAlertViewController.swift */,
 				881B34851E33900000BCB9D3 /* PromoCodeAlertViewModel.swift */,
 			);
@@ -1249,7 +1250,7 @@
 				88B0B5521DB19C6E00C7D0F7 /* DescriptionListItemView.xib in Resources */,
 				37530F6D1E4E332F0039AAB0 /* LaundrySelectViewController.storyboard in Resources */,
 				88BD823E1E5275B8001375AF /* OrderInfoTableFooterView.xib in Resources */,
-				881B34821E338E2000BCB9D3 /* PromoCodeAlertViewController.storyboard in Resources */,
+				88287EE51E67527E00D8745E /* PromoCodeAlertViewController.storyboard in Resources */,
 				8811FE101DC2DB0500610712 /* ProfileNavigationController.storyboard in Resources */,
 				88BD822F1E527419001375AF /* RegistrationPhoneInputViewController.storyboard in Resources */,
 				37530F781E4E33660039AAB0 /* ItemInfoViewController.storyboard in Resources */,
@@ -1705,6 +1706,15 @@
 			);
 			name = LaunchScreen.storyboard;
 			path = .;
+			sourceTree = "<group>";
+		};
+		88287EE71E67527E00D8745E /* PromoCodeAlertViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88287EE61E67527E00D8745E /* Base */,
+				88287EE91E67528100D8745E /* ru */,
+			);
+			name = PromoCodeAlertViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		88BD82271E527282001375AF /* CategoriesViewController.storyboard */ = {

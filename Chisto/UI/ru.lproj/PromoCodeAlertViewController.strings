@@ -1,0 +1,9 @@
+
+/* Class = "UIButton"; normalTitle = "Apply"; ObjectID = "Aty-Ot-6R5"; */
+"Aty-Ot-6R5.normalTitle" = "Применить";
+
+/* Class = "UILabel"; text = "Valid for all treatments"; ObjectID = "gNO-bx-No0"; */
+"gNO-bx-No0.text" = "Распространяется на все услуги";
+
+/* Class = "UITextField"; placeholder = "Promo code"; ObjectID = "s2R-fC-HfQ"; */
+"s2R-fC-HfQ.placeholder" = "Промокод";
