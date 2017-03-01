@@ -56,7 +56,7 @@ class SelectClothesViewModel: SelectClothesViewModelType {
     self.decorationAlertDidFinish = decorationAlertDidFinish
 
 
-    var presentSlowItemAlert = PublishSubject<Void>()
+    let presentSlowItemAlert = PublishSubject<Void>()
     self.presentSlowItemAlert = presentSlowItemAlert
 
     let items = Variable<[Item]>([])
