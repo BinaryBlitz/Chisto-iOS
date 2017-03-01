@@ -211,3 +211,9 @@
 
 /* Error alert */
 "invalidPhone" = "";
+
+/* Slow item alert */
+"slowItemDesctiption" = "Эта вещь чистится долго";
+
+/* Slow item alert */
+"okSlowItemAlert" = "ОК";

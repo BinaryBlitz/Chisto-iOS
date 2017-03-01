@@ -17,13 +17,15 @@ protocol SelectClothesTableViewCellModelType {
   var subTitletext: NSAttributedString { get }
   var iconUrl: URL? { get }
   var iconColor: UIColor { get }
+  var slowItemButtonDidTap: PublishSubject<Void> { get }
+  var disposeBag: DisposeBag { get }
 }
 
 class SelectClothesTableViewCellModel: SelectClothesTableViewCellModelType {
+  var disposeBag = DisposeBag()
 
   // Input
-  var navigationAddButtonDidTap = PublishSubject<Void>()
-  var emptyOrderAddButtonDidTap = PublishSubject<Void>()
+  var slowItemButtonDidTap = PublishSubject<Void>()
 
   // Output
   var titleText: String

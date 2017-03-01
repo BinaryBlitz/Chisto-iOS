@@ -99,6 +99,15 @@ class SelectClothesViewController: UITableViewController {
         self.present(alertController, animated: true, completion: nil)
       })
       .addDisposableTo(disposeBag)
+
+    viewModel?.presentSlowItemAlert
+      .asDriver(onErrorDriveWith: .empty())
+      .drive(onNext: { [weak self] in
+        let alert = UIAlertController(title: nil, message: NSLocalizedString("slowItemDesctiption", comment: "Slow item alert"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("okSlowItemAlert", comment: "Slow item alert"), style: .default, handler: nil))
+        self?.present(alert, animated: true, completion: nil)
+      })
+      .addDisposableTo(disposeBag)
   }
 
   func configureTableView() {

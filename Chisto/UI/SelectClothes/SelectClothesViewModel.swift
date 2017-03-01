@@ -38,6 +38,7 @@ class SelectClothesViewModel: SelectClothesViewModelType {
   var sections: Driver<[SelectClothesSectionModel]>
   var presentSelectServiceSection: Driver<ServiceSelectViewModel>
   var presentHasDecorationAlert: Driver<HasDecorationAlertViewModel>
+  var presentSlowItemAlert: PublishSubject<Void>
   let decorationAlertDidFinish: PublishSubject<OrderItem>
   let presentErrorAlert: PublishSubject<Error>
 
@@ -53,6 +54,10 @@ class SelectClothesViewModel: SelectClothesViewModelType {
 
     let decorationAlertDidFinish = PublishSubject<OrderItem>()
     self.decorationAlertDidFinish = decorationAlertDidFinish
+
+
+    var presentSlowItemAlert = PublishSubject<Void>()
+    self.presentSlowItemAlert = presentSlowItemAlert
 
     let items = Variable<[Item]>([])
     self.items = items
@@ -83,6 +88,8 @@ class SelectClothesViewModel: SelectClothesViewModelType {
 
     self.sections = items.asDriver().map { items in
       let cellModels = items.map(SelectClothesTableViewCellModel.init) as [SelectClothesTableViewCellModelType]
+
+      cellModels.forEach { $0.slowItemButtonDidTap.bindTo(presentSlowItemAlert).addDisposableTo($0.disposeBag) }
 
       let section = SelectClothesSectionModel(model: "", items: cellModels)
       return [section]
