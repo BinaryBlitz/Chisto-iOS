@@ -38,10 +38,26 @@ class ContactFormViewModel {
     case orderRegistration
   }
 
-  let contactInfoHeaderModel = ContactFormTableHeaderViewModel(title: NSLocalizedString("contactInfo", comment: "Contact form header"), icon: #imageLiteral(resourceName:"iconSmallUser"))
-  let adressHeaderModel = ContactFormTableHeaderViewModel(title: NSLocalizedString("deliveryAdress", comment: "Contact form header"), icon: #imageLiteral(resourceName:"iconSmallAddress"), isEnabledButton: true)
-  let commentHeaderModel = ContactFormTableHeaderViewModel(title: NSLocalizedString("orderComments", comment: "Contact form header"), icon: #imageLiteral(resourceName:"iconSmallComment"))
-  let paymentHeaderModel = ContactFormTableHeaderViewModel(title: NSLocalizedString("paymentMethod", comment: "Contact form header"), icon: #imageLiteral(resourceName:"iconSmollGrayWallet"))
+  let contactInfoHeaderModel = ContactFormTableHeaderViewModel(
+    title: NSLocalizedString("contactInfo", comment: "Contact form header"),
+    icon: #imageLiteral(resourceName:"iconSmallUser")
+  )
+
+  let adressHeaderModel = ContactFormTableHeaderViewModel(
+    title: NSLocalizedString("deliveryAdress", comment: "Contact form header"),
+    icon: #imageLiteral(resourceName:"iconSmallAddress"),
+    isEnabledButton: true
+  )
+
+  let commentHeaderModel = ContactFormTableHeaderViewModel(
+    title: NSLocalizedString("orderComments", comment: "Contact form header"),
+    icon: #imageLiteral(resourceName:"iconSmallComment")
+  )
+
+  let paymentHeaderModel = ContactFormTableHeaderViewModel(
+    title: NSLocalizedString("paymentMethod", comment: "Contact form header"),
+    icon: #imageLiteral(resourceName:"iconSmollGrayWallet")
+  )
 
   var city: Variable<String?>
   var firstName: Variable<String?>
@@ -55,8 +71,11 @@ class ContactFormViewModel {
   var phoneIsValid = Variable<Bool>(false)
   var isValid = Variable<Bool>(false)
   var paymentMethod: Variable<PaymentMethod>
+
   var canUseApplePay = PKPaymentAuthorizationViewController.canMakePayments()
-  var canPayUsingPaymentMethods = PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: [.masterCard, .visa])
+  var canPayUsingPaymentMethods = PKPaymentAuthorizationViewController.canMakePayments(
+    usingNetworks: [.masterCard, .visa]
+  )
 
   var currentScreen: CurrentScreen
 
@@ -64,8 +83,9 @@ class ContactFormViewModel {
   var streetNameFieldDidTap = PublishSubject<Void>()
 
   init(currentScreen: CurrentScreen) {
-    self.currentScreen = currentScreen
     let profile = ProfileManager.instance.userProfile.value
+
+    self.currentScreen = currentScreen
     self.firstName = Variable(profile.firstName)
     self.lastName = Variable(profile.lastName)
     self.phone = Variable(profile.phone)
@@ -76,12 +96,17 @@ class ContactFormViewModel {
     self.apartment = Variable(profile.apartment)
     self.comment = Variable(profile.notes)
     self.paymentMethod = Variable(profile.paymentMethod)
-    if !canPayUsingPaymentMethods && paymentMethod.value == .applePay { paymentMethod.value = .card }
 
-    phone.asObservable().map { phone in
+    if !canPayUsingPaymentMethods && paymentMethod.value == .applePay {
+      paymentMethod.value = .card
+    }
+
+    phone.asObservable()
+      .map { phone in
         let phoneNumber = try? PhoneNumberKit().parse(phone ?? "")
         return phoneNumber != nil
-      }.bindTo(phoneIsValid).addDisposableTo(disposeBag)
+      }.bindTo(phoneIsValid)
+      .addDisposableTo(disposeBag)
 
     let contactInfoIsValid = Observable.combineLatest(firstName.asObservable(), lastName.asObservable(), phoneIsValid.asObservable(), email.asObservable()) { firstName, lastName, phoneIsValid, email -> Bool in
       guard let firstName = firstName, let lastName = lastName, let email = email else { return false }

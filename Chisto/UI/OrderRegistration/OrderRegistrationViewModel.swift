@@ -45,12 +45,16 @@ class OrderRegistrationViewModel {
     let formViewModel = ContactFormViewModel(currentScreen: .orderRegistration)
     self.formViewModel = formViewModel
 
-    self.orderprice = OrderManager.instance.priceForCurrentLaundry(includeCollection: true, promoCode: promoCode).currencyString
+    self.orderprice = OrderManager.instance
+    .priceForCurrentLaundry(includeCollection: true, promoCode: promoCode)
+    .currencyString
 
     self.presentLocationSelectSection = formViewModel.streetNameFieldDidTap.map {
       let viewModel = LocationSelectViewModel()
+
       viewModel.streetName.bindTo(formViewModel.street).addDisposableTo(viewModel.disposeBag)
       viewModel.streetNumber.bindTo(formViewModel.building).addDisposableTo(viewModel.disposeBag)
+
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
 
@@ -87,8 +91,16 @@ class OrderRegistrationViewModel {
       .asDriver(onErrorDriveWith: .empty()).flatMap {
         return placeOrder().map { order in
           let viewModel = PaymentViewModel(order: order)
-          applePayDidFinish.asObservable().map { order }.bindTo(paymentCompleted).addDisposableTo(disposeBag)
-          viewModel.didFinishPayment.bindTo(paymentCompleted).addDisposableTo(disposeBag)
+
+          applePayDidFinish.asObservable()
+            .map { order }
+            .bindTo(paymentCompleted)
+            .addDisposableTo(disposeBag)
+
+          viewModel.didFinishPayment
+            .bindTo(paymentCompleted)
+            .addDisposableTo(disposeBag)
+
           return viewModel
         }
       }

@@ -38,35 +38,45 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
     payButton.rx.tap.bindTo(viewModel.payButtonDidTap).addDisposableTo(disposeBag)
 
     viewModel.presentLocationSelectSection.drive(onNext: { [weak self] viewModel in
-        let viewController = LocationSelectViewController.storyboardInstance()!
-        viewController.viewModel = viewModel
-        self?.navigationController?.pushViewController(viewController, animated: true)
-      }).addDisposableTo(disposeBag)
+      let viewController = LocationSelectViewController.storyboardInstance()!
+      viewController.viewModel = viewModel
+      self?.navigationController?.pushViewController(viewController, animated: true)
+    }).addDisposableTo(disposeBag)
 
     viewModel.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] error in
-        guard let error = error as? DataError else { return }
-        let alertController = UIAlertController(title: NSLocalizedString("error", comment: "Error alert"), message: error.description, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: NSLocalizedString("OK", comment: "Error alert"), style: .default, handler: nil)
-        alertController.addAction(defaultAction)
-        self?.present(alertController, animated: true, completion: nil)
-      }).addDisposableTo(disposeBag)
+      guard let error = error as? DataError else { return }
+
+      let alertController = UIAlertController(
+        title: NSLocalizedString("error", comment: "Error alert"),
+        message: error.description,
+        preferredStyle: .alert
+      )
+
+      let defaultAction = UIAlertAction(
+        title: NSLocalizedString("OK", comment: "Error alert"),
+        style: .default,
+        handler: nil
+      )
+      alertController.addAction(defaultAction)
+      self?.present(alertController, animated: true, completion: nil)
+    }).addDisposableTo(disposeBag)
 
     viewModel.presentOrderPlacedPopup.drive(onNext: { [weak self] viewModel in
-        let orderViewController = OrderViewController.storyboardInstance()!
-        _ = self?.navigationController?.pushViewController(orderViewController, animated: true, completion: {
-          let viewController = OrderPlacedPopupViewController.storyboardInstance()!
-          viewController.viewModel = viewModel
-          viewController.modalPresentationStyle = .overFullScreen
-          orderViewController.present(viewController, animated: false)
-        })
-      }).addDisposableTo(disposeBag)
+      let orderViewController = OrderViewController.storyboardInstance()!
+      _ = self?.navigationController?.pushViewController(orderViewController, animated: true, completion: {
+        let viewController = OrderPlacedPopupViewController.storyboardInstance()!
+        viewController.viewModel = viewModel
+        viewController.modalPresentationStyle = .overFullScreen
+        orderViewController.present(viewController, animated: false)
+      })
+    }).addDisposableTo(disposeBag)
 
     viewModel.presentPaymentSection.drive(onNext: { [weak self] viewModel in
-        let navigationPaymentController = PaymentNavigationController.storyboardInstance()!
-        let viewController = navigationPaymentController.viewControllers.first as! PaymentViewController
-        viewController.viewModel = viewModel
-        self?.present(navigationPaymentController, animated: true, completion: nil)
-      }).addDisposableTo(disposeBag)
+      let navigationPaymentController = PaymentNavigationController.storyboardInstance()!
+      let viewController = navigationPaymentController.viewControllers.first as! PaymentViewController
+      viewController.viewModel = viewModel
+      self?.present(navigationPaymentController, animated: true, completion: nil)
+    }).addDisposableTo(disposeBag)
 
     viewModel.presentApplePayScreen.drive(onNext: { [weak self] request in
       let paymentViewController = PKPaymentAuthorizationViewController(paymentRequest: request)

@@ -92,6 +92,7 @@ class ContactFormViewController: UITableViewController {
 
   func configureFields() {
     guard let viewModel = viewModel else { return }
+
     (firstNameField.rx.text <-> viewModel.firstName).addDisposableTo(disposeBag)
     (lastNameField.rx.text <-> viewModel.lastName).addDisposableTo(disposeBag)
     (phoneField.rx.text <-> viewModel.phone).addDisposableTo(disposeBag)
@@ -178,6 +179,7 @@ class ContactFormViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     guard indexPath.section == Sections.paymentMethod.rawValue && indexPath.row == PaymentRows.applePay.rawValue else { return }
     guard let viewModel = viewModel, !viewModel.canUseApplePay else { return }
+
     cell.isHidden = true
   }
 
@@ -210,10 +212,12 @@ extension ContactFormViewController: UITextFieldDelegate {
     return false
   }
 
-  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+  func textField(_ textField: UITextField,
+                 shouldChangeCharactersIn range: NSRange,
+                 replacementString string: String) -> Bool {
+
     guard let text = textField.text, textField == phoneField else { return true }
     return maskedPhoneInput.shouldContinueEditing(text: text, range: range, replacementStirng: string)
-
   }
 
   func selectNextField(currentIndex: Int) {
