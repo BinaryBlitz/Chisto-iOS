@@ -143,12 +143,17 @@ class Order: ServerObject {
 
   var paymentRequest: PKPaymentRequest {
     let request = PKPaymentRequest()
+
     request.currencyCode = "RUB"
     request.countryCode = "RU"
     request.paymentSummaryItems = paymentSummaryItems
     request.supportedNetworks = [.masterCard, .visa]
     request.merchantCapabilities = [.capability3DS]
     request.merchantIdentifier = "merchant.ru.binaryblitz.Chisto"
+
+    // Encrypt and send order ID
+    request.applicationData = try! JSONSerialization.data(withJSONObject: ["order_id": id])
+
     return request
   }
 
@@ -156,14 +161,24 @@ class Order: ServerObject {
     var paymentItems = paymentSummaryLineItems
 
     if promoCode != nil {
-      let promoCodeItem = PKPaymentSummaryItem(label: NSLocalizedString("promoCodeSummaryItem", comment: "Apple Pay summary"), amount: NSDecimalNumber(decimal: promoCodeDiscount))
+      let promoCodeItem = PKPaymentSummaryItem(
+        label: NSLocalizedString("promoCodeSummaryItem", comment: "Apple Pay summary"),
+        amount: NSDecimalNumber(decimal: promoCodeDiscount)
+      )
       paymentItems.append(promoCodeItem)
     }
 
-    let deliveryItem = PKPaymentSummaryItem(label: NSLocalizedString("deliverySummaryItem", comment: "Apple Pay summary"), amount: NSDecimalNumber(decimal: deliveryPrice))
+    let deliveryItem = PKPaymentSummaryItem(
+      label: NSLocalizedString("deliverySummaryItem", comment: "Apple Pay summary"),
+      amount: NSDecimalNumber(decimal: deliveryPrice)
+    )
     paymentItems.append(deliveryItem)
 
-    let totalItem = PKPaymentSummaryItem(label: laundry?.name ?? "Chisto", amount: NSDecimalNumber(decimal: totalPrice), type: .final)
+    let totalItem = PKPaymentSummaryItem(
+      label: laundry?.name ?? "Chisto",
+      amount: NSDecimalNumber(decimal: totalPrice),
+      type: .final
+    )
     paymentItems.append(totalItem)
 
     return paymentItems
@@ -198,6 +213,7 @@ class Order: ServerObject {
   override func mapping(map: Map) {
     super.mapping(map: map)
     let realm = try! Realm()
+
     streetName <- map["street_name"]
     houseNumber <- map["house_number"]
     apartmentNumber <- map["apartment_number"]
