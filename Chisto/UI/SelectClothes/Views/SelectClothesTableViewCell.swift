@@ -29,7 +29,15 @@ class SelectClothesTableViewCell: UITableViewCell {
       self?.clothesIconImageView.tintColor = viewModel.iconColor
     }
 
-    slowItemButton.rx.tap.bindTo(viewModel.slowItemButtonDidTap).addDisposableTo(viewModel.disposeBag)
+    if viewModel.longTreatment {
+      slowItemButton.rx.tap.bindTo(viewModel.slowItemButtonDidTap).addDisposableTo(viewModel.disposeBag)
+      slowItemButton.isHidden = false
+      slowItemButtonWidthConstraint.constant = 40
+    } else {
+      slowItemButton.isHidden = true
+      slowItemButtonWidthConstraint.constant = 0
+    }
+
     titleLabel.text = viewModel.titleText
     descriptionLabel.attributedText = viewModel.subTitletext
   }

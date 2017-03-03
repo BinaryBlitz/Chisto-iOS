@@ -17,6 +17,7 @@ class Item: ServerObject {
   dynamic var descriptionText: String = ""
   dynamic var hasDecoration: Bool = true
   dynamic var useArea: Bool = false
+  dynamic var longTreatment: Bool = false
   dynamic var category: Category? = nil
 
   let treatments = LinkingObjects(fromType: Treatment.self, property: "item")
@@ -28,6 +29,7 @@ class Item: ServerObject {
     descriptionText <- map["description"]
     icon <- map["icon_url"]
     useArea <- map["use_area"]
+    longTreatment <- map["long_treatment"]
     guard category == nil else { return }
     var categoryId: Int? = nil
     categoryId <- map["category_id"]

@@ -19,6 +19,7 @@ protocol SelectClothesTableViewCellModelType {
   var iconColor: UIColor { get }
   var slowItemButtonDidTap: PublishSubject<Void> { get }
   var disposeBag: DisposeBag { get }
+  var longTreatment: Bool { get }
 }
 
 class SelectClothesTableViewCellModel: SelectClothesTableViewCellModelType {
@@ -32,6 +33,7 @@ class SelectClothesTableViewCellModel: SelectClothesTableViewCellModelType {
   var subTitletext: NSAttributedString
   var iconUrl: URL?
   var iconColor: UIColor
+  var longTreatment: Bool
 
   init(item: Item) {
     self.titleText = item.name
@@ -39,6 +41,7 @@ class SelectClothesTableViewCellModel: SelectClothesTableViewCellModelType {
 
     self.iconUrl = URL(string: item.icon)
     self.iconColor = item.category?.color ?? UIColor.chsSkyBlue
+    self.longTreatment = item.longTreatment
   }
 
 }
