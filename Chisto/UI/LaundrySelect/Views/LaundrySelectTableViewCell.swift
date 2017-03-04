@@ -23,7 +23,7 @@ class LaundrySelectTableViewCell: UITableViewCell {
 
   var collectionItemView = LaundryItemInfoView.nibInstance()!
   var deliveryItemView = LaundryItemInfoView.nibInstance()!
-  var costItemView = LaundryItemInfoView.nibInstance()!
+  var priceItemView = LaundryItemInfoView.nibInstance()!
 
   func configure(viewModel: LaundrySelectTableViewCellModelType) {
     laundryTitleLabel.text = viewModel.laundryTitle
@@ -47,14 +47,14 @@ class LaundrySelectTableViewCell: UITableViewCell {
 
     collectionItemView.configure(viewModel: viewModel.collectionItemViewModel)
     deliveryItemView.configure(viewModel: viewModel.deliveryItemViewModel)
-    costItemView.configure(viewModel: viewModel.costItemViewModel)
+    priceItemView.configure(viewModel: viewModel.priceItemViewModel)
   }
 
   override func awakeFromNib() {
     super.awakeFromNib()
     stackView.addArrangedSubview(collectionItemView)
     stackView.addArrangedSubview(deliveryItemView)
-    stackView.addArrangedSubview(costItemView)
+    stackView.addArrangedSubview(priceItemView)
   }
 
   override func setHighlighted(_ highlighted: Bool, animated: Bool) {

@@ -27,7 +27,7 @@ protocol LaundrySelectTableViewCellModelType {
   var disabledColor: UIColor { get }
   var collectionItemViewModel: LaundryItemInfoViewModel { get }
   var deliveryItemViewModel: LaundryItemInfoViewModel { get }
-  var costItemViewModel: LaundryItemInfoViewModel { get }
+  var priceItemViewModel: LaundryItemInfoViewModel { get }
 }
 
 class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
@@ -47,7 +47,7 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
   var logoUrl: URL?
   var collectionItemViewModel: LaundryItemInfoViewModel
   var deliveryItemViewModel: LaundryItemInfoViewModel
-  var costItemViewModel: LaundryItemInfoViewModel
+  var priceItemViewModel: LaundryItemInfoViewModel
 
   init(laundry: Laundry, type: LaundryType?) {
     var price = OrderManager.instance.price(laundry: laundry, includeCollection: false)
@@ -85,16 +85,16 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
 
     let collectionPrice = OrderManager.instance.collectionPrice(laundry: laundry)
     price += collectionPrice
-    let costString = price.currencyString
+    let priceString = price.currencyString
 
     if !isDisabled {
-      self.costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: costString)
+      self.priceItemViewModel = LaundryItemInfoViewModel(type: .price, titleText: priceString)
     } else {
       let titleText = NSLocalizedString("minimumOrderPrice", comment: "List of offers")
       let subTitleText = "\((laundry.minOrderPrice + collectionPrice).currencyString)"
 
-      self.costItemViewModel = LaundryItemInfoViewModel(
-        type: .unavaliableCost(price: price),
+      self.priceItemViewModel = LaundryItemInfoViewModel(
+        type: .unavaliableprice(price: price),
         titleText: titleText,
         subTitleText: subTitleText
       )

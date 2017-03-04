@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Juc-FJ-aqo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Juc-FJ-aqo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -50,7 +50,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIQ-E0-bp1">
                                 <rect key="frame" x="0.0" y="557" width="375" height="60"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSmallCost" translatesAutoresizingMaskIntoConstraints="NO" id="xb2-RK-Iy7">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSmallPrice" translatesAutoresizingMaskIntoConstraints="NO" id="xb2-RK-Iy7">
                                         <rect key="frame" x="15" y="22" width="16" height="16"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0HV-gq-TIf">
@@ -99,7 +99,7 @@
                         <outlet property="bottomLayoutGuideConstraint" destination="DLl-tS-A4Q" id="LOd-9f-MRm"/>
                         <outlet property="buttonsView" destination="TYG-l4-uzm" id="6wB-KI-B5N"/>
                         <outlet property="dataView" destination="pSa-TL-Sfz" id="pMS-Qe-sGI"/>
-                        <outlet property="orderCostLabel" destination="4hY-Ln-EBY" id="uwV-1B-Qmi"/>
+                        <outlet property="orderPriceLabel" destination="4hY-Ln-EBY" id="jba-Xp-vCp"/>
                         <outlet property="payButton" destination="XXQ-FP-OSl" id="HMn-zu-sSr"/>
                     </connections>
                 </viewController>
@@ -109,6 +109,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="iconSmallCost" width="16" height="16"/>
+        <image name="iconSmallPrice" width="16" height="16"/>
     </resources>
 </document>

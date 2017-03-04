@@ -55,10 +55,10 @@ class LastTimePopupViewModel: LastTimePopupViewModelType {
     let deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: deliveryDateString, subTitleText: laundry.deliveryTimeInterval)
 
     let price = OrderManager.instance.price(laundry: laundry, includeCollection: true)
-    let costString = price.currencyString
-    let costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: costString)
+    let priceString = price.currencyString
+    let priceItemViewModel = LaundryItemInfoViewModel(type: .price, titleText: priceString)
 
-    self.laundryDescriptionViewModels = [collectionItemViewModel, deliveryItemViewModel, costItemViewModel]
+    self.laundryDescriptionViewModels = [collectionItemViewModel, deliveryItemViewModel, priceItemViewModel]
 
     let didChooseLaundry = orderButtonDidTap.map { laundry }
     self.didChooseLaundry = didChooseLaundry
