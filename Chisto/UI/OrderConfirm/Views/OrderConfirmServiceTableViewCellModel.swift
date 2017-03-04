@@ -35,7 +35,7 @@ class OrderConfirmServiceTableViewCellModel: OrderConfirmServiceTableViewCellMod
 
   init(orderItem: OrderItem, laundry: Laundry) {
     self.laundry = laundry
-    self.clothesIconUrl = URL(string: orderItem.clothesItem.icon)
+    self.clothesIconUrl = URL(string: orderItem.clothesItem.iconUrl)
     self.clothesIconColor = orderItem.clothesItem.category?.color ?? UIColor.chsSkyBlue
     var clothesTitle = orderItem.clothesItem.name
     if let area = orderItem.area {

@@ -51,7 +51,7 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
 
   init(laundry: Laundry, type: LaundryType?) {
     var price = OrderManager.instance.price(laundry: laundry, includeCollection: false)
-    let isDisabled = price < laundry.minOrderPrice
+    let isDisabled = price < laundry.minimumOrderPrice
     self.isDisabled = isDisabled
     if isDisabled {
       self.starRatingFullImage = #imageLiteral(resourceName:"iconStarblueGrayFull")
@@ -91,7 +91,7 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
       self.priceItemViewModel = LaundryItemInfoViewModel(type: .price, titleText: priceString)
     } else {
       let titleText = NSLocalizedString("minimumOrderPrice", comment: "List of offers")
-      let subTitleText = "\((laundry.minOrderPrice + collectionPrice).currencyString)"
+      let subTitleText = "\((laundry.minimumOrderPrice + collectionPrice).currencyString)"
 
       self.priceItemViewModel = LaundryItemInfoViewModel(
         type: .unavaliableprice(price: price),

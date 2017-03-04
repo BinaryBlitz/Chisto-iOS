@@ -94,7 +94,7 @@ class Order: ServerObject {
   dynamic var totalPrice: Double = 0
   dynamic var payment: Payment? = nil
   dynamic var rating: Rating? = nil
-  var lineItems: [OrderLineItem] = []
+  var orderItems: [OrderLineItem] = []
   var promoCode: PromoCode? = nil
 
   var ratingRequiredKey: String {
@@ -139,7 +139,7 @@ class Order: ServerObject {
     contactNumber <- map["contact_number"]
     notes <- map["notes"]
     email <- map["email"]
-    lineItems <- map["order_items"]
+    orderItems <- map["order_items"]
     paid <- map["paid"]
     promoCode <- map["promo_code"]
     createdAt <- (map["created_at"], StringToDateTransform())

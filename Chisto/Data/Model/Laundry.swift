@@ -35,7 +35,7 @@ class Laundry: ServerObject {
   dynamic var deliveryFee: Double = 0
   dynamic var deliveryDate: Date = Date()
   dynamic var ratingsCount: Int = 0
-  dynamic var minOrderPrice: Double = 0
+  dynamic var minimumOrderPrice: Double = 0
   dynamic var freeDeliveryFrom: Double = 0
   var laundryTreatments: [LaundryTreatment] = []
   var laundryItems: [LaundryItem] = []
@@ -60,7 +60,7 @@ class Laundry: ServerObject {
   }
 
   var isDisabled: Bool {
-    return OrderManager.instance.price(laundry: self, includeCollection: false) < minOrderPrice
+    return OrderManager.instance.price(laundry: self, includeCollection: false) < minimumOrderPrice
   }
 
   override func mapping(map: Map) {
@@ -81,6 +81,6 @@ class Laundry: ServerObject {
     collectionDateClosesAt <- map["collection_date_closes_at"]
     deliveryFee <- map["delivery_fee"]
     freeDeliveryFrom <- map["free_delivery_from"]
-    minOrderPrice <- map["minimum_order_price"]
+    minimumOrderPrice <- map["minimum_order_price"]
   }
 }

@@ -32,10 +32,10 @@ class OrderInfoTableViewCellModel: OrderInfoTableViewCellModelType {
   init(orderLineItem: OrderLineItem) {
     guard let item = orderLineItem.item else { return }
 
-    self.clothesIconUrl = URL(string: item.icon)
+    self.clothesIconUrl = URL(string: item.iconUrl)
     self.clothesIconColor = item.category?.color ?? UIColor.chsSkyBlue
 
-    self.orderTreatments = orderLineItem.orderItemTreatments
+    self.orderTreatments = orderLineItem.orderTreatments
 
     var clothesTitle = item.name
     if item.useArea {

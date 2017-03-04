@@ -39,7 +39,7 @@ class SelectClothesTableViewCellModel: SelectClothesTableViewCellModelType {
     self.titleText = item.name
     self.subTitletext = NSAttributedString(string: item.descriptionText)
 
-    self.iconUrl = URL(string: item.icon)
+    self.iconUrl = URL(string: item.iconUrl)
     self.iconColor = item.category?.color ?? UIColor.chsSkyBlue
     self.longTreatment = item.longTreatment
   }

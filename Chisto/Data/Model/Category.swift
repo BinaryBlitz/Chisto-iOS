@@ -17,7 +17,7 @@ class Category: ServerObject {
 
   dynamic var name: String = ""
   dynamic var colorString: String = ""
-  dynamic var icon: String = ""
+  dynamic var iconUrl: String = ""
   dynamic var descriptionText: String = ""
   var itemsPreview = List<RealmString>()
   dynamic var itemsCount: Int = 0
@@ -35,7 +35,7 @@ class Category: ServerObject {
     name <- map["name"]
     colorString <- map["color"]
     descriptionText <- map["description"]
-    icon <- map["icon_url"]
+    iconUrl <- map["icon_url"]
     itemsCount <- map["items_count"]
     featured <- map["featured"]
 

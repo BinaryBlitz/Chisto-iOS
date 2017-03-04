@@ -13,7 +13,7 @@ import ObjectMapper
 
 class Item: ServerObject {
   dynamic var name: String = ""
-  dynamic var icon: String = ""
+  dynamic var iconUrl: String = ""
   dynamic var descriptionText: String = ""
   dynamic var hasDecoration: Bool = true
   dynamic var useArea: Bool = false
@@ -27,7 +27,7 @@ class Item: ServerObject {
 
     name <- map["name"]
     descriptionText <- map["description"]
-    icon <- map["icon_url"]
+    iconUrl <- map["icon_url"]
     useArea <- map["use_area"]
     longTreatment <- map["long_treatment"]
     guard category == nil else { return }
