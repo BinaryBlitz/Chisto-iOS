@@ -247,7 +247,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 отзывов" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMV-wl-aAx">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="0 отзывов" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMV-wl-aAx">
                                         <rect key="frame" x="296" y="105" width="64" height="16"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -262,7 +262,7 @@
                                     <constraint firstAttribute="trailing" secondItem="SWK-e6-6R4" secondAttribute="trailing" constant="10" id="JQ0-lV-oWt"/>
                                     <constraint firstAttribute="trailing" secondItem="YMV-wl-aAx" secondAttribute="trailing" constant="15" id="Oea-s3-kve"/>
                                     <constraint firstItem="SWK-e6-6R4" firstAttribute="top" secondItem="f1v-OG-pMf" secondAttribute="top" priority="250" constant="66" id="PML-ef-pog"/>
-                                    <constraint firstItem="SWK-e6-6R4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="f1v-OG-pMf" secondAttribute="top" constant="55" id="eN7-J4-8fZ"/>
+                                    <constraint firstItem="SWK-e6-6R4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="f1v-OG-pMf" secondAttribute="top" priority="750" constant="53" id="eN7-J4-8fZ"/>
                                     <constraint firstItem="YMV-wl-aAx" firstAttribute="top" secondItem="SWK-e6-6R4" secondAttribute="bottom" constant="15" id="f9z-8a-f5m"/>
                                     <constraint firstItem="ZTu-hY-IMI" firstAttribute="leading" secondItem="f1v-OG-pMf" secondAttribute="leading" constant="15" id="lUS-bZ-DfI"/>
                                 </constraints>
