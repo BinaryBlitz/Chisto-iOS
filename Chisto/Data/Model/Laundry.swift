@@ -28,10 +28,10 @@ class Laundry: ServerObject {
   dynamic var rating: Float = 0
   dynamic var backgroundImageUrl: String = ""
   dynamic var logoUrl: String = ""
-  dynamic var collectionDateOpensAt: String = "00:00"
-  dynamic var collectionDateClosesAt: String = "23:59"
-  dynamic var deliveryDateOpensAt: String = "00:00"
-  dynamic var deliveryDateClosesAt: String = "23:59"
+  dynamic var collectionFrom: Date = Date()
+  dynamic var collectionTo: Date = Date()
+  dynamic var deliveryFrom: Date = Date()
+  dynamic var deliveryTo: Date = Date()
   dynamic var deliveryFee: Double = 0
   dynamic var deliveryDate: Date = Date()
   dynamic var ratingsCount: Int = 0
@@ -41,11 +41,11 @@ class Laundry: ServerObject {
   var laundryItems: [LaundryItem] = []
 
   var collectionTimeInterval: String {
-    return String(format: NSLocalizedString("timeInterval", comment: "Time interval"), collectionDateOpensAt, collectionDateClosesAt)
+    return String(format: NSLocalizedString("timeInterval", comment: "Time interval"), collectionFrom.time, collectionTo.time)
   }
 
   var deliveryTimeInterval: String {
-    return String(format: NSLocalizedString("timeInterval", comment: "Time interval"), deliveryDateOpensAt, deliveryDateClosesAt)
+    return String(format: NSLocalizedString("timeInterval", comment: "Time interval"), deliveryFrom.time, deliveryTo.time)
   }
 
   func collectionPrice(amount: Double) -> Double {
@@ -75,10 +75,10 @@ class Laundry: ServerObject {
     laundryItems <- map["laundry_items"]
     deliveryDate <- (map["delivery_date"], StringToDateTransform(type: dateFormatType))
     collectionDate <- (map["collection_date"], StringToDateTransform(type: dateFormatType))
-    deliveryDateOpensAt <- map["delivery_date_opens_at"]
-    deliveryDateClosesAt <- map["delivery_date_closes_at"]
-    collectionDateOpensAt <- map["collection_date_opens_at"]
-    collectionDateClosesAt <- map["collection_date_closes_at"]
+    deliveryFrom <- (map["delivery_from"], StringToDateTransform())
+    deliveryTo <- (map["delivery_to"], StringToDateTransform())
+    collectionFrom <- (map["collection_from"], StringToDateTransform())
+    collectionTo <- (map["collection_to"], StringToDateTransform())
     deliveryFee <- map["delivery_fee"]
     freeDeliveryFrom <- map["free_delivery_from"]
     minimumOrderPrice <- map["minimum_order_price"]
