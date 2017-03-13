@@ -131,7 +131,7 @@ enum NetworkError: Error, CustomStringConvertible {
 
 class NetworkManager {
 
-  let baseURL = "https://chisto.xyz"
+  let baseURL = "https://chis.to"
 
   func doRequest(method: HTTPMethod, _ path: APIPath,
                  _ params: Parameters = [:],
