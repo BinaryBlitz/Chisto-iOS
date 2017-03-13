@@ -15,14 +15,14 @@ class ProfileContainerViewModel {
   let logoutButtonDidTap = PublishSubject<Void>()
   let navigationCloseButtonDidTap = PublishSubject<Void>()
   let dismissViewController: Driver<Void>
+  let presentOnboardingScreen: Driver<Void>
   let buttonIsHidden: Variable<Bool>
 
   init() {
-    let closeButtonDriver = navigationCloseButtonDidTap.asDriver(onErrorDriveWith: .empty())
-    let logoutDriver = logoutButtonDidTap.asDriver(onErrorDriveWith: .empty()).map {
+    self.dismissViewController = navigationCloseButtonDidTap.asDriver(onErrorDriveWith: .empty())
+    self.presentOnboardingScreen = logoutButtonDidTap.asDriver(onErrorDriveWith: .empty()).map {
       ProfileManager.instance.logout()
     }
-    self.dismissViewController = Driver.of(closeButtonDriver, logoutDriver).merge()
     self.buttonIsHidden = Variable(ProfileManager.instance.userProfile.value.apiToken != nil)
     ProfileManager.instance.userProfile.asObservable().map { $0.apiToken == nil }.bindTo(buttonIsHidden).addDisposableTo(disposeBag)
   }

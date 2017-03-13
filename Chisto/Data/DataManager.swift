@@ -273,7 +273,11 @@ extension DataManager: FetchItemsManagerType {
   }
 
   func getLaundries() -> Observable<[Laundry]> {
-    guard let city = ProfileManager.instance.userProfile.value.city else { return Observable.error(DataError.unknown(description: "")) }
+    guard let city = ProfileManager.instance.userProfile.value.city, let items = try? OrderManager.instance.currentOrderItems.value() else { return Observable.error(DataError.unknown(description: "")) }
+    var params: [String : Any] = [:]
+    if !items.filter({ $0.clothesItem.longTreatment }).isEmpty {
+      params["long_treatment"] = true
+    }
     return fetchItems(type: Laundry.self, apiPath: .fetchCityLaundries(cityId: city.id)) { laundry in
       laundry.city = city
     }.map { newLaundries in

@@ -31,16 +31,14 @@ class ProfileManager {
   }
 
   func logout() {
-    let profile = userProfile.value
     let realm = try! Realm()
-    let newProfile = Profile()
     try! realm.write {
-      newProfile.city = profile.city
-      realm.delete(profile)
+      realm.deleteAll()
+      let newProfile = Profile()
       realm.add(newProfile)
       userProfile.value = newProfile
+      UserDefaults.standard.set(newProfile.id, forKey: profileKey)
     }
-    UserDefaults.standard.set(newProfile.id, forKey: profileKey)
   }
 
   init() {
