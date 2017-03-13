@@ -33,17 +33,17 @@
                                                 <constraint firstAttribute="height" constant="29" id="JC6-JH-xzG"/>
                                             </constraints>
                                         </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DFY-JO-A70">
-                                            <rect key="frame" x="59" y="30" width="296" height="41.5"/>
+                                        <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="DFY-JO-A70">
+                                            <rect key="frame" x="59" y="30" width="251" height="42"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCx-ST-kiJ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="296" height="23"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="251" height="23"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label verifyAmbiguity="off" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88t-ou-GVb">
-                                                    <rect key="frame" x="0.0" y="27" width="296" height="14.5"/>
+                                                    <rect key="frame" x="0.0" y="27" width="251" height="14.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -59,21 +59,33 @@
                                                 <constraint firstAttribute="trailing" secondItem="88t-ou-GVb" secondAttribute="trailing" id="zd1-OY-xuF"/>
                                             </constraints>
                                         </view>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEQ-Wp-oDq">
+                                            <rect key="frame" x="315" y="31" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="DCq-Td-gxa"/>
+                                                <constraint firstAttribute="height" constant="40" id="GGI-zd-hPd"/>
+                                            </constraints>
+                                            <state key="normal" image="iconLongthing"/>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="DFY-JO-A70" firstAttribute="leading" secondItem="MD4-RH-2Ah" secondAttribute="trailing" constant="15" id="93q-9P-kXN"/>
+                                        <constraint firstItem="WEQ-Wp-oDq" firstAttribute="trailing" secondItem="LTS-83-MqA" secondAttribute="trailingMargin" id="G8n-fA-4Oj"/>
                                         <constraint firstItem="MD4-RH-2Ah" firstAttribute="centerY" secondItem="LTS-83-MqA" secondAttribute="centerY" id="YRs-PA-WMs"/>
                                         <constraint firstItem="MD4-RH-2Ah" firstAttribute="leading" secondItem="LTS-83-MqA" secondAttribute="leadingMargin" id="i65-T1-4gV"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="DFY-JO-A70" secondAttribute="trailing" id="mUH-42-aEm"/>
                                         <constraint firstItem="DFY-JO-A70" firstAttribute="top" secondItem="LTS-83-MqA" secondAttribute="top" constant="30" id="njV-Z7-PWV"/>
                                         <constraint firstAttribute="bottom" secondItem="DFY-JO-A70" secondAttribute="bottom" constant="30" id="pXA-lt-DPv"/>
+                                        <constraint firstItem="WEQ-Wp-oDq" firstAttribute="leading" secondItem="DFY-JO-A70" secondAttribute="trailing" constant="5" id="vWi-8h-09f"/>
+                                        <constraint firstItem="WEQ-Wp-oDq" firstAttribute="centerY" secondItem="LTS-83-MqA" secondAttribute="centerY" id="vhq-SE-Gei"/>
                                     </constraints>
                                     <edgeInsets key="layoutMargins" top="0.0" left="15" bottom="0.0" right="20"/>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="clothesIconImageView" destination="MD4-RH-2Ah" id="0JP-Og-AgI"/>
                                     <outlet property="descriptionLabel" destination="88t-ou-GVb" id="yY4-P6-sWr"/>
+                                    <outlet property="slowItemButton" destination="WEQ-Wp-oDq" id="BxI-sH-IAD"/>
+                                    <outlet property="slowItemButtonWidthConstraint" destination="DCq-Td-gxa" id="pil-ma-Jxj"/>
                                     <outlet property="titleLabel" destination="sCx-ST-kiJ" id="9X4-6a-9vd"/>
                                 </connections>
                             </tableViewCell>
@@ -89,4 +101,7 @@
             <point key="canvasLocation" x="157.59999999999999" y="-4.9475262368815596"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="iconLongthing" width="24" height="12"/>
+    </resources>
 </document>

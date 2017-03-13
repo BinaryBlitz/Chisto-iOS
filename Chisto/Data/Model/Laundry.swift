@@ -24,28 +24,26 @@ class Laundry: ServerObject {
   dynamic var city: City? = nil
   dynamic var name: String = ""
   dynamic var descriptionText: String = ""
-  dynamic var collectionDate: Date = Date()
   dynamic var rating: Float = 0
   dynamic var backgroundImageUrl: String = ""
   dynamic var logoUrl: String = ""
-  dynamic var collectionDateOpensAt: String = "00:00"
-  dynamic var collectionDateClosesAt: String = "23:59"
-  dynamic var deliveryDateOpensAt: String = "00:00"
-  dynamic var deliveryDateClosesAt: String = "23:59"
+  dynamic var collectionFrom: Date = Date()
+  dynamic var collectionTo: Date = Date()
+  dynamic var deliveryFrom: Date = Date()
+  dynamic var deliveryTo: Date = Date()
   dynamic var deliveryFee: Double = 0
-  dynamic var deliveryDate: Date = Date()
   dynamic var ratingsCount: Int = 0
-  dynamic var minOrderPrice: Double = 0
+  dynamic var minimumOrderPrice: Double = 0
   dynamic var freeDeliveryFrom: Double = 0
   var laundryTreatments: [LaundryTreatment] = []
   var laundryItems: [LaundryItem] = []
 
   var collectionTimeInterval: String {
-    return String(format: NSLocalizedString("timeInterval", comment: "Time interval"), collectionDateOpensAt, collectionDateClosesAt)
+    return String(format: NSLocalizedString("timeInterval", comment: "Time interval"), collectionFrom.time, collectionTo.time)
   }
 
   var deliveryTimeInterval: String {
-    return String(format: NSLocalizedString("timeInterval", comment: "Time interval"), deliveryDateOpensAt, deliveryDateClosesAt)
+    return String(format: NSLocalizedString("timeInterval", comment: "Time interval"), deliveryFrom.time, deliveryTo.time)
   }
 
   func collectionPrice(amount: Double) -> Double {
@@ -60,7 +58,7 @@ class Laundry: ServerObject {
   }
 
   var isDisabled: Bool {
-    return OrderManager.instance.price(laundry: self, includeCollection: false) < minOrderPrice
+    return OrderManager.instance.price(laundry: self, includeCollection: false) < minimumOrderPrice
   }
 
   override func mapping(map: Map) {
@@ -73,14 +71,12 @@ class Laundry: ServerObject {
     backgroundImageUrl <- map["background_image_url"]
     laundryTreatments <- map["laundry_treatments"]
     laundryItems <- map["laundry_items"]
-    deliveryDate <- (map["delivery_date"], StringToDateTransform(type: dateFormatType))
-    collectionDate <- (map["collection_date"], StringToDateTransform(type: dateFormatType))
-    deliveryDateOpensAt <- map["delivery_date_opens_at"]
-    deliveryDateClosesAt <- map["delivery_date_closes_at"]
-    collectionDateOpensAt <- map["collection_date_opens_at"]
-    collectionDateClosesAt <- map["collection_date_closes_at"]
+    deliveryFrom <- (map["delivery_from"], StringToDateTransform())
+    deliveryTo <- (map["delivery_to"], StringToDateTransform())
+    collectionFrom <- (map["collection_from"], StringToDateTransform())
+    collectionTo <- (map["collection_to"], StringToDateTransform())
     deliveryFee <- map["delivery_fee"]
     freeDeliveryFrom <- map["free_delivery_from"]
-    minOrderPrice <- map["minimum_order_price"]
+    minimumOrderPrice <- map["minimum_order_price"]
   }
 }

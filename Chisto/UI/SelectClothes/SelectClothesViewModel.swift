@@ -38,6 +38,7 @@ class SelectClothesViewModel: SelectClothesViewModelType {
   var sections: Driver<[SelectClothesSectionModel]>
   var presentSelectServiceSection: Driver<ServiceSelectViewModel>
   var presentHasDecorationAlert: Driver<HasDecorationAlertViewModel>
+  var presentSlowItemAlert: PublishSubject<Void>
   let decorationAlertDidFinish: PublishSubject<OrderItem>
   let presentErrorAlert: PublishSubject<Error>
 
@@ -53,6 +54,10 @@ class SelectClothesViewModel: SelectClothesViewModelType {
 
     let decorationAlertDidFinish = PublishSubject<OrderItem>()
     self.decorationAlertDidFinish = decorationAlertDidFinish
+
+
+    let presentSlowItemAlert = PublishSubject<Void>()
+    self.presentSlowItemAlert = presentSlowItemAlert
 
     let items = Variable<[Item]>([])
     self.items = items
@@ -84,20 +89,22 @@ class SelectClothesViewModel: SelectClothesViewModelType {
     self.sections = items.asDriver().map { items in
       let cellModels = items.map(SelectClothesTableViewCellModel.init) as [SelectClothesTableViewCellModelType]
 
+      cellModels.forEach { $0.slowItemButtonDidTap.bindTo(presentSlowItemAlert).addDisposableTo($0.disposeBag) }
+
       let section = SelectClothesSectionModel(model: "", items: cellModels)
       return [section]
     }
 
     let selectedItemObservable = itemDidSelect.map { items.value[$0.row] }
 
-    self.presentHasDecorationAlert = selectedItemObservable.filter { $0.hasDecoration }.map { item in
+    self.presentHasDecorationAlert = selectedItemObservable.filter { $0.hasDecoration && !ProfileManager.instance.userProfile.value.disabledDecorationAlert }.map { item in
       let orderItem = OrderItem(clothesItem: item)
       let viewModel = HasDecorationAlertViewModel(orderItem: orderItem)
       viewModel.didFinishAlert.bindTo(decorationAlertDidFinish).addDisposableTo(viewModel.disposeBag)
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
 
-    let noDecorationItemSelectedDriver = selectedItemObservable.filter { !$0.hasDecoration }
+    let noDecorationItemSelectedDriver = selectedItemObservable.filter { !$0.hasDecoration || ProfileManager.instance.userProfile.value.disabledDecorationAlert }
       .map { OrderItem(clothesItem: $0) }
       .asDriver(onErrorDriveWith: .empty())
 

@@ -170,6 +170,9 @@
 /* Decoration alert */
 "no" = "Нет";
 
+/* Decoration alert */
+"doNotShowAlertAgain" = "Больше не показывать";
+
 /* Delivery price */
 "freeDeliveryPrice" = "Бесплатно";
 
@@ -208,3 +211,9 @@
 
 /* Error alert */
 "invalidPhone" = "";
+
+/* Slow item alert */
+"slowItemDesctiption" = "Эта вещь чистится долго";
+
+/* Slow item alert */
+"okSlowItemAlert" = "ОК";

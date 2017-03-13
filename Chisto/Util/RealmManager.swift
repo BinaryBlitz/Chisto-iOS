@@ -15,8 +15,16 @@ class RealmManager {
 
   init() {
     let config = Realm.Configuration(
-      schemaVersion: 3,
+      schemaVersion: 7,
       migrationBlock: { migration, oldSchemaVersion in
+        if oldSchemaVersion < 6 {
+          migration.renameProperty(onType: Profile.className(), from: "street", to: "streetName")
+          migration.renameProperty(onType: Payment.className(), from: "isPaid", to: "paid")
+          migration.renameProperty(onType: Laundry.className(), from: "minOrderPrice", to: "minimumOrderPrice")
+          migration.renameProperty(onType: Item.className(), from: "icon", to: "iconUrl")
+          migration.renameProperty(onType: Category.className(), from: "icon", to: "iconUrl")
+
+        }
 
       })
     Realm.Configuration.defaultConfiguration = config

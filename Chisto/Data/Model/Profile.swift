@@ -22,7 +22,7 @@ class Profile: Object, Mappable {
   dynamic var lastName: String = ""
   dynamic var phone: String = ""
   dynamic var email: String = ""
-  dynamic var street: String = ""
+  dynamic var streetName: String = ""
   dynamic var city: City? = nil
   dynamic var building: String = ""
   dynamic var apartment: String = ""
@@ -31,6 +31,7 @@ class Profile: Object, Mappable {
   dynamic var verificationToken: String? = nil
   dynamic var ordersCount: Int = 0
   dynamic var notes: String = ""
+  dynamic var disabledDecorationAlert: Bool = false
   dynamic var paymentMethodRaw = PaymentMethod.card.rawValue
   var paymentMethod: PaymentMethod {
     get {
@@ -67,7 +68,7 @@ class Profile: Object, Mappable {
     email <- map["email"]
     phone <- map["phone_number"]
     birthdayDate <- (map["birthdate"], StringToDateTransform(type: dateFormatType))
-    street <- map["street_name"]
+    streetName <- map["street_name"]
     building <- map["house_number"]
     apartment <- map["apartment_number"]
     apiToken <- map["api_token"]

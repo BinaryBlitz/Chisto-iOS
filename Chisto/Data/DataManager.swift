@@ -84,8 +84,8 @@ class DataManager {
       }
   }
 
-  func getItems<ItemType>(type: ItemType.Type, apiPath: APIPath) -> Observable<[ItemType]> where ItemType: Mappable {
-    return networkRequest(method: .get, apiPath)
+  func getItems<ItemType>(type: ItemType.Type, apiPath: APIPath, params: Parameters = [:]) -> Observable<[ItemType]> where ItemType: Mappable {
+    return networkRequest(method: .get, apiPath, params)
       .flatMap { itemsJSON -> Observable<[ItemType]> in
         guard let items = Mapper<ItemType>().mapArray(JSONObject: itemsJSON) else {
           return Observable.error(DataError.responseConvertError)
@@ -95,10 +95,10 @@ class DataManager {
 
   }
 
-  func fetchItems<ItemType>(type: ItemType.Type, apiPath: APIPath,
+  func fetchItems<ItemType>(type: ItemType.Type, apiPath: APIPath, params: Parameters = [:],
                             _ modifier: @escaping (ItemType) -> Void = { _ in }) -> Observable<[ItemType]> where ItemType: ServerObject {
 
-    return getItems(type: type, apiPath: apiPath)
+    return getItems(type: type, apiPath: apiPath, params: params)
       .flatMap { items -> Observable<[ItemType]> in
 
         let realm = try! Realm()
@@ -273,8 +273,12 @@ extension DataManager: FetchItemsManagerType {
   }
 
   func getLaundries() -> Observable<[Laundry]> {
-    guard let city = ProfileManager.instance.userProfile.value.city else { return Observable.error(DataError.unknown(description: "")) }
-    return fetchItems(type: Laundry.self, apiPath: .fetchCityLaundries(cityId: city.id)) { laundry in
+    guard let city = ProfileManager.instance.userProfile.value.city, let items = try? OrderManager.instance.currentOrderItems.value() else { return Observable.error(DataError.unknown(description: "")) }
+    var params: [String : Any] = [:]
+    if !items.filter({ $0.clothesItem.longTreatment }).isEmpty {
+      params["long_treatment"] = 1
+    }
+    return fetchItems(type: Laundry.self, apiPath: .fetchCityLaundries(cityId: city.id), params: params) { laundry in
       laundry.city = city
     }.map { newLaundries in
       let realm = try! Realm()

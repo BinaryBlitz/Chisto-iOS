@@ -29,7 +29,7 @@ class CategoryTableViewCellModel: CategoryTableViewCellModelType {
 
   init(category: Category) {
     self.titleText = category.name
-    self.iconUrl = URL(string: category.icon)
+    self.iconUrl = URL(string: category.iconUrl)
     self.iconColor = category.color
 
 

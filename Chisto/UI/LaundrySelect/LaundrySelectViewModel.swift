@@ -99,7 +99,7 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
       let orderManager = OrderManager.instance
 
       let cheapestLaundry = laundries.sorted { orderManager.price(laundry: $0) > orderManager.price(laundry: $1) }.first
-      let fastestLaundry = laundries.filter { $0 != cheapestLaundry }.sorted { $0.collectionDate > $1.collectionDate }.first
+      let fastestLaundry = laundries.filter { $0 != cheapestLaundry }.sorted { $0.collectionFrom > $1.collectionFrom }.first
 
       let cellModels = laundries.map { laundry in
         var type: LaundryType? = nil
@@ -146,7 +146,7 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     case .byRating:
       sortedLaundries = laundries.sorted { $0.rating > $1.rating }
     case .bySpeed:
-      sortedLaundries = laundries.sorted { $0.deliveryDate < $1.deliveryDate }
+      sortedLaundries = laundries.sorted { $0.deliveryFrom < $1.deliveryFrom }
     }
 
     return sortedLaundries.sorted { !$0.isDisabled && $1.isDisabled }

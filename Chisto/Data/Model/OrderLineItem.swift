@@ -31,13 +31,13 @@ class OrderItemTreatment: Mappable {
 
 class OrderLineItem: Mappable {
   var id: Int = UUID().hashValue
-  var orderItemTreatments: [OrderItemTreatment] = []
+  var orderTreatments: [OrderItemTreatment] = []
   var itemId: Int? = nil
   var quantity: Int = 1
   var area: Double = 1
   var multiplier: Double = 1
   var hasDecoration: Bool = false
-  var laundryItemId: Int? = nil
+  var laundryTreatmentId: Int? = nil
 
   var decorationPrice: Double {
     let price = self.price(singleItem: true, includeDecoration: false)
@@ -45,26 +45,26 @@ class OrderLineItem: Mappable {
   }
 
   var item: Item? {
-    guard let item = orderItemTreatments.first?.treatment?.item else { return nil }
+    guard let item = orderTreatments.first?.treatment?.item else { return nil }
     return item
   }
 
   required init?(map: Map) {}
 
   func mapping(map: Map) {
-    orderItemTreatments <- map["order_treatments"]
+    orderTreatments <- map["order_treatments"]
     quantity <- map["quantity"]
     itemId <- map["item_id"]
     var areaString = ""
     areaString <- map["area"]
     area = Double(areaString) ?? 1
-    laundryItemId <- map["laundry_treatment_id"]
+    laundryTreatmentId <- map["laundry_treatment_id"]
     hasDecoration <- map["has_decoration"]
     multiplier <- map["multiplier"]
   }
 
   func price(singleItem: Bool = false, includeDecoration: Bool = true) -> Double {
-    let price = orderItemTreatments.map { (singleItem ? $0.price : $0.price * Double(quantity)) * area }.reduce(0, +)
+    let price = orderTreatments.map { (singleItem ? $0.price : $0.price * Double(quantity)) * area }.reduce(0, +)
     guard hasDecoration, includeDecoration else { return price }
     return price * multiplier
   }

@@ -27,7 +27,7 @@ protocol LaundrySelectTableViewCellModelType {
   var disabledColor: UIColor { get }
   var collectionItemViewModel: LaundryItemInfoViewModel { get }
   var deliveryItemViewModel: LaundryItemInfoViewModel { get }
-  var costItemViewModel: LaundryItemInfoViewModel { get }
+  var priceItemViewModel: LaundryItemInfoViewModel { get }
 }
 
 class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
@@ -47,11 +47,11 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
   var logoUrl: URL?
   var collectionItemViewModel: LaundryItemInfoViewModel
   var deliveryItemViewModel: LaundryItemInfoViewModel
-  var costItemViewModel: LaundryItemInfoViewModel
+  var priceItemViewModel: LaundryItemInfoViewModel
 
   init(laundry: Laundry, type: LaundryType?) {
     var price = OrderManager.instance.price(laundry: laundry, includeCollection: false)
-    let isDisabled = price < laundry.minOrderPrice
+    let isDisabled = price < laundry.minimumOrderPrice
     self.isDisabled = isDisabled
     if isDisabled {
       self.starRatingFullImage = #imageLiteral(resourceName:"iconStarblueGrayFull")
@@ -65,7 +65,7 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
     self.rating = laundry.rating
     self.logoUrl = URL(string: laundry.logoUrl)
 
-    let collectionDateString = laundry.collectionDate.shortDate
+    let collectionDateString = laundry.collectionFrom.shortDate
 
     self.collectionItemViewModel = LaundryItemInfoViewModel(
       type: .collection,
@@ -74,7 +74,7 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
       isDisabled: isDisabled
     )
 
-    let deliveryDateString = laundry.deliveryDate.shortDate
+    let deliveryDateString = laundry.deliveryFrom.shortDate
 
     self.deliveryItemViewModel = LaundryItemInfoViewModel(
       type: .delivery,
@@ -85,16 +85,16 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
 
     let collectionPrice = OrderManager.instance.collectionPrice(laundry: laundry)
     price += collectionPrice
-    let costString = price.currencyString
+    let priceString = price.currencyString
 
     if !isDisabled {
-      self.costItemViewModel = LaundryItemInfoViewModel(type: .cost, titleText: costString)
+      self.priceItemViewModel = LaundryItemInfoViewModel(type: .price, titleText: priceString)
     } else {
       let titleText = NSLocalizedString("minimumOrderPrice", comment: "List of offers")
-      let subTitleText = "\((laundry.minOrderPrice + collectionPrice).currencyString)"
+      let subTitleText = "\((laundry.minimumOrderPrice + collectionPrice).currencyString)"
 
-      self.costItemViewModel = LaundryItemInfoViewModel(
-        type: .unavaliableCost(price: price),
+      self.priceItemViewModel = LaundryItemInfoViewModel(
+        type: .unavaliableprice(price: price),
         titleText: titleText,
         subTitleText: subTitleText
       )

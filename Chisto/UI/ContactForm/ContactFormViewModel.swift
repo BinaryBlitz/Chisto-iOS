@@ -67,7 +67,7 @@ class ContactFormViewModel {
     self.phone = Variable(profile.phone)
     self.email = Variable(profile.email)
     self.city = Variable(profile.city?.name)
-    self.street = Variable(profile.street)
+    self.street = Variable(profile.streetName)
     self.building = Variable(profile.building)
     self.apartment = Variable(profile.apartment)
     self.comment = Variable(profile.notes)
@@ -111,7 +111,7 @@ class ContactFormViewModel {
           profile.phone = phoneNumberKit.format(phoneNumber, toType: .e164)
         }
         profile.email = self.email.value ?? ""
-        profile.street = self.street.value ?? ""
+        profile.streetName = self.street.value ?? ""
         profile.building = self.building.value ?? ""
         profile.apartment = self.apartment.value ?? ""
         profile.notes = self.comment.value ?? ""

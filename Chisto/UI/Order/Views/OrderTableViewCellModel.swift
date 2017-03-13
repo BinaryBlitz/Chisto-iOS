@@ -56,7 +56,7 @@ class OrderTableViewCellModel: OrderTableViewCellModelType {
 
     self.amountText = amountText
 
-    self.iconUrl = URL(string: item.clothesItem.icon)
+    self.iconUrl = URL(string: item.clothesItem.iconUrl)
   }
 
 }

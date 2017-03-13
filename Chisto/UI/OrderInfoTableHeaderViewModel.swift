@@ -19,7 +19,7 @@ class OrderInfoTableHeaderViewModel {
   var orderDate = Variable<String>("")
   var orderPrice = Variable<String>("...")
   var deliveryPrice = Variable<String>("...")
-  var totalCost = Variable<String>("...")
+  var totalprice = Variable<String>("...")
   var orderStatus = Variable<String>("")
   var orderStatusIcon = Variable<UIImage?>(nil)
   var paymentType = Variable<String>("")
@@ -39,7 +39,7 @@ class OrderInfoTableHeaderViewModel {
 
     order.map { $0.deliveryPriceString }.bindTo(deliveryPrice).addDisposableTo(disposeBag)
     order.map { $0.orderPrice.currencyString }.bindTo(orderPrice).addDisposableTo(disposeBag)
-    order.map { $0.totalPrice.currencyString }.bindTo(totalCost).addDisposableTo(disposeBag)
+    order.map { $0.totalPrice.currencyString }.bindTo(totalprice).addDisposableTo(disposeBag)
     order.map { $0.paymentMethod.description }.bindTo(paymentType).addDisposableTo(disposeBag)
     order.map { $0.paymentMethod.image }.bindTo(paymentMethodImage).addDisposableTo(disposeBag)
     order.map { $0.promoCode?.code }.bindTo(promoCodeText).addDisposableTo(disposeBag)

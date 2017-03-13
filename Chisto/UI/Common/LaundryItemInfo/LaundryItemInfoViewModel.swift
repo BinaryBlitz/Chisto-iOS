@@ -12,8 +12,8 @@ import UIKit
 enum LaundryItemInfoType {
   case collection
   case delivery
-  case cost
-  case unavaliableCost(price: Double)
+  case price
+  case unavaliableprice(price: Double)
 }
 
 class LaundryItemInfoViewModel {
@@ -46,15 +46,15 @@ class LaundryItemInfoViewModel {
     case .delivery:
       self.icon = #imageLiteral(resourceName:"iconSmallDelivery")
       self.headerText = NSLocalizedString("delivery", comment: "Order items delivery")
-    case .cost:
-      self.icon = #imageLiteral(resourceName:"iconSmallCost")
+    case .price:
+      self.icon = #imageLiteral(resourceName: "iconSmallPrice")
       self.headerText = NSLocalizedString("price", comment: "Order price")
       if !isDisabled {
         titleColor = UIColor.chsJadeGreen
         titleLabelFont = UIFont.preferredFont(forTextStyle: .callout)
       }
-    case .unavaliableCost(let price):
-      self.icon = #imageLiteral(resourceName:"iconSmallCost")
+    case .unavaliableprice(let price):
+      self.icon = #imageLiteral(resourceName: "iconSmallPrice")
       self.headerLabelFont = UIFont.preferredFont(forTextStyle: .caption2)
       self.headerText = NSLocalizedString("price", comment: "Order price") + " " + String(price.currencyString)
       self.headerColor = UIColor.chsCoolGrey

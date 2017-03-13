@@ -11,14 +11,14 @@ import ObjectMapper
 
 class Payment: ServerObject {
   dynamic var amount: Int = 0
-  dynamic var isPaid: Bool = false
+  dynamic var paid: Bool = false
   dynamic var paymentUrl: String = ""
   dynamic var createdAt: String = ""
 
   override func mapping(map: Map) {
     super.mapping(map: map)
     amount <- map["amount"]
-    isPaid <- map["paid"]
+    paid <- map["paid"]
     paymentUrl <- map["payment_url"]
     createdAt <- map["created_at"]
   }

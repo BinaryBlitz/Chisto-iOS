@@ -63,8 +63,15 @@ class SelectClothesViewController: UITableViewController {
           handler: { _ in viewModel.noButtonDidTap.onNext() }
         )
 
+        let disableAction = UIAlertAction(
+          title: NSLocalizedString("doNotShowAlertAgain", comment: "Decoration alert"),
+          style: .default,
+          handler: { _ in viewModel.disableAlertButtonDidTap.onNext() }
+        )
+
         viewController.addAction(yesAction)
         viewController.addAction(noAction)
+        viewController.addAction(disableAction)
 
         self?.present(viewController, animated: true, completion: nil)
       })
@@ -90,6 +97,15 @@ class SelectClothesViewController: UITableViewController {
 
         alertController.addAction(defaultAction)
         self.present(alertController, animated: true, completion: nil)
+      })
+      .addDisposableTo(disposeBag)
+
+    viewModel?.presentSlowItemAlert
+      .asDriver(onErrorDriveWith: .empty())
+      .drive(onNext: { [weak self] in
+        let alert = UIAlertController(title: nil, message: NSLocalizedString("slowItemDesctiption", comment: "Slow item alert"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("okSlowItemAlert", comment: "Slow item alert"), style: .default, handler: nil))
+        self?.present(alert, animated: true, completion: nil)
       })
       .addDisposableTo(disposeBag)
   }

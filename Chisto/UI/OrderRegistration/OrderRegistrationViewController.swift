@@ -19,7 +19,7 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
   @IBOutlet weak var bottomLayoutGuideConstraint: NSLayoutConstraint!
   @IBOutlet weak var dataView: UIView!
   @IBOutlet weak var payButton: GoButton!
-  @IBOutlet weak var orderCostLabel: UILabel!
+  @IBOutlet weak var orderPriceLabel: UILabel!
   @IBOutlet weak var buttonsView: UIView!
 
   let contactFormViewController = ContactFormViewController.storyboardInstance()!
@@ -31,7 +31,7 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
 
     guard let viewModel = viewModel else { return }
 
-    orderCostLabel.text = viewModel.orderCost
+    orderPriceLabel.text = viewModel.orderprice
     viewModel.buttonsAreEnabled.asObservable().bindTo(payButton.rx.isEnabled).addDisposableTo(disposeBag)
     payButton.rx.tap.bindTo(viewModel.payButtonDidTap).addDisposableTo(disposeBag)
 

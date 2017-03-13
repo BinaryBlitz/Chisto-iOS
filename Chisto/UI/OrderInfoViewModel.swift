@@ -59,7 +59,7 @@ class OrderInfoViewModel {
 
     DataManager.instance.getOrderInfo(orderId: orderId).bindTo(order).addDisposableTo(disposeBag)
 
-    let orderLineItemsObservable = observableOrder.map { $0.lineItems }
+    let orderLineItemsObservable = observableOrder.map { $0.orderItems }
 
     observableOrder.map { $0.status == .completed }.bindTo(ratingButtonEnabled).addDisposableTo(disposeBag)
 

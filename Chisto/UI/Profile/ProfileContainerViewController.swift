@@ -23,6 +23,11 @@ class ProfileContainerViewController: UIViewController {
     viewModel.dismissViewController.drive(onNext: { [weak self] in
         self?.dismiss(animated: true, completion: nil)
       }).addDisposableTo(disposeBag)
+    viewModel.presentOnboardingScreen.drive(onNext: { [weak self] in
+      self?.dismiss(animated: true, completion: {
+        RootViewController.instance?.present(OnBoardingNavigationController.storyboardInstance()!, animated: true, completion: nil)
+      })
+    }).addDisposableTo(disposeBag)
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName:"iconNavbarClose"), style: .plain, target: nil, action: nil)
     navigationItem.leftBarButtonItem?.rx.tap.bindTo(viewModel.navigationCloseButtonDidTap).addDisposableTo(disposeBag)
 
