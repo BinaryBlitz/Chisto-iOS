@@ -91,8 +91,8 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
     self.ratingsCountText = "\(laundry.ratingsCount) " + getRussianNumEnding(number: laundry.ratingsCount, endings: ratingCountLabels)
     self.laundryIcon = URL(string: laundry.logoUrl)
     self.laundryBackground = URL(string: laundry.backgroundImageUrl)
-    self.collectionDate = laundry.collectionDate.shortDate
-    self.deliveryDate = laundry.deliveryDate.shortDate
+    self.collectionDate = laundry.collectionFrom.shortDate
+    self.deliveryDate = laundry.deliveryFrom.shortDate
     self.deliveryTime = laundry.deliveryTimeInterval
     self.collectionTime = laundry.collectionTimeInterval
 

@@ -65,7 +65,7 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
     self.rating = laundry.rating
     self.logoUrl = URL(string: laundry.logoUrl)
 
-    let collectionDateString = laundry.collectionDate.shortDate
+    let collectionDateString = laundry.collectionFrom.shortDate
 
     self.collectionItemViewModel = LaundryItemInfoViewModel(
       type: .collection,
@@ -74,7 +74,7 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
       isDisabled: isDisabled
     )
 
-    let deliveryDateString = laundry.deliveryDate.shortDate
+    let deliveryDateString = laundry.deliveryFrom.shortDate
 
     self.deliveryItemViewModel = LaundryItemInfoViewModel(
       type: .delivery,

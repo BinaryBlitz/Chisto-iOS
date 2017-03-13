@@ -46,12 +46,12 @@ class LastTimePopupViewModel: LastTimePopupViewModelType {
     self.laundryLogoUrl = URL(string: laundry.logoUrl)
     self.laundryBackgroundUrl = URL(string: laundry.backgroundImageUrl)
 
-    let collectionDateString = laundry.collectionDate.shortDate
+    let collectionDateString = laundry.collectionFrom.shortDate
     let collectionPrice = OrderManager.instance.collectionPrice(laundry: laundry)
     let collectionPriceString = collectionPrice > 0 ? collectionPrice.currencyString : NSLocalizedString("free", comment: "Price")
     let collectionItemViewModel = LaundryItemInfoViewModel(type: .collection, titleText: collectionDateString, subTitleText: collectionPriceString)
 
-    let deliveryDateString = laundry.deliveryDate.shortDate
+    let deliveryDateString = laundry.deliveryFrom.shortDate
     let deliveryItemViewModel = LaundryItemInfoViewModel(type: .delivery, titleText: deliveryDateString, subTitleText: laundry.deliveryTimeInterval)
 
     let price = OrderManager.instance.price(laundry: laundry, includeCollection: true)

@@ -24,7 +24,6 @@ class Laundry: ServerObject {
   dynamic var city: City? = nil
   dynamic var name: String = ""
   dynamic var descriptionText: String = ""
-  dynamic var collectionDate: Date = Date()
   dynamic var rating: Float = 0
   dynamic var backgroundImageUrl: String = ""
   dynamic var logoUrl: String = ""
@@ -33,7 +32,6 @@ class Laundry: ServerObject {
   dynamic var deliveryFrom: Date = Date()
   dynamic var deliveryTo: Date = Date()
   dynamic var deliveryFee: Double = 0
-  dynamic var deliveryDate: Date = Date()
   dynamic var ratingsCount: Int = 0
   dynamic var minimumOrderPrice: Double = 0
   dynamic var freeDeliveryFrom: Double = 0
@@ -73,8 +71,6 @@ class Laundry: ServerObject {
     backgroundImageUrl <- map["background_image_url"]
     laundryTreatments <- map["laundry_treatments"]
     laundryItems <- map["laundry_items"]
-    deliveryDate <- (map["delivery_date"], StringToDateTransform(type: dateFormatType))
-    collectionDate <- (map["collection_date"], StringToDateTransform(type: dateFormatType))
     deliveryFrom <- (map["delivery_from"], StringToDateTransform())
     deliveryTo <- (map["delivery_to"], StringToDateTransform())
     collectionFrom <- (map["collection_from"], StringToDateTransform())
