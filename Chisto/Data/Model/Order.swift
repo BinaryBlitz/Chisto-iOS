@@ -187,7 +187,7 @@ class Order: ServerObject {
   private var paymentSummaryLineItems: [PKPaymentSummaryItem] {
     var paymentSummaryLineItems: [PKPaymentSummaryItem] = []
 
-    for lineItem in lineItems {
+    for lineItem in orderItems {
       var clothesTitle = lineItem.item?.name ?? ""
       if let item = lineItem.item {
         if item.useArea {

@@ -65,7 +65,7 @@ class OrderLineItem: Mappable {
   }
   
   func price(singleItem: Bool = false, includeDecoration: Bool = true) -> Decimal {
-    let price = orderItemTreatments.map { (singleItem ? $0.price : $0.price * Decimal(quantity)) * area }.reduce(0, +)
+    let price = orderTreatments.map { (singleItem ? $0.price : $0.price * Decimal(quantity)) * area }.reduce(0, +)
     guard hasDecoration, includeDecoration else { return price }
     return price * Decimal(multiplier)
   }
