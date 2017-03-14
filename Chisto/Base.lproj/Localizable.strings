@@ -208,3 +208,12 @@
 
 /* Error alert */
 "invalidPhone" = "";
+
+/* Decoration alert */
+"doNotShowAlertAgain" = "Do not show again";
+
+/* Slow item alert */
+"slowItemDesctiption" = "This item is cleaned longer than usual";
+
+/* Slow item alert */
+"okSlowItemAlert" = "OK";
