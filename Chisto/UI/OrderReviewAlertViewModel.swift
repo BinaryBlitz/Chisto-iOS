@@ -28,10 +28,10 @@ class OrderReviewAlertViewModel {
   init(order: Order) {
     self.title = String(format: NSLocalizedString("orderCompleted", comment: "Order review alert title"), String(order.id))
 
-    let ratingStarsCount = Variable(0)
+    let ratingStarsCount = Variable(order.rating?.value ?? 0)
     self.ratingStarsCount = ratingStarsCount
 
-    let reviewContent = Variable<String?>("")
+    let reviewContent = Variable<String?>(order.rating?.content)
     self.reviewContent = reviewContent
 
     let uiEnabled = Variable(true)
@@ -51,16 +51,27 @@ class OrderReviewAlertViewModel {
     let continueButtonDriver = continueButtonDidTap.asDriver(onErrorDriveWith: .empty())
 
     let didCreateReview = continueButtonDriver.flatMap { _ -> Driver<Void> in
-      let rating = Rating()
-      rating.content = reviewContent.value ?? ""
-      rating.value = ratingStarsCount.value
 
-      let createRating = DataManager.instance.createRating(
-        laundryId: order.laundryId,
-        rating: rating
-      ).asDriver(onErrorDriveWith: .just())
+      var ratingDriver: Driver<Void>
 
-      return createRating.do(onNext: {
+      if let rating = order.rating {
+        let realm = try! Realm()
+        try? realm.write {
+          rating.content = reviewContent.value ?? ""
+          rating.value = ratingStarsCount.value
+        }
+        ratingDriver = DataManager.instance.updateRating(rating: rating).asDriver(onErrorDriveWith: .just())
+      } else {
+        let rating = Rating()
+        rating.content = reviewContent.value ?? ""
+        rating.value = ratingStarsCount.value
+        ratingDriver = DataManager.instance.createRating(
+          laundryId: order.laundryId,
+          rating: rating
+        ).asDriver(onErrorDriveWith: .just())
+      }
+
+      return ratingDriver.do(onNext: {
         uiEnabled.value = true
       }, onSubscribe: {
         uiEnabled.value = false

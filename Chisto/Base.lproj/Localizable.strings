@@ -217,3 +217,15 @@
 
 /* Slow item alert */
 "okSlowItemAlert" = "OK";
+
+/* Apple Pay summary */
+"promoCodeSummaryItem" = "Promo code";
+
+/* Apple Pay summary */
+"deliverySummaryItem" = "Delivery";
+
+/* Edit order button */
+"editOrder" = "Edit Review";
+
+/* Create order button */
+"createOrder" = "Write a Review";

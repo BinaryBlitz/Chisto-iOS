@@ -38,6 +38,7 @@ class OrderInfoViewModel {
   let presentRatingAlert: Driver<OrderReviewAlertViewModel>
   let orderInfoTableHeaderViewModel: OrderInfoTableHeaderViewModel
   let ratingButtonEnabled = Variable<Bool>(false)
+  let ratingButtonTitle = Variable<String?>(nil)
 
   // Data
   let order: Variable<Order?>
@@ -79,6 +80,12 @@ class OrderInfoViewModel {
       .filter { order.value != nil }.map { order.value }
 
     presentRatingAlert = Driver.of(shouldRateOrderObservable.asDriver(onErrorDriveWith: .empty()), ratingButtonTappedDriver).merge().map { OrderReviewAlertViewModel(order: $0!) }
+
+    order.asObservable().map
+      { $0?.rating != nil ?
+        NSLocalizedString("editOrder", comment: "Edit order button") :
+        NSLocalizedString("createOrder", comment: "Create order button")
+      }.bindTo(ratingButtonTitle).addDisposableTo(disposeBag)
 
   }
 

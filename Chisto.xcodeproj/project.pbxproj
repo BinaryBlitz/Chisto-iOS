@@ -47,6 +47,12 @@
 		88073EFE1DAC4950000696A3 /* CitySelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */; };
 		88073F011DAD6E6F000696A3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 88073F001DAD6E6F000696A3 /* .swiftlint.yml */; };
 		88073F031DAD6FCF000696A3 /* DescriptionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073F021DAD6FCF000696A3 /* DescriptionListItemView.swift */; };
+		880CBFEF1E7AB9F100CF92EA /* DataManager+FetchItemsManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880CBFEE1E7AB9F100CF92EA /* DataManager+FetchItemsManagerType.swift */; };
+		880CBFF11E7ABA4F00CF92EA /* DataManager+TokenManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880CBFF01E7ABA4F00CF92EA /* DataManager+TokenManagerType.swift */; };
+		880CBFF31E7ABB3000CF92EA /* DataManager+UserManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880CBFF21E7ABB3000CF92EA /* DataManager+UserManagerType.swift */; };
+		880CBFF51E7ABB9C00CF92EA /* DataManager+RatingManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880CBFF41E7ABB9C00CF92EA /* DataManager+RatingManagerType.swift */; };
+		880CBFF71E7ABBE800CF92EA /* DataManager+OrderManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880CBFF61E7ABBE800CF92EA /* DataManager+OrderManagerType.swift */; };
+		880CBFFA1E7ABC5000CF92EA /* APIPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880CBFF91E7ABC5000CF92EA /* APIPath.swift */; };
 		880E03E11DE8F7FF00311721 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880E03E01DE8F7FF00311721 /* Payment.swift */; };
 		880E03E81DE8F81A00311721 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880E03E31DE8F81A00311721 /* PaymentViewController.swift */; };
 		880E03E91DE8F81A00311721 /* PaymentNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880E03E41DE8F81A00311721 /* PaymentNavigationController.swift */; };
@@ -280,6 +286,12 @@
 		88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySelectViewModel.swift; sourceTree = "<group>"; };
 		88073F001DAD6E6F000696A3 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		88073F021DAD6FCF000696A3 /* DescriptionListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionListItemView.swift; sourceTree = "<group>"; };
+		880CBFEE1E7AB9F100CF92EA /* DataManager+FetchItemsManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataManager+FetchItemsManagerType.swift"; sourceTree = "<group>"; };
+		880CBFF01E7ABA4F00CF92EA /* DataManager+TokenManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataManager+TokenManagerType.swift"; sourceTree = "<group>"; };
+		880CBFF21E7ABB3000CF92EA /* DataManager+UserManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataManager+UserManagerType.swift"; sourceTree = "<group>"; };
+		880CBFF41E7ABB9C00CF92EA /* DataManager+RatingManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataManager+RatingManagerType.swift"; sourceTree = "<group>"; };
+		880CBFF61E7ABBE800CF92EA /* DataManager+OrderManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataManager+OrderManagerType.swift"; sourceTree = "<group>"; };
+		880CBFF91E7ABC5000CF92EA /* APIPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIPath.swift; sourceTree = "<group>"; };
 		880E03E01DE8F7FF00311721 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		880E03E31DE8F81A00311721 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		880E03E41DE8F81A00311721 /* PaymentNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentNavigationController.swift; sourceTree = "<group>"; };
@@ -595,9 +607,9 @@
 		88073EF11DAC1B3E000696A3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				880CBFED1E7AB93D00CF92EA /* DataManager */,
 				8862E6C91DC8E2BD00DDFB00 /* Model */,
 				88E86DB11DB91695002A7024 /* OrderManager */,
-				88DB93901DCC1AA500DAC651 /* DataManager.swift */,
 				8872F0BB1DD8AE0F00E8D9EE /* ReverseGeocoder.swift */,
 				88DB938A1DCC169A00DAC651 /* NetworkManager.swift */,
 				88923E121DD35F7600BC3AC0 /* ProfileManager.swift */,
@@ -635,6 +647,28 @@
 				88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */,
 			);
 			path = CitySelect;
+			sourceTree = "<group>";
+		};
+		880CBFED1E7AB93D00CF92EA /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				88DB93901DCC1AA500DAC651 /* DataManager.swift */,
+				880CBFF91E7ABC5000CF92EA /* APIPath.swift */,
+				880CBFF81E7ABC3300CF92EA /* DataManager+Extensions */,
+			);
+			name = DataManager;
+			sourceTree = "<group>";
+		};
+		880CBFF81E7ABC3300CF92EA /* DataManager+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				880CBFEE1E7AB9F100CF92EA /* DataManager+FetchItemsManagerType.swift */,
+				880CBFF01E7ABA4F00CF92EA /* DataManager+TokenManagerType.swift */,
+				880CBFF21E7ABB3000CF92EA /* DataManager+UserManagerType.swift */,
+				880CBFF41E7ABB9C00CF92EA /* DataManager+RatingManagerType.swift */,
+				880CBFF61E7ABBE800CF92EA /* DataManager+OrderManagerType.swift */,
+			);
+			name = "DataManager+Extensions";
 			sourceTree = "<group>";
 		};
 		880E03E21DE8F80400311721 /* Payment */ = {
@@ -1351,6 +1385,7 @@
 				88D8ABBB1DB56E53009D515B /* SelectClothesViewController.swift in Sources */,
 				88E86DB01DB90BD1002A7024 /* UIView+nibInstance.swift in Sources */,
 				88073EEF1DAC1A23000696A3 /* OnBoardingViewController.swift in Sources */,
+				880CBFEF1E7AB9F100CF92EA /* DataManager+FetchItemsManagerType.swift in Sources */,
 				88923E1C1DD3852A00BC3AC0 /* OnBoardingViewModel.swift in Sources */,
 				88DB93861DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift in Sources */,
 				88DB93931DCC20B100DAC651 /* ServerObjct.swift in Sources */,
@@ -1371,11 +1406,13 @@
 				889A84171DCA56CB00E3926D /* OrderConfirmViewModel.swift in Sources */,
 				880E03E81DE8F81A00311721 /* PaymentViewController.swift in Sources */,
 				88004FB81DDF49F300A8632A /* Rating.swift in Sources */,
+				880CBFF11E7ABA4F00CF92EA /* DataManager+TokenManagerType.swift in Sources */,
 				889923A71DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift in Sources */,
 				88072D571DB9698600B47D23 /* ItemInfoTableViewCell.swift in Sources */,
 				881B34861E33900000BCB9D3 /* PromoCodeAlertViewModel.swift in Sources */,
 				88004FBF1DDF77DF00A8632A /* LaundryReviewsViewModel.swift in Sources */,
 				8814C05A1DAFC96D005B4967 /* CategoriesViewController.swift in Sources */,
+				880CBFFA1E7ABC5000CF92EA /* APIPath.swift in Sources */,
 				88CBB1451E08806300C5F987 /* OrderReviewAlertViewModel.swift in Sources */,
 				889A841B1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift in Sources */,
 				88F674BC1DF477E50001AC16 /* ItemSizeAlertViewModel.swift in Sources */,
@@ -1441,6 +1478,7 @@
 				88A2CFC11DEB2CA2000762DE /* StringToDateTransform.swift in Sources */,
 				88CD68451DD2155F004B7726 /* ContactFormTableHeaderView.swift in Sources */,
 				88C9F6DF1DCD2B320046DDD7 /* RealmString.swift in Sources */,
+				880CBFF51E7ABB9C00CF92EA /* DataManager+RatingManagerType.swift in Sources */,
 				889D87D01DC1F3DE003E8DAC /* LaundrySelectTableViewCellModel.swift in Sources */,
 				886662DF1E32856F004D9A80 /* ProfileContainerViewModel.swift in Sources */,
 				8814C03E1DAEBD2A005B4967 /* RxCLLocationManagerDelegateProxy.swift in Sources */,
@@ -1481,6 +1519,7 @@
 				88DB938F1DCC188600DAC651 /* Treatment.swift in Sources */,
 				88BFAE6C1E07D532009CA8A0 /* NotificationManager.swift in Sources */,
 				8872F0BE1DD8D67100E8D9EE /* RequestOrder.swift in Sources */,
+				880CBFF71E7ABBE800CF92EA /* DataManager+OrderManagerType.swift in Sources */,
 				8872F0B11DD7B2E100E8D9EE /* LocationSelectViewModel.swift in Sources */,
 				885409C31DB2E43300219C00 /* EmptyOrderView.swift in Sources */,
 				88C9F6E11DCDE36F0046DDD7 /* Date+toString.swift in Sources */,
@@ -1491,6 +1530,7 @@
 				8814C0391DAE8F7F005B4967 /* LocationManager.swift in Sources */,
 				88D8ABBD1DB56E89009D515B /* SelectClothesViewModel.swift in Sources */,
 				8833B5361DBF8241004D44CE /* LastTimePopupViewModel.swift in Sources */,
+				880CBFF31E7ABB3000CF92EA /* DataManager+UserManagerType.swift in Sources */,
 				889923961DDCAF9400D73905 /* ItemInfoNavigationController.swift in Sources */,
 				88E831331DFC7177005E35D9 /* Double+currencyString.swift in Sources */,
 				88072D501DB9695300B47D23 /* ItemInfoViewController.swift in Sources */,

@@ -53,6 +53,8 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
 
     viewModel.ratingButtonEnabled.asObservable().bindTo(ratingButton.rx.isEnabled).addDisposableTo(disposeBag)
 
+    viewModel.ratingButtonTitle.asObservable().bindTo(ratingButton.rx.title()).addDisposableTo(disposeBag)
+
     viewModel.presentRatingAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] viewModel in
         let viewController = OrderReviewAlertViewController.storyboardInstance()!
         viewController.modalPresentationStyle = .overFullScreen
