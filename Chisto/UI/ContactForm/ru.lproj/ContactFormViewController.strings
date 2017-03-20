@@ -20,6 +20,9 @@
 /* Class = "UITextField"; placeholder = "Город"; ObjectID = "Q4U-Kd-ebp"; */
 "Q4U-Kd-ebp.placeholder" = "Город";
 
+/* Class = "UILabel"; text = "Apple Pay"; ObjectID = "RBT-vk-wo4"; */
+"RBT-vk-wo4.text" = "Apple Pay";
+
 /* Class = "UITableViewSection"; headerTitle = "Контактная информация"; ObjectID = "R3Q-JO-MEf"; */
 "R3Q-JO-MEf.headerTitle" = "Контактная информация";
 
