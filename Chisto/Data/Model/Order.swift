@@ -127,9 +127,15 @@ class Order: ServerObject {
     return totalPrice - (orderPrice + deliveryPrice)
   }
 
+  dynamic var paymentMethodRaw: String = "cash"
+
   var paymentMethod: PaymentMethod {
-    guard payment != nil else { return .cash }
-    return .card
+    get {
+      return PaymentMethod(rawValue: paymentMethodRaw) ?? .cash
+    }
+    set {
+      paymentMethodRaw = newValue.rawValue
+    }
   }
 
   var ratingRequired: Bool {
@@ -227,6 +233,7 @@ class Order: ServerObject {
     statusString <- map["status"]
     laundryId <- map["laundry_id"]
     laundry <- map["laundry"]
+    paymentMethod <- (map["payment_method"], EnumTransform<PaymentMethod>())
     if laundry == nil {
       laundry = realm.object(ofType: Laundry.self, forPrimaryKey: laundryId)
     }
