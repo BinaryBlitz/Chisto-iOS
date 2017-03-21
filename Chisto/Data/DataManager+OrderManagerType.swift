@@ -56,8 +56,7 @@ extension DataManager: OrderManagerType {
   }
 
   func sendOrderPaymentToken(orderId: Int, paymentData: Data) -> Observable<Order> {
-    guard let json = JSON(paymentData).dictionaryObject else { return Observable.error(DataError.applePayInvalidPayment) }
-    return networkRequest(method: .post, .sendPaymentToken(orderId: orderId), ["payment_token": ["payment_data": json]]).flatMap {
+    return networkRequest(method: .post, .sendPaymentToken(orderId: orderId), ["payment_token": ["encoded_payment_data": paymentData.base64EncodedString()]]).flatMap {
       result -> Observable<Order> in
       guard let order = Mapper<Order>().map(JSONObject: JSON(result)["order"]) else { return Observable.error(DataError.responseConvertError) }
       let realm = try! Realm()
