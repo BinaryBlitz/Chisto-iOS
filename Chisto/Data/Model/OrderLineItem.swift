@@ -44,6 +44,12 @@ class OrderLineItem: Mappable {
     return price * Decimal(multiplier) - price
   }
 
+  func price(singleItem: Bool = false, includeDecoration: Bool = true) -> Decimal {
+    let price = orderTreatments.map { (singleItem ? $0.price : $0.price * Decimal(quantity)) * area }.reduce(0, +)
+    guard hasDecoration, includeDecoration else { return price }
+    return price * Decimal(multiplier)
+  }
+
   var item: Item? {
     guard let item = orderTreatments.first?.treatment?.item else {
       let realm = try! Realm()
@@ -62,11 +68,5 @@ class OrderLineItem: Mappable {
     area <- (map["area"], DecimalTransform())
     hasDecoration <- map["has_decoration"]
     multiplier <- map["multiplier"]
-  }
-  
-  func price(singleItem: Bool = false, includeDecoration: Bool = true) -> Decimal {
-    let price = orderTreatments.map { (singleItem ? $0.price : $0.price * Decimal(quantity)) * area }.reduce(0, +)
-    guard hasDecoration, includeDecoration else { return price }
-    return price * Decimal(multiplier)
   }
 }

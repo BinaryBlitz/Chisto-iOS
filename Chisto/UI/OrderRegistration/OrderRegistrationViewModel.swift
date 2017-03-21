@@ -18,7 +18,7 @@ class OrderRegistrationViewModel {
   let formViewModel: ContactFormViewModel
 
   let buttonsAreEnabled = Variable(false)
-  let orderprice: String
+  let orderPrice: String
   let returnToOrderViewController: PublishSubject<Void>
   let presentLocationSelectSection: Driver<LocationSelectViewModel>
   let payButtonDidTap = PublishSubject<Void>()
@@ -49,9 +49,8 @@ class OrderRegistrationViewModel {
     let currentOrder = Variable<Order?>(nil)
     self.currentOrder = currentOrder
 
-    self.orderprice = OrderManager.instance
-    .priceForCurrentLaundry(includeCollection: true, promoCode: promoCode)
-    .currencyString
+    let orderPrice = OrderManager.instance.priceForCurrentLaundry(includeCollection: true, promoCode: promoCode)
+    self.orderPrice = orderPrice.currencyString
 
     self.presentLocationSelectSection = formViewModel.streetNameFieldDidTap.map {
       let viewModel = LocationSelectViewModel()

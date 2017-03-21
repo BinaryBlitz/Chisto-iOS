@@ -33,7 +33,7 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
 
     guard let viewModel = viewModel else { return }
 
-    orderPriceLabel.text = viewModel.orderprice
+    orderPriceLabel.text = viewModel.orderPrice
     viewModel.buttonsAreEnabled.asObservable().bindTo(payButton.rx.isEnabled).addDisposableTo(disposeBag)
     payButton.rx.tap.bindTo(viewModel.payButtonDidTap).addDisposableTo(disposeBag)
 

@@ -15,7 +15,7 @@ class RealmManager {
 
   init() {
     let config = Realm.Configuration(
-      schemaVersion: 9,
+      schemaVersion: 8,
       migrationBlock: { migration, oldSchemaVersion in
         if oldSchemaVersion < 6 {
           migration.renameProperty(onType: Profile.className(), from: "street", to: "streetName")

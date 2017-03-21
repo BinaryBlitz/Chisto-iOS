@@ -56,9 +56,12 @@ extension DataManager: OrderManagerType {
   }
 
   func sendOrderPaymentToken(orderId: Int, paymentData: Data) -> Observable<Order> {
-    return networkRequest(method: .post, .sendPaymentToken(orderId: orderId), ["payment_token": ["encoded_payment_data": paymentData.base64EncodedString()]]).flatMap {
+    let paymentDataJSON = ["payment_token": ["encoded_payment_data": paymentData.base64EncodedString()]]
+
+    return networkRequest(method: .post, .sendPaymentToken(orderId: orderId), paymentDataJSON).flatMap {
       result -> Observable<Order> in
-      guard let jsonMap = result as? [String: Any], let order = Mapper<Order>().map(JSONObject: jsonMap["order"]) else { return Observable.error(DataError.responseConvertError) }
+      guard let jsonMap = result as? [String: Any],
+            let order = Mapper<Order>().map(JSONObject: jsonMap["order"]) else { return Observable.error(DataError.responseConvertError) }
       let realm = try! Realm()
 
       try realm.write {
