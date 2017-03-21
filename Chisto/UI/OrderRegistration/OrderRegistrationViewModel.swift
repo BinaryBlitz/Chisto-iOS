@@ -126,7 +126,7 @@ class OrderRegistrationViewModel {
 
   func sendPaymentToken(token: Data, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
     guard let order = currentOrder.value else { return completion(.failure) }
-    DataManager.instance.sendOrderPaymentToken(orderId: order.id, token: token).subscribe(onNext: { order in
+    DataManager.instance.sendOrderPaymentToken(orderId: order.id, paymentData: token).subscribe(onNext: { order in
       self.currentOrder.value = order
       completion(.success)
     }, onError: { _ in

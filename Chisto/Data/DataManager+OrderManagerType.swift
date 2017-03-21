@@ -18,7 +18,7 @@ import ObjectMapper
 protocol OrderManagerType {
   func createOrder(order: RequestOrder, laundry: Laundry) -> Observable<Order>
   func getOrderInfo(orderId: Int) -> Observable<Order>
-  func sendOrderPaymentToken(orderId: Int, token: Data) -> Observable<Order>
+  func sendOrderPaymentToken(orderId: Int, paymentData: Data) -> Observable<Order>
 }
 
 extension DataManager: OrderManagerType {
@@ -55,9 +55,9 @@ extension DataManager: OrderManagerType {
     }
   }
 
-  func sendOrderPaymentToken(orderId: Int, token: Data) -> Observable<Order> {
-    debugPrint(JSON(token))
-    return networkRequest(method: .post, .sendPaymentToken(orderId: orderId), ["payment_token": ["payment_data": token.base64EncodedString()]]).flatMap {
+  func sendOrderPaymentToken(orderId: Int, paymentData: Data) -> Observable<Order> {
+    guard let json = JSON(paymentData).dictionaryObject else { return Observable.error(DataError.applePayInvalidPayment) }
+    return networkRequest(method: .post, .sendPaymentToken(orderId: orderId), ["payment_token": ["payment_data": json]]).flatMap {
       result -> Observable<Order> in
       guard let order = Mapper<Order>().map(JSONObject: JSON(result)["order"]) else { return Observable.error(DataError.responseConvertError) }
       let realm = try! Realm()
