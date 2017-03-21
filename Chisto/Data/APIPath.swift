@@ -69,7 +69,7 @@ enum APIPath {
     case .updateRating(let ratingId):
       return "ratings/\(ratingId)"
     case .sendPaymentToken(let orderId):
-      return "orders/\(orderId)/payment_tokens"
+      return "orders/\(orderId)/payment_token"
     }
   }
 
