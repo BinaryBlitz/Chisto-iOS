@@ -102,13 +102,13 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
 
 extension OrderRegistrationViewController: PKPaymentAuthorizationViewControllerDelegate {
   func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
-    debugPrint(JSON(payment.token.paymentData))
-    debugPrint(payment.token.transactionIdentifier)
-    viewModel?.applePayDidFinish.onNext()
+    viewModel?.sendPaymentToken(token: payment.token.paymentData, completion: completion)
   }
 
   func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
-    controller.dismiss(animated: true, completion: nil)
+    controller.dismiss(animated: true, completion: { [weak self] in
+      self?.viewModel?.applePayDidFinish.onNext()
+    })
   }
   
 }

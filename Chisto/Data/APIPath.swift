@@ -30,6 +30,7 @@ enum APIPath {
   case showPromoCode(promoCode: String)
   case fetchItems
   case updateRating(ratingId: Int)
+  case sendPaymentToken(orderId: Int)
 
   var endpoint: String {
     switch self {
@@ -67,12 +68,14 @@ enum APIPath {
       return "items"
     case .updateRating(let ratingId):
       return "ratings/\(ratingId)"
+    case .sendPaymentToken(let orderId):
+      return "orders/\(orderId)/payment_tokens"
     }
   }
 
   var encoding: ParameterEncoding {
     switch self {
-    case .createOrder, .createVerificationToken, .verifyToken, .createUser, .updateUser:
+    case .createOrder, .createVerificationToken, .verifyToken, .createUser, .updateUser, .sendPaymentToken:
       return JSONEncoding.default
     default:
       return URLEncoding.default
@@ -81,7 +84,7 @@ enum APIPath {
 
   var successCode: Int {
     switch self {
-    case .createOrder, .createVerificationToken, .createUser, .createRating, .subscribe:
+    case .createOrder, .createVerificationToken, .createUser, .createRating, .subscribe, .sendPaymentToken:
       return 201
     default:
       return 200

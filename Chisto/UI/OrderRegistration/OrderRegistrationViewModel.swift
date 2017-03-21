@@ -24,9 +24,10 @@ class OrderRegistrationViewModel {
   let payButtonDidTap = PublishSubject<Void>()
   let presentOrderPlacedPopup: Driver<OrderPlacedPopupViewModel>
   let presentPaymentSection: Driver<PaymentViewModel>
-  let applePayDidFinish: PublishSubject<Void>
+  let currentOrder: Variable<Order?>
   let paymentCompleted: PublishSubject<Order>
   let presentErrorAlert: PublishSubject<Error>
+  let applePayDidFinish: PublishSubject<Void>
   let presentApplePayScreen: Driver<PKPaymentRequest>
   let canUseApplePay = PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: [.masterCard, .visa])
 
@@ -45,6 +46,9 @@ class OrderRegistrationViewModel {
     let formViewModel = ContactFormViewModel(currentScreen: .orderRegistration)
     self.formViewModel = formViewModel
 
+    let currentOrder = Variable<Order?>(nil)
+    self.currentOrder = currentOrder
+
     self.orderprice = OrderManager.instance
     .priceForCurrentLaundry(includeCollection: true, promoCode: promoCode)
     .currencyString
@@ -58,22 +62,25 @@ class OrderRegistrationViewModel {
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
 
-    let paymentCompleted = PublishSubject<Order>()
-    self.paymentCompleted = paymentCompleted
-
     let applePayDidFinish = PublishSubject<Void>()
     self.applePayDidFinish = applePayDidFinish
+
+    let paymentCompleted = PublishSubject<Order>()
+    self.paymentCompleted = paymentCompleted
 
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
 
     let placeOrder: () -> Driver<Order>
     placeOrder = { method in
-      formViewModel.saveUserProfile().flatMap {
+      let placeOrderDriver = formViewModel.saveUserProfile().flatMap {
           return OrderManager.instance.createOrder(promoCode: promoCode)
         }.do(onError: { error in
           presentErrorAlert.onNext(error)
         }).asDriver(onErrorDriveWith: .empty())
+
+      placeOrderDriver.asObservable().bindTo(currentOrder).addDisposableTo(disposeBag)
+      return placeOrderDriver
     }
 
     let payInCashDriver = payButtonDidTap.filter { formViewModel.paymentMethod.value == .cash }
@@ -86,16 +93,19 @@ class OrderRegistrationViewModel {
         return placeOrder().map { $0.paymentRequest }
     }
 
+    applePayDidFinish
+      .asObservable()
+      .filter { currentOrder.value != nil }
+      .map { currentOrder.value! }
+      .filter { $0.paid }
+      .bindTo(paymentCompleted)
+      .addDisposableTo(disposeBag)
+
     self.presentPaymentSection = payButtonDidTap
       .filter { formViewModel.paymentMethod.value == .card }
       .asDriver(onErrorDriveWith: .empty()).flatMap {
         return placeOrder().map { order in
           let viewModel = PaymentViewModel(order: order)
-
-          applePayDidFinish.asObservable()
-            .map { order }
-            .bindTo(paymentCompleted)
-            .addDisposableTo(disposeBag)
 
           viewModel.didFinishPayment
             .bindTo(paymentCompleted)
@@ -112,6 +122,17 @@ class OrderRegistrationViewModel {
       }
 
     formViewModel.isValid.asObservable().bindTo(buttonsAreEnabled).addDisposableTo(disposeBag)
+  }
+
+  func sendPaymentToken(token: Data, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
+    guard let order = currentOrder.value else { return completion(.failure) }
+    DataManager.instance.sendOrderPaymentToken(orderId: order.id, token: token).subscribe(onNext: { order in
+      self.currentOrder.value = order
+      completion(.success)
+    }, onError: { _ in
+      completion(.failure)
+    }).addDisposableTo(disposeBag)
+
   }
 
 }
