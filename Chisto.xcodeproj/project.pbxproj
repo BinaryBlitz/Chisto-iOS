@@ -162,6 +162,7 @@
 		88C497311E2E2913001AE561 /* ControlledRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C497301E2E2913001AE561 /* ControlledRatingView.swift */; };
 		88C74B961E3D0A3100F4DBCF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88C74B981E3D0A3100F4DBCF /* Localizable.strings */; };
 		88C74BAD1E3E3B4500F4DBCF /* PromoCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C74BAC1E3E3B4500F4DBCF /* PromoCode.swift */; };
+		88C795181E62043D008E7952 /* DecimalTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C795171E62043D008E7952 /* DecimalTransform.swift */; };
 		88C9F6DD1DCD03010046DDD7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9F6DC1DCD03010046DDD7 /* Item.swift */; };
 		88C9F6DF1DCD2B320046DDD7 /* RealmString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9F6DE1DCD2B320046DDD7 /* RealmString.swift */; };
 		88C9F6E11DCDE36F0046DDD7 /* Date+toString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9F6E01DCDE36F0046DDD7 /* Date+toString.swift */; };
@@ -249,7 +250,6 @@
 		37530F791E4E33660039AAB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ItemInfoViewController.storyboard; sourceTree = "<group>"; };
 		37530F7C1E4E336A0039AAB0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemInfoViewController.strings; sourceTree = "<group>"; };
 		37530F7E1E4E33820039AAB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ContactFormViewController.storyboard; sourceTree = "<group>"; };
-		37530F811E4E33880039AAB0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ContactFormViewController.strings; sourceTree = "<group>"; };
 		37530F831E4E33950039AAB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ContactFormTableHeaderView.xib; sourceTree = "<group>"; };
 		37530F861E4E33970039AAB0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ContactFormTableHeaderView.strings; sourceTree = "<group>"; };
 		37530F881E4E33B50039AAB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CitySelectViewController.storyboard; sourceTree = "<group>"; };
@@ -412,6 +412,8 @@
 		88BFAE6B1E07D532009CA8A0 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationManager.swift; path = ../Data/NotificationManager.swift; sourceTree = "<group>"; };
 		88C497301E2E2913001AE561 /* ControlledRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlledRatingView.swift; sourceTree = "<group>"; };
 		88C74BAC1E3E3B4500F4DBCF /* PromoCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoCode.swift; sourceTree = "<group>"; };
+		88C795171E62043D008E7952 /* DecimalTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecimalTransform.swift; sourceTree = "<group>"; };
+		88C9480A1E8050FE00A99F5B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ContactFormViewController.strings; sourceTree = "<group>"; };
 		88C9F6DC1DCD03010046DDD7 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		88C9F6DE1DCD2B320046DDD7 /* RealmString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmString.swift; sourceTree = "<group>"; };
 		88C9F6E01DCDE36F0046DDD7 /* Date+toString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+toString.swift"; sourceTree = "<group>"; };
@@ -1013,6 +1015,7 @@
 				88C9F6DE1DCD2B320046DDD7 /* RealmString.swift */,
 				88DB93921DCC20B100DAC651 /* ServerObjct.swift */,
 				88A2CFC01DEB2CA2000762DE /* StringToDateTransform.swift */,
+				88C795171E62043D008E7952 /* DecimalTransform.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1229,6 +1232,9 @@
 						DevelopmentTeam = 4WGG8V34K4;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.ApplePay = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 0;
 							};
@@ -1485,6 +1491,7 @@
 				88E86DB71DB91BBA002A7024 /* OrderTableViewCellModel.swift in Sources */,
 				88FE7B141DE20FC200A16289 /* OrderInfoViewController.swift in Sources */,
 				88A221681DCE013100CAD2B0 /* LaundryTreatment.swift in Sources */,
+				88C795181E62043D008E7952 /* DecimalTransform.swift in Sources */,
 				88C497311E2E2913001AE561 /* ControlledRatingView.swift in Sources */,
 				88DB93791DCBD11100DAC651 /* MaskedInput.swift in Sources */,
 				88456DF61E37AF12003D433E /* OrderInfoTableFooterView.swift in Sources */,
@@ -1669,7 +1676,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				37530F7E1E4E33820039AAB0 /* Base */,
-				37530F811E4E33880039AAB0 /* ru */,
+				88C9480A1E8050FE00A99F5B /* ru */,
 			);
 			name = ContactFormViewController.storyboard;
 			sourceTree = "<group>";
@@ -1956,7 +1963,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.binaryblitz.Chisto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a0774aee-ee77-42c1-a202-eb83c3eacd5a";
+				PROVISIONING_PROFILE = "800afdac-f1bf-4f48-8a2e-76a5a90825fb";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development ru.binaryblitz.Chisto";
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";

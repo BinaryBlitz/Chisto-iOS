@@ -17,6 +17,7 @@ class Payment: ServerObject {
 
   override func mapping(map: Map) {
     super.mapping(map: map)
+
     amount <- map["amount"]
     paid <- map["paid"]
     paymentUrl <- map["payment_url"]

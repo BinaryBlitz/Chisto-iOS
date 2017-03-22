@@ -12,7 +12,7 @@ import ObjectMapper
 class PromoCode: Mappable {
   var id: Int = 0
   var code: String = ""
-  var discount: Int = 0
+  var discount: Decimal = 0
 
   func mapping(map: Map) {
     id <- map["id"]

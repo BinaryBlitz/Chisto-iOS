@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import PassKit
 
 class OrderRegistrationViewModel {
 
@@ -17,14 +18,18 @@ class OrderRegistrationViewModel {
   let formViewModel: ContactFormViewModel
 
   let buttonsAreEnabled = Variable(false)
-  let orderprice: String
+  let orderPrice: String
   let returnToOrderViewController: PublishSubject<Void>
   let presentLocationSelectSection: Driver<LocationSelectViewModel>
   let payButtonDidTap = PublishSubject<Void>()
   let presentOrderPlacedPopup: Driver<OrderPlacedPopupViewModel>
   let presentPaymentSection: Driver<PaymentViewModel>
+  let currentOrder: Variable<Order?>
   let paymentCompleted: PublishSubject<Order>
   let presentErrorAlert: PublishSubject<Error>
+  let applePayDidFinish: PublishSubject<Void>
+  let presentApplePayScreen: Driver<PKPaymentRequest>
+  let canUseApplePay = PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: [.masterCard, .visa])
 
   enum NextScreen {
     case orderPlacedPopup(viewModel: OrderPlacedPopupViewModel)
@@ -41,14 +46,23 @@ class OrderRegistrationViewModel {
     let formViewModel = ContactFormViewModel(currentScreen: .orderRegistration)
     self.formViewModel = formViewModel
 
-    self.orderprice = OrderManager.instance.priceForCurrentLaundry(includeCollection: true, promoCode: promoCode).currencyString
+    let currentOrder = Variable<Order?>(nil)
+    self.currentOrder = currentOrder
+
+    let orderPrice = OrderManager.instance.priceForCurrentLaundry(includeCollection: true, promoCode: promoCode)
+    self.orderPrice = orderPrice.currencyString
 
     self.presentLocationSelectSection = formViewModel.streetNameFieldDidTap.map {
       let viewModel = LocationSelectViewModel()
+
       viewModel.streetName.bindTo(formViewModel.street).addDisposableTo(viewModel.disposeBag)
       viewModel.streetNumber.bindTo(formViewModel.building).addDisposableTo(viewModel.disposeBag)
+
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
+
+    let applePayDidFinish = PublishSubject<Void>()
+    self.applePayDidFinish = applePayDidFinish
 
     let paymentCompleted = PublishSubject<Order>()
     self.paymentCompleted = paymentCompleted
@@ -58,11 +72,14 @@ class OrderRegistrationViewModel {
 
     let placeOrder: () -> Driver<Order>
     placeOrder = { method in
-      formViewModel.saveUserProfile().flatMap {
+      let placeOrderDriver = formViewModel.saveUserProfile().flatMap {
           return OrderManager.instance.createOrder(promoCode: promoCode)
         }.do(onError: { error in
           presentErrorAlert.onNext(error)
         }).asDriver(onErrorDriveWith: .empty())
+
+      placeOrderDriver.asObservable().bindTo(currentOrder).addDisposableTo(disposeBag)
+      return placeOrderDriver
     }
 
     let payInCashDriver = payButtonDidTap.filter { formViewModel.paymentMethod.value == .cash }
@@ -70,12 +87,29 @@ class OrderRegistrationViewModel {
         return placeOrder()
       }
 
+    self.presentApplePayScreen = payButtonDidTap.filter { formViewModel.paymentMethod.value == .applePay }
+      .asDriver(onErrorDriveWith: .empty()).flatMap {
+        return placeOrder().map { $0.paymentRequest }
+    }
+
+    applePayDidFinish
+      .asObservable()
+      .filter { currentOrder.value != nil }
+      .map { currentOrder.value! }
+      .filter { $0.paid }
+      .bindTo(paymentCompleted)
+      .addDisposableTo(disposeBag)
+
     self.presentPaymentSection = payButtonDidTap
       .filter { formViewModel.paymentMethod.value == .card }
       .asDriver(onErrorDriveWith: .empty()).flatMap {
         return placeOrder().map { order in
           let viewModel = PaymentViewModel(order: order)
-          viewModel.didFinishPayment.bindTo(paymentCompleted).addDisposableTo(disposeBag)
+
+          viewModel.didFinishPayment
+            .bindTo(paymentCompleted)
+            .addDisposableTo(disposeBag)
+
           return viewModel
         }
       }
@@ -87,6 +121,17 @@ class OrderRegistrationViewModel {
       }
 
     formViewModel.isValid.asObservable().bindTo(buttonsAreEnabled).addDisposableTo(disposeBag)
+  }
+
+  func sendPaymentToken(token: Data, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
+    guard let order = currentOrder.value else { return completion(.failure) }
+    DataManager.instance.sendOrderPaymentToken(orderId: order.id, paymentData: token).subscribe(onNext: { order in
+      self.currentOrder.value = order
+      completion(.success)
+    }, onError: { _ in
+      completion(.failure)
+    }).addDisposableTo(disposeBag)
+
   }
 
 }

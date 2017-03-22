@@ -20,6 +20,7 @@ enum DataError: Error, CustomStringConvertible {
   case responseConvertError
   case requestConvertError
   case unknownApiPath
+  case applePayInvalidPayment
   case unknown(description: String)
 
   var description: String {
@@ -32,6 +33,8 @@ enum DataError: Error, CustomStringConvertible {
       return description
     case .unknownApiPath:
       return "API path for request was not set"
+    case .applePayInvalidPayment:
+      return "Invalid payment transaction"
     default:
       return ""
     }
