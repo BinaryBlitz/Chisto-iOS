@@ -83,15 +83,18 @@ class LaundrySelectTableViewCellModel: LaundrySelectTableViewCellModelType {
       isDisabled: isDisabled
     )
 
-    let collectionPrice = OrderManager.instance.collectionPrice(laundry: laundry)
-    price += collectionPrice
+    if !isDisabled {
+      let collectionPrice = OrderManager.instance.collectionPrice(laundry: laundry)
+      price += collectionPrice
+    }
+
     let priceString = price.currencyString
 
     if !isDisabled {
       self.priceItemViewModel = LaundryItemInfoViewModel(type: .price, titleText: priceString)
     } else {
       let titleText = NSLocalizedString("minimumOrderPrice", comment: "List of offers")
-      let subTitleText = "\((laundry.minimumOrderPrice + collectionPrice).currencyString)"
+      let subTitleText = "\((laundry.minimumOrderPrice).currencyString)"
 
       self.priceItemViewModel = LaundryItemInfoViewModel(
         type: .unavaliableprice(price: price),

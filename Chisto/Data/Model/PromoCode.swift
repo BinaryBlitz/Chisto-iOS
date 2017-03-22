@@ -17,7 +17,9 @@ class PromoCode: Mappable {
   func mapping(map: Map) {
     id <- map["id"]
     code <- map["code"]
-    discount <- map["discount"]
+    var discountValue: Double = NSDecimalNumber(decimal: discount).doubleValue
+    discountValue <- map["discount"]
+    discount = Decimal(discountValue)
   }
 
   required init(map: Map) {}
