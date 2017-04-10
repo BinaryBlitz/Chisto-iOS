@@ -105,7 +105,7 @@ class ContactFormViewModel {
       .map { phone in
         let phoneNumber = try? PhoneNumberKit().parse(phone ?? "")
         return phoneNumber != nil
-      }.bindTo(phoneIsValid)
+      }.bind(to: phoneIsValid)
       .addDisposableTo(disposeBag)
 
     let contactInfoIsValid = Observable.combineLatest(firstName.asObservable(), lastName.asObservable(), phoneIsValid.asObservable(), email.asObservable()) { firstName, lastName, phoneIsValid, email -> Bool in
@@ -121,7 +121,7 @@ class ContactFormViewModel {
 
     }
 
-    Observable.combineLatest(contactInfoIsValid, adressIsValid) { $0 && $1 }.bindTo(isValid).addDisposableTo(disposeBag)
+    Observable.combineLatest(contactInfoIsValid, adressIsValid) { $0 && $1 }.bind(to: isValid).addDisposableTo(disposeBag)
 
   }
 

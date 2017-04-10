@@ -40,9 +40,9 @@ class RegistrationCodeInputViewController: UIViewController {
 
     guard let viewModel = viewModel else { return }
 
-    codeField.rx.text.bindTo(viewModel.code).addDisposableTo(disposeBag)
+    codeField.rx.text.bind(to: viewModel.code).addDisposableTo(disposeBag)
 
-    maskedCodeInput.isValid.asObservable().bindTo(viewModel.codeIsValid).addDisposableTo(disposeBag)
+    maskedCodeInput.isValid.asObservable().bind(to: viewModel.codeIsValid).addDisposableTo(disposeBag)
 
     viewModel.dismissViewController.drive(onNext: { [weak self] in
         self?.dismiss(animated: true, completion: {

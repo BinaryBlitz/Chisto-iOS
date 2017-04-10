@@ -56,7 +56,7 @@ class CityNotFoundViewModel: CityNotFoundViewModelType {
     Observable.combineLatest(cityTitle.asObservable(), phoneIsValid.asObservable()) { cityTitle, phoneIsValid -> Bool in
         guard let cityTitle = cityTitle else { return false }
         return cityTitle.characters.count > 0 && phoneIsValid
-      }.bindTo(continueButtonEnabled).addDisposableTo(disposeBag)
+      }.bind(to: continueButtonEnabled).addDisposableTo(disposeBag)
 
     sendData = continueButtonDidTap
       .flatMap { _ -> Observable<Void> in

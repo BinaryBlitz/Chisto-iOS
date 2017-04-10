@@ -39,7 +39,7 @@ class ItemSizeAlertViewModel {
     areaText.asObservable().map { areaText in
         guard let areaText = areaText else { return false }
         return !areaText.characters.isEmpty
-      }.bindTo(continueButtonIsEnabled).addDisposableTo(disposeBag)
+      }.bind(to: continueButtonIsEnabled).addDisposableTo(disposeBag)
 
 
     let cancelButtonDriver = cancelButtonDidTap.asDriver(onErrorDriveWith: .empty())
@@ -61,7 +61,7 @@ class ItemSizeAlertViewModel {
 
     Observable.combineLatest(lengthText.asObservable(), widthText.asObservable()) { [weak self] lengthText, widthText -> String? in
         self?.area(lengthText: lengthText, widthText: widthText)
-      }.bindTo(areaText).addDisposableTo(disposeBag)
+      }.bind(to: areaText).addDisposableTo(disposeBag)
   }
 
   func area(lengthText: String?, widthText: String?) -> String? {

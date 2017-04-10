@@ -45,7 +45,7 @@ class OrderReviewAlertViewModel {
 
     Observable
       .combineLatest(didSetRating.asObservable(), didEnterReview.asObservable() ) { $0 || $1 }
-      .bindTo(uiEnabled)
+      .bind(to: uiEnabled)
       .addDisposableTo(disposeBag)
 
     let continueButtonDriver = continueButtonDidTap.asDriver(onErrorDriveWith: .empty())

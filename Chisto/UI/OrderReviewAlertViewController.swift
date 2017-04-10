@@ -36,9 +36,9 @@ class OrderReviewAlertViewController: UIViewController {
     titleLabel.text = viewModel.title
     (reviewContentField.rx.text <-> viewModel.reviewContent).addDisposableTo(disposeBag)
     ratingView.rating = Float(viewModel.ratingStarsCount.value)
-    continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
+    continueButton.rx.tap.bind(to: viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
 
-    viewModel.uiEnabled.asObservable().bindTo(continueButton.rx.isEnabled).addDisposableTo(disposeBag)
+    viewModel.uiEnabled.asObservable().bind(to: continueButton.rx.isEnabled).addDisposableTo(disposeBag)
 
     viewModel.dismissViewController.drive(onNext: { [weak self] in
         UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {

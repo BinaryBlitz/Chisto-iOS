@@ -23,13 +23,13 @@ class ProfileViewController: UITableViewController {
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName:"iconNavbarClose"), style: .plain, target: nil, action: nil)
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
-    navigationItem.leftBarButtonItem?.rx.tap.bindTo(viewModel.closeButtonDidTap)
+    navigationItem.leftBarButtonItem?.rx.tap.bind(to: viewModel.closeButtonDidTap)
       .addDisposableTo(disposeBag)
 
-    tableView.rx.itemSelected.bindTo(viewModel.itemDidSelect)
+    tableView.rx.itemSelected.bind(to: viewModel.itemDidSelect)
       .addDisposableTo(disposeBag)
 
-    viewModel.ordersCount.asObservable().bindTo(ordersCountLabel.rx.text).addDisposableTo(disposeBag)
+    viewModel.ordersCount.asObservable().bind(to: ordersCountLabel.rx.text).addDisposableTo(disposeBag)
 
     configureNavigations()
   }

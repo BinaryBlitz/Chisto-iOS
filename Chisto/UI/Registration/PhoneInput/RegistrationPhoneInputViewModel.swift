@@ -43,7 +43,7 @@ class RegistrationPhoneInputViewModel {
       guard let phoneNumber = try? phoneNumberKit.parse(phoneText) else { return Observable.error(DataError.unknown(description: NSLocalizedString("invalidPhone", comment: "Error alert"))) }
       return DataManager.instance.createVerificationToken(phone: phoneNumberKit.format(phoneNumber, toType: .e164)).map {
         let viewModel = RegistrationCodeInputViewModel(phoneNumberString: phoneText)
-        viewModel.didFinishRegistration.bindTo(didFinishRegistration).addDisposableTo(disposeBag)
+        viewModel.didFinishRegistration.bind(to: didFinishRegistration).addDisposableTo(disposeBag)
         return viewModel
       }
     }

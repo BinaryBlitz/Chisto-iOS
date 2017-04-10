@@ -79,7 +79,7 @@ class OrderViewModel: OrderViewModelType {
       }.asDriver(onErrorDriveWith: .empty())
 
     let currentOrderItems = Variable<[OrderItem]>([])
-    OrderManager.instance.currentOrderItems.bindTo(currentOrderItems).addDisposableTo(disposeBag)
+    OrderManager.instance.currentOrderItems.bind(to: currentOrderItems).addDisposableTo(disposeBag)
     self.currentOrderItems = currentOrderItems
 
     self.presentCategoriesViewController = Observable.of(navigationAddButtonDidTap.asObservable(), emptyOrderAddButtonDidTap.asObservable()).merge().asDriver(onErrorJustReturn: ())
@@ -91,12 +91,12 @@ class OrderViewModel: OrderViewModelType {
       return [section]
     }
 
-    showAllLaundriesModalButtonDidTap.bindTo(presentLaundrySelectSection)
+    showAllLaundriesModalButtonDidTap.bind(to: presentLaundrySelectSection)
       .addDisposableTo(disposeBag)
 
     let didChooseLaundry = PublishSubject<Laundry>()
 
-    didChooseLaundry.map { OrderConfirmViewModel(laundry: $0) }.bindTo(presentOrderConfirmSection)
+    didChooseLaundry.map { OrderConfirmViewModel(laundry: $0) }.bind(to: presentOrderConfirmSection)
       .addDisposableTo(disposeBag)
 
     self.presentItemInfoViewController = itemDidSelect.asObservable().map { indexPath in

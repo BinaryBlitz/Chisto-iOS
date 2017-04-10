@@ -24,6 +24,6 @@ class ProfileContainerViewModel {
       ProfileManager.instance.logout()
     }
     self.buttonIsHidden = Variable(ProfileManager.instance.userProfile.value.apiToken != nil)
-    ProfileManager.instance.userProfile.asObservable().map { $0.apiToken == nil }.bindTo(buttonIsHidden).addDisposableTo(disposeBag)
+    ProfileManager.instance.userProfile.asObservable().map { $0.apiToken == nil }.bind(to: buttonIsHidden).addDisposableTo(disposeBag)
   }
 }

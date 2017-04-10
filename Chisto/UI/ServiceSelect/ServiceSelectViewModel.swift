@@ -86,7 +86,7 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
     let treatments = Variable<[Treatment]>([])
     Observable.collection(from: item.treatments.filter("isDeleted == %@", false).sorted(byKeyPath: "name"))
       .map { Array($0) }
-      .bindTo(treatments)
+      .bind(to: treatments)
       .addDisposableTo(disposeBag)
     self.treatments = treatments
 
@@ -125,22 +125,22 @@ class ServiceSelectViewModel: ServiceSelectViewModelType {
         guard needPresentAreaAlert else { return returnSection }
         let viewModel = ItemSizeAlertViewModel(orderItem: orderItem)
         viewModel.didFinishAlertSuccess.asObservable().map { returnSection }
-          .bindTo(showNewSection).addDisposableTo(viewModel.disposeBag)
+          .bind(to: showNewSection).addDisposableTo(viewModel.disposeBag)
         return .areaAlert(viewModel: viewModel)
-      }.bindTo(showNewSection).addDisposableTo(disposeBag)
+      }.bind(to: showNewSection).addDisposableTo(disposeBag)
 
     readyButtonTapped.asObservable()
       .map {
         treatments.value.filter { selectedServicesIds.value.contains($0.id) }
       }
-      .bindTo(selectedServices)
+      .bind(to: selectedServices)
       .addDisposableTo(disposeBag)
 
     readyButtonTapped.asObservable()
       .map {
         decorationCellModel.value.isSelected
       }
-      .bindTo(self.hasDecoration)
+      .bind(to: self.hasDecoration)
       .addDisposableTo(disposeBag)
 
     self.hasDecoration.asObservable()

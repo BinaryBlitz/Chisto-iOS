@@ -53,7 +53,7 @@ class LaundryReviewsViewModel: LaundryReviewsViewModelType {
 
     fetchRatingsObservable.do(onError: { error in
         presentErrorAlert.onNext(error)
-      }).bindTo(ratings).addDisposableTo(disposeBag)
+      }).bind(to: ratings).addDisposableTo(disposeBag)
 
     self.laundryTitle = laundry.name
     self.laundryRating = laundry.rating

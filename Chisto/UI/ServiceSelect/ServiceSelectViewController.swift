@@ -70,11 +70,11 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
     guard let viewModel = viewModel else { return }
 
     tableView.rx.itemSelected
-      .bindTo(viewModel.itemDidSelect)
+      .bind(to: viewModel.itemDidSelect)
       .addDisposableTo(disposeBag)
 
     tableView.rx.itemDeselected
-      .bindTo(viewModel.itemDidDeselect)
+      .bind(to: viewModel.itemDidDeselect)
       .addDisposableTo(disposeBag)
 
     tableView.dataSource = nil
@@ -87,10 +87,10 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
     guard let viewModel = viewModel else { return }
 
     viewModel.selectedServicesIds.asObservable().map { $0.count > 0 }
-      .bindTo(readyButton.rx.isEnabled)
+      .bind(to: readyButton.rx.isEnabled)
       .addDisposableTo(disposeBag)
 
-    readyButton.rx.tap.bindTo(viewModel.readyButtonTapped).addDisposableTo(disposeBag)
+    readyButton.rx.tap.bind(to: viewModel.readyButtonTapped).addDisposableTo(disposeBag)
 
   }
 

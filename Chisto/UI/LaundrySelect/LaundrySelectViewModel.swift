@@ -70,7 +70,7 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
 
     let getLaundries = DataManager.instance.getLaundries()
 
-    getLaundries.bindTo(laundries).addDisposableTo(disposeBag)
+    getLaundries.bind(to: laundries).addDisposableTo(disposeBag)
 
     let lastOrderLaundry = Observable.combineLatest(getLaundries, didFinishPushingViewController.asObservable()) { laundries, _ -> Laundry? in
       guard let lastOrderLaundry = ProfileManager.instance.userProfile.value.order?.laundry else { return nil }
@@ -90,7 +90,7 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     self.presentLastTimeOrderPopup = filteredLastOrderLaundry.map { laundry in
       let viewModel = LastTimePopupViewModel(laundry: laundry)
       viewModel.didChooseLaundry.map(OrderConfirmViewModel.init)
-        .bindTo(presentOrderConfirmSection).addDisposableTo(viewModel.disposeBag)
+        .bind(to: presentOrderConfirmSection).addDisposableTo(viewModel.disposeBag)
 
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
@@ -117,7 +117,7 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
     itemDidSelect.map { indexPath in
         let viewModel = OrderConfirmViewModel(laundry: sortedLaundries.value[indexPath.row])
         return viewModel
-      }.bindTo(presentOrderConfirmSection).addDisposableTo(disposeBag)
+      }.bind(to: presentOrderConfirmSection).addDisposableTo(disposeBag)
 
     let filteredLaundriesObservable = Observable
       .combineLatest(laundries.asObservable(), currentOrderItemsObservable) { [weak self] laundries, currentOrderItems -> [Laundry] in
@@ -126,7 +126,7 @@ class LaundrySelectViewModel: LaundrySelectViewModelType {
 
     Observable.combineLatest(filteredLaundriesObservable.asObservable(), sortType.asObservable()) { laundries, sortType -> [Laundry] in
         return self.sortLaundries(laundries: laundries, sortType: sortType)
-      }.bindTo(sortedLaundries).addDisposableTo(disposeBag)
+      }.bind(to: sortedLaundries).addDisposableTo(disposeBag)
   }
 
   func filterLaundries(laundries: [Laundry], currentOrderItems: [OrderItem]) -> [Laundry] {

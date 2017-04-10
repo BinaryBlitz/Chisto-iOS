@@ -32,17 +32,17 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
     // Rx
-    emptyOrderView?.addButton.rx.tap.bindTo(viewModel.emptyOrderAddButtonDidTap)
+    emptyOrderView?.addButton.rx.tap.bind(to: viewModel.emptyOrderAddButtonDidTap)
       .addDisposableTo(disposeBag)
 
-    navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.navigationAddButtonDidTap)
+    navigationItem.rightBarButtonItem?.rx.tap.bind(to: viewModel.navigationAddButtonDidTap)
       .addDisposableTo(disposeBag)
-    navigationItem.leftBarButtonItem?.rx.tap.bindTo(viewModel.profileButtonDidTap)
+    navigationItem.leftBarButtonItem?.rx.tap.bind(to: viewModel.profileButtonDidTap)
       .addDisposableTo(disposeBag)
-    continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap)
+    continueButton.rx.tap.bind(to: viewModel.continueButtonDidTap)
       .addDisposableTo(disposeBag)
 
-    viewModel.continueButtonEnabled.asObservable().bindTo(continueButton.rx.isEnabled).addDisposableTo(disposeBag)
+    viewModel.continueButtonEnabled.asObservable().bind(to: continueButton.rx.isEnabled).addDisposableTo(disposeBag)
 
     configureTableView()
     configureNavigations()
@@ -81,14 +81,14 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
       .addDisposableTo(disposeBag)
 
     tableView.rx.itemSelected
-      .bindTo(viewModel.itemDidSelect)
+      .bind(to: viewModel.itemDidSelect)
       .addDisposableTo(disposeBag)
 
     dataSource.canEditRowAtIndexPath = { _ in
       return true
     }
 
-    tableView.rx.itemDeleted.bindTo(viewModel.tableItemDeleted)
+    tableView.rx.itemDeleted.bind(to: viewModel.tableItemDeleted)
       .addDisposableTo(disposeBag)
 
 

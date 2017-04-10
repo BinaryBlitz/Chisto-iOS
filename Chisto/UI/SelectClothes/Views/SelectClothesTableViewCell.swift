@@ -30,7 +30,7 @@ class SelectClothesTableViewCell: UITableViewCell {
     }
 
     if viewModel.longTreatment {
-      slowItemButton.rx.tap.bindTo(viewModel.slowItemButtonDidTap).addDisposableTo(viewModel.disposeBag)
+      slowItemButton.rx.tap.bind(to: viewModel.slowItemButtonDidTap).addDisposableTo(viewModel.disposeBag)
       slowItemButton.isHidden = false
       slowItemButtonWidthConstraint.constant = 40
     } else {

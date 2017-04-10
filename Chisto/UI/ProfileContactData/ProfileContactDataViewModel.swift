@@ -52,12 +52,12 @@ class ProfileContactDataViewModel: ProfileContactDataViewModelType {
         let viewModel = CitySelectViewModel()
 
         viewModel.selectedCity.asObservable().map { $0.name }
-          .bindTo(formViewModel.city)
+          .bind(to: formViewModel.city)
           .addDisposableTo(viewModel.disposeBag)
 
         viewModel.itemDidSelect.asObservable()
           .map { _ in Void() }
-          .bindTo(cityDidSelect)
+          .bind(to: cityDidSelect)
           .addDisposableTo(viewModel.disposeBag)
 
         return viewModel
@@ -73,12 +73,12 @@ class ProfileContactDataViewModel: ProfileContactDataViewModelType {
 
     self.presentLocationSelectSection = formViewModel.streetNameFieldDidTap.map {
       let viewModel = LocationSelectViewModel()
-      viewModel.streetName.bindTo(formViewModel.street).addDisposableTo(viewModel.disposeBag)
-      viewModel.streetNumber.bindTo(formViewModel.building).addDisposableTo(viewModel.disposeBag)
+      viewModel.streetName.bind(to: formViewModel.street).addDisposableTo(viewModel.disposeBag)
+      viewModel.streetNumber.bind(to: formViewModel.building).addDisposableTo(viewModel.disposeBag)
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
 
-    formViewModel.isValid.asObservable().bindTo(saveButtonIsEnabled).addDisposableTo(disposeBag)
+    formViewModel.isValid.asObservable().bind(to: saveButtonIsEnabled).addDisposableTo(disposeBag)
   }
 
 }

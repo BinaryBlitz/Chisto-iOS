@@ -23,7 +23,7 @@ class ProfileContactDataViewController: UIViewController {
   override func viewDidLoad() {
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
-    viewModel.saveButtonIsEnabled.asObservable().bindTo(saveButton.rx.isEnabled).addDisposableTo(disposeBag)
+    viewModel.saveButtonIsEnabled.asObservable().bind(to: saveButton.rx.isEnabled).addDisposableTo(disposeBag)
 
     viewModel.presentCitySelectSection.drive(onNext: { [weak self] viewModel in
         let viewController = CitySelectViewController.storyboardInstance()!
@@ -31,7 +31,7 @@ class ProfileContactDataViewController: UIViewController {
         self?.navigationController?.pushViewController(viewController, animated: true)
       }).addDisposableTo(disposeBag)
 
-    saveButton.rx.tap.bindTo(viewModel.saveButtonDidTap).addDisposableTo(disposeBag)
+    saveButton.rx.tap.bind(to: viewModel.saveButtonDidTap).addDisposableTo(disposeBag)
 
     viewModel.popViewController.drive(onNext: { [weak self] in
         _ = self?.navigationController?.popViewController(animated: true)

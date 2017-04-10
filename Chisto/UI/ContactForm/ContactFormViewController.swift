@@ -114,7 +114,7 @@ class ContactFormViewController: UITableViewController {
     }
     commentField.returnKeyType = .done
 
-    cityButton.rx.tap.bindTo(viewModel.cityFieldDidTap).addDisposableTo(disposeBag)
+    cityButton.rx.tap.bind(to: viewModel.cityFieldDidTap).addDisposableTo(disposeBag)
 
     viewModel.paymentMethod.asDriver().drive(onNext: { [weak self] paymentMethod in
       self?.payWithCardSelected = paymentMethod == .card

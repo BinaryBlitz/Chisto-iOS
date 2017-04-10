@@ -32,7 +32,7 @@ class OnBoardingViewModel {
     self.presentCitySelectSection = goButtonDidTap.asObservable().map {
       let viewModel = CitySelectViewModel()
       viewModel.itemDidSelect.asObservable().map { _ in Void() }
-        .bindTo(cityDidSelected)
+        .bind(to: cityDidSelected)
         .addDisposableTo(viewModel.disposeBag)
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())

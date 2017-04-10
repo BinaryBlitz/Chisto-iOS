@@ -55,8 +55,8 @@ class OrderRegistrationViewModel {
     self.presentLocationSelectSection = formViewModel.streetNameFieldDidTap.map {
       let viewModel = LocationSelectViewModel()
 
-      viewModel.streetName.bindTo(formViewModel.street).addDisposableTo(viewModel.disposeBag)
-      viewModel.streetNumber.bindTo(formViewModel.building).addDisposableTo(viewModel.disposeBag)
+      viewModel.streetName.bind(to: formViewModel.street).addDisposableTo(viewModel.disposeBag)
+      viewModel.streetNumber.bind(to: formViewModel.building).addDisposableTo(viewModel.disposeBag)
 
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
@@ -78,7 +78,7 @@ class OrderRegistrationViewModel {
           presentErrorAlert.onNext(error)
         }).asDriver(onErrorDriveWith: .empty())
 
-      placeOrderDriver.asObservable().bindTo(currentOrder).addDisposableTo(disposeBag)
+      placeOrderDriver.asObservable().bind(to: currentOrder).addDisposableTo(disposeBag)
       return placeOrderDriver
     }
 
@@ -97,7 +97,7 @@ class OrderRegistrationViewModel {
       .filter { currentOrder.value != nil }
       .map { currentOrder.value! }
       .filter { $0.paid }
-      .bindTo(paymentCompleted)
+      .bind(to: paymentCompleted)
       .addDisposableTo(disposeBag)
 
     self.presentPaymentSection = payButtonDidTap
@@ -107,7 +107,7 @@ class OrderRegistrationViewModel {
           let viewModel = PaymentViewModel(order: order)
 
           viewModel.didFinishPayment
-            .bindTo(paymentCompleted)
+            .bind(to: paymentCompleted)
             .addDisposableTo(disposeBag)
 
           return viewModel
@@ -120,7 +120,7 @@ class OrderRegistrationViewModel {
         return OrderPlacedPopupViewModel(orderNumber: "\(order.id)")
       }
 
-    formViewModel.isValid.asObservable().bindTo(buttonsAreEnabled).addDisposableTo(disposeBag)
+    formViewModel.isValid.asObservable().bind(to: buttonsAreEnabled).addDisposableTo(disposeBag)
   }
 
   func sendPaymentToken(token: Data, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {

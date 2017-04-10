@@ -36,7 +36,7 @@ class PaymentViewController: UIViewController, WKNavigationDelegate {
 
     navigationItem.leftBarButtonItem?.rx
       .tap
-      .bindTo(viewModel.didPressCloseButton)
+      .bind(to: viewModel.didPressCloseButton)
       .addDisposableTo(disposeBag)
 
     guard let url = viewModel.url else { return }

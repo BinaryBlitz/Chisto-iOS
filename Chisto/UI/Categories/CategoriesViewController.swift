@@ -103,7 +103,7 @@ class CategoriesViewController: UITableViewController, DefaultBarColoredViewCont
 
     searchController.searchBar.rx
       .text
-      .bindTo(viewModel.searchBarString)
+      .bind(to: viewModel.searchBarString)
       .addDisposableTo(disposeBag)
 
     // UI
@@ -148,7 +148,7 @@ class CategoriesViewController: UITableViewController, DefaultBarColoredViewCont
 
     tableView.rx
       .itemSelected
-      .bindTo(viewModel.itemDidSelect)
+      .bind(to: viewModel.itemDidSelect)
       .addDisposableTo(disposeBag)
 
     tableView.dataSource = nil

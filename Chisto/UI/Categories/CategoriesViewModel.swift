@@ -70,7 +70,7 @@ class CategoriesViewModel: CategoriesViewModelType {
     Observable
       .collection(from: realm.objects(Category.self).filter("isDeleted == %@", false).sorted(by: sortProperties))
       .map { Array($0) }
-      .bindTo(categories)
+      .bind(to: categories)
       .addDisposableTo(disposeBag)
 
     self.categories = categories

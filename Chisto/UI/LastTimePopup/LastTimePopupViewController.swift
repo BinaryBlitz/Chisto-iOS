@@ -53,8 +53,8 @@ class LastTimePopupViewController: UIViewController {
       stackView.addArrangedSubview(laundryItemView)
     }
 
-    showAllLaundriesButton.rx.tap.bindTo(viewModel.showAllLaundriesButtonDidTap).addDisposableTo(disposeBag)
-    orderButton.rx.tap.bindTo(viewModel.orderButtonDidTap).addDisposableTo(disposeBag)
+    showAllLaundriesButton.rx.tap.bind(to: viewModel.showAllLaundriesButtonDidTap).addDisposableTo(disposeBag)
+    orderButton.rx.tap.bind(to: viewModel.orderButtonDidTap).addDisposableTo(disposeBag)
   }
 
   override func viewWillAppear(_ animated: Bool) {

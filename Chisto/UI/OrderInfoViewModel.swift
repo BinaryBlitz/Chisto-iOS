@@ -58,11 +58,11 @@ class OrderInfoViewModel {
 
     self.order = order
 
-    DataManager.instance.getOrderInfo(orderId: orderId).bindTo(order).addDisposableTo(disposeBag)
+    DataManager.instance.getOrderInfo(orderId: orderId).bind(to: order).addDisposableTo(disposeBag)
 
     let orderLineItemsObservable = observableOrder.map { $0.orderItems }
 
-    observableOrder.map { $0.status == .completed }.bindTo(ratingButtonEnabled).addDisposableTo(disposeBag)
+    observableOrder.map { $0.status == .completed }.bind(to: ratingButtonEnabled).addDisposableTo(disposeBag)
 
     self.sections = orderLineItemsObservable.map { orderLineItems in
       let cellModels = orderLineItems.map(OrderInfoTableViewCellModel.init) as [OrderInfoTableViewCellModelType]
@@ -85,7 +85,7 @@ class OrderInfoViewModel {
       { $0?.rating != nil ?
         NSLocalizedString("editOrder", comment: "Edit order button") :
         NSLocalizedString("createOrder", comment: "Create order button")
-      }.bindTo(ratingButtonTitle).addDisposableTo(disposeBag)
+      }.bind(to: ratingButtonTitle).addDisposableTo(disposeBag)
 
   }
 

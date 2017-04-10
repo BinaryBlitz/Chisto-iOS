@@ -103,8 +103,8 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
 
   func configureFooter() {
     guard let viewModel = self.viewModel else { return }
-    viewModel.confirmOrderButtonTitle.asObservable().bindTo(confirmButton.rx.title(for: .normal)).addDisposableTo(disposeBag)
-    confirmButton.rx.tap.bindTo(viewModel.confirmOrderButtonDidTap).addDisposableTo(disposeBag)
+    viewModel.confirmOrderButtonTitle.asObservable().bind(to: confirmButton.rx.title(for: .normal)).addDisposableTo(disposeBag)
+    confirmButton.rx.tap.bind(to: viewModel.confirmOrderButtonDidTap).addDisposableTo(disposeBag)
   }
 
   func configureTableView() {
@@ -123,7 +123,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
     tableHeaderView.configure(viewModel: viewModel.orderConfirmTableHeaderViewModel)
     tableView.tableHeaderView = tableHeaderView
     tableView.rx.itemSelected
-      .bindTo(viewModel.itemDidSelect)
+      .bind(to: viewModel.itemDidSelect)
       .addDisposableTo(disposeBag)
 
     tableView.dataSource = nil

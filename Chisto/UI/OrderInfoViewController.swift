@@ -34,7 +34,7 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
     headerView.configure(viewModel: viewModel.orderInfoTableHeaderViewModel)
     footerView.configure(phone: viewModel.phoneNumber)
 
-    ratingButton.rx.tap.bindTo(viewModel.ratingButtonDidTap).addDisposableTo(disposeBag)
+    ratingButton.rx.tap.bind(to: viewModel.ratingButtonDidTap).addDisposableTo(disposeBag)
     configureTableView()
 
     footerView.phoneLabelDidTap
@@ -51,9 +51,9 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
         self?.present(alertController, animated: true, completion: nil)
       }).addDisposableTo(disposeBag)
 
-    viewModel.ratingButtonEnabled.asObservable().bindTo(ratingButton.rx.isEnabled).addDisposableTo(disposeBag)
+    viewModel.ratingButtonEnabled.asObservable().bind(to: ratingButton.rx.isEnabled).addDisposableTo(disposeBag)
 
-    viewModel.ratingButtonTitle.asObservable().bindTo(ratingButton.rx.title()).addDisposableTo(disposeBag)
+    viewModel.ratingButtonTitle.asObservable().bind(to: ratingButton.rx.title()).addDisposableTo(disposeBag)
 
     viewModel.presentRatingAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] viewModel in
         let viewController = OrderReviewAlertViewController.storyboardInstance()!

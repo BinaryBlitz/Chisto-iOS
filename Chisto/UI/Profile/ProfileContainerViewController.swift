@@ -19,7 +19,7 @@ class ProfileContainerViewController: UIViewController {
 
   override func viewDidLoad() {
 
-    viewModel.buttonIsHidden.asObservable().bindTo(logoutButton.rx.isHidden).addDisposableTo(disposeBag)
+    viewModel.buttonIsHidden.asObservable().bind(to: logoutButton.rx.isHidden).addDisposableTo(disposeBag)
     viewModel.dismissViewController.drive(onNext: { [weak self] in
         self?.dismiss(animated: true, completion: nil)
       }).addDisposableTo(disposeBag)
@@ -29,8 +29,8 @@ class ProfileContainerViewController: UIViewController {
       })
     }).addDisposableTo(disposeBag)
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName:"iconNavbarClose"), style: .plain, target: nil, action: nil)
-    navigationItem.leftBarButtonItem?.rx.tap.bindTo(viewModel.navigationCloseButtonDidTap).addDisposableTo(disposeBag)
+    navigationItem.leftBarButtonItem?.rx.tap.bind(to: viewModel.navigationCloseButtonDidTap).addDisposableTo(disposeBag)
 
-    logoutButton.rx.tap.bindTo(viewModel.logoutButtonDidTap).addDisposableTo(disposeBag)
+    logoutButton.rx.tap.bind(to: viewModel.logoutButtonDidTap).addDisposableTo(disposeBag)
   }
 }
