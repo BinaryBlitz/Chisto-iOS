@@ -39,10 +39,10 @@ class ItemSizeAlertViewController: UIViewController {
 
     _ = lengthField.rx.text <-> viewModel.lengthText
     _ = widthField.rx.text <-> viewModel.widthText
-    viewModel.areaText.asObservable().bindTo(areaField.rx.text).addDisposableTo(disposeBag)
+    viewModel.areaText.asObservable().bind(to: areaField.rx.text).addDisposableTo(disposeBag)
 
-    сontinueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
-    cancelButton.rx.tap.bindTo(viewModel.cancelButtonDidTap).addDisposableTo(disposeBag)
+    сontinueButton.rx.tap.bind(to: viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
+    cancelButton.rx.tap.bind(to: viewModel.cancelButtonDidTap).addDisposableTo(disposeBag)
 
     viewModel.dismissViewController.drive(onNext: { [weak self] success in
         UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {

@@ -40,7 +40,7 @@ class HasDecorationAlertViewModel {
     })
 
     Observable.of(yesButtonDidTapObservable, noButtonDidTapObservable, disableAlertButtonDidTapObservable).merge().map { orderItem }
-      .bindTo(didFinishAlert)
+      .bind(to: didFinishAlert)
       .addDisposableTo(disposeBag)
   }
 }

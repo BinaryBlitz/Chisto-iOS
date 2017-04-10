@@ -98,19 +98,19 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
 
     let orderConfirmTableHeaderViewModel = OrderConfirmTableHeaderViewModel(laundry: laundry)
     self.orderConfirmTableHeaderViewModel = orderConfirmTableHeaderViewModel
-    promoCode.asObservable().bindTo(orderConfirmTableHeaderViewModel.promoCode).addDisposableTo(disposeBag)
+    promoCode.asObservable().bind(to: orderConfirmTableHeaderViewModel.promoCode).addDisposableTo(disposeBag)
 
     self.presentPromoCodeAlert = orderConfirmTableHeaderViewModel.promoCodeButtonDidTap.map {
       let viewModel = PromoCodeAlertViewModel()
       viewModel.promoCodeDidEntered.asObservable()
         .filter { $0 != nil }
         .map { $0! }
-        .bindTo(promoCode).addDisposableTo(viewModel.disposeBag)
+        .bind(to: promoCode).addDisposableTo(viewModel.disposeBag)
 
       viewModel.promoCodeDidEntered.asObservable()
         .filter { $0 == nil }
         .map { _ in NSLocalizedString("promocodeNotFound", comment: "Error alert") }
-        .bindTo(presentErrorAlert)
+        .bind(to: presentErrorAlert)
         .addDisposableTo(viewModel.disposeBag)
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
@@ -136,7 +136,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
 
     self.presentRegistrationSection = shouldPresentRegistrationSection.map {
       let viewModel = RegistrationPhoneInputViewModel()
-      viewModel.didFinishRegistration.bindTo(didFinishRegistation).addDisposableTo(viewModel.disposeBag)
+      viewModel.didFinishRegistration.bind(to: didFinishRegistation).addDisposableTo(viewModel.disposeBag)
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
 

@@ -42,12 +42,12 @@ class CityNotFoundViewController: UIViewController {
     (phoneField.rx.text <-> viewModel.phoneTitle).addDisposableTo(disposeBag)
 
     maskedPhoneField.configure(textField: phoneField)
-    maskedPhoneField.isValid.asObservable().bindTo(viewModel.phoneIsValid).addDisposableTo(disposeBag)
+    maskedPhoneField.isValid.asObservable().bind(to: viewModel.phoneIsValid).addDisposableTo(disposeBag)
 
     viewModel
       .continueButtonEnabled
       .asObservable()
-      .bindTo(continueButton.rx.isEnabled)
+      .bind(to: continueButton.rx.isEnabled)
       .addDisposableTo(disposeBag)
 
     view.backgroundColor = UIColor(white: 0, alpha: 0.5)
@@ -57,12 +57,12 @@ class CityNotFoundViewController: UIViewController {
     // Rx
     continueButton.rx
       .tap
-      .bindTo(viewModel.continueButtonDidTap)
+      .bind(to: viewModel.continueButtonDidTap)
       .addDisposableTo(disposeBag)
 
     cancelButton.rx
       .tap
-      .bindTo(viewModel.cancelButtonDidTap)
+      .bind(to: viewModel.cancelButtonDidTap)
       .addDisposableTo(disposeBag)
 
     viewModel

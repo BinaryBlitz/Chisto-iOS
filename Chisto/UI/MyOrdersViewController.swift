@@ -42,7 +42,7 @@ class MyOrdersViewController: UITableViewController, DefaultBarColoredViewContro
       return cell
     }
 
-    tableView.rx.itemSelected.bindTo(viewModel.itemDidSelect).addDisposableTo(disposeBag)
+    tableView.rx.itemSelected.bind(to: viewModel.itemDidSelect).addDisposableTo(disposeBag)
 
     tableView.dataSource = nil
     viewModel.sections

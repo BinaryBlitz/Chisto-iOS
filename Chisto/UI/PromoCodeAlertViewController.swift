@@ -29,7 +29,7 @@ class PromoCodeAlertViewController: UIViewController {
 
     (promoCodeField.rx.text <-> viewModel.promoCodeText).addDisposableTo(disposeBag)
 
-    continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
+    continueButton.rx.tap.bind(to: viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
 
     viewModel.dismissViewController.drive(onNext: { [weak self] success in
         UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {

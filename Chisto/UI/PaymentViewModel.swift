@@ -16,9 +16,12 @@ class PaymentViewModel {
   let didFinishPayment = PublishSubject<Order>()
   let didRedirectToUrl = PublishSubject<URL?>()
   let dismissViewController: Driver<Void>
-  var url: URL? = nil
+
+
   let successString = "Success=true"
   let order: Order
+
+  var url: URL? = nil
 
   init(order: Order) {
     self.order = order

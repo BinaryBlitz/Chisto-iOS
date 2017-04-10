@@ -38,7 +38,7 @@ class ItemInfoViewController: UIViewController {
     clothesItemRelatedLabel.text = viewModel?.itemDescription
 
     viewModel?.currentAmount.asObservable().map { String($0) }
-      .bindTo(counterLabel.rx.text)
+      .bind(to: counterLabel.rx.text)
       .addDisposableTo(disposeBag)
 
     configureTableView()
@@ -71,7 +71,7 @@ class ItemInfoViewController: UIViewController {
 
     guard let viewModel = viewModel else { return }
 
-    tableView.rx.itemDeleted.bindTo(viewModel.tableItemDeleted)
+    tableView.rx.itemDeleted.bind(to: viewModel.tableItemDeleted)
       .addDisposableTo(disposeBag)
 
     tableView.dataSource = nil
@@ -88,11 +88,11 @@ class ItemInfoViewController: UIViewController {
   func configureButtons() {
     guard let viewModel = viewModel else { return }
 
-    navigationItem.leftBarButtonItem?.rx.tap.bindTo(viewModel.navigationCloseButtonDidTap).addDisposableTo(viewModel.disposeBag)
-    addServiceButton.rx.tap.bindTo(viewModel.addServiceButtonDidTap).addDisposableTo(disposeBag)
-    continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
-    counterIncButton.rx.tap.bindTo(viewModel.counterIncButtonDidTap).addDisposableTo(disposeBag)
-    counterDecButton.rx.tap.bindTo(viewModel.counterDecButtonDidTap).addDisposableTo(disposeBag)
+    navigationItem.leftBarButtonItem?.rx.tap.bind(to: viewModel.navigationCloseButtonDidTap).addDisposableTo(viewModel.disposeBag)
+    addServiceButton.rx.tap.bind(to: viewModel.addServiceButtonDidTap).addDisposableTo(disposeBag)
+    continueButton.rx.tap.bind(to: viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
+    counterIncButton.rx.tap.bind(to: viewModel.counterIncButtonDidTap).addDisposableTo(disposeBag)
+    counterDecButton.rx.tap.bind(to: viewModel.counterDecButtonDidTap).addDisposableTo(disposeBag)
   }
 
   override func viewWillAppear(_ animated: Bool) {

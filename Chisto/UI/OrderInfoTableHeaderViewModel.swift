@@ -32,25 +32,25 @@ class OrderInfoTableHeaderViewModel {
   let phoneNumber = "+7 495 766-78-49"
 
   init(order: Observable<Order>) {
-    order.map { $0.createdAt.mediumDate }.bindTo(self.orderDate).addDisposableTo(disposeBag)
-    order.map { $0.status?.description ?? "" }.bindTo(self.orderStatus).addDisposableTo(disposeBag)
-    order.map { $0.status?.image }.bindTo(self.orderStatusIcon).addDisposableTo(disposeBag)
-    order.map { $0.status?.color ?? .chsSkyBlue }.bindTo(self.orderStatusColor).addDisposableTo(disposeBag)
+    order.map { $0.createdAt.mediumDate }.bind(to: self.orderDate).addDisposableTo(disposeBag)
+    order.map { $0.status?.description ?? "" }.bind(to: self.orderStatus).addDisposableTo(disposeBag)
+    order.map { $0.status?.image }.bind(to: self.orderStatusIcon).addDisposableTo(disposeBag)
+    order.map { $0.status?.color ?? .chsSkyBlue }.bind(to: self.orderStatusColor).addDisposableTo(disposeBag)
 
-    order.map { $0.deliveryPriceString }.bindTo(deliveryPrice).addDisposableTo(disposeBag)
-    order.map { $0.orderPrice.currencyString }.bindTo(orderPrice).addDisposableTo(disposeBag)
-    order.map { $0.totalPrice.currencyString }.bindTo(totalprice).addDisposableTo(disposeBag)
-    order.map { $0.paymentMethod.description }.bindTo(paymentType).addDisposableTo(disposeBag)
-    order.map { $0.paymentMethod.image }.bindTo(paymentMethodImage).addDisposableTo(disposeBag)
-    order.map { $0.promoCode?.code }.bindTo(promoCodeText).addDisposableTo(disposeBag)
-    order.map { $0.promoCode }.bindTo(promoCode).addDisposableTo(disposeBag)
-    order.map { $0.promoCodeDiscount.currencyString }.bindTo(promoCodeDiscount).addDisposableTo(disposeBag)
+    order.map { $0.deliveryPriceString }.bind(to: deliveryPrice).addDisposableTo(disposeBag)
+    order.map { $0.orderPrice.currencyString }.bind(to: orderPrice).addDisposableTo(disposeBag)
+    order.map { $0.totalPrice.currencyString }.bind(to: totalprice).addDisposableTo(disposeBag)
+    order.map { $0.paymentMethod.description }.bind(to: paymentType).addDisposableTo(disposeBag)
+    order.map { $0.paymentMethod.image }.bind(to: paymentMethodImage).addDisposableTo(disposeBag)
+    order.map { $0.promoCode?.code }.bind(to: promoCodeText).addDisposableTo(disposeBag)
+    order.map { $0.promoCode }.bind(to: promoCode).addDisposableTo(disposeBag)
+    order.map { $0.promoCodeDiscount.currencyString }.bind(to: promoCodeDiscount).addDisposableTo(disposeBag)
 
     let realm = RealmManager.instance.uiRealm
 
     let observableOrderLaundry = order.map { realm.object(ofType: Laundry.self, forPrimaryKey: $0.laundryId) }
-    observableOrderLaundry.map { $0?.name }.bindTo(laundryTitle).addDisposableTo(disposeBag)
-    observableOrderLaundry.map { $0?.descriptionText }.bindTo(laundryDescriprion).addDisposableTo(disposeBag)
-    observableOrderLaundry.map { URL(string: $0?.logoUrl ?? "") }.bindTo(laundryIcon).addDisposableTo(disposeBag)
+    observableOrderLaundry.map { $0?.name }.bind(to: laundryTitle).addDisposableTo(disposeBag)
+    observableOrderLaundry.map { $0?.descriptionText }.bind(to: laundryDescriprion).addDisposableTo(disposeBag)
+    observableOrderLaundry.map { URL(string: $0?.logoUrl ?? "") }.bind(to: laundryIcon).addDisposableTo(disposeBag)
   }
 }

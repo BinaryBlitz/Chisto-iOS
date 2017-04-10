@@ -40,7 +40,7 @@ class LocationSelectViewController: UIViewController {
 
     guard let viewModel = viewModel else { return }
 
-    navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.locationButtonDidTap).addDisposableTo(disposeBag)
+    navigationItem.rightBarButtonItem?.rx.tap.bind(to: viewModel.locationButtonDidTap).addDisposableTo(disposeBag)
     navigationItem.rightBarButtonItem?.rx.tap.asDriver().drive(onNext: { [weak self] in
         self?.mapView.isMyLocationEnabled = true
       }).addDisposableTo(disposeBag)
@@ -70,7 +70,7 @@ class LocationSelectViewController: UIViewController {
       }).addDisposableTo(disposeBag)
 
     saveButton.rx.tap.asObservable()
-      .bindTo(viewModel.saveButtonDidTap)
+      .bind(to: viewModel.saveButtonDidTap)
       .addDisposableTo(disposeBag)
 
   }

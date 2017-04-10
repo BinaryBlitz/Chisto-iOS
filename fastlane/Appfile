@@ -1,5 +1,5 @@
 app_identifier 'ru.binaryblitz.Chisto' # The bundle identifier of your app
-apple_id ‘app@binaryblitz.ru’ # Your Apple email address
+apple_id 'app@binaryblitz.ru' # Your Apple email address
 
 team_id '4WGG8V34K4'  # Developer Portal Team ID
 

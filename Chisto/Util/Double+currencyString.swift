@@ -21,3 +21,16 @@ extension Double {
   }
 
 }
+
+extension Decimal {
+  var currencyString: String {
+    let currencyFormatter = NumberFormatter()
+
+    let localeIdentifier = "ru_RU"
+    currencyFormatter.numberStyle = NumberFormatter.Style.currency
+    currencyFormatter.locale = Locale(identifier: localeIdentifier)
+    currencyFormatter.minimumFractionDigits = 0
+    currencyFormatter.maximumFractionDigits = 0
+    return currencyFormatter.string(from: NSDecimalNumber(decimal: self)) ?? ""
+  }
+}

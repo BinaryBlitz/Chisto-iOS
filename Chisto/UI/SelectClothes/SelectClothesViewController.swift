@@ -128,7 +128,7 @@ class SelectClothesViewController: UITableViewController {
     guard let viewModel = viewModel else { return }
 
     tableView.rx.itemSelected
-      .bindTo(viewModel.itemDidSelect)
+      .bind(to: viewModel.itemDidSelect)
       .addDisposableTo(disposeBag)
 
     tableView.dataSource = nil

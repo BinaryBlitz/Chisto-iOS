@@ -23,7 +23,7 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
 
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 190
-    navigationItem.rightBarButtonItem?.rx.tap.bindTo(viewModel.sortButtonDidTap)
+    navigationItem.rightBarButtonItem?.rx.tap.bind(to: viewModel.sortButtonDidTap)
       .addDisposableTo(disposeBag)
 
     viewModel.presentSortSelectSection.drive(onNext: { [weak self] _ in
@@ -94,7 +94,7 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
       .addDisposableTo(disposeBag)
 
     tableView.rx.itemSelected
-      .bindTo(viewModel.itemDidSelect)
+      .bind(to: viewModel.itemDidSelect)
       .addDisposableTo(disposeBag)
 
     tableView.dataSource = nil

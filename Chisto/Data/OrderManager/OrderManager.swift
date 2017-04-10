@@ -61,7 +61,7 @@ class OrderManager {
       price += laundry.collectionPrice(amount: price)
     }
     if let promoCode = promoCode {
-      price -= price * Double(promoCode.discount) / 100
+      price -= price * NSDecimalNumber(decimal: promoCode.discount).doubleValue / 100
     }
     return price
   }

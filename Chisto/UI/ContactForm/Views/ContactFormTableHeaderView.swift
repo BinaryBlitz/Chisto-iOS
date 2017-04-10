@@ -22,8 +22,8 @@ class ContactFormTableHeaderView: UIView {
     labelButton.setTitle(viewModel.title, for: .normal)
     labelButton.isEnabled = viewModel.isEnabled
 
-    labelButton.rx.tap.bindTo(viewModel.buttonDidTap).addDisposableTo(disposeBag)
-    iconButton.rx.tap.bindTo(viewModel.buttonDidTap).addDisposableTo(disposeBag)
+    labelButton.rx.tap.bind(to: viewModel.buttonDidTap).addDisposableTo(disposeBag)
+    iconButton.rx.tap.bind(to: viewModel.buttonDidTap).addDisposableTo(disposeBag)
   }
 
 }

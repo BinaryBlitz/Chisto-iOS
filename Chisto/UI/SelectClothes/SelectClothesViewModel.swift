@@ -78,7 +78,7 @@ class SelectClothesViewModel: SelectClothesViewModelType {
       return Array(itemsCollection.filter(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)))
     }
 
-    filteredItems.bindTo(items).addDisposableTo(disposeBag)
+    filteredItems.bind(to: items).addDisposableTo(disposeBag)
 
     if let category = category {
       DataManager.instance.fetchCategoryClothes(category: category).subscribe(onError: { error in
@@ -89,7 +89,7 @@ class SelectClothesViewModel: SelectClothesViewModelType {
     self.sections = items.asDriver().map { items in
       let cellModels = items.map(SelectClothesTableViewCellModel.init) as [SelectClothesTableViewCellModelType]
 
-      cellModels.forEach { $0.slowItemButtonDidTap.bindTo(presentSlowItemAlert).addDisposableTo($0.disposeBag) }
+      cellModels.forEach { $0.slowItemButtonDidTap.bind(to: presentSlowItemAlert).addDisposableTo($0.disposeBag) }
 
       let section = SelectClothesSectionModel(model: "", items: cellModels)
       return [section]
@@ -100,7 +100,7 @@ class SelectClothesViewModel: SelectClothesViewModelType {
     self.presentHasDecorationAlert = selectedItemObservable.filter { $0.hasDecoration && !ProfileManager.instance.userProfile.value.disabledDecorationAlert }.map { item in
       let orderItem = OrderItem(clothesItem: item)
       let viewModel = HasDecorationAlertViewModel(orderItem: orderItem)
-      viewModel.didFinishAlert.bindTo(decorationAlertDidFinish).addDisposableTo(viewModel.disposeBag)
+      viewModel.didFinishAlert.bind(to: decorationAlertDidFinish).addDisposableTo(viewModel.disposeBag)
       return viewModel
     }.asDriver(onErrorDriveWith: .empty())
 

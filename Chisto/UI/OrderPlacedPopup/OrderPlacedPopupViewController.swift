@@ -35,7 +35,7 @@ class OrderPlacedPopupViewController: UIViewController {
     guard let viewModel = viewModel else { return }
 
     // Rx
-    continueButton.rx.tap.bindTo(viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
+    continueButton.rx.tap.bind(to: viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
 
     viewModel.dismissViewController.drive(onNext: { [weak self] in
         UIView.animate(withDuration: self?.animationDuration ?? 0, animations: {

@@ -25,10 +25,10 @@ class User: Mappable {
 
 class Rating: ServerObject {
 
-  var value: Int = 0
+  dynamic var value: Int = 0
+  dynamic var content: String = ""
+  dynamic var createdAt: Date? = nil
   var user: User? = nil
-  var content: String = ""
-  var createdAt: Date? = nil
 
   override func mapping(map: Map) {
     value <- map["value"]

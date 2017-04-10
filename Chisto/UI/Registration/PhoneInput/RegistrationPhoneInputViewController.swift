@@ -59,12 +59,12 @@ class RegistrationPhoneInputViewController: UIViewController {
 
     phoneInputField.rx
       .text
-      .bindTo(viewModel.phoneText)
+      .bind(to: viewModel.phoneText)
       .addDisposableTo(disposeBag)
 
     sendButton.rx
       .tap
-      .bindTo(viewModel.sendButtonDidTap)
+      .bind(to: viewModel.sendButtonDidTap)
       .addDisposableTo(disposeBag)
 
     viewModel

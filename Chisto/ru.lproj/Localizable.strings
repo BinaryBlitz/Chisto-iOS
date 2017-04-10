@@ -217,3 +217,15 @@
 
 /* Slow item alert */
 "okSlowItemAlert" = "ОК";
+
+/* Apple Pay summary */
+"promoCodeSummaryItem" = "Промокод";
+
+/* Apple Pay summary */
+"deliverySummaryItem" = "Доставка";
+
+/* Edit order button */
+"editOrder" = "Редактировать отзыв";
+
+/* Create order button */
+"createOrder" = "Оставить отзыв";

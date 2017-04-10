@@ -43,7 +43,7 @@ class MyOrdersViewModel: MyOrdersViewModelType {
 
     Observable.collection(from: realmOrders)
       .map { Array($0) }
-      .bindTo(orders)
+      .bind(to: orders)
       .addDisposableTo(disposeBag)
 
     let fetchOrdersObservable = DataManager.instance.fetchOrders()

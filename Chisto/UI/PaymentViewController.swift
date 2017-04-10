@@ -27,10 +27,20 @@ class PaymentViewController: UIViewController, WKNavigationDelegate {
         self?.dismiss(animated: true, completion: nil)
       }).addDisposableTo(disposeBag)
 
-    navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName:"iconNavbarClose"), style: .plain, target: nil, action: nil)
-    navigationItem.leftBarButtonItem?.rx.tap.bindTo(viewModel.didPressCloseButton).addDisposableTo(disposeBag)
+    navigationItem.leftBarButtonItem = UIBarButtonItem(
+      image: #imageLiteral(resourceName:"iconNavbarClose"),
+      style: .plain,
+      target: nil,
+      action: nil
+    )
+
+    navigationItem.leftBarButtonItem?.rx
+      .tap
+      .bind(to: viewModel.didPressCloseButton)
+      .addDisposableTo(disposeBag)
 
     guard let url = viewModel.url else { return }
+
     let request = URLRequest(url: url)
     webView.load(request)
   }

@@ -78,7 +78,7 @@ class CitySelectViewModel: CitySelectViewModelType {
     let cities = Variable<[City]>([])
     Observable.collection(from: realm.objects(City.self).filter("isDeleted == %@", false))
       .map { Array($0) }
-      .bindTo(cities)
+      .bind(to: cities)
       .addDisposableTo(disposeBag)
 
     let cityClosedToUser = Variable<City?>(nil)
@@ -107,14 +107,14 @@ class CitySelectViewModel: CitySelectViewModelType {
       .flatMap {
         LocationManager.instance.locateDevice()
       }
-      .bindTo(location)
+      .bind(to: location)
       .addDisposableTo(disposeBag)
 
     cancelSearchButtonDidTap.asObservable()
       .map { event in
         return ""
       }
-      .bindTo(searchString)
+      .bind(to: searchString)
       .addDisposableTo(disposeBag)
 
     self.presentCityNotFoundController = cityNotFoundButtonDidTap.asDriver(onErrorDriveWith: .empty())

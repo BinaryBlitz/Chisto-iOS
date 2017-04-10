@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Pxf-2t-tYQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Pxf-2t-tYQ">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -372,20 +372,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2O-sw-1sU">
-                                                    <rect key="frame" x="46" y="24" width="96.333333333333343" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2O-sw-1sU">
+                                                    <rect key="frame" x="46" y="24" width="97" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
+                                                    <color key="textColor" red="0.70588235290000001" green="0.73333333329999995" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconVisaNoactive" highlightedImage="iconVisaActive" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S4R-Oh-4jz">
-                                                    <rect key="frame" x="155.33333333333334" y="23" width="31" height="20"/>
+                                                    <rect key="frame" x="156" y="23" width="31" height="20"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconMastercardNoactive" highlightedImage="iconMastercardActtive" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iLC-2U-ntd">
-                                                    <rect key="frame" x="191.33333333333334" y="23" width="31" height="20"/>
+                                                    <rect key="frame" x="192" y="23" width="31" height="20"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckOn" translatesAutoresizingMaskIntoConstraints="NO" id="D1G-rA-v9y">
-                                                    <rect key="frame" x="372" y="19" width="27" height="27"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckOff" highlightedImage="iconCheckOn" translatesAutoresizingMaskIntoConstraints="NO" id="D1G-rA-v9y">
+                                                    <rect key="frame" x="372" y="19" width="27" height="28"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8O-2U-vaO">
                                                     <rect key="frame" x="46" y="65" width="353" height="0.0"/>
@@ -418,8 +417,55 @@
                                             <outletCollection property="gestureRecognizers" destination="Pho-bx-t2p" appends="YES" id="wg3-oA-cB9"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="65" id="Qk7-RO-VcP">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="65" id="xOY-nC-n7y">
                                         <rect key="frame" x="0.0" y="728.33333333333337" width="414" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xOY-nC-n7y" id="U7t-Tl-BEl">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple Pay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBT-vk-wo4">
+                                                    <rect key="frame" x="46" y="24" width="69" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.70588235290000001" green="0.73333333329999995" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckOff" highlightedImage="iconCheckOn" translatesAutoresizingMaskIntoConstraints="NO" id="3jk-ko-xkw">
+                                                    <rect key="frame" x="372" y="19" width="27" height="28"/>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9M-ay-DE8">
+                                                    <rect key="frame" x="46" y="65" width="353" height="0.0"/>
+                                                    <color key="backgroundColor" red="0.75686274509999996" green="0.78039215689999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="0.5" id="5o0-OG-BZf"/>
+                                                        <constraint firstAttribute="height" priority="750" id="VpS-LY-ndL"/>
+                                                    </constraints>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconApplepayNoactive" highlightedImage="iconApplepayActive" translatesAutoresizingMaskIntoConstraints="NO" id="Boh-JQ-65J">
+                                                    <rect key="frame" x="128" y="23" width="31" height="20"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="3jk-ko-xkw" firstAttribute="centerY" secondItem="U7t-Tl-BEl" secondAttribute="centerY" id="1e2-oI-rqg"/>
+                                                <constraint firstAttribute="bottom" secondItem="S9M-ay-DE8" secondAttribute="bottom" id="7uk-H4-Jfg"/>
+                                                <constraint firstItem="S9M-ay-DE8" firstAttribute="leading" secondItem="U7t-Tl-BEl" secondAttribute="leading" constant="46" id="GLB-O1-pHB"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="3jk-ko-xkw" secondAttribute="trailing" constant="15" id="T9m-nc-uf3"/>
+                                                <constraint firstItem="Boh-JQ-65J" firstAttribute="centerY" secondItem="RBT-vk-wo4" secondAttribute="centerY" id="YyX-8t-2Mh"/>
+                                                <constraint firstItem="RBT-vk-wo4" firstAttribute="leading" secondItem="U7t-Tl-BEl" secondAttribute="leadingMargin" constant="46" id="gjS-ck-h1c"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="S9M-ay-DE8" secondAttribute="trailing" constant="15" id="jXA-Ed-k8R"/>
+                                                <constraint firstItem="RBT-vk-wo4" firstAttribute="centerY" secondItem="U7t-Tl-BEl" secondAttribute="centerY" id="mCg-D2-ncf"/>
+                                                <constraint firstItem="Boh-JQ-65J" firstAttribute="leading" secondItem="RBT-vk-wo4" secondAttribute="trailing" constant="13" id="nEY-ZI-5LW"/>
+                                            </constraints>
+                                            <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="GzQ-E3-oTE" appends="YES" id="yBS-og-jcp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="65" id="Qk7-RO-VcP">
+                                        <rect key="frame" x="0.0" y="793.33333333333337" width="414" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qk7-RO-VcP" id="qed-lP-3hG">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
@@ -428,10 +474,9 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TtB-pB-2Xh">
                                                     <rect key="frame" x="46" y="24" width="35" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
+                                                    <color key="textColor" red="0.70588235290000001" green="0.73333333329999995" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckOff" translatesAutoresizingMaskIntoConstraints="NO" id="1X6-oG-rzb">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckOff" highlightedImage="iconCheckOn" translatesAutoresizingMaskIntoConstraints="NO" id="1X6-oG-rzb">
                                                     <rect key="frame" x="372" y="19" width="27" height="28"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYh-jJ-vgu">
@@ -471,6 +516,7 @@
                     </tableView>
                     <connections>
                         <outlet property="apartmentField" destination="Ffi-Cd-Wuq" id="WPg-vu-7zw"/>
+                        <outlet property="applePayLabel" destination="RBT-vk-wo4" id="0JE-dn-S49"/>
                         <outlet property="buildingField" destination="EoK-sS-Wyh" id="Wzy-rb-UI2"/>
                         <outlet property="cityButton" destination="TKR-34-VbJ" id="0bt-p9-Cee"/>
                         <outlet property="cityField" destination="Q4U-Kd-ebp" id="VEX-1J-S87"/>
@@ -478,14 +524,17 @@
                         <outlet property="emailField" destination="80I-v4-6N6" id="bGp-qV-zjc"/>
                         <outlet property="firstNameField" destination="7Lr-Mh-tXP" id="alT-bu-974"/>
                         <outlet property="lastNameField" destination="0fM-cp-xT4" id="geS-RJ-gF7"/>
-                        <outlet property="payByCashCheckImageView" destination="1X6-oG-rzb" id="Dtt-zC-sxN"/>
                         <outlet property="payByCashLabel" destination="TtB-pB-2Xh" id="lY9-hb-UuS"/>
-                        <outlet property="payWithCardCheckImageView" destination="D1G-rA-v9y" id="xAI-6K-Deo"/>
+                        <outlet property="payWithApplePayView" destination="U7t-Tl-BEl" id="ovk-zX-D7x"/>
                         <outlet property="payWithCardLabel" destination="y2O-sw-1sU" id="G1I-nh-cTv"/>
                         <outlet property="phoneField" destination="czl-MC-Kzf" id="Pwg-wV-3Tc"/>
                         <outlet property="streetField" destination="acm-lZ-3Xp" id="ycK-lU-aYD"/>
                         <outletCollection property="paymentMethodCardIconViews" destination="iLC-2U-ntd" collectionClass="NSMutableArray" id="vWv-8H-bfD"/>
                         <outletCollection property="paymentMethodCardIconViews" destination="S4R-Oh-4jz" collectionClass="NSMutableArray" id="t1Z-BT-bxE"/>
+                        <outletCollection property="paymentMethodCardIconViews" destination="D1G-rA-v9y" collectionClass="NSMutableArray" id="lYB-uH-mVd"/>
+                        <outletCollection property="payByCashIconViews" destination="1X6-oG-rzb" collectionClass="NSMutableArray" id="TAm-Us-OQK"/>
+                        <outletCollection property="payWithApplePayIconViews" destination="Boh-JQ-65J" collectionClass="NSMutableArray" id="0wa-9F-M0T"/>
+                        <outletCollection property="payWithApplePayIconViews" destination="3jk-ko-xkw" collectionClass="NSMutableArray" id="qzm-jQ-LGN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxW-D9-oEQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -499,11 +548,18 @@
                         <action selector="payWithCardDidTap:" destination="Pxf-2t-tYQ" id="hij-w4-cDP"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="GzQ-E3-oTE">
+                    <connections>
+                        <action selector="payWithApplePayDidTap:" destination="Pxf-2t-tYQ" id="hlA-fR-gdx"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="85.507246376811594" y="-40.760869565217398"/>
         </scene>
     </scenes>
     <resources>
+        <image name="iconApplepayActive" width="31" height="20"/>
+        <image name="iconApplepayNoactive" width="31" height="20"/>
         <image name="iconCheckOff" width="27" height="28"/>
         <image name="iconCheckOn" width="27" height="27"/>
         <image name="iconMastercardActtive" width="31" height="20"/>

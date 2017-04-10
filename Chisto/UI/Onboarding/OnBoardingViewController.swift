@@ -27,7 +27,7 @@ class OnBoardingViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    goButton.rx.tap.bindTo(viewModel.goButtonDidTap).addDisposableTo(disposeBag)
+    goButton.rx.tap.bind(to: viewModel.goButtonDidTap).addDisposableTo(disposeBag)
 
     viewModel.dismissViewController.drive(onNext: { [weak self] in
         self?.dismiss(animated: true, completion: nil)

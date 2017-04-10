@@ -98,7 +98,7 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate, UISearch
     guard let viewModel = viewModel else { return }
     navigationItem.rightBarButtonItem?.rx
       .tap
-      .bindTo(viewModel.locationButtonDidTap)
+      .bind(to: viewModel.locationButtonDidTap)
       .addDisposableTo(disposeBag)
 
   }
@@ -120,10 +120,10 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate, UISearch
     searchBar.rx.searchButtonClicked.asDriver().drive(onNext: { [weak self] in
         self?.searchBar.resignFirstResponder()
       }).addDisposableTo(disposeBag)
-    searchBar.rx.cancelButtonClicked.bindTo(viewModel.cancelSearchButtonDidTap).addDisposableTo(disposeBag)
-    searchBar.rx.textDidBeginEditing.bindTo(viewModel.searchBarDidBeginEditing).addDisposableTo(disposeBag)
-    searchBar.rx.textDidEndEditing.bindTo(viewModel.searchBarDidEndEditing).addDisposableTo(disposeBag)
-    searchBar.rx.text.bindTo(viewModel.searchString)
+    searchBar.rx.cancelButtonClicked.bind(to: viewModel.cancelSearchButtonDidTap).addDisposableTo(disposeBag)
+    searchBar.rx.textDidBeginEditing.bind(to: viewModel.searchBarDidBeginEditing).addDisposableTo(disposeBag)
+    searchBar.rx.textDidEndEditing.bind(to: viewModel.searchBarDidEndEditing).addDisposableTo(disposeBag)
+    searchBar.rx.text.bind(to: viewModel.searchString)
       .addDisposableTo(disposeBag)
 
   }
@@ -149,7 +149,7 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate, UISearch
     tableView.delegate = nil
     tableView.rx.setDelegate(self).addDisposableTo(disposeBag)
 
-    tableView.rx.itemSelected.bindTo(viewModel.itemDidSelect).addDisposableTo(disposeBag)
+    tableView.rx.itemSelected.bind(to: viewModel.itemDidSelect).addDisposableTo(disposeBag)
 
     tableView.dataSource = nil
     viewModel.sections
@@ -162,7 +162,7 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate, UISearch
     // Bindings
     guard let viewModel = viewModel else { return }
 
-    goButton.rx.tap.bindTo(viewModel.cityNotFoundButtonDidTap).addDisposableTo(disposeBag)
+    goButton.rx.tap.bind(to: viewModel.cityNotFoundButtonDidTap).addDisposableTo(disposeBag)
   }
 
   override func viewWillAppear(_ animated: Bool) {
