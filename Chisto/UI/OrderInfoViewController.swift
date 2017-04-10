@@ -85,6 +85,11 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
       .drive(self.tableView.rx.items(dataSource: self.dataSource))
       .addDisposableTo(self.disposeBag)
 
+    viewModel.order.asObservable().subscribe(onNext: { [weak self] _ in
+      self?.tableView.setNeedsLayout()
+      self?.tableView.layoutIfNeeded()
+    }).addDisposableTo(disposeBag)
+
     tableView.estimatedRowHeight = 100
     tableView.rowHeight = UITableViewAutomaticDimension
   }
