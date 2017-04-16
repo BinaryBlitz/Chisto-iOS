@@ -31,6 +31,7 @@ class ProfileManager {
   }
 
   func logout() {
+    OrderManager.instance.clearOrderItems()
     let realm = try! Realm()
     try! realm.write {
       realm.deleteAll()

@@ -51,6 +51,7 @@ class OrderManager {
   }
 
   func clearOrderItems() {
+    currentLaundry = nil
     currentOrderItems.onNext([])
   }
 
