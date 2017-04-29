@@ -10,13 +10,15 @@ import UIKit
 import RxDataSources
 import RxSwift
 
-class CategoriesViewController: UITableViewController, DefaultBarColoredViewController {
+class ClothesViewController: UITableViewController, DefaultBarColoredViewController {
   var searchController: UISearchController!
   var resultItemsController = SelectClothesViewController.storyboardInstance()!
 
-  var dataSource = RxTableViewSectionedReloadDataSource<CategoriesSectionModel>()
-  let viewModel = CategoriesViewModel()
+  var dataSource = RxTableViewSectionedReloadDataSource<ItemsSectionModel>()
+  let viewModel = ClothesViewModel()
   let disposeBag = DisposeBag()
+
+  let headerView = CategoriesHeaderView.nibInstance()!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -45,13 +47,14 @@ class CategoriesViewController: UITableViewController, DefaultBarColoredViewCont
     configureTableView()
     configureSearch()
     configureNavigations()
+    headerView.viewModel = viewModel.headerViewModel
   }
 
   func configureNavigations() {
     viewModel
-      .presentItemsSection
+      .presentServicesSection
       .drive(onNext: { [weak self] viewModel in
-        let viewController = SelectClothesViewController.storyboardInstance()!
+        let viewController = ServiceSelectViewController.storyboardInstance()!
         viewController.viewModel = viewModel
 
         self?.navigationController?.pushViewController(viewController, animated: true)
@@ -80,38 +83,26 @@ class CategoriesViewController: UITableViewController, DefaultBarColoredViewCont
         self.present(alertController, animated: true, completion: nil)
       })
       .addDisposableTo(disposeBag)
-
-    viewModel.selectClothesViewModel.presentSelectServiceSection
-      .drive(onNext: { [weak self] viewModel in
-        let viewController = ServiceSelectViewController.storyboardInstance()!
-        viewController.viewModel = viewModel
-        self?.navigationController?.pushViewController(viewController, animated: true)
-        self?.searchController.isActive = false
-      })
-      .addDisposableTo(disposeBag)
   }
 
 
   func configureSearch() {
-    searchController = UISearchController(searchResultsController: resultItemsController)
+    let searchController = UISearchController(searchResultsController: nil)
     searchController.searchBar.sizeToFit()
     searchController.delegate = self
 
-    resultItemsController.viewModel = viewModel.selectClothesViewModel
-
     tableView.tableHeaderView = searchController.searchBar
-
-    searchController.searchBar.rx
-      .text
-      .bind(to: viewModel.searchBarString)
-      .addDisposableTo(disposeBag)
 
     // UI
     definesPresentationContext = true
-    resultItemsController.extendedLayoutIncludesOpaqueBars = true
-    resultItemsController.edgesForExtendedLayout = UIRectEdge([])
 
-    guard let searchBar = searchController?.searchBar else { return }
+    let searchBar = searchController.searchBar
+
+    searchController
+      .searchBar
+      .rx.text
+      .bind(to: viewModel.searchBarString)
+      .addDisposableTo(disposeBag)
 
     searchBar.barTintColor = UIColor.chsSkyBlue
     searchBar.layer.borderWidth = 1
@@ -132,9 +123,9 @@ class CategoriesViewController: UITableViewController, DefaultBarColoredViewCont
     // Bindings
     dataSource.configureCell = { _, tableView, indexPath, cellViewModel in
       let cell = tableView.dequeueReusableCell(
-        withIdentifier: "CategoryTableViewCell",
+        withIdentifier: "ItemTableViewCell",
         for: indexPath
-      ) as! CategoryTableViewCell
+      ) as! ItemTableViewCell
 
       cell.configure(viewModel: cellViewModel)
       return cell
@@ -163,9 +154,18 @@ class CategoriesViewController: UITableViewController, DefaultBarColoredViewCont
     }
   }
 
+
+  override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    return headerView
+  }
+  
+  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return 100
+  }
+
 }
 
-extension CategoriesViewController: UISearchControllerDelegate {
+extension ClothesViewController: UISearchControllerDelegate {
   func willPresentSearchController(_ searchController: UISearchController) {
     viewModel.didStartSearching.onNext()
   }

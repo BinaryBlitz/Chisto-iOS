@@ -1,5 +1,5 @@
 //
-//  CategoryTableViewCell.swift
+//  ClothesItemTableViewCell.swift
 //  Chisto
 //
 //  Created by Алексей on 13.10.16.
@@ -10,15 +10,13 @@ import RxSwift
 import Kingfisher
 import UIKit
 
-class CategoryTableViewCell: UITableViewCell {
+class ItemTableViewCell: UITableViewCell {
 
   @IBOutlet weak var categoryIconImageView: UIImageView!
-
   @IBOutlet weak var titleLabel: UILabel!
-
   @IBOutlet weak var descriptionLabel: UILabel!
 
-  func configure(viewModel: CategoryTableViewCellModelType) {
+  func configure(viewModel: ItemTableViewCellModelType) {
 
     categoryIconImageView.kf.setImage(with: viewModel.iconUrl) { [weak self] image, _, _, _ in
       guard let image = image?.withRenderingMode(.alwaysTemplate) else { return }

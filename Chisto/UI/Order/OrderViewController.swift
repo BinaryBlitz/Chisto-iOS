@@ -108,7 +108,7 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
   func configureNavigations() {
 
     viewModel.presentCategoriesViewController.drive(onNext: { [weak self] in
-        let viewController = CategoriesNavigationController.storyboardInstance()!
+        let viewController = ClothesNavigationController.storyboardInstance()!
         self?.present(viewController, animated: true)
       }).addDisposableTo(disposeBag)
 

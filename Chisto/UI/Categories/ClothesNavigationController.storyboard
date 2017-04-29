@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LRI-Os-eGE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LRI-Os-eGE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Categories Navigation Controller-->
+        <!--Clothes Navigation Controller-->
         <scene sceneID="uH8-bp-MZB">
             <objects>
-                <navigationController id="LRI-Os-eGE" customClass="CategoriesNavigationController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="LRI-Os-eGE" customClass="ClothesNavigationController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6lk-oM-p6d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="-614" y="124"/>
         </scene>
-        <!--CategoriesViewController-->
+        <!--ClothesViewController-->
         <scene sceneID="fGd-wc-005">
             <objects>
-                <viewControllerPlaceholder storyboardName="CategoriesViewController" id="BXP-iq-ZYc" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="ClothesViewController" id="BXP-iq-ZYc" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="fce-q4-zM5"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KSq-dm-09c" userLabel="First Responder" sceneMemberID="firstResponder"/>
