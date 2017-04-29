@@ -229,3 +229,7 @@
 
 /* Create order button */
 "createOrder" = "Write a Review";
+
+/* Item configuration screen */
+"itemInfo" = "Item Info";
+

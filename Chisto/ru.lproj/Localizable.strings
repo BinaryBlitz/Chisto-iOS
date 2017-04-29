@@ -229,3 +229,6 @@
 
 /* Create order button */
 "createOrder" = "Оставить отзыв";
+
+/* Item configuration screen */
+"itemInfo" = "Информация о вещи";

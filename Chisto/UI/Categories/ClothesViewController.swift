@@ -54,7 +54,7 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
     viewModel
       .presentServicesSection
       .drive(onNext: { [weak self] viewModel in
-        let viewController = ServiceSelectViewController.storyboardInstance()!
+        let viewController = ItemConfigurationViewController.storyboardInstance()!
         viewController.viewModel = viewModel
 
         self?.navigationController?.pushViewController(viewController, animated: true)

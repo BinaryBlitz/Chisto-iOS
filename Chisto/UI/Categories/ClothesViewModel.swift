@@ -20,7 +20,7 @@ protocol ClothesViewModelType {
 
   // Output
   var sections: Driver<[ItemsSectionModel]> { get }
-  var presentServicesSection: Driver<ServiceSelectViewModel> { get }
+  var presentServicesSection: Driver<ItemConfigurationViewModel> { get }
 }
 
 class ClothesViewModel: ClothesViewModelType {
@@ -35,7 +35,7 @@ class ClothesViewModel: ClothesViewModelType {
 
   // Output
   let sections: Driver<[ItemsSectionModel]>
-  let presentServicesSection: Driver<ServiceSelectViewModel>
+  let presentServicesSection: Driver<ItemConfigurationViewModel>
   var presentErrorAlert: PublishSubject<Error>
   var currentCategory = Variable<Category?>(nil)
 
@@ -83,7 +83,7 @@ class ClothesViewModel: ClothesViewModelType {
     self.presentServicesSection = itemDidSelect.asObservable()
       .map { indexPath in
         let item = items.value[indexPath.row]
-        return ServiceSelectViewModel(orderItem: OrderItem(clothesItem: item))
+        return ItemConfigurationViewModel(orderItem: OrderItem(clothesItem: item))
       }
       .asDriver(onErrorDriveWith: .empty())
     
