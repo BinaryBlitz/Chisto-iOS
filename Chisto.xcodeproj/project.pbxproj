@@ -382,6 +382,7 @@
 		8872F0BD1DD8D67100E8D9EE /* RequestOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestOrder.swift; sourceTree = "<group>"; };
 		8872F0BF1DD8DD3400E8D9EE /* OrderPlacedPopupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderPlacedPopupViewModel.swift; sourceTree = "<group>"; };
 		887531E21EB6830F00CE2A9F /* ContactFormPhoneViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFormPhoneViewModel.swift; sourceTree = "<group>"; };
+		887531E61EB6BADD00CE2A9F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ClothesViewController.strings; sourceTree = "<group>"; };
 		887D5EBF1E3363B00052CC37 /* OrderConfirmTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderConfirmTableHeaderView.swift; path = Views/OrderConfirmTableHeaderView.swift; sourceTree = "<group>"; };
 		887D625A1E3369230052CC37 /* OrderConfirmTableHeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmTableHeaderViewModel.swift; sourceTree = "<group>"; };
 		8888110E1EB3CE3600861843 /* CategoriesHeaderCollectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesHeaderCollectionViewModel.swift; sourceTree = "<group>"; };
@@ -423,7 +424,6 @@
 		88B0B54D1DB1026400C7D0F7 /* SetSearchBarTextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSearchBarTextColor.swift; sourceTree = "<group>"; };
 		88B0B5511DB19C6E00C7D0F7 /* DescriptionListItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionListItemView.xib; sourceTree = "<group>"; };
 		88BD82261E527282001375AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ClothesViewController.storyboard; sourceTree = "<group>"; };
-		88BD82291E527288001375AF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ClothesViewController.strings; sourceTree = "<group>"; };
 		88BD822B1E527308001375AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/RegistrationCodeInputViewController.storyboard; sourceTree = "<group>"; };
 		88BD822E1E52730D001375AF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/RegistrationCodeInputViewController.strings; sourceTree = "<group>"; };
 		88BD82301E527419001375AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/RegistrationPhoneInputViewController.storyboard; sourceTree = "<group>"; };
@@ -1853,7 +1853,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				88BD82261E527282001375AF /* Base */,
-				88BD82291E527288001375AF /* ru */,
+				887531E61EB6BADD00CE2A9F /* ru */,
 			);
 			name = ClothesViewController.storyboard;
 			sourceTree = "<group>";

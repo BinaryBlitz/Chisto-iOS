@@ -116,11 +116,10 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
         self?.present(viewController, animated: true)
       }).addDisposableTo(disposeBag)
 
-    viewModel.presentItemInfoViewController.drive(onNext: { [weak self] viewModel in
-        let navigationItemInfoViewController = ItemInfoNavigationController.storyboardInstance()!
-        let itemInfoViewController = navigationItemInfoViewController.viewControllers.first as! ItemInfoViewController
-        itemInfoViewController.viewModel = viewModel
-        self?.navigationController?.present(navigationItemInfoViewController, animated: true)
+    viewModel.presentItemConfigurationViewController.drive(onNext: { [weak self] viewModel in
+        let viewController = ItemConfigurationViewController.storyboardInstance()!
+        viewController.viewModel = viewModel
+      self?.navigationController?.present(ChistoNavigationController(rootViewController: viewController), animated: true)
       }).addDisposableTo(disposeBag)
 
     viewModel.presentLaundrySelectSection

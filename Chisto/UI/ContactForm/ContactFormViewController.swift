@@ -135,6 +135,10 @@ class ContactFormViewController: UITableViewController {
       .bind(to: sendCodeButton.rx.isHidden)
       .addDisposableTo(disposeBag)
 
+    sendCodeButton.rx.tap.asObservable().subscribe(onNext: { [weak self] in
+      self?.codeField.becomeFirstResponder()
+    }).addDisposableTo(disposeBag)
+
     maskedPhoneInput.configure(textField: phoneField)
     maskedCodeInput.configure(textField: codeField)
 

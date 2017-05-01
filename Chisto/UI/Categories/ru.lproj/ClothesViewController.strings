@@ -7,3 +7,6 @@
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "qut-qe-oXw"; */
 "qut-qe-oXw.text" = "Label";
+
+/* Class = "UILabel"; text = "from 400 ₽"; ObjectID = "zxn-wg-cFh"; */
+"zxn-wg-cFh.text" = "от 400 ₽";

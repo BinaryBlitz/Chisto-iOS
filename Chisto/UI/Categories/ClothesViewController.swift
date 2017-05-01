@@ -109,8 +109,9 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
 
 
   func configureSearch() {
-    let searchController = UISearchController(searchResultsController: nil)
-    searchController.searchBar.sizeToFit()
+    searchController = UISearchController(searchResultsController: nil)
+    searchController.hidesNavigationBarDuringPresentation = false
+    searchController.dimsBackgroundDuringPresentation = false
     searchController.delegate = self
 
     tableView.tableHeaderView = searchController.searchBar
@@ -119,12 +120,6 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
     definesPresentationContext = true
 
     let searchBar = searchController.searchBar
-
-    searchController
-      .searchBar
-      .rx.text
-      .bind(to: viewModel.searchBarString)
-      .addDisposableTo(disposeBag)
 
     searchBar.barTintColor = UIColor.chsSkyBlue
     searchBar.layer.borderWidth = 1
@@ -136,6 +131,18 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
     searchBar.setImage(#imageLiteral(resourceName:"iconSearch"), for: .search, state: .normal)
     searchBar.setTextColor(color: UIColor.white)
     searchBar.searchTextPositionAdjustment = UIOffsetMake(5.0, 0.0)
+
+    searchController
+      .searchBar
+      .rx.text
+      .bind(to: viewModel.searchBarString)
+      .addDisposableTo(disposeBag)
+
+    searchController.searchBar.rx
+      .cancelButtonClicked
+      .map { "" }
+      .bind(to: viewModel.searchBarString)
+      .addDisposableTo(disposeBag)
   }
 
   func configureTableView() {
@@ -168,6 +175,8 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
     viewModel.sections
       .drive(tableView.rx.items(dataSource: dataSource))
       .addDisposableTo(self.disposeBag)
+
+    tableView.tableFooterView = UIView()
   }
 
   override func viewWillAppear(_ animated: Bool) {
