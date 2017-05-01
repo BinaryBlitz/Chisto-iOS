@@ -19,7 +19,6 @@ protocol OrderViewModelType {
   var emptyOrderAddButtonDidTap: PublishSubject<Void> { get }
   var itemDidSelect: PublishSubject<IndexPath> { get }
   var continueButtonDidTap: PublishSubject<Void> { get }
-  var profileButtonDidTap: PublishSubject<Void> { get }
 
   // Output
   var presentCategoriesViewController: Driver<Void> { get }
@@ -40,7 +39,6 @@ class OrderViewModel: OrderViewModelType {
   var continueButtonDidTap = PublishSubject<Void>()
   var showAllLaundriesModalButtonDidTap = PublishSubject<Void>()
   var orderButtonDidTap = PublishSubject<Void>()
-  var profileButtonDidTap = PublishSubject<Void>()
   let tableItemDeleted = PublishSubject<IndexPath>()
 
   // Output
@@ -50,7 +48,6 @@ class OrderViewModel: OrderViewModelType {
   var presentLastTimeOrderPopup = PublishSubject<LastTimePopupViewModel>()
   var presentOrderConfirmSection = PublishSubject<OrderConfirmViewModel>()
   var presentLaundrySelectSection = PublishSubject<Void>()
-  var presentProfileSection: Driver<Void>
   var presentRatingSection: Driver<OrderReviewAlertViewModel>
   var continueButtonEnabled: Variable<Bool>
 
@@ -103,8 +100,6 @@ class OrderViewModel: OrderViewModelType {
       let orderItem = currentOrderItems.value[indexPath.row]
       return ItemInfoViewModel(orderItem: orderItem)
     }.asDriver(onErrorDriveWith: .empty())
-
-    self.presentProfileSection = profileButtonDidTap.asDriver(onErrorDriveWith: .empty())
 
     let fetchLastOrderDriver = continueButtonDidTap.asDriver(onErrorDriveWith: .empty()).flatMap { _ -> Driver<Void> in
       return DataManager.instance.showUser()

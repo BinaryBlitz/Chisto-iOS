@@ -95,6 +95,7 @@ class ServiceSelectViewController: UIViewController, UIScrollViewDelegate {
   }
 
   override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     guard let viewModel = viewModel else { return }
     navigationController?.navigationBar.barTintColor = viewModel.color
     headerView.backgroundColor = viewModel.color

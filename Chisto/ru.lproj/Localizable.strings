@@ -232,3 +232,6 @@
 
 /* Item configuration screen */
 "itemInfo" = "Информация о вещи";
+
+/* Contact form header */
+"contactsHeader" = "Способы связи";

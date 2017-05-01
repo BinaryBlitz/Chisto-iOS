@@ -48,10 +48,8 @@ class MaskedInput: NSObject {
         case .pattern(let formattingPattern):
           if text.characters.count > 0, formattingPattern.characters.count > 0 {
             let formattedText = self?.format(text: text, formattingPattern: formattingPattern)
-
-            textField.rx.text.onNext(formattedText)
-
             self?.isValid.value = formattedText?.characters.count == formattingPattern.characters.count
+            textField.rx.text.onNext(formattedText)
           }
         }
 

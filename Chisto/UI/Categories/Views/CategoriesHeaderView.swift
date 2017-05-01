@@ -27,7 +27,6 @@ class CategoriesHeaderView: UIView, UIScrollViewDelegate {
 
   func configureCollectionView() {
     guard let viewModel = viewModel else { return }
-
     collectionView.delegate = nil
 
     collectionView.register(UINib(nibName: reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
@@ -54,6 +53,11 @@ class CategoriesHeaderView: UIView, UIScrollViewDelegate {
     viewModel.sections
       .drive(collectionView.rx.items(dataSource: rxDataSource))
       .addDisposableTo(viewModel.disposeBag)
+  }
 
+  func scrollToSelectedRowIfNeeded() {
+    guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return collectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .left)
+    }
+    collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
   }
 }

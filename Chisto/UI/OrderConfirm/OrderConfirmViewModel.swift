@@ -22,7 +22,6 @@ protocol OrderConfirmViewModelType {
   // Output
   var navigationBarTitle: String { get }
   var sections: Driver<[OrderConfirmSectionModel]> { get }
-  var presentRegistrationSection: Driver<RegistrationPhoneInputViewModel> { get }
   var presentOrderContactDataSection: Driver<OrderRegistrationViewModel> { get }
   var presentLaundryReviewsSection: Driver<LaundryReviewsViewModel> { get }
 
@@ -48,7 +47,6 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
   // Output
   var navigationBarTitle: String
   var sections: Driver<[OrderConfirmSectionModel]>
-  var presentRegistrationSection: Driver<RegistrationPhoneInputViewModel>
   var presentOrderContactDataSection: Driver<OrderRegistrationViewModel>
   let presentLaundryReviewsSection: Driver<LaundryReviewsViewModel>
   let confirmOrderButtonTitle: Observable<String>
@@ -131,14 +129,9 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
 
     let shouldPresentRegistrationSection = confirmOrderButtonDidTap.asObservable().filter { !ProfileManager.instance.userProfile.value.isVerified }
 
-    self.presentOrderContactDataSection = Driver.of(shouldPresentOrderContactDataSection.asDriver(onErrorDriveWith: .empty()), didFinishRegistation.asDriver(onErrorDriveWith: .empty()))
-      .merge().map { OrderRegistrationViewModel(promoCode: promoCode.value) }
-
-    self.presentRegistrationSection = shouldPresentRegistrationSection.map {
-      let viewModel = RegistrationPhoneInputViewModel()
-      viewModel.didFinishRegistration.bind(to: didFinishRegistation).addDisposableTo(viewModel.disposeBag)
-      return viewModel
-    }.asDriver(onErrorDriveWith: .empty())
+    self.presentOrderContactDataSection = confirmOrderButtonDidTap
+      .asDriver(onErrorDriveWith: .empty())
+      .map { OrderRegistrationViewModel(promoCode: promoCode.value) }
 
     self.presentLaundryReviewsSection = headerViewDidTap
       .map { LaundryReviewsViewModel(laundry: laundry) }

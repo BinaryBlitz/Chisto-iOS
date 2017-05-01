@@ -66,13 +66,6 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
   }
 
   func configureNavigations() {
-    viewModel?.presentRegistrationSection.drive(onNext: { viewModel in
-        let registrationNavigationController = RegistrationNavigationController.storyboardInstance()!
-        guard let registrationPhoneInputViewController = registrationNavigationController.viewControllers.first as? RegistrationPhoneInputViewController else { return }
-        registrationPhoneInputViewController.viewModel = viewModel
-        self.present(registrationNavigationController, animated: true, completion: nil)
-      }).addDisposableTo(disposeBag)
-
     viewModel?.presentOrderContactDataSection.drive(onNext: { [weak self] viewModel in
         let viewController = OrderRegistrationViewController.storyboardInstance()!
         viewController.viewModel = viewModel

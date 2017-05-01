@@ -19,6 +19,7 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
   let disposeBag = DisposeBag()
 
   let headerView = CategoriesHeaderView.nibInstance()!
+  let badgeButton = BadgeButtonView.nibInstance()!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -30,24 +31,32 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
     )
 
     navigationItem.leftBarButtonItem = UIBarButtonItem(
-      image: #imageLiteral(resourceName:"iconNavbarClose"),
+      image: #imageLiteral(resourceName:"iconUser"),
       style: .plain,
       target: nil,
       action: nil
     )
-
-    navigationItem.leftBarButtonItem?.rx
-      .tap
-      .asDriver()
-      .drive(onNext: { [weak self] in
-        self?.dismiss(animated: true, completion: nil)
-      })
+    
+    navigationItem.leftBarButtonItem?.rx.tap
+      .bind(to: viewModel.profileButtonDidTap)
       .addDisposableTo(disposeBag)
-
+    
+    configureBadge()
     configureTableView()
     configureSearch()
     configureNavigations()
     headerView.viewModel = viewModel.headerViewModel
+  }
+
+  func configureBadge() {
+    viewModel.currentItemsCount
+      .asObservable()
+      .map { $0 > 0 ? "\($0)" : "" }
+      .bind(to: badgeButton.badgeLabel.rx.text)
+      .addDisposableTo(disposeBag)
+
+    badgeButton.tap.bind(to: viewModel.basketButtonDidTap).addDisposableTo(disposeBag)
+    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: badgeButton)
   }
 
   func configureNavigations() {
@@ -57,7 +66,20 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
         let viewController = ItemConfigurationViewController.storyboardInstance()!
         viewController.viewModel = viewModel
 
-        self?.navigationController?.pushViewController(viewController, animated: true)
+        self?.present(ChistoNavigationController(rootViewController: viewController), animated: true, completion: nil)
+      })
+      .addDisposableTo(disposeBag)
+
+    viewModel.presentOrderScreen
+      .drive(onNext: { [weak self] in
+        self?.present(ChistoNavigationController(rootViewController: OrderViewController.storyboardInstance()!), animated: true, completion: nil)
+    })
+    .addDisposableTo(disposeBag)
+
+    viewModel.presentProfileSection
+      .drive(onNext: { [weak self] in
+        let viewController = ProfileNavigationController.storyboardInstance()!
+        self?.present(viewController, animated: true, completion: nil)
       })
       .addDisposableTo(disposeBag)
 
@@ -149,6 +171,7 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
   }
 
   override func viewWillAppear(_ animated: Bool) {
+    headerView.scrollToSelectedRowIfNeeded()
     if let indexPath = tableView.indexPathForSelectedRow {
       tableView.deselectRow(at: indexPath, animated: true)
     }

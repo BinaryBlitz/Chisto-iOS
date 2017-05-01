@@ -121,6 +121,10 @@ class OrderRegistrationViewModel {
       }
 
     formViewModel.isValid.asObservable().bind(to: buttonsAreEnabled).addDisposableTo(disposeBag)
+
+    formViewModel.presentErrorAlert
+      .bind(to: presentErrorAlert)
+      .addDisposableTo(disposeBag)
   }
 
   func sendPaymentToken(token: Data, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {

@@ -30,6 +30,7 @@ protocol ContactFormViewModelType {
 }
 
 class ContactFormViewModel {
+  let phoneViewModel = ContactFormPhoneViewModel()
 
   let disposeBag = DisposeBag()
 
@@ -38,10 +39,16 @@ class ContactFormViewModel {
     case orderRegistration
   }
 
-  let contactInfoHeaderModel = ContactFormTableHeaderViewModel(
+  let userHeaderModel = ContactFormTableHeaderViewModel(
     title: NSLocalizedString("contactInfo", comment: "Contact form header"),
     icon: #imageLiteral(resourceName:"iconSmallUser")
   )
+
+  let contactsHeaderModel = ContactFormTableHeaderViewModel(
+    title: NSLocalizedString("contactsHeader", comment: "Contact form header"),
+    icon: #imageLiteral(resourceName: "iconSmallGrayAntenna")
+  )
+
 
   let adressHeaderModel = ContactFormTableHeaderViewModel(
     title: NSLocalizedString("deliveryAdress", comment: "Contact form header"),
@@ -63,6 +70,7 @@ class ContactFormViewModel {
   var firstName: Variable<String?>
   var lastName: Variable<String?>
   var phone: Variable<String?>
+  var code = Variable<String?>("")
   var email: Variable<String?>
   var street: Variable<String?>
   var building: Variable<String?>
@@ -70,7 +78,10 @@ class ContactFormViewModel {
   var comment: Variable<String?>
   var phoneIsValid = Variable<Bool>(false)
   var isValid = Variable<Bool>(false)
+  let codeSectionIsVisible = Variable<Bool>(false)
   var paymentMethod: Variable<PaymentMethod>
+
+  let presentErrorAlert = PublishSubject<Error>()
 
   var canUseApplePay = PKPaymentAuthorizationViewController.canMakePayments()
   var canPayUsingPaymentMethods = PKPaymentAuthorizationViewController.canMakePayments(
@@ -108,8 +119,22 @@ class ContactFormViewModel {
       }.bind(to: phoneIsValid)
       .addDisposableTo(disposeBag)
 
-    let contactInfoIsValid = Observable.combineLatest(firstName.asObservable(), lastName.asObservable(), phoneIsValid.asObservable(), email.asObservable()) { firstName, lastName, phoneIsValid, email -> Bool in
-      guard let firstName = firstName, let lastName = lastName, let email = email else { return false }
+    phone.asObservable()
+      .bind(to: phoneViewModel.phone)
+      .addDisposableTo(disposeBag)
+    
+    phoneViewModel.phoneIsValidated
+      .asObservable()
+      .map { !$0 }
+      .bind(to: codeSectionIsVisible)
+      .addDisposableTo(disposeBag)
+
+    phoneViewModel.presentErrorAlert
+      .bind(to: presentErrorAlert)
+      .addDisposableTo(disposeBag)
+
+    let contactInfoIsValid = Observable.combineLatest(firstName.asObservable(), lastName.asObservable(), phoneIsValid.asObservable(), email.asObservable(), phoneViewModel.phoneIsValidated.asObservable()) { firstName, lastName, phoneIsValid, email, phoneIsValidated -> Bool in
+      guard let firstName = firstName, let lastName = lastName, let email = email, phoneIsValidated else { return false }
 
       return phoneIsValid && firstName.characters.count > 0 && lastName.characters.count > 0 && email.characters.count > 0
 

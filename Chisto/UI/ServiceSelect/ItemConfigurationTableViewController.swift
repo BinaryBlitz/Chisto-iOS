@@ -50,7 +50,6 @@ class ItemConfigurationTableViewController: UITableViewController {
 
   override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
     return 20
-
   }
 }
 

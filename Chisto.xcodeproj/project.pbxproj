@@ -124,6 +124,7 @@
 		8872F0BC1DD8AE0F00E8D9EE /* ReverseGeocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8872F0BB1DD8AE0F00E8D9EE /* ReverseGeocoder.swift */; };
 		8872F0BE1DD8D67100E8D9EE /* RequestOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8872F0BD1DD8D67100E8D9EE /* RequestOrder.swift */; };
 		8872F0C01DD8DD3400E8D9EE /* OrderPlacedPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8872F0BF1DD8DD3400E8D9EE /* OrderPlacedPopupViewModel.swift */; };
+		887531E31EB6830F00CE2A9F /* ContactFormPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887531E21EB6830F00CE2A9F /* ContactFormPhoneViewModel.swift */; };
 		887D62591E3363B20052CC37 /* OrderConfirmTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887D5EBF1E3363B00052CC37 /* OrderConfirmTableHeaderView.swift */; };
 		887D625B1E3369230052CC37 /* OrderConfirmTableHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887D625A1E3369230052CC37 /* OrderConfirmTableHeaderViewModel.swift */; };
 		8888110F1EB3CE3600861843 /* CategoriesHeaderCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8888110E1EB3CE3600861843 /* CategoriesHeaderCollectionViewModel.swift */; };
@@ -157,6 +158,8 @@
 		88A2C3821EB4E5AB005F5CA5 /* ItemConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2C3811EB4E5AB005F5CA5 /* ItemConfigurationViewController.swift */; };
 		88A2C3851EB4F246005F5CA5 /* ChistoSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2C3841EB4F246005F5CA5 /* ChistoSectionHeaderView.swift */; };
 		88A2C3871EB4F255005F5CA5 /* ChistoSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88A2C3861EB4F255005F5CA5 /* ChistoSectionHeaderView.xib */; };
+		88A2C3891EB53257005F5CA5 /* BadgeButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88A2C3881EB53257005F5CA5 /* BadgeButtonView.xib */; };
+		88A2C38C1EB53356005F5CA5 /* BadgeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2C38B1EB53356005F5CA5 /* BadgeButtonView.swift */; };
 		88A2CFC11DEB2CA2000762DE /* StringToDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2CFC01DEB2CA2000762DE /* StringToDateTransform.swift */; };
 		88AF5B2D1E2BC61C00A78ABD /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AF5B2C1E2BC61C00A78ABD /* PaymentMethod.swift */; };
 		88AF5B2F1E2BF60F00A78ABD /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AF5B2E1E2BF60F00A78ABD /* Subscription.swift */; };
@@ -378,6 +381,7 @@
 		8872F0BB1DD8AE0F00E8D9EE /* ReverseGeocoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseGeocoder.swift; sourceTree = "<group>"; };
 		8872F0BD1DD8D67100E8D9EE /* RequestOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestOrder.swift; sourceTree = "<group>"; };
 		8872F0BF1DD8DD3400E8D9EE /* OrderPlacedPopupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderPlacedPopupViewModel.swift; sourceTree = "<group>"; };
+		887531E21EB6830F00CE2A9F /* ContactFormPhoneViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFormPhoneViewModel.swift; sourceTree = "<group>"; };
 		887D5EBF1E3363B00052CC37 /* OrderConfirmTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderConfirmTableHeaderView.swift; path = Views/OrderConfirmTableHeaderView.swift; sourceTree = "<group>"; };
 		887D625A1E3369230052CC37 /* OrderConfirmTableHeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmTableHeaderViewModel.swift; sourceTree = "<group>"; };
 		8888110E1EB3CE3600861843 /* CategoriesHeaderCollectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesHeaderCollectionViewModel.swift; sourceTree = "<group>"; };
@@ -411,6 +415,8 @@
 		88A2C3811EB4E5AB005F5CA5 /* ItemConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemConfigurationViewController.swift; sourceTree = "<group>"; };
 		88A2C3841EB4F246005F5CA5 /* ChistoSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChistoSectionHeaderView.swift; sourceTree = "<group>"; };
 		88A2C3861EB4F255005F5CA5 /* ChistoSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChistoSectionHeaderView.xib; sourceTree = "<group>"; };
+		88A2C3881EB53257005F5CA5 /* BadgeButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BadgeButtonView.xib; sourceTree = "<group>"; };
+		88A2C38B1EB53356005F5CA5 /* BadgeButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = BadgeButtonView.swift; sourceTree = "<group>"; tabWidth = 2; };
 		88A2CFC01DEB2CA2000762DE /* StringToDateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringToDateTransform.swift; sourceTree = "<group>"; };
 		88AF5B2C1E2BC61C00A78ABD /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		88AF5B2E1E2BF60F00A78ABD /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
@@ -810,6 +816,7 @@
 		8814C0541DAFA5A2005B4967 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				88A2C38A1EB53347005F5CA5 /* BadgeButton */,
 				88A2C3831EB4F21E005F5CA5 /* SectionHeader */,
 				882ECDC91DE7CB2000EE3507 /* EmptyTableBackground */,
 				8833B52C1DBE86EF004D44CE /* LaundryItemInfo */,
@@ -1068,6 +1075,15 @@
 			name = SectionHeader;
 			sourceTree = "<group>";
 		};
+		88A2C38A1EB53347005F5CA5 /* BadgeButton */ = {
+			isa = PBXGroup;
+			children = (
+				88A2C3881EB53257005F5CA5 /* BadgeButtonView.xib */,
+				88A2C38B1EB53356005F5CA5 /* BadgeButtonView.swift */,
+			);
+			name = BadgeButton;
+			sourceTree = "<group>";
+		};
 		88CBB13F1E087A9400C5F987 /* OrderReviewAlert */ = {
 			isa = PBXGroup;
 			children = (
@@ -1095,6 +1111,7 @@
 				37530F7F1E4E33820039AAB0 /* ContactFormViewController.storyboard */,
 				88CD683B1DD1D677004B7726 /* ContactFormViewController.swift */,
 				88FA1DF51DD23F3A00431822 /* ContactFormViewModel.swift */,
+				887531E21EB6830F00CE2A9F /* ContactFormPhoneViewModel.swift */,
 			);
 			path = ContactForm;
 			sourceTree = "<group>";
@@ -1358,6 +1375,7 @@
 				37530F441E4E31560039AAB0 /* OnBoardingViewController.storyboard in Resources */,
 				37530F5A1E4E32BC0039AAB0 /* ProfileViewController.storyboard in Resources */,
 				8833B5301DBE8756004D44CE /* LaundryItemInfoView.xib in Resources */,
+				88A2C3891EB53257005F5CA5 /* BadgeButtonView.xib in Resources */,
 				37530F661E4E32FE0039AAB0 /* LocationSelectViewController.storyboard in Resources */,
 				37530F361E4E2FA20039AAB0 /* OrderViewController.storyboard in Resources */,
 				88BD82341E5274BF001375AF /* ServiceSelectViewController.storyboard in Resources */,
@@ -1452,6 +1470,8 @@
 				880CBFEF1E7AB9F100CF92EA /* DataManager+FetchItemsManagerType.swift in Sources */,
 				88923E1C1DD3852A00BC3AC0 /* OnBoardingViewModel.swift in Sources */,
 				88DB93861DCBF1A700DAC651 /* RegistrationCodeInputViewModel.swift in Sources */,
+				88A2C38C1EB53356005F5CA5 /* BadgeButtonView.swift in Sources */,
+				887531E31EB6830F00CE2A9F /* ContactFormPhoneViewModel.swift in Sources */,
 				88DB93931DCC20B100DAC651 /* ServerObjct.swift in Sources */,
 				8833B5321DBE8774004D44CE /* LaundryItemInfoView.swift in Sources */,
 				88FE7B051DE0AFF300A16289 /* MyOrdersTableViewCellModel.swift in Sources */,

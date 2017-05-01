@@ -31,13 +31,18 @@ class ClothesViewModel: ClothesViewModelType {
   var itemDidSelect = PublishSubject<IndexPath>()
   var searchBarString = Variable<String?>("")
   var didStartSearching = PublishSubject<Void>()
+  var profileButtonDidTap = PublishSubject<Void>()
+  var basketButtonDidTap = PublishSubject<Void>()
   let headerViewModel = CategoriesHeaderCollectionViewModel()
 
   // Output
   let sections: Driver<[ItemsSectionModel]>
+  var presentProfileSection: Driver<Void>
+  var presentOrderScreen: Driver<Void>
   let presentServicesSection: Driver<ItemConfigurationViewModel>
   var presentErrorAlert: PublishSubject<Error>
   var currentCategory = Variable<Category?>(nil)
+  var currentItemsCount = Variable<Int>(0)
 
   // Data
   var items: Variable<[Item]>
@@ -52,6 +57,10 @@ class ClothesViewModel: ClothesViewModelType {
     _ = DataManager.instance.fetchClothes().subscribe(onError: { error in
       presentErrorAlert.onNext(error)
     })
+
+    OrderManager.instance.currentOrderItems.map { items in
+      return items.reduce(0) { return $0 + $1.amount }
+    }.bind(to: currentItemsCount).addDisposableTo(disposeBag)
 
     let items = Variable<[Item]>([])
     self.items = items
@@ -79,6 +88,10 @@ class ClothesViewModel: ClothesViewModelType {
 
       return [section]
     }
+
+    self.presentProfileSection = profileButtonDidTap.asDriver(onErrorDriveWith: .empty())
+
+    self.presentOrderScreen = basketButtonDidTap.asDriver(onErrorDriveWith: .empty())
 
     self.presentServicesSection = itemDidSelect.asObservable()
       .map { indexPath in

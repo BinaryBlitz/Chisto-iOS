@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BadgeButtonView" customModule="Chisto" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eBu-7A-ezm">
+                    <rect key="frame" x="0.0" y="5" width="23" height="23"/>
+                    <state key="normal" image="iconCart"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DQR-uR-w7K">
+                    <rect key="frame" x="14" y="0.0" width="16" height="16"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omd-IL-Qfq">
+                            <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.99607843139999996" green="0.30980392159999998" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="omd-IL-Qfq" firstAttribute="top" secondItem="DQR-uR-w7K" secondAttribute="top" id="5VB-re-bdY"/>
+                        <constraint firstAttribute="trailing" secondItem="omd-IL-Qfq" secondAttribute="trailing" id="6OK-re-DmG"/>
+                        <constraint firstAttribute="width" constant="16" id="P0z-Xy-kZ3"/>
+                        <constraint firstAttribute="height" constant="16" id="Q6B-NL-180"/>
+                        <constraint firstItem="omd-IL-Qfq" firstAttribute="leading" secondItem="DQR-uR-w7K" secondAttribute="leading" id="b6J-cM-31A"/>
+                        <constraint firstAttribute="bottom" secondItem="omd-IL-Qfq" secondAttribute="bottom" id="nGn-Nr-RUW"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="DQR-uR-w7K" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bfB-VV-aY9"/>
+                <constraint firstItem="eBu-7A-ezm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cgH-v3-beQ"/>
+                <constraint firstItem="eBu-7A-ezm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="fec-Gx-UAh"/>
+                <constraint firstAttribute="trailing" secondItem="DQR-uR-w7K" secondAttribute="trailing" id="qrJ-h7-XDF"/>
+                <constraint firstAttribute="trailing" secondItem="eBu-7A-ezm" secondAttribute="trailing" constant="7" id="ruJ-Zb-qcY"/>
+                <constraint firstAttribute="bottom" secondItem="eBu-7A-ezm" secondAttribute="bottom" constant="2" id="th9-YA-PCq"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="badgeLabel" destination="omd-IL-Qfq" id="Mqa-Jj-Nm5"/>
+                <outlet property="badgeView" destination="DQR-uR-w7K" id="s9E-kO-lff"/>
+                <outlet property="button" destination="eBu-7A-ezm" id="f2J-hN-iNE"/>
+                <outletCollection property="gestureRecognizers" destination="1ay-fF-42b" appends="YES" id="6LL-Hy-tiQ"/>
+                <outletCollection property="gestureRecognizers" destination="knH-fQ-nQO" appends="YES" id="eLN-FO-TSc"/>
+            </connections>
+            <point key="canvasLocation" x="-68" y="359"/>
+        </view>
+        <tapGestureRecognizer id="1ay-fF-42b">
+            <connections>
+                <action selector="headerViewDidTap:" destination="iN0-l3-epB" id="cDt-wI-PXK"/>
+            </connections>
+        </tapGestureRecognizer>
+        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.0" id="knH-fQ-nQO">
+            <connections>
+                <action selector="handleLongPressGesture:" destination="iN0-l3-epB" id="zBT-jR-xtt"/>
+            </connections>
+        </pongPressGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="iconCart" width="22" height="22"/>
+    </resources>
+</document>

@@ -110,6 +110,7 @@ class ItemConfigurationViewModel {
     OrderManager.instance.updateOrderItem(orderItem) {
       orderItem.hasDecoration = hasDecoration.value
       orderItem.size = size()
+      orderItem.amount = currentAmount.value
     }
   }
 

@@ -15,7 +15,7 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var continueButton: GoButton!
-  private let emptyOrderView = EmptyOrderView.nibInstance()
+  private let emptyOrderView = EmptyTableBackgroundView.nibInstance()
 
   let viewModel = OrderViewModel()
   private let disposeBag = DisposeBag()
@@ -26,19 +26,23 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
 
     navigationItem.title = viewModel.navigationBarTitle
 
-    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
-    navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName:"iconUser"), style: .plain, target: nil, action: nil)
+    emptyOrderView?.title = ""
+
+    navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconNavbarClose"), style: .plain, target: nil, action: nil)
 
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
-    // Rx
-    emptyOrderView?.addButton.rx.tap.bind(to: viewModel.emptyOrderAddButtonDidTap)
-      .addDisposableTo(disposeBag)
-
     navigationItem.rightBarButtonItem?.rx.tap.bind(to: viewModel.navigationAddButtonDidTap)
       .addDisposableTo(disposeBag)
-    navigationItem.leftBarButtonItem?.rx.tap.bind(to: viewModel.profileButtonDidTap)
+
+    navigationItem.leftBarButtonItem?.rx
+      .tap
+      .asDriver()
+      .drive(onNext: { [weak self] in
+        self?.dismiss(animated: true, completion: nil)
+      })
       .addDisposableTo(disposeBag)
+
     continueButton.rx.tap.bind(to: viewModel.continueButtonDidTap)
       .addDisposableTo(disposeBag)
 
@@ -126,13 +130,6 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
         self?.navigationController?.pushViewController(viewController, animated: true) {
           viewController.viewModel.didFinishPushingViewController.onNext()
         }
-      })
-      .addDisposableTo(disposeBag)
-
-    viewModel.presentProfileSection
-      .drive(onNext: { [weak self] in
-        let viewController = ProfileNavigationController.storyboardInstance()!
-        self?.present(viewController, animated: true, completion: nil)
       })
       .addDisposableTo(disposeBag)
 
