@@ -37,14 +37,14 @@ class OrderTableViewCellModel: OrderTableViewCellModelType {
 
     if item.hasDecoration {
       servicesAttrString.append(NSAttributedString(string: "Декор", attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey]))
-      servicesAttrString.append(NSAttributedString(string: " • ", attributes: [NSForegroundColorAttributeName: UIColor.chsSilver]))
     }
 
-    for (index, service) in item.treatments.enumerated() {
-      servicesAttrString.append(NSAttributedString(string: service.name, attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey]))
-      if index != item.treatments.count - 1 {
+    if let area = item.area, item.clothesItem.useArea {
+      if item.hasDecoration {
         servicesAttrString.append(NSAttributedString(string: " • ", attributes: [NSForegroundColorAttributeName: UIColor.chsSilver]))
       }
+      servicesAttrString.append(NSAttributedString(string: "\(area) м²", attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey]))
+
     }
 
     self.servicesText = servicesAttrString

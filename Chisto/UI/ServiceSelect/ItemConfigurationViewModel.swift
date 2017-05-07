@@ -38,13 +38,14 @@ class ItemConfigurationViewModel {
   // Data
   var orderItem: OrderItem
   var currentAmount: Variable<Int>
-  var hasDecoration = Variable<Bool>(false)
+  var hasDecoration: Variable<Bool>
 
-  init(orderItem: OrderItem,
-       hasDecoration: Bool = false) {
+  init(orderItem: OrderItem) {
 
     let currentAmount = Variable<Int>(orderItem.amount)
     self.currentAmount = currentAmount
+
+    self.hasDecoration = Variable(orderItem.hasDecoration)
 
     let lengthText = Variable<String?>("")
     self.lengthText = lengthText
