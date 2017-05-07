@@ -23,6 +23,7 @@ class ItemConfigurationTableViewController: UITableViewController {
   override func viewDidLoad() {
     lengthField.delegate = self
     widthField.delegate = self
+    decorationSwitch.onTintColor = viewModel.color
     (decorationSwitch.rx.isOn <-> viewModel.hasDecoration).addDisposableTo(viewModel.disposeBag)
     (lengthField.rx.text <-> viewModel.lengthText).addDisposableTo(viewModel.disposeBag)
     (widthField.rx.text <-> viewModel.widthText).addDisposableTo(viewModel.disposeBag)

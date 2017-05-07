@@ -22,12 +22,6 @@ class OrderConfirmServiceTableViewCell: UITableViewCell {
     }
 
     configureHeader(viewModel: viewModel)
-    for service in viewModel.clothesServices {
-      let view = OrderConfirmServiceItemView.nibInstance()!
-      view.leftLabel.text = service.name
-      view.rightLabel.text = service.price(laundry: viewModel.laundry, hasDecoration: false).currencyString
-      stackView.addArrangedSubview(view)
-    }
     configureDecoration(viewModel: viewModel)
   }
 

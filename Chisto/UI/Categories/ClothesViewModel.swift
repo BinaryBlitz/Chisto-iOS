@@ -52,7 +52,7 @@ class ClothesViewModel: ClothesViewModelType {
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
 
-    headerViewModel.didSelectCategory.bind(to: currentCategory).addDisposableTo(disposeBag)
+    headerViewModel.selectedCategory.asObservable().bind(to: currentCategory).addDisposableTo(disposeBag)
 
     _ = DataManager.instance.fetchClothes().subscribe(onError: { error in
       presentErrorAlert.onNext(error)

@@ -55,6 +55,12 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
       .bind(to: badgeButton.badgeLabel.rx.text)
       .addDisposableTo(disposeBag)
 
+    viewModel.currentItemsCount
+      .asObservable()
+      .map { $0 == 0 }
+      .bind(to: badgeButton.badgeView.rx.isHidden)
+      .addDisposableTo(disposeBag)
+
     badgeButton.tap.bind(to: viewModel.basketButtonDidTap).addDisposableTo(disposeBag)
     navigationItem.rightBarButtonItem = UIBarButtonItem(customView: badgeButton)
   }
@@ -180,10 +186,14 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
   }
 
   override func viewWillAppear(_ animated: Bool) {
-    headerView.scrollToSelectedRowIfNeeded()
     if let indexPath = tableView.indexPathForSelectedRow {
+      headerView.scrollToSelectedRowIfNeeded()
       tableView.deselectRow(at: indexPath, animated: true)
     }
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
   }
 
 

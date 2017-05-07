@@ -14,11 +14,11 @@ import Realm
 import RealmSwift
 import RxDataSources
 
-typealias CategoriesSectionModel = SectionModel<String, CategoryCollectionViewCellModelType>
+typealias CategoriesSectionModel = SectionModel<String, CategoryCollectionViewCellModel>
 
 class CategoriesHeaderCollectionViewModel {
   let disposeBag = DisposeBag()
-  let didSelectCategory = PublishSubject<Category?>()
+  let selectedCategory = Variable<Category?>(nil)
   let categories: Variable<[Category]>
 
   let itemDidSelect = PublishSubject<IndexPath>()
@@ -51,16 +51,16 @@ class CategoriesHeaderCollectionViewModel {
 
     self.categories = categories
 
-    self.sections = categories.asDriver().map { categories in
-      var cellModels = categories.map { CategoryCollectionViewCellModelType.category($0) }
-      cellModels.insert(.allCategories, at: 0)
+    self.sections = Driver.combineLatest(categories.asDriver(), selectedCategory.asDriver()) { categories, selectedCategory in
+      var cellModels = categories.map { CategoryCollectionViewCellModel.init(type: .category($0), isSelected: selectedCategory?.id == $0.id) }
+      cellModels.insert(CategoryCollectionViewCellModel.init(type: .allCategories, isSelected: selectedCategory == nil), at: 0)
       let section = CategoriesSectionModel(model: "", items: cellModels)
       return [section]
     }
 
     itemDidSelect.map {
       $0.row == 0 ? nil : categories.value[$0.row - 1]
-    }.bind(to: didSelectCategory).addDisposableTo(disposeBag)
+    }.bind(to: selectedCategory).addDisposableTo(disposeBag)
 
   }
 }
@@ -72,8 +72,8 @@ enum CategoryCollectionViewCellModelType {
 
 class CategoryCollectionViewCellModel {
 
-
   var type: CategoryCollectionViewCellModelType = .allCategories
+  var isSelected: Bool
 
   var identity: String {
     switch type {
@@ -84,8 +84,9 @@ class CategoryCollectionViewCellModel {
     }
   }
 
-  init(type: CategoryCollectionViewCellModelType) {
+  init(type: CategoryCollectionViewCellModelType, isSelected: Bool = false) {
     self.type = type
+    self.isSelected = isSelected
   }
 }
 

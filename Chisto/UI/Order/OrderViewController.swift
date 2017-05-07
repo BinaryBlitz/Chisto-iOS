@@ -15,7 +15,7 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var continueButton: GoButton!
-  private let emptyOrderView = EmptyTableBackgroundView.nibInstance()
+  private let emptyOrderView = EmptyOrderView.nibInstance()
 
   let viewModel = OrderViewModel()
   private let disposeBag = DisposeBag()
@@ -26,8 +26,8 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
 
     navigationItem.title = viewModel.navigationBarTitle
 
-    emptyOrderView?.title = ""
-
+    emptyOrderView?.addButton.rx.tap.bind(to: viewModel.emptyOrderAddButtonDidTap)
+      .addDisposableTo(disposeBag)
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconNavbarClose"), style: .plain, target: nil, action: nil)
 
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -112,8 +112,7 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
   func configureNavigations() {
 
     viewModel.presentCategoriesViewController.drive(onNext: { [weak self] in
-        let viewController = ClothesNavigationController.storyboardInstance()!
-        self?.present(viewController, animated: true)
+        self?.dismiss(animated: true, completion: nil)
       }).addDisposableTo(disposeBag)
 
     viewModel.presentItemConfigurationViewController.drive(onNext: { [weak self] viewModel in

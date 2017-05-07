@@ -31,13 +31,13 @@ class CategoriesHeaderView: UIView, UIScrollViewDelegate {
 
     collectionView.register(UINib(nibName: reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 
-    rxDataSource.configureCell = { _, tableView, indexPath, type in
+    rxDataSource.configureCell = { _, tableView, indexPath, viewModel in
       let cell = self.collectionView.dequeueReusableCell(
         withReuseIdentifier: reuseIdentifier,
         for: indexPath
       ) as! CategoryCollectionViewCell
 
-      cell.type = type
+      cell.configure(viewModel: viewModel)
       return cell
     }
 
@@ -56,7 +56,8 @@ class CategoriesHeaderView: UIView, UIScrollViewDelegate {
   }
 
   func scrollToSelectedRowIfNeeded() {
-    guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return collectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .left)
+    guard let indexPath = collectionView.indexPathsForSelectedItems?.first else {
+      return
     }
     collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
   }
