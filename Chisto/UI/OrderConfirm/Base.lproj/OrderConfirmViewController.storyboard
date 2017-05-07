@@ -58,7 +58,7 @@
                                                         <constraint firstAttribute="height" constant="29" id="zbG-dg-o7j"/>
                                                     </constraints>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="iWj-VQ-5Kj">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="iWj-VQ-5Kj">
                                                     <rect key="frame" x="59" y="10" width="301" height="98"/>
                                                 </stackView>
                                             </subviews>

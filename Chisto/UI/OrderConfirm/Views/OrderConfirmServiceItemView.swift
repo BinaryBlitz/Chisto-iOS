@@ -30,7 +30,7 @@ class OrderConfirmServiceItemView: UIView {
 
   override func awakeFromNib() {
     super.awakeFromNib()
-
+    heightAnchor.constraint(equalToConstant: 36).isActive = true
     addBottomBorder(color: UIColor.chsSilver50, width: 0.5)
   }
 
