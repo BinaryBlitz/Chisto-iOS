@@ -236,3 +236,5 @@
 /* Contact form header */
 "contactsHeader" = "Contacts";
 
+/* Error alert */
+"promoCodeIsEmpty" = "Promo code is invalid";

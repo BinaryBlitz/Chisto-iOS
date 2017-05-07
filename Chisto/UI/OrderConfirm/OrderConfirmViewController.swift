@@ -124,7 +124,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
       .drive(self.tableView.rx.items(dataSource: self.dataSource))
       .addDisposableTo(self.disposeBag)
 
-    tableView.estimatedRowHeight = 100
+    tableView.estimatedRowHeight = 400
     tableView.rowHeight = UITableViewAutomaticDimension
   }
 

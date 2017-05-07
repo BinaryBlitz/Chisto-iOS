@@ -235,3 +235,6 @@
 
 /* Contact form header */
 "contactsHeader" = "Способы связи";
+
+/* Error alert */
+"promoCodeIsEmpty" = "Промокод не может быть пустым";

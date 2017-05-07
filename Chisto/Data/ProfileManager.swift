@@ -34,7 +34,8 @@ class ProfileManager {
     OrderManager.instance.clearOrderItems()
     let realm = try! Realm()
     try! realm.write {
-      realm.deleteAll()
+      realm.delete(userProfile.value)
+      realm.delete(realm.objects(Order.self))
       let newProfile = Profile()
       realm.add(newProfile)
       userProfile.value = newProfile

@@ -105,6 +105,11 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
         .map { $0! }
         .bind(to: promoCode).addDisposableTo(viewModel.disposeBag)
 
+      viewModel.didPickEmptyPromoCode.asObservable()
+        .map { _ in NSLocalizedString("promoCodeIsEmpty", comment: "Error alert") }
+        .bind(to: presentErrorAlert)
+        .addDisposableTo(viewModel.disposeBag)
+
       viewModel.promoCodeDidEntered.asObservable()
         .filter { $0 == nil }
         .map { _ in NSLocalizedString("promocodeNotFound", comment: "Error alert") }

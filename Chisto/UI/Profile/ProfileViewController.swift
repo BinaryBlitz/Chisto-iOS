@@ -60,6 +60,13 @@ class ProfileViewController: UITableViewController {
         })
       }).addDisposableTo(disposeBag)
 
+    viewModel.presentRegistrationSection.drive(onNext: { viewModel in
+      let registrationNavigationController = RegistrationNavigationController.storyboardInstance()!
+      guard let registrationPhoneInputViewController = registrationNavigationController.viewControllers.first as? RegistrationPhoneInputViewController else { return }
+      registrationPhoneInputViewController.viewModel = viewModel
+      self.present(registrationNavigationController, animated: true, completion: nil)
+    }).addDisposableTo(disposeBag)
+
     viewModel.dismissViewController.drive(onNext: { [weak self] in
         self?.dismiss(animated: true, completion: nil)
       }).addDisposableTo(disposeBag)

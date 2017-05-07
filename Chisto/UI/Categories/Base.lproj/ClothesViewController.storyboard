@@ -14,7 +14,7 @@
         <scene sceneID="A5f-RR-4U6">
             <objects>
                 <viewController storyboardIdentifier="ClothesViewController" title="Select Clothes" extendedLayoutIncludesOpaqueBars="YES" definesPresentationContext="YES" id="OKw-S0-QyE" customClass="ClothesViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="126" sectionHeaderHeight="28" sectionFooterHeight="28" id="A5U-7M-cn3">
+                    <tableView key="view" autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="126" sectionHeaderHeight="28" sectionFooterHeight="28" id="A5U-7M-cn3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.96078431606292725" green="0.96078431606292725" blue="0.96078431606292725" alpha="1" colorSpace="calibratedRGB"/>
@@ -88,6 +88,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <connections>
                         <outlet property="tableView" destination="A5U-7M-cn3" id="bB2-r7-yUe"/>
                     </connections>

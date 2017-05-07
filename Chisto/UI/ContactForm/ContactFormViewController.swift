@@ -21,7 +21,6 @@ class ContactFormViewController: UITableViewController {
   var fields: [UITextField] = []
 
   @IBOutlet weak var firstNameField: HoshiTextField!
-  @IBOutlet weak var lastNameField: HoshiTextField!
   @IBOutlet weak var phoneField: HoshiTextField!
   @IBOutlet weak var emailField: HoshiTextField!
   @IBOutlet weak var cityField: HoshiTextField!
@@ -40,6 +39,7 @@ class ContactFormViewController: UITableViewController {
   @IBOutlet var payByCashIconViews: [UIImageView]!
   @IBOutlet var paymentMethodCardIconViews: [UIImageView]!
   @IBOutlet var payWithApplePayIconViews: [UIImageView]!
+  @IBOutlet weak var phoneCheckImageView: UIImageView!
 
   var payWithCardSelected: Bool = true {
     didSet {
@@ -52,6 +52,7 @@ class ContactFormViewController: UITableViewController {
     didSet {
       payByCashLabel.isHighlighted = payByCashSelected
       payByCashIconViews.forEach { $0.isHighlighted = payByCashSelected }
+
     }
   }
 
@@ -59,13 +60,11 @@ class ContactFormViewController: UITableViewController {
     didSet {
       applePayLabel.isHighlighted = applePaySelected
       payWithApplePayIconViews.forEach { $0.isHighlighted = applePaySelected }
-      adressHeaderView.isHidden = applePaySelected
     }
   }
 
-  let profileHeaderView = ContactFormTableHeaderView.nibInstance()!
-  let contactsHeaderView = ContactFormTableHeaderView.nibInstance()!
-  let adressHeaderView = ContactFormTableHeaderView.nibInstance()!
+  let phoneNumberHeaderView = ContactFormTableHeaderView.nibInstance()!
+  let contactDataHeaderView = ContactFormTableHeaderView.nibInstance()!
   let commentHeaderView = ContactFormTableHeaderView.nibInstance()!
   let paymentHeaderView = ContactFormTableHeaderView.nibInstance()!
 
@@ -73,19 +72,17 @@ class ContactFormViewController: UITableViewController {
   let maskedCodeInput = MaskedInput(formattingType: .pattern("* ∙ * ∙ * ∙ * ∙ *"))
 
   enum Sections: Int {
-    case profile = 0
-    case contactData
+    case phoneNumber
     case paymentMethod
-    case adress
+    case contactData
     case comment
 
     static let count = 4
   }
 
-  enum ContactDataRows: Int {
+  enum PhoneRows: Int {
     case phone = 0
     case code
-    case email
 
     static let count = 3
   }
@@ -104,13 +101,13 @@ class ContactFormViewController: UITableViewController {
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     configureFields()
     configureSections()
+    hideSectionsIfNeeded()
   }
 
   func configureFields() {
     guard let viewModel = viewModel else { return }
 
     (firstNameField.rx.text <-> viewModel.firstName).addDisposableTo(disposeBag)
-    (lastNameField.rx.text <-> viewModel.lastName).addDisposableTo(disposeBag)
     (phoneField.rx.text <-> viewModel.phone).addDisposableTo(disposeBag)
     (emailField.rx.text <-> viewModel.email).addDisposableTo(disposeBag)
     (cityField.rx.text <-> viewModel.city).addDisposableTo(disposeBag)
@@ -123,6 +120,14 @@ class ContactFormViewController: UITableViewController {
     sendCodeButton.rx.tap
       .bind(to: viewModel.phoneViewModel.sendButtonDidTap)
       .addDisposableTo(disposeBag)
+
+    phoneCheckImageView.alpha = 0
+
+    viewModel.didFinishAuthorization.subscribe(onNext: { [weak self] _ in
+      UIView.animate(withDuration: 0.2, animations: {
+        self?.phoneCheckImageView.alpha = 1
+      })
+    }).addDisposableTo(disposeBag)
 
     viewModel.phoneViewModel
       .sendButtonEnabled
@@ -147,7 +152,7 @@ class ContactFormViewController: UITableViewController {
       .bind(to: viewModel.phoneViewModel.codeIsValid)
       .addDisposableTo(disposeBag)
 
-    fields = [firstNameField, lastNameField, phoneField, codeField, emailField,
+    fields = [phoneField, codeField, firstNameField,
               cityField, streetField, buildingField, apartmentField, commentField]
 
     for field in fields {
@@ -159,45 +164,67 @@ class ContactFormViewController: UITableViewController {
 
     cityButton.rx.tap.bind(to: viewModel.cityFieldDidTap).addDisposableTo(disposeBag)
 
-    viewModel.paymentMethod.asDriver().drive(onNext: { [weak self] paymentMethod in
+    viewModel.paymentMethod
+      .asDriver()
+      .distinctUntilChanged()
+      .drive(onNext: { [weak self] paymentMethod in
       self?.payWithCardSelected = paymentMethod == .card
       self?.payByCashSelected = paymentMethod == .cash
       self?.applePaySelected = paymentMethod == .applePay
-      self?.tableView.beginUpdates()
-      self?.tableView.reloadData()
-      self?.tableView.endUpdates()
+      self?.hideSectionsIfNeeded()
     }).addDisposableTo(disposeBag)
 
-    viewModel.codeSectionIsVisible.asObservable().subscribe(onNext: { [weak self] _ in
-      self?.tableView.beginUpdates()
-      self?.tableView.reloadData()
-      self?.tableView.endUpdates()
+    viewModel.codeSectionIsVisible
+      .asObservable()
+      .distinctUntilChanged()
+      .subscribe(onNext: { [weak self] _ in
+      self?.hideSectionsIfNeeded()
     }).addDisposableTo(disposeBag)
 
+  }
+
+  func hideSectionsIfNeeded() {
+    let isAuthorized = viewModel?.isAuthorized.value ?? false
+    contactDataHeaderView.isHidden = !isAuthorized || applePaySelected
+    paymentHeaderView.isHidden = !isAuthorized
+    commentHeaderView.isHidden = !isAuthorized
+    tableView.beginUpdates()
+    tableView.reloadData()
+    tableView.endUpdates()
+    tableView.setNeedsLayout()
+    tableView.layoutIfNeeded()
   }
 
   func configureSections() {
     guard let viewModel = viewModel else { return }
 
-    profileHeaderView.configure(viewModel: viewModel.userHeaderModel)
-    contactsHeaderView.configure(viewModel: viewModel.contactsHeaderModel)
-    adressHeaderView.configure(viewModel: viewModel.adressHeaderModel)
+    contactDataHeaderView.configure(viewModel: viewModel.contactDataHeaderModel)
+    phoneNumberHeaderView.configure(viewModel: viewModel.phoneHeaderModel)
     commentHeaderView.configure(viewModel: viewModel.commentHeaderModel)
     paymentHeaderView.configure(viewModel: viewModel.paymentHeaderModel)
+
+    viewModel.phoneViewModel
+      .phoneIsValidated.asObservable()
+      .distinctUntilChanged()
+      .subscribe(onNext: { [weak self] _ in
+        self?.hideSectionsIfNeeded()
+      }).addDisposableTo(disposeBag)
+
+    viewModel.didFinishAuthorization.subscribe(onNext: { [weak self] _ in
+
+    }).addDisposableTo(disposeBag)
   }
 
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     switch section {
-    case Sections.profile.rawValue:
-      return profileHeaderView
-    case Sections.contactData.rawValue:
-      return contactsHeaderView
-    case Sections.adress.rawValue:
-      return adressHeaderView
-    case Sections.comment.rawValue:
-      return commentHeaderView
+    case Sections.phoneNumber.rawValue:
+      return phoneNumberHeaderView
     case Sections.paymentMethod.rawValue:
       return paymentHeaderView
+    case Sections.contactData.rawValue:
+      return contactDataHeaderView
+    case Sections.comment.rawValue:
+      return commentHeaderView
     default:
       return nil
     }
@@ -212,37 +239,75 @@ class ContactFormViewController: UITableViewController {
   }
 
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    if section == Sections.adress.rawValue,
-      let method = viewModel?.paymentMethod.value,
-      method == .applePay {
+    guard let viewModel = viewModel else { return super.tableView(tableView, heightForHeaderInSection: section) }
+    if section == Sections.contactData.rawValue &&
+      (!viewModel.isAuthorized.value ||
+      viewModel.paymentMethod.value == .applePay) {
+      return 0.1
+    }
+    if section == Sections.paymentMethod.rawValue &&
+      !viewModel.isAuthorized.value {
       return 0.1
     }
     return 40
   }
 
   override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    if section == Sections.adress.rawValue && viewModel?.paymentMethod.value == .applePay {
+    if section == Sections.contactData.rawValue && viewModel?.paymentMethod.value == .applePay {
       return 0.1
     }
     return super.tableView(tableView, heightForFooterInSection: section)
+  }
+
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let emptyCell = UITableViewCell()
+    emptyCell.backgroundColor = .clear
+    guard let viewModel = viewModel else { return super.tableView(tableView, cellForRowAt: indexPath) }
+
+    switch indexPath.section {
+    case Sections.paymentMethod.rawValue:
+      guard viewModel.phoneViewModel.phoneIsValidated.value else { return emptyCell }
+      guard indexPath.row == PaymentRows.applePay.rawValue && !viewModel.canUseApplePay else {
+        return super.tableView(tableView, cellForRowAt: indexPath)
+      }
+      return UITableViewCell()
+    case Sections.phoneNumber.rawValue:
+      if viewModel.phoneViewModel.phoneIsValidated.value && indexPath.row == PhoneRows.code.rawValue {
+        return emptyCell
+      }
+      break
+    case Sections.contactData.rawValue:
+      guard viewModel.isAuthorized.value && viewModel.paymentMethod.value != .applePay else { return emptyCell }
+      return super.tableView(tableView, cellForRowAt: indexPath)
+    case Sections.comment.rawValue:
+      guard viewModel.isAuthorized.value else { return emptyCell }
+      return super.tableView(tableView, cellForRowAt: indexPath)
+    default:
+      break
+    }
+    return super.tableView(tableView, cellForRowAt: indexPath)
   }
 
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     guard let viewModel = viewModel else { return super.tableView(tableView, heightForRowAt: indexPath) }
 
     switch indexPath.section {
-    case Sections.paymentMethod.rawValue where indexPath.row == PaymentRows.applePay.rawValue:
-      guard !viewModel.canUseApplePay else {
+    case Sections.paymentMethod.rawValue:
+      guard viewModel.phoneViewModel.phoneIsValidated.value else { return 0 }
+      guard indexPath.row == PaymentRows.applePay.rawValue && !viewModel.canUseApplePay else {
         return super.tableView(tableView, heightForRowAt: indexPath)
       }
       return 0
-    case Sections.contactData.rawValue:
-      if viewModel.phoneViewModel.phoneIsValidated.value && indexPath.row == ContactDataRows.code.rawValue {
+    case Sections.phoneNumber.rawValue:
+      if viewModel.phoneViewModel.phoneIsValidated.value && indexPath.row == PhoneRows.code.rawValue {
         return 0
       }
       break
-    case Sections.adress.rawValue:
-      guard viewModel.paymentMethod.value != .applePay else { return 0 }
+    case Sections.contactData.rawValue:
+      guard viewModel.isAuthorized.value && viewModel.paymentMethod.value != .applePay else { return 0 }
+      return super.tableView(tableView, heightForRowAt: indexPath)
+    case Sections.comment.rawValue:
+      guard viewModel.isAuthorized.value else { return 0 }
       return super.tableView(tableView, heightForRowAt: indexPath)
     default:
       break
@@ -253,7 +318,6 @@ class ContactFormViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     guard indexPath.section == Sections.paymentMethod.rawValue && indexPath.row == PaymentRows.applePay.rawValue else { return }
     guard let viewModel = viewModel, !viewModel.canUseApplePay else { return }
-
     cell.isHidden = true
   }
 

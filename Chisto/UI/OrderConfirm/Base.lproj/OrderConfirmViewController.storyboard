@@ -58,7 +58,7 @@
                                                         <constraint firstAttribute="height" constant="29" id="zbG-dg-o7j"/>
                                                     </constraints>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="iWj-VQ-5Kj">
+                                                <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="iWj-VQ-5Kj">
                                                     <rect key="frame" x="59" y="10" width="301" height="98"/>
                                                 </stackView>
                                             </subviews>
@@ -69,7 +69,7 @@
                                                 <constraint firstItem="cTo-0W-qQ1" firstAttribute="leading" secondItem="NkN-uu-TS9" secondAttribute="leadingMargin" id="Qal-Fd-b01"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="iWj-VQ-5Kj" secondAttribute="trailing" id="Yjc-dd-Dct"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="iWj-VQ-5Kj" secondAttribute="bottom" id="aS6-Zk-Dds"/>
-                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="cTo-0W-qQ1" secondAttribute="bottom" constant="10" id="pf3-nF-w0H"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="cTo-0W-qQ1" secondAttribute="bottom" id="xwm-Wz-nFQ"/>
                                             </constraints>
                                             <edgeInsets key="layoutMargins" top="10" left="15" bottom="0.0" right="15"/>
                                         </tableViewCellContentView>

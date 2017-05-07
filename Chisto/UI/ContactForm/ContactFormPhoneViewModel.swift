@@ -28,6 +28,7 @@ class ContactFormPhoneViewModel {
       .userProfile
       .asObservable()
       .map { $0.apiToken != nil }
+      .distinctUntilChanged()
       .bind(to: phoneIsValidated)
       .addDisposableTo(disposeBag)
 

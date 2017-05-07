@@ -43,6 +43,7 @@ class ClothesViewModel: ClothesViewModelType {
   var presentErrorAlert: PublishSubject<Error>
   var currentCategory = Variable<Category?>(nil)
   var currentItemsCount = Variable<Int>(0)
+  let categoriesUpdated: PublishSubject<Void>
 
   // Data
   var items: Variable<[Item]>
@@ -54,9 +55,8 @@ class ClothesViewModel: ClothesViewModelType {
 
     headerViewModel.selectedCategory.asObservable().bind(to: currentCategory).addDisposableTo(disposeBag)
 
-    _ = DataManager.instance.fetchClothes().subscribe(onError: { error in
-      presentErrorAlert.onNext(error)
-    })
+    let categoriesUpdated = PublishSubject<Void>()
+    self.categoriesUpdated = categoriesUpdated
 
     OrderManager.instance.currentOrderItems.map { items in
       return items.reduce(0) { return $0 + $1.amount }
@@ -71,7 +71,7 @@ class ClothesViewModel: ClothesViewModelType {
       .filter("isDeleted == %@", false)
       .sorted(byKeyPath: "name", ascending: true))
 
-    let filteredItems = Observable.combineLatest(collectionObservable, searchBarString.asObservable(), currentCategory.asObservable()) { itemsCollection, searchString, category -> [Item] in
+    let filteredItems = Observable.combineLatest(collectionObservable, searchBarString.asObservable(), currentCategory.asObservable(), headerViewModel.categories.asObservable()) { itemsCollection, searchString, category, _ -> [Item] in
       var predicates = [NSPredicate]()
       predicates.append(NSPredicate(format: "name CONTAINS[c] %@", searchString ?? ""))
       if let category = category {
@@ -101,10 +101,28 @@ class ClothesViewModel: ClothesViewModelType {
       .asDriver(onErrorDriveWith: .empty())
     
     didStartSearching.asObservable().take(1).flatMap {
-      DataManager.instance.fetchClothes().do(onError: { error in
+      DataManager.instance.fetchClothesIfNeeded().do(onError: { error in
         presentErrorAlert.onNext(error)
       })
     }.subscribe().addDisposableTo(disposeBag)
+
+    fetchItemsIfNeeded(true)
+  }
+
+  func fetchItemsIfNeeded(_ force: Bool = false) {
+    let fetchCategoriesObservable = DataManager.instance.fetchCategoriesIfNeeded(force).do(onError: { [weak self] error in
+      self?.presentErrorAlert.onNext(error)
+    })
+
+    let fetchItemsObservable = DataManager.instance.fetchClothesIfNeeded(force).do(onError: { [weak self] error in
+      self?.presentErrorAlert.onNext(error)
+    })
+
+    Observable.combineLatest(fetchCategoriesObservable, fetchItemsObservable).subscribe(onNext: { [weak self] _, _ in
+      self?.categoriesUpdated.onNext()
+
+    }).addDisposableTo(disposeBag)
+
   }
 
 }

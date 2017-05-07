@@ -155,6 +155,23 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
     tableView.estimatedRowHeight = 80
     tableView.rowHeight = UITableViewAutomaticDimension
 
+    viewModel.categoriesUpdated
+      .asObservable()
+      .subscribe(onNext: { [weak self] in
+        self?.tableView.reloadData()
+        self?.headerView.collectionView.reloadData()
+    }).addDisposableTo(disposeBag)
+
+    viewModel.currentCategory
+      .asObservable()
+      .distinctUntilChanged { $0?.id != $1?.id }
+      .subscribe(onNext: { [weak self] _ in
+        let indexPath = IndexPath(row: 0, section: 0)
+        guard self?.tableView.cellForRow(at: indexPath) != nil else { return }
+        self?.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        self?.tableView.reloadData()
+      }).addDisposableTo(disposeBag)
+
     // Bindings
     dataSource.configureCell = { _, tableView, indexPath, cellViewModel in
       let cell = tableView.dequeueReusableCell(
@@ -190,6 +207,7 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
       headerView.scrollToSelectedRowIfNeeded()
       tableView.deselectRow(at: indexPath, animated: true)
     }
+    viewModel.fetchItemsIfNeeded()
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -203,6 +221,10 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
   
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return 100
+  }
+
+  override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return 0
   }
 
 }

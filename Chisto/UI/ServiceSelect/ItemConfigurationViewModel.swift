@@ -33,6 +33,8 @@ class ItemConfigurationViewModel {
   let widthText: Variable<String?>
   let areaText: Variable<String?>
 
+  var treatments: Variable<[Treatment]>
+
   let saveButtonIsEnabled = Variable<Bool>(false)
 
   // Data
@@ -67,14 +69,23 @@ class ItemConfigurationViewModel {
     self.color = item.category?.color ?? UIColor.chsSkyBlue
     self.useArea = item.useArea
 
+    DataManager.instance.fetchClothesTreatments(item: item).subscribe().addDisposableTo(disposeBag)
+    let treatments = Variable<[Treatment]>([])
+    Observable.collection(from: item.treatments.filter("isDeleted == %@", false).sorted(byKeyPath: "name"))
+      .map { Array($0) }
+      .bind(to: treatments)
+      .addDisposableTo(disposeBag)
+    self.treatments = treatments
+
     saveButtonTapped
       .map { self.save() }
       .bind(to: dismiss)
       .addDisposableTo(disposeBag)
 
-    areaText.asObservable().map { areaText in
+    Observable.combineLatest(treatments.asObservable(), areaText.asObservable()) { treatments, areaText in
+      guard treatments.count > 0 else { return false }
       guard orderItem.clothesItem.useArea else { return true }
-      guard let areaText = areaText else { return false }
+      let areaText = areaText ?? ""
       return !areaText.characters.isEmpty
     }.bind(to: saveButtonIsEnabled).addDisposableTo(disposeBag)
 
@@ -101,7 +112,8 @@ class ItemConfigurationViewModel {
     return "\(area) м²"
   }
 
-  func size() -> (width: Int, length: Int) {
+  func size() -> (width: Int, length: Int)? {
+    guard orderItem.clothesItem.useArea else { return nil }
     guard let lengthText = lengthText.value, let widthText = widthText.value else { return (0, 0) }
     guard let length = Int(lengthText.onlyDigits), let width = Int(widthText.onlyDigits) else { return (0, 0) }
     return (width: width, length: length)
@@ -111,6 +123,7 @@ class ItemConfigurationViewModel {
     OrderManager.instance.updateOrderItem(orderItem) {
       orderItem.hasDecoration = hasDecoration.value
       orderItem.size = size()
+      orderItem.treatments = treatments.value.filter { $0.name == "Химчистка" }
       orderItem.amount = currentAmount.value
     }
   }

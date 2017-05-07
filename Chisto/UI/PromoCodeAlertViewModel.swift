@@ -15,18 +15,26 @@ class PromoCodeAlertViewModel {
   let promoCodeDidEntered: Driver<PromoCode?>
   let continueButtonDidTap = PublishSubject<Void>()
   let didFinishEnteringCode = PublishSubject<Void>()
+  let didPickEmptyPromoCode: Driver<Void>
   let dismissViewController: Driver<Void>
   let promoCodeText: Variable<String?>
 
   init() {
     let promoCodeText = Variable<String?>("")
     self.promoCodeText = promoCodeText
-    self.promoCodeDidEntered = didFinishEnteringCode
+    let didPickPromoCode = didFinishEnteringCode
       .asDriver(onErrorDriveWith: .empty())
       .map { promoCodeText.value ?? "" }
-      .filter { !$0.characters.isEmpty }
+
+    self.didPickEmptyPromoCode = didPickPromoCode
+      .filter { $0.isEmpty }
+      .map { _ in () }
+
+    self.promoCodeDidEntered = didPickPromoCode
+      .filter { !$0.isEmpty }
       .flatMap { code in
-        DataManager.instance.showPromoCode(code: code).asDriver(onErrorDriveWith: .just(nil)) }
+        DataManager.instance.showPromoCode(code: code).asDriver(onErrorDriveWith: .just(nil))
+      }
     self.dismissViewController = continueButtonDidTap.asDriver(onErrorDriveWith: .empty())
   }
 

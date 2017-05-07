@@ -39,21 +39,14 @@ class ContactFormViewModel {
     case orderRegistration
   }
 
-  let userHeaderModel = ContactFormTableHeaderViewModel(
+  let contactDataHeaderModel = ContactFormTableHeaderViewModel(
     title: NSLocalizedString("contactInfo", comment: "Contact form header"),
     icon: #imageLiteral(resourceName:"iconSmallUser")
   )
 
-  let contactsHeaderModel = ContactFormTableHeaderViewModel(
+  let phoneHeaderModel = ContactFormTableHeaderViewModel(
     title: NSLocalizedString("contactsHeader", comment: "Contact form header"),
     icon: #imageLiteral(resourceName: "iconSmallGrayAntenna")
-  )
-
-
-  let adressHeaderModel = ContactFormTableHeaderViewModel(
-    title: NSLocalizedString("deliveryAdress", comment: "Contact form header"),
-    icon: #imageLiteral(resourceName:"iconSmallAddress"),
-    isEnabledButton: true
   )
 
   let commentHeaderModel = ContactFormTableHeaderViewModel(
@@ -87,6 +80,19 @@ class ContactFormViewModel {
   var canPayUsingPaymentMethods = PKPaymentAuthorizationViewController.canMakePayments(
     usingNetworks: [.masterCard, .visa]
   )
+
+  var isAuthorized: Variable<Bool> {
+    return phoneViewModel.phoneIsValidated
+  }
+
+  var didFinishAuthorization: Observable<Bool> {
+    return phoneViewModel
+      .phoneIsValidated
+      .asObservable()
+      .skip(1)
+      .filter { $0 == true }
+      .take(1)
+  }
 
   var currentScreen: CurrentScreen
 
@@ -133,20 +139,18 @@ class ContactFormViewModel {
       .bind(to: presentErrorAlert)
       .addDisposableTo(disposeBag)
 
-    let contactInfoIsValid = Observable.combineLatest(firstName.asObservable(), lastName.asObservable(), phoneIsValid.asObservable(), email.asObservable(), phoneViewModel.phoneIsValidated.asObservable()) { firstName, lastName, phoneIsValid, email, phoneIsValidated -> Bool in
-      guard let firstName = firstName, let lastName = lastName, let email = email, phoneIsValidated else { return false }
+    let phoneDataIsValid = Observable.combineLatest(phoneIsValid.asObservable(), phoneViewModel.phoneIsValidated.asObservable()) { $0 && $1 }
 
-      return phoneIsValid && firstName.characters.count > 0 && lastName.characters.count > 0 && email.characters.count > 0
-
-    }
-
-    let adressIsValid = Observable.combineLatest(street.asObservable(), building.asObservable(), apartment.asObservable()) { street, building, apartment -> Bool in
-      guard let street = street, let building = building, let apartment = apartment else { return false }
-      return street.characters.count > 0 && building.characters.count > 0 && apartment.characters.count > 0
+    let contactDataIsValid = Observable.combineLatest(firstName.asObservable(),street.asObservable(), building.asObservable(), apartment.asObservable()) { firstName, street, building, apartment -> Bool in
+      guard let firstName = firstName, let street = street, let building = building, let apartment = apartment else { return false }
+      return firstName.characters.count > 0 && street.characters.count > 0 && building.characters.count > 0 && apartment.characters.count > 0
 
     }
 
-    Observable.combineLatest(contactInfoIsValid, adressIsValid) { $0 && $1 }.bind(to: isValid).addDisposableTo(disposeBag)
+    Observable.combineLatest(contactDataIsValid, phoneDataIsValid, paymentMethod.asObservable()) { contactDataIsValid, phoneDataIsValid, paymentMethod in
+      guard phoneDataIsValid else { return false }
+      return contactDataIsValid || paymentMethod == .applePay
+    }.bind(to: isValid).addDisposableTo(disposeBag)
 
   }
 
@@ -161,7 +165,7 @@ class ContactFormViewModel {
       let profile = ProfileManager.instance.userProfile.value
       ProfileManager.instance.updateProfile { profile in
         profile.firstName = self.firstName.value ?? ""
-        profile.lastName = self.lastName.value ?? ""
+        profile.lastName = "Test"
         if let phoneNumber = phoneNumber {
           profile.phone = phoneNumberKit.format(phoneNumber, toType: .e164)
         }

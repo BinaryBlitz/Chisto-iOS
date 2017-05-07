@@ -30,7 +30,7 @@ class CategoriesHeaderCollectionViewModel {
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
 
-    DataManager.instance.fetchCategories().subscribe(onError: { error in
+    DataManager.instance.fetchCategoriesIfNeeded(true).subscribe(onError: { error in
       presentErrorAlert.onNext(error)
     }).addDisposableTo(disposeBag)
 

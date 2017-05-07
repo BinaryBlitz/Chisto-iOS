@@ -17,12 +17,12 @@ import ObjectMapper
 
 protocol FetchItemsManagerType {
   func fetchCities() -> Observable<Void>
-  func fetchCategories() -> Observable<Void>
+  func fetchCategoriesIfNeeded(_ force: Bool) -> Observable<Void>
   func fetchOrders() -> Observable<Void>
   func fetchCategoryClothes(category: Category) -> Observable<Void>
   func fetchClothesTreatments(item: Item) -> Observable<Void>
   func fetchRatings(laundry: Laundry) -> Observable<[Rating]>
-  func fetchClothes() -> Observable<Void>
+  func fetchClothesIfNeeded(_ force: Bool) -> Observable<Void>
   func getLaundries() -> Observable<[Laundry]>
 }
 
@@ -39,19 +39,34 @@ extension DataManager: FetchItemsManagerType {
     }
   }
 
-  func fetchCategories() -> Observable<Void> {
-    return fetchItems(type: Category.self, apiPath: .fetchCategories).map { newCategories in
-      let realm = try! Realm()
-      let categories = Set(realm.objects(Category.self).toArray())
-      for category in categories.subtracting(Set(newCategories)) {
-        try realm.write {
-          category.isDeleted = true
+  func fetchCategoriesIfNeeded(_ force: Bool = false) -> Observable<Void> {
+    if force || RealmManager
+      .instance
+      .uiRealm
+      .objects(Category.self)
+      .filter("isDeleted == %@", false)
+      .count == 0 {
+      return fetchItems(type: Category.self, apiPath: .fetchCategories).map { newCategories in
+        let realm = try! Realm()
+        let categories = Set(realm.objects(Category.self).toArray())
+        for category in categories.subtracting(Set(newCategories)) {
+          try realm.write {
+            category.isDeleted = true
+          }
         }
       }
+    } else {
+      return Observable.just(())
     }
   }
 
-  func fetchClothes() -> Observable<Void> {
+  func fetchClothesIfNeeded(_ force: Bool = false) -> Observable<Void> {
+    guard force || RealmManager
+      .instance
+      .uiRealm
+      .objects(Item.self)
+      .filter("isDeleted == %@", false)
+      .count == 0 else { return Observable.just(())}
     return fetchItems(type: Item.self, apiPath: .fetchItems).map { newItems in
       let realm = try! Realm()
       let items = Set(realm.objects(Item.self).toArray())
