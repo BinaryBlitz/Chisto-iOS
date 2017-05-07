@@ -89,6 +89,8 @@
 		881F4FA81E080302009C5B17 /* Data+hexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881F4FA71E080302009C5B17 /* Data+hexString.swift */; };
 		882288141DB6D11C000642E0 /* RootViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882288131DB6D11C000642E0 /* RootViewController.storyboard */; };
 		882288161DB6D12C000642E0 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882288151DB6D12C000642E0 /* RootViewController.swift */; };
+		88246B371EBF475C007B5603 /* ItemConfigurationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88246B391EBF475C007B5603 /* ItemConfigurationViewController.storyboard */; };
+		88246B3C1EBF488A007B5603 /* ItemConfigurationTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88246B3E1EBF488A007B5603 /* ItemConfigurationTableViewController.storyboard */; };
 		88287EE51E67527E00D8745E /* PromoCodeAlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88287EE71E67527E00D8745E /* PromoCodeAlertViewController.storyboard */; };
 		882ECDAF1DE215FF00EE3507 /* OrderInfoTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDAE1DE215FF00EE3507 /* OrderInfoTableViewCellModel.swift */; };
 		882ECDB11DE2160C00EE3507 /* OrderInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDB01DE2160C00EE3507 /* OrderInfoTableViewCell.swift */; };
@@ -151,8 +153,6 @@
 		889D87D21DC1F71F003E8DAC /* LaundrySelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889D87D11DC1F71E003E8DAC /* LaundrySelectViewModel.swift */; };
 		88A221681DCE013100CAD2B0 /* LaundryTreatment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A221671DCE013100CAD2B0 /* LaundryTreatment.swift */; };
 		88A2C3781EB4BD8D005F5CA5 /* CategoriesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88A2C3771EB4BD8D005F5CA5 /* CategoriesHeaderView.xib */; };
-		88A2C37A1EB4C8FF005F5CA5 /* ItemConfigurationTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88A2C3791EB4C8FE005F5CA5 /* ItemConfigurationTableViewController.storyboard */; };
-		88A2C37C1EB4D6B3005F5CA5 /* ItemConfigurationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88A2C37B1EB4D6B3005F5CA5 /* ItemConfigurationViewController.storyboard */; };
 		88A2C37E1EB4DAC2005F5CA5 /* ItemConfigurationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2C37D1EB4DAC2005F5CA5 /* ItemConfigurationTableViewController.swift */; };
 		88A2C3801EB4DB05005F5CA5 /* ItemConfigurationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2C37F1EB4DB05005F5CA5 /* ItemConfigurationViewModel.swift */; };
 		88A2C3821EB4E5AB005F5CA5 /* ItemConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2C3811EB4E5AB005F5CA5 /* ItemConfigurationViewController.swift */; };
@@ -344,6 +344,10 @@
 		881F4FA71E080302009C5B17 /* Data+hexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+hexString.swift"; sourceTree = "<group>"; };
 		882288131DB6D11C000642E0 /* RootViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootViewController.storyboard; sourceTree = "<group>"; };
 		882288151DB6D12C000642E0 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		88246B381EBF475C007B5603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ItemConfigurationViewController.storyboard; sourceTree = "<group>"; };
+		88246B3B1EBF475F007B5603 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemConfigurationViewController.strings; sourceTree = "<group>"; };
+		88246B3D1EBF488A007B5603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ItemConfigurationTableViewController.storyboard; sourceTree = "<group>"; };
+		88246B401EBF488D007B5603 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemConfigurationTableViewController.strings; sourceTree = "<group>"; };
 		88287EE61E67527E00D8745E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PromoCodeAlertViewController.storyboard; sourceTree = "<group>"; };
 		88287EE91E67528100D8745E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PromoCodeAlertViewController.strings; sourceTree = "<group>"; };
 		882ECDAE1DE215FF00EE3507 /* OrderInfoTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoTableViewCellModel.swift; sourceTree = "<group>"; };
@@ -409,8 +413,6 @@
 		889D87D11DC1F71E003E8DAC /* LaundrySelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySelectViewModel.swift; sourceTree = "<group>"; };
 		88A221671DCE013100CAD2B0 /* LaundryTreatment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryTreatment.swift; sourceTree = "<group>"; };
 		88A2C3771EB4BD8D005F5CA5 /* CategoriesHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesHeaderView.xib; sourceTree = "<group>"; };
-		88A2C3791EB4C8FE005F5CA5 /* ItemConfigurationTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ItemConfigurationTableViewController.storyboard; sourceTree = "<group>"; };
-		88A2C37B1EB4D6B3005F5CA5 /* ItemConfigurationViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ItemConfigurationViewController.storyboard; sourceTree = "<group>"; };
 		88A2C37D1EB4DAC2005F5CA5 /* ItemConfigurationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemConfigurationTableViewController.swift; sourceTree = "<group>"; };
 		88A2C37F1EB4DB05005F5CA5 /* ItemConfigurationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemConfigurationViewModel.swift; sourceTree = "<group>"; };
 		88A2C3811EB4E5AB005F5CA5 /* ItemConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemConfigurationViewController.swift; sourceTree = "<group>"; };
@@ -1185,8 +1187,8 @@
 				88BD82361E5274BF001375AF /* ServiceSelectViewController.storyboard */,
 				88E86DA41DB8E800002A7024 /* ServiceSelectViewController.swift */,
 				88E86DA51DB8E800002A7024 /* ServiceSelectViewModel.swift */,
-				88A2C3791EB4C8FE005F5CA5 /* ItemConfigurationTableViewController.storyboard */,
-				88A2C37B1EB4D6B3005F5CA5 /* ItemConfigurationViewController.storyboard */,
+				88246B3E1EBF488A007B5603 /* ItemConfigurationTableViewController.storyboard */,
+				88246B391EBF475C007B5603 /* ItemConfigurationViewController.storyboard */,
 				88A2C37D1EB4DAC2005F5CA5 /* ItemConfigurationTableViewController.swift */,
 				88A2C37F1EB4DB05005F5CA5 /* ItemConfigurationViewModel.swift */,
 				88A2C3811EB4E5AB005F5CA5 /* ItemConfigurationViewController.swift */,
@@ -1356,7 +1358,7 @@
 				88373C981DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib in Resources */,
 				889923941DDCAF8200D73905 /* ItemInfoNavigationController.storyboard in Resources */,
 				37530F501E4E328F0039AAB0 /* OrderRegistrationViewController.storyboard in Resources */,
-				88A2C37A1EB4C8FF005F5CA5 /* ItemConfigurationTableViewController.storyboard in Resources */,
+				88246B3C1EBF488A007B5603 /* ItemConfigurationTableViewController.storyboard in Resources */,
 				880E03F01DE9976000311721 /* ClothesNavigationController.storyboard in Resources */,
 				88BD82431E5275F3001375AF /* OrderInfoTableHeaderView.xib in Resources */,
 				37530F391E4E2FC20039AAB0 /* OrderConfirmViewController.storyboard in Resources */,
@@ -1370,7 +1372,7 @@
 				37530F781E4E33660039AAB0 /* ItemInfoViewController.storyboard in Resources */,
 				88BD82391E527544001375AF /* OrderReviewAlertViewController.storyboard in Resources */,
 				37530F731E4E33540039AAB0 /* LastTimePopupViewController.storyboard in Resources */,
-				88A2C37C1EB4D6B3005F5CA5 /* ItemConfigurationViewController.storyboard in Resources */,
+				88246B371EBF475C007B5603 /* ItemConfigurationViewController.storyboard in Resources */,
 				37530F821E4E33950039AAB0 /* ContactFormTableHeaderView.xib in Resources */,
 				37530F441E4E31560039AAB0 /* OnBoardingViewController.storyboard in Resources */,
 				37530F5A1E4E32BC0039AAB0 /* ProfileViewController.storyboard in Resources */,
@@ -1838,6 +1840,24 @@
 			);
 			name = LaunchScreen.storyboard;
 			path = .;
+			sourceTree = "<group>";
+		};
+		88246B391EBF475C007B5603 /* ItemConfigurationViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88246B381EBF475C007B5603 /* Base */,
+				88246B3B1EBF475F007B5603 /* ru */,
+			);
+			name = ItemConfigurationViewController.storyboard;
+			sourceTree = "<group>";
+		};
+		88246B3E1EBF488A007B5603 /* ItemConfigurationTableViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88246B3D1EBF488A007B5603 /* Base */,
+				88246B401EBF488D007B5603 /* ru */,
+			);
+			name = ItemConfigurationTableViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		88287EE71E67527E00D8745E /* PromoCodeAlertViewController.storyboard */ = {

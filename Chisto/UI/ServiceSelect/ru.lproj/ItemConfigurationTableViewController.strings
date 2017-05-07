@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "Specify item size"; ObjectID = "IGU-4Q-dKz"; */
+"IGU-4Q-dKz.text" = "Укажите размер вещи";
+
+/* Class = "UITextField"; placeholder = "Length, cm"; ObjectID = "TOJ-AK-kJc"; */
+"TOJ-AK-kJc.placeholder" = "Длина, см";
+
+/* Class = "UILabel"; text = "Rhinestones, beads, sequins, lace or any other decorations that require special treatment"; ObjectID = "TnH-UJ-fZc"; */
+"TnH-UJ-fZc.text" = "Стразы, бисер, пайетки, кружева и прочие украшения, требующие особого внимания";
+
+/* Class = "UILabel"; text = "0 м"; ObjectID = "WFf-vA-cWo"; */
+"WFf-vA-cWo.text" = "0 м";
+
+/* Class = "UITextField"; placeholder = "Width, cm"; ObjectID = "bGh-nt-CTy"; */
+"bGh-nt-CTy.placeholder" = "Ширина, см";
+
+/* Class = "UILabel"; text = "Area"; ObjectID = "dya-Ab-0uk"; */
+"dya-Ab-0uk.text" = "Площадь";
+
+/* Class = "UILabel"; text = "Decoration"; ObjectID = "uzT-a2-T2B"; */
+"uzT-a2-T2B.text" = "Декоративная отделка";
