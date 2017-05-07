@@ -23,7 +23,7 @@ protocol TokenManagerType {
 
 extension DataManager: TokenManagerType {
   func createVerificationToken(phone: String) -> Observable<Void> {
-    return networkRequest(method: .post, .createVerificationToken, ["phone_number": phone])
+    return networkRequest(method: .post, .createVerificationToken, ["verification_token": ["phone_number": phone] as Any])
       .flatMap { response -> Observable<Void> in
         let json = JSON(object: response)
         let verificationToken = json["token"].string
@@ -41,8 +41,8 @@ extension DataManager: TokenManagerType {
     return networkRequest(
       method: .patch,
       .verifyToken,
-      ["code": code,
-       "token": verificationToken]
+      ["verification_token": ["code": code,
+       "token": verificationToken] as Any]
       )
       .flatMap { response -> Observable<Void> in
         let json = JSON(object: response)

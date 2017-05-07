@@ -23,7 +23,10 @@ class PromoCodeAlertViewModel {
     self.promoCodeText = promoCodeText
     self.promoCodeDidEntered = didFinishEnteringCode
       .asDriver(onErrorDriveWith: .empty())
-      .flatMap { DataManager.instance.showPromoCode(code: promoCodeText.value ?? "").asDriver(onErrorDriveWith: .just(nil)) }
+      .map { promoCodeText.value ?? "" }
+      .filter { !$0.characters.isEmpty }
+      .flatMap { code in
+        DataManager.instance.showPromoCode(code: code).asDriver(onErrorDriveWith: .just(nil)) }
     self.dismissViewController = continueButtonDidTap.asDriver(onErrorDriveWith: .empty())
   }
 
