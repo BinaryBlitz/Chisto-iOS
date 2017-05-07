@@ -21,8 +21,6 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName:"iconSortNavbar"), style: .plain, target: self, action: nil)
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
-    tableView.rowHeight = UITableViewAutomaticDimension
-    tableView.estimatedRowHeight = 190
     navigationItem.rightBarButtonItem?.rx.tap.bind(to: viewModel.sortButtonDidTap)
       .addDisposableTo(disposeBag)
 

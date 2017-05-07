@@ -10,3 +10,9 @@
 
 /* Class = "UITableViewController"; title = "Химчистки"; ObjectID = "qbC-8X-BcN"; */
 "qbC-8X-BcN.title" = "Химчистки";
+
+/* Class = "UILabel"; text = "0 ₽"; ObjectID = "8h0-Lt-L48"; */
+"8h0-Lt-L48.text" = "0 ₽";
+
+/* Class = "UILabel"; text = "Minimum order price"; ObjectID = "GOt-Wt-scP"; */
+"GOt-Wt-scP.text" = "Минимальная сумма заказа";

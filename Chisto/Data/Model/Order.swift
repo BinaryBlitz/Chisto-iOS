@@ -155,6 +155,7 @@ class Order: ServerObject {
     request.paymentSummaryItems = paymentSummaryItems
     request.supportedNetworks = [.masterCard, .visa]
     request.merchantCapabilities = [.capability3DS]
+    request.requiredShippingAddressFields = [.name, .postalAddress]
     request.merchantIdentifier = "merchant.ru.binaryblitz.Chisto"
 
     // Encrypt and send order ID

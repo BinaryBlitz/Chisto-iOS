@@ -45,7 +45,7 @@ class ContactFormViewModel {
   )
 
   let phoneHeaderModel = ContactFormTableHeaderViewModel(
-    title: NSLocalizedString("contactsHeader", comment: "Contact form header"),
+    title: NSLocalizedString("phoneHeader", comment: "Contact form header"),
     icon: #imageLiteral(resourceName: "iconSmallGrayAntenna")
   )
 

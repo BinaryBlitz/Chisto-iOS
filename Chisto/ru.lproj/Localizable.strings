@@ -234,7 +234,7 @@
 "itemInfo" = "Информация о вещи";
 
 /* Contact form header */
-"contactsHeader" = "Способы связи";
+"phoneHeader" = "Номер телефона";
 
 /* Error alert */
 "promoCodeIsEmpty" = "Промокод не может быть пустым";

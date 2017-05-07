@@ -17,13 +17,14 @@ class LaundrySelectTableViewCell: UITableViewCell {
   @IBOutlet weak var laundryTitleLabel: UILabel!
   @IBOutlet weak var laundrySubTitleLabel: UILabel!
   @IBOutlet weak var ratingView: FloatRatingView!
-  @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var laundryTagLabel: RotatingUILabel!
   @IBOutlet weak var logoBackgroundView: UIView!
 
-  var collectionItemView = LaundryItemInfoView.nibInstance()!
-  var deliveryItemView = LaundryItemInfoView.nibInstance()!
-  var priceItemView = LaundryItemInfoView.nibInstance()!
+  // Stack view
+  @IBOutlet weak var priceStackView: UIStackView!
+  @IBOutlet var minimumPriceLabel: UILabel!
+  @IBOutlet var priceLabel: UILabel!
+  @IBOutlet weak var priceLabelTrailingConstraint: NSLayoutConstraint!
 
   func configure(viewModel: LaundrySelectTableViewCellModelType) {
     laundryTitleLabel.text = viewModel.laundryTitle
@@ -40,21 +41,26 @@ class LaundrySelectTableViewCell: UITableViewCell {
       self?.laundryLogoImageView.image = image
       self?.laundryLogoImageView.tintColor = viewModel.disabledColor
     }
+    for view in priceStackView.arrangedSubviews {
+      priceStackView.removeArrangedSubview(view)
+      view.removeFromSuperview()
+    }
 
+    if viewModel.isDisabled {
+      priceStackView.addArrangedSubview(minimumPriceLabel)
+      minimumPriceLabel.font = UIFont.systemFont(ofSize: 1)
+      priceLabel.text = viewModel.minimumOrderPrice
+      priceLabel.font = UIFont.systemFont(ofSize: 15)
+      priceLabel.textColor = UIColor.chsSlateGrey
+    } else {
+      priceLabel.text = viewModel.price
+      priceLabel.font = UIFont.systemFont(ofSize: 20)
+      priceLabel.textColor = UIColor.chsJadeGreen
+    }
+    priceStackView.addArrangedSubview(priceLabel)
     laundryTagLabel.isHidden = viewModel.tagIsHidden
     laundryTagLabel.backgroundColor = viewModel.tagBgColor
     laundryTagLabel.text = viewModel.tagName
-
-    collectionItemView.configure(viewModel: viewModel.collectionItemViewModel)
-    deliveryItemView.configure(viewModel: viewModel.deliveryItemViewModel)
-    priceItemView.configure(viewModel: viewModel.priceItemViewModel)
-  }
-
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    stackView.addArrangedSubview(collectionItemView)
-    stackView.addArrangedSubview(deliveryItemView)
-    stackView.addArrangedSubview(priceItemView)
   }
 
   override func setHighlighted(_ highlighted: Bool, animated: Bool) {
@@ -69,12 +75,30 @@ class LaundrySelectTableViewCell: UITableViewCell {
     }
   }
 
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    clearPriceStackView()
+  }
+
   func saveBackgroundColorsWhileChangingState(changes: () -> Void) {
     let tagBackColor = laundryTagLabel.backgroundColor
     let logoBackColor = logoBackgroundView.backgroundColor
     changes()
     laundryTagLabel.backgroundColor = tagBackColor
     logoBackgroundView.backgroundColor = logoBackColor
+  }
+
+  func clearPriceStackView() {
+    for view in priceStackView.arrangedSubviews {
+      priceStackView.removeArrangedSubview(view)
+      view.removeFromSuperview()
+    }
+
+  }
+
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    clearPriceStackView()
   }
 
 }

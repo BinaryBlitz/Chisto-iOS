@@ -199,7 +199,7 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
       .drive(tableView.rx.items(dataSource: dataSource))
       .addDisposableTo(self.disposeBag)
 
-    tableView.tableFooterView = UIView()
+    //tableView.tableFooterView = UIView()
   }
 
   override func viewWillAppear(_ animated: Bool) {

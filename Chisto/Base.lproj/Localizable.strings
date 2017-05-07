@@ -234,7 +234,7 @@
 "itemInfo" = "Item Info";
 
 /* Contact form header */
-"contactsHeader" = "Contacts";
+"phoneHeader" = "Phone number";
 
 /* Error alert */
 "promoCodeIsEmpty" = "Promo code is invalid";

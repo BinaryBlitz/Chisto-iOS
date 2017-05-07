@@ -259,7 +259,6 @@
 		37530F671E4E32FE0039AAB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LocationSelectViewController.storyboard; sourceTree = "<group>"; };
 		37530F6C1E4E331F0039AAB0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LocationSelectViewController.strings; sourceTree = "<group>"; };
 		37530F701E4E33330039AAB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaundrySelectViewController.storyboard; sourceTree = "<group>"; };
-		37530F721E4E33430039AAB0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaundrySelectViewController.strings; sourceTree = "<group>"; };
 		37530F741E4E33540039AAB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LastTimePopupViewController.storyboard; sourceTree = "<group>"; };
 		37530F771E4E335A0039AAB0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LastTimePopupViewController.strings; sourceTree = "<group>"; };
 		37530F791E4E33660039AAB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ItemInfoViewController.storyboard; sourceTree = "<group>"; };
@@ -393,6 +392,7 @@
 		8889CC931EB3C6C200B6D13F /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		8889CC951EB3C97800B6D13F /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		8889CC971EB3CA5400B6D13F /* CategoriesHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesHeaderView.swift; sourceTree = "<group>"; };
+		888FF1FB1EBFCA740031FB5A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaundrySelectViewController.strings; sourceTree = "<group>"; };
 		88923E101DD340C500BC3AC0 /* twoWayBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = twoWayBinding.swift; path = ../Util/twoWayBinding.swift; sourceTree = "<group>"; };
 		88923E121DD35F7600BC3AC0 /* ProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		88923E171DD36AB900BC3AC0 /* ProfileContactDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileContactDataViewController.swift; sourceTree = "<group>"; };
@@ -1736,7 +1736,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				37530F701E4E33330039AAB0 /* Base */,
-				37530F721E4E33430039AAB0 /* ru */,
+				888FF1FB1EBFCA740031FB5A /* ru */,
 			);
 			name = LaundrySelectViewController.storyboard;
 			sourceTree = "<group>";
