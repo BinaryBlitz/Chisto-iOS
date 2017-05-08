@@ -48,7 +48,7 @@ class LaundrySelectTableViewCell: UITableViewCell {
 
     if viewModel.isDisabled {
       priceStackView.addArrangedSubview(minimumPriceLabel)
-      minimumPriceLabel.font = UIFont.systemFont(ofSize: 1)
+      minimumPriceLabel.font = UIFont.systemFont(ofSize: 11)
       priceLabel.text = viewModel.minimumOrderPrice
       priceLabel.font = UIFont.systemFont(ofSize: 15)
       priceLabel.textColor = UIColor.chsSlateGrey

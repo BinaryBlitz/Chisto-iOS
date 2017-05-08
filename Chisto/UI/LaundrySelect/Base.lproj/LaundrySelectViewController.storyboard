@@ -51,54 +51,6 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="2vX-wo-hpU">
-                                            <rect key="frame" x="81" y="26.5" width="106" height="57"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Laundry Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aij-3K-dQo">
-                                                    <rect key="frame" x="0.0" y="0.0" width="106" height="19.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAm-T4-HPc">
-                                                    <rect key="frame" x="0.0" y="21.5" width="60.5" height="13.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                                    <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cj4-Gz-Z6s">
-                                                    <rect key="frame" x="0.0" y="37" width="75" height="20"/>
-                                                    <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bcl-Sr-7aI" customClass="FloatRatingView" customModule="FloatRatingView">
-                                                            <rect key="frame" x="0.0" y="9" width="75" height="11"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="11" id="2bK-YO-GGA"/>
-                                                                <constraint firstAttribute="width" constant="75" id="QKN-0l-G1X"/>
-                                                            </constraints>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="iconStarblueStroke"/>
-                                                                <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="iconStarblueFull"/>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="minRating">
-                                                                    <integer key="value" value="0"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
-                                                                    <integer key="value" value="5"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="NO"/>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="halfRatings" value="YES"/>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="floatRatings" value="NO"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </view>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="bcl-Sr-7aI" secondAttribute="bottom" id="Cff-KR-FCw"/>
-                                                        <constraint firstItem="bcl-Sr-7aI" firstAttribute="top" secondItem="Cj4-Gz-Z6s" secondAttribute="top" constant="9" id="bZg-Ns-vZo"/>
-                                                        <constraint firstAttribute="trailing" secondItem="bcl-Sr-7aI" secondAttribute="trailing" id="m4w-44-Lu9"/>
-                                                        <constraint firstItem="bcl-Sr-7aI" firstAttribute="leading" secondItem="Cj4-Gz-Z6s" secondAttribute="leading" id="pbJ-dq-yFQ"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                        </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INL-4j-h4b" customClass="RotatingUILabel" customModule="Chisto" customModuleProvider="target">
                                             <rect key="frame" x="290" y="10" width="125" height="26"/>
                                             <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -110,37 +62,88 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xLe-Ci-hu9">
-                                            <rect key="frame" x="302" y="29.5" width="58" height="51"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pbb-11-MzM">
+                                            <rect key="frame" x="80" y="26.5" width="106" height="56.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum order price" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOt-Wt-scP">
-                                                    <rect key="frame" x="0.0" y="0.0" width="58" height="26.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Laundry Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aij-3K-dQo">
+                                                    <rect key="frame" x="0.0" y="0.0" width="106" height="19.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAm-T4-HPc">
+                                                    <rect key="frame" x="0.0" y="22" width="106" height="13.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                                    <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bcl-Sr-7aI" customClass="FloatRatingView" customModule="FloatRatingView">
+                                                    <rect key="frame" x="0.0" y="45.5" width="75" height="11"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="75" id="Sgt-R6-kQH"/>
+                                                        <constraint firstAttribute="height" constant="11" id="2bK-YO-GGA"/>
+                                                        <constraint firstAttribute="width" constant="75" id="QKN-0l-G1X"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="iconStarblueStroke"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="iconStarblueFull"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="minRating">
+                                                            <integer key="value" value="0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="NO"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="halfRatings" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="floatRatings" value="NO"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="bcl-Sr-7aI" secondAttribute="bottom" id="1wm-Es-WxQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="IAm-T4-HPc" secondAttribute="trailing" id="4kj-Yh-b5v"/>
+                                                <constraint firstItem="bcl-Sr-7aI" firstAttribute="leading" secondItem="pbb-11-MzM" secondAttribute="leading" id="6E6-SO-pKA"/>
+                                                <constraint firstItem="Aij-3K-dQo" firstAttribute="top" secondItem="pbb-11-MzM" secondAttribute="top" id="KYg-eA-12g"/>
+                                                <constraint firstAttribute="trailing" secondItem="Aij-3K-dQo" secondAttribute="trailing" id="LzT-W6-q4N"/>
+                                                <constraint firstItem="Aij-3K-dQo" firstAttribute="leading" secondItem="pbb-11-MzM" secondAttribute="leading" id="Xgm-Vn-OOr"/>
+                                                <constraint firstItem="bcl-Sr-7aI" firstAttribute="top" secondItem="IAm-T4-HPc" secondAttribute="bottom" constant="10" id="e3g-dP-8nP"/>
+                                                <constraint firstItem="IAm-T4-HPc" firstAttribute="leading" secondItem="pbb-11-MzM" secondAttribute="leading" id="kAp-z4-1Ty"/>
+                                                <constraint firstItem="IAm-T4-HPc" firstAttribute="top" secondItem="Aij-3K-dQo" secondAttribute="bottom" constant="2" id="n9m-Fj-8Ez"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bcl-Sr-7aI" secondAttribute="trailing" id="xe3-Hw-bHc"/>
+                                            </constraints>
+                                        </view>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3tO-qr-gPM">
+                                            <rect key="frame" x="260" y="26" width="100" height="58"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Minimum order price" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOt-Wt-scP">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="26.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 ₽" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8h0-Lt-L48">
-                                                    <rect key="frame" x="0.0" y="31.5" width="58" height="19.5"/>
+                                                    <rect key="frame" x="38" y="31.5" width="24.5" height="26.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="textColor" red="0.16862745100000001" green="0.68627450980000004" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="gpu-gZ-u9Y"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="Ffw-aw-1p4" firstAttribute="centerY" secondItem="PGg-l5-hmz" secondAttribute="centerY" id="NzW-ql-6QN"/>
-                                        <constraint firstItem="xLe-Ci-hu9" firstAttribute="centerY" secondItem="2vX-wo-hpU" secondAttribute="centerY" id="Q9y-eJ-z7z"/>
                                         <constraint firstItem="Ffw-aw-1p4" firstAttribute="leading" secondItem="PGg-l5-hmz" secondAttribute="leading" constant="15" id="QKX-0g-Dvc"/>
-                                        <constraint firstItem="2vX-wo-hpU" firstAttribute="leading" secondItem="Ffw-aw-1p4" secondAttribute="trailing" constant="16" id="hX0-ea-yxm"/>
-                                        <constraint firstItem="2vX-wo-hpU" firstAttribute="centerY" secondItem="KO3-Ss-Ejm" secondAttribute="centerY" id="jC8-7x-mMu"/>
-                                        <constraint firstAttribute="trailing" secondItem="xLe-Ci-hu9" secondAttribute="trailing" constant="15" id="kW1-TQ-prG"/>
+                                        <constraint firstAttribute="trailing" secondItem="3tO-qr-gPM" secondAttribute="trailing" constant="15" id="RcD-5F-cUr"/>
+                                        <constraint firstItem="pbb-11-MzM" firstAttribute="leading" secondItem="Ffw-aw-1p4" secondAttribute="trailing" constant="15" id="T01-Oy-u7K"/>
+                                        <constraint firstItem="3tO-qr-gPM" firstAttribute="centerY" secondItem="PGg-l5-hmz" secondAttribute="centerY" id="Xhh-78-i6g"/>
+                                        <constraint firstItem="pbb-11-MzM" firstAttribute="centerY" secondItem="PGg-l5-hmz" secondAttribute="centerY" id="YjR-h8-Z7b"/>
+                                        <constraint firstItem="3tO-qr-gPM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pbb-11-MzM" secondAttribute="trailing" id="fyG-FB-ck7"/>
                                         <constraint firstItem="INL-4j-h4b" firstAttribute="top" secondItem="PGg-l5-hmz" secondAttribute="top" constant="10" id="lPs-n4-cJo"/>
                                         <constraint firstAttribute="trailing" secondItem="INL-4j-h4b" secondAttribute="trailing" constant="-40" id="pc9-kM-X2d"/>
+                                        <constraint firstItem="pbb-11-MzM" firstAttribute="centerY" secondItem="PGg-l5-hmz" secondAttribute="centerY" id="uDS-jz-HgC"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -152,8 +155,8 @@
                                     <outlet property="logoBackgroundView" destination="Ffw-aw-1p4" id="hEE-ZW-tTE"/>
                                     <outlet property="minimumPriceLabel" destination="GOt-Wt-scP" id="GKR-F7-Amw"/>
                                     <outlet property="priceLabel" destination="8h0-Lt-L48" id="2xy-0j-WDH"/>
-                                    <outlet property="priceLabelTrailingConstraint" destination="kW1-TQ-prG" id="i8l-ZY-0xw"/>
-                                    <outlet property="priceStackView" destination="xLe-Ci-hu9" id="NLL-Uz-ONX"/>
+                                    <outlet property="priceLabelTrailingConstraint" destination="RcD-5F-cUr" id="4PF-TC-X5z"/>
+                                    <outlet property="priceStackView" destination="3tO-qr-gPM" id="Isq-q1-gZC"/>
                                     <outlet property="ratingView" destination="bcl-Sr-7aI" id="qLW-Xf-bNg"/>
                                 </connections>
                             </tableViewCell>

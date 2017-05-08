@@ -209,10 +209,6 @@ class ContactFormViewController: UITableViewController {
       .subscribe(onNext: { [weak self] _ in
         self?.hideSectionsIfNeeded()
       }).addDisposableTo(disposeBag)
-
-    viewModel.didFinishAuthorization.subscribe(onNext: { [weak self] _ in
-
-    }).addDisposableTo(disposeBag)
   }
 
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

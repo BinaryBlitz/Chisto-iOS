@@ -22,11 +22,11 @@ class RequestOrder: Mappable {
   var promoCodeId: Int? = nil
 
   init(profile: Profile) {
-    apartmentNumber = profile.apartment
-    houseNumber = profile.building
-    apartmentNumber = profile.apartment
+    apartmentNumber = "30"
+    houseNumber = "3"
+    apartmentNumber = "3"
     contactNumber = profile.phone
-    streetName = profile.streetName
+    streetName = "Test"
     email = profile.email
     notes = profile.notes
     paymentMethod = profile.paymentMethod

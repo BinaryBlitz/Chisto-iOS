@@ -125,15 +125,7 @@ class OrderConfirmViewModel: OrderConfirmViewModelType {
         let section = OrderConfirmSectionModel(model: "", items: cellModels)
         return [section]
       }
-
-    let didFinishRegistation = PublishSubject<Void>()
-
-    let shouldPresentOrderContactDataSection = confirmOrderButtonDidTap.asObservable().filter { ProfileManager.instance.userProfile.value.isVerified }.flatMap {
-      return DataManager.instance.showUser().asDriver(onErrorDriveWith: .just())
-    }
-
-    let shouldPresentRegistrationSection = confirmOrderButtonDidTap.asObservable().filter { !ProfileManager.instance.userProfile.value.isVerified }
-
+    
     self.presentOrderContactDataSection = confirmOrderButtonDidTap
       .asDriver(onErrorDriveWith: .empty())
       .map { OrderRegistrationViewModel(promoCode: promoCode.value) }
