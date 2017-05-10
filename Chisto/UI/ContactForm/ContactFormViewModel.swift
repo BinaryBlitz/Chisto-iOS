@@ -164,12 +164,16 @@ class ContactFormViewModel {
 
       let profile = ProfileManager.instance.userProfile.value
       ProfileManager.instance.updateProfile { profile in
-        profile.firstName = self.firstName.value ?? ""
+        if let name = self.firstName.value, name.characters.count > 0 {
+          profile.firstName = name
+        } else if self.paymentMethod.value == .applePay {
+          profile.firstName = "Test"
+        }
         profile.lastName = "Test"
         if let phoneNumber = phoneNumber {
           profile.phone = phoneNumberKit.format(phoneNumber, toType: .e164)
         }
-        profile.email = self.email.value ?? ""
+        profile.email = "test@test.test"
         profile.streetName = self.street.value ?? ""
         profile.building = self.building.value ?? ""
         profile.apartment = self.apartment.value ?? ""
