@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import RealmSwift
+import Crashlytics
 
 class OrderManager {
 
@@ -41,7 +42,9 @@ class OrderManager {
 
       order.orderItemsAttributes = orderItems.map { OrderItemAttribute(orderItem: $0, laundry: laundry) }
 
-      return DataManager.instance.createOrder(order: order, laundry: laundry)
+      return DataManager.instance.createOrder(order: order, laundry: laundry).do(onNext: {
+        Answers.logCustomEvent(withName: "Order created", customAttributes: ["orderId": $0.id])
+      })
     }
   }
 

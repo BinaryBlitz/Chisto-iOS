@@ -14,6 +14,7 @@ import RxCocoa
 import RxRealm
 import SwiftyJSON
 import ObjectMapper
+import Crashlytics
 
 protocol UserManagerType {
   func updateUser() -> Observable<Void>

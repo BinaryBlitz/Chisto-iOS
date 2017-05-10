@@ -14,6 +14,7 @@ import RxCocoa
 import RxRealm
 import SwiftyJSON
 import ObjectMapper
+import Crashlytics
 
 protocol TokenManagerType {
   func createVerificationToken(phone: String) -> Observable<Void>
@@ -46,9 +47,15 @@ extension DataManager: TokenManagerType {
       )
       .flatMap { response -> Observable<Void> in
         let json = JSON(object: response)
-        print(json)
+        let token = json["api_token"].string
+        
+        if token != nil {
+          Answers.logLogin(withMethod: "Phone number", success: true, customAttributes: nil)
+        } else {
+          Answers.logSignUp(withMethod: "Phone number", success: true, customAttributes: nil)
+        }
         ProfileManager.instance.updateProfile { profile in
-          profile.apiToken = json["api_token"].string
+          profile.apiToken = token
           profile.isVerified = true
         }
         return Observable.just()

@@ -11,6 +11,7 @@ import ObjectMapper
 import PassKit
 import ObjectMapper_Realm
 import RealmSwift
+import Crashlytics
 
 enum OrderStatus: String {
   case processing = "processing"
@@ -215,6 +216,11 @@ class Order: ServerObject {
 
   var status: OrderStatus? {
     return OrderStatus(rawValue: statusString)
+  }
+
+  func logPurchaseIfNeeded(success: Bool = true) {
+    guard paymentMethod == .card || paymentMethod == .applePay else { return }
+    Answers.logPurchase(withPrice: totalPrice as NSDecimalNumber, currency: "RUB", success: success as NSNumber, itemName: "Order \(id)", itemType: "Order", itemId: "\(id)", customAttributes: [:])
   }
 
   override func mapping(map: Map) {
