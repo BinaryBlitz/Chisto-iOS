@@ -218,8 +218,7 @@ class Order: ServerObject {
     return OrderStatus(rawValue: statusString)
   }
 
-  func logPurchaseIfNeeded(success: Bool = true) {
-    guard paymentMethod == .card || paymentMethod == .applePay else { return }
+  func logPurchase(success: Bool = true) {
     Answers.logPurchase(withPrice: totalPrice as NSDecimalNumber, currency: "RUB", success: success as NSNumber, itemName: "Order \(id)", itemType: "Order", itemId: "\(id)", customAttributes: [:])
   }
 

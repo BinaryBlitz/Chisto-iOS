@@ -116,7 +116,7 @@ class OrderRegistrationViewModel {
 
     self.presentOrderPlacedPopup = Driver.of(paymentCompleted.asDriver(onErrorDriveWith: .empty()), payInCashDriver)
       .merge().map { order in
-        order.logPurchaseIfNeeded()
+        order.logPurchase()
         OrderManager.instance.clearOrderItems()
         return OrderPlacedPopupViewModel(orderNumber: "\(order.id)")
       }
