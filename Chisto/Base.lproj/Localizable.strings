@@ -238,3 +238,15 @@
 
 /* Error alert */
 "promoCodeIsEmpty" = "Promo code is invalid";
+
+/* Registration */
+"codeSentTryAgain" = "A code has been sent to your phone number. Try again in %@ ";
+
+/* Send code alert */
+"secondNominitive" = "seconds";
+
+/* Send code alert */
+"secondGenitive" = "seconds";
+
+/* Send code alert */
+"secondsGenitive" = "seconds";

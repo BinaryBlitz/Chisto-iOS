@@ -238,3 +238,15 @@
 
 /* Error alert */
 "promoCodeIsEmpty" = "Промокод не может быть пустым";
+
+/* Registration */
+"codeSentTryAgain" = "Код был отправлен на ваш номер телефона. Повторно отправить код можно через %@ ";
+
+/* Send code alert */
+"secondNominitive" = "секунда";
+
+/* Send code alert */
+"secondGenitive" = "секунды";
+
+/* Send code alert */
+"secondsGenitive" = "секунд";

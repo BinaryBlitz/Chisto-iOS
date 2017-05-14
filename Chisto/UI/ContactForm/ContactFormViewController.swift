@@ -127,12 +127,6 @@ class ContactFormViewController: UITableViewController {
 
     configureValidations()
 
-    viewModel.phoneViewModel
-      .sendButtonEnabled
-      .asObservable()
-      .bind(to: sendCodeButton.rx.isEnabled)
-      .addDisposableTo(disposeBag)
-
     viewModel.codeSectionIsVisible.asObservable()
       .map { !$0 }
       .bind(to: sendCodeButton.rx.isHidden)
