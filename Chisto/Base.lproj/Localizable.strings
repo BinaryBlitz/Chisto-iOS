@@ -66,7 +66,7 @@
 "deliveryAdress" = "Delivery address";
 
 /* Contact form header */
-"orderComments" = "Extra information";
+"commentHeaderNotRequired" = "Not required";
 
 /* Contact form header */
 "paymentMethod" = "Payment method";

@@ -82,12 +82,14 @@ class OrderRegistrationViewModel {
       return placeOrderDriver
     }
 
-    let payInCashDriver = payButtonDidTap.filter { formViewModel.paymentMethod.value == .cash }
+    let payButtonObservable = payButtonDidTap.filter { formViewModel.validateState() }
+
+    let payInCashDriver = payButtonObservable.filter { formViewModel.paymentMethod.value == .cash }
       .asDriver(onErrorDriveWith: .empty()).flatMap {
         return placeOrder()
       }
 
-    self.presentApplePayScreen = payButtonDidTap.filter { formViewModel.paymentMethod.value == .applePay }
+    self.presentApplePayScreen = payButtonObservable.filter { formViewModel.paymentMethod.value == .applePay }
       .asDriver(onErrorDriveWith: .empty()).flatMap {
         return placeOrder().map { $0.paymentRequest }
     }
@@ -100,7 +102,7 @@ class OrderRegistrationViewModel {
       .bind(to: paymentCompleted)
       .addDisposableTo(disposeBag)
 
-    self.presentPaymentSection = payButtonDidTap
+    self.presentPaymentSection = payButtonObservable
       .filter { formViewModel.paymentMethod.value == .card }
       .asDriver(onErrorDriveWith: .empty()).flatMap {
         return placeOrder().map { order in

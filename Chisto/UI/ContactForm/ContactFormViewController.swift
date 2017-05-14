@@ -41,6 +41,14 @@ class ContactFormViewController: UITableViewController {
   @IBOutlet var payWithApplePayIconViews: [UIImageView]!
   @IBOutlet weak var phoneCheckImageView: UIImageView!
 
+  // MARK: - Check labels
+  
+  @IBOutlet weak var firstNameCheckView: UIImageView!
+  @IBOutlet weak var cityCheckView: UIImageView!
+  @IBOutlet weak var streetCheckView: UIImageView!
+  @IBOutlet weak var buildingCheckView: UIImageView!
+  @IBOutlet weak var apartmentCheckView: UIImageView!
+  
   var payWithCardSelected: Bool = true {
     didSet {
       payWithCardLabel.isHighlighted = payWithCardSelected
@@ -117,17 +125,7 @@ class ContactFormViewController: UITableViewController {
     (commentField.rx.text <-> viewModel.comment).addDisposableTo(disposeBag)
     (codeField.rx.text <-> viewModel.phoneViewModel.code).addDisposableTo(disposeBag)
 
-    sendCodeButton.rx.tap
-      .bind(to: viewModel.phoneViewModel.sendButtonDidTap)
-      .addDisposableTo(disposeBag)
-
-    phoneCheckImageView.alpha = 0
-
-    viewModel.didFinishAuthorization.subscribe(onNext: { [weak self] _ in
-      UIView.animate(withDuration: 0.2, animations: {
-        self?.phoneCheckImageView.alpha = 1
-      })
-    }).addDisposableTo(disposeBag)
+    configureValidations()
 
     viewModel.phoneViewModel
       .sendButtonEnabled
@@ -181,6 +179,72 @@ class ContactFormViewController: UITableViewController {
       self?.hideSectionsIfNeeded()
     }).addDisposableTo(disposeBag)
 
+  }
+
+  func configureValidations() {
+
+    guard let viewModel = viewModel else { return }
+
+    viewModel.highlightPhoneField
+      .subscribe(onNext: { [weak self] in
+        self?.phoneField.setValidationState(true)
+      }).addDisposableTo(disposeBag)
+
+    viewModel.highlightFirstNameField
+      .subscribe(onNext: { [weak self] in
+        self?.firstNameField.setValidationState(true)
+      }).addDisposableTo(disposeBag)
+
+    viewModel.highlightCityField
+      .subscribe(onNext: { [weak self] in
+        self?.cityField.setValidationState(true)
+      }).addDisposableTo(disposeBag)
+
+    viewModel.highlightStreetField
+      .subscribe(onNext: { [weak self] in
+        self?.streetField.setValidationState(true)
+      }).addDisposableTo(disposeBag)
+
+    viewModel.highlightBuildingField
+      .subscribe(onNext: { [weak self] in
+        self?.buildingField.setValidationState(true)
+      }).addDisposableTo(disposeBag)
+
+    viewModel.highlightApartmentField
+      .subscribe(onNext: { [weak self] in
+        self?.apartmentField.setValidationState(true)
+      }).addDisposableTo(disposeBag)
+
+    viewModel.firstNameIsValid
+      .asObservable()
+      .map { !$0 }
+      .bind(to: firstNameCheckView.rx.isHidden)
+      .addDisposableTo(disposeBag)
+
+    viewModel.streetIsValid.asObservable()
+      .map { !$0 }
+      .bind(to: streetCheckView.rx.isHidden)
+      .addDisposableTo(disposeBag)
+
+    viewModel.buildingIsValid.asObservable()
+      .map { !$0 }
+      .bind(to: buildingCheckView.rx.isHidden)
+      .addDisposableTo(disposeBag)
+
+    viewModel.apartmentIsValid.asObservable()
+      .map { !$0 }
+      .bind(to: apartmentCheckView.rx.isHidden)
+      .addDisposableTo(disposeBag)
+
+    sendCodeButton.rx.tap
+      .bind(to: viewModel.phoneViewModel.sendButtonDidTap)
+      .addDisposableTo(disposeBag)
+
+    viewModel.phoneIsValid
+      .asObservable()
+      .map { !$0 }
+      .bind(to: phoneCheckImageView.rx.isHidden)
+      .addDisposableTo(disposeBag)
   }
 
   func hideSectionsIfNeeded() {
@@ -301,6 +365,7 @@ class ContactFormViewController: UITableViewController {
       break
     case Sections.contactData.rawValue:
       guard viewModel.isAuthorized.value && viewModel.paymentMethod.value != .applePay else { return 0 }
+      if viewModel.currentScreen == .orderRegistration && indexPath.row == 1 { return 0 }
       return super.tableView(tableView, heightForRowAt: indexPath)
     case Sections.comment.rawValue:
       guard viewModel.isAuthorized.value else { return 0 }
@@ -344,6 +409,11 @@ extension ContactFormViewController: UITextFieldDelegate {
       }
     }
     return false
+  }
+
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    guard let textField = textField as? HoshiTextField else { return }
+    textField.setValidationState(false)
   }
 
   func textField(_ textField: UITextField,

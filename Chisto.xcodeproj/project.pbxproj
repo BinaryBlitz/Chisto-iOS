@@ -127,6 +127,7 @@
 		8872F0BE1DD8D67100E8D9EE /* RequestOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8872F0BD1DD8D67100E8D9EE /* RequestOrder.swift */; };
 		8872F0C01DD8DD3400E8D9EE /* OrderPlacedPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8872F0BF1DD8DD3400E8D9EE /* OrderPlacedPopupViewModel.swift */; };
 		887531E31EB6830F00CE2A9F /* ContactFormPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887531E21EB6830F00CE2A9F /* ContactFormPhoneViewModel.swift */; };
+		887B87E11EC51C4D008715A2 /* HoshiTextField+setValidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887B87E01EC51C4D008715A2 /* HoshiTextField+setValidationState.swift */; };
 		887D62591E3363B20052CC37 /* OrderConfirmTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887D5EBF1E3363B00052CC37 /* OrderConfirmTableHeaderView.swift */; };
 		887D625B1E3369230052CC37 /* OrderConfirmTableHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887D625A1E3369230052CC37 /* OrderConfirmTableHeaderViewModel.swift */; };
 		8888110F1EB3CE3600861843 /* CategoriesHeaderCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8888110E1EB3CE3600861843 /* CategoriesHeaderCollectionViewModel.swift */; };
@@ -209,6 +210,7 @@
 		88DB93931DCC20B100DAC651 /* ServerObjct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93921DCC20B100DAC651 /* ServerObjct.swift */; };
 		88E6B5991DCB73610024FA1A /* UIView+AddBorders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */; };
 		88E6B59F1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */; };
+		88E6EB6D1EC52CB7007A0082 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88E6EB6F1EC52CB7007A0082 /* InfoPlist.strings */; };
 		88E705641DCCC2FB007F779E /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E705631DCCC2FB007F779E /* Category.swift */; };
 		88E831331DFC7177005E35D9 /* Double+currencyString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E831321DFC7177005E35D9 /* Double+currencyString.swift */; };
 		88E86DA71DB8E800002A7024 /* ServiceSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */; };
@@ -294,7 +296,6 @@
 		88073ED81DABE1E0000696A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88073EDF1DABE1E0000696A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88073EE21DABE1E0000696A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		88073EE41DABE1E0000696A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88073EED1DAC1A23000696A3 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		88073EFB1DAC4661000696A3 /* CitySelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySelectViewController.swift; sourceTree = "<group>"; };
 		88073EFD1DAC4950000696A3 /* CitySelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySelectViewModel.swift; sourceTree = "<group>"; };
@@ -385,7 +386,8 @@
 		8872F0BD1DD8D67100E8D9EE /* RequestOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestOrder.swift; sourceTree = "<group>"; };
 		8872F0BF1DD8DD3400E8D9EE /* OrderPlacedPopupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderPlacedPopupViewModel.swift; sourceTree = "<group>"; };
 		887531E21EB6830F00CE2A9F /* ContactFormPhoneViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFormPhoneViewModel.swift; sourceTree = "<group>"; };
-		887531E61EB6BADD00CE2A9F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ClothesViewController.strings; sourceTree = "<group>"; };
+		887B87DC1EC4ED75008715A2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ClothesViewController.strings; sourceTree = "<group>"; };
+		887B87E01EC51C4D008715A2 /* HoshiTextField+setValidationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HoshiTextField+setValidationState.swift"; sourceTree = "<group>"; };
 		887D5EBF1E3363B00052CC37 /* OrderConfirmTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderConfirmTableHeaderView.swift; path = Views/OrderConfirmTableHeaderView.swift; sourceTree = "<group>"; };
 		887D625A1E3369230052CC37 /* OrderConfirmTableHeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmTableHeaderViewModel.swift; sourceTree = "<group>"; };
 		8888110E1EB3CE3600861843 /* CategoriesHeaderCollectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesHeaderCollectionViewModel.swift; sourceTree = "<group>"; };
@@ -477,6 +479,9 @@
 		88DB93921DCC20B100DAC651 /* ServerObjct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerObjct.swift; sourceTree = "<group>"; };
 		88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AddBorders.swift"; sourceTree = "<group>"; };
 		88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPhoneInputViewController.swift; sourceTree = "<group>"; };
+		88E6EB6B1EC52C88007A0082 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88E6EB701EC52CC2007A0082 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		88E6EB721EC531C2007A0082 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		88E705631DCCC2FB007F779E /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		88E831321DFC7177005E35D9 /* Double+currencyString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+currencyString.swift"; sourceTree = "<group>"; };
 		88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectTableViewCell.swift; sourceTree = "<group>"; };
@@ -1019,8 +1024,9 @@
 		889923991DDD27AB00D73905 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
-				88073EE41DABE1E0000696A3 /* Info.plist */,
+				88E6EB6B1EC52C88007A0082 /* Info.plist */,
 				88C74B981E3D0A3100F4DBCF /* Localizable.strings */,
+				88E6EB6F1EC52CB7007A0082 /* InfoPlist.strings */,
 			);
 			name = Supporting;
 			sourceTree = "<group>";
@@ -1052,6 +1058,7 @@
 				88DB93921DCC20B100DAC651 /* ServerObjct.swift */,
 				88A2CFC01DEB2CA2000762DE /* StringToDateTransform.swift */,
 				88C795171E62043D008E7952 /* DecimalTransform.swift */,
+				887B87E01EC51C4D008715A2 /* HoshiTextField+setValidationState.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1296,7 +1303,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Binary Blitz";
 				TargetAttributes = {
 					88073ED41DABE1E0000696A3 = {
@@ -1341,6 +1348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88A2C3781EB4BD8D005F5CA5 /* CategoriesHeaderView.xib in Resources */,
+				88E6EB6D1EC52CB7007A0082 /* InfoPlist.strings in Resources */,
 				88A2C3871EB4F255005F5CA5 /* ChistoSectionHeaderView.xib in Resources */,
 				88BD82251E527282001375AF /* ClothesViewController.storyboard in Resources */,
 				88BD822A1E527308001375AF /* RegistrationCodeInputViewController.storyboard in Resources */,
@@ -1634,6 +1642,7 @@
 				8814C03C1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift in Sources */,
 				88004FB41DDF3DE300A8632A /* LaundryReviewsViewController.swift in Sources */,
 				88E86DB31DB916B3002A7024 /* OrderManager.swift in Sources */,
+				887B87E11EC51C4D008715A2 /* HoshiTextField+setValidationState.swift in Sources */,
 				885409C71DB2EC5D00219C00 /* UIView+IBInspectable.swift in Sources */,
 				8833B5341DBF7F75004D44CE /* LaundryItemInfoViewModel.swift in Sources */,
 			);
@@ -1873,7 +1882,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				88BD82261E527282001375AF /* Base */,
-				887531E61EB6BADD00CE2A9F /* ru */,
+				887B87DC1EC4ED75008715A2 /* ru */,
 			);
 			name = ClothesViewController.storyboard;
 			sourceTree = "<group>";
@@ -1948,6 +1957,15 @@
 				37530F351E4E0EEA0039AAB0 /* ru */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		88E6EB6F1EC52CB7007A0082 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88E6EB701EC52CC2007A0082 /* ru */,
+				88E6EB721EC531C2007A0082 /* Base */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

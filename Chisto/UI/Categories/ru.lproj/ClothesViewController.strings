@@ -1,12 +1,9 @@
 
-/* Class = "UIViewController"; title = "Categories"; ObjectID = "OKw-S0-QyE"; */
-"OKw-S0-QyE.title" = "Выбор вещи";
+/* Class = "UILabel"; text = "Label"; ObjectID = "1ga-Fz-hDI"; */
+"1ga-Fz-hDI.text" = "Label";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "R7z-mG-ZMz"; */
-"R7z-mG-ZMz.text" = "Label";
+/* Class = "UILabel"; text = "Label"; ObjectID = "FuD-Ir-m25"; */
+"FuD-Ir-m25.text" = "Label";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "qut-qe-oXw"; */
-"qut-qe-oXw.text" = "Label";
-
-/* Class = "UILabel"; text = "from 400 ₽"; ObjectID = "zxn-wg-cFh"; */
-"zxn-wg-cFh.text" = "от 400 ₽";
+/* Class = "UIViewController"; title = "Clothes"; ObjectID = "dPn-Ba-aiP"; */
+"dPn-Ba-aiP.title" = "Выбор вещи";

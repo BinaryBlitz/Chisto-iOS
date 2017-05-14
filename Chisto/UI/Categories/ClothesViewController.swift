@@ -10,7 +10,10 @@ import UIKit
 import RxDataSources
 import RxSwift
 
-class ClothesViewController: UITableViewController, DefaultBarColoredViewController {
+class ClothesViewController: UIViewController, DefaultBarColoredViewController {
+  @IBOutlet weak var searchView: UIView!
+  @IBOutlet weak var tableView: UITableView!
+
   var searchController: UISearchController!
   var resultItemsController = SelectClothesViewController.storyboardInstance()!
 
@@ -18,7 +21,7 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
   let viewModel = ClothesViewModel()
   let disposeBag = DisposeBag()
 
-  let headerView = CategoriesHeaderView.nibInstance()!
+  @IBOutlet weak var headerView: CategoriesHeaderView!
   let badgeButton = BadgeButtonView.nibInstance()!
 
   override func viewDidLoad() {
@@ -116,14 +119,13 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
 
   func configureSearch() {
     searchController = UISearchController(searchResultsController: nil)
-    searchController.hidesNavigationBarDuringPresentation = false
-    searchController.dimsBackgroundDuringPresentation = false
     searchController.delegate = self
-
-    tableView.tableHeaderView = searchController.searchBar
 
     // UI
     definesPresentationContext = true
+    extendedLayoutIncludesOpaqueBars = true
+    searchController?.dimsBackgroundDuringPresentation = false
+    edgesForExtendedLayout = UIRectEdge([])
 
     let searchBar = searchController.searchBar
 
@@ -149,6 +151,9 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
       .map { "" }
       .bind(to: viewModel.searchBarString)
       .addDisposableTo(disposeBag)
+
+    searchBar.sizeToFit()
+    searchView.addSubview(searchBar)
   }
 
   func configureTableView() {
@@ -164,12 +169,12 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
 
     viewModel.currentCategory
       .asObservable()
-      .distinctUntilChanged { $0?.id != $1?.id }
       .subscribe(onNext: { [weak self] _ in
         let indexPath = IndexPath(row: 0, section: 0)
         guard self?.tableView.cellForRow(at: indexPath) != nil else { return }
+        self?.tableView.beginUpdates()
         self?.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
-        self?.tableView.reloadData()
+        self?.tableView.endUpdates()
       }).addDisposableTo(disposeBag)
 
     // Bindings
@@ -199,7 +204,6 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
       .drive(tableView.rx.items(dataSource: dataSource))
       .addDisposableTo(self.disposeBag)
 
-    //tableView.tableFooterView = UIView()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -213,24 +217,14 @@ class ClothesViewController: UITableViewController, DefaultBarColoredViewControl
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
   }
-
-
-  override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    return headerView
-  }
-  
-  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 100
-  }
-
-  override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    return 0
-  }
-
 }
 
 extension ClothesViewController: UISearchControllerDelegate {
   func willPresentSearchController(_ searchController: UISearchController) {
     viewModel.didStartSearching.onNext()
   }
+}
+
+extension ClothesViewController: UITableViewDelegate {
+
 }

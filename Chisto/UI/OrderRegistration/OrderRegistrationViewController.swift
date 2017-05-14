@@ -34,7 +34,7 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
     guard let viewModel = viewModel else { return }
 
     orderPriceLabel.text = viewModel.orderPrice
-    viewModel.buttonsAreEnabled.asObservable().bind(to: payButton.rx.isEnabled).addDisposableTo(disposeBag)
+    //viewModel.buttonsAreEnabled.asObservable().bind(to: payButton.rx.isEnabled).addDisposableTo(disposeBag)
     payButton.rx.tap.bind(to: viewModel.payButtonDidTap).addDisposableTo(disposeBag)
 
     viewModel.presentLocationSelectSection.drive(onNext: { [weak self] viewModel in

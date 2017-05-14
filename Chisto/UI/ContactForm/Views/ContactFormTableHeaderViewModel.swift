@@ -15,14 +15,21 @@ class ContactFormTableHeaderViewModel {
 
   let title: String
   let icon: UIImage
-  let isEnabled: Bool
+  let isEnabled = Variable<Bool>(true)
 
   let buttonDidTap = PublishSubject<Void>()
+  let sendPromoCode = PublishSubject<Void>()
+  let presentErrorAlert = PublishSubject<String>()
+  var timer: Observable<Int>? = nil
 
-  init(title: String, icon: UIImage, isEnabledButton: Bool = false) {
+  init(title: String, icon: UIImage) {
     self.title = title
     self.icon = icon
-    self.isEnabled = isEnabledButton
+    buttonDidTap.asObservable()
+      .filter { isEnabled.value }
+      .map {
+
+    }
   }
 
 }

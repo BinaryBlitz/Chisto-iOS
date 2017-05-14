@@ -20,7 +20,6 @@ class ContactFormTableHeaderView: UIView {
   func configure(viewModel: ContactFormTableHeaderViewModel) {
     iconButton.setImage(viewModel.icon, for: .normal)
     labelButton.setTitle(viewModel.title, for: .normal)
-    labelButton.isEnabled = viewModel.isEnabled
 
     labelButton.rx.tap.bind(to: viewModel.buttonDidTap).addDisposableTo(disposeBag)
     iconButton.rx.tap.bind(to: viewModel.buttonDidTap).addDisposableTo(disposeBag)

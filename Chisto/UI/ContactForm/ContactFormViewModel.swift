@@ -50,7 +50,7 @@ class ContactFormViewModel {
   )
 
   let commentHeaderModel = ContactFormTableHeaderViewModel(
-    title: NSLocalizedString("orderComments", comment: "Contact form header"),
+    title: NSLocalizedString("commentHeaderNotRequired", comment: "Contact form header"),
     icon: #imageLiteral(resourceName:"iconSmallComment")
   )
 
@@ -71,6 +71,11 @@ class ContactFormViewModel {
   var comment: Variable<String?>
   var phoneIsValid = Variable<Bool>(false)
   var isValid = Variable<Bool>(false)
+  var firstNameIsValid = Variable<Bool>(false)
+  var cityIsValid = Variable<Bool>(true)
+  var streetIsValid = Variable<Bool>(false)
+  var buildingIsValid = Variable<Bool>(false)
+  var apartmentIsValid = Variable<Bool>(false)
   let codeSectionIsVisible = Variable<Bool>(false)
   var paymentMethod: Variable<PaymentMethod>
 
@@ -85,19 +90,17 @@ class ContactFormViewModel {
     return phoneViewModel.phoneIsValidated
   }
 
-  var didFinishAuthorization: Observable<Bool> {
-    return phoneViewModel
-      .phoneIsValidated
-      .asObservable()
-      .skip(1)
-      .filter { $0 == true }
-      .take(1)
-  }
-
   var currentScreen: CurrentScreen
 
   var cityFieldDidTap = PublishSubject<Void>()
   var streetNameFieldDidTap = PublishSubject<Void>()
+
+  let highlightPhoneField = PublishSubject<Void>()
+  let highlightFirstNameField = PublishSubject<Void>()
+  let highlightCityField = PublishSubject<Void>()
+  let highlightStreetField = PublishSubject<Void>()
+  let highlightBuildingField = PublishSubject<Void>()
+  let highlightApartmentField = PublishSubject<Void>()
 
   init(currentScreen: CurrentScreen) {
     let profile = ProfileManager.instance.userProfile.value
@@ -141,11 +144,18 @@ class ContactFormViewModel {
 
     let phoneDataIsValid = Observable.combineLatest(phoneIsValid.asObservable(), phoneViewModel.phoneIsValidated.asObservable()) { $0 && $1 }
 
-    let contactDataIsValid = Observable.combineLatest(firstName.asObservable(),street.asObservable(), building.asObservable(), apartment.asObservable()) { firstName, street, building, apartment -> Bool in
-      guard let firstName = firstName, let street = street, let building = building, let apartment = apartment else { return false }
-      return firstName.characters.count > 0 && street.characters.count > 0 && building.characters.count > 0 && apartment.characters.count > 0
-
+    let textFieldIsValid: (String?) -> Bool = { text in
+      guard let text = text else { return false }
+      return !text.characters.isEmpty
     }
+
+    firstName.asObservable().map(textFieldIsValid).bind(to: firstNameIsValid).addDisposableTo(disposeBag)
+    street.asObservable().map(textFieldIsValid).bind(to: streetIsValid).addDisposableTo(disposeBag)
+    building.asObservable().map(textFieldIsValid).bind(to: buildingIsValid).addDisposableTo(disposeBag)
+    apartment.asObservable().map(textFieldIsValid).bind(to: apartmentIsValid).addDisposableTo(disposeBag)
+
+
+    let contactDataIsValid = Observable.combineLatest(firstNameIsValid.asObservable(), streetIsValid.asObservable(), buildingIsValid.asObservable(), apartmentIsValid.asObservable()) { $0 && $1 && $2 && $3 }
 
     Observable.combineLatest(contactDataIsValid, phoneDataIsValid, paymentMethod.asObservable()) { contactDataIsValid, phoneDataIsValid, paymentMethod in
       guard phoneDataIsValid else { return false }
@@ -187,6 +197,38 @@ class ContactFormViewModel {
       }
     }
 
+  }
+
+  func validateState() -> Bool {
+    if !phoneIsValid.value {
+      highlightPhoneField.onNext()
+    }
+
+    guard paymentMethod.value == .applePay else {
+      return isValid.value
+    }
+
+    if !firstNameIsValid.value {
+      highlightFirstNameField.onNext()
+    }
+
+    if !cityIsValid.value {
+      highlightCityField.onNext()
+    }
+
+    if !streetIsValid.value {
+      highlightStreetField.onNext()
+    }
+
+    if !buildingIsValid.value {
+      highlightBuildingField.onNext()
+    }
+
+    if !apartmentIsValid.value {
+      highlightApartmentField.onNext()
+    }
+
+    return isValid.value
   }
 
 }
