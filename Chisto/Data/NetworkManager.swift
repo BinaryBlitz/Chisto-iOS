@@ -61,7 +61,10 @@ class NetworkManager {
                  _ headers: HTTPHeaders? = nil) -> Observable<Data> {
 
     let requestObservable: Observable<Data> = Observable.create { observer in
-      let url = URL(string: self.baseURL + "/api/" + path.endpoint)!
+      guard let url = URL(string: self.baseURL + "/api/" + path.endpoint) else {
+        observer.onError(DataError.requestConvertError)
+        return Disposables.create()
+      }
 
       let request = Alamofire
         .request(url, method: method, parameters: params, encoding: path.encoding, headers: headers)
