@@ -12,6 +12,7 @@ import RxCocoa
 import RealmSwift
 import ObjectMapper
 
+/// A class that manages current user profile
 class ProfileManager {
 
   let disposeBag = DisposeBag()
@@ -21,6 +22,9 @@ class ProfileManager {
 
   let userProfile: Variable<Profile>
 
+  /// Updates current profile
+  ///
+  /// - Parameter closure: a function that modifies current profile object
   func updateProfile(closure: ((Profile) -> Void)) {
     let profile = userProfile.value
     let realm = try! Realm()
@@ -30,6 +34,7 @@ class ProfileManager {
     userProfile.value = profile
   }
 
+  /// Deletes current profile and all its data
   func logout() {
     OrderManager.instance.clearOrderItems()
     let realm = try! Realm()
@@ -43,6 +48,7 @@ class ProfileManager {
     }
   }
 
+  /// Instantiates a singletone, creates profile if needed
   init() {
     var profile: Profile
 

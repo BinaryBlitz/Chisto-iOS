@@ -12,6 +12,7 @@ import RxCocoa
 import RealmSwift
 import Crashlytics
 
+/// Manages current order
 class OrderManager {
 
   static let instance = OrderManager()
@@ -19,6 +20,11 @@ class OrderManager {
   var currentOrderItems = BehaviorSubject<[OrderItem]>(value: [])
   var currentLaundry: Laundry? = nil
 
+  /// Updates order item and saves it if needed
+  ///
+  /// - Parameters:
+  ///   - item: an item to update
+  ///   - closure: a block which modifies the object
   func updateOrderItem(_ item: OrderItem, closure: (Void) -> Void) {
     closure()
 
@@ -31,6 +37,10 @@ class OrderManager {
     currentOrderItems.onNext(items)
   }
 
+  /// Updates order item and saves it if needed
+  ///
+  /// - Parameter promoCode: a promo code
+  /// - Returns: an Observable containing single order object
   func createOrder(promoCode: PromoCode? = nil) -> Observable<Order> {
     return Observable.deferred { [weak self] in
       let profile = ProfileManager.instance.userProfile.value
@@ -48,6 +58,12 @@ class OrderManager {
     }
   }
 
+  /// Returns order price for selected laundry
+  ///
+  /// - Parameters:
+  ///   - includeCollection: a flag which indicates whether collection price should be included
+  ///   - promoCode: a promo code, which can affect total prices
+  /// - Returns: an order price
   func priceForCurrentLaundry(includeCollection: Bool = false, promoCode: PromoCode? = nil) -> Double {
     guard let laundry = currentLaundry else { return 0 }
     return self.price(laundry: laundry, includeCollection: includeCollection, promoCode: promoCode)
@@ -58,6 +74,13 @@ class OrderManager {
     currentOrderItems.onNext([])
   }
 
+  /// Returns order price for selected laundry
+  ///
+  /// - Parameters:
+  ///   - laundry: A laundry which prices should be used for counting
+  ///   - includeCollection: a flag indicating whether collection price should be included
+  ///   - promoCode: a promo code, which can affect total prices
+  /// - Returns: an order price
   func price(laundry: Laundry, includeCollection: Bool = false, promoCode: PromoCode? = nil) -> Double {
     let items = try! currentOrderItems.value()
     var price = items.map { $0.price(laundry: laundry) }.reduce(0, +)

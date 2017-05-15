@@ -52,10 +52,20 @@ enum NetworkError: Error, CustomStringConvertible {
 
 }
 
+
+/// A class that manages all the Chisto API calls
 class NetworkManager {
 
   let baseURL = "https://chisto.xyz"
-
+  
+  /// Creates a new Observable, which receives API response as a single sequence element
+  ///
+  /// - Parameters:
+  ///   - method: POST/GET/PUT etc.
+  ///   - path: The endpoint to call
+  ///   - params: JSON body or URL request body, depending on method
+  ///   - headers: Headers of HTTP request
+  /// - Returns: a new Observable, which receives API response as a single sequence element
   func doRequest(method: HTTPMethod, _ path: APIPath,
                  _ params: Parameters = [:],
                  _ headers: HTTPHeaders? = nil) -> Observable<Data> {
