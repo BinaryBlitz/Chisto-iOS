@@ -122,6 +122,9 @@
 /* Decoration service */
 "decorationDescriptionShort" = "Стразы, бисер, пайетки, кружева и прочие украшения, требующие особого внимания";
 
+/* Decoration service */
+"withDecoration" = "С декоративной отделкой";
+
 /* Network error */
 "unknownError" = "Неизвестная ошибка";
 

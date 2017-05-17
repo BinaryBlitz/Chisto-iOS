@@ -38,7 +38,7 @@ class OrderConfirmServiceTableViewCell: UITableViewCell {
     if viewModel.hasDecoration {
       let decorationServiceView = OrderConfirmServiceItemView.nibInstance()!
       decorationServiceView.leftLabel.text = viewModel.decorationTitle
-      decorationServiceView.rightLabel.text = viewModel.decorationPrice
+      decorationServiceView.rightLabel.text = ""
       stackView.addArrangedSubview(decorationServiceView)
     }
   }

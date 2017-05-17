@@ -250,3 +250,6 @@
 
 /* Send code alert */
 "secondsGenitive" = "seconds";
+
+/* Decoration service */
+"withDecoration" = "Decoration";
