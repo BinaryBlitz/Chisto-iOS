@@ -19,6 +19,7 @@ typealias CategoriesSectionModel = SectionModel<String, CategoryCollectionViewCe
 class CategoriesHeaderCollectionViewModel {
   let disposeBag = DisposeBag()
   let selectedCategory = Variable<Category?>(nil)
+  let selectCell = PublishSubject<Int>()
   let categories: Variable<[Category]>
 
   let itemDidSelect = PublishSubject<IndexPath>()
@@ -61,6 +62,17 @@ class CategoriesHeaderCollectionViewModel {
     itemDidSelect.map {
       $0.row == 0 ? nil : categories.value[$0.row - 1]
     }.bind(to: selectedCategory).addDisposableTo(disposeBag)
+
+    selectedCategory
+      .asObservable()
+      .distinctUntilChanged { $0?.id != $1?.id }
+      .map { category in
+        guard let category = category,
+          let index = categories.value.index(of: category) else { return 0 }
+        return index
+      }
+      .bind(to: selectCell)
+      .addDisposableTo(disposeBag)
 
   }
 }

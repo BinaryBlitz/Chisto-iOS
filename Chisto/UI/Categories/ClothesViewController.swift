@@ -11,6 +11,8 @@ import RxDataSources
 import RxSwift
 import Crashlytics
 
+private let headerHeight: CGFloat = 100
+
 class ClothesViewController: UIViewController, DefaultBarColoredViewController {
   @IBOutlet weak var searchView: UIView!
   @IBOutlet weak var tableView: UITableView!
@@ -127,7 +129,7 @@ class ClothesViewController: UIViewController, DefaultBarColoredViewController {
     extendedLayoutIncludesOpaqueBars = true
     searchController?.dimsBackgroundDuringPresentation = false
     searchController?.hidesNavigationBarDuringPresentation = false
-    edgesForExtendedLayout = UIRectEdge([])
+    //edgesForExtendedLayout = UIRectEdge([])
 
     let searchBar = searchController.searchBar
 
@@ -227,15 +229,14 @@ extension ClothesViewController: UISearchControllerDelegate {
     viewModel.didStartSearching.onNext()
 
     UIView.animate(withDuration: 0.2) { [weak self] in
-      self?.headerViewTopConstraint.constant -= 100
+      self?.headerViewTopConstraint.constant -= headerHeight
       self?.view.layoutIfNeeded()
     }
   }
 
   func willDismissSearchController(_ searchController: UISearchController) {
     UIView.animate(withDuration: 0.2) { [weak self] in
-      self?.headerViewTopConstraint.constant += 100
-      self?.view.layoutIfNeeded()
+      self?.headerViewTopConstraint.constant += headerHeight
     }
     headerView.scrollToSelectedRowIfNeeded()
   }

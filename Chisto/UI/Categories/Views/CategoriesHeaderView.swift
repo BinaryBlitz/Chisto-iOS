@@ -49,9 +49,17 @@ class CategoriesHeaderView: UIView, UIScrollViewDelegate {
       .itemSelected
       .bind(to: viewModel.itemDidSelect)
       .addDisposableTo(viewModel.disposeBag)
-
+    
     viewModel.sections
       .drive(collectionView.rx.items(dataSource: rxDataSource))
+      .addDisposableTo(viewModel.disposeBag)
+
+    viewModel
+      .selectCell
+      .asObservable()
+      .subscribe(onNext: { [weak self] index in
+        self?.collectionView.selectItem(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+      })
       .addDisposableTo(viewModel.disposeBag)
   }
 

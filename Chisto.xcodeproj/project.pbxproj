@@ -414,7 +414,6 @@
 		88C497301E2E2913001AE561 /* ControlledRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlledRatingView.swift; sourceTree = "<group>"; };
 		88C74BAC1E3E3B4500F4DBCF /* PromoCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoCode.swift; sourceTree = "<group>"; };
 		88C795171E62043D008E7952 /* DecimalTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecimalTransform.swift; sourceTree = "<group>"; };
-		88C9480A1E8050FE00A99F5B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ContactFormViewController.strings; sourceTree = "<group>"; };
 		88C9F6DC1DCD03010046DDD7 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		88C9F6DE1DCD2B320046DDD7 /* RealmString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmString.swift; sourceTree = "<group>"; };
 		88C9F6E01DCDE36F0046DDD7 /* Date+toString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+toString.swift"; sourceTree = "<group>"; };
@@ -440,6 +439,7 @@
 		88DB93901DCC1AA500DAC651 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		88DB93921DCC20B100DAC651 /* ServerObjct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerObjct.swift; sourceTree = "<group>"; };
 		88E2340A1ECC729C00BB051C /* AnalyticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
+		88E2340D1ECE15D400BB051C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ContactFormViewController.strings; sourceTree = "<group>"; };
 		88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AddBorders.swift"; sourceTree = "<group>"; };
 		88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPhoneInputViewController.swift; sourceTree = "<group>"; };
 		88E6EB6B1EC52C88007A0082 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1633,7 +1633,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				37530F7E1E4E33820039AAB0 /* Base */,
-				88C9480A1E8050FE00A99F5B /* ru */,
+				88E2340D1ECE15D400BB051C /* ru */,
 			);
 			name = ContactFormViewController.storyboard;
 			sourceTree = "<group>";

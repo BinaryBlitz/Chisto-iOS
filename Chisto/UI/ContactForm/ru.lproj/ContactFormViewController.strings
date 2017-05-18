@@ -49,3 +49,6 @@
 
 /* Class = "UILabel"; text = "Банковской картой"; ObjectID = "y2O-sw-1sU"; */
 "y2O-sw-1sU.text" = "Банковской картой";
+
+/* Class = "UIButton"; normalTitle = "Send Code"; ObjectID = "VAI-Gg-ySJ"; */
+"VAI-Gg-ySJ.normalTitle" = "Выслать код";

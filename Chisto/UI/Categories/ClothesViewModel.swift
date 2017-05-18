@@ -102,7 +102,7 @@ class ClothesViewModel: ClothesViewModelType {
 
     didStartSearching.asObservable()
       .map { nil }
-      .bind(to: currentCategory)
+      .bind(to: headerViewModel.selectedCategory)
       .addDisposableTo(disposeBag)
     
     didStartSearching.asObservable().take(1).flatMap {
