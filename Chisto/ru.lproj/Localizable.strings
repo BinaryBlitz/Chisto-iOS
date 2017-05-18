@@ -66,7 +66,7 @@
 "deliveryAdress" = "Адрес доставки";
 
 /* Contact form header */
-"commentHeaderNotRequired" = "Не обязательно";
+"commentHeader" = "Комментарии к заказу";
 
 /* Contact form header */
 "paymentMethod" = "Способ оплаты";

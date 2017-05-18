@@ -12,6 +12,7 @@ import TextFieldEffects
 
 extension HoshiTextField {
   func setValidationState(_ error: Bool = false) {
-    borderInactiveColor = error ? .red : .chsCoolGrey
+    borderInactiveColor = error ? .chsWatermelon : .chsCoolGrey
+    placeholderColor = error ? .chsWatermelon : .chsSlateGrey
   }
 }

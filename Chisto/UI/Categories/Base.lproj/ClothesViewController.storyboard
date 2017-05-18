@@ -161,6 +161,7 @@
                     </view>
                     <connections>
                         <outlet property="headerView" destination="Ns5-Wm-OMd" id="KNc-Kd-IcP"/>
+                        <outlet property="headerViewTopConstraint" destination="w1O-lQ-GwT" id="sGS-5F-LNQ"/>
                         <outlet property="searchView" destination="LB6-dF-tSX" id="mdT-eb-CIx"/>
                         <outlet property="tableView" destination="KT5-zx-1mv" id="hhX-fj-HI7"/>
                     </connections>

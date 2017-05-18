@@ -45,7 +45,7 @@
 "czl-MC-Kzf.text" = "+7";
 
 /* Class = "UITextField"; placeholder = "Ваш комментарий"; ObjectID = "mm6-XM-pfY"; */
-"mm6-XM-pfY.placeholder" = "Ваш комментарий";
+"mm6-XM-pfY.placeholder" = "Опционально";
 
 /* Class = "UILabel"; text = "Банковской картой"; ObjectID = "y2O-sw-1sU"; */
 "y2O-sw-1sU.text" = "Банковской картой";

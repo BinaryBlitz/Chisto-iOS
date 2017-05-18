@@ -50,7 +50,7 @@ class ContactFormViewModel {
   )
 
   let commentHeaderModel = ContactFormTableHeaderViewModel(
-    title: NSLocalizedString("commentHeaderNotRequired", comment: "Contact form header"),
+    title: NSLocalizedString("commentHeader", comment: "Contact form header"),
     icon: #imageLiteral(resourceName:"iconSmallComment")
   )
 
@@ -204,7 +204,7 @@ class ContactFormViewModel {
       highlightPhoneField.onNext()
     }
 
-    guard paymentMethod.value == .applePay else {
+    guard paymentMethod.value != .applePay else {
       return isValid.value
     }
 

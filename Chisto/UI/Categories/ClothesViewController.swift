@@ -14,7 +14,8 @@ import Crashlytics
 class ClothesViewController: UIViewController, DefaultBarColoredViewController {
   @IBOutlet weak var searchView: UIView!
   @IBOutlet weak var tableView: UITableView!
-
+  @IBOutlet weak var headerViewTopConstraint: NSLayoutConstraint!
+  
   var searchController: UISearchController!
 
   var dataSource = RxTableViewSectionedReloadDataSource<ItemsSectionModel>()
@@ -125,6 +126,7 @@ class ClothesViewController: UIViewController, DefaultBarColoredViewController {
     definesPresentationContext = true
     extendedLayoutIncludesOpaqueBars = true
     searchController?.dimsBackgroundDuringPresentation = false
+    searchController?.hidesNavigationBarDuringPresentation = false
     edgesForExtendedLayout = UIRectEdge([])
 
     let searchBar = searchController.searchBar
@@ -223,6 +225,19 @@ class ClothesViewController: UIViewController, DefaultBarColoredViewController {
 extension ClothesViewController: UISearchControllerDelegate {
   func willPresentSearchController(_ searchController: UISearchController) {
     viewModel.didStartSearching.onNext()
+
+    UIView.animate(withDuration: 0.2) { [weak self] in
+      self?.headerViewTopConstraint.constant -= 100
+      self?.view.layoutIfNeeded()
+    }
+  }
+
+  func willDismissSearchController(_ searchController: UISearchController) {
+    UIView.animate(withDuration: 0.2) { [weak self] in
+      self?.headerViewTopConstraint.constant += 100
+      self?.view.layoutIfNeeded()
+    }
+    headerView.scrollToSelectedRowIfNeeded()
   }
 }
 

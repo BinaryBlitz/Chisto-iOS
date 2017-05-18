@@ -99,6 +99,11 @@ class ClothesViewModel: ClothesViewModelType {
         return ItemConfigurationViewModel(orderItem: OrderItem(clothesItem: item))
       }
       .asDriver(onErrorDriveWith: .empty())
+
+    didStartSearching.asObservable()
+      .map { nil }
+      .bind(to: currentCategory)
+      .addDisposableTo(disposeBag)
     
     didStartSearching.asObservable().take(1).flatMap {
       DataManager.instance.fetchClothesIfNeeded().do(onError: { error in
