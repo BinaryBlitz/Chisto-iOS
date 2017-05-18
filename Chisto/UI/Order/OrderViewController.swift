@@ -107,6 +107,7 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
     if let indexPath = tableView.indexPathForSelectedRow {
       tableView.deselectRow(at: indexPath, animated: true)
     }
+    AnalyticsManager.logScreen(.order)
   }
 
   func configureNavigations() {

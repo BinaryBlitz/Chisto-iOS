@@ -86,6 +86,7 @@ class RegistrationPhoneInputViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     phoneInputField.becomeFirstResponder()
+    AnalyticsManager.logScreen(.registrationPhone)
   }
 
   @IBAction func licenseAgreementDidTap(_ sender: Any) {

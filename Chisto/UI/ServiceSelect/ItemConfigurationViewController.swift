@@ -72,6 +72,7 @@ class ItemConfigurationViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     navigationController?.navigationBar.barTintColor = viewModel.color
     headerView.backgroundColor = viewModel.color
+    AnalyticsManager.logScreen(.itemInfo)
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

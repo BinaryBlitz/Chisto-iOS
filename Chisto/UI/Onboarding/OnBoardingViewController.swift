@@ -49,6 +49,7 @@ class OnBoardingViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     self.navigationController?.setNavigationBarHidden(true, animated: true)
+    AnalyticsManager.logScreen(.onboarding)
   }
 
   override func viewWillDisappear(_ animated: Bool) {

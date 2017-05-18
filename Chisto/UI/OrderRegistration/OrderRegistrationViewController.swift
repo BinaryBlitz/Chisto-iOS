@@ -98,6 +98,10 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
     contactFormViewController.cityField.textColor = UIColor.chsSilver
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    AnalyticsManager.logScreen(.orderRegistration)
+  }
 }
 
 extension OrderRegistrationViewController: PKPaymentAuthorizationViewControllerDelegate {

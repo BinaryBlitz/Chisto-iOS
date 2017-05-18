@@ -89,6 +89,7 @@ class CityNotFoundViewController: UIViewController {
       self?.view.alpha = 0
       self?.view.alpha = 1
     }
+    AnalyticsManager.logScreen(.cityNotFound)
   }
 
 }

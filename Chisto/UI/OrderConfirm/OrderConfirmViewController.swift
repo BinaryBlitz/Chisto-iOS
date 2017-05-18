@@ -132,6 +132,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
     super.viewWillAppear(animated)
     navigationController?.navigationBar.isTranslucent = true
     navigationController?.navigationBar.backgroundColor = nil
+    AnalyticsManager.logScreen(.orderConfirm)
   }
 
   override func viewDidDisappear(_ animated: Bool) {

@@ -45,6 +45,11 @@ class PaymentViewController: UIViewController, WKNavigationDelegate {
     webView.load(request)
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    AnalyticsManager.logScreen(.payment)
+  }
+
   func finishPayment() {
     UIApplication.shared.isNetworkActivityIndicatorVisible = false
     guard let viewModel = viewModel else { return }

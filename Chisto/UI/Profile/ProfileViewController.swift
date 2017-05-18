@@ -80,6 +80,7 @@ class ProfileViewController: UITableViewController {
     if let indexPath = tableView.indexPathForSelectedRow {
       tableView.deselectRow(at: indexPath, animated: true)
     }
+    AnalyticsManager.logScreen(.profile)
   }
 
 }

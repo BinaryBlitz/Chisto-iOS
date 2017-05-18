@@ -9,13 +9,13 @@
 import UIKit
 import RxDataSources
 import RxSwift
+import Crashlytics
 
 class ClothesViewController: UIViewController, DefaultBarColoredViewController {
   @IBOutlet weak var searchView: UIView!
   @IBOutlet weak var tableView: UITableView!
 
   var searchController: UISearchController!
-  var resultItemsController = SelectClothesViewController.storyboardInstance()!
 
   var dataSource = RxTableViewSectionedReloadDataSource<ItemsSectionModel>()
   let viewModel = ClothesViewModel()
@@ -211,6 +211,7 @@ class ClothesViewController: UIViewController, DefaultBarColoredViewController {
       headerView.scrollToSelectedRowIfNeeded()
       tableView.deselectRow(at: indexPath, animated: true)
     }
+    AnalyticsManager.logScreen(.clothes)
     viewModel.fetchItemsIfNeeded()
   }
 

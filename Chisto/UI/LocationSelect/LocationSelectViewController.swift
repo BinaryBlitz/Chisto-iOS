@@ -36,6 +36,11 @@ class LocationSelectViewController: UIViewController {
     configureSearch()
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    AnalyticsManager.logScreen(.locationSelect)
+  }
+
   func configureNavigation() {
 
     guard let viewModel = viewModel else { return }

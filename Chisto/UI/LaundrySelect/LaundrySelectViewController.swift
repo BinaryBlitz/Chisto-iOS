@@ -110,6 +110,7 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
     if let indexPath = tableView.indexPathForSelectedRow {
       tableView.deselectRow(at: indexPath, animated: true)
     }
+    AnalyticsManager.logScreen(.laundrySelect)
   }
 
 }

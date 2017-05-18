@@ -19,7 +19,6 @@
 		37530F661E4E32FE0039AAB0 /* LocationSelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37530F681E4E32FE0039AAB0 /* LocationSelectViewController.storyboard */; };
 		37530F6D1E4E332F0039AAB0 /* LaundrySelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37530F6F1E4E332F0039AAB0 /* LaundrySelectViewController.storyboard */; };
 		37530F731E4E33540039AAB0 /* LastTimePopupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37530F751E4E33540039AAB0 /* LastTimePopupViewController.storyboard */; };
-		37530F781E4E33660039AAB0 /* ItemInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37530F7A1E4E33660039AAB0 /* ItemInfoViewController.storyboard */; };
 		37530F7D1E4E33820039AAB0 /* ContactFormViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37530F7F1E4E33820039AAB0 /* ContactFormViewController.storyboard */; };
 		37530F821E4E33950039AAB0 /* ContactFormTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37530F841E4E33950039AAB0 /* ContactFormTableHeaderView.xib */; };
 		37530F871E4E33B50039AAB0 /* CitySelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37530F891E4E33B50039AAB0 /* CitySelectViewController.storyboard */; };
@@ -27,18 +26,12 @@
 		37530F911E4E33F00039AAB0 /* AboutViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37530F931E4E33F00039AAB0 /* AboutViewController.storyboard */; };
 		37530F961E4E61CF0039AAB0 /* MyOrdersViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37530F981E4E61CF0039AAB0 /* MyOrdersViewController.storyboard */; };
 		37530F9B1E4E65BD0039AAB0 /* OrderConfirmTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37530F9D1E4E65BD0039AAB0 /* OrderConfirmTableHeaderView.xib */; };
-		378C00061E549C68002AE521 /* ItemSizeAlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 378C00081E549C68002AE521 /* ItemSizeAlertViewController.storyboard */; };
 		88004FB41DDF3DE300A8632A /* LaundryReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88004FB31DDF3DE300A8632A /* LaundryReviewsViewController.swift */; };
 		88004FB61DDF3DF200A8632A /* LaundryReviewsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88004FB51DDF3DF200A8632A /* LaundryReviewsViewController.storyboard */; };
 		88004FB81DDF49F300A8632A /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88004FB71DDF49F300A8632A /* Rating.swift */; };
 		88004FBB1DDF578500A8632A /* LaundryReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88004FBA1DDF578500A8632A /* LaundryReviewsTableViewCell.swift */; };
 		88004FBD1DDF579300A8632A /* LaundryReviewsTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88004FBC1DDF579300A8632A /* LaundryReviewsTableViewCellModel.swift */; };
 		88004FBF1DDF77DF00A8632A /* LaundryReviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88004FBE1DDF77DF00A8632A /* LaundryReviewsViewModel.swift */; };
-		880107C51DF6088E00CA0EB8 /* HasDecorationAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880107C41DF6088E00CA0EB8 /* HasDecorationAlertViewModel.swift */; };
-		88072D501DB9695300B47D23 /* ItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88072D4F1DB9695200B47D23 /* ItemInfoViewController.swift */; };
-		88072D521DB9695E00B47D23 /* ItemInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88072D511DB9695E00B47D23 /* ItemInfoViewModel.swift */; };
-		88072D551DB9697700B47D23 /* ItemInfoTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88072D541DB9697700B47D23 /* ItemInfoTableViewCellModel.swift */; };
-		88072D571DB9698600B47D23 /* ItemInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88072D561DB9698600B47D23 /* ItemInfoTableViewCell.swift */; };
 		88073ED91DABE1E0000696A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88073ED81DABE1E0000696A3 /* AppDelegate.swift */; };
 		88073EE01DABE1E0000696A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88073EDF1DABE1E0000696A3 /* Assets.xcassets */; };
 		88073EE31DABE1E0000696A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88073EE11DABE1E0000696A3 /* LaunchScreen.storyboard */; };
@@ -140,8 +133,6 @@
 		88923E1A1DD36ACD00BC3AC0 /* ProfileContactDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E191DD36ACD00BC3AC0 /* ProfileContactDataViewModel.swift */; };
 		88923E1C1DD3852A00BC3AC0 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E1B1DD3852A00BC3AC0 /* OnBoardingViewModel.swift */; };
 		88923E1F1DD3D5F900BC3AC0 /* LocationSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E1E1DD3D5F900BC3AC0 /* LocationSelectViewController.swift */; };
-		889923941DDCAF8200D73905 /* ItemInfoNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889923931DDCAF8200D73905 /* ItemInfoNavigationController.storyboard */; };
-		889923961DDCAF9400D73905 /* ItemInfoNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923951DDCAF9400D73905 /* ItemInfoNavigationController.swift */; };
 		889923A31DDDFC1000D73905 /* flatMapLatest+continueWithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923A21DDDFC1000D73905 /* flatMapLatest+continueWithError.swift */; };
 		889923A71DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923A61DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift */; };
 		889A84151DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */; };
@@ -169,7 +160,6 @@
 		88BD82251E527282001375AF /* ClothesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88BD82271E527282001375AF /* ClothesViewController.storyboard */; };
 		88BD822A1E527308001375AF /* RegistrationCodeInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88BD822C1E527308001375AF /* RegistrationCodeInputViewController.storyboard */; };
 		88BD822F1E527419001375AF /* RegistrationPhoneInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88BD82311E527419001375AF /* RegistrationPhoneInputViewController.storyboard */; };
-		88BD82341E5274BF001375AF /* ServiceSelectViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88BD82361E5274BF001375AF /* ServiceSelectViewController.storyboard */; };
 		88BD82391E527544001375AF /* OrderReviewAlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88BD823B1E527544001375AF /* OrderReviewAlertViewController.storyboard */; };
 		88BD823E1E5275B8001375AF /* OrderInfoTableFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88BD82401E5275B8001375AF /* OrderInfoTableFooterView.xib */; };
 		88BD82431E5275F3001375AF /* OrderInfoTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88BD82451E5275F3001375AF /* OrderInfoTableHeaderView.xib */; };
@@ -190,11 +180,6 @@
 		88CD68451DD2155F004B7726 /* ContactFormTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CD68441DD2155F004B7726 /* ContactFormTableHeaderView.swift */; };
 		88CD68471DD215F8004B7726 /* ContactFormTableHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CD68461DD215F8004B7726 /* ContactFormTableHeaderViewModel.swift */; };
 		88CDDE471DD922DC002BCC5E /* NSURL+QueryParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDDE461DD922DC002BCC5E /* NSURL+QueryParams.swift */; };
-		88D8ABBB1DB56E53009D515B /* SelectClothesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABBA1DB56E53009D515B /* SelectClothesViewController.swift */; };
-		88D8ABBD1DB56E89009D515B /* SelectClothesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABBC1DB56E89009D515B /* SelectClothesViewModel.swift */; };
-		88D8ABBF1DB56EB8009D515B /* SelectClothesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D8ABBE1DB56EB8009D515B /* SelectClothesViewController.storyboard */; };
-		88D8ABC21DB587CF009D515B /* SelectClothesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */; };
-		88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */; };
 		88DB32ED1DB4C86A00F9E000 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0491DAF12FE005B4967 /* OrderViewController.swift */; };
 		88DB93791DCBD11100DAC651 /* MaskedInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93781DCBD11100DAC651 /* MaskedInput.swift */; };
 		88DB937B1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DB937A1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard */; };
@@ -208,21 +193,16 @@
 		88DB938F1DCC188600DAC651 /* Treatment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB938E1DCC188600DAC651 /* Treatment.swift */; };
 		88DB93911DCC1AA500DAC651 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93901DCC1AA500DAC651 /* DataManager.swift */; };
 		88DB93931DCC20B100DAC651 /* ServerObjct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DB93921DCC20B100DAC651 /* ServerObjct.swift */; };
+		88E2340B1ECC729C00BB051C /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E2340A1ECC729C00BB051C /* AnalyticsManager.swift */; };
 		88E6B5991DCB73610024FA1A /* UIView+AddBorders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */; };
 		88E6B59F1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */; };
 		88E6EB6D1EC52CB7007A0082 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88E6EB6F1EC52CB7007A0082 /* InfoPlist.strings */; };
 		88E705641DCCC2FB007F779E /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E705631DCCC2FB007F779E /* Category.swift */; };
 		88E831331DFC7177005E35D9 /* Double+currencyString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E831321DFC7177005E35D9 /* Double+currencyString.swift */; };
-		88E86DA71DB8E800002A7024 /* ServiceSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */; };
-		88E86DA81DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA31DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift */; };
-		88E86DA91DB8E800002A7024 /* ServiceSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA41DB8E800002A7024 /* ServiceSelectViewController.swift */; };
-		88E86DAA1DB8E800002A7024 /* ServiceSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DA51DB8E800002A7024 /* ServiceSelectViewModel.swift */; };
 		88E86DB01DB90BD1002A7024 /* UIView+nibInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DAF1DB90BD1002A7024 /* UIView+nibInstance.swift */; };
 		88E86DB31DB916B3002A7024 /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB21DB916B3002A7024 /* OrderManager.swift */; };
 		88E86DB51DB91BAE002A7024 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB41DB91BAE002A7024 /* OrderTableViewCell.swift */; };
 		88E86DB71DB91BBA002A7024 /* OrderTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86DB61DB91BBA002A7024 /* OrderTableViewCellModel.swift */; };
-		88F674BA1DF475460001AC16 /* ItemSizeAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F674B91DF475460001AC16 /* ItemSizeAlertViewController.swift */; };
-		88F674BC1DF477E50001AC16 /* ItemSizeAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F674BB1DF477E50001AC16 /* ItemSizeAlertViewModel.swift */; };
 		88F746D01E3FAB86004EF765 /* Double+round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F746CF1E3FAB86004EF765 /* Double+round.swift */; };
 		88FA1DF61DD23F3A00431822 /* ContactFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA1DF51DD23F3A00431822 /* ContactFormViewModel.swift */; };
 		88FA1DFA1DD2944400431822 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA1DF91DD2944400431822 /* Profile.swift */; };
@@ -263,8 +243,6 @@
 		37530F701E4E33330039AAB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaundrySelectViewController.storyboard; sourceTree = "<group>"; };
 		37530F741E4E33540039AAB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LastTimePopupViewController.storyboard; sourceTree = "<group>"; };
 		37530F771E4E335A0039AAB0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LastTimePopupViewController.strings; sourceTree = "<group>"; };
-		37530F791E4E33660039AAB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ItemInfoViewController.storyboard; sourceTree = "<group>"; };
-		37530F7C1E4E336A0039AAB0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemInfoViewController.strings; sourceTree = "<group>"; };
 		37530F7E1E4E33820039AAB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ContactFormViewController.storyboard; sourceTree = "<group>"; };
 		37530F831E4E33950039AAB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ContactFormTableHeaderView.xib; sourceTree = "<group>"; };
 		37530F861E4E33970039AAB0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ContactFormTableHeaderView.strings; sourceTree = "<group>"; };
@@ -278,8 +256,6 @@
 		37530F9A1E4E61D20039AAB0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MyOrdersViewController.strings; sourceTree = "<group>"; };
 		37530F9C1E4E65BD0039AAB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OrderConfirmTableHeaderView.xib; sourceTree = "<group>"; };
 		37530F9F1E4E65C00039AAB0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OrderConfirmTableHeaderView.strings; sourceTree = "<group>"; };
-		378C00071E549C68002AE521 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ItemSizeAlertViewController.storyboard; sourceTree = "<group>"; };
-		378C000A1E549C75002AE521 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemSizeAlertViewController.strings; sourceTree = "<group>"; };
 		40CC6F844478737C97DE22A8 /* Pods-Chisto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chisto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chisto/Pods-Chisto.debug.xcconfig"; sourceTree = "<group>"; };
 		88004FB31DDF3DE300A8632A /* LaundryReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryReviewsViewController.swift; sourceTree = "<group>"; };
 		88004FB51DDF3DF200A8632A /* LaundryReviewsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaundryReviewsViewController.storyboard; sourceTree = "<group>"; };
@@ -287,11 +263,6 @@
 		88004FBA1DDF578500A8632A /* LaundryReviewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryReviewsTableViewCell.swift; sourceTree = "<group>"; };
 		88004FBC1DDF579300A8632A /* LaundryReviewsTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryReviewsTableViewCellModel.swift; sourceTree = "<group>"; };
 		88004FBE1DDF77DF00A8632A /* LaundryReviewsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryReviewsViewModel.swift; sourceTree = "<group>"; };
-		880107C41DF6088E00CA0EB8 /* HasDecorationAlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HasDecorationAlertViewModel.swift; path = ../HasDecorationAlertViewModel.swift; sourceTree = "<group>"; };
-		88072D4F1DB9695200B47D23 /* ItemInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoViewController.swift; sourceTree = "<group>"; };
-		88072D511DB9695E00B47D23 /* ItemInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoViewModel.swift; sourceTree = "<group>"; };
-		88072D541DB9697700B47D23 /* ItemInfoTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoTableViewCellModel.swift; sourceTree = "<group>"; };
-		88072D561DB9698600B47D23 /* ItemInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoTableViewCell.swift; sourceTree = "<group>"; };
 		88073ED51DABE1E0000696A3 /* Chisto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chisto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88073ED81DABE1E0000696A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88073EDF1DABE1E0000696A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -401,8 +372,6 @@
 		88923E191DD36ACD00BC3AC0 /* ProfileContactDataViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileContactDataViewModel.swift; sourceTree = "<group>"; };
 		88923E1B1DD3852A00BC3AC0 /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
 		88923E1E1DD3D5F900BC3AC0 /* LocationSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSelectViewController.swift; sourceTree = "<group>"; };
-		889923931DDCAF8200D73905 /* ItemInfoNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ItemInfoNavigationController.storyboard; sourceTree = "<group>"; };
-		889923951DDCAF9400D73905 /* ItemInfoNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoNavigationController.swift; sourceTree = "<group>"; };
 		889923A21DDDFC1000D73905 /* flatMapLatest+continueWithError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "flatMapLatest+continueWithError.swift"; sourceTree = "<group>"; };
 		889923A61DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxRealm+ObjectForPrimaryKey.swift"; sourceTree = "<group>"; };
 		889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceTableViewCell.swift; sourceTree = "<group>"; };
@@ -415,9 +384,9 @@
 		889D87D11DC1F71E003E8DAC /* LaundrySelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySelectViewModel.swift; sourceTree = "<group>"; };
 		88A221671DCE013100CAD2B0 /* LaundryTreatment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryTreatment.swift; sourceTree = "<group>"; };
 		88A2C3771EB4BD8D005F5CA5 /* CategoriesHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesHeaderView.xib; sourceTree = "<group>"; };
-		88A2C37D1EB4DAC2005F5CA5 /* ItemConfigurationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemConfigurationTableViewController.swift; sourceTree = "<group>"; };
-		88A2C37F1EB4DB05005F5CA5 /* ItemConfigurationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemConfigurationViewModel.swift; sourceTree = "<group>"; };
-		88A2C3811EB4E5AB005F5CA5 /* ItemConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemConfigurationViewController.swift; sourceTree = "<group>"; };
+		88A2C37D1EB4DAC2005F5CA5 /* ItemConfigurationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemConfigurationTableViewController.swift; path = ../ServiceSelect/ItemConfigurationTableViewController.swift; sourceTree = "<group>"; };
+		88A2C37F1EB4DB05005F5CA5 /* ItemConfigurationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemConfigurationViewModel.swift; path = ../ServiceSelect/ItemConfigurationViewModel.swift; sourceTree = "<group>"; };
+		88A2C3811EB4E5AB005F5CA5 /* ItemConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemConfigurationViewController.swift; path = ../ServiceSelect/ItemConfigurationViewController.swift; sourceTree = "<group>"; };
 		88A2C3841EB4F246005F5CA5 /* ChistoSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChistoSectionHeaderView.swift; sourceTree = "<group>"; };
 		88A2C3861EB4F255005F5CA5 /* ChistoSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChistoSectionHeaderView.xib; sourceTree = "<group>"; };
 		88A2C3881EB53257005F5CA5 /* BadgeButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BadgeButtonView.xib; sourceTree = "<group>"; };
@@ -432,8 +401,6 @@
 		88BD822E1E52730D001375AF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/RegistrationCodeInputViewController.strings; sourceTree = "<group>"; };
 		88BD82301E527419001375AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/RegistrationPhoneInputViewController.storyboard; sourceTree = "<group>"; };
 		88BD82331E52742A001375AF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/RegistrationPhoneInputViewController.strings; sourceTree = "<group>"; };
-		88BD82351E5274BF001375AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ServiceSelectViewController.storyboard; sourceTree = "<group>"; };
-		88BD82381E5274C3001375AF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ServiceSelectViewController.strings; sourceTree = "<group>"; };
 		88BD823A1E527544001375AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OrderReviewAlertViewController.storyboard; sourceTree = "<group>"; };
 		88BD823D1E527547001375AF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OrderReviewAlertViewController.strings; sourceTree = "<group>"; };
 		88BD823F1E5275B8001375AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OrderInfoTableFooterView.xib; sourceTree = "<group>"; };
@@ -460,11 +427,6 @@
 		88CD68461DD215F8004B7726 /* ContactFormTableHeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFormTableHeaderViewModel.swift; sourceTree = "<group>"; };
 		88CDDE461DD922DC002BCC5E /* NSURL+QueryParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+QueryParams.swift"; sourceTree = "<group>"; };
 		88D4403E4AD2DF4A42F5C8FA /* Pods_Chisto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chisto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		88D8ABBA1DB56E53009D515B /* SelectClothesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClothesViewController.swift; sourceTree = "<group>"; };
-		88D8ABBC1DB56E89009D515B /* SelectClothesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClothesViewModel.swift; sourceTree = "<group>"; };
-		88D8ABBE1DB56EB8009D515B /* SelectClothesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectClothesViewController.storyboard; sourceTree = "<group>"; };
-		88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClothesTableViewCell.swift; sourceTree = "<group>"; };
-		88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClothesTableViewCellModel.swift; sourceTree = "<group>"; };
 		88DB93781DCBD11100DAC651 /* MaskedInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskedInput.swift; sourceTree = "<group>"; };
 		88DB937A1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationNavigationController.storyboard; sourceTree = "<group>"; };
 		88DB937C1DCBE0F400DAC651 /* RegistrationNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationNavigationController.swift; sourceTree = "<group>"; };
@@ -477,6 +439,7 @@
 		88DB938E1DCC188600DAC651 /* Treatment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Treatment.swift; sourceTree = "<group>"; };
 		88DB93901DCC1AA500DAC651 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		88DB93921DCC20B100DAC651 /* ServerObjct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerObjct.swift; sourceTree = "<group>"; };
+		88E2340A1ECC729C00BB051C /* AnalyticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		88E6B5981DCB73600024FA1A /* UIView+AddBorders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AddBorders.swift"; sourceTree = "<group>"; };
 		88E6B59E1DCB847F0024FA1A /* RegistrationPhoneInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPhoneInputViewController.swift; sourceTree = "<group>"; };
 		88E6EB6B1EC52C88007A0082 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -484,16 +447,10 @@
 		88E6EB721EC531C2007A0082 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		88E705631DCCC2FB007F779E /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		88E831321DFC7177005E35D9 /* Double+currencyString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+currencyString.swift"; sourceTree = "<group>"; };
-		88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectTableViewCell.swift; sourceTree = "<group>"; };
-		88E86DA31DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectTableViewCellModel.swift; sourceTree = "<group>"; };
-		88E86DA41DB8E800002A7024 /* ServiceSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectViewController.swift; sourceTree = "<group>"; };
-		88E86DA51DB8E800002A7024 /* ServiceSelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSelectViewModel.swift; sourceTree = "<group>"; };
 		88E86DAF1DB90BD1002A7024 /* UIView+nibInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+nibInstance.swift"; sourceTree = "<group>"; };
 		88E86DB21DB916B3002A7024 /* OrderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderManager.swift; sourceTree = "<group>"; };
 		88E86DB41DB91BAE002A7024 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		88E86DB61DB91BBA002A7024 /* OrderTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewCellModel.swift; sourceTree = "<group>"; };
-		88F674B91DF475460001AC16 /* ItemSizeAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSizeAlertViewController.swift; sourceTree = "<group>"; };
-		88F674BB1DF477E50001AC16 /* ItemSizeAlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSizeAlertViewModel.swift; sourceTree = "<group>"; };
 		88F746CF1E3FAB86004EF765 /* Double+round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+round.swift"; sourceTree = "<group>"; };
 		88FA1DF51DD23F3A00431822 /* ContactFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFormViewModel.swift; sourceTree = "<group>"; };
 		88FA1DF91DD2944400431822 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -549,26 +506,17 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		88072D4C1DB967D400B47D23 /* ItemInfo */ = {
+		88072D4C1DB967D400B47D23 /* ItemConfiguration */ = {
 			isa = PBXGroup;
 			children = (
-				88072D531DB9696000B47D23 /* Views */,
-				37530F7A1E4E33660039AAB0 /* ItemInfoViewController.storyboard */,
-				88072D4F1DB9695200B47D23 /* ItemInfoViewController.swift */,
-				88072D511DB9695E00B47D23 /* ItemInfoViewModel.swift */,
-				889923931DDCAF8200D73905 /* ItemInfoNavigationController.storyboard */,
-				889923951DDCAF9400D73905 /* ItemInfoNavigationController.swift */,
+				88246B3E1EBF488A007B5603 /* ItemConfigurationTableViewController.storyboard */,
+				88246B391EBF475C007B5603 /* ItemConfigurationViewController.storyboard */,
+				88A2C37D1EB4DAC2005F5CA5 /* ItemConfigurationTableViewController.swift */,
+				88A2C37F1EB4DB05005F5CA5 /* ItemConfigurationViewModel.swift */,
+				88A2C3811EB4E5AB005F5CA5 /* ItemConfigurationViewController.swift */,
 			);
+			name = ItemConfiguration;
 			path = ItemInfo;
-			sourceTree = "<group>";
-		};
-		88072D531DB9696000B47D23 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				88072D561DB9698600B47D23 /* ItemInfoTableViewCell.swift */,
-				88072D541DB9697700B47D23 /* ItemInfoTableViewCellModel.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		88073ECC1DABE1E0000696A3 = {
@@ -611,7 +559,6 @@
 			isa = PBXGroup;
 			children = (
 				881B34801E338E0D00BCB9D3 /* PromoCodeAlert */,
-				88F674B61DF3F1FA0001AC16 /* ItemSizeAlert */,
 				88CBB13F1E087A9400C5F987 /* OrderReviewAlert */,
 				880E03E21DE8F80400311721 /* Payment */,
 				88E6B59A1DCB7EE70024FA1A /* Registration */,
@@ -624,7 +571,7 @@
 				88073EF71DAC26EA000696A3 /* CitySelect */,
 				8814C0541DAFA5A2005B4967 /* Common */,
 				88CD68381DD1D458004B7726 /* ContactForm */,
-				88072D4C1DB967D400B47D23 /* ItemInfo */,
+				88072D4C1DB967D400B47D23 /* ItemConfiguration */,
 				8833B5261DBE6E06004D44CE /* LastTimePopup */,
 				889D87C51DC0A727003E8DAC /* LaundrySelect */,
 				88923E1D1DD3D5DC00BC3AC0 /* LocationSelect */,
@@ -636,8 +583,6 @@
 				88CD68351DD0DAAA004B7726 /* OrderRegistration */,
 				88923E141DD369DD00BC3AC0 /* ProfileContactData */,
 				882288121DB6D0FA000642E0 /* Root */,
-				88D8ABB91DB56E09009D515B /* SelectClothes */,
-				88E86DA01DB8E7D8002A7024 /* ServiceSelect */,
 				8814C04E1DAF15DA005B4967 /* ChistoNavigationController.swift */,
 			);
 			path = UI;
@@ -768,6 +713,7 @@
 				881F4FA71E080302009C5B17 /* Data+hexString.swift */,
 				881B34871E33E88200BCB9D3 /* RealmManager.swift */,
 				88F746CF1E3FAB86004EF765 /* Double+round.swift */,
+				88E2340A1ECC729C00BB051C /* AnalyticsManager.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1135,27 +1081,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		88D8ABB91DB56E09009D515B /* SelectClothes */ = {
-			isa = PBXGroup;
-			children = (
-				88D8ABC01DB58794009D515B /* Views */,
-				88D8ABBE1DB56EB8009D515B /* SelectClothesViewController.storyboard */,
-				880107C41DF6088E00CA0EB8 /* HasDecorationAlertViewModel.swift */,
-				88D8ABBA1DB56E53009D515B /* SelectClothesViewController.swift */,
-				88D8ABBC1DB56E89009D515B /* SelectClothesViewModel.swift */,
-			);
-			path = SelectClothes;
-			sourceTree = "<group>";
-		};
-		88D8ABC01DB58794009D515B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				88D8ABC11DB587CF009D515B /* SelectClothesTableViewCell.swift */,
-				88D8ABC31DB587EC009D515B /* SelectClothesTableViewCellModel.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		88DB93801DCBEF1600DAC651 /* CodeInput */ = {
 			isa = PBXGroup;
 			children = (
@@ -1187,31 +1112,6 @@
 			path = PhoneInput;
 			sourceTree = "<group>";
 		};
-		88E86DA01DB8E7D8002A7024 /* ServiceSelect */ = {
-			isa = PBXGroup;
-			children = (
-				88E86DAB1DB8E803002A7024 /* Views */,
-				88BD82361E5274BF001375AF /* ServiceSelectViewController.storyboard */,
-				88E86DA41DB8E800002A7024 /* ServiceSelectViewController.swift */,
-				88E86DA51DB8E800002A7024 /* ServiceSelectViewModel.swift */,
-				88246B3E1EBF488A007B5603 /* ItemConfigurationTableViewController.storyboard */,
-				88246B391EBF475C007B5603 /* ItemConfigurationViewController.storyboard */,
-				88A2C37D1EB4DAC2005F5CA5 /* ItemConfigurationTableViewController.swift */,
-				88A2C37F1EB4DB05005F5CA5 /* ItemConfigurationViewModel.swift */,
-				88A2C3811EB4E5AB005F5CA5 /* ItemConfigurationViewController.swift */,
-			);
-			path = ServiceSelect;
-			sourceTree = "<group>";
-		};
-		88E86DAB1DB8E803002A7024 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				88E86DA21DB8E800002A7024 /* ServiceSelectTableViewCell.swift */,
-				88E86DA31DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		88E86DB11DB91695002A7024 /* OrderManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1221,16 +1121,6 @@
 				881928641E24E4F800405597 /* OrderItemAttribute.swift */,
 			);
 			path = OrderManager;
-			sourceTree = "<group>";
-		};
-		88F674B61DF3F1FA0001AC16 /* ItemSizeAlert */ = {
-			isa = PBXGroup;
-			children = (
-				378C00081E549C68002AE521 /* ItemSizeAlertViewController.storyboard */,
-				88F674B91DF475460001AC16 /* ItemSizeAlertViewController.swift */,
-				88F674BB1DF477E50001AC16 /* ItemSizeAlertViewModel.swift */,
-			);
-			name = ItemSizeAlert;
 			sourceTree = "<group>";
 		};
 		88FE7AFA1DE0AC3700A16289 /* MyOrders */ = {
@@ -1364,7 +1254,6 @@
 				88C74B961E3D0A3100F4DBCF /* Localizable.strings in Resources */,
 				88DB937B1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard in Resources */,
 				88373C981DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib in Resources */,
-				889923941DDCAF8200D73905 /* ItemInfoNavigationController.storyboard in Resources */,
 				37530F501E4E328F0039AAB0 /* OrderRegistrationViewController.storyboard in Resources */,
 				88246B3C1EBF488A007B5603 /* ItemConfigurationTableViewController.storyboard in Resources */,
 				880E03F01DE9976000311721 /* ClothesNavigationController.storyboard in Resources */,
@@ -1377,7 +1266,6 @@
 				88287EE51E67527E00D8745E /* PromoCodeAlertViewController.storyboard in Resources */,
 				8811FE101DC2DB0500610712 /* ProfileNavigationController.storyboard in Resources */,
 				88BD822F1E527419001375AF /* RegistrationPhoneInputViewController.storyboard in Resources */,
-				37530F781E4E33660039AAB0 /* ItemInfoViewController.storyboard in Resources */,
 				88BD82391E527544001375AF /* OrderReviewAlertViewController.storyboard in Resources */,
 				37530F731E4E33540039AAB0 /* LastTimePopupViewController.storyboard in Resources */,
 				88246B371EBF475C007B5603 /* ItemConfigurationViewController.storyboard in Resources */,
@@ -1388,11 +1276,8 @@
 				88A2C3891EB53257005F5CA5 /* BadgeButtonView.xib in Resources */,
 				37530F661E4E32FE0039AAB0 /* LocationSelectViewController.storyboard in Resources */,
 				37530F361E4E2FA20039AAB0 /* OrderViewController.storyboard in Resources */,
-				88BD82341E5274BF001375AF /* ServiceSelectViewController.storyboard in Resources */,
 				882ECDCB1DE7CB4B00EE3507 /* EmptyTableBackgroundView.xib in Resources */,
-				378C00061E549C68002AE521 /* ItemSizeAlertViewController.storyboard in Resources */,
 				37530F551E4E329E0039AAB0 /* OrderPlacedPopupViewController.storyboard in Resources */,
-				88D8ABBF1DB56EB8009D515B /* SelectClothesViewController.storyboard in Resources */,
 				880E03EC1DE8F81A00311721 /* PaymentViewController.storyboard in Resources */,
 				37530F3C1E4E2FF80039AAB0 /* EmptyOrderView.xib in Resources */,
 				37530F8C1E4E33CE0039AAB0 /* CityNotFoundViewController.storyboard in Resources */,
@@ -1474,7 +1359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88FE7B091DE0CA4F00A16289 /* LineItem.swift in Sources */,
-				88D8ABBB1DB56E53009D515B /* SelectClothesViewController.swift in Sources */,
+				88E2340B1ECC729C00BB051C /* AnalyticsManager.swift in Sources */,
 				88E86DB01DB90BD1002A7024 /* UIView+nibInstance.swift in Sources */,
 				88073EEF1DAC1A23000696A3 /* OnBoardingViewController.swift in Sources */,
 				880CBFEF1E7AB9F100CF92EA /* DataManager+FetchItemsManagerType.swift in Sources */,
@@ -1486,11 +1371,9 @@
 				8833B5321DBE8774004D44CE /* LaundryItemInfoView.swift in Sources */,
 				88FE7B051DE0AFF300A16289 /* MyOrdersTableViewCellModel.swift in Sources */,
 				8814C0331DAD8123005B4967 /* Colors.swift in Sources */,
-				88E86DAA1DB8E800002A7024 /* ServiceSelectViewModel.swift in Sources */,
 				887D62591E3363B20052CC37 /* OrderConfirmTableHeaderView.swift in Sources */,
 				8814C0611DAFEE7C005B4967 /* ClothesViewModel.swift in Sources */,
 				88DB938D1DCC187C00DAC651 /* Laundry.swift in Sources */,
-				88D8ABC41DB587EC009D515B /* SelectClothesTableViewCellModel.swift in Sources */,
 				88DB937F1DCBE88700DAC651 /* RegistrationPhoneInputViewModel.swift in Sources */,
 				88AF5B2D1E2BC61C00A78ABD /* PaymentMethod.swift in Sources */,
 				88E705641DCCC2FB007F779E /* Category.swift in Sources */,
@@ -1502,15 +1385,12 @@
 				88004FB81DDF49F300A8632A /* Rating.swift in Sources */,
 				880CBFF11E7ABA4F00CF92EA /* DataManager+TokenManagerType.swift in Sources */,
 				889923A71DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift in Sources */,
-				88072D571DB9698600B47D23 /* ItemInfoTableViewCell.swift in Sources */,
 				881B34861E33900000BCB9D3 /* PromoCodeAlertViewModel.swift in Sources */,
 				88004FBF1DDF77DF00A8632A /* LaundryReviewsViewModel.swift in Sources */,
 				8814C05A1DAFC96D005B4967 /* ClothesViewController.swift in Sources */,
 				880CBFFA1E7ABC5000CF92EA /* APIPath.swift in Sources */,
 				88CBB1451E08806300C5F987 /* OrderReviewAlertViewModel.swift in Sources */,
 				889A841B1DCA82B800E3926D /* OrderConfirmServiceTableViewCellModel.swift in Sources */,
-				88F674BC1DF477E50001AC16 /* ItemSizeAlertViewModel.swift in Sources */,
-				88072D551DB9697700B47D23 /* ItemInfoTableViewCellModel.swift in Sources */,
 				88456DF81E37AF12003D433E /* OrderInfoTableHeaderView.swift in Sources */,
 				887D625B1E3369230052CC37 /* OrderConfirmTableHeaderViewModel.swift in Sources */,
 				88AF5B2F1E2BF60F00A78ABD /* Subscription.swift in Sources */,
@@ -1532,7 +1412,6 @@
 				8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */,
 				880E03EE1DE9975000311721 /* CategoriesNavigationController.swift in Sources */,
 				882ECDB81DE5899600EE3507 /* Sequence+categorize.swift in Sources */,
-				880107C51DF6088E00CA0EB8 /* HasDecorationAlertViewModel.swift in Sources */,
 				880E03E91DE8F81A00311721 /* PaymentNavigationController.swift in Sources */,
 				88FE7B031DE0AFE600A16289 /* MyOrdersTableViewCell.swift in Sources */,
 				8811FE0F1DC2DB0500610712 /* ProfileNavigationController.swift in Sources */,
@@ -1540,7 +1419,6 @@
 				8814C0401DAED9AC005B4967 /* CityNotFoundViewController.swift in Sources */,
 				88DB93891DCC115D00DAC651 /* City.swift in Sources */,
 				8814C0631DB03AD7005B4967 /* ItemTableViewCellModel.swift in Sources */,
-				88D8ABC21DB587CF009D515B /* SelectClothesTableViewCell.swift in Sources */,
 				88CD68401DD2090A004B7726 /* OrderRegistrationViewModel.swift in Sources */,
 				886662DD1E326497004D9A80 /* ProfileContainerViewController.swift in Sources */,
 				88DB937D1DCBE0F400DAC651 /* RegistrationNavigationController.swift in Sources */,
@@ -1549,7 +1427,6 @@
 				881928651E24E4F800405597 /* OrderItemAttribute.swift in Sources */,
 				8862E6CE1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift in Sources */,
 				88A2C3801EB4DB05005F5CA5 /* ItemConfigurationViewModel.swift in Sources */,
-				88E86DA71DB8E800002A7024 /* ServiceSelectTableViewCell.swift in Sources */,
 				8888110F1EB3CE3600861843 /* CategoriesHeaderCollectionViewModel.swift in Sources */,
 				885C00961DFEE57900506961 /* LaundryItem.swift in Sources */,
 				88073F031DAD6FCF000696A3 /* DescriptionListItemView.swift in Sources */,
@@ -1559,7 +1436,6 @@
 				88CBB1431E08805600C5F987 /* OrderReviewAlertViewController.swift in Sources */,
 				88CD68471DD215F8004B7726 /* ContactFormTableHeaderViewModel.swift in Sources */,
 				88DB93821DCBEF3200DAC651 /* RegistrationCodeInputViewController.swift in Sources */,
-				88072D521DB9695E00B47D23 /* ItemInfoViewModel.swift in Sources */,
 				88CDDE471DD922DC002BCC5E /* NSURL+QueryParams.swift in Sources */,
 				889D87CE1DC0BA2F003E8DAC /* LaundrySelectTableViewCell.swift in Sources */,
 				885C00981DFEF36D00506961 /* UIViewController+transitionCompletionBlock.swift in Sources */,
@@ -1590,11 +1466,9 @@
 				88C497311E2E2913001AE561 /* ControlledRatingView.swift in Sources */,
 				88DB93791DCBD11100DAC651 /* MaskedInput.swift in Sources */,
 				88456DF61E37AF12003D433E /* OrderInfoTableFooterView.swift in Sources */,
-				88F674BA1DF475460001AC16 /* ItemSizeAlertViewController.swift in Sources */,
 				8869D1231DCA4D9800EA7425 /* OrderConfirmServiceItemView.swift in Sources */,
 				88E86DB51DB91BAE002A7024 /* OrderTableViewCell.swift in Sources */,
 				882ECDB31DE2211700EE3507 /* OrderInfoViewModel.swift in Sources */,
-				88E86DA91DB8E800002A7024 /* ServiceSelectViewController.swift in Sources */,
 				8834B8411DDCA6C1009D2949 /* NSLayoutConstraint+updateWithKeyboard.swift in Sources */,
 				88456DFA1E37AF12003D433E /* OrderInfoTableHeaderViewModel.swift in Sources */,
 				883760D11DB8D97500C9F506 /* OnBoardingNavigationController.swift in Sources */,
@@ -1630,15 +1504,11 @@
 				882ECDB11DE2160C00EE3507 /* OrderInfoTableViewCell.swift in Sources */,
 				889923A31DDDFC1000D73905 /* flatMapLatest+continueWithError.swift in Sources */,
 				8814C0391DAE8F7F005B4967 /* LocationManager.swift in Sources */,
-				88D8ABBD1DB56E89009D515B /* SelectClothesViewModel.swift in Sources */,
 				8833B5361DBF8241004D44CE /* LastTimePopupViewModel.swift in Sources */,
 				880CBFF31E7ABB3000CF92EA /* DataManager+UserManagerType.swift in Sources */,
-				889923961DDCAF9400D73905 /* ItemInfoNavigationController.swift in Sources */,
 				88E831331DFC7177005E35D9 /* Double+currencyString.swift in Sources */,
-				88072D501DB9695300B47D23 /* ItemInfoViewController.swift in Sources */,
 				88E6B5991DCB73610024FA1A /* UIView+AddBorders.swift in Sources */,
 				88004FBB1DDF578500A8632A /* LaundryReviewsTableViewCell.swift in Sources */,
-				88E86DA81DB8E800002A7024 /* ServiceSelectTableViewCellModel.swift in Sources */,
 				8814C03C1DAEBCF1005B4967 /* CLLocationManager+Rx.swift .swift in Sources */,
 				88004FB41DDF3DE300A8632A /* LaundryReviewsViewController.swift in Sources */,
 				88E86DB31DB916B3002A7024 /* OrderManager.swift in Sources */,
@@ -1759,15 +1629,6 @@
 			name = LastTimePopupViewController.storyboard;
 			sourceTree = "<group>";
 		};
-		37530F7A1E4E33660039AAB0 /* ItemInfoViewController.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				37530F791E4E33660039AAB0 /* Base */,
-				37530F7C1E4E336A0039AAB0 /* ru */,
-			);
-			name = ItemInfoViewController.storyboard;
-			sourceTree = "<group>";
-		};
 		37530F7F1E4E33820039AAB0 /* ContactFormViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1832,15 +1693,6 @@
 			path = Views/Views;
 			sourceTree = "<group>";
 		};
-		378C00081E549C68002AE521 /* ItemSizeAlertViewController.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				378C00071E549C68002AE521 /* Base */,
-				378C000A1E549C75002AE521 /* ru */,
-			);
-			name = ItemSizeAlertViewController.storyboard;
-			sourceTree = "<group>";
-		};
 		88073EE11DABE1E0000696A3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1858,6 +1710,7 @@
 				88246B3B1EBF475F007B5603 /* ru */,
 			);
 			name = ItemConfigurationViewController.storyboard;
+			path = ../ServiceSelect;
 			sourceTree = "<group>";
 		};
 		88246B3E1EBF488A007B5603 /* ItemConfigurationTableViewController.storyboard */ = {
@@ -1867,6 +1720,7 @@
 				88246B401EBF488D007B5603 /* ru */,
 			);
 			name = ItemConfigurationTableViewController.storyboard;
+			path = ../ServiceSelect;
 			sourceTree = "<group>";
 		};
 		88287EE71E67527E00D8745E /* PromoCodeAlertViewController.storyboard */ = {
@@ -1903,15 +1757,6 @@
 				88BD82331E52742A001375AF /* ru */,
 			);
 			name = RegistrationPhoneInputViewController.storyboard;
-			sourceTree = "<group>";
-		};
-		88BD82361E5274BF001375AF /* ServiceSelectViewController.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				88BD82351E5274BF001375AF /* Base */,
-				88BD82381E5274C3001375AF /* ru */,
-			);
-			name = ServiceSelectViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		88BD823B1E527544001375AF /* OrderReviewAlertViewController.storyboard */ = {

@@ -62,6 +62,7 @@ class LastTimePopupViewController: UIViewController {
       self?.view.alpha = 0
       self?.view.alpha = 1
     }
+    AnalyticsManager.logScreen(.lastTimePopup)
   }
 
 }
