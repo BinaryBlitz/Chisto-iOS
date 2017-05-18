@@ -132,6 +132,14 @@ class ContactFormViewController: UITableViewController {
       .bind(to: sendCodeButton.rx.isHidden)
       .addDisposableTo(disposeBag)
 
+    viewModel.phoneViewModel
+      .sendButtonEnabled
+      .asObservable()
+      .subscribe(onNext: { [weak self] isEnabled in
+        self?.sendCodeButton.backgroundColor = isEnabled ? UIColor.chsSkyBlue : UIColor.chsCoolGrey
+        self?.sendCodeButton.defaultBackgroundColor = isEnabled ? UIColor.chsSkyBlue : UIColor.chsCoolGrey
+      }).addDisposableTo(disposeBag)
+
     sendCodeButton.rx.tap.asObservable().subscribe(onNext: { [weak self] in
       self?.codeField.becomeFirstResponder()
     }).addDisposableTo(disposeBag)

@@ -215,6 +215,9 @@
 /* Error alert */
 "invalidPhone" = "";
 
+/* Error alert */
+"emptyPhone" = "Введите номер телефона, на него будет отправлен код";
+
 /* Slow item alert */
 "slowItemDesctiption" = "Эта вещь чистится долго";
 

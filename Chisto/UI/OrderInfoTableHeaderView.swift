@@ -49,7 +49,6 @@ class OrderInfoTableHeaderView: UIView {
         self?.viewController()?.view.layoutIfNeeded()
       }).addDisposableTo(disposeBag)
 
-
     bindLaundryData(viewModel: viewModel)
     bindLaundryStatusData(viewModel: viewModel)
 

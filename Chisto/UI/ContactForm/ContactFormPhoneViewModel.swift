@@ -23,8 +23,8 @@ class ContactFormPhoneViewModel {
   let sendButtonDidTap = PublishSubject<Void>()
   let presentErrorAlert = PublishSubject<Error>()
 
-  var timer: Timer!
-  var seconds = Variable<Int>(60)
+  var timer: Timer? = nil
+  var seconds = Variable<Int>(30)
 
   let secondsCountLabels = [
     NSLocalizedString("secondNominitive", comment: "Send code alert"),
@@ -44,28 +44,23 @@ class ContactFormPhoneViewModel {
     let sendButtonObservable = sendButtonDidTap.asObservable().map { self.sendButtonEnabled.value }
 
     sendButtonObservable
-      .filter { $0 }
-      .flatMap { [weak self] _ -> Observable<Void> in
-        self?.configureTimer()
-        guard let phoneText = self?.phone.value else { return Observable.error(DataError.unknown(description: "")) }
+      .flatMap { [weak self] isEnabled -> Observable<Void> in
+        if let seconds = self?.seconds.value,
+              let endings = self?.secondsCountLabels,
+              !isEnabled {
+          let message = String(format: NSLocalizedString("codeSentTryAgain", comment: "Registration"), "\(seconds)") + getRussianNumEnding(number: seconds, endings: endings)
+          return Observable.error(DataError.unknown(description: message))
+        }
+
+        guard let phoneText = self?.phone.value, !phoneText.isEmpty else { return Observable.error(DataError.unknown(description: NSLocalizedString("emptyPhone", comment: "Error alert"))) }
         let phoneNumberKit = PhoneNumberKit()
         guard let phoneNumber = try? phoneNumberKit.parse(phoneText) else { return Observable.error(DataError.unknown(description: NSLocalizedString("invalidPhone", comment: "Error alert"))) }
-        return DataManager.instance.createVerificationToken(phone: phoneNumberKit.format(phoneNumber, toType: .e164))
-      }.subscribe(onError: { [weak self] error in
-        self?.presentErrorAlert.onNext(error)
-      }).addDisposableTo(disposeBag)
 
-    sendButtonObservable
-      .skip(1)
-      .filter { !$0 }
-      .map { [weak self] _ in
-        guard let `self` = self else { return DataError.unknown(description: "") }
-        let seconds = self.seconds.value
-        let message = String(format: NSLocalizedString("codeSentTryAgain", comment: "Registration"), "\(seconds)") + getRussianNumEnding(number: seconds, endings: self.secondsCountLabels)
-        return DataError.unknown(description: message)
-      }
-      .bind(to: presentErrorAlert)
-      .addDisposableTo(disposeBag)
+        self?.configureTimer()
+        return DataManager.instance.createVerificationToken(phone: phoneNumberKit.format(phoneNumber, toType: .e164))
+      }.catchErrorAndContinue { [weak self] error in
+        self?.presentErrorAlert.onNext(error)
+      }.subscribe().addDisposableTo(disposeBag)
 
     let validationConfirmed: Driver<Bool> = codeIsValid.asDriver()
       .filter { $0 }
@@ -85,15 +80,15 @@ class ContactFormPhoneViewModel {
   func configureTimer() {
     sendButtonEnabled.value = false
     timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ContactFormPhoneViewModel.updateTimer), userInfo: nil, repeats: true)
-    timer.fire()
+    timer?.fire()
   }
 
   @objc func updateTimer() {
     seconds.value -= 1
     if seconds.value == 0 {
-      timer.invalidate()
+      timer = nil
       sendButtonEnabled.value = true
-      seconds.value = 60
+      seconds.value = 30
     }
   }
 }
