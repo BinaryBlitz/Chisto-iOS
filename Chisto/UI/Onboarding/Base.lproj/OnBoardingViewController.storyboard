@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="p78-OF-pBj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="p78-OF-pBj">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -53,9 +53,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" layoutMarginsFollowReadableWidth="YES" axis="vertical" distribution="fillProportionally" spacing="10" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8vf-fD-DLA">
-                                <rect key="frame" x="15" y="224" width="285" height="271"/>
-                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="018-W6-wbK" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="515" width="320" height="53"/>
                                 <color key="backgroundColor" red="0.23921568630000001" green="0.70588235290000001" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -72,25 +69,29 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVX-fn-ro8">
+                                <rect key="frame" x="0.0" y="204" width="320" height="311"/>
+                                <connections>
+                                    <segue destination="9e5-IL-Pk4" kind="embed" identifier="pageViewController" id="3Qd-dd-KAJ"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hNs-hU-jV4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zht-kg-WRE" secondAttribute="bottom" constant="5" id="4R0-vH-fkx"/>
-                            <constraint firstAttribute="trailing" secondItem="8vf-fD-DLA" secondAttribute="trailing" constant="20" id="4vu-ly-OlO"/>
                             <constraint firstItem="018-W6-wbK" firstAttribute="leading" secondItem="JIj-C4-xtU" secondAttribute="leading" id="5Gh-bT-wDK"/>
+                            <constraint firstAttribute="trailing" secondItem="fVX-fn-ro8" secondAttribute="trailing" id="5Zb-Zx-o2k"/>
                             <constraint firstAttribute="trailing" secondItem="018-W6-wbK" secondAttribute="trailing" id="HMK-5i-XeC"/>
-                            <constraint firstItem="018-W6-wbK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="8vf-fD-DLA" secondAttribute="bottom" id="OCG-o5-619"/>
                             <constraint firstItem="hNs-hU-jV4" firstAttribute="leading" secondItem="JIj-C4-xtU" secondAttribute="leading" id="P4G-uy-HvS"/>
+                            <constraint firstItem="fVX-fn-ro8" firstAttribute="leading" secondItem="JIj-C4-xtU" secondAttribute="leading" id="RAK-vO-yg9"/>
                             <constraint firstItem="zht-kg-WRE" firstAttribute="leading" secondItem="JIj-C4-xtU" secondAttribute="leading" id="RBS-aO-gFZ"/>
-                            <constraint firstItem="8vf-fD-DLA" firstAttribute="leading" secondItem="JIj-C4-xtU" secondAttribute="leading" constant="15" id="Tca-Ym-2OS"/>
+                            <constraint firstItem="018-W6-wbK" firstAttribute="top" secondItem="fVX-fn-ro8" secondAttribute="bottom" id="TBc-cV-KaD"/>
+                            <constraint firstItem="fVX-fn-ro8" firstAttribute="top" secondItem="hNs-hU-jV4" secondAttribute="bottom" id="Vf6-R3-Fd7"/>
                             <constraint firstAttribute="trailing" secondItem="hNs-hU-jV4" secondAttribute="trailing" id="dPd-yR-eNK"/>
                             <constraint firstItem="zht-kg-WRE" firstAttribute="top" secondItem="JIj-C4-xtU" secondAttribute="top" id="g2T-Hk-wS0"/>
                             <constraint firstItem="hNs-hU-jV4" firstAttribute="top" secondItem="zht-kg-WRE" secondAttribute="bottom" priority="400" constant="20" id="g4O-Bo-Ozb"/>
-                            <constraint firstItem="8vf-fD-DLA" firstAttribute="top" secondItem="hNs-hU-jV4" secondAttribute="bottom" priority="300" constant="20" id="hBj-bm-zhd"/>
-                            <constraint firstItem="018-W6-wbK" firstAttribute="top" secondItem="8vf-fD-DLA" secondAttribute="bottom" priority="300" constant="20" id="hNr-pm-D7y"/>
                             <constraint firstAttribute="trailing" secondItem="zht-kg-WRE" secondAttribute="trailing" id="oDi-r9-frF"/>
                             <constraint firstItem="ArA-Gx-6V4" firstAttribute="top" secondItem="018-W6-wbK" secondAttribute="bottom" id="vHC-x8-nxJ"/>
-                            <constraint firstItem="8vf-fD-DLA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hNs-hU-jV4" secondAttribute="bottom" constant="5" id="wWr-bq-UEv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Pfv-91-B4o"/>
@@ -98,12 +99,19 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="goButton" destination="018-W6-wbK" id="G6s-f2-NOy"/>
-                        <outlet property="stackView" destination="8vf-fD-DLA" id="wmp-2n-CaL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nKo-jQ-Jgu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="388.125" y="495.42253521126759"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="SFa-3y-MYx">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="9e5-IL-Pk4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mgw-k4-bIf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1373" y="517"/>
         </scene>
     </scenes>
     <resources>

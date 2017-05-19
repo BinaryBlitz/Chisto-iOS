@@ -85,6 +85,7 @@
 		88246B371EBF475C007B5603 /* ItemConfigurationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88246B391EBF475C007B5603 /* ItemConfigurationViewController.storyboard */; };
 		88246B3C1EBF488A007B5603 /* ItemConfigurationTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88246B3E1EBF488A007B5603 /* ItemConfigurationTableViewController.storyboard */; };
 		88287EE51E67527E00D8745E /* PromoCodeAlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88287EE71E67527E00D8745E /* PromoCodeAlertViewController.storyboard */; };
+		882B03831ECF0CA200D7F8C0 /* OnBoardingStepViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882B03821ECF0CA100D7F8C0 /* OnBoardingStepViewController.storyboard */; };
 		882ECDAF1DE215FF00EE3507 /* OrderInfoTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDAE1DE215FF00EE3507 /* OrderInfoTableViewCellModel.swift */; };
 		882ECDB11DE2160C00EE3507 /* OrderInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDB01DE2160C00EE3507 /* OrderInfoTableViewCell.swift */; };
 		882ECDB31DE2211700EE3507 /* OrderInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDB21DE2211700EE3507 /* OrderInfoViewModel.swift */; };
@@ -321,6 +322,7 @@
 		88246B401EBF488D007B5603 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemConfigurationTableViewController.strings; sourceTree = "<group>"; };
 		88287EE61E67527E00D8745E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PromoCodeAlertViewController.storyboard; sourceTree = "<group>"; };
 		88287EE91E67528100D8745E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PromoCodeAlertViewController.strings; sourceTree = "<group>"; };
+		882B03821ECF0CA100D7F8C0 /* OnBoardingStepViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnBoardingStepViewController.storyboard; sourceTree = "<group>"; };
 		882ECDAE1DE215FF00EE3507 /* OrderInfoTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoTableViewCellModel.swift; sourceTree = "<group>"; };
 		882ECDB01DE2160C00EE3507 /* OrderInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoTableViewCell.swift; sourceTree = "<group>"; };
 		882ECDB21DE2211700EE3507 /* OrderInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoViewModel.swift; sourceTree = "<group>"; };
@@ -610,6 +612,7 @@
 				37530F461E4E31560039AAB0 /* OnBoardingViewController.storyboard */,
 				88073EED1DAC1A23000696A3 /* OnBoardingViewController.swift */,
 				88923E1B1DD3852A00BC3AC0 /* OnBoardingViewModel.swift */,
+				882B03821ECF0CA100D7F8C0 /* OnBoardingStepViewController.storyboard */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1241,6 +1244,7 @@
 				88E6EB6D1EC52CB7007A0082 /* InfoPlist.strings in Resources */,
 				88A2C3871EB4F255005F5CA5 /* ChistoSectionHeaderView.xib in Resources */,
 				88BD82251E527282001375AF /* ClothesViewController.storyboard in Resources */,
+				882B03831ECF0CA200D7F8C0 /* OnBoardingStepViewController.storyboard in Resources */,
 				88BD822A1E527308001375AF /* RegistrationCodeInputViewController.storyboard in Resources */,
 				37530F871E4E33B50039AAB0 /* CitySelectViewController.storyboard in Resources */,
 				37530F4B1E4E327B0039AAB0 /* ProfileContactDataViewController.storyboard in Resources */,

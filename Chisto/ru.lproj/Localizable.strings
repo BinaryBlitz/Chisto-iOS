@@ -256,3 +256,9 @@
 
 /* Send code alert */
 "secondsGenitive" = "секунд";
+
+/* Onboarding */
+"onboardingNextButtonTitle" = "Далее";
+
+/* Onboarding */
+"onboardingStartButtonTitle" = "Начать";

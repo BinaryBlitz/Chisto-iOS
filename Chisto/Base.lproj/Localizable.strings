@@ -253,3 +253,9 @@
 
 /* Decoration service */
 "withDecoration" = "Decoration";
+
+/* Onboarding */
+"onboardingNextButtonTitle" = "Next";
+
+/* Onboarding */
+"onboardingStartButtonTitle" = "Start";
