@@ -22,17 +22,16 @@ class OnBoardingViewModel {
   let goButtonDidTap = PublishSubject<Void>()
   let cityDidSelected: PublishSubject<Void>
   let currentPage = Variable<Int>(0)
-  let nextButtonTitle = Variable<String>("")
+  let pageControlHidden = Variable<Bool>(false)
 
-  let presentCitySelectSection = PublishSubject<CitySelectViewModel>()
+  let presentCitySelectSection: Driver<CitySelectViewModel>
   let setNextViewController = PublishSubject<Int>()
   let dismissViewController: Driver<Void>
 
   let descriptionSteps: [(String, UIImage)] = [
-    (title: NSLocalizedString("onboardingStep1", comment: "Onboarding step"), icon: #imageLiteral(resourceName:"iconNum1")),
-    (title: NSLocalizedString("onboardingStep2", comment: "Onboarding step"), icon: #imageLiteral(resourceName:"iconNum2")),
-    (title: NSLocalizedString("onboardingStep3", comment: "Onboarding step"), icon: #imageLiteral(resourceName:"iconNum3")),
-    (title: NSLocalizedString("onboardingStep4", comment: "Onboarding step"), icon: #imageLiteral(resourceName:"iconNum4"))
+    (title: NSLocalizedString("onboardingStep2", comment: "Onboarding step"), image: #imageLiteral(resourceName: "onboardingStep2")),
+    (title: NSLocalizedString("onboardingStep3", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "onboardingStep3")),
+    (title: NSLocalizedString("onboardingStep4", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "onboardingStep4"))
   ]
 
   init() {
@@ -40,35 +39,19 @@ class OnBoardingViewModel {
     self.cityDidSelected = cityDidSelected
     self.dismissViewController = cityDidSelected.asDriver(onErrorDriveWith: .empty())
 
-    let goButtonCurrentPageObservable = goButtonDidTap
-      .asObservable()
-      .map { self.currentPage.value }
-
-    let setNextPage = PublishSubject<Int>()
-
-    goButtonCurrentPageObservable.subscribe(onNext: { page in
-      if page == self.descriptionSteps.count - 1 {
+    self.presentCitySelectSection = goButtonDidTap
+      .asDriver(onErrorDriveWith: .empty())
+      .map {
         let viewModel = CitySelectViewModel()
         viewModel.itemDidSelect.asObservable().map { _ in Void() }
           .bind(to: cityDidSelected)
           .addDisposableTo(viewModel.disposeBag)
-        self.presentCitySelectSection.onNext(viewModel)
-      } else {
-        setNextPage.onNext(page + 1)
-      }
-    }).addDisposableTo(disposeBag)
-
-    setNextPage
-      .bind(to: currentPage)
-      .addDisposableTo(disposeBag)
-
-    setNextPage
-      .bind(to: setNextViewController)
-      .addDisposableTo(disposeBag)
+        return viewModel
+    }
 
     currentPage.asObservable().map {
-      $0 == self.descriptionSteps.count - 1 ? NSLocalizedString("onboardingStartButtonTitle", comment: "Onboarding") : NSLocalizedString("onboardingNextButtonTitle", comment: "Onboarding")
-    }.bind(to: nextButtonTitle).addDisposableTo(disposeBag)
+      $0 == self.descriptionSteps.count
+    }.bind(to: pageControlHidden).addDisposableTo(disposeBag)
 
 
   }

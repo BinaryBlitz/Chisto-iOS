@@ -10,36 +10,21 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class OnBoardingViewController: UIViewController {
+class OnBoardingViewController: UIPageViewController, DefaultBarColoredViewController {
   let viewModel = OnBoardingViewModel()
-
-  var pageViewController: UIPageViewController? = nil {
-    didSet {
-      pageViewController?.delegate = self
-      pageViewController?.dataSource = self
-    }
-  }
+  var pageControl: UIPageControl!
 
   var stepViewControllers: [UIViewController] = [] {
     didSet {
       guard let firstViewController = stepViewControllers.first else { return }
-      pageViewController?.setViewControllers([firstViewController], direction: .forward, animated: false, completion: nil)
+      setViewControllers([firstViewController], direction: .forward, animated: false, completion: nil)
     }
   }
-
-  @IBOutlet weak var goButton: UIButton!
 
   let disposeBag = DisposeBag()
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    goButton.rx.tap.bind(to: viewModel.goButtonDidTap).addDisposableTo(disposeBag)
-
-    viewModel.nextButtonTitle
-      .asObservable()
-      .bind(to: goButton.rx.title())
-      .addDisposableTo(disposeBag)
 
     viewModel.dismissViewController.drive(onNext: { [weak self] in
         self?.dismiss(animated: true, completion: nil)
@@ -57,46 +42,70 @@ class OnBoardingViewController: UIViewController {
   }
 
   func loadPageControllers() {
-    let pageControl: UIPageControl = UIPageControl.appearance()
+    delegate = self
+    dataSource = self
+
+    self.pageControl = UIPageControl(
+      frame: CGRect(
+        x: 0,
+        y: self.view.frame.size.height - 50,
+        width: self.view.frame.size.width,
+        height: 50
+      )
+    )
+
     pageControl.pageIndicatorTintColor = UIColor.chsSilver
     pageControl.currentPageIndicatorTintColor = UIColor.chsSlateGrey
 
-    self.stepViewControllers = viewModel.descriptionSteps.map { title, icon in
-      let descriptionListItemView = DescriptionListItemView.nibInstance()!
-      descriptionListItemView.configure(countImage: icon, information: title)
-      descriptionListItemView.translatesAutoresizingMaskIntoConstraints = false
-      let viewController = UIViewController()
+    self.view.addSubview(pageControl)
 
-      viewController.view.addSubview(descriptionListItemView)
-      descriptionListItemView.leftAnchor.constraint(equalTo: viewController.view.leftAnchor, constant: 15).isActive = true
-      descriptionListItemView.rightAnchor.constraint(equalTo: viewController.view.rightAnchor, constant: -20).isActive = true
-      descriptionListItemView.centerYAnchor.constraint(equalTo: viewController.view.centerYAnchor).isActive = true
+    var stepViewControllers: [UIViewController] = []
+    stepViewControllers.append(OnboardingMainViewController.storyboardInstance()!)
 
-      viewController.view.updateConstraints()
-      viewController.view.layoutIfNeeded()
-
+    stepViewControllers += viewModel.descriptionSteps.map { title, image in
+      let viewController = OnboardingStepViewController.storyboardInstance()!
+      viewController.configuration = (image: image, information: title)
       return viewController
     }
 
-    viewModel.setNextViewController.subscribe(onNext: { [weak self] index in
-      guard let `self` = self else { return }
-      self.pageViewController?.setViewControllers([self.stepViewControllers[index]], direction: .forward, animated: true, completion: nil)
-    }).addDisposableTo(disposeBag)
-  }
+    self.stepViewControllers = stepViewControllers
 
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    guard segue.identifier == "pageViewController" else { return }
-    self.pageViewController = segue.destination as? UIPageViewController
+    pageControl.numberOfPages = stepViewControllers.count
+    pageControl.currentPage = 0
+    pageControl.isEnabled = false
+
+    viewModel.currentPage
+      .asObservable()
+      .bind(to: pageControl.rx.currentPage)
+      .addDisposableTo(disposeBag)
+
+    viewModel
+      .pageControlHidden
+      .asObservable()
+      .bind(to: pageControl.rx.isHidden)
+      .addDisposableTo(disposeBag)
+
+    if let viewController = stepViewControllers.last as? OnboardingStepViewController {
+      viewController.beginButtonHidden = false
+      viewController
+        .beginButtonDidTap
+        .asObservable()
+        .bind(to: viewModel.goButtonDidTap)
+        .addDisposableTo(disposeBag)
+    }
   }
 
   override func viewWillAppear(_ animated: Bool) {
     self.navigationController?.setNavigationBarHidden(true, animated: true)
+    UIApplication.shared.isStatusBarHidden = true
     AnalyticsManager.logScreen(.onboarding)
   }
 
   override func viewWillDisappear(_ animated: Bool) {
     self.navigationController?.setNavigationBarHidden(false, animated: true)
+    UIApplication.shared.isStatusBarHidden = false
   }
+
 }
 
 extension OnBoardingViewController: UIPageViewControllerDelegate {
@@ -120,13 +129,4 @@ extension OnBoardingViewController: UIPageViewControllerDataSource {
     }
     return stepViewControllers[index + 1]
   }
-
-  func presentationCount(for pageViewController: UIPageViewController) -> Int {
-    return stepViewControllers.count
-  }
-
-  func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-    return viewModel.currentPage.value
-  }
-
 }
