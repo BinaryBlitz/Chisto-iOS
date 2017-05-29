@@ -265,3 +265,6 @@
 
 /* Onboarding */
 "onboardingStartButtonTitle" = "Начать";
+
+/* Item configuration screen */
+"clothesMaterial" = "Материал вещи";

@@ -262,3 +262,6 @@
 
 /* Onboarding */
 "onboardingStartButtonTitle" = "Start";
+
+/* Item configuration screen */
+"clothesMaterial" = "Material";

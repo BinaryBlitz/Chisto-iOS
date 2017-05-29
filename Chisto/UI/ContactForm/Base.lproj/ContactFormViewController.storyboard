@@ -441,7 +441,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="House number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EoK-sS-Wyh" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                                    <rect key="frame" x="46" y="0.0" width="161" height="50"/>
+                                                    <rect key="frame" x="46" y="0.0" width="160.66666666666666" height="50"/>
                                                     <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -459,14 +459,14 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheck" translatesAutoresizingMaskIntoConstraints="NO" id="64l-GU-er6">
-                                                    <rect key="frame" x="193" y="18" width="14" height="14"/>
+                                                    <rect key="frame" x="192.66666666666666" y="18" width="14" height="14"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="14" id="Mf4-Ng-okC"/>
                                                         <constraint firstAttribute="width" constant="14" id="UZc-po-hh2"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Apartment number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ffi-Cd-Wuq" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                                    <rect key="frame" x="219" y="0.0" width="180" height="50"/>
+                                                    <rect key="frame" x="218.66666666666663" y="0.0" width="180.33333333333337" height="50"/>
                                                     <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>

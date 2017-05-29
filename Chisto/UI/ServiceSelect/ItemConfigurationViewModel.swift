@@ -38,14 +38,18 @@ class ItemConfigurationViewModel {
   let saveButtonIsEnabled = Variable<Bool>(false)
 
   // Data
-  var orderItem: OrderItem
-  var currentAmount: Variable<Int>
-  var hasDecoration: Variable<Bool>
+  let orderItem: OrderItem
+  let currentAmount: Variable<Int>
+  let hasDecoration: Variable<Bool>
+  let currentMaterial: Variable<ClothesMaterial>
 
   init(orderItem: OrderItem) {
 
     let currentAmount = Variable<Int>(orderItem.amount)
     self.currentAmount = currentAmount
+
+    let currentMaterial = Variable<ClothesMaterial>(orderItem.material)
+    self.currentMaterial = currentMaterial
 
     self.hasDecoration = Variable(orderItem.hasDecoration)
 
@@ -125,6 +129,7 @@ class ItemConfigurationViewModel {
       orderItem.size = size()
       orderItem.treatments = treatments.value.filter { $0.name == "Химчистка" }
       orderItem.amount = currentAmount.value
+      orderItem.material = currentMaterial.value
     }
   }
 
