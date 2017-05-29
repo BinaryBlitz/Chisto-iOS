@@ -22,66 +22,41 @@
                         <sections>
                             <tableViewSection id="Zbn-ZB-if6">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="63" id="Cdr-72-8dg">
-                                        <rect key="frame" x="0.0" y="35" width="375" height="63"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="92" id="ENp-To-baV">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="Cdr-72-8dg" id="1lS-k1-RHy">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="62.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconDecor" translatesAutoresizingMaskIntoConstraints="NO" id="cvk-Qr-B9P">
-                                                    <rect key="frame" x="15" y="17" width="29" height="29"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Decoration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uzT-a2-T2B">
-                                                    <rect key="frame" x="59" y="22" width="79.5" height="20"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                    <color key="textColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KIp-5h-FlR">
-                                                    <rect key="frame" x="311" y="16.5" width="51" height="31"/>
-                                                </switch>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="uzT-a2-T2B" firstAttribute="centerY" secondItem="cvk-Qr-B9P" secondAttribute="centerY" id="0sF-gp-oy6"/>
-                                                <constraint firstItem="cvk-Qr-B9P" firstAttribute="leading" secondItem="1lS-k1-RHy" secondAttribute="leadingMargin" id="H6Y-wB-D9O"/>
-                                                <constraint firstItem="KIp-5h-FlR" firstAttribute="centerY" secondItem="uzT-a2-T2B" secondAttribute="centerY" id="Rfh-tl-YRc"/>
-                                                <constraint firstItem="cvk-Qr-B9P" firstAttribute="centerY" secondItem="1lS-k1-RHy" secondAttribute="centerY" id="aeU-WV-hzO"/>
-                                                <constraint firstItem="KIp-5h-FlR" firstAttribute="trailing" secondItem="1lS-k1-RHy" secondAttribute="trailingMargin" id="cyp-R7-0Hf"/>
-                                                <constraint firstItem="KIp-5h-FlR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uzT-a2-T2B" secondAttribute="trailing" constant="5" id="gVN-aQ-jcO"/>
-                                                <constraint firstItem="uzT-a2-T2B" firstAttribute="leading" secondItem="cvk-Qr-B9P" secondAttribute="trailing" constant="15" id="kIT-5Y-wwl"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <edgeInsets key="layoutMargins" top="0.0" left="15" bottom="0.0" right="15"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="110" id="ENp-To-baV">
-                                        <rect key="frame" x="0.0" y="98" width="375" height="110"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ENp-To-baV" id="dr7-hD-be2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="ENp-To-baV" id="dr7-hD-be2">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="91.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rhinestones, beads, sequins, lace or any other decorations that require special treatment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnH-UJ-fZc">
-                                                    <rect key="frame" x="58" y="0.0" width="317" height="109.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <rect key="frame" x="15" y="11" width="286" height="70"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KIp-5h-FlR">
+                                                    <rect key="frame" x="311" y="31" width="51" height="31"/>
+                                                </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="TnH-UJ-fZc" secondAttribute="trailing" id="3HC-Kb-SmD"/>
-                                                <constraint firstItem="TnH-UJ-fZc" firstAttribute="top" secondItem="dr7-hD-be2" secondAttribute="top" id="9vL-o8-Xvq"/>
-                                                <constraint firstAttribute="bottom" secondItem="TnH-UJ-fZc" secondAttribute="bottom" id="AIK-1h-Spd"/>
-                                                <constraint firstItem="TnH-UJ-fZc" firstAttribute="leading" secondItem="dr7-hD-be2" secondAttribute="leading" constant="58" id="QAk-r6-ViL"/>
+                                                <constraint firstItem="KIp-5h-FlR" firstAttribute="centerY" secondItem="TnH-UJ-fZc" secondAttribute="centerY" id="1V5-2m-MfT"/>
+                                                <constraint firstItem="KIp-5h-FlR" firstAttribute="trailing" secondItem="dr7-hD-be2" secondAttribute="trailingMargin" id="8hM-8P-Qcp"/>
+                                                <constraint firstItem="TnH-UJ-fZc" firstAttribute="top" secondItem="dr7-hD-be2" secondAttribute="topMargin" id="9vL-o8-Xvq"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="TnH-UJ-fZc" secondAttribute="bottom" id="AIK-1h-Spd"/>
+                                                <constraint firstItem="TnH-UJ-fZc" firstAttribute="leading" secondItem="dr7-hD-be2" secondAttribute="leadingMargin" id="QAk-r6-ViL"/>
+                                                <constraint firstItem="KIp-5h-FlR" firstAttribute="leading" secondItem="TnH-UJ-fZc" secondAttribute="trailing" constant="10" id="S3h-K4-619"/>
                                             </constraints>
+                                            <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                         </tableViewCellContentView>
+                                        <edgeInsets key="layoutMargins" top="20" left="15" bottom="20" right="8"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="Zhm-4Q-OhX">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="190" id="lzr-TX-XOM">
-                                        <rect key="frame" x="0.0" y="244" width="375" height="190"/>
+                                        <rect key="frame" x="0.0" y="163" width="375" height="190"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="lzr-TX-XOM" id="l0H-lS-hlO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="189.5"/>
@@ -170,6 +145,34 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="79j-Ls-Vha">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="cjx-R1-URh">
+                                        <rect key="frame" x="0.0" y="389" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="cjx-R1-URh" id="dy9-ry-xnX">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRs-1E-Dnd">
+                                                    <rect key="frame" x="15" y="11" width="345" height="78"/>
+                                                    <string key="text">В зависимости от ваших загрязнений и материала вещи, технолог химчистки применит к ней аквачистку либо химчистку, а для рубашек или постельного белья бережную стирку.</string>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="eRs-1E-Dnd" firstAttribute="leading" secondItem="dy9-ry-xnX" secondAttribute="leadingMargin" id="Fzn-Ad-kec"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="eRs-1E-Dnd" secondAttribute="trailing" id="Hb7-bc-ZT4"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="eRs-1E-Dnd" secondAttribute="bottom" id="lR7-I2-zNu"/>
+                                                <constraint firstItem="eRs-1E-Dnd" firstAttribute="top" secondItem="dy9-ry-xnX" secondAttribute="topMargin" id="o6U-Fj-oSo"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <edgeInsets key="layoutMargins" top="20" left="15" bottom="20" right="15"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="Wd2-C1-ISC" id="Mpe-X8-ysl"/>
@@ -189,7 +192,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="iconDecor" width="29" height="29"/>
         <image name="iconSize" width="29" height="29"/>
     </resources>
 </document>

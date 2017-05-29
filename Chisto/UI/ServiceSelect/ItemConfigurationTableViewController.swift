@@ -20,6 +20,14 @@ class ItemConfigurationTableViewController: UITableViewController {
 
   var viewModel: ItemConfigurationViewModel!
 
+  enum Sections: Int {
+    case decoration = 0
+    case itemSize
+    case additionalInfo
+
+    static let count = 3
+  }
+
   override func viewDidLoad() {
     lengthField.delegate = self
     widthField.delegate = self
@@ -33,24 +41,40 @@ class ItemConfigurationTableViewController: UITableViewController {
       .addDisposableTo(viewModel.disposeBag)
   }
 
-  override func numberOfSections(in tableView: UITableView) -> Int {
-    return viewModel.useArea ? 2 : 1
-  }
-
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    guard section == 0 else { return 0 }
-    return 50
+    switch section {
+    case Sections.itemSize.rawValue:
+      return viewModel.useArea ? 50 : 0.01
+    default:
+      return 50
+    }
   }
 
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    guard section == 0 else { return nil }
     let view = ChistoSectionHeaderView.nibInstance()
-    view?.sectionTitleLabel.text = NSLocalizedString("itemInfo", comment: "Item configuration screen")
+    switch section {
+    case Sections.decoration.rawValue:
+      view?.sectionTitleLabel.text = NSLocalizedString("decoration", comment: "Decoration service")
+    case Sections.additionalInfo.rawValue:
+      view?.sectionTitleLabel.text = NSLocalizedString("additionalInfo", comment: "Item configuration screen")
+    default:
+      return UIView()
+    }
+
     return view
   }
 
   override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    return 20
+    return section == Sections.count - 1 ? 20 : 0.01
+  }
+
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    switch indexPath.section {
+    case Sections.itemSize.rawValue:
+      return viewModel.useArea ? super.tableView(tableView, heightForRowAt: indexPath) : 0.01
+    default:
+      return super.tableView(tableView, heightForRowAt: indexPath)
+    }
   }
 }
 

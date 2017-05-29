@@ -247,6 +247,13 @@ class ContactFormViewController: UITableViewController {
       .map { !$0 }
       .bind(to: phoneCheckImageView.rx.isHidden)
       .addDisposableTo(disposeBag)
+
+    viewModel.phoneViewModel
+      .phoneIsValidated
+      .asObservable()
+      .map { !$0 }
+      .bind(to: phoneField.rx.isEnabled)
+      .addDisposableTo(disposeBag)
   }
 
   func hideSectionsIfNeeded() {

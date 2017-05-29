@@ -81,8 +81,6 @@
 		881F4FA81E080302009C5B17 /* Data+hexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881F4FA71E080302009C5B17 /* Data+hexString.swift */; };
 		882288141DB6D11C000642E0 /* RootViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882288131DB6D11C000642E0 /* RootViewController.storyboard */; };
 		882288161DB6D12C000642E0 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882288151DB6D12C000642E0 /* RootViewController.swift */; };
-		88246B371EBF475C007B5603 /* ItemConfigurationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88246B391EBF475C007B5603 /* ItemConfigurationViewController.storyboard */; };
-		88246B3C1EBF488A007B5603 /* ItemConfigurationTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88246B3E1EBF488A007B5603 /* ItemConfigurationTableViewController.storyboard */; };
 		88283D211ED8708D0021E181 /* OnboardingMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88283D201ED8708D0021E181 /* OnboardingMainViewController.swift */; };
 		88283D231ED870A90021E181 /* OnboardingStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88283D221ED870A90021E181 /* OnboardingStepViewController.swift */; };
 		88287EE51E67527E00D8745E /* PromoCodeAlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88287EE71E67527E00D8745E /* PromoCodeAlertViewController.storyboard */; };
@@ -136,6 +134,11 @@
 		88923E1A1DD36ACD00BC3AC0 /* ProfileContactDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E191DD36ACD00BC3AC0 /* ProfileContactDataViewModel.swift */; };
 		88923E1C1DD3852A00BC3AC0 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E1B1DD3852A00BC3AC0 /* OnBoardingViewModel.swift */; };
 		88923E1F1DD3D5F900BC3AC0 /* LocationSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88923E1E1DD3D5F900BC3AC0 /* LocationSelectViewController.swift */; };
+		88958CA41EDC7BE800489E99 /* ItemConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88958CA11EDC7BE800489E99 /* ItemConfigurationViewController.swift */; };
+		88958CA51EDC7BE800489E99 /* ItemConfigurationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88958CA21EDC7BE800489E99 /* ItemConfigurationViewModel.swift */; };
+		88958CA61EDC7BE800489E99 /* ItemConfigurationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88958CA31EDC7BE800489E99 /* ItemConfigurationTableViewController.swift */; };
+		88958CB51EDC803C00489E99 /* ItemConfigurationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88958CB71EDC803C00489E99 /* ItemConfigurationViewController.storyboard */; };
+		88958CB91EDC805100489E99 /* ItemConfigurationTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88958CBB1EDC805100489E99 /* ItemConfigurationTableViewController.storyboard */; };
 		889923A31DDDFC1000D73905 /* flatMapLatest+continueWithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923A21DDDFC1000D73905 /* flatMapLatest+continueWithError.swift */; };
 		889923A71DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923A61DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift */; };
 		889A84151DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */; };
@@ -148,9 +151,6 @@
 		889D87D21DC1F71F003E8DAC /* LaundrySelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889D87D11DC1F71E003E8DAC /* LaundrySelectViewModel.swift */; };
 		88A221681DCE013100CAD2B0 /* LaundryTreatment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A221671DCE013100CAD2B0 /* LaundryTreatment.swift */; };
 		88A2C3781EB4BD8D005F5CA5 /* CategoriesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88A2C3771EB4BD8D005F5CA5 /* CategoriesHeaderView.xib */; };
-		88A2C37E1EB4DAC2005F5CA5 /* ItemConfigurationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2C37D1EB4DAC2005F5CA5 /* ItemConfigurationTableViewController.swift */; };
-		88A2C3801EB4DB05005F5CA5 /* ItemConfigurationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2C37F1EB4DB05005F5CA5 /* ItemConfigurationViewModel.swift */; };
-		88A2C3821EB4E5AB005F5CA5 /* ItemConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2C3811EB4E5AB005F5CA5 /* ItemConfigurationViewController.swift */; };
 		88A2C3851EB4F246005F5CA5 /* ChistoSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A2C3841EB4F246005F5CA5 /* ChistoSectionHeaderView.swift */; };
 		88A2C3871EB4F255005F5CA5 /* ChistoSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88A2C3861EB4F255005F5CA5 /* ChistoSectionHeaderView.xib */; };
 		88A2C3891EB53257005F5CA5 /* BadgeButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88A2C3881EB53257005F5CA5 /* BadgeButtonView.xib */; };
@@ -316,10 +316,6 @@
 		881F4FA71E080302009C5B17 /* Data+hexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+hexString.swift"; sourceTree = "<group>"; };
 		882288131DB6D11C000642E0 /* RootViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootViewController.storyboard; sourceTree = "<group>"; };
 		882288151DB6D12C000642E0 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		88246B381EBF475C007B5603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ItemConfigurationViewController.storyboard; sourceTree = "<group>"; };
-		88246B3B1EBF475F007B5603 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemConfigurationViewController.strings; sourceTree = "<group>"; };
-		88246B3D1EBF488A007B5603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ItemConfigurationTableViewController.storyboard; sourceTree = "<group>"; };
-		88246B401EBF488D007B5603 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemConfigurationTableViewController.strings; sourceTree = "<group>"; };
 		88283D201ED8708D0021E181 /* OnboardingMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingMainViewController.swift; sourceTree = "<group>"; };
 		88283D221ED870A90021E181 /* OnboardingStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingStepViewController.swift; sourceTree = "<group>"; };
 		88287EE61E67527E00D8745E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PromoCodeAlertViewController.storyboard; sourceTree = "<group>"; };
@@ -378,6 +374,13 @@
 		88923E191DD36ACD00BC3AC0 /* ProfileContactDataViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileContactDataViewModel.swift; sourceTree = "<group>"; };
 		88923E1B1DD3852A00BC3AC0 /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
 		88923E1E1DD3D5F900BC3AC0 /* LocationSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSelectViewController.swift; sourceTree = "<group>"; };
+		88958CA11EDC7BE800489E99 /* ItemConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemConfigurationViewController.swift; path = Chisto/UI/ServiceSelect/ItemConfigurationViewController.swift; sourceTree = SOURCE_ROOT; };
+		88958CA21EDC7BE800489E99 /* ItemConfigurationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemConfigurationViewModel.swift; path = Chisto/UI/ServiceSelect/ItemConfigurationViewModel.swift; sourceTree = SOURCE_ROOT; };
+		88958CA31EDC7BE800489E99 /* ItemConfigurationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemConfigurationTableViewController.swift; path = Chisto/UI/ServiceSelect/ItemConfigurationTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		88958CB61EDC803C00489E99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ItemConfigurationViewController.storyboard; sourceTree = "<group>"; };
+		88958CB81EDC804100489E99 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemConfigurationViewController.strings; sourceTree = "<group>"; };
+		88958CBA1EDC805100489E99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ItemConfigurationTableViewController.storyboard; sourceTree = "<group>"; };
+		88958CBE1EDC80A100489E99 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemConfigurationTableViewController.strings; sourceTree = "<group>"; };
 		889923A21DDDFC1000D73905 /* flatMapLatest+continueWithError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "flatMapLatest+continueWithError.swift"; sourceTree = "<group>"; };
 		889923A61DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxRealm+ObjectForPrimaryKey.swift"; sourceTree = "<group>"; };
 		889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceTableViewCell.swift; sourceTree = "<group>"; };
@@ -390,9 +393,6 @@
 		889D87D11DC1F71E003E8DAC /* LaundrySelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundrySelectViewModel.swift; sourceTree = "<group>"; };
 		88A221671DCE013100CAD2B0 /* LaundryTreatment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryTreatment.swift; sourceTree = "<group>"; };
 		88A2C3771EB4BD8D005F5CA5 /* CategoriesHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesHeaderView.xib; sourceTree = "<group>"; };
-		88A2C37D1EB4DAC2005F5CA5 /* ItemConfigurationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemConfigurationTableViewController.swift; path = ../ServiceSelect/ItemConfigurationTableViewController.swift; sourceTree = "<group>"; };
-		88A2C37F1EB4DB05005F5CA5 /* ItemConfigurationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemConfigurationViewModel.swift; path = ../ServiceSelect/ItemConfigurationViewModel.swift; sourceTree = "<group>"; };
-		88A2C3811EB4E5AB005F5CA5 /* ItemConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemConfigurationViewController.swift; path = ../ServiceSelect/ItemConfigurationViewController.swift; sourceTree = "<group>"; };
 		88A2C3841EB4F246005F5CA5 /* ChistoSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChistoSectionHeaderView.swift; sourceTree = "<group>"; };
 		88A2C3861EB4F255005F5CA5 /* ChistoSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChistoSectionHeaderView.xib; sourceTree = "<group>"; };
 		88A2C3881EB53257005F5CA5 /* BadgeButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BadgeButtonView.xib; sourceTree = "<group>"; };
@@ -514,11 +514,11 @@
 		88072D4C1DB967D400B47D23 /* ItemConfiguration */ = {
 			isa = PBXGroup;
 			children = (
-				88246B3E1EBF488A007B5603 /* ItemConfigurationTableViewController.storyboard */,
-				88246B391EBF475C007B5603 /* ItemConfigurationViewController.storyboard */,
-				88A2C37D1EB4DAC2005F5CA5 /* ItemConfigurationTableViewController.swift */,
-				88A2C37F1EB4DB05005F5CA5 /* ItemConfigurationViewModel.swift */,
-				88A2C3811EB4E5AB005F5CA5 /* ItemConfigurationViewController.swift */,
+				88958CB71EDC803C00489E99 /* ItemConfigurationViewController.storyboard */,
+				88958CBB1EDC805100489E99 /* ItemConfigurationTableViewController.storyboard */,
+				88958CA11EDC7BE800489E99 /* ItemConfigurationViewController.swift */,
+				88958CA21EDC7BE800489E99 /* ItemConfigurationViewModel.swift */,
+				88958CA31EDC7BE800489E99 /* ItemConfigurationTableViewController.swift */,
 			);
 			name = ItemConfiguration;
 			path = ItemInfo;
@@ -1243,6 +1243,7 @@
 				882B03831ECF0CA200D7F8C0 /* OnboardingStepViewController.storyboard in Resources */,
 				88BD822A1E527308001375AF /* RegistrationCodeInputViewController.storyboard in Resources */,
 				37530F871E4E33B50039AAB0 /* CitySelectViewController.storyboard in Resources */,
+				88958CB51EDC803C00489E99 /* ItemConfigurationViewController.storyboard in Resources */,
 				37530F4B1E4E327B0039AAB0 /* ProfileContactDataViewController.storyboard in Resources */,
 				37530F961E4E61CF0039AAB0 /* MyOrdersViewController.storyboard in Resources */,
 				8889CC941EB3C6C200B6D13F /* CategoryCollectionViewCell.xib in Resources */,
@@ -1252,10 +1253,10 @@
 				88004FB61DDF3DF200A8632A /* LaundryReviewsViewController.storyboard in Resources */,
 				37530F911E4E33F00039AAB0 /* AboutViewController.storyboard in Resources */,
 				88C74B961E3D0A3100F4DBCF /* Localizable.strings in Resources */,
+				88958CB91EDC805100489E99 /* ItemConfigurationTableViewController.storyboard in Resources */,
 				88DB937B1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard in Resources */,
 				88373C981DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib in Resources */,
 				37530F501E4E328F0039AAB0 /* OrderRegistrationViewController.storyboard in Resources */,
-				88246B3C1EBF488A007B5603 /* ItemConfigurationTableViewController.storyboard in Resources */,
 				880E03F01DE9976000311721 /* ClothesNavigationController.storyboard in Resources */,
 				88BD82431E5275F3001375AF /* OrderInfoTableHeaderView.xib in Resources */,
 				37530F391E4E2FC20039AAB0 /* OrderConfirmViewController.storyboard in Resources */,
@@ -1267,7 +1268,6 @@
 				88BD822F1E527419001375AF /* RegistrationPhoneInputViewController.storyboard in Resources */,
 				88BD82391E527544001375AF /* OrderReviewAlertViewController.storyboard in Resources */,
 				37530F731E4E33540039AAB0 /* LastTimePopupViewController.storyboard in Resources */,
-				88246B371EBF475C007B5603 /* ItemConfigurationViewController.storyboard in Resources */,
 				37530F821E4E33950039AAB0 /* ContactFormTableHeaderView.xib in Resources */,
 				37530F441E4E31560039AAB0 /* OnBoardingViewController.storyboard in Resources */,
 				37530F5A1E4E32BC0039AAB0 /* ProfileViewController.storyboard in Resources */,
@@ -1404,6 +1404,7 @@
 				88923E1F1DD3D5F900BC3AC0 /* LocationSelectViewController.swift in Sources */,
 				8889CC961EB3C97800B6D13F /* CategoryCollectionViewCell.swift in Sources */,
 				8872F0BA1DD8965400E8D9EE /* OrderPlacedPopupViewController.swift in Sources */,
+				88958CA41EDC7BE800489E99 /* ItemConfigurationViewController.swift in Sources */,
 				8814C04D1DAF159E005B4967 /* OrderViewModel.swift in Sources */,
 				880E03EB1DE8F81A00311721 /* PaymentViewModel.swift in Sources */,
 				8889CC981EB3CA5400B6D13F /* CategoriesHeaderView.swift in Sources */,
@@ -1424,10 +1425,8 @@
 				886662DD1E326497004D9A80 /* ProfileContainerViewController.swift in Sources */,
 				88DB937D1DCBE0F400DAC651 /* RegistrationNavigationController.swift in Sources */,
 				8872F0C01DD8DD3400E8D9EE /* OrderPlacedPopupViewModel.swift in Sources */,
-				88A2C3821EB4E5AB005F5CA5 /* ItemConfigurationViewController.swift in Sources */,
 				881928651E24E4F800405597 /* OrderItemAttribute.swift in Sources */,
 				8862E6CE1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift in Sources */,
-				88A2C3801EB4DB05005F5CA5 /* ItemConfigurationViewModel.swift in Sources */,
 				8888110F1EB3CE3600861843 /* CategoriesHeaderCollectionViewModel.swift in Sources */,
 				885C00961DFEE57900506961 /* LaundryItem.swift in Sources */,
 				8814C0671DB04AFB005B4967 /* RussianEnumEndings.swift in Sources */,
@@ -1440,7 +1439,6 @@
 				889D87CE1DC0BA2F003E8DAC /* LaundrySelectTableViewCell.swift in Sources */,
 				885C00981DFEF36D00506961 /* UIViewController+transitionCompletionBlock.swift in Sources */,
 				882ECDCD1DE7CC4600EE3507 /* EmptyTableBackgroundView.swift in Sources */,
-				88A2C37E1EB4DAC2005F5CA5 /* ItemConfigurationTableViewController.swift in Sources */,
 				889A84151DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift in Sources */,
 				8814C0581DAFB0F2005B4967 /* CityNotFoundViewModel.swift in Sources */,
 				881B34841E338FF200BCB9D3 /* PromoCodeAlertViewController.swift in Sources */,
@@ -1453,6 +1451,7 @@
 				882288161DB6D12C000642E0 /* RootViewController.swift in Sources */,
 				88C9F6DD1DCD03010046DDD7 /* Item.swift in Sources */,
 				88A2CFC11DEB2CA2000762DE /* StringToDateTransform.swift in Sources */,
+				88958CA61EDC7BE800489E99 /* ItemConfigurationTableViewController.swift in Sources */,
 				88CD68451DD2155F004B7726 /* ContactFormTableHeaderView.swift in Sources */,
 				88C9F6DF1DCD2B320046DDD7 /* RealmString.swift in Sources */,
 				880CBFF51E7ABB9C00CF92EA /* DataManager+RatingManagerType.swift in Sources */,
@@ -1501,6 +1500,7 @@
 				885409C31DB2E43300219C00 /* EmptyOrderView.swift in Sources */,
 				88C9F6E11DCDE36F0046DDD7 /* Date+toString.swift in Sources */,
 				882ECDB61DE2C46200EE3507 /* OrderLineItem.swift in Sources */,
+				88958CA51EDC7BE800489E99 /* ItemConfigurationViewModel.swift in Sources */,
 				8811FE131DC2DBBE00610712 /* ProfileViewController.swift in Sources */,
 				882ECDB11DE2160C00EE3507 /* OrderInfoTableViewCell.swift in Sources */,
 				889923A31DDDFC1000D73905 /* flatMapLatest+continueWithError.swift in Sources */,
@@ -1704,26 +1704,6 @@
 			path = .;
 			sourceTree = "<group>";
 		};
-		88246B391EBF475C007B5603 /* ItemConfigurationViewController.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				88246B381EBF475C007B5603 /* Base */,
-				88246B3B1EBF475F007B5603 /* ru */,
-			);
-			name = ItemConfigurationViewController.storyboard;
-			path = ../ServiceSelect;
-			sourceTree = "<group>";
-		};
-		88246B3E1EBF488A007B5603 /* ItemConfigurationTableViewController.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				88246B3D1EBF488A007B5603 /* Base */,
-				88246B401EBF488D007B5603 /* ru */,
-			);
-			name = ItemConfigurationTableViewController.storyboard;
-			path = ../ServiceSelect;
-			sourceTree = "<group>";
-		};
 		88287EE71E67527E00D8745E /* PromoCodeAlertViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1741,6 +1721,26 @@
 			);
 			name = OnboardingMainViewController.storyboard;
 			sourceTree = "<group>";
+		};
+		88958CB71EDC803C00489E99 /* ItemConfigurationViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88958CB61EDC803C00489E99 /* Base */,
+				88958CB81EDC804100489E99 /* ru */,
+			);
+			name = ItemConfigurationViewController.storyboard;
+			path = Chisto/UI/ServiceSelect;
+			sourceTree = SOURCE_ROOT;
+		};
+		88958CBB1EDC805100489E99 /* ItemConfigurationTableViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88958CBA1EDC805100489E99 /* Base */,
+				88958CBE1EDC80A100489E99 /* ru */,
+			);
+			name = ItemConfigurationTableViewController.storyboard;
+			path = Chisto/UI/ServiceSelect;
+			sourceTree = SOURCE_ROOT;
 		};
 		88BD82271E527282001375AF /* ClothesViewController.storyboard */ = {
 			isa = PBXVariantGroup;

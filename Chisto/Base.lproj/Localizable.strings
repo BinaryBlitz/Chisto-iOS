@@ -233,6 +233,9 @@
 /* Item configuration screen */
 "itemInfo" = "Item Info";
 
+/* Item configuration screen */
+"additionalInfo" = "Additionally";
+
 /* Contact form header */
 "phoneHeader" = "Phone number";
 
