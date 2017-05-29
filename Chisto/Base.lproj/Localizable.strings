@@ -96,16 +96,16 @@
 "byRating" = "By rating";
 
 /* Onboarding step */
-"onboardingStep1" = "Add items for cleaning";
+"onboardingStep1" = "";
 
 /* Onboarding step */
-"onboardingStep2" = "Choose a cleaning service from our list of offers by price and speed";
+"onboardingStep2" = "Add items for cleaning";
 
 /* Onboarding step */
-"onboardingStep3" = "Pay with credit card in the app or in cash";
+"onboardingStep3" = "Choose a cleaning service from our list of offers by price and speed";
 
 /* Onboarding step */
-"onboardingStep4" = "A courier will collect your things at the agreed time and will then return them clean";
+"onboardingStep4" = "Pay with credit card in the app, via Apple Pay or in cash";
 
 /* Order continue button title */
 "continue" = "Next";

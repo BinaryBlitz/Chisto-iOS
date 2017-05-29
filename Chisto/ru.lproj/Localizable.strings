@@ -105,7 +105,7 @@
 "onboardingStep3" = "Выберите подходящую химчистку по цене и рейтингу.";
 
 /* Onboarding step */
-"onboardingStep4" = "Оплатите заказ картой, с помощью Apple Pay или наличными курьеру. химчистки.";
+"onboardingStep4" = "Оплатите заказ картой, с помощью Apple Pay или наличными курьеру химчистки.";
 
 /* Order continue button title */
 "continue" = "Продолжить";

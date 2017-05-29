@@ -37,11 +37,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7u-MJ-piH" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
-                                <rect key="frame" x="127.5" y="607" width="120" height="40"/>
+                                <rect key="frame" x="117.5" y="597" width="140" height="50"/>
                                 <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="GYJ-uh-R9u"/>
-                                    <constraint firstAttribute="height" constant="40" id="Led-qS-CFz"/>
+                                    <constraint firstAttribute="width" constant="140" id="GYJ-uh-R9u"/>
+                                    <constraint firstAttribute="height" constant="50" id="Led-qS-CFz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Начать">
@@ -49,7 +49,7 @@
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="20"/>
+                                        <real key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
                                         <color key="value" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
