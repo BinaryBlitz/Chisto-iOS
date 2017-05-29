@@ -235,6 +235,7 @@ extension ClothesViewController: UISearchControllerDelegate {
   }
 
   func willDismissSearchController(_ searchController: UISearchController) {
+    viewModel.didFinishSearching.onNext()
     UIView.animate(withDuration: 0.2) { [weak self] in
       self?.headerViewTopConstraint.constant += headerHeight
     }

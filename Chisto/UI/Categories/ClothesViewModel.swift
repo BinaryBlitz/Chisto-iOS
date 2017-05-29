@@ -28,11 +28,12 @@ class ClothesViewModel: ClothesViewModelType {
   private let disposeBag = DisposeBag()
 
   // Input
-  var itemDidSelect = PublishSubject<IndexPath>()
-  var searchBarString = Variable<String?>("")
-  var didStartSearching = PublishSubject<Void>()
-  var profileButtonDidTap = PublishSubject<Void>()
-  var basketButtonDidTap = PublishSubject<Void>()
+  let itemDidSelect = PublishSubject<IndexPath>()
+  let searchBarString = Variable<String?>("")
+  let didStartSearching = PublishSubject<Void>()
+  let didFinishSearching = PublishSubject<Void>()
+  let profileButtonDidTap = PublishSubject<Void>()
+  let basketButtonDidTap = PublishSubject<Void>()
   let headerViewModel = CategoriesHeaderCollectionViewModel()
 
   // Output
@@ -47,6 +48,7 @@ class ClothesViewModel: ClothesViewModelType {
 
   // Data
   var items: Variable<[Item]>
+  var previousCategory: Category? = nil
 
   init() {
     // Data
@@ -101,15 +103,22 @@ class ClothesViewModel: ClothesViewModelType {
       .asDriver(onErrorDriveWith: .empty())
 
     didStartSearching.asObservable()
-      .map { nil }
-      .bind(to: headerViewModel.selectedCategory)
-      .addDisposableTo(disposeBag)
-    
+      .withLatestFrom(currentCategory.asObservable())
+      .subscribe(onNext: { [weak self] category in
+        self?.previousCategory = category
+        self?.currentCategory.value = nil
+    }).addDisposableTo(disposeBag)
+
     didStartSearching.asObservable().take(1).flatMap {
       DataManager.instance.fetchClothesIfNeeded().do(onError: { error in
         presentErrorAlert.onNext(error)
       })
     }.subscribe().addDisposableTo(disposeBag)
+
+    didFinishSearching.asObservable()
+      .map { self.previousCategory }
+      .bind(to: currentCategory)
+      .addDisposableTo(disposeBag)
 
     fetchItemsIfNeeded(true)
   }
