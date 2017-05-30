@@ -25,7 +25,7 @@ class OnBoardingViewController: UIPageViewController, DefaultBarColoredViewContr
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    view.backgroundColor = .white
     viewModel.dismissViewController.drive(onNext: { [weak self] in
         self?.dismiss(animated: true, completion: nil)
       }).addDisposableTo(disposeBag)
