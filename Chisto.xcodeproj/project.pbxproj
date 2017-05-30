@@ -84,7 +84,6 @@
 		88283D211ED8708D0021E181 /* OnboardingMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88283D201ED8708D0021E181 /* OnboardingMainViewController.swift */; };
 		88283D231ED870A90021E181 /* OnboardingStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88283D221ED870A90021E181 /* OnboardingStepViewController.swift */; };
 		88287EE51E67527E00D8745E /* PromoCodeAlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88287EE71E67527E00D8745E /* PromoCodeAlertViewController.storyboard */; };
-		882B03831ECF0CA200D7F8C0 /* OnboardingStepViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882B03821ECF0CA100D7F8C0 /* OnboardingStepViewController.storyboard */; };
 		882ECDAF1DE215FF00EE3507 /* OrderInfoTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDAE1DE215FF00EE3507 /* OrderInfoTableViewCellModel.swift */; };
 		882ECDB11DE2160C00EE3507 /* OrderInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDB01DE2160C00EE3507 /* OrderInfoTableViewCell.swift */; };
 		882ECDB31DE2211700EE3507 /* OrderInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ECDB21DE2211700EE3507 /* OrderInfoViewModel.swift */; };
@@ -139,6 +138,7 @@
 		88958CA61EDC7BE800489E99 /* ItemConfigurationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88958CA31EDC7BE800489E99 /* ItemConfigurationTableViewController.swift */; };
 		88958CB51EDC803C00489E99 /* ItemConfigurationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88958CB71EDC803C00489E99 /* ItemConfigurationViewController.storyboard */; };
 		88958CB91EDC805100489E99 /* ItemConfigurationTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88958CBB1EDC805100489E99 /* ItemConfigurationTableViewController.storyboard */; };
+		88958CBF1EDD8F4200489E99 /* OnboardingStepViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88958CC11EDD8F4200489E99 /* OnboardingStepViewController.storyboard */; };
 		889923A31DDDFC1000D73905 /* flatMapLatest+continueWithError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923A21DDDFC1000D73905 /* flatMapLatest+continueWithError.swift */; };
 		889923A71DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889923A61DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift */; };
 		889A84151DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */; };
@@ -320,7 +320,6 @@
 		88283D221ED870A90021E181 /* OnboardingStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingStepViewController.swift; sourceTree = "<group>"; };
 		88287EE61E67527E00D8745E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PromoCodeAlertViewController.storyboard; sourceTree = "<group>"; };
 		88287EE91E67528100D8745E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PromoCodeAlertViewController.strings; sourceTree = "<group>"; };
-		882B03821ECF0CA100D7F8C0 /* OnboardingStepViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnboardingStepViewController.storyboard; sourceTree = "<group>"; };
 		882ECDAE1DE215FF00EE3507 /* OrderInfoTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoTableViewCellModel.swift; sourceTree = "<group>"; };
 		882ECDB01DE2160C00EE3507 /* OrderInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoTableViewCell.swift; sourceTree = "<group>"; };
 		882ECDB21DE2211700EE3507 /* OrderInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoViewModel.swift; sourceTree = "<group>"; };
@@ -381,6 +380,8 @@
 		88958CB81EDC804100489E99 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemConfigurationViewController.strings; sourceTree = "<group>"; };
 		88958CBA1EDC805100489E99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ItemConfigurationTableViewController.storyboard; sourceTree = "<group>"; };
 		88958CBE1EDC80A100489E99 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemConfigurationTableViewController.strings; sourceTree = "<group>"; };
+		88958CC01EDD8F4200489E99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OnboardingStepViewController.storyboard; sourceTree = "<group>"; };
+		88958CC31EDD8F4400489E99 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OnboardingStepViewController.strings; sourceTree = "<group>"; };
 		889923A21DDDFC1000D73905 /* flatMapLatest+continueWithError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "flatMapLatest+continueWithError.swift"; sourceTree = "<group>"; };
 		889923A61DDE66A200D73905 /* RxRealm+ObjectForPrimaryKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxRealm+ObjectForPrimaryKey.swift"; sourceTree = "<group>"; };
 		889A84141DCA55E800E3926D /* OrderConfirmServiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderConfirmServiceTableViewCell.swift; sourceTree = "<group>"; };
@@ -614,7 +615,7 @@
 				37530F461E4E31560039AAB0 /* OnBoardingViewController.storyboard */,
 				88073EED1DAC1A23000696A3 /* OnBoardingViewController.swift */,
 				88923E1B1DD3852A00BC3AC0 /* OnBoardingViewModel.swift */,
-				882B03821ECF0CA100D7F8C0 /* OnboardingStepViewController.storyboard */,
+				88958CC11EDD8F4200489E99 /* OnboardingStepViewController.storyboard */,
 				88283D201ED8708D0021E181 /* OnboardingMainViewController.swift */,
 				88283D221ED870A90021E181 /* OnboardingStepViewController.swift */,
 				88579C3C1EDC73D200BD34C5 /* OnboardingMainViewController.storyboard */,
@@ -1240,7 +1241,7 @@
 				88E6EB6D1EC52CB7007A0082 /* InfoPlist.strings in Resources */,
 				88A2C3871EB4F255005F5CA5 /* ChistoSectionHeaderView.xib in Resources */,
 				88BD82251E527282001375AF /* ClothesViewController.storyboard in Resources */,
-				882B03831ECF0CA200D7F8C0 /* OnboardingStepViewController.storyboard in Resources */,
+				88958CBF1EDD8F4200489E99 /* OnboardingStepViewController.storyboard in Resources */,
 				88BD822A1E527308001375AF /* RegistrationCodeInputViewController.storyboard in Resources */,
 				37530F871E4E33B50039AAB0 /* CitySelectViewController.storyboard in Resources */,
 				88958CB51EDC803C00489E99 /* ItemConfigurationViewController.storyboard in Resources */,
@@ -1742,6 +1743,15 @@
 			path = Chisto/UI/ServiceSelect;
 			sourceTree = SOURCE_ROOT;
 		};
+		88958CC11EDD8F4200489E99 /* OnboardingStepViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88958CC01EDD8F4200489E99 /* Base */,
+				88958CC31EDD8F4400489E99 /* ru */,
+			);
+			name = OnboardingStepViewController.storyboard;
+			sourceTree = "<group>";
+		};
 		88BD82271E527282001375AF /* ClothesViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1933,7 +1943,7 @@
 				CODE_SIGN_ENTITLEMENTS = Chisto/Chisto.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gapbaev Boris (NP6L3K9A4S)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gapbaev Boris (NP6L3K9A4S)";
-				CURRENT_PROJECT_VERSION = 64;
+				CURRENT_PROJECT_VERSION = 65;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 4WGG8V34K4;
 				INFOPLIST_FILE = Chisto/Info.plist;
@@ -1956,7 +1966,7 @@
 				CODE_SIGN_ENTITLEMENTS = Chisto/Chisto.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Binary Blitz OOO (4WGG8V34K4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Binary Blitz OOO (4WGG8V34K4)";
-				CURRENT_PROJECT_VERSION = 64;
+				CURRENT_PROJECT_VERSION = 65;
 				DEVELOPMENT_TEAM = 4WGG8V34K4;
 				INFOPLIST_FILE = Chisto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
