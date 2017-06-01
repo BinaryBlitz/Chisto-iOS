@@ -15,10 +15,13 @@ import TextFieldEffects
 class ItemConfigurationTableViewController: UITableViewController {
 
   @IBOutlet weak var decorationSwitch: UISwitch!
+
+  // Area section
   @IBOutlet weak var lengthField: HoshiTextField!
   @IBOutlet weak var widthField: HoshiTextField!
   @IBOutlet weak var areaLabel: UILabel!
 
+  // Material section
   @IBOutlet weak var clothLabel: UILabel!
   @IBOutlet weak var clothIconView: UIImageView!
   @IBOutlet weak var leatherLabel: UILabel!
@@ -32,7 +35,7 @@ class ItemConfigurationTableViewController: UITableViewController {
     case itemSize
     case additionalInfo
 
-    static let count = 3
+    static let count = 4
   }
 
   override func viewDidLoad() {
@@ -40,9 +43,12 @@ class ItemConfigurationTableViewController: UITableViewController {
     widthField.delegate = self
     decorationSwitch.onTintColor = viewModel.color
 
-    (decorationSwitch.rx.isOn <-> viewModel.hasDecoration).addDisposableTo(viewModel.disposeBag)
-    (lengthField.rx.text <-> viewModel.lengthText).addDisposableTo(viewModel.disposeBag)
-    (widthField.rx.text <-> viewModel.widthText).addDisposableTo(viewModel.disposeBag)
+    (decorationSwitch.rx.isOn <-> viewModel.hasDecoration)
+      .addDisposableTo(viewModel.disposeBag)
+    (lengthField.rx.text <-> viewModel.lengthText)
+      .addDisposableTo(viewModel.disposeBag)
+    (widthField.rx.text <-> viewModel.widthText)
+      .addDisposableTo(viewModel.disposeBag)
 
     viewModel.areaText
       .asObservable()
@@ -67,30 +73,28 @@ class ItemConfigurationTableViewController: UITableViewController {
     }
   }
 
-  override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    let view = ChistoSectionHeaderView.nibInstance()
+  override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
     switch section {
-    case Sections.material.rawValue:
-      view?.sectionTitleLabel.text = NSLocalizedString("clothesMaterial", comment: "Item configuration screen")
     case Sections.decoration.rawValue:
-      view?.sectionTitleLabel.text = NSLocalizedString("decoration", comment: "Decoration service")
-    case Sections.additionalInfo.rawValue:
-      view?.sectionTitleLabel.text = NSLocalizedString("additionalInfo", comment: "Item configuration screen")
+      return super.tableView(tableView, heightForFooterInSection: section)
     default:
-      return UIView()
+      return 0.01
     }
-
-    return view
   }
 
-  override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    return section == Sections.count - 1 ? 20 : 0.01
+  override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    switch section {
+    case Sections.itemSize.rawValue where !viewModel.useArea:
+      view.isHidden = true
+    default:
+      view.isHidden = false
+    }
   }
 
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     switch indexPath.section {
-    case Sections.itemSize.rawValue:
-      return viewModel.useArea ? super.tableView(tableView, heightForRowAt: indexPath) : 0.01
+    case Sections.itemSize.rawValue where !viewModel.useArea:
+      return 0.01
     default:
       return super.tableView(tableView, heightForRowAt: indexPath)
     }
