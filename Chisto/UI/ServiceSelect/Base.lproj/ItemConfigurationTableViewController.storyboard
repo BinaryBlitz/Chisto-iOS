@@ -21,14 +21,14 @@
                         <sections>
                             <tableViewSection headerTitle="Material" id="Wxs-5O-u4f">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="xss-oY-oJA">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="60" id="xss-oY-oJA">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xss-oY-oJA" id="YcD-P5-aK1">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="xss-oY-oJA" id="YcD-P5-aK1">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cloth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNI-0y-ySb">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Cloth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNI-0y-ySb">
                                                     <rect key="frame" x="15" y="21" width="36.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                     <color key="textColor" red="0.70588235290000001" green="0.73333333329999995" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -40,20 +40,19 @@
                                             <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="tNI-0y-ySb" firstAttribute="centerY" secondItem="YcD-P5-aK1" secondAttribute="centerY" id="480-OJ-WmO"/>
-                                                <constraint firstItem="tNI-0y-ySb" firstAttribute="leading" secondItem="YcD-P5-aK1" secondAttribute="leadingMargin" constant="15" id="Lg0-hL-Azt"/>
+                                                <constraint firstItem="tNI-0y-ySb" firstAttribute="leading" secondItem="YcD-P5-aK1" secondAttribute="leadingMargin" id="Lg0-hL-Azt"/>
                                                 <constraint firstItem="zGo-C4-Bd1" firstAttribute="centerY" secondItem="YcD-P5-aK1" secondAttribute="centerY" id="ZQp-6I-rKM"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="zGo-C4-Bd1" secondAttribute="trailing" constant="15" id="zp4-4K-NPY"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="zGo-C4-Bd1" secondAttribute="trailing" id="zp4-4K-NPY"/>
                                             </constraints>
-                                            <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="enQ-4t-Che">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="60" id="enQ-4t-Che">
                                         <rect key="frame" x="0.0" y="115.5" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="enQ-4t-Che" id="FQA-Nq-O2K">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="enQ-4t-Che" id="FQA-Nq-O2K">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -70,10 +69,9 @@
                                             <constraints>
                                                 <constraint firstItem="DL7-LC-ZKm" firstAttribute="centerY" secondItem="FQA-Nq-O2K" secondAttribute="centerY" id="EtK-fc-vKL"/>
                                                 <constraint firstItem="YhR-2y-Lnf" firstAttribute="centerY" secondItem="FQA-Nq-O2K" secondAttribute="centerY" id="bNA-Ea-xWT"/>
-                                                <constraint firstItem="YhR-2y-Lnf" firstAttribute="leading" secondItem="FQA-Nq-O2K" secondAttribute="leadingMargin" constant="15" id="gHf-sL-SZ7"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="DL7-LC-ZKm" secondAttribute="trailing" constant="15" id="lhQ-Is-rqe"/>
+                                                <constraint firstItem="YhR-2y-Lnf" firstAttribute="leading" secondItem="FQA-Nq-O2K" secondAttribute="leadingMargin" id="gHf-sL-SZ7"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="DL7-LC-ZKm" secondAttribute="trailing" id="lhQ-Is-rqe"/>
                                             </constraints>
-                                            <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
@@ -108,14 +106,13 @@
                                                 <constraint firstItem="TnH-UJ-fZc" firstAttribute="leading" secondItem="dr7-hD-be2" secondAttribute="leadingMargin" id="QAk-r6-ViL"/>
                                                 <constraint firstItem="KIp-5h-FlR" firstAttribute="leading" secondItem="TnH-UJ-fZc" secondAttribute="trailing" constant="10" id="S3h-K4-619"/>
                                             </constraints>
-                                            <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Item size" id="Zhm-4Q-OhX">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="140" id="lzr-TX-XOM">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="140" id="lzr-TX-XOM">
                                         <rect key="frame" x="0.0" y="367" width="375" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="lzr-TX-XOM" id="l0H-lS-hlO">
@@ -187,13 +184,12 @@
                                                 <constraint firstItem="dya-Ab-0uk" firstAttribute="leading" secondItem="57m-C9-0Wg" secondAttribute="leading" id="zWb-9N-aOr"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <edgeInsets key="layoutMargins" top="15" left="15" bottom="15" right="15"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Additionally" id="79j-Ls-Vha">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="120" id="cjx-R1-URh">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="120" id="cjx-R1-URh">
                                         <rect key="frame" x="0.0" y="563" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="cjx-R1-URh" id="dy9-ry-xnX">
@@ -215,7 +211,6 @@
                                                 <constraint firstItem="eRs-1E-Dnd" firstAttribute="top" secondItem="dy9-ry-xnX" secondAttribute="topMargin" id="o6U-Fj-oSo"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <edgeInsets key="layoutMargins" top="20" left="15" bottom="20" right="15"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
