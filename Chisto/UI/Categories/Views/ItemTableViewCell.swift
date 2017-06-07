@@ -36,4 +36,9 @@ class ItemTableViewCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
   }
 
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    categoryIconImageView.kf.cancelDownloadTask()
+  }
+
 }
