@@ -41,14 +41,14 @@ class ItemConfigurationViewModel {
   let orderItem: OrderItem
   let currentAmount: Variable<Int>
   let hasDecoration: Variable<Bool>
-  let currentMaterial: Variable<ClothesMaterial>
+  let currentMaterial: Variable<Treatment?>
 
   init(orderItem: OrderItem) {
 
     let currentAmount = Variable<Int>(orderItem.amount)
     self.currentAmount = currentAmount
 
-    let currentMaterial = Variable<ClothesMaterial>(orderItem.material)
+    let currentMaterial = Variable<Treatment?>(orderItem.treatments.first)
     self.currentMaterial = currentMaterial
 
     self.hasDecoration = Variable(orderItem.hasDecoration)
@@ -86,8 +86,8 @@ class ItemConfigurationViewModel {
       .bind(to: dismiss)
       .addDisposableTo(disposeBag)
 
-    Observable.combineLatest(treatments.asObservable(), areaText.asObservable()) { treatments, areaText in
-      guard treatments.count > 0 else { return false }
+    Observable.combineLatest(currentMaterial.asObservable(), areaText.asObservable()) { treatment, areaText in
+      guard treatment != nil else { return false }
       guard orderItem.clothesItem.useArea else { return true }
       let areaText = areaText ?? ""
       return !areaText.characters.isEmpty
@@ -129,9 +129,10 @@ class ItemConfigurationViewModel {
     OrderManager.instance.updateOrderItem(orderItem) {
       orderItem.hasDecoration = hasDecoration.value
       orderItem.size = size()
-      orderItem.treatments = treatments.value.filter { $0.name == "Химчистка" }
+      if let treatment = currentMaterial.value {
+        orderItem.treatments = [treatment]
+      }
       orderItem.amount = currentAmount.value
-      orderItem.material = currentMaterial.value
     }
   }
 

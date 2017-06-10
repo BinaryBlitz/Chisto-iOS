@@ -16,7 +16,6 @@ class OrderItem {
   var treatments: [Treatment]
   var size: (width: Int, length: Int)? = nil
   var amount: Int
-  var material: ClothesMaterial = .cloth
 
   let squareCentimetersInMeter: Double = 10000
 
@@ -44,9 +43,4 @@ class OrderItem {
   func decorationPrice(laundry: Laundry, count: Int = 1) -> Double {
     return price(laundry: laundry, count, includeDecoration: true) - price(laundry: laundry, count, includeDecoration: false)
   }
-}
-
-enum ClothesMaterial {
-  case cloth
-  case leather
 }

@@ -74,6 +74,8 @@
 		8814C0651DB03CBC005B4967 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0641DB03CBC005B4967 /* Fonts.swift */; };
 		8814C0671DB04AFB005B4967 /* RussianEnumEndings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */; };
 		8814C06B1DB059F4005B4967 /* KeyboardHideOutside.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */; };
+		8814D9961EEC3FF100C9A88F /* ItemConfigurationMaterialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8814D9951EEC3FF100C9A88F /* ItemConfigurationMaterialView.xib */; };
+		8814D9981EEC416A00C9A88F /* ItemConfigurationMaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814D9971EEC416A00C9A88F /* ItemConfigurationMaterialView.swift */; };
 		881928651E24E4F800405597 /* OrderItemAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881928641E24E4F800405597 /* OrderItemAttribute.swift */; };
 		881B34841E338FF200BCB9D3 /* PromoCodeAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B34831E338FF200BCB9D3 /* PromoCodeAlertViewController.swift */; };
 		881B34861E33900000BCB9D3 /* PromoCodeAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B34851E33900000BCB9D3 /* PromoCodeAlertViewModel.swift */; };
@@ -309,6 +311,8 @@
 		8814C0641DB03CBC005B4967 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		8814C0661DB04AFA005B4967 /* RussianEnumEndings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RussianEnumEndings.swift; sourceTree = "<group>"; };
 		8814C06A1DB059F4005B4967 /* KeyboardHideOutside.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHideOutside.swift; sourceTree = "<group>"; };
+		8814D9951EEC3FF100C9A88F /* ItemConfigurationMaterialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemConfigurationMaterialView.xib; sourceTree = SOURCE_ROOT; };
+		8814D9971EEC416A00C9A88F /* ItemConfigurationMaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemConfigurationMaterialView.swift; sourceTree = SOURCE_ROOT; };
 		881928641E24E4F800405597 /* OrderItemAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItemAttribute.swift; sourceTree = "<group>"; };
 		881B34831E338FF200BCB9D3 /* PromoCodeAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoCodeAlertViewController.swift; sourceTree = "<group>"; };
 		881B34851E33900000BCB9D3 /* PromoCodeAlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromoCodeAlertViewModel.swift; sourceTree = "<group>"; };
@@ -515,6 +519,7 @@
 		88072D4C1DB967D400B47D23 /* ItemConfiguration */ = {
 			isa = PBXGroup;
 			children = (
+				8814D9921EEC3FBE00C9A88F /* Views */,
 				88958CB71EDC803C00489E99 /* ItemConfigurationViewController.storyboard */,
 				88958CBB1EDC805100489E99 /* ItemConfigurationTableViewController.storyboard */,
 				88958CA11EDC7BE800489E99 /* ItemConfigurationViewController.swift */,
@@ -798,6 +803,15 @@
 				8814C0621DB03AD7005B4967 /* ItemTableViewCellModel.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8814D9921EEC3FBE00C9A88F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8814D9951EEC3FF100C9A88F /* ItemConfigurationMaterialView.xib */,
+				8814D9971EEC416A00C9A88F /* ItemConfigurationMaterialView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		881B347F1E338C0500BCB9D3 /* Header */ = {
@@ -1254,6 +1268,7 @@
 				88004FB61DDF3DF200A8632A /* LaundryReviewsViewController.storyboard in Resources */,
 				37530F911E4E33F00039AAB0 /* AboutViewController.storyboard in Resources */,
 				88C74B961E3D0A3100F4DBCF /* Localizable.strings in Resources */,
+				8814D9961EEC3FF100C9A88F /* ItemConfigurationMaterialView.xib in Resources */,
 				88958CB91EDC805100489E99 /* ItemConfigurationTableViewController.storyboard in Resources */,
 				88DB937B1DCBE0E200DAC651 /* RegistrationNavigationController.storyboard in Resources */,
 				88373C981DC9ECAF00DE4D13 /* OrderConfirmServiceItemView.xib in Resources */,
@@ -1425,6 +1440,7 @@
 				88CD68401DD2090A004B7726 /* OrderRegistrationViewModel.swift in Sources */,
 				886662DD1E326497004D9A80 /* ProfileContainerViewController.swift in Sources */,
 				88DB937D1DCBE0F400DAC651 /* RegistrationNavigationController.swift in Sources */,
+				8814D9981EEC416A00C9A88F /* ItemConfigurationMaterialView.swift in Sources */,
 				8872F0C01DD8DD3400E8D9EE /* OrderPlacedPopupViewModel.swift in Sources */,
 				881928651E24E4F800405597 /* OrderItemAttribute.swift in Sources */,
 				8862E6CE1DC8ECAC00DDFB00 /* OrderConfirmViewController.swift in Sources */,

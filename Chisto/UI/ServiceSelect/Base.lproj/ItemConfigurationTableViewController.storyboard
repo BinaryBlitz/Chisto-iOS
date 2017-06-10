@@ -21,68 +21,36 @@
                         <sections>
                             <tableViewSection headerTitle="Material" id="Wxs-5O-u4f">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="60" id="xss-oY-oJA">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="xss-oY-oJA">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="xss-oY-oJA" id="YcD-P5-aK1">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Cloth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNI-0y-ySb">
-                                                    <rect key="frame" x="15" y="21" width="36.5" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                                                    <color key="textColor" red="0.70588235290000001" green="0.73333333329999995" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckOff" highlightedImage="iconCheckOn" translatesAutoresizingMaskIntoConstraints="NO" id="zGo-C4-Bd1">
-                                                    <rect key="frame" x="333" y="16" width="27" height="28"/>
-                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="ukD-ii-pN2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                                </stackView>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.74509803919999995" green="0.76078431369999999" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="tNI-0y-ySb" firstAttribute="centerY" secondItem="YcD-P5-aK1" secondAttribute="centerY" id="480-OJ-WmO"/>
-                                                <constraint firstItem="tNI-0y-ySb" firstAttribute="leading" secondItem="YcD-P5-aK1" secondAttribute="leadingMargin" id="Lg0-hL-Azt"/>
-                                                <constraint firstItem="zGo-C4-Bd1" firstAttribute="centerY" secondItem="YcD-P5-aK1" secondAttribute="centerY" id="ZQp-6I-rKM"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="zGo-C4-Bd1" secondAttribute="trailing" id="zp4-4K-NPY"/>
+                                                <constraint firstItem="ukD-ii-pN2" firstAttribute="leading" secondItem="YcD-P5-aK1" secondAttribute="leading" id="Mg2-Gr-W2d"/>
+                                                <constraint firstItem="ukD-ii-pN2" firstAttribute="top" secondItem="YcD-P5-aK1" secondAttribute="top" id="Pvr-q9-HV9"/>
+                                                <constraint firstAttribute="trailing" secondItem="ukD-ii-pN2" secondAttribute="trailing" id="RHU-xe-eGZ"/>
+                                                <constraint firstAttribute="bottom" secondItem="ukD-ii-pN2" secondAttribute="bottom" id="f0Q-fc-2yy"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="60" id="enQ-4t-Che">
-                                        <rect key="frame" x="0.0" y="115.5" width="375" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="enQ-4t-Che" id="FQA-Nq-O2K">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leather" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhR-2y-Lnf">
-                                                    <rect key="frame" x="15" y="21" width="51.5" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                                                    <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckOff" highlightedImage="iconCheckOn" translatesAutoresizingMaskIntoConstraints="NO" id="DL7-LC-ZKm">
-                                                    <rect key="frame" x="333" y="16" width="27" height="28"/>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="DL7-LC-ZKm" firstAttribute="centerY" secondItem="FQA-Nq-O2K" secondAttribute="centerY" id="EtK-fc-vKL"/>
-                                                <constraint firstItem="YhR-2y-Lnf" firstAttribute="centerY" secondItem="FQA-Nq-O2K" secondAttribute="centerY" id="bNA-Ea-xWT"/>
-                                                <constraint firstItem="YhR-2y-Lnf" firstAttribute="leading" secondItem="FQA-Nq-O2K" secondAttribute="leadingMargin" id="gHf-sL-SZ7"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="DL7-LC-ZKm" secondAttribute="trailing" id="lhQ-Is-rqe"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <gestureRecognizers/>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Decoration" footerTitle="Rhinestones, beads, sequins, lace or any other decorations that require special treatment" id="Zbn-ZB-if6">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="ENp-To-baV">
-                                        <rect key="frame" x="0.0" y="239" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="163" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="ENp-To-baV" id="dr7-hD-be2">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -113,7 +81,7 @@
                             <tableViewSection headerTitle="Item size" id="Zhm-4Q-OhX">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="140" id="lzr-TX-XOM">
-                                        <rect key="frame" x="0.0" y="367" width="375" height="140"/>
+                                        <rect key="frame" x="0.0" y="291" width="375" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="lzr-TX-XOM" id="l0H-lS-hlO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="139.5"/>
@@ -190,7 +158,7 @@
                             <tableViewSection headerTitle="Additionally" id="79j-Ls-Vha">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="120" id="cjx-R1-URh">
-                                        <rect key="frame" x="0.0" y="563" width="375" height="120"/>
+                                        <rect key="frame" x="0.0" y="487" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="cjx-R1-URh" id="dy9-ry-xnX">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
@@ -222,11 +190,8 @@
                     </tableView>
                     <connections>
                         <outlet property="areaLabel" destination="WFf-vA-cWo" id="f4R-mS-id5"/>
-                        <outlet property="clothIconView" destination="zGo-C4-Bd1" id="1A3-2N-Zxm"/>
-                        <outlet property="clothLabel" destination="tNI-0y-ySb" id="ZUY-O6-hmd"/>
                         <outlet property="decorationSwitch" destination="KIp-5h-FlR" id="2Ir-dg-pzm"/>
-                        <outlet property="leatherIconView" destination="DL7-LC-ZKm" id="bMI-3V-ZNy"/>
-                        <outlet property="leatherLabel" destination="YhR-2y-Lnf" id="LOo-eE-bU7"/>
+                        <outlet property="itemConfigurationMaterialsStackView" destination="ukD-ii-pN2" id="7B3-JX-KCC"/>
                         <outlet property="lengthField" destination="TOJ-AK-kJc" id="gx0-5j-Buk"/>
                         <outlet property="widthField" destination="bGh-nt-CTy" id="9of-tC-lZN"/>
                     </connections>
@@ -236,8 +201,4 @@
             <point key="canvasLocation" x="408.80000000000001" y="487.10644677661173"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="iconCheckOff" width="27" height="28"/>
-        <image name="iconCheckOn" width="27" height="27"/>
-    </resources>
 </document>

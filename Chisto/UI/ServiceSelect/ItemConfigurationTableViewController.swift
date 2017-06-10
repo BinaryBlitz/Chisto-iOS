@@ -22,10 +22,7 @@ class ItemConfigurationTableViewController: UITableViewController {
   @IBOutlet weak var areaLabel: UILabel!
 
   // Material section
-  @IBOutlet weak var clothLabel: UILabel!
-  @IBOutlet weak var clothIconView: UIImageView!
-  @IBOutlet weak var leatherLabel: UILabel!
-  @IBOutlet weak var leatherIconView: UIImageView!
+  @IBOutlet weak var itemConfigurationMaterialsStackView: UIStackView!
 
   var viewModel: ItemConfigurationViewModel!
 
@@ -54,13 +51,9 @@ class ItemConfigurationTableViewController: UITableViewController {
       .asObservable()
       .bind(to: areaLabel.rx.text)
       .addDisposableTo(viewModel.disposeBag)
-
-    viewModel.currentMaterial.asObservable().subscribe(onNext: { [weak self] material in
-      self?.clothLabel.isHighlighted = material == .cloth
-      self?.clothIconView.isHighlighted = material == .cloth
-      self?.leatherLabel.isHighlighted = material == .leather
-      self?.leatherIconView.isHighlighted = material == .leather
-    }).addDisposableTo(viewModel.disposeBag)
+    tableView.separatorStyle = .none
+    itemConfigurationMaterialsStackView.spacing = 0.5
+    configureMaterialsView()
   }
 
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -93,6 +86,8 @@ class ItemConfigurationTableViewController: UITableViewController {
 
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     switch indexPath.section {
+    case Sections.material.rawValue:
+      return UITableViewAutomaticDimension
     case Sections.itemSize.rawValue where !viewModel.useArea:
       return 0.01
     default:
@@ -100,13 +95,46 @@ class ItemConfigurationTableViewController: UITableViewController {
     }
   }
 
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    switch indexPath.section {
-    case Sections.material.rawValue:
-      viewModel.currentMaterial.value = indexPath.row == 0 ? .cloth : .leather
-    default:
-      break
+  override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 20
+  }
+
+  func configureMaterialsView() {
+    itemConfigurationMaterialsStackView.spacing = 0.5
+    viewModel.treatments.asObservable().subscribe(onNext: { [weak self] treatments in
+      self?.resetMaterialsView(treatments: treatments)
+    }).addDisposableTo(viewModel.disposeBag)
+  }
+
+  func clearMaterialsView() {
+    for view in itemConfigurationMaterialsStackView.arrangedSubviews {
+      itemConfigurationMaterialsStackView.removeArrangedSubview(view)
+      view.removeFromSuperview()
     }
+  }
+
+  func resetMaterialsView(treatments: [Treatment]) {
+    itemConfigurationMaterialsStackView.isHidden = true
+    clearMaterialsView()
+    for treatment in treatments {
+      let view = ItemConfigurationMaterialView.nibInstance()!
+      view.materialLabel.text = treatment.name
+      viewModel.currentMaterial
+        .asObservable()
+        .map { $0 == treatment }
+        .bind(to: view.isSelected)
+        .addDisposableTo(view.disposeBag)
+
+      view.itemDidTapHandler
+        .map { treatment }
+        .bind(to: viewModel.currentMaterial)
+        .addDisposableTo(view.disposeBag)
+
+      itemConfigurationMaterialsStackView.addArrangedSubview(view)
+    }
+    itemConfigurationMaterialsStackView.isHidden = false
+    tableView.beginUpdates()
+    tableView.endUpdates()
   }
 
 }
