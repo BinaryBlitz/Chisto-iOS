@@ -87,7 +87,7 @@ class ItemConfigurationTableViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     switch indexPath.section {
     case Sections.material.rawValue:
-      return UITableViewAutomaticDimension
+      return CGFloat(viewModel.treatmentRowHeight)
     case Sections.itemSize.rawValue where !viewModel.useArea:
       return 0.01
     default:
@@ -95,18 +95,18 @@ class ItemConfigurationTableViewController: UITableViewController {
     }
   }
 
-  override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 20
-  }
-
   func configureMaterialsView() {
     itemConfigurationMaterialsStackView.spacing = 0.5
-    viewModel.treatments.asObservable().subscribe(onNext: { [weak self] treatments in
+    itemConfigurationMaterialsStackView.isHidden = true
+    viewModel.treatments.asObservable()
+      .filter { !$0.isEmpty }
+      .subscribe(onNext: { [weak self] treatments in
       self?.resetMaterialsView(treatments: treatments)
     }).addDisposableTo(viewModel.disposeBag)
   }
 
   func clearMaterialsView() {
+    itemConfigurationMaterialsStackView.isHidden = true
     for view in itemConfigurationMaterialsStackView.arrangedSubviews {
       itemConfigurationMaterialsStackView.removeArrangedSubview(view)
       view.removeFromSuperview()
@@ -114,7 +114,6 @@ class ItemConfigurationTableViewController: UITableViewController {
   }
 
   func resetMaterialsView(treatments: [Treatment]) {
-    itemConfigurationMaterialsStackView.isHidden = true
     clearMaterialsView()
     for treatment in treatments {
       let view = ItemConfigurationMaterialView.nibInstance()!

@@ -13,7 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPi-SF-Kas" customClass="ItemConfigurationMaterialView" customModule="Chisto" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="452" height="60"/>
+            <rect key="frame" x="0.0" y="0.0" width="452" height="60.5"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Cloth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sR0-fM-6zL">
                     <rect key="frame" x="15" y="21" width="36.5" height="18"/>
@@ -23,6 +23,13 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckOff" highlightedImage="iconCheckOn" translatesAutoresizingMaskIntoConstraints="NO" id="9Ng-zk-NXh">
                     <rect key="frame" x="410" y="16" width="27" height="28"/>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huj-oU-kdT">
+                    <rect key="frame" x="0.0" y="60" width="452" height="1"/>
+                    <color key="backgroundColor" red="0.74509803919999995" green="0.76078431369999999" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="Kwk-QF-Y9I"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <gestureRecognizers/>
@@ -31,7 +38,10 @@
                 <constraint firstAttribute="trailingMargin" secondItem="9Ng-zk-NXh" secondAttribute="trailing" id="69W-cD-KSO"/>
                 <constraint firstAttribute="height" constant="60" id="CAE-vZ-DH5"/>
                 <constraint firstItem="sR0-fM-6zL" firstAttribute="centerY" secondItem="kPi-SF-Kas" secondAttribute="centerY" id="Ce4-oQ-zhP"/>
+                <constraint firstAttribute="bottom" secondItem="huj-oU-kdT" secondAttribute="bottom" id="XAY-dg-Oa1"/>
+                <constraint firstItem="huj-oU-kdT" firstAttribute="leading" secondItem="kPi-SF-Kas" secondAttribute="leading" id="fSr-ac-qD9"/>
                 <constraint firstItem="sR0-fM-6zL" firstAttribute="leading" secondItem="kPi-SF-Kas" secondAttribute="leadingMargin" id="oku-xf-pAa"/>
+                <constraint firstAttribute="trailing" secondItem="huj-oU-kdT" secondAttribute="trailing" id="sWG-2I-H0g"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -41,7 +51,7 @@
                 <outlet property="materialLabel" destination="sR0-fM-6zL" id="M02-vF-dX3"/>
                 <outletCollection property="gestureRecognizers" destination="WX9-8V-lg4" appends="YES" id="Ag1-Yx-vp5"/>
             </connections>
-            <point key="canvasLocation" x="61" y="339"/>
+            <point key="canvasLocation" x="61" y="338.5"/>
         </view>
         <tapGestureRecognizer id="WX9-8V-lg4">
             <connections>

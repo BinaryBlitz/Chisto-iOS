@@ -12,6 +12,8 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 
+private let treatmentViewHeight: Double = 60.5
+
 class ItemConfigurationViewModel {
   let maxNumberLength = 6
   let squareCentimetersInMeter: Double = 10000
@@ -42,6 +44,11 @@ class ItemConfigurationViewModel {
   let currentAmount: Variable<Int>
   let hasDecoration: Variable<Bool>
   let currentMaterial: Variable<Treatment?>
+
+  var treatmentRowHeight: Double {
+    guard !treatments.value.isEmpty else { return 0.01 }
+    return Double(treatments.value.count) * treatmentViewHeight
+  }
 
   init(orderItem: OrderItem) {
 
