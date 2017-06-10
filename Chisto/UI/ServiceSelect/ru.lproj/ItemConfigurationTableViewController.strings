@@ -1,4 +1,5 @@
 
+
 /* Class = "UILabel"; text = "Specify item size"; ObjectID = "IGU-4Q-dKz"; */
 "IGU-4Q-dKz.text" = "Укажите размер вещи";
 
@@ -22,3 +23,24 @@
 
 /* Class = "UILabel"; text = "Decoration"; ObjectID = "uzT-a2-T2B"; */
 "uzT-a2-T2B.text" = "Декоративная отделка";
+
+/* Class = "UITableViewSection"; headerTitle = "Additionally"; ObjectID = "79j-Ls-Vha"; */
+"79j-Ls-Vha.headerTitle" = "Дополнительно";
+
+/* Class = "UILabel"; text = "Декоративная отделка"; ObjectID = "TnH-UJ-fZc"; */
+"TnH-UJ-fZc.text" = "Декоративная отделка";
+
+/* Class = "UITableViewSection"; headerTitle = "Material"; ObjectID = "Wxs-5O-u4f"; */
+"Wxs-5O-u4f.headerTitle" = "Материал вещи";
+
+/* Class = "UILabel"; text = "Leather"; ObjectID = "YhR-2y-Lnf"; */
+"YhR-2y-Lnf.text" = "Кожа";
+
+/* Class = "UITableViewSection"; headerTitle = "Decoration"; ObjectID = "Zbn-ZB-if6"; */
+"Zbn-ZB-if6.headerTitle" = "Декор";
+
+/* Class = "UITableViewSection"; headerTitle = "Item size"; ObjectID = "Zhm-4Q-OhX"; */
+"Zhm-4Q-OhX.headerTitle" = "Размер вещи";
+
+/* Class = "UILabel"; text = "Cloth"; ObjectID = "tNI-0y-ySb"; */
+"tNI-0y-ySb.text" = "Ткань";

@@ -32,7 +32,11 @@ class ItemConfigurationViewController: UIViewController {
     navigationItem.title = viewModel.itemTitle
     itemDescriptionLabel.text = viewModel.itemDescription
 
-    navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName:"iconNavbarClose"), style: .plain, target: nil, action: nil)
+    navigationItem.leftBarButtonItem = UIBarButtonItem(
+      image: #imageLiteral(resourceName:"iconNavbarClose"),
+      style: .plain, target: nil,
+      action: nil
+    )
 
     navigationItem.leftBarButtonItem?.rx.tap
       .bind(to: viewModel.dismiss)

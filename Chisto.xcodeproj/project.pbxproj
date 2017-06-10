@@ -345,6 +345,7 @@
 		885409C61DB2EC5D00219C00 /* UIView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectable.swift"; sourceTree = "<group>"; };
 		88579C3B1EDC73D200BD34C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OnboardingMainViewController.storyboard; sourceTree = "<group>"; };
 		88579C3E1EDC73D600BD34C5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OnboardingMainViewController.strings; sourceTree = "<group>"; };
+		88587E121EE0AD6A009430FA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemConfigurationTableViewController.strings; sourceTree = "<group>"; };
 		885C00951DFEE57900506961 /* LaundryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryItem.swift; sourceTree = "<group>"; };
 		885C00971DFEF36D00506961 /* UIViewController+transitionCompletionBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+transitionCompletionBlock.swift"; sourceTree = "<group>"; };
 		8862E6CA1DC8E2C800DDFB00 /* OrderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
@@ -379,7 +380,6 @@
 		88958CB61EDC803C00489E99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ItemConfigurationViewController.storyboard; sourceTree = "<group>"; };
 		88958CB81EDC804100489E99 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemConfigurationViewController.strings; sourceTree = "<group>"; };
 		88958CBA1EDC805100489E99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ItemConfigurationTableViewController.storyboard; sourceTree = "<group>"; };
-		88958CBE1EDC80A100489E99 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemConfigurationTableViewController.strings; sourceTree = "<group>"; };
 		88958CC01EDD8F4200489E99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OnboardingStepViewController.storyboard; sourceTree = "<group>"; };
 		88958CC31EDD8F4400489E99 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OnboardingStepViewController.strings; sourceTree = "<group>"; };
 		889923A21DDDFC1000D73905 /* flatMapLatest+continueWithError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "flatMapLatest+continueWithError.swift"; sourceTree = "<group>"; };
@@ -1737,7 +1737,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				88958CBA1EDC805100489E99 /* Base */,
-				88958CBE1EDC80A100489E99 /* ru */,
+				88587E121EE0AD6A009430FA /* ru */,
 			);
 			name = ItemConfigurationTableViewController.storyboard;
 			path = Chisto/UI/ServiceSelect;
