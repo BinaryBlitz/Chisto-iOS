@@ -40,6 +40,7 @@ class ClothesViewModel: ClothesViewModelType {
   let sections: Driver<[ItemsSectionModel]>
   var presentProfileSection: Driver<Void>
   var presentOrderScreen: Driver<Void>
+  var presentRatingSection: Driver<OrderReviewAlertViewModel>
   let presentServicesSection: Driver<ItemConfigurationViewModel>
   var presentErrorAlert: PublishSubject<Error>
   var currentCategory = Variable<Category?>(nil)
@@ -54,6 +55,16 @@ class ClothesViewModel: ClothesViewModelType {
     // Data
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
+
+    let fetchLastOrder = DataManager.instance.showUser().map { ProfileManager.instance.userProfile.value.order }
+
+    self.presentRatingSection = fetchLastOrder
+      .filter { order in
+        guard let order = order else { return false }
+        return order.status == .completed && order.rating == nil && order.ratingRequired
+      }.map { order in
+        return OrderReviewAlertViewModel(order: order!)
+      }.asDriver(onErrorDriveWith: .empty())
 
     headerViewModel.selectedCategory.asObservable().bind(to: currentCategory).addDisposableTo(disposeBag)
 

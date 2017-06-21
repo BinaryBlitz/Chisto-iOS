@@ -95,6 +95,16 @@ class ClothesViewController: UIViewController, DefaultBarColoredViewController {
       })
       .addDisposableTo(disposeBag)
 
+    viewModel.presentRatingSection
+      .drive(onNext: { [weak self] viewModel in
+        let viewController = OrderReviewAlertViewController.storyboardInstance()!
+        viewController.modalPresentationStyle = .overFullScreen
+
+        viewController.viewModel = viewModel
+        self?.present(viewController, animated: false, completion: nil)
+      })
+      .addDisposableTo(disposeBag)
+
     viewModel
       .presentErrorAlert
       .asDriver(onErrorDriveWith: .empty())

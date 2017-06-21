@@ -48,7 +48,6 @@ class OrderViewModel: OrderViewModelType {
   var presentLastTimeOrderPopup = PublishSubject<LastTimePopupViewModel>()
   var presentOrderConfirmSection = PublishSubject<OrderConfirmViewModel>()
   var presentLaundrySelectSection = PublishSubject<Void>()
-  var presentRatingSection: Driver<OrderReviewAlertViewModel>
   var continueButtonEnabled: Variable<Bool>
 
   // Constants
@@ -64,16 +63,6 @@ class OrderViewModel: OrderViewModelType {
   init() {
     let continueButtonEnabled = Variable(true)
     self.continueButtonEnabled = continueButtonEnabled
-
-    let fetchLastOrder = DataManager.instance.showUser().map { ProfileManager.instance.userProfile.value.order }
-
-    self.presentRatingSection = fetchLastOrder
-      .filter { order in
-        guard let order = order else { return false }
-        return order.status == .completed && order.rating == nil && order.ratingRequired
-      }.map { order in
-        return OrderReviewAlertViewModel(order: order!)
-      }.asDriver(onErrorDriveWith: .empty())
 
     let currentOrderItems = Variable<[OrderItem]>([])
     OrderManager.instance.currentOrderItems.bind(to: currentOrderItems).addDisposableTo(disposeBag)
