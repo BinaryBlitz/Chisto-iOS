@@ -18,23 +18,41 @@ protocol OnBoardingViewModelType {
 }
 
 class OnBoardingViewModel {
-  var goButtonDidTap = PublishSubject<Void>()
-  var cityDidSelected: PublishSubject<Void>
+  let disposeBag = DisposeBag()
+  let goButtonDidTap = PublishSubject<Void>()
+  let cityDidSelected: PublishSubject<Void>
+  let currentPage = Variable<Int>(0)
+  let pageControlHidden = Variable<Bool>(false)
 
-  var presentCitySelectSection: Driver<CitySelectViewModel>
-  var dismissViewController: Driver<Void>
+  let presentCitySelectSection: Driver<CitySelectViewModel>
+  let setNextViewController = PublishSubject<Int>()
+  let dismissViewController: Driver<Void>
+
+  let descriptionSteps: [(String, UIImage)] = [
+    (title: NSLocalizedString("onboardingStep2", comment: "Onboarding step"), image: #imageLiteral(resourceName: "onboardingStep2")),
+    (title: NSLocalizedString("onboardingStep3", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "onboardingStep3")),
+    (title: NSLocalizedString("onboardingStep4", comment: "Onboarding step"), icon: #imageLiteral(resourceName: "onboardingStep4"))
+  ]
 
   init() {
     let cityDidSelected = PublishSubject<Void>()
     self.cityDidSelected = cityDidSelected
     self.dismissViewController = cityDidSelected.asDriver(onErrorDriveWith: .empty())
 
-    self.presentCitySelectSection = goButtonDidTap.asObservable().map {
-      let viewModel = CitySelectViewModel()
-      viewModel.itemDidSelect.asObservable().map { _ in Void() }
-        .bind(to: cityDidSelected)
-        .addDisposableTo(viewModel.disposeBag)
-      return viewModel
-    }.asDriver(onErrorDriveWith: .empty())
+    self.presentCitySelectSection = goButtonDidTap
+      .asDriver(onErrorDriveWith: .empty())
+      .map {
+        let viewModel = CitySelectViewModel()
+        viewModel.itemDidSelect.asObservable().map { _ in Void() }
+          .bind(to: cityDidSelected)
+          .addDisposableTo(viewModel.disposeBag)
+        return viewModel
+    }
+
+    currentPage.asObservable().map {
+      $0 == self.descriptionSteps.count
+    }.bind(to: pageControlHidden).addDisposableTo(disposeBag)
+
+
   }
 }

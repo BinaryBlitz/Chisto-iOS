@@ -1,0 +1,46 @@
+
+
+/* Class = "UILabel"; text = "Specify item size"; ObjectID = "IGU-4Q-dKz"; */
+"IGU-4Q-dKz.text" = "Укажите размер вещи";
+
+/* Class = "UITextField"; placeholder = "Length, cm"; ObjectID = "TOJ-AK-kJc"; */
+"TOJ-AK-kJc.placeholder" = "Длина, см";
+
+/* Class = "UILabel"; text = "Rhinestones, beads, sequins, lace or any other decorations that require special treatment"; ObjectID = "TnH-UJ-fZc"; */
+"TnH-UJ-fZc.text" = "Стразы, бисер, пайетки, кружева и прочие украшения, требующие особого внимания";
+
+/* Class = "UILabel"; text = "0 м"; ObjectID = "WFf-vA-cWo"; */
+"WFf-vA-cWo.text" = "0 м";
+
+/* Class = "UITextField"; placeholder = "Width, cm"; ObjectID = "bGh-nt-CTy"; */
+"bGh-nt-CTy.placeholder" = "Ширина, см";
+
+/* Class = "UILabel"; text = "Area"; ObjectID = "dya-Ab-0uk"; */
+"dya-Ab-0uk.text" = "Площадь";
+
+/* Class = "UILabel"; text = "В зависимости от ваших загрязнений и материала вещи, технолог химчистки применит к ней аквачистку либо химчистку, а для рубашек или постельного белья бережную стирку."; ObjectID = "eRs-1E-Dnd"; */
+"eRs-1E-Dnd.text" = "В зависимости от ваших загрязнений и материала вещи, технолог химчистки применит к ней аквачистку либо химчистку, а для рубашек или постельного белья бережную стирку.";
+
+/* Class = "UILabel"; text = "Decoration"; ObjectID = "uzT-a2-T2B"; */
+"uzT-a2-T2B.text" = "Декоративная отделка";
+
+/* Class = "UITableViewSection"; headerTitle = "Additionally"; ObjectID = "79j-Ls-Vha"; */
+"79j-Ls-Vha.headerTitle" = "Дополнительно";
+
+/* Class = "UILabel"; text = "Декоративная отделка"; ObjectID = "TnH-UJ-fZc"; */
+"TnH-UJ-fZc.text" = "Декоративная отделка";
+
+/* Class = "UITableViewSection"; headerTitle = "Material"; ObjectID = "Wxs-5O-u4f"; */
+"Wxs-5O-u4f.headerTitle" = "Материал вещи";
+
+/* Class = "UILabel"; text = "Leather"; ObjectID = "YhR-2y-Lnf"; */
+"YhR-2y-Lnf.text" = "Кожа";
+
+/* Class = "UITableViewSection"; headerTitle = "Decoration"; ObjectID = "Zbn-ZB-if6"; */
+"Zbn-ZB-if6.headerTitle" = "Декор";
+
+/* Class = "UITableViewSection"; headerTitle = "Item size"; ObjectID = "Zhm-4Q-OhX"; */
+"Zhm-4Q-OhX.headerTitle" = "Размер вещи";
+
+/* Class = "UILabel"; text = "Cloth"; ObjectID = "tNI-0y-ySb"; */
+"tNI-0y-ySb.text" = "Ткань";

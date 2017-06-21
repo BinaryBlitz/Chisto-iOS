@@ -9,5 +9,5 @@
 import Foundation
 import UIKit
 
-class CategoriesNavigationController: ChistoNavigationController {
+class ClothesNavigationController: ChistoNavigationController {
 }

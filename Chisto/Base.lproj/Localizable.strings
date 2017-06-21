@@ -66,7 +66,7 @@
 "deliveryAdress" = "Delivery address";
 
 /* Contact form header */
-"orderComments" = "Extra information";
+"commentHeaderNotRequired" = "Not required";
 
 /* Contact form header */
 "paymentMethod" = "Payment method";
@@ -96,16 +96,16 @@
 "byRating" = "By rating";
 
 /* Onboarding step */
-"onboardingStep1" = "Add items for cleaning";
+"onboardingStep1" = "";
 
 /* Onboarding step */
-"onboardingStep2" = "Choose a cleaning service from our list of offers by price and speed";
+"onboardingStep2" = "Add items for cleaning";
 
 /* Onboarding step */
-"onboardingStep3" = "Pay with credit card in the app or in cash";
+"onboardingStep3" = "Choose a cleaning service from our list of offers by price and speed";
 
 /* Onboarding step */
-"onboardingStep4" = "A courier will collect your things at the agreed time and will then return them clean";
+"onboardingStep4" = "Pay with credit card in the app, via Apple Pay or in cash";
 
 /* Order continue button title */
 "continue" = "Next";
@@ -229,3 +229,39 @@
 
 /* Create order button */
 "createOrder" = "Write a Review";
+
+/* Item configuration screen */
+"itemInfo" = "Item Info";
+
+/* Item configuration screen */
+"additionalInfo" = "Additionally";
+
+/* Contact form header */
+"phoneHeader" = "Phone number";
+
+/* Error alert */
+"promoCodeIsEmpty" = "Promo code is invalid";
+
+/* Registration */
+"codeSentTryAgain" = "A code has been sent to your phone number. Try again in %@ ";
+
+/* Send code alert */
+"secondNominitive" = "seconds";
+
+/* Send code alert */
+"secondGenitive" = "seconds";
+
+/* Send code alert */
+"secondsGenitive" = "seconds";
+
+/* Decoration service */
+"withDecoration" = "Decoration";
+
+/* Onboarding */
+"onboardingNextButtonTitle" = "Next";
+
+/* Onboarding */
+"onboardingStartButtonTitle" = "Start";
+
+/* Item configuration screen */
+"clothesMaterial" = "Material";

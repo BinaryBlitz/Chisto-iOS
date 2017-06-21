@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1ga-Fz-hDI"; */
+"1ga-Fz-hDI.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "FuD-Ir-m25"; */
+"FuD-Ir-m25.text" = "Label";
+
+/* Class = "UIViewController"; title = "Clothes"; ObjectID = "dPn-Ba-aiP"; */
+"dPn-Ba-aiP.title" = "Выбор вещи";

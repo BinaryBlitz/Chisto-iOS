@@ -13,7 +13,7 @@ import UIKit
 
   override func awakeFromNib() {
     super.awakeFromNib()
-    self.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_4))
+    self.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 4))
   }
 }
 

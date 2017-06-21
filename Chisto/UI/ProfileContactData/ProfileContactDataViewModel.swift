@@ -79,6 +79,10 @@ class ProfileContactDataViewModel: ProfileContactDataViewModelType {
     }.asDriver(onErrorDriveWith: .empty())
 
     formViewModel.isValid.asObservable().bind(to: saveButtonIsEnabled).addDisposableTo(disposeBag)
+    
+    formViewModel.presentErrorAlert
+      .bind(to: presentErrorAlert)
+      .addDisposableTo(disposeBag)
   }
 
 }

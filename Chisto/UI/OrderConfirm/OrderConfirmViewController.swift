@@ -66,13 +66,6 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
   }
 
   func configureNavigations() {
-    viewModel?.presentRegistrationSection.drive(onNext: { viewModel in
-        let registrationNavigationController = RegistrationNavigationController.storyboardInstance()!
-        guard let registrationPhoneInputViewController = registrationNavigationController.viewControllers.first as? RegistrationPhoneInputViewController else { return }
-        registrationPhoneInputViewController.viewModel = viewModel
-        self.present(registrationNavigationController, animated: true, completion: nil)
-      }).addDisposableTo(disposeBag)
-
     viewModel?.presentOrderContactDataSection.drive(onNext: { [weak self] viewModel in
         let viewController = OrderRegistrationViewController.storyboardInstance()!
         viewController.viewModel = viewModel
@@ -131,7 +124,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
       .drive(self.tableView.rx.items(dataSource: self.dataSource))
       .addDisposableTo(self.disposeBag)
 
-    tableView.estimatedRowHeight = 100
+    tableView.estimatedRowHeight = 400
     tableView.rowHeight = UITableViewAutomaticDimension
   }
 
@@ -139,6 +132,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
     super.viewWillAppear(animated)
     navigationController?.navigationBar.isTranslucent = true
     navigationController?.navigationBar.backgroundColor = nil
+    AnalyticsManager.logScreen(.orderConfirm)
   }
 
   override func viewDidDisappear(_ animated: Bool) {

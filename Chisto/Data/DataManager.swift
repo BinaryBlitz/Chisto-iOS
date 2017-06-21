@@ -45,6 +45,7 @@ enum DataError: Error, CustomStringConvertible {
   }
 }
 
+/// A class that manages all the application data, stored in either Realm or user defaults. Uses NetworkManager to call the backend API
 class DataManager {
 
   static let instance = DataManager()
@@ -56,6 +57,13 @@ class DataManager {
   private var verificationToken: String? = nil
   private let networkManager = NetworkManager()
 
+  /// Creates a new network request with pre-configured headers and params
+  ///
+  /// - Parameters:
+  ///   - method: POST/GET/PUT etc.
+  ///   - path: The endpoint to call
+  ///   - params: JSON body or URL request body, depending on method
+  /// - Returns: a new Observable, which receives API response as a single sequence element
   func networkRequest(method: HTTPMethod, _ path: APIPath, _ params: Parameters = [:]) -> Observable<Any> {
     var parameters = params
     if let token = ProfileManager.instance.userProfile.value.apiToken {
@@ -69,6 +77,13 @@ class DataManager {
       }
   }
 
+  /// Requests an array of items from server
+  ///
+  /// - Parameters:
+  ///   - type: A class of returned objects. Must conform to the Mappable protocol
+  ///   - apiPath: The endpoint to call
+  ///   - params: JSON body or URL request body, depending on method
+  /// - Returns: a new Observable, which receives API response as a single sequence element containing array of items
   func getItems<ItemType>(type: ItemType.Type, apiPath: APIPath, params: Parameters = [:]) -> Observable<[ItemType]> where ItemType: Mappable {
     return networkRequest(method: .get, apiPath, params)
       .flatMap { itemsJSON -> Observable<[ItemType]> in
@@ -80,6 +95,14 @@ class DataManager {
 
   }
 
+  /// Requests an array of items from server and saves them to the Realm storage
+  ///
+  /// - Parameters:
+  ///   - type: A class of returned objects. Must conform to the Mappable protocol
+  ///   - apiPath: The endpoint to call
+  ///   - params: JSON body or URL request body, depending on method
+  ///   - modifier: A callback to modify every mapped object before saving it
+  /// - Returns: a new Observable, which receives API response as a single sequence element containing array of items
   func fetchItems<ItemType>(type: ItemType.Type, apiPath: APIPath, params: Parameters = [:],
                             _ modifier: @escaping (ItemType) -> Void = { _ in }) -> Observable<[ItemType]> where ItemType: ServerObject {
 

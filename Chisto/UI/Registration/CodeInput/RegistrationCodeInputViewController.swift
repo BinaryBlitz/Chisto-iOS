@@ -54,6 +54,7 @@ class RegistrationCodeInputViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     codeField.becomeFirstResponder()
+    AnalyticsManager.logScreen(.registrationCode)
   }
 
   @IBAction func licenseAgreementDidTap(_ sender: Any) {

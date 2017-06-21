@@ -26,19 +26,23 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
 
     navigationItem.title = viewModel.navigationBarTitle
 
-    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
-    navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName:"iconUser"), style: .plain, target: nil, action: nil)
+    emptyOrderView?.addButton.rx.tap.bind(to: viewModel.emptyOrderAddButtonDidTap)
+      .addDisposableTo(disposeBag)
+    navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconNavbarClose"), style: .plain, target: nil, action: nil)
 
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
-    // Rx
-    emptyOrderView?.addButton.rx.tap.bind(to: viewModel.emptyOrderAddButtonDidTap)
-      .addDisposableTo(disposeBag)
-
     navigationItem.rightBarButtonItem?.rx.tap.bind(to: viewModel.navigationAddButtonDidTap)
       .addDisposableTo(disposeBag)
-    navigationItem.leftBarButtonItem?.rx.tap.bind(to: viewModel.profileButtonDidTap)
+
+    navigationItem.leftBarButtonItem?.rx
+      .tap
+      .asDriver()
+      .drive(onNext: { [weak self] in
+        self?.dismiss(animated: true, completion: nil)
+      })
       .addDisposableTo(disposeBag)
+
     continueButton.rx.tap.bind(to: viewModel.continueButtonDidTap)
       .addDisposableTo(disposeBag)
 
@@ -103,20 +107,19 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
     if let indexPath = tableView.indexPathForSelectedRow {
       tableView.deselectRow(at: indexPath, animated: true)
     }
+    AnalyticsManager.logScreen(.order)
   }
 
   func configureNavigations() {
 
     viewModel.presentCategoriesViewController.drive(onNext: { [weak self] in
-        let viewController = CategoriesNavigationController.storyboardInstance()!
-        self?.present(viewController, animated: true)
+        self?.dismiss(animated: true, completion: nil)
       }).addDisposableTo(disposeBag)
 
-    viewModel.presentItemInfoViewController.drive(onNext: { [weak self] viewModel in
-        let navigationItemInfoViewController = ItemInfoNavigationController.storyboardInstance()!
-        let itemInfoViewController = navigationItemInfoViewController.viewControllers.first as! ItemInfoViewController
-        itemInfoViewController.viewModel = viewModel
-        self?.navigationController?.present(navigationItemInfoViewController, animated: true)
+    viewModel.presentItemConfigurationViewController.drive(onNext: { [weak self] viewModel in
+        let viewController = ItemConfigurationViewController.storyboardInstance()!
+        viewController.viewModel = viewModel
+      self?.navigationController?.present(ChistoNavigationController(rootViewController: viewController), animated: true)
       }).addDisposableTo(disposeBag)
 
     viewModel.presentLaundrySelectSection
@@ -126,23 +129,6 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
         self?.navigationController?.pushViewController(viewController, animated: true) {
           viewController.viewModel.didFinishPushingViewController.onNext()
         }
-      })
-      .addDisposableTo(disposeBag)
-
-    viewModel.presentProfileSection
-      .drive(onNext: { [weak self] in
-        let viewController = ProfileNavigationController.storyboardInstance()!
-        self?.present(viewController, animated: true, completion: nil)
-      })
-      .addDisposableTo(disposeBag)
-
-    viewModel.presentRatingSection
-      .drive(onNext: { [weak self] viewModel in
-        let viewController = OrderReviewAlertViewController.storyboardInstance()!
-        viewController.modalPresentationStyle = .overFullScreen
-
-        viewController.viewModel = viewModel
-        self?.present(viewController, animated: false, completion: nil)
       })
       .addDisposableTo(disposeBag)
   }

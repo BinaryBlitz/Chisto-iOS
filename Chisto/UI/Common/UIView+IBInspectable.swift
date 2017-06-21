@@ -36,7 +36,7 @@ extension UIView {
 
 @IBDesignable class RotatingUIView: UIView {
 
-  @IBInspectable var angle: Double = M_PI_4
+  @IBInspectable var angle: Double = .pi / 4
 
   override func awakeFromNib() {
     super.awakeFromNib()

@@ -13,6 +13,7 @@ import RxSwift
 import SwiftyJSON
 import UserNotifications
 
+/// Manages push notifications
 class NotificationManager: NSObject {
   static let instance = NotificationManager()
   let disposeBag = DisposeBag()

@@ -61,6 +61,7 @@ class MyOrdersViewController: UITableViewController, DefaultBarColoredViewContro
     if let indexPath = tableView.indexPathForSelectedRow {
       tableView.deselectRow(at: indexPath, animated: true)
     }
+    AnalyticsManager.logScreen(.myOrders)
   }
 
 }

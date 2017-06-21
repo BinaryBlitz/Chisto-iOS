@@ -54,4 +54,9 @@ class ProfileContactDataViewController: UIViewController {
     contactFormViewController.view.frame = formView.bounds
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    AnalyticsManager.logScreen(.profileContactData)
+  }
+
 }

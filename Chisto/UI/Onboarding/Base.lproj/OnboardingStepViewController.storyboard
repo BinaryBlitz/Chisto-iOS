@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="23R-i4-sRo">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Onboarding Step View Controller-->
+        <scene sceneID="oQq-zU-m6Y">
+            <objects>
+                <viewController id="23R-i4-sRo" customClass="OnboardingStepViewController" customModule="Chisto" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rjU-DP-5lm"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ui2-t8-qV2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VNL-rQ-f2F">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboardingStep4" translatesAutoresizingMaskIntoConstraints="NO" id="PZa-TW-Xdu">
+                                <rect key="frame" x="0.0" y="210" width="375" height="457"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9S-iN-Bpp">
+                                <rect key="frame" x="16" y="60" width="343" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="QIu-2k-GEq"/>
+                                </constraints>
+                                <string key="text">Оплатите заказ картой,
+с помощью Apple Pay или наличными курьеру химчистки.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.3960784376" green="0.42352941630000002" blue="0.45098039509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7u-MJ-piH" customClass="GoButton" customModule="Chisto" customModuleProvider="target">
+                                <rect key="frame" x="117.5" y="597" width="140" height="50"/>
+                                <color key="backgroundColor" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="GYJ-uh-R9u"/>
+                                    <constraint firstAttribute="height" constant="50" id="Led-qS-CFz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                        <color key="value" red="0.2392156869" green="0.70588237050000002" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="defaultDisabledColor">
+                                        <color key="value" red="0.75686275960000005" green="0.78039217000000005" blue="0.80392158030000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PZa-TW-Xdu" firstAttribute="leading" secondItem="VNL-rQ-f2F" secondAttribute="leading" id="7MS-9n-Mbt"/>
+                            <constraint firstItem="Ui2-t8-qV2" firstAttribute="top" secondItem="PZa-TW-Xdu" secondAttribute="bottom" id="LdG-uv-B8b"/>
+                            <constraint firstItem="PZa-TW-Xdu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="e9S-iN-Bpp" secondAttribute="bottom" constant="50" id="PpY-Qn-DvE"/>
+                            <constraint firstItem="e9S-iN-Bpp" firstAttribute="leading" secondItem="VNL-rQ-f2F" secondAttribute="leadingMargin" id="RcW-IT-AuP"/>
+                            <constraint firstItem="n7u-MJ-piH" firstAttribute="centerX" secondItem="VNL-rQ-f2F" secondAttribute="centerX" id="aeh-Pr-OTO"/>
+                            <constraint firstAttribute="trailing" secondItem="PZa-TW-Xdu" secondAttribute="trailing" id="dt7-iX-Kxu"/>
+                            <constraint firstItem="e9S-iN-Bpp" firstAttribute="top" secondItem="rjU-DP-5lm" secondAttribute="bottom" constant="40" id="hBz-Eh-zWh"/>
+                            <constraint firstItem="Ui2-t8-qV2" firstAttribute="top" secondItem="n7u-MJ-piH" secondAttribute="bottom" constant="20" id="tdM-jE-pSD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="e9S-iN-Bpp" secondAttribute="trailing" id="u1F-FM-exY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="beginButton" destination="n7u-MJ-piH" id="KtY-xW-GTU"/>
+                        <outlet property="descriptionLabel" destination="e9S-iN-Bpp" id="whR-pJ-riz"/>
+                        <outlet property="stepImageView" destination="PZa-TW-Xdu" id="We0-th-iix"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xwI-NL-sMK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-305" y="1652"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboardingStep4" width="1242" height="1625"/>
+    </resources>
+</document>

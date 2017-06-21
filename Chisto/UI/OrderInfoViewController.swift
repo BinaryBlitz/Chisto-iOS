@@ -106,6 +106,11 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
     tableView.tableHeaderView = headerView
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    AnalyticsManager.logScreen(.orderInfo)
+  }
+
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
     return footerView
   }

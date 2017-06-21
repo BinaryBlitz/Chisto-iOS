@@ -66,7 +66,7 @@
 "deliveryAdress" = "Адрес доставки";
 
 /* Contact form header */
-"orderComments" = "Комментарии к заказу";
+"commentHeader" = "Комментарии к заказу";
 
 /* Contact form header */
 "paymentMethod" = "Способ оплаты";
@@ -99,13 +99,13 @@
 "onboardingStep1" = "Добавьте вещи для чистки";
 
 /* Onboarding step */
-"onboardingStep2" = "Выберите подходящего исполнителя по цене и срокам выполнения заказа";
+"onboardingStep2" = "Добавьте вещи в корзину, воспользуйтесь поиском по названию вещи.";
 
 /* Onboarding step */
-"onboardingStep3" = "Оплатите заказ банковской картой в приложении или наличными курьеру";
+"onboardingStep3" = "Выберите подходящую химчистку по цене и рейтингу.";
 
 /* Onboarding step */
-"onboardingStep4" = "Курьер заберёт вещи в согласованное время и вернёт их чистыми";
+"onboardingStep4" = "Оплатите заказ картой, с помощью Apple Pay или наличными курьеру химчистки.";
 
 /* Order continue button title */
 "continue" = "Продолжить";
@@ -121,6 +121,9 @@
 
 /* Decoration service */
 "decorationDescriptionShort" = "Стразы, бисер, пайетки, кружева и прочие украшения, требующие особого внимания";
+
+/* Decoration service */
+"withDecoration" = "С декоративной отделкой";
 
 /* Network error */
 "unknownError" = "Неизвестная ошибка";
@@ -212,6 +215,9 @@
 /* Error alert */
 "invalidPhone" = "";
 
+/* Error alert */
+"emptyPhone" = "Введите номер телефона, на него будет отправлен код";
+
 /* Slow item alert */
 "slowItemDesctiption" = "Эта вещь чистится долго";
 
@@ -229,3 +235,36 @@
 
 /* Create order button */
 "createOrder" = "Оставить отзыв";
+
+/* Item configuration screen */
+"itemInfo" = "Информация о вещи";
+
+/* Item configuration screen */
+"additionalInfo" = "Примечание";
+
+/* Contact form header */
+"phoneHeader" = "Номер телефона";
+
+/* Error alert */
+"promoCodeIsEmpty" = "Промокод не может быть пустым";
+
+/* Registration */
+"codeSentTryAgain" = "Код был отправлен на ваш номер телефона. Повторно отправить код можно через %@ ";
+
+/* Send code alert */
+"secondNominitive" = "секунда";
+
+/* Send code alert */
+"secondGenitive" = "секунды";
+
+/* Send code alert */
+"secondsGenitive" = "секунд";
+
+/* Onboarding */
+"onboardingNextButtonTitle" = "Далее";
+
+/* Onboarding */
+"onboardingStartButtonTitle" = "Начать";
+
+/* Item configuration screen */
+"clothesMaterial" = "Материал вещи";

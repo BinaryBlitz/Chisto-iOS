@@ -70,6 +70,11 @@ class LaundryReviewsViewController: UIViewController {
       }).addDisposableTo(disposeBag)
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    AnalyticsManager.logScreen(.laundryReviews)
+  }
+
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     navigationController?.navigationBar.isTranslucent = true

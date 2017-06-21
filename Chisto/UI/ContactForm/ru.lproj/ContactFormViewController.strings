@@ -8,8 +8,8 @@
 /* Class = "UITextField"; placeholder = "Имя"; ObjectID = "7Lr-Mh-tXP"; */
 "7Lr-Mh-tXP.placeholder" = "Имя";
 
-/* Class = "UITextField"; placeholder = "Почта"; ObjectID = "80I-v4-6N6"; */
-"80I-v4-6N6.placeholder" = "Почта";
+/* Class = "UITextField"; placeholder = "Код"; ObjectID = "80I-v4-6N6"; */
+"80I-v4-6N6.placeholder" = "Код";
 
 /* Class = "UITextField"; placeholder = "Дом"; ObjectID = "EoK-sS-Wyh"; */
 "EoK-sS-Wyh.placeholder" = "Дом";
@@ -45,7 +45,10 @@
 "czl-MC-Kzf.text" = "+7";
 
 /* Class = "UITextField"; placeholder = "Ваш комментарий"; ObjectID = "mm6-XM-pfY"; */
-"mm6-XM-pfY.placeholder" = "Ваш комментарий";
+"mm6-XM-pfY.placeholder" = "Опционально";
 
 /* Class = "UILabel"; text = "Банковской картой"; ObjectID = "y2O-sw-1sU"; */
 "y2O-sw-1sU.text" = "Банковской картой";
+
+/* Class = "UIButton"; normalTitle = "Send Code"; ObjectID = "VAI-Gg-ySJ"; */
+"VAI-Gg-ySJ.normalTitle" = "Выслать код";

@@ -169,6 +169,7 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate, UISearch
     if let indexPath = tableView.indexPathForSelectedRow {
       tableView.deselectRow(at: indexPath, animated: true)
     }
+    AnalyticsManager.logScreen(.citySelect)
   }
 
 }

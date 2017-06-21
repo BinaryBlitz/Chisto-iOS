@@ -35,8 +35,8 @@ class ProfileViewModel {
 
   // Output
   let dismissViewController: Driver<Void>
-  var presentRegistrationSection: Driver<RegistrationPhoneInputViewModel>
   let presentNextScreen: PublishSubject<ProfileSection>
+  var presentRegistrationSection: Driver<RegistrationPhoneInputViewModel>
   var ordersCount = Variable<String>("0")
 
   let termsOfServiceURL = DataManager.instance.termsOfServiceURL
@@ -58,10 +58,10 @@ class ProfileViewModel {
     self.presentRegistrationSection = shouldPresentRegistrationSection.map { nextSection in
       let viewModel = RegistrationPhoneInputViewModel()
       viewModel.didFinishRegistration.flatMap { _ -> Observable<ProfileSection> in
-          return DataManager.instance.showUser().map { nextSection }
+        return DataManager.instance.showUser().map { nextSection }
         }.bind(to: presentNextScreen).addDisposableTo(viewModel.disposeBag)
       return viewModel
-    }.asDriver(onErrorDriveWith: .empty())
+      }.asDriver(onErrorDriveWith: .empty())
 
     self.dismissViewController = closeButtonDidTap.asDriver(onErrorDriveWith: .empty())
 

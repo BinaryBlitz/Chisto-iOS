@@ -32,10 +32,10 @@ class Profile: Object, Mappable {
   dynamic var ordersCount: Int = 0
   dynamic var notes: String = ""
   dynamic var disabledDecorationAlert: Bool = false
-  dynamic var paymentMethodRaw = PaymentMethod.card.rawValue
+  dynamic var paymentMethodRaw = PaymentMethod.applePay.rawValue
   var paymentMethod: PaymentMethod {
     get {
-      return PaymentMethod(rawValue: paymentMethodRaw) ?? .card
+      return PaymentMethod(rawValue: paymentMethodRaw) ?? .applePay
     }
     set {
       paymentMethodRaw = newValue.rawValue

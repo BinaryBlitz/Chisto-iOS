@@ -60,4 +60,9 @@ class AboutViewController: UIViewController {
     guard let url = URL(string: string) else { return }
     UIApplication.shared.openURL(url)
   }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    AnalyticsManager.logScreen(.about)
+  }
 }

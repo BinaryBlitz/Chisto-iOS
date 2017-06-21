@@ -30,6 +30,7 @@ protocol ContactFormViewModelType {
 }
 
 class ContactFormViewModel {
+  let phoneViewModel = ContactFormPhoneViewModel()
 
   let disposeBag = DisposeBag()
 
@@ -38,19 +39,18 @@ class ContactFormViewModel {
     case orderRegistration
   }
 
-  let contactInfoHeaderModel = ContactFormTableHeaderViewModel(
+  let contactDataHeaderModel = ContactFormTableHeaderViewModel(
     title: NSLocalizedString("contactInfo", comment: "Contact form header"),
     icon: #imageLiteral(resourceName:"iconSmallUser")
   )
 
-  let adressHeaderModel = ContactFormTableHeaderViewModel(
-    title: NSLocalizedString("deliveryAdress", comment: "Contact form header"),
-    icon: #imageLiteral(resourceName:"iconSmallAddress"),
-    isEnabledButton: true
+  let phoneHeaderModel = ContactFormTableHeaderViewModel(
+    title: NSLocalizedString("phoneHeader", comment: "Contact form header"),
+    icon: #imageLiteral(resourceName: "iconSmallGrayAntenna")
   )
 
   let commentHeaderModel = ContactFormTableHeaderViewModel(
-    title: NSLocalizedString("orderComments", comment: "Contact form header"),
+    title: NSLocalizedString("commentHeader", comment: "Contact form header"),
     icon: #imageLiteral(resourceName:"iconSmallComment")
   )
 
@@ -63,6 +63,7 @@ class ContactFormViewModel {
   var firstName: Variable<String?>
   var lastName: Variable<String?>
   var phone: Variable<String?>
+  var code = Variable<String?>("")
   var email: Variable<String?>
   var street: Variable<String?>
   var building: Variable<String?>
@@ -70,17 +71,36 @@ class ContactFormViewModel {
   var comment: Variable<String?>
   var phoneIsValid = Variable<Bool>(false)
   var isValid = Variable<Bool>(false)
+  var firstNameIsValid = Variable<Bool>(false)
+  var cityIsValid = Variable<Bool>(true)
+  var streetIsValid = Variable<Bool>(false)
+  var buildingIsValid = Variable<Bool>(false)
+  var apartmentIsValid = Variable<Bool>(false)
+  let codeSectionIsVisible = Variable<Bool>(false)
   var paymentMethod: Variable<PaymentMethod>
+
+  let presentErrorAlert = PublishSubject<Error>()
 
   var canUseApplePay = PKPaymentAuthorizationViewController.canMakePayments()
   var canPayUsingPaymentMethods = PKPaymentAuthorizationViewController.canMakePayments(
     usingNetworks: [.masterCard, .visa]
   )
 
+  var isAuthorized: Variable<Bool> {
+    return phoneViewModel.phoneIsValidated
+  }
+
   var currentScreen: CurrentScreen
 
   var cityFieldDidTap = PublishSubject<Void>()
   var streetNameFieldDidTap = PublishSubject<Void>()
+
+  let highlightPhoneField = PublishSubject<Void>()
+  let highlightFirstNameField = PublishSubject<Void>()
+  let highlightCityField = PublishSubject<Void>()
+  let highlightStreetField = PublishSubject<Void>()
+  let highlightBuildingField = PublishSubject<Void>()
+  let highlightApartmentField = PublishSubject<Void>()
 
   init(currentScreen: CurrentScreen) {
     let profile = ProfileManager.instance.userProfile.value
@@ -108,20 +128,39 @@ class ContactFormViewModel {
       }.bind(to: phoneIsValid)
       .addDisposableTo(disposeBag)
 
-    let contactInfoIsValid = Observable.combineLatest(firstName.asObservable(), lastName.asObservable(), phoneIsValid.asObservable(), email.asObservable()) { firstName, lastName, phoneIsValid, email -> Bool in
-      guard let firstName = firstName, let lastName = lastName, let email = email else { return false }
+    phone.asObservable()
+      .bind(to: phoneViewModel.phone)
+      .addDisposableTo(disposeBag)
+    
+    phoneViewModel.phoneIsValidated
+      .asObservable()
+      .map { !$0 }
+      .bind(to: codeSectionIsVisible)
+      .addDisposableTo(disposeBag)
 
-      return phoneIsValid && firstName.characters.count > 0 && lastName.characters.count > 0 && email.characters.count > 0
+    phoneViewModel.presentErrorAlert
+      .bind(to: presentErrorAlert)
+      .addDisposableTo(disposeBag)
 
+    let phoneDataIsValid = Observable.combineLatest(phoneIsValid.asObservable(), phoneViewModel.phoneIsValidated.asObservable()) { $0 && $1 }
+
+    let textFieldIsValid: (String?) -> Bool = { text in
+      guard let text = text else { return false }
+      return !text.characters.isEmpty
     }
 
-    let adressIsValid = Observable.combineLatest(street.asObservable(), building.asObservable(), apartment.asObservable()) { street, building, apartment -> Bool in
-      guard let street = street, let building = building, let apartment = apartment else { return false }
-      return street.characters.count > 0 && building.characters.count > 0 && apartment.characters.count > 0
+    firstName.asObservable().map(textFieldIsValid).bind(to: firstNameIsValid).addDisposableTo(disposeBag)
+    street.asObservable().map(textFieldIsValid).bind(to: streetIsValid).addDisposableTo(disposeBag)
+    building.asObservable().map(textFieldIsValid).bind(to: buildingIsValid).addDisposableTo(disposeBag)
+    apartment.asObservable().map(textFieldIsValid).bind(to: apartmentIsValid).addDisposableTo(disposeBag)
 
-    }
 
-    Observable.combineLatest(contactInfoIsValid, adressIsValid) { $0 && $1 }.bind(to: isValid).addDisposableTo(disposeBag)
+    let contactDataIsValid = Observable.combineLatest(firstNameIsValid.asObservable(), streetIsValid.asObservable(), buildingIsValid.asObservable(), apartmentIsValid.asObservable()) { $0 && $1 && $2 && $3 }
+
+    Observable.combineLatest(contactDataIsValid, phoneDataIsValid, paymentMethod.asObservable()) { contactDataIsValid, phoneDataIsValid, paymentMethod in
+      guard phoneDataIsValid else { return false }
+      return contactDataIsValid || paymentMethod == .applePay
+    }.bind(to: isValid).addDisposableTo(disposeBag)
 
   }
 
@@ -135,12 +174,16 @@ class ContactFormViewModel {
 
       let profile = ProfileManager.instance.userProfile.value
       ProfileManager.instance.updateProfile { profile in
-        profile.firstName = self.firstName.value ?? ""
-        profile.lastName = self.lastName.value ?? ""
+        if let name = self.firstName.value, name.characters.count > 0 {
+          profile.firstName = name
+        } else if self.paymentMethod.value == .applePay {
+          profile.firstName = "Test"
+        }
+        profile.lastName = "Test"
         if let phoneNumber = phoneNumber {
           profile.phone = phoneNumberKit.format(phoneNumber, toType: .e164)
         }
-        profile.email = self.email.value ?? ""
+        profile.email = "test@test.test"
         profile.streetName = self.street.value ?? ""
         profile.building = self.building.value ?? ""
         profile.apartment = self.apartment.value ?? ""
@@ -154,6 +197,38 @@ class ContactFormViewModel {
       }
     }
 
+  }
+
+  func validateState() -> Bool {
+    if !phoneIsValid.value {
+      highlightPhoneField.onNext()
+    }
+
+    guard paymentMethod.value != .applePay else {
+      return isValid.value
+    }
+
+    if !firstNameIsValid.value {
+      highlightFirstNameField.onNext()
+    }
+
+    if !cityIsValid.value {
+      highlightCityField.onNext()
+    }
+
+    if !streetIsValid.value {
+      highlightStreetField.onNext()
+    }
+
+    if !buildingIsValid.value {
+      highlightBuildingField.onNext()
+    }
+
+    if !apartmentIsValid.value {
+      highlightApartmentField.onNext()
+    }
+
+    return isValid.value
   }
 
 }

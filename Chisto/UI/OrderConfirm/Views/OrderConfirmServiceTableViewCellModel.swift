@@ -17,7 +17,6 @@ protocol OrderConfirmServiceTableViewCellModelType {
   var clothesServices: [Treatment] { get }
   var laundry: Laundry { get }
   var hasDecoration: Bool { get }
-  var decorationPrice: String { get }
   var decorationTitle: String { get }
 }
 
@@ -30,8 +29,7 @@ class OrderConfirmServiceTableViewCellModel: OrderConfirmServiceTableViewCellMod
   let clothesServices: [Treatment]
   let laundry: Laundry
   let hasDecoration: Bool
-  var decorationPrice: String = "0"
-  let decorationTitle = NSLocalizedString("decoration", comment: "Decoration service")
+  let decorationTitle = NSLocalizedString("withDecoration", comment: "Decoration service")
 
   init(orderItem: OrderItem, laundry: Laundry) {
     self.laundry = laundry
@@ -47,7 +45,6 @@ class OrderConfirmServiceTableViewCellModel: OrderConfirmServiceTableViewCellMod
     self.clothesServices = orderItem.treatments
 
     self.hasDecoration = orderItem.hasDecoration
-    self.decorationPrice = orderItem.decorationPrice(laundry: laundry).currencyString
   }
 
 }

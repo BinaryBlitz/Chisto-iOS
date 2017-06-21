@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import Crashlytics
 
 class PromoCodeAlertViewController: UIViewController {
   var viewModel: PromoCodeAlertViewModel? = nil
@@ -47,5 +48,6 @@ class PromoCodeAlertViewController: UIViewController {
       self?.view.alpha = 0
       self?.view.alpha = 1
     }
+    AnalyticsManager.logScreen(.promoCodeAlert)
   }
 }

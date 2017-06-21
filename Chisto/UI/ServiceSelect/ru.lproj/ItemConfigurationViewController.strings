@@ -1,0 +1,11 @@
+/* Class = "UIViewController"; title = "Services"; ObjectID = "2nZ-Zl-8zM"; */
+"2nZ-Zl-8zM.title" = "Услуги";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "aZm-C4-AlO"; */
+"aZm-C4-AlO.text" = "0";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "vgx-9x-mr2"; */
+"vgx-9x-mr2.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "xL0-OB-jBd"; */
+"xL0-OB-jBd.normalTitle" = "Добавить";

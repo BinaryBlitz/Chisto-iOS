@@ -12,17 +12,14 @@ import RxCocoa
 import RxSwift
 
 class ContactFormTableHeaderViewModel {
-
+  let disposeBag = DisposeBag()
   let title: String
   let icon: UIImage
-  let isEnabled: Bool
-
   let buttonDidTap = PublishSubject<Void>()
 
-  init(title: String, icon: UIImage, isEnabledButton: Bool = false) {
+  init(title: String, icon: UIImage) {
     self.title = title
     self.icon = icon
-    self.isEnabled = isEnabledButton
   }
 
 }
