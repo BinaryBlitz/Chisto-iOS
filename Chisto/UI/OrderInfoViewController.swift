@@ -54,14 +54,6 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
     viewModel.ratingButtonEnabled.asObservable().bind(to: ratingButton.rx.isEnabled).addDisposableTo(disposeBag)
 
     viewModel.ratingButtonTitle.asObservable().bind(to: ratingButton.rx.title()).addDisposableTo(disposeBag)
-
-    viewModel.presentRatingAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] viewModel in
-        let viewController = OrderReviewAlertViewController.storyboardInstance()!
-        viewController.modalPresentationStyle = .overFullScreen
-
-        viewController.viewModel = viewModel
-        self?.present(viewController, animated: false, completion: nil)
-      }).addDisposableTo(disposeBag)
   }
 
   func configureTableView() {

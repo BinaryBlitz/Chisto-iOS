@@ -349,7 +349,6 @@
 		885409C61DB2EC5D00219C00 /* UIView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectable.swift"; sourceTree = "<group>"; };
 		88579C3B1EDC73D200BD34C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OnboardingMainViewController.storyboard; sourceTree = "<group>"; };
 		88579C3E1EDC73D600BD34C5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OnboardingMainViewController.strings; sourceTree = "<group>"; };
-		88587E121EE0AD6A009430FA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemConfigurationTableViewController.strings; sourceTree = "<group>"; };
 		885C00951DFEE57900506961 /* LaundryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaundryItem.swift; sourceTree = "<group>"; };
 		885C00971DFEF36D00506961 /* UIViewController+transitionCompletionBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+transitionCompletionBlock.swift"; sourceTree = "<group>"; };
 		8862E6CA1DC8E2C800DDFB00 /* OrderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
@@ -464,6 +463,7 @@
 		88F746CF1E3FAB86004EF765 /* Double+round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+round.swift"; sourceTree = "<group>"; };
 		88FA1DF51DD23F3A00431822 /* ContactFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFormViewModel.swift; sourceTree = "<group>"; };
 		88FA1DF91DD2944400431822 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		88FD63B81F09A8E800F7CCCD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ItemConfigurationTableViewController.strings; sourceTree = "<group>"; };
 		88FE7AFD1DE0AF8000A16289 /* MyOrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersViewController.swift; sourceTree = "<group>"; };
 		88FE7B021DE0AFE600A16289 /* MyOrdersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersTableViewCell.swift; sourceTree = "<group>"; };
 		88FE7B041DE0AFF300A16289 /* MyOrdersTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersTableViewCellModel.swift; sourceTree = "<group>"; };
@@ -1753,7 +1753,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				88958CBA1EDC805100489E99 /* Base */,
-				88587E121EE0AD6A009430FA /* ru */,
+				88FD63B81F09A8E800F7CCCD /* ru */,
 			);
 			name = ItemConfigurationTableViewController.storyboard;
 			path = Chisto/UI/ServiceSelect;
