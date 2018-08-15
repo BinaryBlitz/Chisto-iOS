@@ -14,19 +14,10 @@ import RealmSwift
 
 typealias ItemsSectionModel = SectionModel<String, ItemTableViewCellModelType>
 
-protocol ClothesViewModelType {
-  // Input
-  var itemDidSelect: PublishSubject<IndexPath> { get }
+class ClothesViewModel {
 
-  // Output
-  var sections: Driver<[ItemsSectionModel]> { get }
-  var presentServicesSection: Driver<ItemConfigurationViewModel> { get }
-}
-
-class ClothesViewModel: ClothesViewModelType {
 
   private let disposeBag = DisposeBag()
-
   // Input
   let itemDidSelect = PublishSubject<IndexPath>()
   let searchBarString = Variable<String?>("")
@@ -34,6 +25,7 @@ class ClothesViewModel: ClothesViewModelType {
   let didFinishSearching = PublishSubject<Void>()
   let profileButtonDidTap = PublishSubject<Void>()
   let basketButtonDidTap = PublishSubject<Void>()
+  let presentRatingAlert: Driver<OrderReviewAlertViewModel>
   let headerViewModel = CategoriesHeaderCollectionViewModel()
 
   // Output
@@ -45,6 +37,7 @@ class ClothesViewModel: ClothesViewModelType {
   var presentErrorAlert: PublishSubject<Error>
   var currentCategory = Variable<Category?>(nil)
   var currentItemsCount = Variable<Int>(0)
+  var basketButtonEnabled = Variable<Bool>(true)
   let categoriesUpdated: PublishSubject<Void>
 
   // Data
@@ -55,6 +48,7 @@ class ClothesViewModel: ClothesViewModelType {
     // Data
     let presentErrorAlert = PublishSubject<Error>()
     self.presentErrorAlert = presentErrorAlert
+
 
     let fetchLastOrder = DataManager.instance.showUser().map { ProfileManager.instance.userProfile.value.order }
 
@@ -104,6 +98,7 @@ class ClothesViewModel: ClothesViewModelType {
 
     self.presentProfileSection = profileButtonDidTap.asDriver(onErrorDriveWith: .empty())
 
+    let basketButtonDidTap = self.basketButtonDidTap
     self.presentOrderScreen = basketButtonDidTap.asDriver(onErrorDriveWith: .empty())
 
     self.presentServicesSection = itemDidSelect.asObservable()
@@ -112,6 +107,28 @@ class ClothesViewModel: ClothesViewModelType {
         return ItemConfigurationViewModel(orderItem: OrderItem(clothesItem: item))
       }
       .asDriver(onErrorDriveWith: .empty())
+    
+
+    let shouldRateOrderObservable = DataManager.instance.showUser()
+      .map { ProfileManager.instance.userProfile.value.order }.filter { order in
+        guard let order = order else { return false }
+        return order.paid && order.paymentMethod != .cash
+    }
+
+    presentRatingAlert = shouldRateOrderObservable
+      .asDriver(onErrorDriveWith: .empty())
+      .map { OrderReviewAlertViewModel(order: $0!) }
+
+    _ = basketButtonDidTap.asDriver(onErrorDriveWith: .empty()).flatMap { [weak self] _ -> Driver<Void> in
+      return DataManager.instance.showUser()
+        .asDriver(onErrorDriveWith: .just()).do(onCompleted: { [weak self] in
+          self?.basketButtonEnabled.value = true
+          }, onSubscribe: { [weak self] in
+            self?.basketButtonEnabled.value = false
+        })
+    }
+
+
 
     didStartSearching.asObservable()
       .withLatestFrom(currentCategory.asObservable())

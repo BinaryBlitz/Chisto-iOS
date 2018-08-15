@@ -62,12 +62,12 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
     }).addDisposableTo(disposeBag)
 
     viewModel.presentOrderPlacedPopup.drive(onNext: { [weak self] viewModel in
-      let orderViewController = OrderViewController.storyboardInstance()!
-      _ = self?.navigationController?.pushViewController(orderViewController, animated: true, completion: {
+      let clothesViewController = ClothesViewController.storyboardInstance()!
+      _ = self?.navigationController?.pushViewController(clothesViewController, animated: true, completion: {
         let viewController = OrderPlacedPopupViewController.storyboardInstance()!
         viewController.viewModel = viewModel
         viewController.modalPresentationStyle = .overFullScreen
-        orderViewController.present(viewController, animated: false)
+        clothesViewController.present(viewController, animated: false)
       })
     }).addDisposableTo(disposeBag)
 

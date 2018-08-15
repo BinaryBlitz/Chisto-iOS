@@ -1,5 +1,6 @@
 
 
+
 /* Class = "UILabel"; text = "Specify item size"; ObjectID = "IGU-4Q-dKz"; */
 "IGU-4Q-dKz.text" = "Укажите размер вещи";
 
@@ -7,7 +8,7 @@
 "TOJ-AK-kJc.placeholder" = "Длина, см";
 
 /* Class = "UILabel"; text = "Rhinestones, beads, sequins, lace or any other decorations that require special treatment"; ObjectID = "TnH-UJ-fZc"; */
-"TnH-UJ-fZc.text" = "Стразы, бисер, пайетки, кружева и прочие украшения, требующие особого внимания";
+"TnH-UJ-fZc.text" = "";
 
 /* Class = "UILabel"; text = "0 м"; ObjectID = "WFf-vA-cWo"; */
 "WFf-vA-cWo.text" = "0 м";
@@ -44,3 +45,38 @@
 
 /* Class = "UILabel"; text = "Cloth"; ObjectID = "tNI-0y-ySb"; */
 "tNI-0y-ySb.text" = "Ткань";
+
+
+
+/* Class = "UITableViewSection"; headerTitle = "Additionally"; ObjectID = "79j-Ls-Vha"; */
+"79j-Ls-Vha.headerTitle" = "Дополнительно";
+
+/* Class = "UITextField"; placeholder = "Length, cm"; ObjectID = "TOJ-AK-kJc"; */
+"TOJ-AK-kJc.placeholder" = "Длина, см";
+
+/* Class = "UILabel"; text = "Декоративная отделка"; ObjectID = "TnH-UJ-fZc"; */
+"TnH-UJ-fZc.text" = "Декоративная отделка";
+
+/* Class = "UILabel"; text = "0 м"; ObjectID = "WFf-vA-cWo"; */
+"WFf-vA-cWo.text" = "0 м";
+
+/* Class = "UITableViewSection"; headerTitle = "Material"; ObjectID = "Wxs-5O-u4f"; */
+"Wxs-5O-u4f.headerTitle" = "Материал";
+
+/* Class = "UITableViewSection"; footerTitle = "Rhinestones, beads, sequins, lace or any other decorations that require special treatment"; ObjectID = "Zbn-ZB-if6"; */
+"Zbn-ZB-if6.footerTitle" = "Стразы, бисер, пайетки, кружева и прочие украшения, требующие особого внимания";
+
+/* Class = "UITableViewSection"; headerTitle = "Decoration"; ObjectID = "Zbn-ZB-if6"; */
+"Zbn-ZB-if6.headerTitle" = "Декоративная отделка";
+
+/* Class = "UITableViewSection"; headerTitle = "Item size"; ObjectID = "Zhm-4Q-OhX"; */
+"Zhm-4Q-OhX.headerTitle" = "Укажите размер вещи";
+
+/* Class = "UITextField"; placeholder = "Width, cm"; ObjectID = "bGh-nt-CTy"; */
+"bGh-nt-CTy.placeholder" = "Ширина, см";
+
+/* Class = "UILabel"; text = "Area"; ObjectID = "dya-Ab-0uk"; */
+"dya-Ab-0uk.text" = "Площадь";
+
+/* Class = "UILabel"; text = "В зависимости от ваших загрязнений и материала вещи, технолог химчистки применит к ней аквачистку либо химчистку, а для рубашек или постельного белья бережную стирку."; ObjectID = "eRs-1E-Dnd"; */
+"eRs-1E-Dnd.text" = "В зависимости от ваших загрязнений и материала вещи, технолог химчистки применит к ней аквачистку либо химчистку, а для рубашек или постельного белья бережную стирку.";
