@@ -11,7 +11,7 @@ target 'Chisto' do
   pod 'RxDataSources', '~> 1.0'
   pod 'FloatRatingView', '~> 2.0'
   pod 'IQKeyboardManagerSwift', '~> 4.0'
-  pod 'ObjectMapper', '~> 2.2'
+  pod 'ObjectMapper', '~> 3.3.0'
   pod 'ObjectMapper+Realm', '~> 0.2'
   pod 'RealmSwift', '~> 2.4'
   pod 'RxRealm', '~> 0.5'

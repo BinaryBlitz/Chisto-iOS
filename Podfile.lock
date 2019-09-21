@@ -13,7 +13,7 @@ PODS:
     - GoogleMaps/Base (= 2.5.0)
   - IQKeyboardManagerSwift (4.0.13)
   - Kingfisher (3.13.1)
-  - ObjectMapper (2.2.9)
+  - ObjectMapper (3.3.0)
   - "ObjectMapper+Realm (0.5)":
     - ObjectMapper
     - RealmSwift
@@ -50,7 +50,7 @@ DEPENDENCIES:
   - GooglePlaces (~> 2.1)
   - IQKeyboardManagerSwift (~> 4.0)
   - Kingfisher (~> 3.0)
-  - ObjectMapper (~> 2.2)
+  - ObjectMapper (~> 3.3.0)
   - "ObjectMapper+Realm (~> 0.2)"
   - PhoneNumberKit (~> 1.2)
   - RealmSwift (~> 2.4)
@@ -94,7 +94,7 @@ SPEC CHECKSUMS:
   GooglePlaces: dd70d9d71ea1c7944846afe67de3712c99b30a77
   IQKeyboardManagerSwift: fb399c4cddcd8d9bbcd2d0c7c81ed290b61c088e
   Kingfisher: ed9707a409cc47fddafbcd12a43a9757e3600af5
-  ObjectMapper: 63cfe41bc6f8e7c8f44344c49901b8ae7de14c52
+  ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   "ObjectMapper+Realm": 3188789fb77c189c7a83cb625333a607eb61a08f
   PhoneNumberKit: a739c359d05701e2e9745654f53e7c64379c2516
   Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
@@ -107,6 +107,6 @@ SPEC CHECKSUMS:
   TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
   UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
 
-PODFILE CHECKSUM: b3c910be189bcd0ccd201f30e967515145992b53
+PODFILE CHECKSUM: a4568f652efadd517461d7f37bed40e64f22ae7c
 
 COCOAPODS: 1.7.5
