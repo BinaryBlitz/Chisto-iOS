@@ -12,6 +12,6 @@ import UIKit
 
 class ControlledRatingView: FloatRatingView {
   override open func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-    delegate?.floatRatingView(self, didUpdate: rating)
+    delegate?.floatRatingView!(self, didUpdate: rating)
   }
 }

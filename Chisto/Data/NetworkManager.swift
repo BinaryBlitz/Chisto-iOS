@@ -106,13 +106,17 @@ class NetworkManager {
     return requestObservable.do(
       onError: { _ in
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
-      }, onCompleted: { _ in
-      UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }, onSubscribe: { _ in
-      UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    }, onDispose: { _ in
-      UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    })
+      },
+      onCompleted: {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+      },
+      onSubscribe: {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+      },
+      onDispose: {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+      }
+    )
   }
 
   func getError(_ statusCode: Int?, response: Data) -> NetworkError {

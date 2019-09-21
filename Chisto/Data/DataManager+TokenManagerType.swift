@@ -46,7 +46,7 @@ extension DataManager: TokenManagerType {
        "token": verificationToken] as Any]
       )
       .flatMap { response -> Observable<Void> in
-        let json = JSON(object: response)
+        let json = JSON(response)
         let token = json["api_token"].string
         
         if token != nil {

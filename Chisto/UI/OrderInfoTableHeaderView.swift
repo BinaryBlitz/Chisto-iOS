@@ -46,7 +46,7 @@ class OrderInfoTableHeaderView: UIView {
     viewModel.promoCode.asObservable().subscribe(onNext: { [weak self] promoCode in
         self?.promoCodeView.isHidden = promoCode == nil
         self?.promoCodeDiscountView.isHidden = promoCode == nil
-        self?.viewController()?.view.layoutIfNeeded()
+        self?.inputViewController?.view.layoutIfNeeded()
       }).addDisposableTo(disposeBag)
 
     bindLaundryData(viewModel: viewModel)
@@ -62,7 +62,7 @@ class OrderInfoTableHeaderView: UIView {
     viewModel.laundryDescriprion.asObservable().bind(to: laundryDescriptionLabel.rx.text).addDisposableTo(disposeBag)
 
     viewModel.laundryDescriprion.asObservable().subscribe({ [weak self] _ in
-        self?.viewController()?.view.layoutIfNeeded()
+        self?.inputViewController?.view.layoutIfNeeded()
       }).addDisposableTo(disposeBag)
 
   }

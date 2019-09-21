@@ -19,7 +19,7 @@ class LaundryReviewsTableViewCell: UITableViewCell {
   func configure(viewModel: LaundryReviewsViewTableViewCellModelType) {
     authorNameLabel.text = viewModel.authorName
     reviewContentLabel.text = viewModel.content
-    reviewRatingView.rating = viewModel.rating
+    reviewRatingView.rating = Double(viewModel.rating)
     reviewDateLabel.text = viewModel.date
   }
 }

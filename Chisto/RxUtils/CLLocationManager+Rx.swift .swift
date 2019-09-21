@@ -23,7 +23,7 @@ extension Reactive where Base: CLLocationManager {
    For more information take a look at `DelegateProxyType` protocol documentation.
    */
     public var delegate: DelegateProxy<AnyObject, Any> {
-    return RxCLLocationManagerDelegateProxy.proxyForObject(base)
+    return RxCLLocationManagerDelegateProxy.proxy(for: base)
   }
 
   // MARK: Responding to Location Events
