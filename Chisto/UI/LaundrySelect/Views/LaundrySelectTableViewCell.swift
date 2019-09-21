@@ -29,7 +29,7 @@ class LaundrySelectTableViewCell: UITableViewCell {
   func configure(viewModel: LaundrySelectTableViewCellModelType) {
     laundryTitleLabel.text = viewModel.laundryTitle
     laundrySubTitleLabel.text = viewModel.laundryDescription
-    ratingView.rating = viewModel.rating
+    ratingView.rating = Double(viewModel.rating)
 
     laundryTitleLabel.textColor = viewModel.titleColor
     laundrySubTitleLabel.textColor = viewModel.descriptionColor

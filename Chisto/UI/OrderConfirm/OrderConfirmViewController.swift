@@ -55,7 +55,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
     laundryLogoImageView.kf.setImage(with: viewModel.laundryIcon)
     collectionTimeLabel.text = viewModel.collectionTime
     deliveryTimeLabel.text = viewModel.deliveryTime
-    laundryRatingView.rating = viewModel.laundryRating
+    laundryRatingView.rating = Double(viewModel.laundryRating)
     laundryRatingsCountLabel.text = viewModel.ratingsCountText
     collectionDateLabel.text = viewModel.collectionDate
     deliveryDateLabel.text = viewModel.deliveryDate

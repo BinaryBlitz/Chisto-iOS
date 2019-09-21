@@ -61,7 +61,7 @@ class OrderInfoTableHeaderView: UIView {
     viewModel.laundryTitle.asObservable().bind(to: laundryTitleLabel.rx.text).addDisposableTo(disposeBag)
     viewModel.laundryDescriprion.asObservable().bind(to: laundryDescriptionLabel.rx.text).addDisposableTo(disposeBag)
 
-    viewModel.laundryDescriprion.asObservable().subscribe(onNext: { [weak self] _ in
+    viewModel.laundryDescriprion.asObservable().subscribe({ [weak self] _ in
         self?.viewController()?.view.layoutIfNeeded()
       }).addDisposableTo(disposeBag)
 

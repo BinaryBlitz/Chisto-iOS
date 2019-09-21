@@ -28,7 +28,9 @@ class RegistrationCodeInputViewController: UIViewController {
   override func viewDidLoad() {
     hideKeyboardWhenTappedAround()
     licenseAgreementLabel.attributedText = viewModel?.licenseAgreementText
-    IQKeyboardManager.sharedManager().disabledDistanceHandlingClasses.append(RegistrationCodeInputViewController.self)
+    
+    IQKeyboardManager.shared.disabledDistanceHandlingClasses.append(RegistrationCodeInputViewController.self)
+    
     bottomLayoutConstraint.updateWithKeyboard()
     codeField.inputAccessoryView = UIView()
     codeField.tintColor = UIColor.chsSkyBlue

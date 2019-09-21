@@ -26,7 +26,7 @@ extension DataManager: TokenManagerType {
   func createVerificationToken(phone: String) -> Observable<Void> {
     return networkRequest(method: .post, .createVerificationToken, ["verification_token": ["phone_number": phone] as Any])
       .flatMap { response -> Observable<Void> in
-        let json = JSON(object: response)
+        let json = JSON(response)
         let verificationToken = json["token"].string
         ProfileManager.instance.updateProfile { profile in
           profile.verificationToken = verificationToken

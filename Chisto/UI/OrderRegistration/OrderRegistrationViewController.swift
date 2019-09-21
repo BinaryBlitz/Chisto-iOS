@@ -80,8 +80,8 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
 
     viewModel.presentApplePayScreen.drive(onNext: { [weak self] request in
       let paymentViewController = PKPaymentAuthorizationViewController(paymentRequest: request)
-      paymentViewController.delegate = self
-      self?.present(paymentViewController, animated: true)
+    paymentViewController?.delegate = self
+      self?.present(paymentViewController!, animated: true)
     }).addDisposableTo(disposeBag)
 
     configureForm()

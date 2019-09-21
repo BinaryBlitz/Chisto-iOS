@@ -33,7 +33,7 @@ class LaundryReviewsViewController: UIViewController {
     laundryLogoView.kf.setImage(with: viewModel.laundryLogoUrl)
     let backgroundProcessor = OverlayImageProcessor(overlay: .black, fraction: 0.7)
     laundryBackgroundImageView.kf.setImage(with: viewModel.laundryBackgroundUrl, options: [.processor(backgroundProcessor)])
-    laundryRatingView.rating = viewModel.laundryRating
+    laundryRatingView.rating = Double(viewModel.laundryRating)
     reviewsCountLabel.text = viewModel.laundryReviewsCountText
 
     viewModel.presentErrorAlert.asDriver(onErrorDriveWith: .empty()).drive(onNext: { error in

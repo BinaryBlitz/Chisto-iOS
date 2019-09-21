@@ -28,7 +28,7 @@ class RegistrationPhoneInputViewController: UIViewController {
     hideKeyboardWhenTappedAround()
     licenseAgreementLabel.attributedText = viewModel?.licenseAgreementText
 
-    IQKeyboardManager.sharedManager()
+    IQKeyboardManager.shared
       .disabledDistanceHandlingClasses
       .append(RegistrationPhoneInputViewController.self)
 

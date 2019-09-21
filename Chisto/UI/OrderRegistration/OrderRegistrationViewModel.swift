@@ -71,7 +71,7 @@ class OrderRegistrationViewModel {
     self.presentErrorAlert = presentErrorAlert
 
     let placeOrder: () -> Driver<Order>
-    placeOrder = { method in
+    placeOrder = {
       let placeOrderDriver = formViewModel.saveUserProfile().flatMap {
           return OrderManager.instance.createOrder(promoCode: promoCode)
         }.do(onError: { error in

@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     GMSPlacesClient.provideAPIKey(googlePlacesApiKey)
 
     // IQKeyboardManager
-    IQKeyboardManager.sharedManager().enable = true
+    IQKeyboardManager.shared.enable = true
 
     // NotificationManager
     NotificationManager.instance.resetNotificationsCount()

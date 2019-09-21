@@ -26,7 +26,7 @@ type: T.Type, primaryKey: K) -> Observable<T?> {
     let objectQuery = self.objects(type)
       .filter("%K == %@", primaryKeyName, primaryKey)
 
-    let token = objectQuery.addNotificationBlock { changes in
+    let token = objectQuery.observe { changes in
       switch changes {
       case .initial(let results):
         if let latestObject = results.first {
@@ -46,7 +46,7 @@ type: T.Type, primaryKey: K) -> Observable<T?> {
     }
 
     return Disposables.create {
-      token.stop()
+        token.invalidate()
     }
   }
 }

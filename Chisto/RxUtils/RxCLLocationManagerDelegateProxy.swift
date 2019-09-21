@@ -16,17 +16,22 @@ import RxCocoa
 
 #endif
 
-class RxCLLocationManagerDelegateProxy: DelegateProxy
-  , CLLocationManagerDelegate
-  , DelegateProxyType {
-
-  class func currentDelegateFor(_ object: AnyObject) -> AnyObject? {
-    let locationManager: CLLocationManager = object as! CLLocationManager
-    return locationManager.delegate
-  }
-
-  class func setCurrentDelegate(_ delegate: AnyObject?, toObject object: AnyObject) {
-    let locationManager: CLLocationManager = object as! CLLocationManager
-    locationManager.delegate = delegate as? CLLocationManagerDelegate
-  }
+class RxCLLocationManagerDelegateProxy: DelegateProxy<AnyObject, Any>, CLLocationManagerDelegate, DelegateProxyType {
+    static func currentDelegate(for object: AnyObject) -> Any? {
+        let locationManager: CLLocationManager = object as! CLLocationManager
+        return locationManager.delegate
+    }
+    
+    static func registerKnownImplementations() {
+        return
+    }
+    
+    static func setCurrentDelegate(_ delegate: Any?, to object: AnyObject) {
+        return
+    }
+    
+    class func setCurrentDelegate(_ delegate: AnyObject?, toObject object: AnyObject) {
+        let locationManager: CLLocationManager = object as! CLLocationManager
+        locationManager.delegate = delegate as? CLLocationManagerDelegate
+    }
 }

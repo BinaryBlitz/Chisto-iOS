@@ -35,7 +35,7 @@ class OrderReviewAlertViewController: UIViewController {
 
     titleLabel.text = viewModel.title
     (reviewContentField.rx.text <-> viewModel.reviewContent).addDisposableTo(disposeBag)
-    ratingView.rating = Float(viewModel.ratingStarsCount.value)
+    ratingView.rating = Double(viewModel.ratingStarsCount.value)
     continueButton.rx.tap.bind(to: viewModel.continueButtonDidTap).addDisposableTo(disposeBag)
 
     viewModel.uiEnabled.asObservable().bind(to: continueButton.rx.isEnabled).addDisposableTo(disposeBag)
