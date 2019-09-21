@@ -14,7 +14,11 @@ import RxCocoa
 
 class MyOrdersViewController: UITableViewController, DefaultBarColoredViewController {
   let disposeBag = DisposeBag()
-  let dataSource = RxTableViewSectionedReloadDataSource<MyOrdersSectionModel>()
+  let dataSource = RxTableViewSectionedReloadDataSource<MyOrdersSectionModel>(configureCell: { _, tableView, indexPath, cellViewModel in
+    let cell = tableView.dequeueReusableCell(withIdentifier: "MyOrdersTableViewCell", for: indexPath) as! MyOrdersTableViewCell
+    cell.configure(viewModel: cellViewModel)
+    return cell
+  })
   let emptyTableBackgroundView = EmptyTableBackgroundView.nibInstance()!
   var viewModel = MyOrdersViewModel()
 

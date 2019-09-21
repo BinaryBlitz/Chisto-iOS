@@ -15,7 +15,11 @@ class LaundrySelectViewController: UITableViewController, DefaultBarColoredViewC
   let disposeBag = DisposeBag()
 
   let viewModel = LaundrySelectViewModel()
-  var dataSource = RxTableViewSectionedReloadDataSource<LaundrySelectSectionModel>()
+  var dataSource = RxTableViewSectionedReloadDataSource<LaundrySelectSectionModel>(configureCell: { _, tableView, indexPath, cellViewModel in
+    let cell = tableView.dequeueReusableCell(withIdentifier: "LaundrySelectTableViewCell", for: indexPath) as! LaundrySelectTableViewCell
+    cell.configure(viewModel: cellViewModel)
+    return cell
+  })
 
   override func viewDidLoad() {
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName:"iconSortNavbar"), style: .plain, target: self, action: nil)

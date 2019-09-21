@@ -19,7 +19,15 @@ class CitySelectViewController: UIViewController, UIScrollViewDelegate, UISearch
   @IBOutlet weak var goButton: UIButton!
   @IBOutlet weak var tableView: UITableView!
 
-  var dataSource = RxTableViewSectionedReloadDataSource<CitySelectSectionModel>()
+  var dataSource = RxTableViewSectionedReloadDataSource<CitySelectSectionModel>(configureCell: { dataSource, tableView, indexPath, city in
+    let cell = tableView.dequeueReusableCell(withIdentifier: "CitySelectTableViewCell", for: indexPath)
+    cell.textLabel?.text = city.name
+//    TEMP: won't compile
+//    if dataSource.cityClosedToUser.value == city {
+//      cell.accessoryView = UIImageView(image: #imageLiteral(resourceName:"iconMap"))
+//    }
+    return cell
+  })
   var viewModel: CitySelectViewModel? = nil
   private let disposeBag = DisposeBag()
 

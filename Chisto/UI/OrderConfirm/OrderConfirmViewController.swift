@@ -19,7 +19,12 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
   let disposeBag = DisposeBag()
 
   var viewModel: OrderConfirmViewModel? = nil
-  var dataSource = RxTableViewSectionedReloadDataSource<OrderConfirmSectionModel>()
+  var dataSource = RxTableViewSectionedReloadDataSource<OrderConfirmSectionModel>(configureCell: { _, tableView, indexPath, cellViewModel in
+    let cell = tableView.dequeueReusableCell(withIdentifier: "OrderConfirmServiceTableViewCell", for: indexPath) as! OrderConfirmServiceTableViewCell
+    
+    cell.configure(viewModel: cellViewModel)
+    return cell
+  })
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var confirmButton: GoButton!

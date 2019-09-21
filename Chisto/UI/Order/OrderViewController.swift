@@ -19,7 +19,12 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
 
   let viewModel = OrderViewModel()
   private let disposeBag = DisposeBag()
-  var dataSource = RxTableViewSectionedReloadDataSource<OrderSectionModel>()
+  var dataSource = RxTableViewSectionedReloadDataSource<OrderSectionModel>(configureCell: { _, tableView, indexPath, cellViewModel in
+    let cell = tableView.dequeueReusableCell(withIdentifier: "OrderTableViewCell", for: indexPath) as! OrderTableViewCell
+    
+    cell.configure(viewModel: cellViewModel)
+    return cell
+  })
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -88,7 +93,7 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
       .bind(to: viewModel.itemDidSelect)
       .addDisposableTo(disposeBag)
 
-    dataSource.canEditRowAtIndexPath = { _ in
+    dataSource.canEditRowAtIndexPath = { _,_  in
       return true
     }
 

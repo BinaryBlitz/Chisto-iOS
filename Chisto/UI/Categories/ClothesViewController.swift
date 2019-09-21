@@ -20,7 +20,15 @@ class ClothesViewController: UIViewController, DefaultBarColoredViewController {
   
   var searchController: UISearchController!
 
-  var dataSource = RxTableViewSectionedReloadDataSource<ItemsSectionModel>()
+  var dataSource = RxTableViewSectionedReloadDataSource<ItemsSectionModel>(configureCell: { _, tableView, indexPath, cellViewModel in
+    let cell = tableView.dequeueReusableCell(
+      withIdentifier: "ItemTableViewCell",
+      for: indexPath
+      ) as! ItemTableViewCell
+    
+    cell.configure(viewModel: cellViewModel)
+    return cell
+  })
   let viewModel = ClothesViewModel()
   let disposeBag = DisposeBag()
 

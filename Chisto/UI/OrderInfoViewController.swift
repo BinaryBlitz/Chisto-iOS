@@ -24,7 +24,12 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
 
   @IBOutlet weak var ratingButton: GoButton!
   var viewModel: OrderInfoViewModel? = nil
-  var dataSource = RxTableViewSectionedReloadDataSource<OrderInfoSectionModel>()
+  var dataSource = RxTableViewSectionedReloadDataSource<OrderInfoSectionModel>(configureCell: { _, tableView, indexPath, cellViewModel in
+    let cell = tableView.dequeueReusableCell(withIdentifier: "OrderInfoTableViewCell", for: indexPath) as! OrderInfoTableViewCell
+    
+    cell.configure(viewModel: cellViewModel)
+    return cell
+  })
 
   override func viewDidLoad() {
     tableView.tableHeaderView = headerView

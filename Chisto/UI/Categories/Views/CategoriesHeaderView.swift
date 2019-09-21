@@ -17,7 +17,15 @@ private let reuseIdentifier = "CategoryCollectionViewCell"
 class CategoriesHeaderView: UIView, UIScrollViewDelegate {
   @IBOutlet weak var collectionView: UICollectionView!
 
-  var rxDataSource = RxCollectionViewSectionedReloadDataSource<CategoriesSectionModel>()
+  var rxDataSource = RxCollectionViewSectionedReloadDataSource<CategoriesSectionModel>(configureCell: { _, tableView, indexPath, viewModel in
+    let cell = tableView.dequeueReusableCell(
+      withReuseIdentifier: reuseIdentifier,
+      for: indexPath
+      ) as! CategoryCollectionViewCell
+    
+    cell.configure(viewModel: viewModel)
+    return cell
+  })
 
   var viewModel: CategoriesHeaderCollectionViewModel? = nil {
     didSet {

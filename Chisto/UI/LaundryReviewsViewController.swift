@@ -17,7 +17,11 @@ class LaundryReviewsViewController: UIViewController {
   let disposeBag = DisposeBag()
   var viewModel: LaundryReviewsViewModel? = nil
 
-  var dataSource = RxTableViewSectionedReloadDataSource<LaundryReviewsSectionModel>()
+  var dataSource = RxTableViewSectionedReloadDataSource<LaundryReviewsSectionModel>(configureCell: { _, tableView, indexPath, cellViewModel in
+    let cell = tableView.dequeueReusableCell(withIdentifier: "LaundryReviewsTableViewCell", for: indexPath) as! LaundryReviewsTableViewCell
+    cell.configure(viewModel: cellViewModel)
+    return cell
+  })
 
   let emptyTableBackgroundView = EmptyTableBackgroundView.nibInstance()!
   @IBOutlet weak var laundryLogoView: UIImageView!
