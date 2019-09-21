@@ -1316,7 +1316,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Chisto/Pods-Chisto-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Chisto/Pods-Chisto-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/FloatRatingView/FloatRatingView.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
@@ -1355,7 +1355,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chisto/Pods-Chisto-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Chisto/Pods-Chisto-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		50E15D77F4E0AE5A2171C7AB /* [CP] Copy Pods Resources */ = {
@@ -1364,17 +1364,18 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Chisto/Pods-Chisto-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Chisto/Pods-Chisto-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chisto/Pods-Chisto-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Chisto/Pods-Chisto-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		88073EFF1DAD6DDE000696A3 /* ShellScript */ = {
