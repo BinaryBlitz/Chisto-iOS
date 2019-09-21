@@ -12,13 +12,13 @@ import Realm
 import ObjectMapper
 
 class Item: ServerObject {
-  dynamic var name: String = ""
-  dynamic var iconUrl: String = ""
-  dynamic var descriptionText: String = ""
-  dynamic var hasDecoration: Bool = true
-  dynamic var useArea: Bool = false
-  dynamic var longTreatment: Bool = false
-  dynamic var category: Category? = nil
+  @objc dynamic var name: String = ""
+  @objc dynamic var iconUrl: String = ""
+  @objc dynamic var descriptionText: String = ""
+  @objc dynamic var hasDecoration: Bool = true
+  @objc dynamic var useArea: Bool = false
+  @objc dynamic var longTreatment: Bool = false
+  @objc dynamic var category: Category? = nil
 
   let treatments = LinkingObjects(fromType: Treatment.self, property: "item")
 

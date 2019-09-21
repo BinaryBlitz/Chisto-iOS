@@ -14,8 +14,8 @@ import RxSwift
 import RxCocoa
 
 class ServerObject: Object, Mappable {
-  dynamic var id: Int = UUID().hashValue
-  dynamic var isDeleted: Bool = false
+  @objc dynamic var id: Int = UUID().hashValue
+  @objc dynamic var isDeleted: Bool = false
 
   required init(map: Map) {
     super.init()

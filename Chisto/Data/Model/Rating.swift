@@ -25,9 +25,9 @@ class User: Mappable {
 
 class Rating: ServerObject {
 
-  dynamic var value: Int = 0
-  dynamic var content: String = ""
-  dynamic var createdAt: Date? = nil
+  @objc dynamic var value: Int = 0
+  @objc dynamic var content: String = ""
+  @objc dynamic var createdAt: Date? = nil
   var user: User? = nil
 
   override func mapping(map: Map) {

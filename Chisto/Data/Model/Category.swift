@@ -15,13 +15,13 @@ import ObjectMapper_Realm
 
 class Category: ServerObject {
 
-  dynamic var name: String = ""
-  dynamic var colorString: String = ""
-  dynamic var iconUrl: String = ""
-  dynamic var descriptionText: String = ""
+  @objc dynamic var name: String = ""
+  @objc dynamic var colorString: String = ""
+  @objc dynamic var iconUrl: String = ""
+  @objc dynamic var descriptionText: String = ""
   var itemsPreview = List<RealmString>()
-  dynamic var itemsCount: Int = 0
-  dynamic var featured: Bool = false
+  @objc dynamic var itemsCount: Int = 0
+  @objc dynamic var featured: Bool = false
 
   var color: UIColor {
     return UIColor(colorString)

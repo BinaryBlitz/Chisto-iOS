@@ -11,9 +11,9 @@ import ObjectMapper
 
 class Treatment: ServerObject {
 
-  dynamic var name: String = ""
-  dynamic var descriptionText: String = ""
-  dynamic var item: Item? = nil
+  @objc dynamic var name: String = ""
+  @objc dynamic var descriptionText: String = ""
+  @objc dynamic var item: Item? = nil
 
   override func mapping(map: Map) {
     super.mapping(map: map)

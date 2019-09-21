@@ -92,7 +92,7 @@ class OrderViewModel: OrderViewModelType {
 
     let fetchLastOrderDriver = continueButtonDidTap.asDriver(onErrorDriveWith: .empty()).flatMap { _ -> Driver<Void> in
       return DataManager.instance.showUser()
-        .asDriver(onErrorDriveWith: .just()).do(onCompleted: {
+        .asDriver(onErrorDriveWith: .just(())).do(onCompleted: {
           continueButtonEnabled.value = true
         }, onSubscribe: {
           continueButtonEnabled.value = false
@@ -100,7 +100,7 @@ class OrderViewModel: OrderViewModelType {
     }
 
     fetchLastOrderDriver.drive(onNext: { [weak self] in
-        self?.presentLaundrySelectSection.onNext()
+        self?.presentLaundrySelectSection.onNext(())
       }).addDisposableTo(disposeBag)
 
     tableItemDeleted.asObservable().subscribe(onNext: { indexPath in

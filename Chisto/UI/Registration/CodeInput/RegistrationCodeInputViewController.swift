@@ -46,7 +46,7 @@ class RegistrationCodeInputViewController: UIViewController {
 
     viewModel.dismissViewController.drive(onNext: { [weak self] in
         self?.dismiss(animated: true, completion: {
-          viewModel.didFinishRegistration.onNext()
+          viewModel.didFinishRegistration.onNext(())
         })
       }).addDisposableTo(disposeBag)
 

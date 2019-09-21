@@ -10,10 +10,10 @@ import Foundation
 import ObjectMapper
 
 class Payment: ServerObject {
-  dynamic var amount: Int = 0
-  dynamic var paid: Bool = false
-  dynamic var paymentUrl: String = ""
-  dynamic var createdAt: String = ""
+  @objc dynamic var amount: Int = 0
+  @objc dynamic var paid: Bool = false
+  @objc dynamic var paymentUrl: String = ""
+  @objc dynamic var createdAt: String = ""
 
   override func mapping(map: Map) {
     super.mapping(map: map)

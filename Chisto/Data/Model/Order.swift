@@ -79,18 +79,18 @@ enum OrderStatus: String {
 }
 
 class Order: ServerObject {
-  dynamic var streetName: String = ""
-  dynamic var laundryId: Int = UUID().hashValue
-  dynamic var laundry: Laundry? = nil
-  dynamic var houseNumber: String = ""
-  dynamic var apartmentNumber: String = ""
-  dynamic var contactNumber: String = ""
-  dynamic var notes: String? = nil
-  dynamic var paid: Bool = false
-  dynamic var statusString: String = ""
-  dynamic var paymentUrl: String = ""
-  dynamic var email: String? = nil
-  dynamic var deliveryPriceRaw: String = ""
+  @objc dynamic var streetName: String = ""
+  @objc dynamic var laundryId: Int = UUID().hashValue
+  @objc dynamic var laundry: Laundry? = nil
+  @objc dynamic var houseNumber: String = ""
+  @objc dynamic var apartmentNumber: String = ""
+  @objc dynamic var contactNumber: String = ""
+  @objc dynamic var notes: String? = nil
+  @objc dynamic var paid: Bool = false
+  @objc dynamic var statusString: String = ""
+  @objc dynamic var paymentUrl: String = ""
+  @objc dynamic var email: String? = nil
+  @objc dynamic var deliveryPriceRaw: String = ""
   var deliveryPrice: Decimal {
     get {
       return Decimal(string: deliveryPriceRaw) ?? 0
@@ -99,9 +99,9 @@ class Order: ServerObject {
       deliveryPriceRaw = NSDecimalNumber(decimal: newValue).stringValue
     }
   }
-  dynamic var createdAt: Date = Date()
-  dynamic var updatedAt: Date = Date()
-  dynamic var totalPriceRaw: String = ""
+  @objc dynamic var createdAt: Date = Date()
+  @objc dynamic var updatedAt: Date = Date()
+  @objc dynamic var totalPriceRaw: String = ""
   var totalPrice: Decimal {
     get {
       return Decimal(string: totalPriceRaw) ?? 0
@@ -110,8 +110,8 @@ class Order: ServerObject {
       totalPriceRaw = NSDecimalNumber(decimal: newValue).stringValue
     }
   }
-  dynamic var payment: Payment? = nil
-  dynamic var rating: Rating? = nil
+  @objc dynamic var payment: Payment? = nil
+  @objc dynamic var rating: Rating? = nil
   var orderItems: [OrderLineItem] = []
   var promoCode: PromoCode? = nil
 
@@ -128,7 +128,7 @@ class Order: ServerObject {
     return totalPrice - (orderPrice + deliveryPrice)
   }
 
-  dynamic var paymentMethodRaw: String = "cash"
+  @objc dynamic var paymentMethodRaw: String = "cash"
 
   var paymentMethod: PaymentMethod {
     get {

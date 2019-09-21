@@ -21,20 +21,20 @@ enum LaundryType {
 
 class Laundry: ServerObject {
   let dateFormatType = Date.DateStringFormatType.fullDate
-  dynamic var city: City? = nil
-  dynamic var name: String = ""
-  dynamic var descriptionText: String = ""
-  dynamic var rating: Float = 0
-  dynamic var backgroundImageUrl: String = ""
-  dynamic var logoUrl: String = ""
-  dynamic var collectionFrom: Date = Date()
-  dynamic var collectionTo: Date = Date()
-  dynamic var deliveryFrom: Date = Date()
-  dynamic var deliveryTo: Date = Date()
-  dynamic var deliveryFee: Double = 0
-  dynamic var ratingsCount: Int = 0
-  dynamic var minimumOrderPrice: Double = 0
-  dynamic var freeDeliveryFrom: Double = 0
+  @objc dynamic var city: City? = nil
+  @objc dynamic var name: String = ""
+  @objc dynamic var descriptionText: String = ""
+  @objc dynamic var rating: Float = 0
+  @objc dynamic var backgroundImageUrl: String = ""
+  @objc dynamic var logoUrl: String = ""
+  @objc dynamic var collectionFrom: Date = Date()
+  @objc dynamic var collectionTo: Date = Date()
+  @objc dynamic var deliveryFrom: Date = Date()
+  @objc dynamic var deliveryTo: Date = Date()
+  @objc dynamic var deliveryFee: Double = 0
+  @objc dynamic var ratingsCount: Int = 0
+  @objc dynamic var minimumOrderPrice: Double = 0
+  @objc dynamic var freeDeliveryFrom: Double = 0
   var laundryTreatments: [LaundryTreatment] = []
   var laundryItems: [LaundryItem] = []
 

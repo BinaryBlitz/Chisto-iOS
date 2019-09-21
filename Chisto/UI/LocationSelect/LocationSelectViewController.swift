@@ -105,7 +105,7 @@ class LocationSelectViewController: UIViewController {
     searchBar.setSearchFieldBackgroundImage(#imageLiteral(resourceName:"searchBarTextBack"), for: .normal)
     searchBar.setImage(#imageLiteral(resourceName:"iconSearch"), for: .search, state: .normal)
     searchBar.setTextColor(color: UIColor.white)
-    searchBar.searchTextPositionAdjustment = UIOffsetMake(5.0, 0.0)
+    searchBar.searchTextPositionAdjustment = UIOffset.init(horizontal: 5.0, vertical: 0.0)
 
     searchBar.sizeToFit()
     searchView.addSubview(searchBar)

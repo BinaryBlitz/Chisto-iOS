@@ -48,7 +48,7 @@ class MyOrdersViewModel: MyOrdersViewModelType {
 
     let fetchOrdersObservable = DataManager.instance.fetchOrders()
 
-    self.tableIsEmpty = Driver.combineLatest(orders.asDriver(), fetchOrdersObservable.asDriver(onErrorDriveWith: Driver.just())) { orders, _ in
+    self.tableIsEmpty = Driver.combineLatest(orders.asDriver(), fetchOrdersObservable.asDriver(onErrorDriveWith: Driver.just(()))) { orders, _ in
       return orders.isEmpty
     }
 

@@ -25,7 +25,7 @@ class OrderManager {
   /// - Parameters:
   ///   - item: an item to update
   ///   - closure: a block which modifies the object
-  func updateOrderItem(_ item: OrderItem, closure: (Void) -> Void) {
+  func updateOrderItem(_ item: OrderItem, closure: () -> Void) {
     closure()
 
     var items = try! currentOrderItems.value()

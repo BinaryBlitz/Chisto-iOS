@@ -127,7 +127,7 @@ class OrderViewController: UIViewController, DefaultBarColoredViewController {
       .drive(onNext: { [weak self] in
         let viewController = LaundrySelectViewController.storyboardInstance()!
         self?.navigationController?.pushViewController(viewController, animated: true) {
-          viewController.viewModel.didFinishPushingViewController.onNext()
+          viewController.viewModel.didFinishPushingViewController.onNext(())
         }
       })
       .addDisposableTo(disposeBag)

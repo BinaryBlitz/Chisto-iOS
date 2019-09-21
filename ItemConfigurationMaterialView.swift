@@ -28,7 +28,7 @@ class ItemConfigurationMaterialView: UIView {
   }
 
   @IBAction func itemDidTap(_ sender: Any) {
-    itemDidTapHandler.onNext()
+    itemDidTapHandler.onNext(())
   }
   
 }

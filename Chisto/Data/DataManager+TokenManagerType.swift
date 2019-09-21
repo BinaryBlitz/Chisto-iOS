@@ -32,7 +32,7 @@ extension DataManager: TokenManagerType {
           profile.verificationToken = verificationToken
           profile.phone = json["phone_number"].stringValue
         }
-        return Observable.just()
+        return Observable.just(())
     }
   }
 
@@ -58,7 +58,7 @@ extension DataManager: TokenManagerType {
           profile.apiToken = token
           profile.isVerified = true
         }
-        return Observable.just()
+        return Observable.just(())
     }
   }
 

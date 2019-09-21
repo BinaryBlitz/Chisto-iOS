@@ -13,26 +13,26 @@ import ObjectMapper
 
 class Profile: Object, Mappable {
   let dateFormatType = Date.DateStringFormatType.fullDate
-  dynamic var isCreated: Bool = false
-  dynamic var isVerified: Bool = false
-  dynamic var id: Int = UUID().hashValue
-  dynamic var deviceToken: String? = nil
-  dynamic var order: Order? = nil
-  dynamic var firstName: String = ""
-  dynamic var lastName: String = ""
-  dynamic var phone: String = ""
-  dynamic var email: String = ""
-  dynamic var streetName: String = ""
-  dynamic var city: City? = nil
-  dynamic var building: String = ""
-  dynamic var apartment: String = ""
-  dynamic var birthdayDate: Date? = nil
-  dynamic var apiToken: String? = nil
-  dynamic var verificationToken: String? = nil
-  dynamic var ordersCount: Int = 0
-  dynamic var notes: String = ""
-  dynamic var disabledDecorationAlert: Bool = false
-  dynamic var paymentMethodRaw = PaymentMethod.applePay.rawValue
+  @objc dynamic var isCreated: Bool = false
+  @objc dynamic var isVerified: Bool = false
+  @objc dynamic var id: Int = UUID().hashValue
+  @objc dynamic var deviceToken: String? = nil
+  @objc dynamic var order: Order? = nil
+  @objc dynamic var firstName: String = ""
+  @objc dynamic var lastName: String = ""
+  @objc dynamic var phone: String = ""
+  @objc dynamic var email: String = ""
+  @objc dynamic var streetName: String = ""
+  @objc dynamic var city: City? = nil
+  @objc dynamic var building: String = ""
+  @objc dynamic var apartment: String = ""
+  @objc dynamic var birthdayDate: Date? = nil
+  @objc dynamic var apiToken: String? = nil
+  @objc dynamic var verificationToken: String? = nil
+  @objc dynamic var ordersCount: Int = 0
+  @objc dynamic var notes: String = ""
+  @objc dynamic var disabledDecorationAlert: Bool = false
+  @objc dynamic var paymentMethodRaw = PaymentMethod.applePay.rawValue
   var paymentMethod: PaymentMethod {
     get {
       return PaymentMethod(rawValue: paymentMethodRaw) ?? .applePay

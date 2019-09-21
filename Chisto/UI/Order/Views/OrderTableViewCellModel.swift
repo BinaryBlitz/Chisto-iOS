@@ -36,27 +36,38 @@ class OrderTableViewCellModel: OrderTableViewCellModelType {
     let servicesAttrString = NSMutableAttributedString()
 
     if item.hasDecoration {
-      servicesAttrString.append(NSAttributedString(string: "Декор", attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey]))
+      servicesAttrString.append(NSAttributedString(string: "Декор", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): UIColor.chsSlateGrey])))
     }
 
     if let area = item.area, item.clothesItem.useArea {
       if item.hasDecoration {
-        servicesAttrString.append(NSAttributedString(string: " • ", attributes: [NSForegroundColorAttributeName: UIColor.chsSilver]))
+        servicesAttrString.append(NSAttributedString(string: " • ", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): UIColor.chsSilver])))
       }
-      servicesAttrString.append(NSAttributedString(string: "\(area) м²", attributes: [NSForegroundColorAttributeName: UIColor.chsSlateGrey]))
+      servicesAttrString.append(NSAttributedString(string: "\(area) м²", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): UIColor.chsSlateGrey])))
 
     }
 
     self.servicesText = servicesAttrString
 
     let amountText = NSMutableAttributedString()
-    amountText.append(NSAttributedString(string: "× ", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 24)]))
+    amountText.append(NSAttributedString(string: "× ", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font): UIFont.systemFont(ofSize: 24)])))
     amountText.append(NSAttributedString(string: "\(item.amount)"))
-    amountText.append(NSAttributedString(string: " шт", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18)]))
+    amountText.append(NSAttributedString(string: " шт", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font): UIFont.systemFont(ofSize: 18)])))
 
     self.amountText = amountText
 
     self.iconUrl = URL(string: item.clothesItem.iconUrl)
   }
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
 }

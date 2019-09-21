@@ -90,8 +90,8 @@ class OrderRegistrationViewController: UIViewController, DefaultBarColoredViewCo
   func configureForm() {
     guard let viewModel = viewModel else { return }
     contactFormViewController.viewModel = viewModel.formViewModel
-    addChildViewController(contactFormViewController)
-    contactFormViewController.didMove(toParentViewController: self)
+    addChild(contactFormViewController)
+    contactFormViewController.didMove(toParent: self)
     dataView.addSubview(contactFormViewController.view)
     contactFormViewController.view.frame = dataView.bounds
     contactFormViewController.cityButton.isEnabled = false
@@ -111,7 +111,7 @@ extension OrderRegistrationViewController: PKPaymentAuthorizationViewControllerD
 
   func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
     controller.dismiss(animated: true, completion: { [weak self] in
-      self?.viewModel?.applePayDidFinish.onNext()
+      self?.viewModel?.applePayDidFinish.onNext(())
     })
   }
   

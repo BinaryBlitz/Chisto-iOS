@@ -34,7 +34,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
   @IBOutlet weak var deliveryTimeLabel: UILabel!
 
   @IBAction func headerViewDidTap(_ sender: Any) {
-    viewModel?.headerViewDidTap.onNext()
+    viewModel?.headerViewDidTap.onNext(())
   }
 
   let tableHeaderView = OrderConfirmTableHeaderView.nibInstance()!
@@ -125,7 +125,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
       .addDisposableTo(self.disposeBag)
 
     tableView.estimatedRowHeight = 400
-    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.rowHeight = UITableView.automaticDimension
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -144,7 +144,7 @@ class OrderConfirmViewController: UIViewController, UITableViewDelegate {
     let headerView = tableView.tableHeaderView!
     headerView.setNeedsLayout()
     headerView.layoutIfNeeded()
-    let height = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+    let height = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
     var frame = headerView.frame
     frame.size.height = height
     headerView.frame = frame

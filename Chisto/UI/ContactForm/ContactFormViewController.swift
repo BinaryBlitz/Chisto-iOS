@@ -300,7 +300,7 @@ class ContactFormViewController: UITableViewController {
   }
 
   @IBAction func streetFieldDidTap(_ sender: Any) {
-    viewModel?.streetNameFieldDidTap.onNext()
+    viewModel?.streetNameFieldDidTap.onNext(())
   }
 
   override func viewWillDisappear(_ animated: Bool) {

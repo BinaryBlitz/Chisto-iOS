@@ -12,9 +12,9 @@ import CoreLocation
 
 class City: ServerObject {
 
-  dynamic var name: String = ""
-  dynamic var latitude: Double = 0.0
-  dynamic var longitude: Double = 0.0
+  @objc dynamic var name: String = ""
+  @objc dynamic var latitude: Double = 0.0
+  @objc dynamic var longitude: Double = 0.0
 
   override func mapping(map: Map) {
     super.mapping(map: map)

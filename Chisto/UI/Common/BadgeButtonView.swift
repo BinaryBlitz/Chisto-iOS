@@ -19,7 +19,7 @@ class BadgeButtonView: UIView {
   let tap = PublishSubject<Void>()
 
   @IBAction func headerViewDidTap(_ sender: Any) {
-    tap.onNext()
+    tap.onNext(())
   }
 
   @IBAction func handleLongPressGesture(_ sender: UILongPressGestureRecognizer) {
@@ -27,7 +27,7 @@ class BadgeButtonView: UIView {
     case .began:
       button.isHighlighted = true
     case .ended:
-      tap.onNext()
+      tap.onNext(())
       button.isHighlighted = false
     case .cancelled:
       button.isHighlighted = false

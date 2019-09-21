@@ -12,7 +12,7 @@ import RealmSwift
 import ObjectMapper_Realm
 
 class LineItem: ServerObject {
-  dynamic var price: Int = 0
+  @objc dynamic var price: Int = 0
   var laundryTreatment: LaundryTreatment? = nil
 
   override func mapping(map: Map) {

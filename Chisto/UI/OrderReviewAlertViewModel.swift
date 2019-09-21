@@ -60,7 +60,7 @@ class OrderReviewAlertViewModel {
           rating.content = reviewContent.value ?? ""
           rating.value = ratingStarsCount.value
         }
-        ratingDriver = DataManager.instance.updateRating(rating: rating).asDriver(onErrorDriveWith: .just())
+        ratingDriver = DataManager.instance.updateRating(rating: rating).asDriver(onErrorDriveWith: .just(()))
       } else {
         let rating = Rating()
         rating.content = reviewContent.value ?? ""
@@ -68,7 +68,7 @@ class OrderReviewAlertViewModel {
         ratingDriver = DataManager.instance.createRating(
           laundryId: order.laundryId,
           rating: rating
-        ).asDriver(onErrorDriveWith: .just())
+        ).asDriver(onErrorDriveWith: .just(()))
       }
 
       return ratingDriver.do(onNext: {

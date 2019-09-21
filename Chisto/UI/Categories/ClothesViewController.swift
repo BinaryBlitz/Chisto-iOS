@@ -161,7 +161,7 @@ class ClothesViewController: UIViewController, DefaultBarColoredViewController {
     searchBar.setSearchFieldBackgroundImage(#imageLiteral(resourceName:"searchBarTextBack"), for: .normal)
     searchBar.setImage(#imageLiteral(resourceName:"iconSearch"), for: .search, state: .normal)
     searchBar.setTextColor(color: UIColor.white)
-    searchBar.searchTextPositionAdjustment = UIOffsetMake(5.0, 0.0)
+    searchBar.searchTextPositionAdjustment = UIOffset.init(horizontal: 5.0, vertical: 0.0)
 
     searchController
       .searchBar
@@ -181,7 +181,7 @@ class ClothesViewController: UIViewController, DefaultBarColoredViewController {
 
   func configureTableView() {
     tableView.estimatedRowHeight = 80
-    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.rowHeight = UITableView.automaticDimension
 
     viewModel.categoriesUpdated
       .asObservable()
@@ -245,7 +245,7 @@ class ClothesViewController: UIViewController, DefaultBarColoredViewController {
 
 extension ClothesViewController: UISearchControllerDelegate {
   func willPresentSearchController(_ searchController: UISearchController) {
-    viewModel.didStartSearching.onNext()
+    viewModel.didStartSearching.onNext(())
 
     UIView.animate(withDuration: 0.2) { [weak self] in
       self?.headerViewTopConstraint.constant -= headerHeight
@@ -254,7 +254,7 @@ extension ClothesViewController: UISearchControllerDelegate {
   }
 
   func willDismissSearchController(_ searchController: UISearchController) {
-    viewModel.didFinishSearching.onNext()
+    viewModel.didFinishSearching.onNext(())
     UIView.animate(withDuration: 0.2) { [weak self] in
       self?.headerViewTopConstraint.constant += headerHeight
     }

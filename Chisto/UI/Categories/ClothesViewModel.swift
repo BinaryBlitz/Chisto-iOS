@@ -121,7 +121,7 @@ class ClothesViewModel {
 
     _ = basketButtonDidTap.asDriver(onErrorDriveWith: .empty()).flatMap { [weak self] _ -> Driver<Void> in
       return DataManager.instance.showUser()
-        .asDriver(onErrorDriveWith: .just()).do(onCompleted: { [weak self] in
+        .asDriver(onErrorDriveWith: .just(())).do(onCompleted: { [weak self] in
           self?.basketButtonEnabled.value = true
           }, onSubscribe: { [weak self] in
             self?.basketButtonEnabled.value = false
@@ -161,7 +161,7 @@ class ClothesViewModel {
     })
 
     Observable.combineLatest(fetchCategoriesObservable, fetchItemsObservable).subscribe(onNext: { [weak self] _, _ in
-      self?.categoriesUpdated.onNext()
+      self?.categoriesUpdated.onNext(())
 
     }).addDisposableTo(disposeBag)
 

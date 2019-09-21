@@ -201,7 +201,7 @@ class ContactFormViewModel {
 
   func validateState() -> Bool {
     if !phoneIsValid.value {
-      highlightPhoneField.onNext()
+      highlightPhoneField.onNext(())
     }
 
     guard paymentMethod.value != .applePay else {
@@ -209,23 +209,23 @@ class ContactFormViewModel {
     }
 
     if !firstNameIsValid.value {
-      highlightFirstNameField.onNext()
+      highlightFirstNameField.onNext(())
     }
 
     if !cityIsValid.value {
-      highlightCityField.onNext()
+      highlightCityField.onNext(())
     }
 
     if !streetIsValid.value {
-      highlightStreetField.onNext()
+      highlightStreetField.onNext(())
     }
 
     if !buildingIsValid.value {
-      highlightBuildingField.onNext()
+      highlightBuildingField.onNext(())
     }
 
     if !apartmentIsValid.value {
-      highlightApartmentField.onNext()
+      highlightApartmentField.onNext(())
     }
 
     return isValid.value

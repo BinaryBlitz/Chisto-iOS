@@ -83,7 +83,7 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
     }).addDisposableTo(disposeBag)
 
     tableView.estimatedRowHeight = 100
-    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.rowHeight = UITableView.automaticDimension
   }
 
   override func viewDidLayoutSubviews() {
@@ -91,7 +91,7 @@ class OrderInfoViewController: UIViewController, UITableViewDelegate {
     let headerView = tableView.tableHeaderView!
     headerView.setNeedsLayout()
     headerView.layoutIfNeeded()
-    let height = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+    let height = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
     var frame = headerView.frame
     frame.size.height = height
     headerView.frame = frame

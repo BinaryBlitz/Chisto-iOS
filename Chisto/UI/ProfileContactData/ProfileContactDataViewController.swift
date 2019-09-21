@@ -48,8 +48,8 @@ class ProfileContactDataViewController: UIViewController {
 
   func configureForm() {
     contactFormViewController.viewModel = viewModel.formViewModel
-    addChildViewController(contactFormViewController)
-    contactFormViewController.didMove(toParentViewController: self)
+    addChild(contactFormViewController)
+    contactFormViewController.didMove(toParent: self)
     formView.addSubview(contactFormViewController.view)
     contactFormViewController.view.frame = formView.bounds
   }
